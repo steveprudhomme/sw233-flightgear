@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- SPDX-License-Identifier: MIT
+     Original SW233 integration. No global weather or joystick overrides. -->
+<PropertyList>
+    <sim>
+        <description>SW233 - SGS 2-33 experimental</description>
+        <author>SW233 contributors</author>
+        <flight-model>jsb</flight-model>
+        <aero>sw233</aero>
+        <model>
+            <path>Aircraft/SW233/Models/sw233.ac</path>
+        </model>
+        <tags>
+            <tag>glider</tag>
+            <tag>unpowered</tag>
+        </tags>
+    </sim>
+</PropertyList>
