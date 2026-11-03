@@ -1,0 +1,16 @@
+# Local environments and generated artifacts
+.venv/
+__pycache__/
+*.py[cod]
+.ruff_cache/
+.pytest_cache/
+build/
+dist/
+work/
+*.zip
+*.log
+*.csv
+.env
+.env.*
+.DS_Store
+Thumbs.db
