@@ -48,3 +48,13 @@ un tour pour 10 000 ft). À droite : vitesse en mph et vitesse verticale en
 milliers de ft/min. Ce sont des indicateurs idéalisés du simulateur.
 Le film utilise la même géométrie extérieure et une présentation pédagogique
 des cadrans, sans prétendre être une capture du cockpit FlightGear.
+
+### Pitot et fil de laine
+
+Le manuel de vol fourni (§ 7, circuit pitot-statique) situe la tête au nez.
+Les photos de la place avant guident son implantation visuelle. Dimensions,
+couleur et courbure du fil sont des choix visuels, non des cotes constructeur.
+Seul le fil tourne autour de son attache selon l'opposé de l'angle bêta JSBSim :
+vent relatif de droite, extrémité à gauche ; vol coordonné, fil centré.
+L'indication ne simule pas le flottement, la chute au repos ni les erreurs
+pneumatiques. La lisibilité dans le moteur graphique reste à confirmer.

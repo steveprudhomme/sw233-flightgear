@@ -16,7 +16,9 @@ class PackageTests(unittest.TestCase):
         model = ET.parse(wrapper)
         mesh = (wrapper.parent / model.findtext("path")).read_text()
         animations = model.findall("animation")
-        self.assertEqual(len(animations), 4)
+        self.assertEqual({a.findtext("object-name") for a in animations}, {
+            "alt-centaines", "alt-milliers", "vitesse-mph", "vario", "fil-de-laine",
+        })
         for animation in animations:
             self.assertIn(f'name "{animation.findtext("object-name")}"', mesh)
             self.assertIsNotNone(animation.findtext("property"))

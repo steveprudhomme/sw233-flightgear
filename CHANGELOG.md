@@ -4,6 +4,8 @@
 
 ### Ajouts
 
+- Tube de Pitot fixe au nez et fil de laine animé selon le dérapage JSBSim.
+
 - Structure open source, licence MIT, guides et règles DCO.
 - Prototype JSBSim original et modèle AC3D schématique éditable.
 - Inventaire des paramètres historiques et limites de réutilisation.
