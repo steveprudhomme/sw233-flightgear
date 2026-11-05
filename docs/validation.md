@@ -26,3 +26,19 @@ la polaire à masse fixée. Ces essais ne valident ni une vrille ni un décrocha
 Les tests couvrent le vol stabilisé, les signes des commandes, la saturation,
 l'effet des aérofreins, le contact au sol et l'intégrité du paquet. Le rendu
 FlightGear, ses commandes et le chargement depuis le lanceur restent à vérifier.
+
+## Produire le film de télémétrie
+
+Installer les dépendances de développement et FFmpeg avec l’encodeur libx264.
+Depuis la racine du dépôt :
+
+```sh
+python -m pip install Pillow==12.0.0
+python -m tools.video build/vol-plane.mp4
+```
+
+Le moteur avance à 120 Hz. Le film échantillonne les positions et les trois angles
+d’attitude tous les 15 pas ; à 24 images/s, la lecture est accélérée trois fois.
+Le rendu est indépendant du moteur graphique FlightGear. La distance nord est
+calculée localement à partir de la latitude ; le terrain n’est pas géoréférencé.
+Un fichier vidéo existant n’est pas écrasé. Le MP4 est un résultat généré, exclu de Git.

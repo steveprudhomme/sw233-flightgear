@@ -50,3 +50,9 @@ et la préparation du paquet. `build/` est généré et ignoré par Git.
 
 Les premiers fichiers ont été rédigés avec une assistance IA. Leur origine et
 leurs limites sont explicites ; une revue humaine aéronautique reste nécessaire.
+
+## Vidéo du vol d’essai
+
+Le [compte rendu du vol](docs/validation.md) comporte une procédure pour produire
+une séquence de 20 secondes à partir d’une minute de télémétrie JSBSim réelle.
+L’avion et le paysage du film sont schématiques ; ce n’est pas une capture de FlightGear.

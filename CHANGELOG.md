@@ -8,6 +8,7 @@
 - Prototype JSBSim original et modèle AC3D schématique éditable.
 - Inventaire des paramètres historiques et limites de réutilisation.
 - Tests FDM, contrôles de sources, préparation du paquet et CI.
+- Rendu vidéo reproductible à partir de la position et de l’attitude calculées.
 
 ### Limites connues
 
