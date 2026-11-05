@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Original simulation checklists. No automatic actions; tow is not implemented. -->
+<PropertyList>
+    <checklist n="0">
+        <title>SW233 · Avant départ (simulation)</title>
+        <item><name>Chargement</name><value>Scénario et centrage vérifiés</value></item>
+        <item><name>Commandes</name><value>Libres ; sens vérifié</value></item>
+        <item><name>Instruments</name><value>mph, ft et milliers de ft/min identifiés</value></item>
+        <item><name>Aérofreins et trim</name><value>Course et position vérifiées</value></item>
+        <item><name>Harnais, verrière et porte</name><value>Revue visuelle simulée</value></item>
+    </checklist>
+    <checklist n="1">
+        <title>SW233 · Avant largage (répétition simulée)</title>
+        <item><name>Zone et trafic</name><value>Repérés</value></item>
+        <item><name>Altitude et position</name><value>Vérifiées dans le scénario</value></item>
+        <item><name>Largage</name><value>Revue verbale ; câble non simulé</value></item>
+    </checklist>
+    <checklist n="2">
+        <title>SW233 · Avant atterrissage (simulation)</title>
+        <item><name>Vent, trafic et piste</name><value>Identifiés</value></item>
+        <item><name>Vitesse</name><value>Lue en mph ; adaptée au scénario</value></item>
+        <item><name>Aérofreins et trim</name><value>Disponibilité vérifiée</value></item>
+        <item><name>Harnais et verrière</name><value>Revue visuelle simulée</value></item>
+    </checklist>
+    <checklist n="3">
+        <title>SW233 · Avant exercice de décrochage (simulation)</title>
+        <item><name>Altitude, terrain et trafic</name><value>Marges revues</value></item>
+        <item><name>Harnais, verrière et objets</name><value>Revue visuelle simulée</value></item>
+        <item><name>Domaine de vol</name><value>Vrille non validée ; pas de démonstration de vrille</value></item>
+    </checklist>
+</PropertyList>
