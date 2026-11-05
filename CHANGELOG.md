@@ -13,6 +13,6 @@
 ### Limites connues
 
 - Aucune validation de fidélité en vol réel, de vrille ou de remorquage.
-- Modèle visuel provisoire, sans cockpit ; intégration graphique à vérifier.
+- Poste avant avec trois cadrans idéalisés ; intégration graphique FlightGear à vérifier.
 
 Aucune version stable ni release binaire n'a encore été publiée.

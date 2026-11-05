@@ -12,6 +12,7 @@ from pathlib import Path
 import numpy as np
 from PIL import Image, ImageDraw, ImageFont
 
+from tools.cockpit import exterior, front_view
 from tools.glide import aircraft, trim_glide
 
 W, H, VW, VH = 1280, 720, 890, 458
@@ -66,35 +67,6 @@ def trace():
     return np.asarray(samples)
 
 
-def craft():
-    """Original explanatory illustration. Coordinates: nose, right, up (metres)."""
-    faces = []
-
-    def face(points, color):
-        faces.append((np.asarray(points, dtype=float), color))
-
-    for k in (-1, 1):
-        face([(0.65, 0, 0.7), (0.6, 4*k, 0.79), (0.28, 7.78*k, 0.95),
-              (-0.43, 7.78*k, 0.95), (-0.8, 4*k, 0.79), (-0.85, 0, 0.7)], "#f5d376")
-        face([(0.34, 7.05*k, 0.92), (0.28, 7.78*k, 0.95),
-              (-0.43, 7.78*k, 0.95), (-0.5, 7.05*k, 0.92)], "#da713c")
-        face([(-3.8, 0, 0.2), (-4.2, k*1.6, 0.2), (-4.7, k*1.6, 0.2),
-              (-4.7, 0, 0.2)], "#fff2bf")
-    sections = [(3.0, 0.08, -0.1, 0.15), (2.25, 0.45, -0.5, 0.48),
-                (0.3, 0.55, -0.55, 0.72), (-1.0, 0.4, -0.38, 0.5),
-                (-4.85, 0.08, 0.1, 0.3)]
-    for (x, r, b, z), (xx, rr, bb, zz) in zip(sections, sections[1:]):
-        for k in (-1, 1):
-            face([(x, k*r, b), (xx, k*rr, bb), (xx, k*rr, zz), (x, k*r, z)],
-                 "#ebcb80" if k == 1 else "#edb956")
-        face([(x, -r, z), (x, r, z), (xx, rr, zz), (xx, -rr, zz)],
-             "#2c6371" if x in (2.25, 0.3) else "#f5da93")
-        face([(x, -r, b), (x, r, b), (xx, rr, bb), (xx, -rr, bb)], "#d69b48")
-    face([(-3.7, 0, 0.19), (-4.3, 0, 1.5), (-4.85, 0, 1.44),
-          (-4.85, 0, 0.2)], "#eba84e")
-    return faces
-
-
 def terrain(x, y):
     return (95 * np.sin(x/2800 + y/3700) + 65 * np.cos(y/1900)
             + 80 * np.sin(x/4300 - y/2200))
@@ -125,8 +97,8 @@ def rotation(roll, pitch, yaw):
 def scene(row, land, colors, aircraft_faces):
     t, north, east, up, roll, pitch, yaw, _, _ = row
     pos = np.array([north, east, up])
-    angle = math.radians(52 + 86 * t / DURATION)
-    eye = pos + np.array([25*math.cos(angle), -25*math.sin(angle), 7.2])
+    angle = math.radians(28 + 75 * t / DURATION)
+    eye = pos + np.array([18*math.cos(angle), -18*math.sin(angle), 5.0])
     view = pos-eye
     view /= np.linalg.norm(view)
     right = np.cross(view, [0, 0, 1])
@@ -155,18 +127,22 @@ def scene(row, land, colors, aircraft_faces):
     orient = rotation(roll, pitch, yaw)
     parts = [(((v @ orient + pos) - eye) @ matrix, col) for v, col in aircraft_faces]
     for v, col in sorted(parts, key=lambda item: -item[0][:, 2].mean()):
-        d.polygon([tuple(p) for p in project(v)], fill=col, outline="#675d41")
+        normal = np.cross(v[1]-v[0], v[2]-v[0])
+        norm = np.linalg.norm(normal)
+        shade = .84 + (.16 * abs(normal[1])/norm if norm > 1e-9 else 0)
+        d.polygon([tuple(p) for p in project(v)], fill=tuple(int(c*shade) for c in col))
     return view_image
 
 
 def render(path):
-    values, faces = trace(), craft()
+    values, faces = trace(), exterior()
     land, palette = world()
     path.parent.mkdir(parents=True, exist_ok=True)
     ff = ["ffmpeg", "-loglevel", "error", "-n", "-f", "rawvideo", "-pix_fmt", "rgb24",
           "-s", f"{W}x{H}", "-r", str(FPS), "-i", "-", "-an", "-c:v", "libx264",
           "-crf", "20", "-pix_fmt", "yuv420p", "-movflags", "+faststart", str(path)]
     with subprocess.Popen(ff, stdin=subprocess.PIPE) as encoder:
+        vs_fps = np.gradient(values[:, 8], values[:, 0])
         for i, row in enumerate(values):
             t, north, _, _, _, _, _, speed, altitude = row
             frame = Image.new("RGB", (W, H), PAPER)
@@ -174,7 +150,13 @@ def render(path):
             label(d, (34, 19), "SW233   /   CARNET D’ESSAIS", 14, TEAL)
             label(d, (34, 43), "Vol plané stabilisé", 43)
             label(d, (927, 53), "ESSAI  01    /    JSBSIM", 18, TEAL)
-            frame.paste(scene(row, land, palette, faces), (32, 112))
+            front = t >= 39
+            view = (front_view(row, vs_fps[i], land, palette, rotation) if front
+                    else scene(row, land, palette, faces))
+            frame.paste(view, (32, 112))
+            title = "02  /  PLACE AVANT" if front else "01  /  VUE EXTÉRIEURE"
+            d.rounded_rectangle((48, 124, 276, 154), radius=4, fill=INK)
+            label(d, (58, 129), title, 14, PAPER)
             d.rectangle((940, 112, 1248, 570), fill=INK)
             label(d, (963, 137), "TÉLÉMÉTRIE DE VOL", 14, MINT)
             for y, title, value in [
@@ -190,7 +172,7 @@ def render(path):
             label(d, (34, 600), "SCHWEIZER SGS 2-33", 22)
             label(d, (34, 640), "970 lb   /   Air calme   /   Lecture ×3", 16, TEAL)
             label(d, (614, 602), "60 secondes de trajectoire calculée", 22)
-            label(d, (614, 641), "Visualisation JSBSim · avion et terrain illustratifs", 16)
+            label(d, (614, 641), "Rejeu JSBSim · terrain et cockpit illustrés", 16)
             label(d, (34, 687), "SW233   /   PROTOTYPE EXPÉRIMENTAL", 14, TEAL)
             encoder.stdin.write(frame.tobytes())
         encoder.stdin.close()

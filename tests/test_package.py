@@ -9,6 +9,22 @@ from tools.package import ROOT, package
 
 
 class PackageTests(unittest.TestCase):
+    def test_animated_panel_and_checklists_resolve(self):
+        aircraft = ROOT / "src" / "SW233"
+        config = ET.parse(aircraft / "sw233-set.xml")
+        wrapper = ROOT / "src" / config.findtext("sim/model/path").removeprefix("Aircraft/")
+        model = ET.parse(wrapper)
+        mesh = (wrapper.parent / model.findtext("path")).read_text()
+        animations = model.findall("animation")
+        self.assertEqual(len(animations), 4)
+        for animation in animations:
+            self.assertIn(f'name "{animation.findtext("object-name")}"', mesh)
+            self.assertIsNotNone(animation.findtext("property"))
+        lists = ET.parse(aircraft / config.find("sim/checklists").attrib["include"])
+        self.assertEqual(len(lists.findall("checklist")), 4)
+        for item in lists.findall("checklist/item"):
+            self.assertTrue(item.findtext("name") and item.findtext("value"))
+
     def test_package_contains_resolvable_model_and_rejects_overwrite(self):
         scratch = ROOT / "build" / "test-scratch"
         scratch.mkdir(parents=True, exist_ok=True)

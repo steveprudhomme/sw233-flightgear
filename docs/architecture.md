@@ -17,5 +17,8 @@ Les propriétés `aero/sw233/*` sont privées au modèle et calculées avant les
 Les commandes entrent par `fcs/*-cmd-norm` ; la profondeur et le trim sont sommés
 et bornés. La sortie normalisée des aérofreins est bornée entre 0 et 1.
 
-La géométrie visuelle sert à vérifier l'installation. Cockpit, animations,
-remorquage et instruments seront des incréments séparés et testés.
+Le modèle XML anime quatre aiguilles du poste avant, dont deux pour l'altitude.
+Le fichier AC3D éditable contient la cellule et le tableau. Les coordonnées de
+fichier AC sont (arrière, haut, gauche) ; celles des animations FlightGear
+sont (arrière, droite, haut), en mètres. Les procédures sont incluses par le set
+sous sim/checklists. Le remorquage et le freinage de roue restent à implémenter.

@@ -11,11 +11,12 @@ ressources FlightGear/JSBSim ne sont pas redistribuées ni relicenciées ici.
 
 - Configuration FlightGear et FDM JSBSim originaux.
 - Six composantes aérodynamiques, commandes et aérofreins.
-- Chargement de référence à deux occupants ; géométrie visuelle schématique.
+- Aile haute effilée, haubans, verrière tandem, roue et patin.
+- Poste avant : altimètre, anémomètre en mph et variomètre ; quatre check-lists de simulation.
 - Documentation de provenance, tests automatisés et contrôles de contribution.
 
 Les coefficients historiques sont des **paramètres de simulation à valider**,
-pas des mesures constructeur. Pas encore de cockpit instrumenté, de remorquage,
+pas des mesures constructeur. Pas encore de calibration pneumatique, de remorquage,
 de modèle fiable de vrille, ni de validation complète dans FlightGear.
 Ce projet n'est pas un outil d'instruction au vol réel.
 
@@ -56,3 +57,5 @@ leurs limites sont explicites ; une revue humaine aéronautique reste nécessair
 Le [compte rendu du vol](docs/validation.md) comporte une procédure pour produire
 une séquence de 20 secondes à partir d’une minute de télémétrie JSBSim réelle.
 L’avion et le paysage du film sont schématiques ; ce n’est pas une capture de FlightGear.
+Le passage en place avant intervient à 13 secondes. Voir les
+[décisions de conception](docs/references/conception.md) et l’[inventaire](docs/references/inventaire.md).
