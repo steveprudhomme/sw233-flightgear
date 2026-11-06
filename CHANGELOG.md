@@ -4,6 +4,8 @@
 
 ### Ajouts
 
+- Capture native à CYJN : aérofreins en vue cockpit, glissade et détail de la ficelle.
+
 - Tube de Pitot fixe au nez et fil de laine animé selon le dérapage JSBSim.
 
 - Structure open source, licence MIT, guides et règles DCO.
@@ -15,6 +17,6 @@
 ### Limites connues
 
 - Aucune validation de fidélité en vol réel, de vrille ou de remorquage.
-- Poste avant avec trois cadrans idéalisés ; intégration graphique FlightGear à vérifier.
+- Poste avant avec trois cadrans idéalisés ; premier affichage vérifié dans FlightGear 2024.1.4.
 
 Aucune version stable ni release binaire n'a encore été publiée.

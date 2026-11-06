@@ -20,6 +20,15 @@ pas des mesures constructeur. Pas encore de calibration pneumatique, de remorqua
 de modèle fiable de vrille, ni de validation complète dans FlightGear.
 Ce projet n'est pas un outil d'instruction au vol réel.
 
+## Vidéo : vol au-dessus de Saint-Jean-sur-Richelieu (CYJN)
+
+[![Lire la démonstration du SW233 dans FlightGear au-dessus de CYJN](https://github.com/steveprudhomme/sw233-flightgear/releases/download/demo-cyjn-01/SW233-CYJN.jpg)](https://github.com/steveprudhomme/sw233-flightgear/releases/download/demo-cyjn-01/SW233-CYJN.mp4)
+
+**[Voir le MP4 · 66 secondes](https://github.com/steveprudhomme/sw233-flightgear/releases/download/demo-cyjn-01/SW233-CYJN.mp4)** — capture de FlightGear 2024.1.4 avec le décor TerraSync installé.
+Passage en place avant à 8 s ; sortie et rentrée des aérofreins de 14 à 28 s ; virage en glissade à partir de 34 s.
+Le médaillon agrandit la ficelle filmée et les valeurs affichées proviennent du même vol.
+Voir [les mesures et la procédure de reproduction](docs/validation.md#capture-flightgear-à-cyjn).
+
 ## Démarrage rapide
 
 Prérequis : FlightGear avec JSBSim ; Python 3.11+ pour les contrôles.
@@ -33,7 +42,7 @@ fgfs --fg-aircraft=build/Aircraft --aircraft=sw233 --airport=KSFO --altitude=500
 
 Exécuter la dernière commande depuis la racine du dépôt ; adapter le chemin de
 `fgfs` sur Windows. L'altitude est en pieds au-dessus de la mer, `--vc` en nœuds.
-Cet exemple de lancement n'est pas une preuve de compatibilité visuelle testée.
+La vidéo ci-dessus a été réalisée à CYJN avec le scénario de validation.
 Voir [INSTALL.md](INSTALL.md) pour le lanceur graphique et les tests.
 
 ## Organisation
@@ -51,11 +60,3 @@ et la préparation du paquet. `build/` est généré et ignoré par Git.
 
 Les premiers fichiers ont été rédigés avec une assistance IA. Leur origine et
 leurs limites sont explicites ; une revue humaine aéronautique reste nécessaire.
-
-## Vidéo du vol d’essai
-
-Le [compte rendu du vol](docs/validation.md) comporte une procédure pour produire
-une séquence de 20 secondes à partir d’une minute de télémétrie JSBSim réelle.
-L’avion et le paysage du film sont schématiques ; ce n’est pas une capture de FlightGear.
-Le passage en place avant intervient à 13 secondes. Voir les
-[décisions de conception](docs/references/conception.md) et l’[inventaire](docs/references/inventaire.md).
