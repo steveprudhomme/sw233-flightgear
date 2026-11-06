@@ -2,6 +2,10 @@
 
 ## Non publié — 0.1.0-dev
 
+### Changements
+
+- Projet renommé ; nouvelle version sous GPL-3.0-only. Les anciennes versions MIT restent identifiables dans Git.
+
 ### Ajouts
 
 - Capture native à CYJN : aérofreins en vue cockpit, glissade et détail de la ficelle.

@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='utf-8'?>
 <fdm_config name="SW233" version="2.0" release="ALPHA">
-    <!-- SPDX-License-Identifier: MIT. Original equations; numeric provenance: docs/sources.md. Experimental, not flight validated. -->
+    <!-- SPDX-License-Identifier: GPL-3.0-only. Original equations; numeric provenance: docs/sources.md. Experimental, not flight validated. -->
     <fileheader>
         <author>SW233 contributors</author>
         <filecreationdate>2026-11-02</filecreationdate>

@@ -11,7 +11,7 @@ peuvent évoluer ; les nombres recensés ici décrivent les fichiers examinés.
 2. [Modèle SGS233 du dépôt JSBSim](https://github.com/JSBSim-Team/jsbsim/blob/master/aircraft/sgs233/sgs233.xml).
    Paramètres d'un ancien simulateur, non des mesures certifiées. L'en-tête
    reconnaît des estimations et interdit la vente de ce modèle. Aucun de ses
-   fichiers XML n'est copié ou relicencié sous MIT dans ce dépôt.
+   fichiers XML n'est copié ou relicencié sous GPL-3.0-only dans ce dépôt.
 3. [Archive SGS233 du miroir FlightGear 2024](https://mirrors.ibiblio.org/pub/mirrors/flightgear/ftp/Aircraft-2024/sgs233.zip).
    Le FDM et le set ont été examinés, ainsi que Models/readme.txt : le modèle
    visuel provient d'un ancien travail FS98 de Captain Slug, converti par Dave
@@ -35,7 +35,7 @@ historique voisin de S/b, pas une identification de la corde aérodynamique moye
 
 Ces nombres ont été relevés dans les fichiers SGS233 consultés. Le code de
 calcul est une rédaction originale des équations usuelles de forces et moments.
-La licence MIT porte sur cette implémentation et ses documents originaux ; elle
+La licence GPL-3.0-only porte sur cette implémentation et ses documents originaux ; elle
 n'affirme aucun droit nouveau sur les fichiers tiers référencés.
 
 | Paramètre | Valeur | Statut |

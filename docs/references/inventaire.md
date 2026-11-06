@@ -1,6 +1,6 @@
 # Fonds documentaire SW233
 
-Les 16 originaux sont conservés dans originaux/ dans la copie locale du projet. Les empreintes permettent de reconnaître les éditions. Les PDF, photos et plans tiers ne sont pas placés sous MIT. Les plans « Short Kit » sont des plans de maquette, utilisables pour les formes générales ; aucune cote de structure grandeur ne leur est attribuée.
+Les 16 originaux sont conservés dans originaux/ dans la copie locale du projet. Les empreintes permettent de reconnaître les éditions. Les PDF, photos et plans tiers ne sont pas placés sous GPL-3.0-only. Les plans « Short Kit » sont des plans de maquette, utilisables pour les formes générales ; aucune cote de structure grandeur ne leur est attribuée.
 
 | Fichier | SHA-256 |
 |---|---|

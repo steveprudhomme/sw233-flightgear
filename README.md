@@ -1,11 +1,11 @@
-# SW233 — Schweizer SGS 2-33 pour FlightGear
+# Schweizer SGS 2-33 aux couleurs Cadets de l’aviation royale du Canada
 
 Construire une reproduction documentée, testable et progressivement fidèle du
 planeur biplace Schweizer **SGS 2-33**. SW233 est le nom du projet, pas la
-désignation constructeur.
+désignation constructeur. La livrée actuelle des Cadets est un objectif : le prototype filmé porte encore sa livrée jaune de développement.
 
-Projet **libre et open source**, sous [licence MIT](LICENSE.md). Les anciennes
-ressources FlightGear/JSBSim ne sont pas redistribuées ni relicenciées ici.
+Projet **libre et open source**, sous [licence GPL-3.0-only](LICENSE.md). Les anciennes
+ressources FlightGear/JSBSim ne sont pas redistribuées ni relicenciées ici. Les versions déjà diffusées sous MIT conservent leur [notice historique](LICENSES/MIT-historical.txt).
 
 ## État : prototype expérimental 0.1.0-dev
 

@@ -39,6 +39,6 @@ git commit -s -m "fix: corriger le signe de la commande de direction"
 ```
 
 `Signed-off-by:` est une attestation DCO, pas une signature cryptographique.
-Ne signer que des contributions que l'on est autorisé à soumettre sous MIT.
+Ne signer que des contributions que l'on est autorisé à soumettre sous GPL-3.0-only.
 La CI vérifie le trailer de chaque commit proposé ; le mainteneur examine
 également la provenance. Éviter le squash qui effacerait les attestations.
