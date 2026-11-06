@@ -1,5 +1,8 @@
 # Ton atelier : construis et filme un planeur
 
+**Pour fabriquer les fichiers toi-même depuis un dossier vide, commence par le [livre de construction en sept séances](construction/README.md).** Cette page est le parcours rapide pour assembler et filmer une copie du projet.
+
+
 **Ta mission :** partir d’un dossier de pièces, assembler un planeur dans FlightGear, passer au-dessus d’un vrai lieu et rapporter un film. Le vol est piloté par le scénario. Tu peux réussir cet atelier sans joystick ni compte GitHub. Cette édition utilise Windows.
 
 ## 1. Prépare ton établi

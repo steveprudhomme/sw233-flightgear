@@ -1,0 +1,386 @@
+# 2 · Bâtir le planeur avec des anneaux et des baguettes
+
+Pense à un modèle en carton. Un **sommet** est un coin ; une **face** est un morceau de carton tendu entre des coins. Au lieu de taper 22 191 lignes de coins à la main, tu vas écrire une petite machine à les numéroter. Crée **fabrique.py** à la racine, au même niveau que *src*. À la fin, ce programme écrira **src/SW233/Models/sw233.ac**. Nomme les objets exactement comme ici : plus tard FlightGear cherchera « fil-de-laine », pas « ficelle ».
+
+**Ton repère :** imagine-toi assis dans le planeur. Dans la recette, x va du nez vers la queue, y vers ta droite, z vers le haut, en mètres. Sur un papier dessine le nez à x = 0 et la queue à x = 7,8486. Pose deux crayons à y = −7,7724 et +7,7724 : les extrémités doivent être à la même distance du milieu.
+
+**Fichier à écrire :** `fabrique.py`. Colle les blocs de ce fichier dans l’ordre, sans retirer les espaces du début des lignes.
+
+## A · Prépare la boîte de pièces
+
+Une liste garde les faces de chaque pièce. Dans la palette, les trois nombres sont des quantités de rouge, de vert et de bleu entre 0 et 1. Le dernier nombre règle la transparence ; 0 donne une peinture opaque. Ce sont des couleurs de travail, pas des échantillons de peinture des Cadets.
+
+<!-- atelier-fichier: fabrique.py -->
+```python
+from pathlib import Path
+from math import cos, sin, pi, radians
+from collections import defaultdict
+import numpy as np
+
+M = Path("src/SW233/Models")
+M.mkdir(parents=True, exist_ok=True)
+parts = defaultdict(list)
+mat = [
+    ("jaune", (0.94, 0.66, 0.15), 0),
+    ("creme", (1, 0.86, 0.48), 0),
+    ("cadre", (0.21, 0.25, 0.23), 0),
+    ("caoutchouc", (0.09, 0.10, 0.10), 0),
+    ("verre", (0.51, 0.75, 0.84), 0.79),
+    ("cadran", (0.045, 0.06, 0.065), 0),
+    ("ivoire", (0.97, 0.95, 0.79), 0),
+    ("orange", (0.9, 0.31, 0.11), 0),
+    ("siege", (0.34, 0.39, 0.32), 0),
+]
+```
+
+## B · Invente quatre outils réutilisables
+
+Lis les quatre fonctions comme des gestes : `poly` pose une face ; `bridge` relie deux anneaux par des bandes ; `rod` dessine deux petits octogones et les relie pour faire un tube ; `loft` relie des couples comme les arceaux d’une tente. Le sinus et le cosinus servent de compas : ils placent les points à intervalles réguliers autour d’un centre. Exemple : si deux anneaux ont chacun 12 coins, le pont doit produire 12 bandes, pas 11. Le coin précédent du premier coin est le dernier : c’est ce qui ferme la couture.
+
+<!-- atelier-fichier: fabrique.py -->
+```python
+def poly(n, m, *v):
+    parts[n].append((m, v))
+
+
+def bridge(n, m, a, b):
+    for i in range(len(a)):
+        poly(n, m, a[i - 1], a[i], b[i], b[i - 1])
+
+
+def rod(n, m, a, b, r):
+    a, b = np.array(a), np.array(b)
+    v = b - a
+    v = v / np.linalg.norm(v)
+    u = np.cross(v, [0, 0, 1] if abs(v[2]) < 0.9 else [0, 1, 0])
+    u /= np.linalg.norm(u)
+    w = np.cross(v, u)
+    ring = [r * (u * cos(i * pi / 4) + w * sin(i * pi / 4)) for i in range(8)]
+    bridge(n, m, [a + p for p in ring], [b + p for p in ring])
+
+
+def loft(n, m, stations):
+    rings = [
+        [(x, r * cos(i * pi / 6), z + h * sin(i * pi / 6)) for i in range(12)]
+        for x, r, z, h in stations
+    ]
+    for a, b in zip(rings, rings[1:]):
+        bridge(n, m, a, b)
+    poly(n, m, *rings[0])
+    poly(n, m, *rings[-1])
+```
+
+## C · Donne du volume à la coque
+
+Chaque ligne représente une tranche : (distance au nez, demi-largeur, hauteur du centre, demi-hauteur). Par exemple à 1,35 m la coque est large de 2 × 0,46 = 0,92 m ; son sommet atteint −0,27 + 0,34 = +0,07 m. Ces chiffres sont des stations de dessin H ; ils ne figurent pas dans un devis de masse. Douze points par tranche donnent une première coque légère à dessiner.
+
+<!-- atelier-fichier: fabrique.py -->
+```python
+loft(
+    "fuselage",
+    0,
+    [
+        (0, 0.024, -0.28, 0.025),
+        (0.22, 0.23, -0.27, 0.19),
+        (0.66, 0.4, -0.27, 0.31),
+        (1.35, 0.46, -0.27, 0.34),
+        (2.48, 0.47, -0.27, 0.36),
+        (3.25, 0.38, -0.20, 0.32),
+        (5, 0.21, -0.12, 0.22),
+        (7.61, 0.065, -0.03, 0.105),
+    ],
+)
+```
+
+## D · Laisse voir le pilote à travers la verrière
+
+Pose un demi-anneau au-dessus de chaque station, puis relie les demi-anneaux avec le matériau transparent. Trois stations reçoivent en plus des tubes opaques pour les montants. Si tu utilises la peinture jaune à la place du verre, la vue avant sera bouchée même si la forme est correcte.
+
+<!-- atelier-fichier: fabrique.py -->
+```python
+# Upper half of canopy only, lower body leaves an open pilot sightline.
+stations = [
+    (0.50, 0.24, 0.05, 0.03),
+    (0.91, 0.397, 0.07, 0.28),
+    (1.55, 0.43, 0.09, 0.52),
+    (2.13, 0.44, 0.1, 0.60),
+    (2.78, 0.39, 0.1, 0.47),
+    (3.16, 0.34, 0.1, 0.14),
+]
+rings = [
+    [(x, r * cos(i * pi / 8), z + h * sin(i * pi / 8)) for i in range(9)] for x, r, z, h in stations
+]
+for a, b in zip(rings, rings[1:]):
+    for j in range(8):
+        poly("verriere", 4, a[j], a[j + 1], b[j + 1], b[j])
+for k in (1, 3, 5):
+    for i in range(8):
+        rod("arceaux", 2, rings[k][i], rings[k][i + 1], 0.013)
+```
+
+## E · Fabrique une aile, puis son reflet
+
+Pour chaque aile, les quatre lignes sont (distance à l’axe, position du bord avant, corde, hauteur). À la racine, le bord arrière est à 1,99 + 1,57 = 3,56 m du nez. Une petite liste de fractions dessine une section épaisse ; ce n’est pas un profil aérodynamique mesuré. Multiplier la distance latérale par −1 ou +1 fabrique les deux côtés sans inverser l’avant. Un hauban joint aile et fuselage. Pour chaque aérofrein, la charnière est à x = 2,41 ; le bord mobile est à 2,54. Ce rectangle doit rester une pièce séparée : si on le soude à l’aile, l’animation soulèvera toute l’aile.
+
+<!-- atelier-fichier: fabrique.py -->
+```python
+for side in (-1, 1):
+    s = str(side)
+    rings = []
+    for y, le, ch, z in [
+        (0, 1.99, 1.57, 0.74),
+        (3.42, 1.99, 1.57, 0.80),
+        (7.62, 2.19, 0.83, 0.93),
+        (7.7724, 2.23, 0.76, 0.94),
+    ]:
+        rings.append(
+            [
+                (le + ch * f, y * side, z + ch * h)
+                for f, h in [
+                    (0, 0),
+                    (0.09, 0.054),
+                    (0.3, 0.072),
+                    (0.72, 0.040),
+                    (1, 0.002),
+                    (0.68, -0.028),
+                    (0.19, -0.038),
+                ]
+            ]
+        )
+    for a, b in zip(rings, rings[1:]):
+        bridge("aile" + s, 0, a, b)
+    poly("aile" + s, 0, *rings[-1])
+    rod("hauban" + s, 1, (2.36, 0.36 * side, -0.43), (2.49, 3.65 * side, 0.795), 0.038)
+    poly(
+        "aerofrein" + s,
+        2,
+        (2.41, 0.98 * side, 0.86),
+        (2.41, 2.13 * side, 0.88),
+        (2.54, 2.13 * side, 0.88),
+        (2.54, 0.98 * side, 0.86),
+    )
+    p = [
+        (6.85, 0, 0.1),
+        (6.87, 1.68 * side, 0.11),
+        (7.07, 1.93 * side, 0.11),
+        (7.5, 1.93 * side, 0.11),
+        (7.79, 1.67 * side, 0.11),
+        (7.79, 0, 0.1),
+    ]
+    poly("empennage" + s, 1, *p)
+```
+
+## F · Termine la queue, le train et les commandes
+
+La dérive ferme la longueur de référence à 7,8486 m. Deux cercles reliés dessinent une roue ; notre grande roue a un rayon visuel choisi de 0,245 m. Le dessin de visite situe roue, patin, roulette et haubans ; il ne donne pas ces rayons. Les deux sièges sont en tandem : ne les place pas côte à côte. Le levier orange reste à gauche (y négatif).
+
+<!-- atelier-fichier: fabrique.py -->
+```python
+poly("derive", 0, (6.50, 0, 0.09), (7.1, 0, 1.42), (7.83, 0, 1.42), (7.8486, 0, 0.04))
+for name, x, z, r in [("roue", 2.25, -0.60, 0.245), ("roulette", 7.51, -0.27, 0.084)]:
+    a = [(x + r * cos(i * pi / 10), -0.075, z + r * sin(i * pi / 10)) for i in range(20)]
+    b = [(px, 0.075, pz) for px, _, pz in a]
+    bridge(name, 3, a, b)
+    poly(name, 3, *a)
+    poly(name, 3, *b)
+rod("patin", 2, (0.33, 0, -0.52), (1.91, 0, -0.69), 0.038)
+for x in (1.52, 2.39):
+    poly(
+        "sieges",
+        8,
+        (x, -0.27, -0.22),
+        (x, 0.27, -0.22),
+        (x + 0.13, 0.27, 0.13),
+        (x + 0.13, -0.27, 0.13),
+    )
+rod("manche", 2, (1.48, 0, -0.33), (1.36, 0, 0.055), 0.022)
+rod("poignee-frein", 7, (1.19, -0.34, -0.13), (1.43, -0.34, 0.01), 0.019)
+```
+
+## G · Découpe la planche et prépare les cadrans
+
+La planche est à x = 0,87 ; son bord mesure 2 × 0,39 = 0,78 m. C’est le gabarit de travail de la fiche 1. Pour chaque cadran, note (nom, y, z, rayon). Les fonctions suivantes tracent un trait à une distance donnée du centre et fabriquent les chiffres avec sept segments, comme une petite horloge numérique. Les chiffres sont fixes. Les aiguilles doivent pouvoir tourner sans emporter les chiffres.
+
+<!-- atelier-fichier: fabrique.py -->
+```python
+# A faceted panel in front of the pilot; scale ticks and numeric legends are real mesh.
+px = 0.87
+poly(
+    "tableau",
+    5,
+    (px, -0.39, -0.08),
+    (px, 0.39, -0.08),
+    *[(px, 0.39 * cos(i * pi / 20), 0.015 + 0.26 * sin(i * pi / 20)) for i in range(21)],
+)
+dials = [("alt", -0.22, 0.087, 0.083), ("ias", 0.17, 0.14, 0.075), ("vsi", 0.295, 0.022, 0.063)]
+
+
+def point(y, z, r, a):
+    return (y + r * sin(a), z + r * cos(a))
+
+
+def mark(n, x, y, z, r, a, length, width):
+    v = (sin(a), cos(a))
+    w = (cos(a) * width, -sin(a) * width)
+    poly(
+        n,
+        6,
+        *[
+            (x, y + v[0] * t + w[0] * k, z + v[1] * t + w[1] * k)
+            for t, k in [(r, -1), (r, 1), (r - length, 1), (r - length, -1)]
+        ],
+    )
+
+
+def digit(y, z, num, scale):
+    segs = [
+        ((0, 0), (1, 0)),
+        ((1, 0), (1, 1)),
+        ((1, 1), (1, 2)),
+        ((0, 2), (1, 2)),
+        ((0, 1), (0, 2)),
+        ((0, 0), (0, 1)),
+        ((0, 1), (1, 1)),
+    ]
+    chars = str(num)
+    for j, k in enumerate(chars):
+        for seg in {
+            "0": "012345",
+            "1": "12",
+            "2": "01643",
+            "3": "01623",
+            "4": "5612",
+            "5": "05623",
+            "6": "056423",
+            "7": "012",
+            "8": "0123456",
+            "9": "012356",
+            "-": "6",
+        }[k]:
+            (a, b), (c, d) = segs[int(seg)]
+            yy = y + (j * 1.5 - 0.5 * (len(chars) * 1.5 - 0.5)) * scale
+            rod(
+                "chiffres",
+                6,
+                (px + 0.009, yy + a * scale, z + (1 - b) * scale),
+                (px + 0.009, yy + c * scale, z + (1 - d) * scale),
+                0.00065,
+            )
+```
+
+## H · Détache les aiguilles
+
+Une aiguille est un triangle indépendant. Place-la à x = 0,87 + 0,012 = 0,882, légèrement devant le fond, du côté du pilote. Si deux faces sont au même endroit, elles peuvent clignoter. Un tour de cadran d’altitude contient dix grands repères ; leur écart est donc 360 ÷ 10 = 36°. Les échelles de la maquette sont idéalisées ; il faudra des photos frontales pour reproduire la vraie typographie.
+
+<!-- atelier-fichier: fabrique.py -->
+```python
+animations = []
+
+
+def needle(name, y, z, r, property, factor, offset=0):
+    poly(
+        name,
+        7,
+        (px + 0.012, y - 0.002, z - 0.005),
+        (px + 0.012, y + 0.002, z - 0.005),
+        (px + 0.012, y, z + r),
+    )
+    animations.append((name, y, z, property, factor, offset))
+
+
+for kind, y, z, r in dials:
+    circ = [(px + 0.004, *point(y, z, r, i * pi / 30)) for i in range(60)]
+    poly(kind + "-fond", 3, *circ)
+    if kind == "alt":
+        vals = list(range(10))
+        angles = [i * 36 for i in vals]
+    elif kind == "ias":
+        vals = list(range(0, 161, 20))
+        angles = [i * 1.75 - 140 for i in vals]
+    else:
+        vals = [-2, -1, 0, 1, 2]
+        angles = [i * 65 for i in vals]
+    for v, deg in zip(vals, angles):
+        a = radians(deg)
+        mark("traits", px + 0.008, y, z, r * 0.94, a, r * 0.08, 0.001)
+        digit(*point(y, z, r * 0.68, a), v, 0.004)
+    if kind == "alt":
+        needle("alt-centaines", y, z, r * 0.87, "position/altitude-ft", 0.36)
+        needle("alt-milliers", y, z, r * 0.47, "position/altitude-ft", 0.036)
+    elif kind == "ias":
+        needle(
+            "vitesse-mph", y, z, r * 0.86, "fdm/jsbsim/velocities/vc-kts", 1.75 * 1.150779448, -140
+        )
+    else:
+        needle("vario", y, z, r * 0.85, "velocities/vertical-speed-fps", 65 * 60 / 1000)
+```
+
+## I · Pose le Pitot et attache le fil
+
+La tête est au nez d’après le manuel ; sa forme s’appuie sur la photo avant. Les coordonnées de la baguette et des cinq points du fil sont des hypothèses visuelles. Le premier point (−0,055 ; 0 ; 0,237) est le nœud. Recopie-le dans le cahier : c’est le centre de la rotation à la fiche 4. Le rayon du fil est volontairement assez épais pour rester visible à l’écran.
+
+<!-- atelier-fichier: fabrique.py -->
+```python
+# Nose-mounted pressure head and a separate moving tuft. Dimensions are visual estimates.
+mat.extend([("inox", (0.62, 0.68, 0.69), 0), ("laine", (0.85, 0.085, 0.045), 0)])
+rod("embase-pitot", 2, (0.245, 0, -0.13), (0.218, 0, -0.058), 0.022)
+rod("tube-pitot", 9, (0.222, 0, -0.073), (-0.055, 0, 0.237), 0.011)
+rod("tube-pitot", 9, (-0.055, 0, 0.237), (-0.212, 0, 0.239), 0.011)
+rod("attache-laine", 2, (-0.060, 0, 0.233), (-0.048, 0, 0.244), 0.014)
+yarn = [
+    (-0.055, 0, 0.237),
+    (0.018, 0, 0.253),
+    (0.10, 0, 0.275),
+    (0.17, 0, 0.306),
+    (0.235, 0, 0.325),
+]
+for a, b in zip(yarn, yarn[1:]):
+    rod("fil-de-laine", 10, a, b, 0.0048)
+```
+
+## J · Écris le fichier que lit le simulateur
+
+Le fichier commence par `AC3Db`, la palette, puis `OBJECT world` : la boîte qui contient toutes les pièces. Pour chaque pièce, `numvert` compte les coins et `numsurf` compte les faces ; `refs 4` annonce quatre numéros de coins pour un quadrilatère. Les numéros commencent à zéro. Un coin (x, y, z) de ton cahier devient **(x, z, −y)** dans notre AC3D : pour une extrémité à droite, la troisième colonne devient négative. La condition sur les faces du fuselage laisse une ouverture au-dessus de la place avant ; conserver les numéros de sommets évite de renuméroter toutes les autres faces. Les rehauts des graduations et du fil servent à leur lisibilité dans le rendu.
+
+<!-- atelier-fichier: fabrique.py -->
+```python
+out = ["AC3Db"]
+for n, c, t in mat:
+    glow = {"ivoire": ".5 .48 .4", "orange": ".4 .12 .04", "laine": ".7 .04 .02"}.get(n, "0 0 0")
+    out.append(
+        f'MATERIAL "{n}" rgb '
+        + " ".join(map(str, c))
+        + f" amb 0.3 0.3 0.3 emis {glow} spec .15 .15 .15 shi 12 trans {t}"
+    )
+out += ["OBJECT world", f"kids {len(parts)}"]
+for n, faces in parts.items():
+    verts = []
+    inds = []
+    for m, v in faces:
+        ids = []
+        for x, y, z in v:
+            ids.append(len(verts))
+            verts.append((x, z, -y))
+        if n != "fuselage" or not (
+            0.66 < sum(p[0] for p in v) / len(v) < 2.48 and sum(p[2] for p in v) / len(v) > -0.13
+        ):
+            inds.append((m, ids))
+    out += (
+        ["OBJECT poly", f'name "{n}"', f"numvert {len(verts)}"]
+        + [" ".join(f"{c:.5f}" for c in v) for v in verts]
+        + [f"numsurf {len(inds)}"]
+    )
+    for m, ids in inds:
+        out += ["SURF 0x30", f"mat {m}", f"refs {len(ids)}"] + [f"{i} 0 0" for i in ids]
+    out += ["kids 0"]
+(M / "sw233.ac").write_text("\n".join(out) + "\n", encoding="utf8")
+```
+
+**À faire maintenant :** enregistre, puis exécute depuis *Mon-Schweizer* :
+
+```powershell
+.\.venv\Scripts\python.exe fabrique.py
+Get-Content src/SW233/Models/sw233.ac -TotalCount 15
+```
+
+**Contrôle :** pour la forme de départ du livre, tu dois lire *AC3Db*, onze matériaux, *OBJECT world* puis *kids 32*. Cherche les deux noms *aerofrein-1* et *aerofrein1*. Si le fichier reste vide, vérifie que le dernier bloc a été enregistré. Si les sièges sont au-dessus du toit, vérifie surtout l’ordre (x,z,−y) ; ne déplace pas les sièges pour masquer une erreur de repère.

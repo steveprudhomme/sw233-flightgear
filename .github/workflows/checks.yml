@@ -28,4 +28,5 @@ jobs:
             python tools/check.py --dco HEAD
           fi
       - run: python -m unittest discover -s tests -v
+      - run: python tools/check_workbook.py build/lesson-check
       - run: python tools/package.py
