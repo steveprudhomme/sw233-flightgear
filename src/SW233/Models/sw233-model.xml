@@ -84,4 +84,52 @@
       <z>1</z>
     </axis>
   </animation>
+  <animation>
+    <type>rotate</type>
+    <object-name>aerofrein-1</object-name>
+    <property>fdm/jsbsim/fcs/speedbrake-pos-norm</property>
+    <factor>85</factor>
+    <center>
+      <x-m>2.41</x-m>
+      <y-m>-0.98</y-m>
+      <z-m>0.86</z-m>
+    </center>
+    <axis>
+      <x>0</x>
+      <y>-1</y>
+      <z>0</z>
+    </axis>
+  </animation>
+  <animation>
+    <type>rotate</type>
+    <object-name>aerofrein1</object-name>
+    <property>fdm/jsbsim/fcs/speedbrake-pos-norm</property>
+    <factor>85</factor>
+    <center>
+      <x-m>2.41</x-m>
+      <y-m>0.98</y-m>
+      <z-m>0.86</z-m>
+    </center>
+    <axis>
+      <x>0</x>
+      <y>-1</y>
+      <z>0</z>
+    </axis>
+  </animation>
+  <animation>
+    <type>rotate</type>
+    <object-name>poignee-frein</object-name>
+    <property>fdm/jsbsim/fcs/speedbrake-pos-norm</property>
+    <factor>-35</factor>
+    <center>
+      <x-m>1.19</x-m>
+      <y-m>-0.34</y-m>
+      <z-m>-0.13</z-m>
+    </center>
+    <axis>
+      <x>0</x>
+      <y>-1</y>
+      <z>0</z>
+    </axis>
+  </animation>
 </PropertyList>
