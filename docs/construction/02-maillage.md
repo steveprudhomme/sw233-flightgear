@@ -355,6 +355,46 @@ loft("boule-largage", red, [
 ])
 ```
 
+## I ter · Construis une petite boîte ouverte pour le compas
+
+Prends une boîte d’allumettes vide : de face tu vois son ouverture ; en la décalant de côté, tu vois aussi sa paroi. C’est le même effet que nous cherchons sous la bouche d’air. La photo de C-FYLP donne une façade, pas une profondeur. Garde le centre choisi à la fiche 1 (y = 0 ; z = 0,098 m). Le dessin plat faisait 126 × 118 pixels dans la texture à 1 920 pixels/m : environ 66 × 61 mm. Garde cette taille pour la base. Les 25 mm d’épaisseur sont une estimation de maquette.
+
+**Dessine la coupe dans ton cahier.** Trace une ligne pour la planche. En allant vers le pilote, marque le fond à 12 mm, le trait ivoire à 14 mm, la vitre à 20 mm et le rebord à 25 mm. Ainsi la vitre est en retrait de 5 mm et le trait est 6 mm derrière elle. Les distances différentes empêchent deux faces de se battre pour le même pixel. Le pied commence à 0,5 mm pour éviter une face coplanaire avec la planche.
+
+![Coupe : le trait se trouve entre le fond et la vitre.](coupe-compas.svg)
+
+**Assemble.** Découpe mentalement les quatre coins d’un rectangle : il reste huit points. Fais cinq contours de cette forme. Relie leurs bords par bandes, comme pour les ailes. Ne bouche jamais le milieu du cadre ! Ferme seulement le fond, ajoute le trait, quatre têtes de vis et la vitre transparente. Ce compas est décoratif : il ne montre aucun cap.
+
+<!-- atelier-fichier: fabrique.py -->
+```python
+# Compas C-FYLP, centré sous la bouche. Les profondeurs sont des hypothèses.
+def contour_compas(profondeur, demi_largeur, demi_hauteur, coin):
+    w, h, c = demi_largeur, demi_hauteur, coin
+    return [(px + profondeur, y, .098 + z) for y, z in
+            [(-w+c,-h),(w-c,-h),(w,-h+c),(w,h-c),
+             (w-c,h),(-w+c,h),(-w,h-c),(-w,-h+c)]]
+
+base = contour_compas(.0005, .033, .031, .006)
+epaules = contour_compas(.021, .033, .031, .006)
+bord = contour_compas(.025, .031, .029, .005)
+ouverture = contour_compas(.025, .0245, .014, .003)
+fond = contour_compas(.012, .0245, .014, .003)
+bridge("compas-cadre", 3, base, epaules)
+bridge("compas-cadre", 2, epaules, bord)
+bridge("compas-cadre", 3, bord, ouverture)
+bridge("compas-cadre", 2, ouverture, fond)
+poly("compas-fond", 5, *fond)
+poly("compas-repere", 6, *[(px+.014,y,.098+z) for y,z in
+                           [(-.0009,-.010),(.0009,-.010),(.0009,.010),(-.0009,.010)]])
+for y in (-.024, .024):
+    for z in (-.022, .022):
+        poly("compas-vis", 9, *[(px+.0255, y+.0022*cos(i*pi/4),
+                                 .098+z+.0022*sin(i*pi/4)) for i in range(8)])
+poly("compas-vitre", 4, *contour_compas(.020, .0245, .014, .003))
+```
+
+**Regarde le résultat dans FlightGear :** [photos de face, de biais et en lumière du soir](06-peinture.md#compas-relief).
+
 ## J · Écris le fichier que lit le simulateur
 
 Le fichier commence par `AC3Db`, la palette, puis `OBJECT world` : la boîte qui contient toutes les pièces. Pour chaque pièce, `numvert` compte les coins et `numsurf` compte les faces ; `refs 4` annonce quatre numéros de coins pour un quadrilatère. Les numéros commencent à zéro. Un coin (x, y, z) de ton cahier devient **(x, z, −y)** dans notre AC3D : pour une extrémité à droite, la troisième colonne devient négative. La condition sur les faces du fuselage laisse une ouverture au-dessus de la place avant ; conserver les numéros de sommets évite de renuméroter toutes les autres faces. Les rehauts des graduations et du fil servent à leur lisibilité dans le rendu.
@@ -397,7 +437,7 @@ for n, faces in parts.items():
 
 ```powershell
 .\.venv\Scripts\python.exe fabrique.py
-Get-Content src/SW233/Models/sw233.ac -TotalCount 15
+Get-Content src/SW233/Models/sw233.ac -TotalCount 16
 ```
 
-**Contrôle :** pour la forme de départ du livre, tu dois lire *AC3Db*, douze matériaux, *OBJECT world* puis *kids 34*. Cherche les deux noms *aerofrein-1* et *aerofrein1*. Si le fichier reste vide, vérifie que le dernier bloc a été enregistré. Si les sièges sont au-dessus du toit, vérifie surtout l’ordre (x,z,−y) ; ne déplace pas les sièges pour masquer une erreur de repère.
+**Contrôle :** pour la forme de départ du livre, tu dois lire *AC3Db*, douze matériaux, *OBJECT world* puis *kids 39*. Cherche les deux noms *aerofrein-1* et *aerofrein1*. Si le fichier reste vide, vérifie que le dernier bloc a été enregistré. Si les sièges sont au-dessus du toit, vérifie surtout l’ordre (x,z,−y) ; ne déplace pas les sièges pour masquer une erreur de repère.

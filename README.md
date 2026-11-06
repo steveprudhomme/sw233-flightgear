@@ -22,6 +22,8 @@ Ce projet n'est pas un outil d'instruction au vol réel.
 
 [Comparer le poste avant dans FlightGear, avant et après correction](docs/construction/06-peinture.md#comparaison-cockpit) : la radio dégage le bord de l’altimètre et le compas décoratif apparaît sous la bouche d’air.
 
+[Construire le compas en relief et comparer les vues de face et de biais](docs/construction/06-peinture.md#compas-relief). La vitre et le trait de lecture sont deux pièces distinctes ; le cap reste à simuler.
+
 ## Vidéo : vol au-dessus de Saint-Jean-sur-Richelieu (CYJN)
 
 <video id="film" controls playsinline preload="none" style="max-width:100%" width="960" poster="https://github.com/steveprudhomme/sw233-flightgear/releases/download/demo-cyjn-02/SW233-CYJN-v2.jpg" src="https://github.com/steveprudhomme/sw233-flightgear/releases/download/demo-cyjn-02/SW233-CYJN-v2.mp4"></video>

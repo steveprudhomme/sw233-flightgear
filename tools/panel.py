@@ -75,17 +75,7 @@ def finish_panel(models: Path):
         disc(ry+dy,rz-.018,.006,"#101214")
         disc(ry+dy-.001,rz-.017,.004,"#414441")
     label(ry+.010,rz-.038,"RADIO",11)
-    # Boîtier et fenêtre du compas : garniture fixe, sans cap simulé.
-    cx, cz = 0, .098
-    a, b = xy(cx, cz)
-    for dx, dz, tone in [(63,59,"#161719"), (60,56,"#656563"), (56,52,"#252628")]:
-        pen.rounded_rectangle((a-dx,b-dz,a+dx,b+dz), radius=16, fill=tone)
-    pen.rounded_rectangle((a-47,b-22,a+47,b+23), radius=8, fill="#101516")
-    pen.line((a-39,b+13,a+39,b+13), fill="#5b5e57", width=2)
-    pen.line((a,b-20,a,b+15), fill="#ddd8bd", width=3)
-    for side in (-1,1):
-        screw(cx+side*.025,cz+.022)
-        screw(cx+side*.025,cz-.022)
+    # Le compas en relief est dans le maillage : ne pas le repeindre ici.
     label(0,.014,"LARGAGE",14)
     im.save(models/"panel.png")
     mesh = models/"sw233.ac"

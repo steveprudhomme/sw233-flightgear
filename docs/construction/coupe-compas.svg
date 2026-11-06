@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 240" role="img" aria-labelledby="t d">
+<title id="t">Coupe du compas : du tableau vers le pilote</title><desc id="d">Le fond se trouve à douze millimètres de la planche, le trait à quatorze, la vitre à vingt et le rebord à vingt-cinq.</desc>
+<rect width="640" height="240" fill="#faf7ed"/>
+<g font-family="sans-serif" font-size="16" fill="#202b35">
+<text x="24" y="27" font-weight="bold">Coupe de côté · profondeurs de la maquette</text>
+<path fill="#555c63" d="M83 52h12v130H83z M95 55h300v28H95z M95 152h300v27H95z"/>
+<path fill="#242933" d="M235 83h5v69h-5z"/><path fill="#63501a" d="M258 96h4v42h-4z"/>
+<path fill="#4389a8" d="M330 83h4v69h-4z"/>
+<g stroke="#455463" fill="none"><path d="M89 184v12m149-39v39m22-55v55m72-41v41m63-15v15"/></g>
+<text x="58" y="214">Planche</text><text x="213" y="214">12</text><text x="257" y="214">14</text><text x="321" y="214">20</text><text x="387" y="214">25 mm</text>
+<text x="445" y="72">Vers le pilote →</text><text x="445" y="106">12 : fond sombre</text><text x="445" y="130">14 : trait de lecture</text><text x="445" y="154">20 : vitre</text><text x="445" y="178">25 : bord du cadre</text>
+</g></svg>

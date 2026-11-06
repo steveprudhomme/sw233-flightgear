@@ -74,9 +74,11 @@ But : à chaque point d’arrêt, l’enfant peut répondre à « où dois-je re
 
 **Séance réalisée :** [mesures, recette et captures natives avant/après](docs/construction/06-peinture.md#comparaison-cockpit). Le cadrage de comparaison est fixé, la radio dégagée et le compas décoratif en place. Restent la mesure réelle de la position de l’œil, le contrôle en vue oblique, le verre sous deux éclairages et une indication de cap vérifiée.
 
-### Séance suivante : du compas peint au boîtier en relief
+### Séance réalisée : du compas peint au boîtier en relief
 
 - Avant de toucher au maillage, assembler la version témoin et la photographier de face et de biais ; déplacer aussi l’œil pour révéler le flanc.
 - Conserver le centre et la silhouette de façade. Distinguer ce que montre la photo de C-FYLP des épaisseurs choisies ; dessiner une coupe cotée, un cadre ouvert, une fenêtre en retrait et un trait fixe derrière la vitre. Éviter les surfaces superposées.
 - Reprendre les deux vues avec les mêmes réglages puis changer uniquement l’éclairage. Vérifier contour, retrait, lisibilité du trait et dégagement des cartes, sans brancher d’indication de cap.
 - Intégrer recette et captures légendées au livre, reconstruire le modèle à partir des fiches et actualiser les liens du projet.
+
+[Recette et six captures natives](docs/construction/06-peinture.md#compas-relief) : de biais on distingue le flanc, les cartes restent dégagées et le trait reste visible de jour et le soir. La profondeur demeure estimée. Prochain essai distinct : indication de cap sur plusieurs orientations connues, puis contrôle au passage du nord.

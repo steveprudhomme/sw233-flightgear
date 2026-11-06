@@ -117,17 +117,7 @@ Sur l’image C-FYLP, pointe le milieu des cartes vers (282,176), (413,181), (28
         disc(ry+dy,rz-.018,.006,"#101214")
         disc(ry+dy-.001,rz-.017,.004,"#414441")
     label(ry+.010,rz-.038,"RADIO",11)
-    # Boîtier et fenêtre du compas : garniture fixe, sans cap simulé.
-    cx, cz = 0, .098
-    a, b = xy(cx, cz)
-    for dx, dz, tone in [(63,59,"#161719"), (60,56,"#656563"), (56,52,"#252628")]:
-        pen.rounded_rectangle((a-dx,b-dz,a+dx,b+dz), radius=16, fill=tone)
-    pen.rounded_rectangle((a-47,b-22,a+47,b+23), radius=8, fill="#101516")
-    pen.line((a-39,b+13,a+39,b+13), fill="#5b5e57", width=2)
-    pen.line((a,b-20,a,b+15), fill="#ddd8bd", width=3)
-    for side in (-1,1):
-        screw(cx+side*.025,cz+.022)
-        screw(cx+side*.025,cz-.022)
+    # Le compas en relief est dans le maillage : ne pas le repeindre ici.
     label(0,.014,"LARGAGE",14)
 ```
 
@@ -172,10 +162,37 @@ Sur l’image C-FYLP, pointe le milieu des cartes vers (282,176), (413,181), (28
 
 **2. Prends deux repères sur la photo.** Ouvre la photo originale C-FYLP de 690 × 517 pixels citée dans la [fiche de mesures](01-mesures.md). Le centre de la bouche d’air est vers (346,177), celui de la radio vers (210,222) et celui du compas vers (344,253). Sur une photo, les lignes augmentent vers le bas ; sur notre planche, la hauteur augmente vers le haut. Avec 610 pixels pour une largeur supposée de 0,78 m, la radio serait à environ 0,174 m à gauche et 0,058 m sous la bouche. Le compas serait presque sur son axe et 0,097 m plus bas. Ces longueurs dépendent de la perspective et de la largeur supposée.
 
-**3. Place les pièces.** Dans le bloc D bis, la bouche est en (0 ; 0,197). Pour le compas, choisis (0 ; 0,098) : dessine le cadre, sa fenêtre sombre, puis le trait vertical au milieu. Le trait est fixe : il ne donne pas le cap. Pour la radio, la place de l’altimètre actuel oblige à adapter le dessin : passe le centre de (−0,145 ; 0,169) à (−0,141 ; 0,189) et le rayon extérieur de 0,039 à 0,031 m. Elle reste donc plus haute que sur la photo. Tu peux vérifier le jeu avec deux disques en papier : à l’échelle 1:1, les nouveaux rayons sont 92 et 31 mm, leurs centres sont distants d’environ 129 mm. Il reste **6 mm** entre les bords, contre environ **20 mm de chevauchement** auparavant. Ce sont les dimensions de notre maquette.
+**3. Place les pièces.** Dans le bloc D bis, la bouche est en (0 ; 0,197). Pour le compas, choisis (0 ; 0,098) : dans la première version illustrée ici, le cadre et le trait étaient peints. Aujourd’hui, construis-les en relief à la fiche 2 (I ter) et laisse la peinture nue à cet endroit. Le trait est fixe : il ne donne pas le cap. Pour la radio, la place de l’altimètre actuel oblige à adapter le dessin : passe le centre de (−0,145 ; 0,169) à (−0,141 ; 0,189) et le rayon extérieur de 0,039 à 0,031 m. Elle reste donc plus haute que sur la photo. Tu peux vérifier le jeu avec deux disques en papier : à l’échelle 1:1, les nouveaux rayons sont 92 et 31 mm, leurs centres sont distants d’environ 129 mm. Il reste **6 mm** entre les bords, contre environ **20 mm de chevauchement** auparavant. Ce sont les dimensions de notre maquette.
 
 **4. Compare dans FlightGear.** Refais le paquet comme à la [fiche 7](07-essais.md), sélectionne SW233 et place-toi au siège avant. Les deux images ont été prises dans FlightGear 2024.1.7, à CYJN, en 1280 × 720, en lancement en vol à 4 000 ft, cap initial 010°, le 21 juin à 16 h 45 UTC. Pour retrouver notre cadrage de comparaison, ouvre le navigateur de propriétés dans le menu Débogage et, sous `/sim/current-view`, règle `view-number` à 0, les décalages `x-offset-m`, `y-offset-m`, `z-offset-m` à 0, 0.50 et 1.70, `heading-offset-deg` à 0, `pitch-offset-deg` à −23 et `field-of-view` à 70. Saisis un point dans les décimales. Ce cadrage sert à comparer les images ; la hauteur réelle de l’œil du pilote reste à mesurer.
 
 ![Après : un espace noir sépare les cerclages ; le boîtier du compas apparaît sous la bouche d’air.](https://github.com/steveprudhomme/sw233-flightgear/releases/download/cockpit-comparaison-02/SW233-compas-apres.jpg)
 
 **À toi.** Cache cette légende. Montre l’espace entre la radio et l’altimètre, puis le compas et la boule de largage. Si le compas manque, vérifie d’abord que FlightGear a chargé **la copie reconstruite** de l’avion. Si tout le tableau paraît plus grand ou plus petit, vérifie le champ de vision avant de changer tes mesures.
+
+
+<a name="compas-relief"></a>
+
+## G · Comment savoir si le compas dépasse vraiment ?
+
+**1. Avant de comparer.** Le compas de la séance F était imprimé sur la même feuille que les cartes. Pour cette séance, fabrique le boîtier avec la [recette et le dessin en coupe, fiche 2, I ter](02-maillage.md). Dans la fiche 6, ne dessine plus le compas sur la texture : deux traits, l’un imprimé et l’autre en relief, donneraient une double image de côté. Reconstruis ton paquet. Aucun réglage d’animation n’est nécessaire.
+
+**2. De face, cherche des repères communs.** Ouvre les images en grand et passe de l’une à l’autre. Partant de la bouche ronde, descends jusqu’au petit trait blanc. Vérifie que le compas reste entre les deux cartes crème et que tu vois leurs bords. La vue de face sert à contrôler la position ; elle seule ne prouve pas la profondeur.
+
+![Avant, de face : la fenêtre peinte entre les deux cartes.](https://github.com/steveprudhomme/sw233-flightgear/releases/download/compas-relief-03/compas-plat-face.jpg)
+
+![Après, de face : même caméra, cadre en relief et trait derrière la vitre.](https://github.com/steveprudhomme/sw233-flightgear/releases/download/compas-relief-03/compas-relief-jour-face.jpg)
+
+**3. Penche la tête.** Reprends le cadrage de la séance F, mais déplace maintenant l’œil sur le côté. Dans les propriétés de la vue, mets *x-offset-m* à **0.23**, *heading-offset-deg* à **16** et *field-of-view* à **48**. Garde la hauteur, le recul et l’inclinaison de F. Tourner la caméra sans déplacer l’œil ne ferait pas apparaître la même paroi. Sur l’image plate, le bord reste collé au tableau. Sur la nouvelle image, trouve la paroi entre la planche et la lèvre du cadre. Suis ensuite le bord de la fenêtre jusqu’au trait clair plus profond.
+
+![Avant, de biais : ancien compas peint, sans flanc entre le cadre et la planche.](https://github.com/steveprudhomme/sw233-flightgear/releases/download/compas-relief-03/compas-plat-biais.jpg)
+
+![Après, de biais : le boîtier sort de la planche ; le trait est à l’intérieur.](https://github.com/steveprudhomme/sw233-flightgear/releases/download/compas-relief-03/compas-relief-jour-biais.jpg)
+
+**4. Change la lumière, pas la caméra.** Ces captures natives utilisent FlightGear 2024.1.7 à CYJN, le 21 juin 2026. Les deux premières paires sont prises avec le départ à 16 h 45 UTC ; relance le même scénario à **22 h 00 UTC** pour le deuxième éclairage. Garde la résolution 1280 × 720 et les mêmes valeurs de caméra. Compare les objets du tableau : le paysage et les aiguilles peuvent varier entre deux lancements.
+
+![Le soir, de face : retrouve le repère clair au centre du compas.](https://github.com/steveprudhomme/sw233-flightgear/releases/download/compas-relief-03/compas-relief-soir-face.jpg)
+
+![Le soir, de biais : compare la paroi et la fenêtre avec la même vue de jour.](https://github.com/steveprudhomme/sw233-flightgear/releases/download/compas-relief-03/compas-relief-soir-biais.jpg)
+
+**Si ça ne marche pas.** Si tout est plat, vérifie que le maillage installé contient *compas-cadre* et que FlightGear utilise ton nouveau paquet. Si le trait est caché, vérifie d’abord que l’ouverture du cadre est vide, puis que la vitre utilise le matériau transparent. Le trait ne tourne pas quand le planeur change de cap : c’est normal à cette étape.
