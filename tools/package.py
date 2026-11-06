@@ -4,6 +4,11 @@ import argparse
 import shutil
 from pathlib import Path
 
+if __package__:
+    from .panel import finish_panel
+else:
+    from panel import finish_panel
+
 ROOT = Path(__file__).resolve().parents[1]
 
 
@@ -13,6 +18,7 @@ def package(output: Path) -> Path:
     if destination.exists():
         raise FileExistsError(f"Destination already exists: {destination}")
     shutil.copytree(ROOT / "src" / "SW233", destination)
+    finish_panel(destination / "Models")
     return destination
 
 
