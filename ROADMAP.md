@@ -64,3 +64,10 @@ But : à chaque point d’arrêt, l’enfant peut répondre à « où dois-je re
 | 7 · Vol à CYJN | Terrain reconnaissable ; paires rentré/sorti depuis le siège et au-dessus des ailes ; glissade depuis le siège et de dehors | Suivre le mouvement des deux panneaux, puis associer ficelle et aile basse au même instant du vol. |
 
 **Règle de publication.** Capturer dans FlightGear avec le terrain chargé et la lumière de côté ou de dos. Conserver l’original lisible parmi les pièces de la version ; versionner les légendes et, si utile, une annotation éditable. Indiquer version de FlightGear, révision de l’avion, vue, conditions et, pour un extrait du film, minutage. Donner un texte alternatif et une légende courte (« Regarde… Tu dois voir… ») ; ne pas couvrir le détail par une flèche. La fiche est prête quand le lecteur retrouve ce détail dans son propre simulateur et que l’image s’ouvre depuis le tutoriel publié.
+
+### Séance radio et compas : contrôles avant publication
+
+1. Figer le cadrage témoin : version du paquet, résolution, siège, décalages de caméra, inclinaison et champ de vision. Garder le même scénario à CYJN pour les deux captures natives.
+2. Reporter les centres de la photo par rapport à la bouche d’air ; calculer aussi le jeu entre les bords des instruments. Conserver les hypothèses si la perspective ou la largeur inconnue empêche une mesure réelle.
+3. Modifier la peinture originale, garder les aiguilles indépendantes et représenter le compas comme décoratif. Comparer deux images au même cadrage : cerclage dégagé, fenêtre du compas visible, textes libres.
+4. Insérer les deux images dans la fiche de peinture avec une action que l’enfant peut refaire ; vérifier la reconstruction depuis le livre, puis actualiser README, historique et état de la feuille de route.
