@@ -8,6 +8,9 @@
 
 ### Ajouts
 
+- Livre de construction en sept séances, reconstruction vérifiée en CI.
+- Poste C-FYLP : plaquettes de simulation, façade radio et poignée de largage en relief.
+
 - Planche de bord texturée, film de 83 s avec deux angles, atelier guidé et feuille de route de la livrée Cadets.
 
 - Capture native à CYJN : aérofreins en vue cockpit, glissade et détail de la ficelle.

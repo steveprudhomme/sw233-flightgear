@@ -20,6 +20,8 @@ pas des mesures constructeur. Pas encore de calibration pneumatique, de remorqua
 de modèle fiable de vrille, ni de validation complète dans FlightGear.
 Ce projet n'est pas un outil d'instruction au vol réel.
 
+[Voir le poste avant actuel dans FlightGear](https://github.com/steveprudhomme/sw233-flightgear/releases/download/cockpit-construction-01/SW233-cockpit-CFYLP.jpg) : les quatre plaquettes, la façade radio et la poignée de largage ont été ajoutées après le tournage.
+
 ## Vidéo : vol au-dessus de Saint-Jean-sur-Richelieu (CYJN)
 
 <video id="film" controls playsinline preload="none" style="max-width:100%" width="960" poster="https://github.com/steveprudhomme/sw233-flightgear/releases/download/demo-cyjn-02/SW233-CYJN-v2.jpg" src="https://github.com/steveprudhomme/sw233-flightgear/releases/download/demo-cyjn-02/SW233-CYJN-v2.mp4"></video>

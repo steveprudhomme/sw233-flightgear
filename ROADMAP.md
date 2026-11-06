@@ -5,7 +5,7 @@ Objectif : reconnaître en vue extérieure un Schweizer SGS 2-33A des Cadets et,
 | Étape | État | Comment saurons-nous qu’elle est terminée ? |
 | --- | --- | --- |
 | Voler à CYJN | Démontré | Capture native de FlightGear avec le terrain chargé, les deux cycles d’aérofreins et un virage en glissade vu de deux points de vue. |
-| Habiller le tableau avant | Première passe réalisée | Le film montre le grain de la tôle, les cerclages, les vis et la bouche d’aération inspirés de la photo C-FYLP. Les trois aiguilles restent animées. |
+| Habiller le tableau avant | Deuxième passe réalisée | Le film montre le grain de la tôle, les cerclages, les vis et la bouche d’aération inspirés de la photo C-FYLP. Les trois cadrans restent animés. Les quatre plaquettes, la façade radio et la boule de largage complètent maintenant la place avant ; la radio et le largage ne sont pas opérationnels. |
 | Livrée actuelle des Cadets de l’aviation royale du Canada | À documenter, puis à peindre | Comparaison avec des vues datées des deux flancs, du dessus et du dessous **d’un même planeur identifié** ; immatriculation, motifs, inscriptions et orientation lisibles aux bons endroits. |
 | Cockpit photographique | Priorité suivante | Comparaison côte à côte dans le même cadrage : contours de la planche, typographie, unités, reflets du verre et profondeur des instruments. Aucun reflet ne doit cacher une aiguille, de face ou en vue oblique. |
 | Valider le comportement | À mesurer | Polaire à plusieurs vitesses et masses, effets des aérofreins, contrôle du signe de la ficelle en glissade gauche et droite ; publier les écarts aux références. |
@@ -23,6 +23,8 @@ Objectif : reconnaître en vue extérieure un Schweizer SGS 2-33A des Cadets et,
 Prendre la disposition C-FYLP comme référence de travail, pas le poste différent de N2930H. Relever les diamètres et la position de l’œil avant de changer l’échelle. Reconstruire d’abord les cadrans et leurs unités, puis le compas, la radio et les plaquettes selon l’exemplaire choisi. Une image fixe d’aiguille ne doit jamais remplacer une mesure de FlightGear. Pour une texture tirée d’une photographie, obtenir une image frontale nette et une autorisation de diffusion compatible. Le poste arrière viendra après validation du poste avant.
 
 ## Reconstruire depuis une page blanche, puis améliorer le cockpit
+
+[Sept fiches publiées](docs/construction/README.md) ; reconstruction automatique en CI. Prochaine validation pédagogique : observer un premier lecteur refaire une mesure et assembler son avion sans assistance.
 
 1. Écrire une aide à la tâche pour un lecteur de 10 ans : préparer un dossier vide, mesurer les références, noter page, unité, calcul et incertitude ; séparer les choix de maquette des mesures publiées.
 2. Enseigner la fabrication complète du maillage AC3D, de la fiche FlightGear, des animations, des check-lists et de la peinture Python. Pour chaque opération : action, raison, résultat attendu et dépannage. Relier le modèle de vol, le décor, les essais, la vidéo et la publication à ces cinq fichiers.

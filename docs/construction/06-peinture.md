@@ -83,9 +83,41 @@ La photo C-FYLP montre une bouche ronde au-dessus du centre. Les disques et trai
                  fill="#55585a", width=4)
     for y, z in [(-.30,.15),(-.36,.04),(.33,.11),(-.085,.24),(.082,.24)]:
         screw(y,z)
-    label(-.09,.155,"SW233",21)
-    label(0,.05,"SCHWEIZER",20)
-    label(0,.033,"SGS  2-33",16)
+```
+
+## D bis · Refaire les quatre plaquettes et la façade radio
+
+Sur l’image C-FYLP, pointe le milieu des cartes vers (282,176), (413,181), (282,254) et (408,259). Chacune mesure environ 40 × 65 px dans la photo. Avec la largeur supposée de la planche, cela donne environ 0,051 × 0,083 m. Sur la feuille de peinture à 1920 px/m, notre carte de 97 × 140 px représente 0,051 × 0,073 m : nous raccourcissons volontairement le texte pour le garder lisible. Écris le titre en haut, trace une ligne, puis place les rappels ; les listes complètes restent dans le menu. La radio de la photo est à gauche de la bouche, son centre vers (210,222). Vérifie avant de dessiner qu’elle ne recouvre pas l’altimètre. Un écran gris sans chiffres évite de faire croire à une fréquence active. La boule de largage, elle, n’est pas imprimée sur la feuille : elle a été fabriquée en 3D à la fiche 2.
+
+<!-- atelier-fichier: tools/panel.py -->
+```python
+    # Les cartes sont des rappels du simulateur, pas des consignes de vol réel.
+    def card(y, z, title, words):
+        x, v = xy(y, z)
+        width, height = 97, 140
+        box = (x-width/2, v-height/2, x+width/2, v+height/2)
+        pen.rounded_rectangle(box, radius=6, fill="#ddd7bf", outline="#908d83", width=3)
+        pen.line((x-41, v-39, x+41, v-39), fill="#4c4a44", width=2)
+        for i, line in enumerate([title, *words]):
+            pen.text((x-41, v-58+i*22), line, fill="#25272a",
+                     font=ImageFont.load_default(size=12 if i == 0 else 14))
+
+    card(-.079, .197, "PRE TAKE-OFF", ["BALLAST", "CONTROLS", "SPOILERS", "CANOPY"])
+    card(.078, .190, "PRE-LANDING", ["SPOILERS", "WIND", "AIRSPEED", "TRAFFIC"])
+    card(-.079, .077, "PRE RELEASE", ["AREA", "ALTITUDE", "POSITION", "TRAFFIC"])
+    card(.078, .070, "PRE STALL", ["ALTITUDE", "STRAPS", "CANOPY", "TRAFFIC"])
+    # Face radio et deux boutons. Aucun chiffre de fréquence fictif.
+    ry, rz = -.145, .169
+    for rr, tone in [(.039,"#171717"),(.037,"#686866"),(.035,"#323536")]:
+        disc(ry,rz,rr,tone)
+    x, v = xy(ry,rz)
+    pen.rounded_rectangle((x-35,v-20,x+35,v-3), radius=3, fill="#71766a")
+    label(ry,rz-.009,"COM",12)
+    for dy in (-.017,.017):
+        disc(ry+dy,rz-.021,.008,"#101214")
+        disc(ry+dy-.001,rz-.019,.005,"#414441")
+    label(-.143,.114,"RADIO",11)
+    label(0,.014,"LARGAGE",14)
 ```
 
 ## E · Colle la peau sans coller les aiguilles
@@ -117,3 +149,5 @@ La photo C-FYLP montre une bouche ronde au-dessus du centre. Les disques et trai
 ```
 
 **Contrôle :** la fiche 7 appelle `finish_panel` sur le paquet. Dans la copie peinte, ouvre *Models/panel.png* avec Photos : la bouche d’air doit être en haut et les lettres doivent être à l’endroit. Puis cherche `texture "panel.png"` dans la copie de *sw233.ac*. Si le tableau est beau mais l’aiguille immobile, c’est l’animation de la fiche 4 qu’il faut contrôler, pas cette peinture.
+
+**Compare ton résultat.** [Ouvre la capture du siège avant dans FlightGear](https://github.com/steveprudhomme/sw233-flightgear/releases/download/cockpit-construction-01/SW233-cockpit-CFYLP.jpg). Repère la boule bordeaux sous la bouche d’air et compte les quatre cartes crème. Regarde aussi ce qui reste à améliorer : la radio est trop proche du cerclage gauche et il manque le compas entre les cartes du bas.

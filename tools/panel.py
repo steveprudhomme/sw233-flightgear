@@ -49,9 +49,33 @@ def finish_panel(models: Path):
                  fill="#55585a", width=4)
     for y, z in [(-.30,.15),(-.36,.04),(.33,.11),(-.085,.24),(.082,.24)]:
         screw(y,z)
-    label(-.09,.155,"SW233",21)
-    label(0,.05,"SCHWEIZER",20)
-    label(0,.033,"SGS  2-33",16)
+    # Les cartes sont des rappels du simulateur, pas des consignes de vol réel.
+    def card(y, z, title, words):
+        x, v = xy(y, z)
+        width, height = 97, 140
+        box = (x-width/2, v-height/2, x+width/2, v+height/2)
+        pen.rounded_rectangle(box, radius=6, fill="#ddd7bf", outline="#908d83", width=3)
+        pen.line((x-41, v-39, x+41, v-39), fill="#4c4a44", width=2)
+        for i, line in enumerate([title, *words]):
+            pen.text((x-41, v-58+i*22), line, fill="#25272a",
+                     font=ImageFont.load_default(size=12 if i == 0 else 14))
+
+    card(-.079, .197, "PRE TAKE-OFF", ["BALLAST", "CONTROLS", "SPOILERS", "CANOPY"])
+    card(.078, .190, "PRE-LANDING", ["SPOILERS", "WIND", "AIRSPEED", "TRAFFIC"])
+    card(-.079, .077, "PRE RELEASE", ["AREA", "ALTITUDE", "POSITION", "TRAFFIC"])
+    card(.078, .070, "PRE STALL", ["ALTITUDE", "STRAPS", "CANOPY", "TRAFFIC"])
+    # Face radio et deux boutons. Aucun chiffre de fréquence fictif.
+    ry, rz = -.145, .169
+    for rr, tone in [(.039,"#171717"),(.037,"#686866"),(.035,"#323536")]:
+        disc(ry,rz,rr,tone)
+    x, v = xy(ry,rz)
+    pen.rounded_rectangle((x-35,v-20,x+35,v-3), radius=3, fill="#71766a")
+    label(ry,rz-.009,"COM",12)
+    for dy in (-.017,.017):
+        disc(ry+dy,rz-.021,.008,"#101214")
+        disc(ry+dy-.001,rz-.019,.005,"#414441")
+    label(-.143,.114,"RADIO",11)
+    label(0,.014,"LARGAGE",14)
     im.save(models/"panel.png")
     mesh = models/"sw233.ac"
     s = mesh.read_text()

@@ -338,6 +338,23 @@ for a, b in zip(yarn, yarn[1:]):
     rod("fil-de-laine", 10, a, b, 0.0048)
 ```
 
+## I bis · Donner une épaisseur à la poignée rouge
+
+Sur C-FYLP, la boule est sous le compas, sur l’axe : son centre est vers le pixel (344,323), son diamètre apparent environ 51 px. Avec le gabarit de la fiche 1 : 51 / 610 × 0,78 ≈ 0,065 m. Nous choisissons 0,066 m, soit un rayon de 0,033 m. La photo seule ne donne pas la profondeur : les stations entre x = 0,90 et 0,961 m sont des choix de sculpture. Assemble six anneaux sur une petite tige ; fais varier leur rayon pour arrondir la poignée. Ne lui branche pas de commande de largage : il n’y a pas encore de câble.
+
+<!-- atelier-fichier: fabrique.py -->
+```python
+# Poignée de largage C-FYLP : forme visuelle, aucun câble simulé.
+rod("tige-largage", 2, (.872, 0, -.032), (.921, 0, -.032), .009)
+red = len(mat)
+mat.append(("poignee-bordeaux", (.44, .105, .078), 0))
+loft("boule-largage", red, [
+    (.90, .008, -.032, .008), (.906, .023, -.032, .023),
+    (.92, .033, -.032, .033), (.94, .033, -.032, .033),
+    (.954, .023, -.032, .023), (.961, .008, -.032, .008),
+])
+```
+
 ## J · Écris le fichier que lit le simulateur
 
 Le fichier commence par `AC3Db`, la palette, puis `OBJECT world` : la boîte qui contient toutes les pièces. Pour chaque pièce, `numvert` compte les coins et `numsurf` compte les faces ; `refs 4` annonce quatre numéros de coins pour un quadrilatère. Les numéros commencent à zéro. Un coin (x, y, z) de ton cahier devient **(x, z, −y)** dans notre AC3D : pour une extrémité à droite, la troisième colonne devient négative. La condition sur les faces du fuselage laisse une ouverture au-dessus de la place avant ; conserver les numéros de sommets évite de renuméroter toutes les autres faces. Les rehauts des graduations et du fil servent à leur lisibilité dans le rendu.
@@ -383,4 +400,4 @@ for n, faces in parts.items():
 Get-Content src/SW233/Models/sw233.ac -TotalCount 15
 ```
 
-**Contrôle :** pour la forme de départ du livre, tu dois lire *AC3Db*, onze matériaux, *OBJECT world* puis *kids 32*. Cherche les deux noms *aerofrein-1* et *aerofrein1*. Si le fichier reste vide, vérifie que le dernier bloc a été enregistré. Si les sièges sont au-dessus du toit, vérifie surtout l’ordre (x,z,−y) ; ne déplace pas les sièges pour masquer une erreur de repère.
+**Contrôle :** pour la forme de départ du livre, tu dois lire *AC3Db*, douze matériaux, *OBJECT world* puis *kids 34*. Cherche les deux noms *aerofrein-1* et *aerofrein1*. Si le fichier reste vide, vérifie que le dernier bloc a été enregistré. Si les sièges sont au-dessus du toit, vérifie surtout l’ordre (x,z,−y) ; ne déplace pas les sièges pour masquer une erreur de repère.

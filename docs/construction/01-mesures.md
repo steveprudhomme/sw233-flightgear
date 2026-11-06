@@ -31,6 +31,8 @@ Ouvre *Schweizer_SGS_2-33A_two-seat_glider_colour_3-view_drawing.jpg*, **960 × 
 | Près de la racine, colonne 500 : bord avant ligne 613, bord arrière ligne 521 | 92 × 0,01648 ≈ **1,52 m** de corde | Le modèle a **1,57 m** [H]. Note les deux, sans corriger le dessin pour le faire tomber juste. Le nez est en bas sur cette vue. |
 | À droite, près du saumon : lignes 602 et 555 environ | 47 × 0,01648 ≈ **0,77 m** | Dernière corde du modèle : **0,76 m** [H]. |
 
+![Où placer la règle sur la vue du dessus](repere.svg)
+
 À toi : mesure la demi-envergure gauche, sans regarder le calcul de droite. Si tu trouves 15 m, tu as pris toute l’aile. Si les deux côtés diffèrent un peu, garde les deux lectures dans le cahier.
 
 ## Action 4 — Positionner un instrument sans inventer sa taille réelle
