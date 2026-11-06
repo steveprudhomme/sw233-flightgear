@@ -21,3 +21,9 @@ Objectif : reconnaître en vue extérieure un Schweizer SGS 2-33A des Cadets et,
 ## Lot cockpit : priorité au poste avant
 
 Prendre la disposition C-FYLP comme référence de travail, pas le poste différent de N2930H. Relever les diamètres et la position de l’œil avant de changer l’échelle. Reconstruire d’abord les cadrans et leurs unités, puis le compas, la radio et les plaquettes selon l’exemplaire choisi. Une image fixe d’aiguille ne doit jamais remplacer une mesure de FlightGear. Pour une texture tirée d’une photographie, obtenir une image frontale nette et une autorisation de diffusion compatible. Le poste arrière viendra après validation du poste avant.
+
+## Reconstruire depuis une page blanche, puis améliorer le cockpit
+
+1. Écrire une aide à la tâche pour un lecteur de 10 ans : préparer un dossier vide, mesurer les références, noter page, unité, calcul et incertitude ; séparer les choix de maquette des mesures publiées.
+2. Enseigner la fabrication complète du maillage AC3D, de la fiche FlightGear, des animations, des check-lists et de la peinture Python. Pour chaque opération : action, raison, résultat attendu et dépannage. Relier le modèle de vol, le décor, les essais, la vidéo et la publication à ces cinq fichiers.
+3. Vérifier la reconstruction indépendamment des fichiers finaux ; ensuite poursuivre le poste C-FYLP avec un détail identifiable sur la photo et contrôler le résultat dans le cockpit.
