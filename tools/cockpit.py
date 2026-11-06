@@ -73,7 +73,7 @@ def dial(d, center, radius, caption, units, ticks, needles):
 
 
 def front_view(row, vertical_fps, land, colors, rotation):
-    t, north, east, height, roll, pitch, yaw, speed, altitude = row
+    t, north, east, height, roll, pitch, yaw, speed, altitude = row[:9]
     w, h = 890, 458
     im = Image.new("RGB", (w, h), "#c3d9df")
     d = ImageDraw.Draw(im)
@@ -90,12 +90,44 @@ def front_view(row, vertical_fps, land, colors, rotation):
     for k in np.argsort(-depth.mean(1)):
         if visible[k]:
             d.polygon([tuple(p) for p in pix[k]], fill=colors[k])
+    # The tuft follows measured sideslip, not the control command.
+    beta = row[9] if len(row) > 9 else 0
+    spoilers = row[10] if len(row) > 10 else 0
+    eye = np.array([1.50, 0, .39])
+    pivot = np.array([-.055, 0, .237])
+    angle = math.radians(-beta)
+    rot = np.array([[math.cos(angle), -math.sin(angle), 0],
+                    [math.sin(angle), math.cos(angle), 0], [0, 0, 1]])
+
+    def sight(points):
+        points = np.asarray(points)-eye
+        return [(445+590*y/-x, 144-590*z/-x) for x, y, z in points]
+
+    d.line(sight([(.222, 0, -.073), (-.055, 0, .237), (-.212, 0, .239)]),
+           fill="#46595c", width=4)
+    tuft = np.array([pivot, (.018, 0, .253), (.10, 0, .275),
+                     (.17, 0, .306), (.235, 0, .325)])
+    tuft = (tuft-pivot) @ rot.T + pivot
+    # A neutral reference makes small, real deflections legible.
+    d.line((445, 168, 445, 220), fill="#f4f1e7", width=1)
+    d.line(sight(tuft), fill="#c83222", width=4)
+    # Wing schematic: the opening displayed is the measured FCS position.
+    d.rounded_rectangle((655, 26, 867, 112), 6, fill="#183239")
+    d.text((667, 34), "AILE · AÉROFREINS", font=F[13], fill="#c4dfd4")
+    d.line((675, 92, 845, 92), fill="#e9bd51", width=7)
+    a = math.radians(85*spoilers)
+    d.line((746, 88, 746+49*math.cos(a), 88-49*math.sin(a)), fill="#ec744c", width=6)
+    d.text((680, 63), f"{100*spoilers:.0f} %", font=F[15], fill="#f7edd8")
     # Windscreen sill and front-seat panel inspired by C-FYLP, with original artwork.
     d.line([(0, 4), (45, 122), (80, 223)], fill="#dac486", width=8)
     d.line([(890, 4), (845, 122), (810, 223)], fill="#dac486", width=8)
     arch = [(x, 207+int(75*((x-445)/445)**2)) for x in range(0, 891, 5)]
     d.polygon([*arch, (890, h), (0, h)], fill="#263537")
     d.line(arch, fill="#ddb569", width=6)
+    # Animated left cockpit lever, driven by the same measured spoiler position.
+    d.line((42, 412, 42+53*spoilers, 350+30*spoilers), fill="#c4b77d", width=6)
+    hx, hy = 42+53*spoilers, 350+30*spoilers
+    d.ellipse((hx-9, hy-9, hx+9, hy+9), fill="#d94c24")
     d.text((445, 230), "SW233   /   PLACE AVANT", font=F[15], anchor="mm", fill="#ebdba8")
     dial(d, (184, 333), 66, "ALTIMÈTRE", "ft",
          [(v, 36*v) for v in range(10)],

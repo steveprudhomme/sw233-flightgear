@@ -13,12 +13,10 @@ import numpy as np
 from PIL import Image, ImageDraw, ImageFont
 
 from tools.cockpit import exterior, front_view
-from tools.glide import aircraft, trim_glide
+from tools.maneuvers import DURATION, phase, trace
 
 W, H, VW, VH = 1280, 720, 890, 458
 FPS = 24
-DURATION = 60
-STEPS = 15  # 120 physics ticks/s, 3 simulation seconds per screen second.
 INK = "#102c35"
 PAPER = "#f4f1e7"
 TEAL = "#006f72"
@@ -41,30 +39,6 @@ FONTS = {size: font(size, bold) for size, bold in
 
 def label(draw, xy, value, size=16, color=INK):
     draw.text(xy, value, fill=color, font=FONTS[size])
-
-
-def trace():
-    fdm = aircraft()
-    trim_glide(fdm)
-    origin = [fdm["position/lat-gc-rad"], fdm["position/long-gc-rad"]]
-    samples = []
-    for i in range(DURATION * 120 // STEPS + 1):
-        lat = fdm["position/lat-gc-rad"]
-        lon = fdm["position/long-gc-rad"]
-        h = fdm["position/h-sl-ft"]
-        samples.append((
-            i * STEPS / 120,
-            (lat - origin[0]) * 6371000,
-            (lon - origin[1]) * math.cos(origin[0]) * 6371000,
-            h * 0.3048,
-            fdm["attitude/phi-rad"], fdm["attitude/theta-rad"], fdm["attitude/psi-rad"],
-            fdm["velocities/vc-kts"], h,
-        ))
-        if i < DURATION * 120 // STEPS:
-            for _ in range(STEPS):
-                if not fdm.run():
-                    raise RuntimeError("JSBSim stopped before the end of the test")
-    return np.asarray(samples)
 
 
 def terrain(x, y):
@@ -95,7 +69,7 @@ def rotation(roll, pitch, yaw):
 
 
 def scene(row, land, colors, aircraft_faces):
-    t, north, east, up, roll, pitch, yaw, _, _ = row
+    t, north, east, up, roll, pitch, yaw, _, _ = row[:9]
     pos = np.array([north, east, up])
     angle = math.radians(28 + 75 * t / DURATION)
     eye = pos + np.array([18*math.cos(angle), -18*math.sin(angle), 5.0])
@@ -142,16 +116,15 @@ def render(path):
           "-s", f"{W}x{H}", "-r", str(FPS), "-i", "-", "-an", "-c:v", "libx264",
           "-crf", "20", "-pix_fmt", "yuv420p", "-movflags", "+faststart", str(path)]
     with subprocess.Popen(ff, stdin=subprocess.PIPE) as encoder:
-        vs_fps = np.gradient(values[:, 8], values[:, 0])
         for i, row in enumerate(values):
-            t, north, _, _, _, _, _, speed, altitude = row
+            t, north, _, _, _, _, _, speed, altitude = row[:9]
             frame = Image.new("RGB", (W, H), PAPER)
             d = ImageDraw.Draw(frame)
             label(d, (34, 19), "SW233   /   CARNET D’ESSAIS", 14, TEAL)
-            label(d, (34, 43), "Vol plané stabilisé", 43)
-            label(d, (927, 53), "ESSAI  01    /    JSBSIM", 18, TEAL)
-            front = t >= 39
-            view = (front_view(row, vs_fps[i], land, palette, rotation) if front
+            label(d, (34, 43), "Aérofreins et glissade", 43)
+            label(d, (927, 53), "ESSAI  02    /    JSBSIM", 18, TEAL)
+            front = t >= 8
+            view = (front_view(row, row[14], land, palette, rotation) if front
                     else scene(row, land, palette, faces))
             frame.paste(view, (32, 112))
             title = "02  /  PLACE AVANT" if front else "01  /  VUE EXTÉRIEURE"
@@ -160,20 +133,21 @@ def render(path):
             d.rectangle((940, 112, 1248, 570), fill=INK)
             label(d, (963, 137), "TÉLÉMÉTRIE DE VOL", 14, MINT)
             for y, title, value in [
-                (181, "ALTITUDE  ·  MSL", f"{altitude:,.0f} ft".replace(",", " ")),
-                (280, "VITESSE CALIBRÉE", f"{speed:.1f} kt".replace(".", ",")),
-                (379, "DISTANCE NORD", f"{north/1000:.2f} km".replace(".", ",")),
+                (171, "ALTITUDE  ·  MSL", f"{altitude:,.0f} ft".replace(",", " ")),
+                (253, "VITESSE CALIBRÉE", f"{speed:.1f} kt".replace(".", ",")),
+                (335, "DÉRAPAGE  ·  BÊTA", f"{row[9]:+.1f}°".replace(".", ",")),
+                (417, "INCLINAISON", f"{math.degrees(row[4]):+.1f}°".replace(".", ",")),
             ]:
                 label(d, (963, y), title, 14, "#bcd5ce")
                 label(d, (961, y+23), value, 32, PAPER)
-            label(d, (963, 507), f"t = {t:04.1f} s    /    60 s", 18, MINT)
+            label(d, (963, 515), f"t = {t:04.1f} s    /    {DURATION} s", 18, MINT)
             d.rectangle((964, 544, 1222, 546), fill="#56776f")
-            d.rectangle((964, 544, 964+258*t/60, 546), fill=MINT)
-            label(d, (34, 600), "SCHWEIZER SGS 2-33", 22)
-            label(d, (34, 640), "970 lb   /   Air calme   /   Lecture ×3", 16, TEAL)
-            label(d, (614, 602), "60 secondes de trajectoire calculée", 22)
-            label(d, (614, 641), "Rejeu JSBSim · terrain et cockpit illustrés", 16)
-            label(d, (34, 687), "SW233   /   PROTOTYPE EXPÉRIMENTAL", 14, TEAL)
+            d.rectangle((964, 544, 964+258*t/DURATION, 546), fill=MINT)
+            label(d, (34, 600), phase(t), 22)
+            label(d, (34, 640), "970 lb · Air calme · Temps réel · Pilotage scripté", 16, TEAL)
+            label(d, (665, 600), f"Aérofreins : {100*row[10]:.0f} %", 22)
+            label(d, (665, 641), "Fil : déviation issue du dérapage mesuré", 16)
+            label(d, (34, 687), "REJEU JSBSIM ILLUSTRÉ · PAS UNE CAPTURE DE FLIGHTGEAR", 14, TEAL)
             encoder.stdin.write(frame.tobytes())
         encoder.stdin.close()
         if encoder.wait():
