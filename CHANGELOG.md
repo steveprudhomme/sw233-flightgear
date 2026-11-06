@@ -4,6 +4,8 @@
 
 ### Changements
 
+- Place avant : radio déplacée et réduite pour dégager l’altimètre ; boîtier de compas décoratif ajouté. La fiche de peinture compare deux captures natives à cadrage identique.
+
 - Projet renommé ; nouvelle version sous GPL-3.0-only. Les anciennes versions MIT restent identifiables dans Git.
 
 ### Ajouts

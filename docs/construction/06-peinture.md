@@ -107,16 +107,27 @@ Sur l’image C-FYLP, pointe le milieu des cartes vers (282,176), (413,181), (28
     card(-.079, .077, "PRE RELEASE", ["AREA", "ALTITUDE", "POSITION", "TRAFFIC"])
     card(.078, .070, "PRE STALL", ["ALTITUDE", "STRAPS", "CANOPY", "TRAFFIC"])
     # Face radio et deux boutons. Aucun chiffre de fréquence fictif.
-    ry, rz = -.145, .169
-    for rr, tone in [(.039,"#171717"),(.037,"#686866"),(.035,"#323536")]:
+    ry, rz = -.141, .189
+    for rr, tone in [(.031,"#171717"),(.029,"#686866"),(.027,"#323536")]:
         disc(ry,rz,rr,tone)
     x, v = xy(ry,rz)
-    pen.rounded_rectangle((x-35,v-20,x+35,v-3), radius=3, fill="#71766a")
+    pen.rounded_rectangle((x-29,v-18,x+29,v-3), radius=3, fill="#71766a")
     label(ry,rz-.009,"COM",12)
-    for dy in (-.017,.017):
-        disc(ry+dy,rz-.021,.008,"#101214")
-        disc(ry+dy-.001,rz-.019,.005,"#414441")
-    label(-.143,.114,"RADIO",11)
+    for dy in (-.014,.014):
+        disc(ry+dy,rz-.018,.006,"#101214")
+        disc(ry+dy-.001,rz-.017,.004,"#414441")
+    label(ry+.010,rz-.038,"RADIO",11)
+    # Boîtier et fenêtre du compas : garniture fixe, sans cap simulé.
+    cx, cz = 0, .098
+    a, b = xy(cx, cz)
+    for dx, dz, tone in [(63,59,"#161719"), (60,56,"#656563"), (56,52,"#252628")]:
+        pen.rounded_rectangle((a-dx,b-dz,a+dx,b+dz), radius=16, fill=tone)
+    pen.rounded_rectangle((a-47,b-22,a+47,b+23), radius=8, fill="#101516")
+    pen.line((a-39,b+13,a+39,b+13), fill="#5b5e57", width=2)
+    pen.line((a,b-20,a,b+15), fill="#ddd8bd", width=3)
+    for side in (-1,1):
+        screw(cx+side*.025,cz+.022)
+        screw(cx+side*.025,cz-.022)
     label(0,.014,"LARGAGE",14)
 ```
 
@@ -150,4 +161,21 @@ Sur l’image C-FYLP, pointe le milieu des cartes vers (282,176), (413,181), (28
 
 **Contrôle :** la fiche 7 appelle `finish_panel` sur le paquet. Dans la copie peinte, ouvre *Models/panel.png* avec Photos : la bouche d’air doit être en haut et les lettres doivent être à l’endroit. Puis cherche `texture "panel.png"` dans la copie de *sw233.ac*. Si le tableau est beau mais l’aiguille immobile, c’est l’animation de la fiche 4 qu’il faut contrôler, pas cette peinture.
 
-**Compare ton résultat.** [Ouvre la capture du siège avant dans FlightGear](https://github.com/steveprudhomme/sw233-flightgear/releases/download/cockpit-construction-01/SW233-cockpit-CFYLP.jpg). Repère la boule bordeaux sous la bouche d’air et compte les quatre cartes crème. Regarde aussi ce qui reste à améliorer : la radio est trop proche du cerclage gauche et il manque le compas entre les cartes du bas.
+
+<a name="comparaison-cockpit"></a>
+
+## F · Le jeu des deux tableaux : la radio et le compas
+
+**1. Trouve le problème.** Sur la première image, pars du grand cadran de gauche (l’altimètre). Suis son bord vers deux heures, comme sur une horloge. Le petit rond de la radio mord sur ce bord. Puis regarde entre les deux cartes crème du bas : cet espace est vide.
+
+![Avant : la radio touche le bord supérieur droit de l’altimètre ; rien entre les deux cartes du bas.](https://github.com/steveprudhomme/sw233-flightgear/releases/download/cockpit-comparaison-02/SW233-compas-avant.jpg)
+
+**2. Prends deux repères sur la photo.** Ouvre la photo originale C-FYLP de 690 × 517 pixels citée dans la [fiche de mesures](01-mesures.md). Le centre de la bouche d’air est vers (346,177), celui de la radio vers (210,222) et celui du compas vers (344,253). Sur une photo, les lignes augmentent vers le bas ; sur notre planche, la hauteur augmente vers le haut. Avec 610 pixels pour une largeur supposée de 0,78 m, la radio serait à environ 0,174 m à gauche et 0,058 m sous la bouche. Le compas serait presque sur son axe et 0,097 m plus bas. Ces longueurs dépendent de la perspective et de la largeur supposée.
+
+**3. Place les pièces.** Dans le bloc D bis, la bouche est en (0 ; 0,197). Pour le compas, choisis (0 ; 0,098) : dessine le cadre, sa fenêtre sombre, puis le trait vertical au milieu. Le trait est fixe : il ne donne pas le cap. Pour la radio, la place de l’altimètre actuel oblige à adapter le dessin : passe le centre de (−0,145 ; 0,169) à (−0,141 ; 0,189) et le rayon extérieur de 0,039 à 0,031 m. Elle reste donc plus haute que sur la photo. Tu peux vérifier le jeu avec deux disques en papier : à l’échelle 1:1, les nouveaux rayons sont 92 et 31 mm, leurs centres sont distants d’environ 129 mm. Il reste **6 mm** entre les bords, contre environ **20 mm de chevauchement** auparavant. Ce sont les dimensions de notre maquette.
+
+**4. Compare dans FlightGear.** Refais le paquet comme à la [fiche 7](07-essais.md), sélectionne SW233 et place-toi au siège avant. Les deux images ont été prises dans FlightGear 2024.1.7, à CYJN, en 1280 × 720, en lancement en vol à 4 000 ft, cap initial 010°, le 21 juin à 16 h 45 UTC. Pour retrouver notre cadrage de comparaison, ouvre le navigateur de propriétés dans le menu Débogage et, sous `/sim/current-view`, règle `view-number` à 0, les décalages `x-offset-m`, `y-offset-m`, `z-offset-m` à 0, 0.50 et 1.70, `heading-offset-deg` à 0, `pitch-offset-deg` à −23 et `field-of-view` à 70. Saisis un point dans les décimales. Ce cadrage sert à comparer les images ; la hauteur réelle de l’œil du pilote reste à mesurer.
+
+![Après : un espace noir sépare les cerclages ; le boîtier du compas apparaît sous la bouche d’air.](https://github.com/steveprudhomme/sw233-flightgear/releases/download/cockpit-comparaison-02/SW233-compas-apres.jpg)
+
+**À toi.** Cache cette légende. Montre l’espace entre la radio et l’altimètre, puis le compas et la boule de largage. Si le compas manque, vérifie d’abord que FlightGear a chargé **la copie reconstruite** de l’avion. Si tout le tableau paraît plus grand ou plus petit, vérifie le champ de vision avant de changer tes mesures.

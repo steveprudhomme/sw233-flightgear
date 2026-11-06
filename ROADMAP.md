@@ -71,3 +71,5 @@ But : à chaque point d’arrêt, l’enfant peut répondre à « où dois-je re
 2. Reporter les centres de la photo par rapport à la bouche d’air ; calculer aussi le jeu entre les bords des instruments. Conserver les hypothèses si la perspective ou la largeur inconnue empêche une mesure réelle.
 3. Modifier la peinture originale, garder les aiguilles indépendantes et représenter le compas comme décoratif. Comparer deux images au même cadrage : cerclage dégagé, fenêtre du compas visible, textes libres.
 4. Insérer les deux images dans la fiche de peinture avec une action que l’enfant peut refaire ; vérifier la reconstruction depuis le livre, puis actualiser README, historique et état de la feuille de route.
+
+**Séance réalisée :** [mesures, recette et captures natives avant/après](docs/construction/06-peinture.md#comparaison-cockpit). Le cadrage de comparaison est fixé, la radio dégagée et le compas décoratif en place. Restent la mesure réelle de la position de l’œil, le contrôle en vue oblique, le verre sous deux éclairages et une indication de cap vérifiée.

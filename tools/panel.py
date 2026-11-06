@@ -65,16 +65,27 @@ def finish_panel(models: Path):
     card(-.079, .077, "PRE RELEASE", ["AREA", "ALTITUDE", "POSITION", "TRAFFIC"])
     card(.078, .070, "PRE STALL", ["ALTITUDE", "STRAPS", "CANOPY", "TRAFFIC"])
     # Face radio et deux boutons. Aucun chiffre de fréquence fictif.
-    ry, rz = -.145, .169
-    for rr, tone in [(.039,"#171717"),(.037,"#686866"),(.035,"#323536")]:
+    ry, rz = -.141, .189
+    for rr, tone in [(.031,"#171717"),(.029,"#686866"),(.027,"#323536")]:
         disc(ry,rz,rr,tone)
     x, v = xy(ry,rz)
-    pen.rounded_rectangle((x-35,v-20,x+35,v-3), radius=3, fill="#71766a")
+    pen.rounded_rectangle((x-29,v-18,x+29,v-3), radius=3, fill="#71766a")
     label(ry,rz-.009,"COM",12)
-    for dy in (-.017,.017):
-        disc(ry+dy,rz-.021,.008,"#101214")
-        disc(ry+dy-.001,rz-.019,.005,"#414441")
-    label(-.143,.114,"RADIO",11)
+    for dy in (-.014,.014):
+        disc(ry+dy,rz-.018,.006,"#101214")
+        disc(ry+dy-.001,rz-.017,.004,"#414441")
+    label(ry+.010,rz-.038,"RADIO",11)
+    # Boîtier et fenêtre du compas : garniture fixe, sans cap simulé.
+    cx, cz = 0, .098
+    a, b = xy(cx, cz)
+    for dx, dz, tone in [(63,59,"#161719"), (60,56,"#656563"), (56,52,"#252628")]:
+        pen.rounded_rectangle((a-dx,b-dz,a+dx,b+dz), radius=16, fill=tone)
+    pen.rounded_rectangle((a-47,b-22,a+47,b+23), radius=8, fill="#101516")
+    pen.line((a-39,b+13,a+39,b+13), fill="#5b5e57", width=2)
+    pen.line((a,b-20,a,b+15), fill="#ddd8bd", width=3)
+    for side in (-1,1):
+        screw(cx+side*.025,cz+.022)
+        screw(cx+side*.025,cz-.022)
     label(0,.014,"LARGAGE",14)
     im.save(models/"panel.png")
     mesh = models/"sw233.ac"
