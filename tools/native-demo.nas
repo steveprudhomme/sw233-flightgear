@@ -1,4 +1,4 @@
-# SPDX-License-Identifier: MIT
+# SPDX-License-Identifier: GPL-3.0-only
 # Development flight only. Initialization precedes capture; thereafter the
 # controller writes pilot controls, never position, attitude or sideslip.
 setprop('/sim/freeze/master', 1);
@@ -29,7 +29,8 @@ var step = func {
     var elapsed = getprop('/sim/time/elapsed-sec') - begin;
     var t = elapsed - 10; # settle for ten seconds before recording
     var spoilers = math.min(1, math.max(0,(t-14)/4), math.max(0,(28-t)/4));
-    var slip = math.min(1, math.max(0,(t-34)/6), math.max(0,(58-t)/4));
+    spoilers = math.max(spoilers, math.min(1, math.max(0,(t-29)/4), math.max(0,(43-t)/4)));
+    var slip = math.min(1, math.max(0,(t-46)/6), math.max(0,(76-t)/4));
     var phi = getprop('/fdm/jsbsim/attitude/phi-rad');
     var theta = getprop('/fdm/jsbsim/attitude/theta-rad');
     var p = getprop('/fdm/jsbsim/velocities/p-rad_sec');
@@ -41,18 +42,18 @@ var step = func {
     setprop('/controls/flight/elevator',clip(-0.62437453+2*(theta+0.056506)+1.1*q,-1,1));
     setprop('/sim/sw233/demo/time-sec',t);
     setprop('/sim/sw233/demo/active',1);
-    if (t < 8) {
+    if (t < 8 or (t >= 28 and t < 44) or (t >= 61 and t < 73)) {
         setprop('/sim/current-view/view-number',1);
-        setprop('/sim/current-view/heading-offset-deg',25);
-        setprop('/sim/current-view/pitch-offset-deg',22);
+        setprop('/sim/current-view/heading-offset-deg', t >= 61 ? 65 : 25);
+        setprop('/sim/current-view/pitch-offset-deg', t >= 28 and t < 44 ? 38 : 22);
     } else {
         setprop('/sim/current-view/view-number',0);
         setprop('/sim/current-view/internal',1);
         setprop('/sim/current-view/y-offset-m',0.5);
-        setprop('/sim/current-view/z-offset-m', t >= 30 and t < 58 ? 1.5 : 1.75);
+        setprop('/sim/current-view/z-offset-m', t >= 44 and t < 76 ? 1.5 : 1.75);
         setprop('/sim/current-view/field-of-view',80);
         # Show the orange cockpit lever, then focus on the yaw string.
-        var look = t < 30 or t >= 58;
+        var look = t < 44 or t >= 76;
         setprop('/sim/current-view/heading-offset-deg',0);
         setprop('/sim/current-view/pitch-offset-deg',look ? -25 : -9);
     }
@@ -62,7 +63,7 @@ var step = func {
             print('SW233: CYJN, ground elevation or flying speed not confirmed; capture cancelled.');
             return;
         }
-        fgcommand('video-start',{name:'SW233-CYJN-flight.mp4',codec:'libx264',quality:0.6});
+        fgcommand('video-start',{name:'SW233-CYJN-angles.mp4',codec:'libx264',quality:0.32});
         recording = 1;
     }
     if (recording and math.floor(t)>lastSample) {
@@ -73,7 +74,7 @@ var step = func {
             getprop('/position/latitude-deg'),getprop('/position/longitude-deg'),
             getprop('/position/ground-elev-ft')));
     }
-    if (t >= 66) {
+    if (t >= 83) {
         fgcommand('video-stop');
         setprop('/sim/freeze/master',1);
         setprop('/sim/sw233/demo/active',0);
