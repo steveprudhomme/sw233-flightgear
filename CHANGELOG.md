@@ -8,6 +8,8 @@
 
 ### Ajouts
 
+- Planche de bord texturée, film de 83 s avec deux angles, atelier guidé et feuille de route de la livrée Cadets.
+
 - Capture native à CYJN : aérofreins en vue cockpit, glissade et détail de la ficelle.
 
 - Tube de Pitot fixe au nez et fil de laine animé selon le dérapage JSBSim.

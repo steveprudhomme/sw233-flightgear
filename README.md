@@ -22,12 +22,13 @@ Ce projet n'est pas un outil d'instruction au vol réel.
 
 ## Vidéo : vol au-dessus de Saint-Jean-sur-Richelieu (CYJN)
 
-[![Lire la démonstration du SW233 dans FlightGear au-dessus de CYJN](https://github.com/steveprudhomme/sw233-flightgear/releases/download/demo-cyjn-01/SW233-CYJN.jpg)](https://github.com/steveprudhomme/sw233-flightgear/releases/download/demo-cyjn-01/SW233-CYJN.mp4)
+<video id="film" controls playsinline preload="none" style="max-width:100%" width="960" poster="https://github.com/steveprudhomme/sw233-flightgear/releases/download/demo-cyjn-02/SW233-CYJN-v2.jpg" src="https://github.com/steveprudhomme/sw233-flightgear/releases/download/demo-cyjn-02/SW233-CYJN-v2.mp4"></video>
 
-**[Voir le MP4 · 66 secondes](https://github.com/steveprudhomme/sw233-flightgear/releases/download/demo-cyjn-01/SW233-CYJN.mp4)** — capture de FlightGear 2024.1.4 avec le décor TerraSync installé.
-Passage en place avant à 8 s ; sortie et rentrée des aérofreins de 14 à 28 s ; virage en glissade à partir de 34 s.
-Le médaillon agrandit la ficelle filmée et les valeurs affichées proviennent du même vol.
-Voir [les mesures et la procédure de reproduction](docs/validation.md#capture-flightgear-à-cyjn).
+**[▶ Lire le film dans le lecteur du projet · 1 min 23 s](https://steveprudhomme.github.io/sw233-flightgear/#film)** · [Télécharger le MP4](https://github.com/steveprudhomme/sw233-flightgear/releases/download/demo-cyjn-02/SW233-CYJN-v2.mp4)
+
+Le lecteur intégré est disponible dans la version web de ce README. Dans le dépôt, GitHub affiche le lien de lecture. Capture native de FlightGear 2024.1.4 : sortie puis rentrée des aérofreins depuis le cockpit (14–28 s), second cycle vu du dessus (29–43 s), puis glissade depuis le cockpit et de l’extérieur (46–73 s). Le médaillon est un agrandissement de la ficelle filmée ; β mesure l’angle latéral du vent relatif dans le modèle.
+
+**Pour commencer :** [atelier pas à pas, dès 10 ans](docs/atelier.md) · [feuille de route du cockpit et de la livrée Cadets](ROADMAP.md) · [mesures et procédure](docs/validation.md#capture-flightgear-à-cyjn).
 
 ## Démarrage rapide
 
@@ -36,6 +37,7 @@ Prérequis : FlightGear avec JSBSim ; Python 3.11+ pour les contrôles.
 ```sh
 git clone https://github.com/steveprudhomme/sw233-flightgear.git
 cd sw233-flightgear
+python -m pip install Pillow==12.0.0
 python tools/package.py
 fgfs --fg-aircraft=build/Aircraft --aircraft=sw233 --airport=KSFO --altitude=5000 --vc=50 --in-air --disable-ai-traffic
 ```

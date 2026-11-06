@@ -3,14 +3,14 @@
 ## FlightGear
 
 1. Installer FlightGear avec JSBSim et les scènes de la zone d'essai.
-2. Cloner le dépôt, puis exécuter `python tools/package.py` à sa racine.
+2. Cloner le dépôt, installer Pillow avec `python -m pip install Pillow==12.0.0`, puis exécuter `python tools/package.py` à sa racine.
 3. Ajouter le chemin absolu de `build/Aircraft` aux dossiers d'aéronefs
    supplémentaires du lanceur FlightGear.
-4. Sélectionner **SW233 - SGS 2-33 experimental** (identifiant `sw233`).
+4. Sélectionner **Schweizer SGS 2-33 — Cadets de l’aviation royale du Canada (prototype)** (identifiant `sw233`).
 5. Initialiser en vol au-dessus de KSFO à 5 000 ft MSL et 50 kt.
    Prévoir la marge terrain si une autre zone est choisie.
 
-Le script copie les sources dans build/Aircraft/SW233 ; il ne compile rien et
+Le script copie les sources dans build/Aircraft/SW233 ; il crée la texture du tableau à partir de sa recette éditable et
 refuse d'écraser une destination existante. Pour un nouveau paquet, choisir un
 autre dossier avec `python tools/package.py --output build/essai-2` ; ajouter
 alors build/essai-2/Aircraft au lanceur.
