@@ -117,3 +117,5 @@ Pour préparer la bande graduée mobile, voir [l’examen du compas FSX et les p
 2. Conserver un témoin de l’ancien cadran. Vérifier séparément signe et facteur 60 aux entrées −500, 0, +500 et +1 000 ft/min ; reprendre le même cadrage avant/après.
 3. À CYJN, sans vent, effectuer une descente avec les aérofreins rentrés puis sortis, sans imposer le taux de chute. Enregistrer vitesse indiquée, taux de montée signé, indication et position effective des panneaux. Comparer deux fenêtres de cinq secondes à vitesse moyenne comparable (écart ≤ 2 kt) ; signaler les transitoires et les limites du modèle.
 4. Publier mesures, film cockpit, captures natives, instructions de reconstruction et résultats dans le tutoriel, le README et l’historique.
+
+Le cadran utilise maintenant des centaines de ft/min et l’indication de vitesse verticale de FlightGear ; [banc et descente comparative](docs/construction/07-essais.md#banc-variometre). La compensation en énergie totale n’est pas simulée par ce travail.

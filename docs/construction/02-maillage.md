@@ -294,11 +294,8 @@ for kind, y, z, r in dials:
     if kind == "alt":
         vals = list(range(10))
         angles = [i * 36 for i in vals]
-    elif kind == "ias":
-        vals, angles = [], []  # Relief mobile ; les chiffres sont peints à la fiche 6.
     else:
-        vals = [-2, -1, 0, 1, 2]
-        angles = [i * 65 for i in vals]
+        vals, angles = [], []  # Relief mobile ; les chiffres sont peints à la fiche 6.
     for v, deg in zip(vals, angles):
         a = radians(deg)
         mark("traits", px + 0.008, y, z, r * 0.94, a, r * 0.08, 0.001)
@@ -312,7 +309,9 @@ for kind, y, z, r in dials:
              [(-.0025,-.014),(.0025,-.014),(.0018,.056),(0,.067),(-.0018,.056)]])
         poly("vitesse-mph", 5, *[(px+.0125,*point(y,z,.004,i*pi/12)) for i in range(24)])
     else:
-        needle("vario", y, z, r * 0.85, "velocities/vertical-speed-fps", 65 * 60 / 1000)
+        poly("vario", 6, *[(px+.012,y+dy,z+dz) for dy,dz in
+             [(-.0018,-.012),(.0018,-.012),(.0013,.049),(0,.058),(-.0013,.049)]])
+        poly("vario", 5, *[(px+.0125,*point(y,z,.0035,i*pi/12)) for i in range(24)])
 ```
 
 ## I · Pose le Pitot et attache le fil

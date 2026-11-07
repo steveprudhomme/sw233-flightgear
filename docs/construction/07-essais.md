@@ -140,3 +140,52 @@ Le banc règle momentanément *instrumentation/airspeed-indicator/serviceable* �
 ![Quatre captures de FlightGear, avec l’entrée en nœuds et la conversion attendue sous chaque vue.](https://github.com/steveprudhomme/sw233-flightgear/releases/download/anemometre-06/quatre-lectures.jpg)
 
 **À toi.** Cache les légendes ; lis la zone et les traits avant de vérifier le nombre. Si toutes les lectures sont fausses du même rapport, vérifie les unités. Si seules certaines positions sont fausses, vérifie les deux points voisins dans la table et le sens de la texture. Les [entrées relues avant et après capture](https://github.com/steveprudhomme/sw233-flightgear/releases/download/anemometre-06/vitesses.csv) sont exactes ; les lectures visuelles restent approximatives. Ce contrôle de FlightGear 2024.1.7 valide l’affichage, pas le circuit Pitot-statique du vrai planeur.
+
+<a name="banc-variometre"></a>
+
+## Action 8 — Faire parler le variomètre
+
+**Avant de voler, teste les mots et les nombres.** L’ancien cadran simplifié portait le zéro en haut. Le nouveau suit la photo : zéro à gauche, UP en haut, DOWN en bas. Dans ces deux captures natives, nous imposons l’équivalent de −500 ft/min. Pour le témoin, la copie d’essai de l’ancienne animation reçoit −500 / 60 ft/s depuis une propriété de banc ; son ancienne échelle reste intacte.
+
+![Avant : cadran simplifié, entrée équivalente à moins 500 ft/min.](https://github.com/steveprudhomme/sw233-flightgear/releases/download/variometre-07/vario-avant.jpg)
+
+![Après : la pointe indique 5 dans la moitié DOWN.](https://github.com/steveprudhomme/sw233-flightgear/releases/download/variometre-07/vario--500.jpg)
+
+**À toi.** Dessine un cercle et place zéro, puis les deux 5. Prédis les quatre positions : −500, 0, +500 et +1 000 ft/min. Ouvre SW233 dans une session dédiée avec l’option *--httpd=18097*, puis lance :
+
+```powershell
+.\.venv\Scripts\python.exe tools/variometer_bench.py build/mon-banc-vario
+```
+
+Le script suspend le calcul du variomètre avec *serviceable=false*, impose la valeur à *indicated-speed-fpm*, la relit avant et après chaque image, puis restaure les réglages. Ouvre les quatre images et le CSV dans ce nouveau dossier. Le retour à zéro n’est pas une montée ; un taux négatif place l’aiguille en bas. Si le 5 apparaît pour 5 000 au lieu de 500, l’unité est mal traitée.
+
+![Banc positif : plus 1 000 ft/min place l’aiguille près du 10 supérieur.](https://github.com/steveprudhomme/sw233-flightgear/releases/download/variometre-07/vario-1000.jpg)
+
+**En vol, regarde aussi la vitesse.** Reprends CYJN, le terrain téléchargé, le vent nul, la date d’été et l’éclairage de l’action 6. Le variomètre fonctionne normalement pendant cet essai. Le script initialise le planeur à 6 000 ft, puis agit seulement sur les gouvernes et les aérofreins. Il vise la même vitesse indiquée avant et après leur sortie. Lance :
+
+```powershell
+.\.venv\Scripts\python.exe tools/record_variometer.py build/ma-descente
+.\.venv\Scripts\python.exe tools/variometer_report.py build/ma-descente build/mon-rapport-vario
+```
+
+La capture dure environ deux minutes. Attends la fin avant de toucher aux commandes. Le premier outil laisse passer 60 s avant de commencer à ouvrir les panneaux ; leur sortie prend 4 s. Le second compare les moyennes des fenêtres **55–60 s** et **105–110 s**. Il refuse de présenter les vitesses comme comparables si elles diffèrent de plus de 2 kt. Les outils de tournage et Matplotlib sont installés comme à l’action 6. Choisis des noms de dossiers neufs à chaque essai.
+
+[Voir les 17 secondes du film cockpit](https://github.com/steveprudhomme/sw233-flightgear/releases/download/variometre-07/variometre-cyjn.mp4). Il contient trois extraits à vitesse normale ; les sauts de temps signalent les coupes. Les images sont natives, les bandeaux proviennent des mesures relevées juste avant les captures.
+
+![Descente avec les panneaux rentrés : lis ensemble vitesse, trajectoire et instrument.](https://github.com/steveprudhomme/sw233-flightgear/releases/download/variometre-07/rentres.jpg)
+
+![Après la sortie : compare la lecture du cadran à celle du relevé.](https://github.com/steveprudhomme/sw233-flightgear/releases/download/variometre-07/sortis.jpg)
+
+![Courbes du taux vertical, de la vitesse indiquée et de la position effective des panneaux.](https://github.com/steveprudhomme/sw233-flightgear/releases/download/variometre-07/courbes-vario.png)
+
+Les nombres négatifs signifient que le planeur descend. Le calcul du variomètre peut mettre du temps à rejoindre la trajectoire, notamment après un changement d’altitude au lancement : ne compare pas les premières secondes à une descente stabilisée. Cette expérience décrit notre simulation ; elle ne fournit pas une polaire mesurée du Schweizer réel.
+
+
+**Résultat de cette exécution (FlightGear 2024.1.7, CYJN, vent relevé 0 kt).**
+
+| Fenêtre | Aérofreins effectifs | Vitesse indiquée moyenne | Trajectoire, ft/min | Instrument, ft/min |
+|---|---:|---:|---:|---:|
+| 55–60 s | 0 % | 60,85 kt | −549 | −530 |
+| 105–110 s | 100 % | 60,27 kt | −716 | −693 |
+
+Les vitesses diffèrent de 0,58 kt. Le taux de descente augmente de 167 ft/min environ dans cette exécution. L’instrument et la trajectoire restent séparés d’environ 20 à 23 ft/min dans ces fenêtres ; ce seul essai ne permet pas d’en déterminer la cause ni de valider une précision d’instrument. [Télécharger les relevés du vol](https://github.com/steveprudhomme/sw233-flightgear/releases/download/variometre-07/vol.csv) et [les quatre entrées du banc](https://github.com/steveprudhomme/sw233-flightgear/releases/download/variometre-07/vario.csv).

@@ -107,6 +107,29 @@ def finish_panel(models: Path):
                    font=ImageFont.load_default(size=35))
     brush.text((256,313),"MPH",anchor="mm",fill="#eee9d9",font=ImageFont.load_default(size=26))
     dial.save(models/"ias.png")
+    # VSI graduations and needle share the measured angle table.
+    entries = anims.find("animation[object-name='vario']/interpolation")
+    vsi_scale = [(float(e.findtext("ind")),float(e.findtext("dep"))) for e in entries]
+    def vsi_point(rate, radius):
+        for (a,lo),(b,hi) in zip(vsi_scale,vsi_scale[1:]):
+            if rate <= b:
+                ang = math.radians(lo+(hi-lo)*(rate-a)/(b-a))
+                return (256+radius*math.sin(ang),256-radius*math.cos(ang))
+        raise ValueError(rate)
+    vsi = Image.new("RGB",(512,512),"#25282b")
+    draw = ImageDraw.Draw(vsi)
+    ivory = "#eeeadd"
+    for rate in range(-2000,2001,100):
+        major = rate%500 == 0
+        draw.line([vsi_point(rate,242),vsi_point(rate,204 if major else 222)],
+                  fill=ivory,width=7 if major else 4)
+        if major and abs(rate)!=2000:
+            draw.text(vsi_point(rate,170),str(abs(rate)//100),anchor="mm",fill=ivory,
+                      font=ImageFont.load_default(size=35))
+    for where,txt,size in [((425,256),"20",36),((152,202),"UP",18),((152,310),"DOWN",18),
+                           ((265,181),"VERTICAL SPEED",21),((265,207),"100 FEET PER MIN",16)]:
+        draw.text(where,txt,anchor="mm",fill=ivory,font=ImageFont.load_default(size=size))
+    vsi.save(models/"vsi.png")
     im.save(models/"panel.png")
     mesh = models/"sw233.ac"
     s = mesh.read_text()
@@ -116,6 +139,7 @@ def finish_panel(models: Path):
                   'spec .12 .12 .12 shi 12 trans 0\n'+tag, 1)
     for name,texture,ymin,zmin,span_y,span_z in [
         ("tableau","panel.png",-.4,-.1,.8,.4),("ias-fond","ias.png",.095,.065,.15,.15),
+        ("vsi-fond","vsi.png",.232,-.041,.126,.126),
     ]:
         start = s.index(f'name "{name}"')
         end = s.index("kids 0",start)

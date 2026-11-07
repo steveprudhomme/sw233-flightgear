@@ -26,6 +26,12 @@ Ce projet n'est pas un outil d'instruction au vol réel.
 
 [Anémomètre C-FYLP : comparer l’ancien cadran, les arcs et quatre essais dans FlightGear](docs/construction/07-essais.md#banc-anemometre).
 
+## Variomètre : descente et aérofreins
+
+<video id="vario" controls playsinline preload="none" width="960" style="max-width:100%" poster="https://github.com/steveprudhomme/sw233-flightgear/releases/download/variometre-07/rentres.jpg" src="https://github.com/steveprudhomme/sw233-flightgear/releases/download/variometre-07/variometre-cyjn.mp4"></video>
+
+[▶ Lire les 17 secondes](https://steveprudhomme.github.io/sw233-flightgear/#vario) · [MP4](https://github.com/steveprudhomme/sw233-flightgear/releases/download/variometre-07/variometre-cyjn.mp4) · [Banc, courbes et procédure](docs/construction/07-essais.md#banc-variometre) · [Commande pour piloter soi-même](INSTALL.md#essai-manuel-sur-windows).
+
 ## Essai du compas en virage à CYJN
 
 <video id="compas" controls playsinline preload="none" width="960" style="max-width:100%" poster="https://github.com/steveprudhomme/sw233-flightgear/releases/download/compas-virages-05/nord.jpg" src="https://github.com/steveprudhomme/sw233-flightgear/releases/download/compas-virages-05/compas-en-virage.mp4"></video>

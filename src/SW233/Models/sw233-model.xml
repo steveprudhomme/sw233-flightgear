@@ -63,9 +63,18 @@
   <animation>
     <type>rotate</type>
     <object-name>vario</object-name>
-    <property>velocities/vertical-speed-fps</property>
-    <factor>3.9</factor>
-    <offset-deg>0</offset-deg>
+    <property>instrumentation/vertical-speed-indicator/indicated-speed-fpm</property>
+    <interpolation>
+      <entry><ind>-2000</ind><dep>-261</dep></entry>
+      <entry><ind>-1500</ind><dep>-213</dep></entry>
+      <entry><ind>-1000</ind><dep>-162</dep></entry>
+      <entry><ind>-500</ind><dep>-119</dep></entry>
+      <entry><ind>0</ind><dep>-90</dep></entry>
+      <entry><ind>500</ind><dep>-53</dep></entry>
+      <entry><ind>1000</ind><dep>-5</dep></entry>
+      <entry><ind>1500</ind><dep>45</dep></entry>
+      <entry><ind>2000</ind><dep>85</dep></entry>
+    </interpolation>
     <center>
       <x-m>0.882</x-m>
       <y-m>0.295</y-m>

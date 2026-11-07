@@ -174,16 +174,43 @@ Tu peux tracer les rayons sur du papier calque et utiliser un rapporteur. Le cal
 
 ## Montée et descente
 
-Le simulateur donne des pieds par seconde ; le cadran compte des milliers de pieds par minute. 65 × 60 / 1000 = 3,9° par ft/s. À −1000 ft/min, l’angle vaut −65°.
+<a name="variometre"></a>
+
+**Lis l’unité avant le nombre.** Sur la photo C-FYLP de 690 × 517 pixels, le petit cadran en bas à droite porte « 100 FEET PER MIN ». Le 5 signifie donc **500 pieds par minute**, pas 5 000. Le zéro est à gauche ; la montée est dans la moitié haute (UP), la descente dans la moitié basse (DOWN). Cette seule photo ne permet pas de dire si l’instrument réel est compensé en énergie totale.
+
+**Refais le pointage.** Dans la photo *5d81c6bf…*, découpe le rectangle de (526,223) à (633,332), bords droit et bas exclus. Agrandis cinq fois : 535 × 545 pixels. Le pivot est estimé en (260,294). Relève les grands traits, avec la même convention d’angle que pour l’anémomètre. La perspective et le flou peuvent déplacer le relevé de plusieurs degrés ; les angles ci-dessous ne sont pas des données d’étalonnage.
+
+| Taux signé (ft/min) | Point (colonne, ligne) dans l’agrandissement | Angle retenu |
+|---:|---:|---:|
+| −2 000 | 442,322 | −261° |
+| −1 500 | 352,433 | −213° |
+| −1 000 | 208,458 | −162° |
+| −500 | 91,386 | −119° |
+| 0 | 71,292 | −90° |
+| +500 | 118,188 | −53° |
+| +1 000 | 245,110 | −5° |
+| +1 500 | 401,155 | 45° |
+| +2 000 | 451,278 | 85° |
+
+**Branche l’indication, pas une conversion en double.** L’ancienne aiguille lisait directement la vitesse verticale de la trajectoire en ft/s. Nous utilisons maintenant *instrumentation/vertical-speed-indicator/indicated-speed-fpm*, déjà en ft/min. À +500, la table place l’aiguille en haut à gauche ; à −500, elle arrive en bas à gauche. Pour comparer à la trajectoire dans un relevé de vol, multiplie seulement *velocities/vertical-speed-fps* par 60 : −8,333 ft/s ≈ −500 ft/min. Notre instrument utilise le calcul de vitesse verticale de FlightGear ; nous n’ajoutons pas de compensation d’énergie totale.
 
 <!-- atelier-fichier: src/SW233/Models/sw233-model.xml -->
 ```xml
   <animation>
     <type>rotate</type>
     <object-name>vario</object-name>
-    <property>velocities/vertical-speed-fps</property>
-    <factor>3.9</factor>
-    <offset-deg>0</offset-deg>
+    <property>instrumentation/vertical-speed-indicator/indicated-speed-fpm</property>
+    <interpolation>
+      <entry><ind>-2000</ind><dep>-261</dep></entry>
+      <entry><ind>-1500</ind><dep>-213</dep></entry>
+      <entry><ind>-1000</ind><dep>-162</dep></entry>
+      <entry><ind>-500</ind><dep>-119</dep></entry>
+      <entry><ind>0</ind><dep>-90</dep></entry>
+      <entry><ind>500</ind><dep>-53</dep></entry>
+      <entry><ind>1000</ind><dep>-5</dep></entry>
+      <entry><ind>1500</ind><dep>45</dep></entry>
+      <entry><ind>2000</ind><dep>85</dep></entry>
+    </interpolation>
     <center>
       <x-m>0.882</x-m>
       <y-m>0.295</y-m>

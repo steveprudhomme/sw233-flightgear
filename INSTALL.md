@@ -7,7 +7,7 @@
 3. Ajouter le chemin absolu de `build/Aircraft` aux dossiers d'aéronefs
    supplémentaires du lanceur FlightGear.
 4. Sélectionner **Schweizer SGS 2-33 — Cadets de l’aviation royale du Canada (prototype)** (identifiant `sw233`).
-5. Initialiser en vol au-dessus de KSFO à 5 000 ft MSL et 50 kt.
+5. Initialiser en vol au-dessus de CYJN à 5 000 ft MSL et 60 kt.
    Prévoir la marge terrain si une autre zone est choisie.
 
 Le script copie les sources dans build/Aircraft/SW233 ; il crée la texture du tableau à partir de sa recette éditable et
@@ -43,3 +43,24 @@ python tools/package.py
 Les tests utilisent JSBSim autonome, version verrouillée dans les dépendances.
 La version embarquée dans FlightGear peut différer. Consulter docs/validation.md
 avant d'interpréter un test vert comme une validation de l'aéronef complet.
+
+## Essai manuel sur Windows
+
+Dans PowerShell, place-toi dans le dossier du projet (celui qui contient README.md et tools). Sur l’installation utilisée pour ce tutoriel, ce dossier est :
+
+```powershell
+Set-Location "C:\Users\steve\Documents\Codex\2026-11-01\j-aimerais-que-tu-cr-un-3\outputs\sw233-flightgear"
+$essai = Join-Path (Get-Location) ("build\vol-manuel-" + (Get-Date -Format "yyyyMMdd-HHmmss"))
+python tools/package.py --output $essai
+& "C:\Program Files\FlightGear 2024.1\bin\fgfs.exe" `
+  "--fg-root=C:\Users\steve\FlightGear\Downloads\fgdata_2024_1" `
+  "--fg-aircraft=$essai\Aircraft" `
+  "--fg-scenery=C:\Users\steve\FlightGear\Downloads\TerraSync" `
+  --aircraft=sw233 --airport=CYJN --in-air `
+  --altitude=5000 --vc=60 --heading=010 `
+  --start-date-gmt=2026:06:21:16:45:00 `
+  --disable-real-weather-fetch --disable-terrasync `
+  --prop:/controls/flight/elevator=-0.6244
+```
+
+Le dossier neuf protège les précédents essais. Cette commande lance un vol manuel, sans scénario qui actionne les commandes. Pour utiliser cette recette sur un autre ordinateur, adapte les chemins vers le projet, le programme, les données et TerraSync. Si Python ne trouve pas PIL, installe Pillow comme indiqué à l’étape 2.
