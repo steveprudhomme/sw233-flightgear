@@ -90,3 +90,5 @@ Pour préparer la bande graduée mobile, voir [l’examen du compas FSX et les p
 1. Identifier la propriété réellement alimentée dans FlightGear ; distinguer l’orientation vraie, le cap magnétique et la lecture de l’instrument.
 2. Construire une rose graduée originale derrière le trait fixe. Contrôler le sens, le centrage et l’occultation des graduations hors fenêtre.
 3. Faire un essai visuel à entrée connue aux quatre points cardinaux et à 359°, 000°, 001° ; distinguer cet essai d’affichage de la validation en vol. Conserver des captures, la méthode et les limites dans le tutoriel.
+
+**Affichage réalisé et vérifié dans FlightGear 2024.1.7 :** [essais illustrés et méthode](docs/construction/04-configuration.md#rose-magnetique). La rose suit l’indication magnétique du simulateur. Restent des essais en virage et après stabilisation pour évaluer sa réponse dynamique.

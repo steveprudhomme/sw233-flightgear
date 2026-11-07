@@ -10,6 +10,8 @@
 
 ### Ajouts
 
+- Compas : rose magnétique originale animée, quatre points cardinaux et passage du nord illustrés dans la fiche 4.
+
 - Compas avant en relief : cadre ouvert, fond, trait, vis et vitre en retrait. Coupe de construction et six captures natives dans les fiches 2 et 6.
 
 - Livre de construction en sept séances, reconstruction vérifiée en CI.

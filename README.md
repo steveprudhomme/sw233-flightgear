@@ -22,7 +22,7 @@ Ce projet n'est pas un outil d'instruction au vol réel.
 
 [Comparer le poste avant dans FlightGear, avant et après correction](docs/construction/06-peinture.md#comparaison-cockpit) : la radio dégage le bord de l’altimètre et le compas décoratif apparaît sous la bouche d’air.
 
-[Construire le compas en relief et comparer les vues de face et de biais](docs/construction/06-peinture.md#compas-relief). La vitre et le trait de lecture sont deux pièces distinctes ; le cap reste à simuler.
+[Construire le compas en relief et comparer les vues de face et de biais](docs/construction/06-peinture.md#compas-relief). La vitre et le trait de lecture sont deux pièces distinctes ; [la rose indique maintenant le cap du compas de FlightGear](docs/construction/04-configuration.md#rose-magnetique).
 
 ## Vidéo : vol au-dessus de Saint-Jean-sur-Richelieu (CYJN)
 

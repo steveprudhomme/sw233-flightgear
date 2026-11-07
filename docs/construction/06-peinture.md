@@ -195,6 +195,6 @@ Sur l’image C-FYLP, pointe le milieu des cartes vers (282,176), (413,181), (28
 
 ![Le soir, de biais : compare la paroi et la fenêtre avec la même vue de jour.](https://github.com/steveprudhomme/sw233-flightgear/releases/download/compas-relief-03/compas-relief-soir-biais.jpg)
 
-**Si ça ne marche pas.** Si tout est plat, vérifie que le maillage installé contient *compas-cadre* et que FlightGear utilise ton nouveau paquet. Si le trait est caché, vérifie d’abord que l’ouverture du cadre est vide, puis que la vitre utilise le matériau transparent. Le trait ne tourne pas quand le planeur change de cap : c’est normal à cette étape.
+**Si ça ne marche pas.** Si tout est plat, vérifie que le maillage installé contient *compas-cadre* et que FlightGear utilise ton nouveau paquet. Si le trait est caché, vérifie d’abord que l’ouverture du cadre est vide, puis que la vitre utilise le matériau transparent. Le trait reste toujours fixe. Dans la [séance suivante](04-configuration.md#rose-magnetique), les graduations défilent derrière lui.
 
 **Pour aller plus loin :** sur la photo verticale en vol, retrouve les chiffres derrière le trait fixe. Sur notre maquette, seul le trait est présent. Le [guide des cinq vues et du compas FSX](../references/cockpits-et-fsx.md) explique pourquoi le prochain élément à fabriquer est une bande graduée mobile.

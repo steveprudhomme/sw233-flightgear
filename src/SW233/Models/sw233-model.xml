@@ -132,4 +132,12 @@
       <z>0</z>
     </axis>
   </animation>
+  <animation>
+    <type>rotate</type>
+    <object-name>compas-rose</object-name>
+    <property>instrumentation/magnetic-compass/indicated-heading-deg</property>
+    <factor>1</factor>
+    <center><x-m>0.833</x-m><y-m>0</y-m><z-m>0.098</z-m></center>
+    <axis><x>0</x><y>0</y><z>1</z></axis>
+  </animation>
 </PropertyList>

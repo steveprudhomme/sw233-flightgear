@@ -1,6 +1,6 @@
 # 2 · Bâtir le planeur avec des anneaux et des baguettes
 
-Pense à un modèle en carton. Un **sommet** est un coin ; une **face** est un morceau de carton tendu entre des coins. Au lieu de taper 22 191 lignes de coins à la main, tu vas écrire une petite machine à les numéroter. Crée **fabrique.py** à la racine, au même niveau que *src*. À la fin, ce programme écrira **src/SW233/Models/sw233.ac**. Nomme les objets exactement comme ici : plus tard FlightGear cherchera « fil-de-laine », pas « ficelle ».
+Pense à un modèle en carton. Un **sommet** est un coin ; une **face** est un morceau de carton tendu entre des coins. Au lieu de taper des milliers de lignes de sommets à la main, tu vas écrire une petite machine à les numéroter. Crée **fabrique.py** à la racine, au même niveau que *src*. À la fin, ce programme écrira **src/SW233/Models/sw233.ac**. Nomme les objets exactement comme ici : plus tard FlightGear cherchera « fil-de-laine », pas « ficelle ».
 
 **Ton repère :** imagine-toi assis dans le planeur. Dans la recette, x va du nez vers la queue, y vers ta droite, z vers le haut, en mètres. Sur un papier dessine le nez à x = 0 et la queue à x = 7,8486. Pose deux crayons à y = −7,7724 et +7,7724 : les extrémités doivent être à la même distance du milieu.
 
@@ -359,7 +359,9 @@ loft("boule-largage", red, [
 
 Prends une boîte d’allumettes vide : de face tu vois son ouverture ; en la décalant de côté, tu vois aussi sa paroi. C’est le même effet que nous cherchons sous la bouche d’air. La photo de C-FYLP donne une façade, pas une profondeur. Garde le centre choisi à la fiche 1 (y = 0 ; z = 0,098 m). Le dessin plat faisait 126 × 118 pixels dans la texture à 1 920 pixels/m : environ 66 × 61 mm. Garde cette taille pour la base. Les 25 mm d’épaisseur sont une estimation de maquette.
 
-**Dessine la coupe dans ton cahier.** Trace une ligne pour la planche. En allant vers le pilote, marque le fond à 12 mm, le trait ivoire à 14 mm, la vitre à 20 mm et le rebord à 25 mm. Ainsi la vitre est en retrait de 5 mm et le trait est 6 mm derrière elle. Les distances différentes empêchent deux faces de se battre pour le même pixel. Le pied commence à 0,5 mm pour éviter une face coplanaire avec la planche.
+**Dessine la coupe dans ton cahier.** Trace une ligne pour la planche. En allant vers le pilote, marque le fond initial à 12 mm (ramené à 1 mm pour la rose mobile), le trait ivoire à 14 mm, la vitre à 20 mm et le rebord à 25 mm. Ainsi la vitre est en retrait de 5 mm et le trait est 6 mm derrière elle. Les distances différentes empêchent deux faces de se battre pour le même pixel. Le pied commence à 0,5 mm pour éviter une face coplanaire avec la planche.
+
+Coupe historique du boîtier vide : dans la version mobile, le tambour prend la place de l’ancien fond à 12 mm.
 
 ![Coupe : le trait se trouve entre le fond et la vitre.](coupe-compas.svg)
 
@@ -378,14 +380,14 @@ base = contour_compas(.0005, .033, .031, .006)
 epaules = contour_compas(.021, .033, .031, .006)
 bord = contour_compas(.025, .031, .029, .005)
 ouverture = contour_compas(.025, .0245, .014, .003)
-fond = contour_compas(.012, .0245, .014, .003)
+fond = contour_compas(.001, .0245, .014, .003)
 bridge("compas-cadre", 3, base, epaules)
 bridge("compas-cadre", 2, epaules, bord)
 bridge("compas-cadre", 3, bord, ouverture)
 bridge("compas-cadre", 2, ouverture, fond)
 poly("compas-fond", 5, *fond)
 poly("compas-repere", 6, *[(px+.014,y,.098+z) for y,z in
-                           [(-.0009,-.010),(.0009,-.010),(.0009,.010),(-.0009,.010)]])
+                           [(-.0009,.002),(.0009,.002),(.0009,.010),(-.0009,.010)]])
 for y in (-.024, .024):
     for z in (-.022, .022):
         poly("compas-vis", 9, *[(px+.0255, y+.0022*cos(i*pi/4),
@@ -394,6 +396,52 @@ poly("compas-vitre", 4, *contour_compas(.020, .0245, .014, .003))
 ```
 
 **Regarde le résultat dans FlightGear :** [photos de face, de biais et en lumière du soir](06-peinture.md#compas-relief).
+
+## I quater · Enroule les caps sur un tambour
+
+Prends une bande de papier, écris N, E, S, W à intervalles égaux et ferme la boucle. Dans le compas on voit son bord, pas le dessus. Le trait court est devant les graduations et s’arrête au-dessus des lettres. On recule le fond à 1 mm de la planche pour dégager le tambour. Son rayon de 49 mm et la taille des caractères sont des choix de lisibilité. Un tour fait 360° : place un trait tous les 5°, une inscription tous les 30°. Le chiffre 3 désigne 030°. Les deux côtés du nord se rejoignent sans couture.
+
+<!-- atelier-fichier: fabrique.py -->
+```python
+# Une seule pièce mobile ; tout le reste du boîtier reste fixe.
+axe = px - .037
+rayon = .049
+def carte(angle, t, hauteur, r):
+    a = radians(-angle) + t/rayon
+    return (axe+r*cos(a), r*sin(a), .098+hauteur)
+
+def case(angle, gauche, droite, bas, haut, matiere, r):
+    poly("compas-rose", matiere, *[carte(angle,t,h,r) for t,h in
+         [(gauche,bas),(droite,bas),(droite,haut),(gauche,haut)]])
+
+# Une facette par tranche de 5 degrés ; les marques sont devant le fond.
+for deg in range(0,360,5):
+    demi = rayon*radians(2.5)
+    case(deg,-demi,demi,-.011,.011,5,rayon)
+    case(deg,-.00048,.00048,.004,.010 if deg%10 == 0 else .007,6,rayon+.0003)
+
+# Chaque lettre ou chiffre est un petit pochoir de quelques colonnes.
+pochoirs = {
+    "N":"1001/1101/1011/1001/1001", "E":"111/100/110/100/111",
+    "S":"111/100/111/001/111", "W":"10001/10001/10101/10101/01010",
+    "1":"010/110/010/010/111", "2":"111/001/111/100/111",
+    "3":"111/001/111/001/111", "5":"111/100/111/001/111",
+    "6":"111/100/111/101/111", "0":"111/101/101/101/111",
+    "4":"101/101/111/001/001", "7":"111/001/010/010/010",
+}
+for deg, mot in enumerate(["N","3","6","E","12","15","S","21","24","W","30","33"]):
+    pas = .00175
+    lignes = [pochoirs[c].split("/") for c in mot]
+    largeur = sum(len(g[0])+1 for g in lignes)-1
+    origine = -largeur*pas/2
+    for g in lignes:
+        for j, ligne in enumerate(g):
+            for i, encre in enumerate(ligne):
+                if encre == "1":
+                    t, h = origine+i*pas, .001-j*pas
+                    case(deg*30,t,t+pas,h-pas,h,6,rayon+.00045)
+        origine += (len(g[0])+1)*pas
+```
 
 ## J · Écris le fichier que lit le simulateur
 
@@ -440,4 +488,4 @@ for n, faces in parts.items():
 Get-Content src/SW233/Models/sw233.ac -TotalCount 16
 ```
 
-**Contrôle :** pour la forme de départ du livre, tu dois lire *AC3Db*, douze matériaux, *OBJECT world* puis *kids 39*. Cherche les deux noms *aerofrein-1* et *aerofrein1*. Si le fichier reste vide, vérifie que le dernier bloc a été enregistré. Si les sièges sont au-dessus du toit, vérifie surtout l’ordre (x,z,−y) ; ne déplace pas les sièges pour masquer une erreur de repère.
+**Contrôle :** pour la forme de départ du livre, tu dois lire *AC3Db*, douze matériaux, *OBJECT world* puis *kids 40*. Cherche les deux noms *aerofrein-1* et *aerofrein1*. Si le fichier reste vide, vérifie que le dernier bloc a été enregistré. Si les sièges sont au-dessus du toit, vérifie surtout l’ordre (x,z,−y) ; ne déplace pas les sièges pour masquer une erreur de repère.
