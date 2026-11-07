@@ -92,3 +92,10 @@ Pour préparer la bande graduée mobile, voir [l’examen du compas FSX et les p
 3. Faire un essai visuel à entrée connue aux quatre points cardinaux et à 359°, 000°, 001° ; distinguer cet essai d’affichage de la validation en vol. Conserver des captures, la méthode et les limites dans le tutoriel.
 
 **Affichage réalisé et vérifié dans FlightGear 2024.1.7 :** [essais illustrés et méthode](docs/construction/04-configuration.md#rose-magnetique). La rose suit l’indication magnétique du simulateur. Restent des essais en virage et après stabilisation pour évaluer sa réponse dynamique.
+
+### Essai dynamique du compas à CYJN : protocole avant tournage
+
+- Départ en vol stabilisé vers 330° magnétiques, vent demandé nul, compas en service. Commander les gouvernes, jamais la valeur indiquée. Enregistrer ensemble temps, cap magnétique, indication, roulis et vitesse.
+- Virer vers 030° puis revenir vers 330° avec des inclinaisons cibles opposées de même amplitude. Garder un palier ailes à plat entre les virages. Repérer les passages de nord sur les mesures.
+- Calculer l’écart signé dans [−180°, 180°[. Pour chaque retour à plat (|roulis| ≤ 3°), chercher le premier intervalle continu de 3 s avec |écart| ≤ 2°. Donner les seuils, le maximum par virage et signaler un critère non atteint.
+- Publier film natif, courbes, trois images légendées et données de cette exécution. Séparer les observations du simulateur de toute affirmation sur l’appareil réel.
