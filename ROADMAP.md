@@ -110,3 +110,10 @@ Pour préparer la bande graduée mobile, voir [l’examen du compas FSX et les p
 4. Essayer au moins trois vitesses réparties sur le cadran dans FlightGear ; comparer avant/après au même cadrage et à la même vitesse. Publier captures, table de mesures et procédure dans le tutoriel.
 
 **Séance réalisée :** [relevé des angles de C-FYLP](docs/construction/04-configuration.md#anemometre), marquages du manuel §2.3 pour 1 040 lb et [quatre entrées vérifiées dans FlightGear](docs/construction/07-essais.md#banc-anemometre). Restent les erreurs de pression et la comparaison à une photographie parfaitement frontale.
+
+### Variomètre C-FYLP : protocole avant travaux
+
+1. Identifier sur la photo la position du zéro, le sens UP/DOWN, les nombres et l’unité ; noter les angles approximatifs et ne pas inférer une compensation en énergie totale.
+2. Conserver un témoin de l’ancien cadran. Vérifier séparément signe et facteur 60 aux entrées −500, 0, +500 et +1 000 ft/min ; reprendre le même cadrage avant/après.
+3. À CYJN, sans vent, effectuer une descente avec les aérofreins rentrés puis sortis, sans imposer le taux de chute. Enregistrer vitesse indiquée, taux de montée signé, indication et position effective des panneaux. Comparer deux fenêtres de cinq secondes à vitesse moyenne comparable (écart ≤ 2 kt) ; signaler les transitoires et les limites du modèle.
+4. Publier mesures, film cockpit, captures natives, instructions de reconstruction et résultats dans le tutoriel, le README et l’historique.
