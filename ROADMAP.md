@@ -99,3 +99,5 @@ Pour préparer la bande graduée mobile, voir [l’examen du compas FSX et les p
 - Virer vers 030° puis revenir vers 330° avec des inclinaisons cibles opposées de même amplitude. Garder un palier ailes à plat entre les virages. Repérer les passages de nord sur les mesures.
 - Calculer l’écart signé dans [−180°, 180°[. Pour chaque retour à plat (|roulis| ≤ 3°), chercher le premier intervalle continu de 3 s avec |écart| ≤ 2°. Donner les seuils, le maximum par virage et signaler un critère non atteint.
 - Publier film natif, courbes, trois images légendées et données de cette exécution. Séparer les observations du simulateur de toute affirmation sur l’appareil réel.
+
+**Essai réalisé :** [126 s de vol à CYJN, film et relevés](docs/construction/07-essais.md#compas-en-virage). Écart extrême de −43,6° à droite et +43,6° à gauche. Une deuxième inclinaison et des mesures indépendantes seraient nécessaires avant de généraliser.

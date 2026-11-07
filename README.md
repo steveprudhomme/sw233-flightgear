@@ -24,6 +24,12 @@ Ce projet n'est pas un outil d'instruction au vol réel.
 
 [Construire le compas en relief et comparer les vues de face et de biais](docs/construction/06-peinture.md#compas-relief). La vitre et le trait de lecture sont deux pièces distinctes ; [la rose indique maintenant le cap du compas de FlightGear](docs/construction/04-configuration.md#rose-magnetique).
 
+## Essai du compas en virage à CYJN
+
+<video id="compas" controls playsinline preload="none" width="960" style="max-width:100%" poster="https://github.com/steveprudhomme/sw233-flightgear/releases/download/compas-virages-05/nord.jpg" src="https://github.com/steveprudhomme/sw233-flightgear/releases/download/compas-virages-05/compas-en-virage.mp4"></video>
+
+[▶ Voir le film de 30 s](https://steveprudhomme.github.io/sw233-flightgear/#compas) · [Ouvrir le MP4](https://github.com/steveprudhomme/sw233-flightgear/releases/download/compas-virages-05/compas-en-virage.mp4) · [Refaire l’essai avec les images, les courbes et le CSV](docs/construction/07-essais.md#compas-en-virage).
+
 ## Vidéo : vol au-dessus de Saint-Jean-sur-Richelieu (CYJN)
 
 <video id="film" controls playsinline preload="none" style="max-width:100%" width="960" poster="https://github.com/steveprudhomme/sw233-flightgear/releases/download/demo-cyjn-02/SW233-CYJN-v2.jpg" src="https://github.com/steveprudhomme/sw233-flightgear/releases/download/demo-cyjn-02/SW233-CYJN-v2.mp4"></video>

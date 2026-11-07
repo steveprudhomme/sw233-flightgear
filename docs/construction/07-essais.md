@@ -63,3 +63,51 @@ Dans *notes/mesures.txt*, ajoute la date, le changement fait, le résultat atten
 Si tu veux ensuite partager ton travail, garde le maillage source, les XML, la recette de peinture, les tests et les explications dans Git. Ne mets pas le dossier .venv, les films, les paquets assemblés ni les photos tierces dans les commits. Le [guide de contribution](../../CONTRIBUTING.md) explique les commits signés avec *Signed-off-by*. Le texte intégral de la licence est dans [LICENSE.md](../../LICENSE.md). Pour partager le film comme dans ce projet : déposer le MP4 dans une release, mettre son URL dans le lecteur du README, puis vérifier la lecture dans la [version web](https://steveprudhomme.github.io/sw233-flightgear/#film). Le dépôt garde le code ; la release garde le résultat.
 
 **Tu as fini quand** un ami peut lancer ta copie, voir un cockpit peint, retrouver ta mesure de l’aile gauche dans le cahier et dire, pour un nombre au choix, « celui-ci vient du manuel » ou « celui-ci est un choix du modèle ».
+
+<a name="compas-en-virage"></a>
+
+## Action 6 — Le planeur passe au nord. Est-ce que le compas y est déjà ?
+
+[Regarder les 30 secondes du vol](https://github.com/steveprudhomme/sw233-flightgear/releases/download/compas-virages-05/compas-en-virage.mp4). Le film réunit cinq extraits à vitesse normale d’un même essai de 126 s. L’heure inscrite dans le bandeau est celle de la simulation ; ses sauts indiquent les coupes. Le petit cadre agrandit le compas de la même image.
+
+**1. Avant le virage : choisis tes deux nombres.** Le cap magnétique dit où pointe le nez par rapport au nord magnétique. Le cap indiqué est la lecture de l’instrument. Regarde si les deux sont proches quand les ailes sont à plat. Le script attend au moins quatre secondes avec moins de 2° d’écart et moins de 3° de roulis avant de commencer (seuils inclus).
+
+![Avant le virage : le tableau et le bandeau permettent de comparer les deux caps.](https://github.com/steveprudhomme/sw233-flightgear/releases/download/compas-virages-05/avant.jpg)
+
+**2. Au nord : compte par le chemin le plus court.** En allant vers la droite, à 25,2 s, le cap magnétique vient de passer à **000,5°** et le compas affiche encore **317,0°**. Dessine une horloge : de 317 à 360, il reste 43 degrés, puis un demi-degré jusqu’au nez. L’indication est donc en retard d’environ 43,5°. Vers la gauche, à 80,9 s, le nez est à **359,2°** et le compas à **042,6°**. Le signe change. Le compas fonctionne pendant tout le vol : le scénario ne lui impose aucun chiffre.
+
+![Au premier passage du nord : la rose indique encore le secteur nord-ouest.](https://github.com/steveprudhomme/sw233-flightgear/releases/download/compas-virages-05/nord.jpg)
+
+**3. Ailes à plat : mesure le temps de retour.** Sur le graphique, la ligne bleue représente le cap magnétique et la ligne orange l’indication. Au sommet du graphique, −30° signifie 330° ; ce choix évite de tracer un faux saut à 360°. Les pointillés marquent les deux passages du nord. La courbe du milieu montre l’écart ; en bas, tu vois le roulis. Après le virage, la courbe orange dépasse la bleue puis revient : il faut mesurer plusieurs secondes, pas un seul croisement !
+
+![Courbes mesurées : cap, écart signé et roulis pendant les deux virages.](https://github.com/steveprudhomme/sw233-flightgear/releases/download/compas-virages-05/courbes.png)
+
+| Sens | Inclinaison extrême | Plus grand écart en valeur absolue pendant la phase de virage, avec son signe | Premier retour à plat après le pic de roulis | Délai jusqu’au début de 3 s stables |
+|---|---:|---:|---:|---:|
+| Droite, 330° → 030° | +18,0° | −43,6° | 33,5 s | 33,4 s |
+| Gauche, 030° → 330° | −18,0° | +43,6° | 89,1 s | 33,3 s |
+
+Pour refaire le calcul, ouvre le [fichier des 764 relevés](https://github.com/steveprudhomme/sw233-flightgear/releases/download/compas-virages-05/vol.csv). Pour chaque ligne, écart = ((ind − mag + 180) modulo 360) − 180. Après le pic d’inclinaison de chaque virage, démarre le chronomètre au premier relevé avec |roulis| ≤ 3°. Cherche ensuite le premier groupe de relevés consécutifs couvrant au moins 3 s avec **à la fois** |écart| ≤ 2° et |roulis| ≤ 3°. Arrête le chronomètre au début de ce groupe. C’est un critère de comparaison, pas une garantie que l’écart restera ensuite dans cette bande.
+
+![À la fin, les ailes sont revenues à plat vers 330° et les deux lectures sont à nouveau proches.](https://github.com/steveprudhomme/sw233-flightgear/releases/download/compas-virages-05/retour.jpg)
+
+**4. Refaire ton propre vol.** Utilise le paquet animé de la fiche 4 et les outils copiés à l’action 4. Ouvre une session FlightGear dédiée à SW233 à CYJN, avec le décor chargé. Dans les options supplémentaires du lanceur, indique une option par ligne :
+
+```text
+--httpd=18097
+--wind=0@0
+--turbulence=0.0
+--disable-real-weather-fetch
+--geometry=1280x720
+--start-date-gmt=2026:06:21:16:45:00
+```
+
+Une fois la scène visible, exécute depuis ton établi, avec FFmpeg disponible :
+
+```powershell
+.\.venv\Scripts\python.exe -m pip install matplotlib
+.\.venv\Scripts\python.exe tools/record_compass.py build/mon-vol-compas
+.\.venv\Scripts\python.exe tools/compass_report.py build/mon-vol-compas build/mon-rapport-compas
+```
+
+Le premier outil place le planeur près de CYJN à 6 000 ft et 60 kt, fait piloter les gouvernes puis met le vol en pause à la fin du retour. Il enregistre les valeurs, puis demande l’image suivante : elles sont voisines dans le temps, pas synchronisées au pixel près. Le second outil fabrique le film, les trois photos et les courbes. Choisis de nouveaux noms de dossiers si tu recommences. Pour cet essai : FlightGear 2024.1.7, vent relevé 0 kt, vitesse indiquée 59,7 à 62,3 kt, environ six relevés par seconde. Le délai dépend aussi du type d’entrée en virage, de la vitesse et de l’instrument simulé. Aucune de ces mesures n’est une mesure en vol du Schweizer réel.
