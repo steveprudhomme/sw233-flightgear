@@ -1,6 +1,6 @@
 # Fonds documentaire SW233
 
-Les 16 originaux sont conservés dans originaux/ dans la copie locale du projet. Les empreintes permettent de reconnaître les éditions. Les PDF, photos et plans tiers ne sont pas placés sous GPL-3.0-only. Les plans « Short Kit » sont des plans de maquette, utilisables pour les formes générales ; aucune cote de structure grandeur ne leur est attribuée.
+Les 19 fichiers sources sont conservés dans originaux/ dans la copie locale du projet. Les empreintes permettent de reconnaître les éditions. Les PDF, photos et plans tiers ne sont pas placés sous GPL-3.0-only. Les plans « Short Kit » sont des plans de maquette, utilisables pour les formes générales ; aucune cote de structure grandeur ne leur est attribuée.
 
 | Fichier | SHA-256 |
 |---|---|
@@ -20,3 +20,8 @@ Les 16 originaux sont conservés dans originaux/ dans la copie locale du projet.
 | Schweizer-2-33a-weight-balance.gif | 757FE986F3F5B5A84AC5218A62815A7695756C488D888E56F889B03414618C96 |
 | Schweizer-2-33a-preflight.gif | 91EE2D22A772F884C125BBDB99EAA835318330A818F18132C0CD8F238D09AA83 |
 | SGS-2-33-Cockpit.gif | 020E7DDC4F1E3AFDFF8208FD044A68636A2B4A4DBAED73CED76038D5443121C0 |
+| cad7cbeabdd4cfd1821dfed6ce5ff8e1004e03ee.jpeg | E6724108D15849AFBCBC38A05BEFEE8C2945E0ED057F69C63465C511665A703C |
+| cd9b8faf8d04cc13492b0fc7697202a4e05b5556_2_690x370.jpeg | 360DA8CB681A114162E0E7F3C1E411B7059ECC9273425E8FB85DEDD8508DFEA4 |
+| aircadetpackage.zip | E24E35164C0BA2023C30813AC0E19C9887334BCC77543FC7B5B195178B7C20A5 |
+
+[Photos identifiées, liens vers les deux originaux du forum et examen du paquet FSX](cockpits-et-fsx.md).

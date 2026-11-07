@@ -82,3 +82,5 @@ But : à chaque point d’arrêt, l’enfant peut répondre à « où dois-je re
 - Intégrer recette et captures légendées au livre, reconstruire le modèle à partir des fiches et actualiser les liens du projet.
 
 [Recette et six captures natives](docs/construction/06-peinture.md#compas-relief) : de biais on distingue le flanc, les cartes restent dégagées et le trait reste visible de jour et le soir. La profondeur demeure estimée. Prochain essai distinct : indication de cap sur plusieurs orientations connues, puis contrôle au passage du nord.
+
+Pour préparer la bande graduée mobile, voir [l’examen du compas FSX et les photos de cockpits identifiés](docs/references/cockpits-et-fsx.md). Le témoin FSX est une comparaison de fonctionnement, pas une source de cotes du Schweizer.
