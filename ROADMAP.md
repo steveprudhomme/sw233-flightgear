@@ -84,3 +84,9 @@ But : à chaque point d’arrêt, l’enfant peut répondre à « où dois-je re
 [Recette et six captures natives](docs/construction/06-peinture.md#compas-relief) : de biais on distingue le flanc, les cartes restent dégagées et le trait reste visible de jour et le soir. La profondeur demeure estimée. Prochain essai distinct : indication de cap sur plusieurs orientations connues, puis contrôle au passage du nord.
 
 Pour préparer la bande graduée mobile, voir [l’examen du compas FSX et les photos de cockpits identifiés](docs/references/cockpits-et-fsx.md). Le témoin FSX est une comparaison de fonctionnement, pas une source de cotes du Schweizer.
+
+### Séance indication magnétique
+
+1. Identifier la propriété réellement alimentée dans FlightGear ; distinguer l’orientation vraie, le cap magnétique et la lecture de l’instrument.
+2. Construire une rose graduée originale derrière le trait fixe. Contrôler le sens, le centrage et l’occultation des graduations hors fenêtre.
+3. Faire un essai visuel à entrée connue aux quatre points cardinaux et à 359°, 000°, 001° ; distinguer cet essai d’affichage de la validation en vol. Conserver des captures, la méthode et les limites dans le tutoriel.
