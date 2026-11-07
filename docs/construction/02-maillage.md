@@ -295,8 +295,7 @@ for kind, y, z, r in dials:
         vals = list(range(10))
         angles = [i * 36 for i in vals]
     elif kind == "ias":
-        vals = list(range(0, 161, 20))
-        angles = [i * 1.75 - 140 for i in vals]
+        vals, angles = [], []  # Relief mobile ; les chiffres sont peints à la fiche 6.
     else:
         vals = [-2, -1, 0, 1, 2]
         angles = [i * 65 for i in vals]
@@ -308,9 +307,10 @@ for kind, y, z, r in dials:
         needle("alt-centaines", y, z, r * 0.87, "position/altitude-ft", 0.36)
         needle("alt-milliers", y, z, r * 0.47, "position/altitude-ft", 0.036)
     elif kind == "ias":
-        needle(
-            "vitesse-mph", y, z, r * 0.86, "fdm/jsbsim/velocities/vc-kts", 1.75 * 1.150779448, -140
-        )
+        # Aiguille ivoire, pointe longue ; le moyeu sombre tourne avec elle.
+        poly("vitesse-mph", 6, *[(px+.012,y+dy,z+dz) for dy,dz in
+             [(-.0025,-.014),(.0025,-.014),(.0018,.056),(0,.067),(-.0018,.056)]])
+        poly("vitesse-mph", 5, *[(px+.0125,*point(y,z,.004,i*pi/12)) for i in range(24)])
     else:
         needle("vario", y, z, r * 0.85, "velocities/vertical-speed-fps", 65 * 60 / 1000)
 ```

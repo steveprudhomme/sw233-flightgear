@@ -2,6 +2,7 @@
 
 import math
 import random
+import xml.etree.ElementTree as ET
 from pathlib import Path
 
 from PIL import Image, ImageDraw, ImageFont
@@ -77,6 +78,35 @@ def finish_panel(models: Path):
     label(ry+.010,rz-.038,"RADIO",11)
     # Le compas en relief est dans le maillage : ne pas le repeindre ici.
     label(0,.014,"LARGAGE",14)
+    # Read the needle's actual knot/degree table. Never maintain two scales.
+    anims = ET.parse(models/"sw233-model.xml").getroot()
+    table = anims.find("animation[object-name='vitesse-mph']/interpolation")
+    scale = [(float(e.findtext("ind")),float(e.findtext("dep"))) for e in table]
+    def angle(mph):
+        kt = mph * 1609.344 / 1852
+        for (a,lo),(b,hi) in zip(scale,scale[1:]):
+            if kt <= b:
+                return lo+(hi-lo)*(kt-a)/(b-a)
+        return scale[-1][1]
+
+    dial = Image.new("RGB",(512,512),"#23262a")
+    brush = ImageDraw.Draw(dial)
+    def polar(mph, radius):
+        a = math.radians(angle(mph))
+        return (256+radius*math.sin(a),256-radius*math.cos(a))
+
+    # Manual §2.3, 1040 lb configuration, all markings in mph.
+    for low,high,ink in [(38,65,"#318563"),(65,98,"#e8bd43")]:
+        brush.arc((10,10,502,502),angle(low)-90,angle(high)-90,fill=ink,width=12)
+    for v in range(20,161,5):
+        brush.line([polar(v,235),polar(v,202 if v%10==0 else 219)],
+                   fill="#f5efde",width=5 if v%10==0 else 3)
+    brush.line([polar(98,247),polar(98,207)],fill="#e54d43",width=9)
+    for v in range(20,161,20):
+        brush.text(polar(v,171),str(v),anchor="mm",fill="#f5efde",
+                   font=ImageFont.load_default(size=35))
+    brush.text((256,313),"MPH",anchor="mm",fill="#eee9d9",font=ImageFont.load_default(size=26))
+    dial.save(models/"ias.png")
     im.save(models/"panel.png")
     mesh = models/"sw233.ac"
     s = mesh.read_text()
@@ -84,16 +114,20 @@ def finish_panel(models: Path):
     material = s[:s.index(tag)].count('MATERIAL ')
     s = s.replace(tag, 'MATERIAL "panel-finish" rgb 1 1 1 amb .6 .6 .6 emis .2 .2 .2 '
                   'spec .12 .12 .12 shi 12 trans 0\n'+tag, 1)
-    start = s.index('name "tableau"')
-    end = s.index("kids 0",start)
-    lines = s[start:end].splitlines()
-    n = int(lines[1].split()[1])
-    verts = [list(map(float, line.split())) for line in lines[2:2+n]]
-    ri = next(i for i,v in enumerate(lines) if v.startswith("refs "))
-    lines[ri-1] = f"mat {material}"
-    for i in range(ri+1,len(lines)):
-        idx = int(lines[i].split()[0])
-        _,z,left = verts[idx]
-        lines[i] = f"{idx} {(-left+.4)/.8:.6f} {(z+.1)/.4:.6f}"
-    lines.insert(1,'texture "panel.png"')
-    mesh.write_text(s[:start]+"\n".join(lines)+"\n"+s[end:])
+    for name,texture,ymin,zmin,span_y,span_z in [
+        ("tableau","panel.png",-.4,-.1,.8,.4),("ias-fond","ias.png",.095,.065,.15,.15),
+    ]:
+        start = s.index(f'name "{name}"')
+        end = s.index("kids 0",start)
+        lines = s[start:end].splitlines()
+        n = int(lines[1].split()[1])
+        verts = [list(map(float, line.split())) for line in lines[2:2+n]]
+        ri = next(i for i,v in enumerate(lines) if v.startswith("refs "))
+        lines[ri-1] = f"mat {material}"
+        for i in range(ri+1,len(lines)):
+            idx = int(lines[i].split()[0])
+            _,z,left = verts[idx]
+            lines[i] = f"{idx} {(-left-ymin)/span_y:.6f} {(z-zmin)/span_z:.6f}"
+        lines.insert(1,f'texture "{texture}"')
+        s = s[:start]+"\n".join(lines)+"\n"+s[end:]
+    mesh.write_text(s)

@@ -111,3 +111,32 @@ Une fois la scène visible, exécute depuis ton établi, avec FFmpeg disponible 
 ```
 
 Le premier outil place le planeur près de CYJN à 6 000 ft et 60 kt, fait piloter les gouvernes puis met le vol en pause à la fin du retour. Il enregistre les valeurs, puis demande l’image suivante : elles sont voisines dans le temps, pas synchronisées au pixel près. Le second outil fabrique le film, les trois photos et les courbes. Choisis de nouveaux noms de dossiers si tu recommences. Pour cet essai : FlightGear 2024.1.7, vent relevé 0 kt, vitesse indiquée 59,7 à 62,3 kt, environ six relevés par seconde. Le délai dépend aussi du type d’entrée en virage, de la vitesse et de l’instrument simulé. Aucune de ces mesures n’est une mesure en vol du Schweizer réel.
+
+<a name="banc-anemometre"></a>
+
+## Action 7 — Prédire où arrive l’aiguille de vitesse
+
+**Commence avec le même nombre et le même siège.** Voici l’ancienne échelle à 60 kt, puis la nouvelle. Pose ton doigt sur 60 **mph** sur chaque cadran : l’aiguille doit dépasser ce nombre, car l’entrée du banc est 60 **kt**. Le témoin utilise une copie temporaire de l’ancienne animation dont seule la propriété d’entrée est remplacée par une valeur de banc ; l’échelle et le facteur d’origine sont intacts. Les deux captures ont le même cadrage.
+
+![Ancienne orientation : à 60 kt, l’aiguille pointe entre les anciens traits de 60 et 80 mph.](https://github.com/steveprudhomme/sw233-flightgear/releases/download/anemometre-06/ias-avant-60.jpg)
+
+![Nouvelle orientation : même entrée, lecture proche de 69 mph, dans le jaune.](https://github.com/steveprudhomme/sw233-flightgear/releases/download/anemometre-06/ias-60.jpg)
+
+**Refais le test dans une session dédiée.** Charge ta copie reconstruite avec le décor de CYJN et l’option de lancement *--httpd=18097*. Attends que le tableau soit visible. Depuis la racine de l’atelier, après avoir copié les outils comme à l’action 4 :
+
+```powershell
+.\.venv\Scripts\python.exe tools/airspeed_bench.py build/mes-vitesses
+```
+
+Le banc règle momentanément *instrumentation/airspeed-indicator/serviceable* à faux pour que le calcul de pression ne réécrive pas la vitesse pendant une capture. Il impose chaque entrée à *indicated-speed-kt*, la relit avant et après la photo, puis restaure les réglages. Aucun de ces nombres n’est une consigne pour faire voler le planeur à cette vitesse.
+
+| Valeur imposée | Prédiction au crayon | Ce que tu dois voir |
+|---:|---:|---|
+| 40 kt | 46,0 mph | Entre 40 et 50, dans le vert. |
+| 60 kt | 69,0 mph | Près du trait de 70, dans le jaune. |
+| 85 kt | 97,8 mph | Pratiquement sur le rouge. La photo ne distingue pas deux dixièmes de mph. |
+| 120 kt | 138,1 mph | Près de 140 ; contrôle de la partie haute du cadran au banc seulement. |
+
+![Quatre captures de FlightGear, avec l’entrée en nœuds et la conversion attendue sous chaque vue.](https://github.com/steveprudhomme/sw233-flightgear/releases/download/anemometre-06/quatre-lectures.jpg)
+
+**À toi.** Cache les légendes ; lis la zone et les traits avant de vérifier le nombre. Si toutes les lectures sont fausses du même rapport, vérifie les unités. Si seules certaines positions sont fausses, vérifie les deux points voisins dans la table et le sens de la texture. Les [entrées relues avant et après capture](https://github.com/steveprudhomme/sw233-flightgear/releases/download/anemometre-06/vitesses.csv) sont exactes ; les lectures visuelles restent approximatives. Ce contrôle de FlightGear 2024.1.7 valide l’affichage, pas le circuit Pitot-statique du vrai planeur.

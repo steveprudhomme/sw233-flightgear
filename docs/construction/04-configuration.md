@@ -123,16 +123,42 @@ La petite aiguille fait le tour en 10 000 ft : 360 / 10 000 = 0,036 degré par p
 
 ## Vitesse
 
-La propriété est en nœuds, le cadran en mph. Un nœud vaut environ 1,150779 mph. Le dessin réserve 280° à 160 mph : 280 / 160 × 1,150779 ≈ 2,013864° par nœud. Le zéro est dessiné à −140°. À 60 kt, attends-toi à environ 69 mph.
+<a name="anemometre"></a>
+
+**1. Mesure d’abord le dessin.** Ouvre la photo de C-FYLP de 690 × 517 pixels (nom commençant par *5d81c6bf* dans [l’inventaire](../references/inventaire.md)). Dans Paint, découpe le rectangle allant de (428,167) à (533,273), bord droit et bord bas exclus ; il fait 105 × 106 pixels. Affiche-le six fois plus grand, sans tourner l’image. Sur ce gabarit de 630 × 636 pixels, le pivot est vers **(328,327)**. À partir de là, 12 heures vaut 0°, 3 heures vaut 90° et les angles augmentent dans le sens des aiguilles d’une montre. Pour chaque nombre, pointe le **trait** qui lui correspond, pas le centre du chiffre.
+
+| mph | Point (colonne, ligne) dans l’agrandissement | Angle retenu |
+|---:|---:|---:|
+| 20 | 420, 116 | 24° |
+| 40 | 523, 200 | 57° |
+| 60 | 552, 373 | 102° |
+| 80 | 413, 521 | 156° |
+| 100 | 238, 530 | 204° |
+| 120 | 116, 411 | 248° |
+| 140 | 125, 234 | 295° |
+| 160 | 263, 122 | 342° |
+
+Tu peux tracer les rayons sur du papier calque et utiliser un rapporteur. Le calcul équivalent est *atan2(colonne − 328, 327 − ligne)*, en degrés, ramené entre 0 et 360. Les points sont approximatifs : déplacer ta marque de deux pixels sur la petite photo change l’angle d’environ 3° ; l’agrandissement ne corrige pas la perspective. Le repos à **5° pour 0 mph** est une hypothèse visuelle ; entre le repos et le premier nombre, nous ne connaissons pas la courbe réelle.
+
+**2. Change d’unité une seule fois.** FlightGear fournit maintenant la **vitesse indiquée** de son anémomètre, en nœuds. L’ancienne animation utilisait la vitesse calibrée du modèle de vol. La table ci-dessous attend des nœuds dans *ind* et rend des degrés dans *dep*. Pour préparer chaque ligne : nœuds = mph × 1609,344 / 1852. Pour prédire ce que tu vas lire, fais l’inverse : 60 kt × 1852 / 1609,344 ≈ **69,05 mph**. Cette valeur se trouve à 9,05/20 du trajet entre les traits de 60 et 80 mph ; l’angle attendu est donc 102 + (156 − 102) × 9,05/20 ≈ **126,4°**. Recopie la table une seule fois dans le modèle : la [recette de peinture](06-peinture.md#peinture-ias) la relira pour placer les traits.
 
 <!-- atelier-fichier: src/SW233/Models/sw233-model.xml -->
 ```xml
   <animation>
     <type>rotate</type>
     <object-name>vitesse-mph</object-name>
-    <property>fdm/jsbsim/velocities/vc-kts</property>
-    <factor>2.013864034</factor>
-    <offset-deg>-140</offset-deg>
+    <property>instrumentation/airspeed-indicator/indicated-speed-kt</property>
+    <interpolation>
+      <entry><ind>0.000000</ind><dep>5</dep></entry>
+      <entry><ind>17.379525</ind><dep>24</dep></entry>
+      <entry><ind>34.759050</ind><dep>57</dep></entry>
+      <entry><ind>52.138575</ind><dep>102</dep></entry>
+      <entry><ind>69.518099</ind><dep>156</dep></entry>
+      <entry><ind>86.897624</ind><dep>204</dep></entry>
+      <entry><ind>104.277149</ind><dep>248</dep></entry>
+      <entry><ind>121.656674</ind><dep>295</dep></entry>
+      <entry><ind>139.036199</ind><dep>342</dep></entry>
+    </interpolation>
     <center>
       <x-m>0.882</x-m>
       <y-m>0.17</y-m>

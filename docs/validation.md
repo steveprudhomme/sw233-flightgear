@@ -81,3 +81,5 @@ python tools/annotate.py SW233-CYJN-angles.mp4 fgfs.log SW233-CYJN-v2.mp4
 Le zoom est un recadrage de l’enregistrement natif. Les angles des animations et la réponse de la ficelle sont des approximations de simulation, pas des mesures sur un 2-33 réel.
 
 [Essai dynamique du compas à CYJN : protocole, film, trace et résultats](construction/07-essais.md#compas-en-virage). Les commandes agissent sur les gouvernes ; la rose suit le compas en service pendant les deux virages.
+
+[Banc de l’anémomètre](construction/07-essais.md#banc-anemometre) : 40, 60, 85 et 120 kt, sans modifier les performances du planeur.

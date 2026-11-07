@@ -37,9 +37,18 @@
   <animation>
     <type>rotate</type>
     <object-name>vitesse-mph</object-name>
-    <property>fdm/jsbsim/velocities/vc-kts</property>
-    <factor>2.013864034</factor>
-    <offset-deg>-140</offset-deg>
+    <property>instrumentation/airspeed-indicator/indicated-speed-kt</property>
+    <interpolation>
+      <entry><ind>0.000000</ind><dep>5</dep></entry>
+      <entry><ind>17.379525</ind><dep>24</dep></entry>
+      <entry><ind>34.759050</ind><dep>57</dep></entry>
+      <entry><ind>52.138575</ind><dep>102</dep></entry>
+      <entry><ind>69.518099</ind><dep>156</dep></entry>
+      <entry><ind>86.897624</ind><dep>204</dep></entry>
+      <entry><ind>104.277149</ind><dep>248</dep></entry>
+      <entry><ind>121.656674</ind><dep>295</dep></entry>
+      <entry><ind>139.036199</ind><dep>342</dep></entry>
+    </interpolation>
     <center>
       <x-m>0.882</x-m>
       <y-m>0.17</y-m>

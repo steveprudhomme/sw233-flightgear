@@ -14,6 +14,7 @@ Crée une image de 1536 × 768 pixels. Le grain est une suite de petits gris ; l
 
 import math
 import random
+import xml.etree.ElementTree as ET
 from pathlib import Path
 
 from PIL import Image, ImageDraw, ImageFont
@@ -123,10 +124,47 @@ Sur l’image C-FYLP, pointe le milieu des cartes vers (282,176), (413,181), (28
 
 ## E · Colle la peau sans coller les aiguilles
 
-Écris le PNG dans la copie à installer. Dans le maillage, ajoute une matière claire : une matière noire multiplierait et assombrirait la peinture. Parcours seulement les références de la face tableau. U va de gauche à droite, V va du bas vers le haut, contrairement aux lignes de l’image. Au centre du gabarit, U = V = 0,5. Les trois derniers nombres lus par Python sont les coordonnées AC3D : la variable left est l’opposé de y. N’applique cette fonction qu’une fois à une copie fraîche.
+Écris le PNG dans la copie à installer. Dans le maillage, ajoute une matière claire : une matière noire multiplierait et assombrirait la peinture. Traite séparément les faces du tableau et de l’anémomètre. U va de gauche à droite, V va du bas vers le haut, contrairement aux lignes de l’image. Au centre du gabarit, U = V = 0,5. Les trois derniers nombres lus par Python sont les coordonnées AC3D : la variable left est l’opposé de y. N’applique cette fonction qu’une fois à une copie fraîche.
+
+<a name="peinture-ias"></a>
+
+**Peins la face de l’anémomètre.** Prépare un carré de 512 × 512 pixels et place le pivot en (256,256). Lis la table de la fiche 4. Pour chaque vitesse, trouve les deux lignes qui l’encadrent et partage le trajet en proportion. Dessine un trait tous les 5 mph de 20 à 160, un trait long tous les 10 et un nombre tous les 20. Les lettres MPH restent fixes. Le moyeu et l’aiguille ivoire, eux, ont été construits dans la fiche 2 : ne les peins pas.
+
+**Choisis les couleurs sur la bonne ligne du manuel.** Ouvre le *FAA Approved Flight Manual* du [fonds local](../references/inventaire.md), §2.3, page imprimée 10 (page 6 du PDF). Pour la configuration **1 040 lb** reproduite ici : arc vert **38–65 mph**, jaune **65–98 mph**, trait rouge **98 mph**. La colonne 1 080 lb contient d’autres valeurs : il s’agit d’une autre configuration, pas de couleurs à changer selon le poids instantané du planeur. La photo donne l’allure, le manuel donne les bornes. Nos couleurs sont dessinées, pas prélevées sur une peinture d’usine.
+
+Colle la nouvelle texture *ias.png* uniquement sur *ias-fond*. Son diamètre dans notre maquette est de 0,15 m : le bord gauche est à 0,17 − 0,075 = 0,095 m. Le bas est à 0,14 − 0,075 = 0,065 m. Ces deux nombres expliquent les coordonnées de la deuxième ligne de la boucle finale. Vérifie que les valeurs augmentent dans le sens horaire, puis [essaie les quatre entrées](07-essais.md#banc-anemometre).
 
 <!-- atelier-fichier: tools/panel.py -->
 ```python
+    # Read the needle's actual knot/degree table. Never maintain two scales.
+    anims = ET.parse(models/"sw233-model.xml").getroot()
+    table = anims.find("animation[object-name='vitesse-mph']/interpolation")
+    scale = [(float(e.findtext("ind")),float(e.findtext("dep"))) for e in table]
+    def angle(mph):
+        kt = mph * 1609.344 / 1852
+        for (a,lo),(b,hi) in zip(scale,scale[1:]):
+            if kt <= b:
+                return lo+(hi-lo)*(kt-a)/(b-a)
+        return scale[-1][1]
+
+    dial = Image.new("RGB",(512,512),"#23262a")
+    brush = ImageDraw.Draw(dial)
+    def polar(mph, radius):
+        a = math.radians(angle(mph))
+        return (256+radius*math.sin(a),256-radius*math.cos(a))
+
+    # Manual §2.3, 1040 lb configuration, all markings in mph.
+    for low,high,ink in [(38,65,"#318563"),(65,98,"#e8bd43")]:
+        brush.arc((10,10,502,502),angle(low)-90,angle(high)-90,fill=ink,width=12)
+    for v in range(20,161,5):
+        brush.line([polar(v,235),polar(v,202 if v%10==0 else 219)],
+                   fill="#f5efde",width=5 if v%10==0 else 3)
+    brush.line([polar(98,247),polar(98,207)],fill="#e54d43",width=9)
+    for v in range(20,161,20):
+        brush.text(polar(v,171),str(v),anchor="mm",fill="#f5efde",
+                   font=ImageFont.load_default(size=35))
+    brush.text((256,313),"MPH",anchor="mm",fill="#eee9d9",font=ImageFont.load_default(size=26))
+    dial.save(models/"ias.png")
     im.save(models/"panel.png")
     mesh = models/"sw233.ac"
     s = mesh.read_text()
@@ -134,19 +172,23 @@ Sur l’image C-FYLP, pointe le milieu des cartes vers (282,176), (413,181), (28
     material = s[:s.index(tag)].count('MATERIAL ')
     s = s.replace(tag, 'MATERIAL "panel-finish" rgb 1 1 1 amb .6 .6 .6 emis .2 .2 .2 '
                   'spec .12 .12 .12 shi 12 trans 0\n'+tag, 1)
-    start = s.index('name "tableau"')
-    end = s.index("kids 0",start)
-    lines = s[start:end].splitlines()
-    n = int(lines[1].split()[1])
-    verts = [list(map(float, line.split())) for line in lines[2:2+n]]
-    ri = next(i for i,v in enumerate(lines) if v.startswith("refs "))
-    lines[ri-1] = f"mat {material}"
-    for i in range(ri+1,len(lines)):
-        idx = int(lines[i].split()[0])
-        _,z,left = verts[idx]
-        lines[i] = f"{idx} {(-left+.4)/.8:.6f} {(z+.1)/.4:.6f}"
-    lines.insert(1,'texture "panel.png"')
-    mesh.write_text(s[:start]+"\n".join(lines)+"\n"+s[end:])
+    for name,texture,ymin,zmin,span_y,span_z in [
+        ("tableau","panel.png",-.4,-.1,.8,.4),("ias-fond","ias.png",.095,.065,.15,.15),
+    ]:
+        start = s.index(f'name "{name}"')
+        end = s.index("kids 0",start)
+        lines = s[start:end].splitlines()
+        n = int(lines[1].split()[1])
+        verts = [list(map(float, line.split())) for line in lines[2:2+n]]
+        ri = next(i for i,v in enumerate(lines) if v.startswith("refs "))
+        lines[ri-1] = f"mat {material}"
+        for i in range(ri+1,len(lines)):
+            idx = int(lines[i].split()[0])
+            _,z,left = verts[idx]
+            lines[i] = f"{idx} {(-left-ymin)/span_y:.6f} {(z-zmin)/span_z:.6f}"
+        lines.insert(1,f'texture "{texture}"')
+        s = s[:start]+"\n".join(lines)+"\n"+s[end:]
+    mesh.write_text(s)
 ```
 
 **Contrôle :** la fiche 7 appelle `finish_panel` sur le paquet. Dans la copie peinte, ouvre *Models/panel.png* avec Photos : la bouche d’air doit être en haut et les lettres doivent être à l’endroit. Puis cherche `texture "panel.png"` dans la copie de *sw233.ac*. Si le tableau est beau mais l’aiguille immobile, c’est l’animation de la fiche 4 qu’il faut contrôler, pas cette peinture.

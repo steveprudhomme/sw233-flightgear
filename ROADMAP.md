@@ -108,3 +108,5 @@ Pour préparer la bande graduée mobile, voir [l’examen du compas FSX et les p
 2. Comparer les arcs visibles avec les limites explicitement documentées pour la variante et l’unité. Distinguer limite d’utilisation, marquage photographié et borne non vérifiée ; ne pas compléter un arc par supposition.
 3. Tester la conversion nœuds → mph indépendamment de la position des graduations. Si l’échelle photographiée est irrégulière, utiliser la même correspondance par intervalles pour la peinture et la rotation de l’aiguille.
 4. Essayer au moins trois vitesses réparties sur le cadran dans FlightGear ; comparer avant/après au même cadrage et à la même vitesse. Publier captures, table de mesures et procédure dans le tutoriel.
+
+**Séance réalisée :** [relevé des angles de C-FYLP](docs/construction/04-configuration.md#anemometre), marquages du manuel §2.3 pour 1 040 lb et [quatre entrées vérifiées dans FlightGear](docs/construction/07-essais.md#banc-anemometre). Restent les erreurs de pression et la comparaison à une photographie parfaitement frontale.
