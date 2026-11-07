@@ -101,3 +101,10 @@ Pour préparer la bande graduée mobile, voir [l’examen du compas FSX et les p
 - Publier film natif, courbes, trois images légendées et données de cette exécution. Séparer les observations du simulateur de toute affirmation sur l’appareil réel.
 
 **Essai réalisé :** [126 s de vol à CYJN, film et relevés](docs/construction/07-essais.md#compas-en-virage). Écart extrême de −43,6° à droite et +43,6° à gauche. Une deuxième inclinaison et des mesures indépendantes seraient nécessaires avant de généraliser.
+
+### Anémomètre C-FYLP : protocole avant modification
+
+1. Garder le cadran initial et une capture témoin à vitesse connue. Identifier sur la photo le pivot, l’axe vertical et les graduations lisibles ; relever les points en pixels, les angles et leur incertitude.
+2. Comparer les arcs visibles avec les limites explicitement documentées pour la variante et l’unité. Distinguer limite d’utilisation, marquage photographié et borne non vérifiée ; ne pas compléter un arc par supposition.
+3. Tester la conversion nœuds → mph indépendamment de la position des graduations. Si l’échelle photographiée est irrégulière, utiliser la même correspondance par intervalles pour la peinture et la rotation de l’aiguille.
+4. Essayer au moins trois vitesses réparties sur le cadran dans FlightGear ; comparer avant/après au même cadrage et à la même vitesse. Publier captures, table de mesures et procédure dans le tutoriel.
