@@ -92,3 +92,7 @@ Les positions historiques 43/85 in et la limite 0,30 rad sont donc des paramètr
 ## Repères : résultat AUD-01a
 
 La [fiche 9](construction/09-reperes.md) distingue les stations du manuel, le repère structural hérité et le dessin. Avec le bord d’attaque dessiné à 1,99 m, la projection longitudinale du datum vaut 0,304964 m ; c’est une correspondance de dessin conditionnelle, pas une cote mesurée sur C-FYLP. La référence historique des coefficients de moment reste inconnue. Aucun coefficient n’est transféré au quart de corde sans transformation du moment. Les sources techniques et la portée des quatre expériences sont indiquées dans la fiche.
+
+## Actualisation de la profondeur
+
+La limite historique 0,30 rad décrite plus haut est remplacée par ±23° nominaux : manuel FAA, PDF 21 / page 41, §8.3.4, configuration 1 040 lb. La charnière de dessin x = 7,35 m, z = 0,11 m est une hypothèse, sans mesure constructeur. Voir la [fiche 10](construction/10-profondeur.md).

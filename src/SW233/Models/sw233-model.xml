@@ -181,4 +181,20 @@
       </binding>
     </hovered>
   </animation>
+  <animation>
+    <type>rotate</type>
+    <object-name>profondeur-1</object-name>
+    <property>fdm/jsbsim/fcs/elevator-pos-rad</property>
+    <factor>57.29577951308232</factor>
+    <center><x-m>7.35</x-m><y-m>0</y-m><z-m>0.11</z-m></center>
+    <axis><x>0</x><y>1</y><z>0</z></axis>
+  </animation>
+  <animation>
+    <type>rotate</type>
+    <object-name>profondeur1</object-name>
+    <property>fdm/jsbsim/fcs/elevator-pos-rad</property>
+    <factor>57.29577951308232</factor>
+    <center><x-m>7.35</x-m><y-m>0</y-m><z-m>0.11</z-m></center>
+    <axis><x>0</x><y>1</y><z>0</z></axis>
+  </animation>
 </PropertyList>

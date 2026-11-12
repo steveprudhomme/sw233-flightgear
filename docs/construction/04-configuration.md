@@ -373,6 +373,22 @@ Ajoute ce dernier bloc avant la fermeture finale. Le bouton utilise *knob* et *s
       </binding>
     </hovered>
   </animation>
+  <animation>
+    <type>rotate</type>
+    <object-name>profondeur-1</object-name>
+    <property>fdm/jsbsim/fcs/elevator-pos-rad</property>
+    <factor>57.29577951308232</factor>
+    <center><x-m>7.35</x-m><y-m>0</y-m><z-m>0.11</z-m></center>
+    <axis><x>0</x><y>1</y><z>0</z></axis>
+  </animation>
+  <animation>
+    <type>rotate</type>
+    <object-name>profondeur1</object-name>
+    <property>fdm/jsbsim/fcs/elevator-pos-rad</property>
+    <factor>57.29577951308232</factor>
+    <center><x-m>7.35</x-m><y-m>0</y-m><z-m>0.11</z-m></center>
+    <axis><x>0</x><y>1</y><z>0</z></axis>
+  </animation>
 </PropertyList>
 ```
 
@@ -383,3 +399,6 @@ Ajoute ce dernier bloc avant la fermeture finale. Le bouton utilise *knob* et *s
 ![Captures natives : est, sud, ouest puis trois positions de la rose au passage du nord.](https://github.com/steveprudhomme/sw233-flightgear/releases/download/compas-magnetique-04/SW233-compas-magnetique.png)
 
 Les six vignettes sont des recadrages de FlightGear 2024.1.7 à CYJN. Pour les retrouver, reprends la caméra de face de la fiche 6, avec une inclinaison de −26° et un champ de 17°. Les valeurs affichées au-dessus des images sont les entrées d’essai. En fonctionnement normal, un relevé a donné 4,35° vrais, 17,64° magnétiques et 14,07° indiqués. C’est un instant du simulateur, pas un étalonnage d’un compas réel. Ce banc vérifie la rose et son sens ; les erreurs en virage restent à évaluer.
+
+
+**Profondeur :** les deux objets suivent la déflexion effective JSBSim, en radians. Le facteur 180/pi convertit en degrés ; autour de +y, une déflexion positive abaisse le bord de fuite. Charnière (7,35 ; 0 ; 0,11) choisie pour cette maquette. [Banc et limites](10-profondeur.md).

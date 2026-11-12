@@ -1,6 +1,6 @@
 # AUD-01b — protocole de réalisation
 
-Statut : préparé le 12 novembre 2026, avant modification. Suivi : [ROADMAP](../../ROADMAP.md).
+Statut : réalisé le 12 novembre 2026 ; protocole initial commité avant modification (`a1b9c2c`). Suivi : [ROADMAP](../../ROADMAP.md).
 
 1. Conserver une copie du paquet et les résultats initiaux à 970 lb, 50 kt, compensation nulle. Vérifier les ±23° du manuel 1 040 lb déjà relevés (PDF 21/papier 41).
 2. Remplacer uniquement le gain et les bornes de profondeur 0,30 rad par 23 × pi / 180. Ne changer aucun coefficient aérodynamique, masse ni point de référence.
@@ -12,3 +12,5 @@ Statut : préparé le 12 novembre 2026, avant modification. Suivi : [ROADMAP](..
 8. Mettre à jour tutoriel illustré, validation, sources, historique et statut du jalon. Vérifier tests et reconstruction, puis faire le commit de réalisation et publier les preuves.
 
 Critère de réussite : butées effectives ±23° à la précision numérique, sens cohérent de l'animation, stabilisateur immobile, même équilibre physique à 50 kt (à tolérance publiée), résultats et limites accessibles. La position de charnière et le FDM restent approximatifs ; les limites de centrage ne sont pas validées par ce lot.
+
+Résultats : [fiche 10 illustrée](../construction/10-profondeur.md), 15 tests réussis, contrôle natif des trois positions et équilibre physique conservé à 50 kt.

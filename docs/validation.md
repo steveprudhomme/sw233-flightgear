@@ -98,3 +98,7 @@ Le menu natif affiche masse/CG mais aucune ligne éditable d'occupant. Le banc m
 ## AUD-01a : invariance et transport du moment
 
 [Fiche 9](construction/09-reperes.md), 12 novembre 2026 : les 11 positions structurales translatées de +10 in conservent exactement le résultat longitudinal mesuré. AERORP avancé seul de 1 in change la commande de −0,955170809 à −0,897666390 ; le transport du moment propre restaure la commande initiale, avec un écart de 0,000294 ft après 60 s. Essais autonomes à 970 lb/50 kt ; formule de transport expérimentale limitée au vol symétrique. La capture native utilise FDM null et ne valide pas un vol. Le datum historique et la pesée de C-FYLP restent non identifiés ; FDM distribué inchangé.
+
+## Profondeur ±23° — AUD-01b
+
+Les valeurs de commande normalisée des essais antérieurs correspondent au gain historique de 0,30 rad. Le nouveau gain est 23° ; déflexion physique et pente à 970 lb / 50 kt sont conservées. Trois positions ont été capturées dans FlightGear au sol. Voir la [fiche 10](construction/10-profondeur.md) pour les données, images et limites.

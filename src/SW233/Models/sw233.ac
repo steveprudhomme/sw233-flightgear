@@ -12,7 +12,7 @@ MATERIAL "inox" rgb 0.62 0.68 0.69 amb 0.3 0.3 0.3 emis 0 0 0 spec .15 .15 .15 s
 MATERIAL "laine" rgb 0.85 0.085 0.045 amb 0.3 0.3 0.3 emis .7 .04 .02 spec .15 .15 .15 shi 12 trans 0
 MATERIAL "poignee-bordeaux" rgb 0.44 0.105 0.078 amb 0.3 0.3 0.3 emis 0 0 0 spec .15 .15 .15 shi 12 trans 0
 OBJECT world
-kids 39
+kids 41
 OBJECT poly
 name "fuselage"
 numvert 360
@@ -3866,23 +3866,39 @@ refs 4
 kids 0
 OBJECT poly
 name "empennage-1"
-numvert 6
-6.85000 0.10000 0.00000
+numvert 5
+6.85000 0.11000 0.00000
 6.87000 0.11000 1.68000
 7.07000 0.11000 1.93000
-7.50000 0.11000 1.93000
-7.79000 0.11000 1.67000
-7.79000 0.10000 0.00000
+7.35000 0.11000 1.93000
+7.35000 0.11000 -0.00000
 numsurf 1
 SURF 0x30
 mat 1
-refs 6
+refs 5
 0 0 0
 1 0 0
 2 0 0
 3 0 0
 4 0 0
-5 0 0
+kids 0
+OBJECT poly
+name "profondeur-1"
+numvert 5
+7.35000 0.11000 1.93000
+7.50000 0.11000 1.93000
+7.79000 0.11000 1.67000
+7.79000 0.11000 0.00000
+7.35000 0.11000 -0.00000
+numsurf 1
+SURF 0x30
+mat 1
+refs 5
+0 0 0
+1 0 0
+2 0 0
+3 0 0
+4 0 0
 kids 0
 OBJECT poly
 name "aile1"
@@ -4248,23 +4264,39 @@ refs 4
 kids 0
 OBJECT poly
 name "empennage1"
-numvert 6
-6.85000 0.10000 0.00000
+numvert 5
+6.85000 0.11000 0.00000
 6.87000 0.11000 -1.68000
 7.07000 0.11000 -1.93000
-7.50000 0.11000 -1.93000
-7.79000 0.11000 -1.67000
-7.79000 0.10000 0.00000
+7.35000 0.11000 -1.93000
+7.35000 0.11000 -0.00000
 numsurf 1
 SURF 0x30
 mat 1
-refs 6
+refs 5
 0 0 0
 1 0 0
 2 0 0
 3 0 0
 4 0 0
-5 0 0
+kids 0
+OBJECT poly
+name "profondeur1"
+numvert 5
+7.35000 0.11000 -1.93000
+7.50000 0.11000 -1.93000
+7.79000 0.11000 -1.67000
+7.79000 0.11000 0.00000
+7.35000 0.11000 -0.00000
+numsurf 1
+SURF 0x30
+mat 1
+refs 5
+0 0 0
+1 0 0
+2 0 0
+3 0 0
+4 0 0
 kids 0
 OBJECT poly
 name "derive"

@@ -50,7 +50,7 @@ class FlightDynamicsTests(unittest.TestCase):
             fdm["fcs/aileron-cmd-norm"] = demand
             fdm["fcs/speedbrake-cmd-norm"] = demand
             fdm.run_ic()
-            self.assertLessEqual(abs(fdm["fcs/elevator-pos-rad"]), 0.3)
+            self.assertLessEqual(abs(fdm["fcs/elevator-pos-rad"]), math.radians(23))
             self.assertLessEqual(abs(fdm["fcs/left-aileron-pos-rad"]), 0.35)
             self.assertTrue(0 <= fdm["fcs/speedbrake-pos-norm"] <= 1)
 

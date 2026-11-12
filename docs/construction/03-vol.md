@@ -103,13 +103,15 @@ for name,inputs,lo,hi,out in [
     clip=sub(n,'clipto'); sub(clip,'min',lo);sub(clip,'max',hi)
     sub(n,'output',out)
 for name,inp,gain,out in [
-    ('pitch-surface','fcs/sw233-pitch',.3,'fcs/elevator-pos-rad'),
+    ('pitch-surface','fcs/sw233-pitch',0.4014257279586958,'fcs/elevator-pos-rad'),
     ('roll-surface','fcs/aileron-cmd-norm',.35,'fcs/left-aileron-pos-rad'),
     ('opposite-roll-surface','fcs/aileron-cmd-norm',-.35,'fcs/right-aileron-pos-rad'),
     ('yaw-surface','fcs/rudder-cmd-norm',.35,'fcs/rudder-pos-rad')]:
     n=sub(ch,'pure_gain',name=name);sub(n,'input',inp);sub(n,'gain',gain)
     clip=sub(n,'clipto');sub(clip,'min',-abs(gain));sub(clip,'max',abs(gain));sub(n,'output',out)
 ```
+
+La profondeur utilise maintenant **23 × pi / 180 = 0,4014257279586958 rad** à pleine commande, conformément au débattement nominal du manuel pour 1 040 lb (PDF 21/papier 41). Les coefficients par radian ne changent pas. Voir la [comparaison avant/après](10-profondeur.md).
 
 ## E · Calcule ce que fait l’air
 

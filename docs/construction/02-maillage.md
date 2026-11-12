@@ -167,8 +167,23 @@ for side in (-1, 1):
         (7.79, 1.67 * side, 0.11),
         (7.79, 0, 0.1),
     ]
-    poly("empennage" + s, 1, *p)
+    # Charnière de maquette : x=7,35 m, z=0,11 m (non mesurée).
+    p = [(x, y, .11) for x, y, z in p]
+    def coupe(points, mobile):
+        resultat = []
+        for a, b in zip(points, points[1:] + points[:1]):
+            dedans_a = a[0] >= 7.35 if mobile else a[0] <= 7.35
+            dedans_b = b[0] >= 7.35 if mobile else b[0] <= 7.35
+            if dedans_a: resultat.append(a)
+            if dedans_a != dedans_b:
+                t = (7.35-a[0])/(b[0]-a[0])
+                resultat.append((7.35, a[1]+t*(b[1]-a[1]), .11))
+        return resultat
+    poly("empennage" + s, 1, *coupe(p, False))
+    poly("profondeur" + s, 1, *coupe(p, True))
 ```
+
+Le contour horizontal est découpé à **x=7,35 m** : partie avant fixe, partie arrière mobile. On place ce contour dans le plan z=0,11 m pour obtenir une charnière droite. Ces deux valeurs sont des choix de maquette, pas des cotes constructeur. La [fiche 10](10-profondeur.md) explique les intersections et les essais.
 
 ## F · Termine la queue, le train et les commandes
 
@@ -499,4 +514,4 @@ for n, faces in parts.items():
 Get-Content src/SW233/Models/sw233.ac -TotalCount 16
 ```
 
-**Contrôle :** pour la forme de départ du livre, tu dois lire *AC3Db*, douze matériaux, *OBJECT world* puis *kids 39*. Cherche les deux noms *aerofrein-1* et *aerofrein1*. Si le fichier reste vide, vérifie que le dernier bloc a été enregistré. Si les sièges sont au-dessus du toit, vérifie surtout l’ordre (x,z,−y) ; ne déplace pas les sièges pour masquer une erreur de repère.
+**Contrôle :** pour la forme de départ du livre, tu dois lire *AC3Db*, douze matériaux, *OBJECT world* puis *kids 41*. Cherche les deux noms *aerofrein-1* et *aerofrein1*. Si le fichier reste vide, vérifie que le dernier bloc a été enregistré. Si les sièges sont au-dessus du toit, vérifie surtout l’ordre (x,z,−y) ; ne déplace pas les sièges pour masquer une erreur de repère.

@@ -19,6 +19,7 @@ class PackageTests(unittest.TestCase):
         self.assertEqual({a.findtext("object-name") for a in animations}, {
             "alt-centaines", "alt-milliers", "vitesse-mph", "vario", "fil-de-laine",
             "aerofrein-1", "aerofrein1", "poignee-frein", "compas-rose", "alt-calage",
+            "profondeur-1", "profondeur1",
         })
         for animation in animations:
             self.assertIn(f'name "{animation.findtext("object-name")}"', mesh)

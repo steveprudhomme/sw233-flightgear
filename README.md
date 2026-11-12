@@ -90,3 +90,7 @@ leurs limites sont explicites ; une revue humaine aéronautique reste nécessair
 [Diagnostic du centrage et de la réserve de profondeur](docs/construction/08-centrage.md) : calculs indépendants, captures FlightGear et limites du modèle historique.
 
 [Repères et point de référence aérodynamique](docs/construction/09-reperes.md) : quatre expériences distinguent un changement de coordonnées d’une modification physique.
+
+### Dernier contrôle des commandes
+
+La [fiche 10 du tutoriel](docs/construction/10-profondeur.md) détaille la profondeur à ±23°, sa construction et les captures dans FlightGear. Consulter la [feuille de route](ROADMAP.md) pour les prochains lots et leurs critères de réussite.

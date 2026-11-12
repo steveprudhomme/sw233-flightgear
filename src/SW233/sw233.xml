@@ -142,10 +142,10 @@
             </summer>
             <pure_gain name="pitch-surface">
                 <input>fcs/sw233-pitch</input>
-                <gain>0.3</gain>
+                <gain>0.4014257279586958</gain>
                 <clipto>
-                    <min>-0.3</min>
-                    <max>0.3</max>
+                    <min>-0.4014257279586958</min>
+                    <max>0.4014257279586958</max>
                 </clipto>
                 <output>fcs/elevator-pos-rad</output>
             </pure_gain>

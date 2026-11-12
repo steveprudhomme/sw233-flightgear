@@ -4,6 +4,9 @@
 
 ### Changements
 
+- ROADMAP réorganisé en vision, état, jalons et critères ; anciens protocoles archivés.
+- Profondeur portée à ±23° (manuel 1 040 lb), deux gouvernes animées selon la déflexion effective ; 15 tests et fiche 10 illustrée. Solveur d’équilibre rendu plus précis, sans changement de coefficients.
+
 - Altimètre : cadran peint, deux aiguilles différenciées reliées à l’altitude indiquée et bouton de calage. Cinq altitudes et trois pressions illustrées.
 
 - Variomètre : zéro à gauche, échelle C-FYLP en centaines de ft/min et aiguille reliée à l’instrument FlightGear. Banc illustré et vol comparatif avec aérofreins.

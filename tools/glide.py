@@ -47,7 +47,7 @@ def trim_glide(fdm, speed=50.0, altitude=5000.0):
     state = np.array([4.0, -4.0, -0.8])
     for _ in range(15):
         error = residual(state)
-        if np.max(np.abs(error)) < 1e-6:
+        if np.max(np.abs(error)) < 1e-9:
             if not (-1 <= state[2] <= 1 and -20 < state[0] < 20 and -20 < state[1] < 0):
                 raise RuntimeError("Equilibrium outside the supported development envelope")
             return {

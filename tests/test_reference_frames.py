@@ -16,7 +16,7 @@ class ReferenceFrameTests(unittest.TestCase):
         base = experiment()
         moved = experiment(arp_shift_in=-1)
         corrected = experiment(arp_shift_in=-1, correct_moment=True)
-        self.assertGreater(abs(moved['elevator_norm'] - base['elevator_norm']), 0.05)
+        self.assertGreater(abs(moved['elevator_norm'] - base['elevator_norm']), 0.01)
         self.assertAlmostEqual(corrected['elevator_norm'], base['elevator_norm'], places=8)
         self.assertAlmostEqual(corrected['gamma_deg'], base['gamma_deg'], places=8)
         self.assertLess(abs(corrected['final_altitude_ft'] - base['final_altitude_ft']), 0.001)

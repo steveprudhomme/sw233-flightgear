@@ -15,9 +15,9 @@ Le projet est un prototype de simulation, pas un appareil d’entraînement cert
 | Vol et décor | Démonstrations natives à CYJN, aérofreins et glissade | Polaire et enveloppe réelle non validées |
 | Cockpit | Anémomètre, altimètre, variomètre et compas animés ; bancs publiés | Aspect encore schématique ; radio et largage décoratifs |
 | Masse et repères | Calculs comparés à FlightGear ; transport du moment testé | Pesée de C-FYLP et référence historique des coefficients inconnues |
-| Profondeur | Gain actuel ±0,30 rad ; gouverne visuelle à séparer | Lot AUD-01b en cours ci-dessous |
-| Documentation | Neuf fiches, sources, captures et reconstruction automatique | Relecture autonome par un débutant encore attendue |
-| Qualité | 13 tests réussis au début de ce lot | Ne constituent pas une certification du modèle |
+| Profondeur | ±23° et deux parties mobiles vérifiées | Charnière de maquette approximative |
+| Documentation | Dix fiches, sources, captures et reconstruction automatique | Relecture autonome par un débutant encore attendue |
+| Qualité | 15 tests réussis | Ne constituent pas une certification du modèle |
 
 **Lecture des statuts :** terminé = critère vérifié et preuve publiée ; en cours = réalisation autorisée ; à faire = proposé ; dépendance = donnée ou décision nécessaire.
 
@@ -27,12 +27,14 @@ Objectif : un petit incrément utilisable et vérifiable. Aucune date ferme. Cha
 
 | Priorité / lot | Statut | Critère de réussite | Responsable |
 |---|---|---|---|
-| P1 · **AUD-01b : profondeur ±23°** | En cours | FDM, animation et butées cohérents ; comparaison avant/après à même chargement ; tutoriel illustré | Mainteneur, revue recherchée |
+| P1 · **AUD-01b : profondeur ±23°** | Terminé | FDM, animation et butées cohérents ; comparaison avant/après à même chargement ; tutoriel illustré | Mainteneur, revue recherchée |
 | P1 · **AUD-01c : occupants dans le menu** | À faire | Deux masses modifiables, CG recalculé, restauration et captures solo/biplace | À attribuer |
 | P2 · **AUD-02 : paquet et lanceur** | À faire | Installation propre sous Windows et Linux ; chemins, textures, miniature et métadonnées vérifiés | À attribuer |
 | P2 · **AUD-13 / AUD-14 : contrôles et publication** | À faire, après AUD-02 | ZIP construit sur tag, testé avant publication ; provenance et empreinte jointes | À attribuer |
 
-**Lot actif :** [protocole AUD-01b en huit étapes](docs/planification/aud-01b-profondeur.md). Le protocole est commité avant le code. Un lot n’est clos que lorsque ses tests, captures pertinentes, limites et documents sont publiés.
+**Dernier lot réalisé :** [protocole AUD-01b en huit étapes](docs/planification/aud-01b-profondeur.md). Le protocole est commité avant le code. Un lot n’est clos que lorsque ses tests, captures pertinentes, limites et documents sont publiés.
+
+Prochain lot proposé : **AUD-01c**, commandes de masse des occupants. Ses sous-étapes seront précisées et commitées avant sa réalisation.
 
 ## 4. Moyen terme — après v0.2.0
 
@@ -67,6 +69,8 @@ VIS-01 conserve la disposition C-FYLP et des aiguilles indépendantes des textur
 | Cadrans et compas, lectures et bancs | [Tutoriel des essais](docs/construction/07-essais.md) |
 | Diagnostic de masse et réserve de profondeur | [Fiche 8](docs/construction/08-centrage.md) |
 | Translation des repères et transport du moment | [Fiche 9](docs/construction/09-reperes.md) — identification aéronautique AUD-01a encore ouverte |
+
+| Profondeur ±23°, butées et animation | [Fiche 10 et captures natives](docs/construction/10-profondeur.md) |
 
 <a id="audits-externes"></a>
 
