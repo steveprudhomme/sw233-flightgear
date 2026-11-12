@@ -81,3 +81,10 @@ mais risque de transmettre ses erreurs. Les deux fichiers examinés partagent
 manifestement des paramètres : ils ne constituent pas deux validations
 indépendantes. La finesse publiée, le décrochage et la réponse aux aérofreins
 restent des objectifs d'essai. Aucune prétention de précision des vrilles.
+
+
+## Relecture masse et centrage — 12 novembre 2026
+
+Le manuel FAA fourni (empreinte dans `references/inventaire.md`), PDF 14/papier 27, indique un datum 66,34 in devant le bord d'attaque à la racine, une plage 78,20–86,10 in et les bras 43,80/74,70 in pour 2-33/2-33A. PDF 21/papier 41 : profondeur ±23° avec tolérance ±2° pour 1 040 lb. Pages relues visuellement. L'exemple de pesée n° 369 n'est pas C-FYLP ; aucun poids ou CG à vide de cet exemple n'est adopté.
+
+Les positions historiques 43/85 in et la limite 0,30 rad sont donc des paramètres de prototype, pas ces données constructeur. L'écartement des deux charges diffère (42 contre 30,9 in), ce qu'une simple translation de datum ne résout pas. AERORP=103,2 in reste un point de référence d'équations non identifié sur l'appareil réel. [Relevés, calculs et expériences de sensibilité](construction/08-centrage.md). Aucun coefficient ni repère du FDM n'a été changé dans cette séance.

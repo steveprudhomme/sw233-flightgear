@@ -86,3 +86,5 @@ Les [deux audits externes et leur analyse](docs/references/audits-2026-11-11.md)
 
 Les premiers fichiers ont été rédigés avec une assistance IA. Leur origine et
 leurs limites sont explicites ; une revue humaine aéronautique reste nécessaire.
+
+[Diagnostic du centrage et de la réserve de profondeur](docs/construction/08-centrage.md) : calculs indépendants, captures FlightGear et limites du modèle historique.

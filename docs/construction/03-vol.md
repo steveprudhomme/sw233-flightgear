@@ -152,3 +152,6 @@ with (root/'sw233.xml').open('a',encoding='utf-8') as f: f.write('\n')
 ```
 
 **Enregistre puis lance :** `.\.venv\Scripts\python.exe dynamique.py`. Ouvre *src/SW233/sw233.xml* : cherche les six noms DRAG, SIDE, LIFT, ROLL, PITCH et YAW. Si la maquette est visible mais reste immobile en altitude, commence par vérifier que la fiche de la séance suivante demande bien ce fichier. Ne corrige pas les coefficients pour réparer un mauvais nom de fichier.
+
+
+**Vérification ultérieure :** la [séance de centrage](08-centrage.md) confronte ces valeurs historiques au manuel, au calcul indépendant et à FlightGear. Les bras de sièges et le datum ne sont pas encore réconciliés ; ne pas interpréter ce modèle comme un chargement validé du vrai appareil.

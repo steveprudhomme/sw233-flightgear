@@ -181,3 +181,12 @@ Séance autorisée le 11 novembre 2026. Ce lot établit le diagnostic avant tout
 7. Publier tableau sourcé, protocole, images et limites dans le tutoriel ; actualiser sources, validation, README, historique et état AUD-01. Corriger uniquement un défaut démontré ; si les données ne permettent pas de choisir un nouveau coefficient, documenter ce verrou et la tâche suivante.
 
 Réussite : calcul indépendant concordant avec le moteur, cause de la forte commande analysée par des mesures, et distinction explicite entre valeurs documentées et paramètres encore estimés. Ne pas clôturer la validation de l'enveloppe réelle faute de données d'exemplaire.
+
+
+**AUD-01 : diagnostic réalisé le 12 novembre 2026**, [méthode, sources, captures et résultats](docs/construction/08-centrage.md). Le calcul manuel concorde avec JSBSim et FlightGear. Le moment de transport explique la forte demande de profondeur ; trois cas n'ont pas convergé. Le FDM n'a pas été recalibré. La tâche globale reste ouverte tant que les repères et la pesée d'exemplaire ne sont pas établis.
+
+Sous-étapes révélées par les essais, à préparer avant la prochaine modification :
+
+- [ ] **AUD-01a · Réconcilier les repères et le moment de référence.** Écart entre sièges historique 42 in contre 30,9 in au manuel ; identifier le datum et le point de référence des coefficients avant toute translation d'AERORP. Choisir explicitement un jeu de pesée documenté ou une hypothèse déclarée, jamais présenter l'exemple n° 369 comme C-FYLP.
+- [ ] **AUD-01b · Revoir le débattement de profondeur.** Comparer ±0,30 rad du prototype aux ±23° du manuel pour 1 040 lb ; synchroniser commande, FDM, animation et tutoriel, refaire les essais à chargement constant. Ne pas augmenter artificiellement le coefficient pour masquer le problème.
+- [ ] **AUD-01c · Exposer les occupants dans le menu natif.** Le dialogue Fuel and Payload est actuellement vide côté charges ; relier explicitement les deux masses, contrôler modification et restauration en solo/biplace, puis illustrer l'utilisation. Les bornes de saisie ne devront pas être présentées comme une enveloppe de chargement approuvée sans données suffisantes.

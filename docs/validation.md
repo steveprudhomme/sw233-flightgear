@@ -87,3 +87,10 @@ Le zoom est un recadrage de l’enregistrement natif. Les angles des animations 
 [Variomètre : banc à quatre valeurs et descente à CYJN](construction/07-essais.md#banc-variometre). Les mesures séparent taux de montée signé, indication et vitesse du planeur.
 
 [Altimètre : banc visuel et pression à altitude constante](construction/07-essais.md#banc-altimetre). Le modèle de vol nul isole le second essai de toute trajectoire.
+
+
+## Diagnostic de masse et de profondeur (AUD-01)
+
+[Protocole illustré et résultats](construction/08-centrage.md), 12 novembre 2026. Sept cas autonomes JSBSim, dont trois sans équilibre trouvé, et trois chargements contrôlés dans FlightGear 2024.1.7. À 970 lb/50 kt, CG historique 88,651546 in, profondeur −0,955171 ; seulement 4,48 % de course disponible. Moment propre +1 168,4574 lb·ft compensant un transport de −1 168,4574 lb·ft. Les essais identifient la sensibilité au bras de levier, sans valider AERORP ni les coefficients.
+
+Le menu natif affiche masse/CG mais aucune ligne éditable d'occupant. Le banc modifie les propriétés JSBSim dans une session dédiée puis restaure les masses. Le FDM source reste inchangé : l'alignement au datum constructeur et la pesée d'exemplaire manquent. Le diagnostic est réalisé ; l'acceptation de l'enveloppe réelle reste ouverte.
