@@ -166,3 +166,18 @@ Les deux rapports ont été lus après la séance altimètre. Voir la [confronta
 - [ ] **AUD-17 · Accueil anglophone** (B nommage). Évaluer une courte porte d'entrée anglaise et un alias éventuel de l'atelier ; conserver les chemins et le tutoriel français. **Terminé quand :** un lecteur anglophone peut installer et contribuer, sans duplication divergente ni rupture des commandes existantes.
 
 Pour chaque lot retenu : détailler ses sous-étapes et faire le commit de préparation **avant** la modification ; mettre à jour le tutoriel et les MD concernés, joindre des captures du simulateur aux changements visibles, et publier mesures/limites avec le commit de réalisation. L'ordre proposé à discuter est **AUD-01 → AUD-03 → AUD-05** ; AUD-02 peut constituer un premier lot indépendant pour faciliter les essais externes.
+
+
+### AUD-01 — protocole détaillé avant essais
+
+Séance autorisée le 11 novembre 2026. Ce lot établit le diagnostic avant toute retouche aérodynamique.
+
+1. Identifier dans les manuels fournis la variante, le datum, les bras et limites de chargement ; relever numéro de page PDF et numéro imprimé. Vérifier visuellement les schémas. Distinguer fiche de pesée d'exemple, donnée constructeur et estimation héritée.
+2. Calculer à la main les moments et le centrage du modèle actuel, puis les comparer à JSBSim pour les mêmes masses. Vérifier la position du point d'application aérodynamique et la contribution du bras de levier au moment de tangage.
+3. Construire un banc reproductible avec masses avant/arrière paramétrables ; fixer altitude, vitesse, vent nul, trim de compensation nul et panneaux rentrés. Conserver tous les résultats, y compris les équilibres impossibles, sans les masquer.
+4. Comparer solo et biplace ; à masse constante, déplacer la charge entre les deux sièges pour isoler l'effet du centrage. Explorer les bornes documentées seulement après avoir rapproché les repères ; les cas numériques hors enveloppe seront marqués comme tels.
+5. Décomposer le moment de tangage (aérodynamique et transport au CG) et relever marge à la butée, résidus, vitesse et altitude après 60 s. Faire une expérience de sensibilité séparée si nécessaire ; aucune valeur expérimentale ne devient un coefficient validé.
+6. Contrôler dans FlightGear les propriétés de masse/centrage et l'accès au chargement ; conserver des captures natives légendées. Un test autonome JSBSim ne sera pas présenté comme un vol natif FlightGear.
+7. Publier tableau sourcé, protocole, images et limites dans le tutoriel ; actualiser sources, validation, README, historique et état AUD-01. Corriger uniquement un défaut démontré ; si les données ne permettent pas de choisir un nouveau coefficient, documenter ce verrou et la tâche suivante.
+
+Réussite : calcul indépendant concordant avec le moteur, cause de la forte commande analysée par des mesures, et distinction explicite entre valeurs documentées et paramètres encore estimés. Ne pas clôturer la validation de l'enveloppe réelle faute de données d'exemplaire.
