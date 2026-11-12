@@ -127,3 +127,5 @@ Le cadran utilise maintenant des centaines de ft/min et l’indication de vitess
 - Photographier avant/après au même cadrage et contrôler 0, 950, 1 000, 1 050 et 2 500 ft. Documenter les rapports de rotation et les lectures attendues.
 - Ajouter au tutoriel les mesures, le réglage de pression, les captures et les limites constatées ; actualiser les documents concernés.
 - Ensuite seulement, lire les deux audits externes, rapprocher leurs affirmations des sources actuelles et préparer des tâches traçables à discuter, sans engager automatiquement leurs recommandations.
+
+**Altimètre réalisé :** [cinq lectures et trois calages vérifiés](docs/construction/07-essais.md#banc-altimetre). Les deux aiguilles suivent l’altitude indiquée. Restent la confirmation du troisième indicateur, une fenêtre de calage lisible et la vérification interactive du bouton.

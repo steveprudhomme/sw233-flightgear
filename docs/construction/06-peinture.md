@@ -196,6 +196,31 @@ Continue dans le même fichier. Peins le disque en 512 × 512 pixels. Relis la t
                            ((265,181),"VERTICAL SPEED",21),((265,207),"100 FEET PER MIN",16)]:
         draw.text(where,txt,anchor="mm",fill=ivory,font=ImageFont.load_default(size=size))
     vsi.save(models/"vsi.png")
+```
+
+### Altimètre : échelle régulière et aiguilles en relief
+
+Prépare un carré 512 × 512, centre (256,256). Cinquante divisions donnent 7,2° par petit trait ; cinq petits traits font un secteur de 36°. Écris 0 à 9, puis ALT et FEET. Garde la fenêtre de pression vide : une valeur peinte serait fausse après réglage. Le centre dans la maquette est (−0,22 ; 0,087) et le rayon 0,083 m ; le coin inférieur gauche vaut donc (−0,303 ; 0,004). [Contrôle les cinq lectures](07-essais.md#banc-altimetre).
+
+<!-- atelier-fichier: tools/panel.py -->
+```python
+    # Altimeter: ten equal sectors, two independent 3D hands.
+    alt = Image.new("RGB",(512,512),"#24272a")
+    draw = ImageDraw.Draw(alt)
+    def alt_point(angle, radius):
+        a = math.radians(angle)
+        return (256+radius*math.sin(a),256-radius*math.cos(a))
+    for i in range(50):
+        draw.line([alt_point(i*7.2,241),alt_point(i*7.2,205 if i%5==0 else 223)],
+                  fill="#f1eddf",width=6 if i%5==0 else 3)
+    for i in range(10):
+        draw.text(alt_point(i*36,172),str(i),anchor="mm",fill="#f1eddf",
+                  font=ImageFont.load_default(size=39))
+    draw.text((256,208),"ALT",anchor="mm",fill="#eeeadd",font=ImageFont.load_default(size=29))
+    draw.text((256,304),"FEET",anchor="mm",fill="#eeeadd",font=ImageFont.load_default(size=19))
+    # Window reserved for a future readable pressure scale, no invented reading.
+    draw.rounded_rectangle((381,222,423,290),radius=4,fill="#111519",outline="#737975",width=2)
+    alt.save(models/"alt.png")
     im.save(models/"panel.png")
     mesh = models/"sw233.ac"
     s = mesh.read_text()
@@ -206,6 +231,7 @@ Continue dans le même fichier. Peins le disque en 512 × 512 pixels. Relis la t
     for name,texture,ymin,zmin,span_y,span_z in [
         ("tableau","panel.png",-.4,-.1,.8,.4),("ias-fond","ias.png",.095,.065,.15,.15),
         ("vsi-fond","vsi.png",.232,-.041,.126,.126),
+        ("alt-fond","alt.png",-.303,.004,.166,.166),
     ]:
         start = s.index(f'name "{name}"')
         end = s.index("kids 0",start)

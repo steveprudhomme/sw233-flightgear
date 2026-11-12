@@ -3,7 +3,7 @@
   <animation>
     <type>rotate</type>
     <object-name>alt-centaines</object-name>
-    <property>position/altitude-ft</property>
+    <property>instrumentation/altimeter/indicated-altitude-ft</property>
     <factor>0.36</factor>
     <offset-deg>0</offset-deg>
     <center>
@@ -20,7 +20,7 @@
   <animation>
     <type>rotate</type>
     <object-name>alt-milliers</object-name>
-    <property>position/altitude-ft</property>
+    <property>instrumentation/altimeter/indicated-altitude-ft</property>
     <factor>0.036</factor>
     <offset-deg>0</offset-deg>
     <center>
@@ -157,5 +157,28 @@
     <factor>1</factor>
     <center><x-m>0.833</x-m><y-m>0</y-m><z-m>0.098</z-m></center>
     <axis><x>0</x><y>0</y><z>1</z></axis>
+  </animation>
+<animation>
+    <type>knob</type>
+    <object-name>alt-calage</object-name>
+    <property>instrumentation/altimeter/setting-inhg</property>
+    <factor>-1600</factor>
+    <center><x-m>0.888</x-m><y-m>-0.280</y-m><z-m>0.027</z-m></center>
+    <axis><x>1</x><y>0</y><z>0</z></axis>
+    <action>
+      <binding>
+        <command>property-adjust</command>
+        <property>instrumentation/altimeter/setting-inhg</property>
+        <factor>0.01</factor><min>28</min><max>31</max><wrap>false</wrap>
+      </binding>
+    </action>
+    <hovered>
+      <binding>
+        <command>set-tooltip</command>
+        <tooltip-id>sw233-alt-setting</tooltip-id>
+        <label>Calage : %5.2f inHg</label>
+        <property>instrumentation/altimeter/setting-inhg</property>
+      </binding>
+    </hovered>
   </animation>
 </PropertyList>

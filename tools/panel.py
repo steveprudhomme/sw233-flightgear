@@ -130,6 +130,23 @@ def finish_panel(models: Path):
                            ((265,181),"VERTICAL SPEED",21),((265,207),"100 FEET PER MIN",16)]:
         draw.text(where,txt,anchor="mm",fill=ivory,font=ImageFont.load_default(size=size))
     vsi.save(models/"vsi.png")
+    # Altimeter: ten equal sectors, two independent 3D hands.
+    alt = Image.new("RGB",(512,512),"#24272a")
+    draw = ImageDraw.Draw(alt)
+    def alt_point(angle, radius):
+        a = math.radians(angle)
+        return (256+radius*math.sin(a),256-radius*math.cos(a))
+    for i in range(50):
+        draw.line([alt_point(i*7.2,241),alt_point(i*7.2,205 if i%5==0 else 223)],
+                  fill="#f1eddf",width=6 if i%5==0 else 3)
+    for i in range(10):
+        draw.text(alt_point(i*36,172),str(i),anchor="mm",fill="#f1eddf",
+                  font=ImageFont.load_default(size=39))
+    draw.text((256,208),"ALT",anchor="mm",fill="#eeeadd",font=ImageFont.load_default(size=29))
+    draw.text((256,304),"FEET",anchor="mm",fill="#eeeadd",font=ImageFont.load_default(size=19))
+    # Window reserved for a future readable pressure scale, no invented reading.
+    draw.rounded_rectangle((381,222,423,290),radius=4,fill="#111519",outline="#737975",width=2)
+    alt.save(models/"alt.png")
     im.save(models/"panel.png")
     mesh = models/"sw233.ac"
     s = mesh.read_text()
@@ -140,6 +157,7 @@ def finish_panel(models: Path):
     for name,texture,ymin,zmin,span_y,span_z in [
         ("tableau","panel.png",-.4,-.1,.8,.4),("ias-fond","ias.png",.095,.065,.15,.15),
         ("vsi-fond","vsi.png",.232,-.041,.126,.126),
+        ("alt-fond","alt.png",-.303,.004,.166,.166),
     ]:
         start = s.index(f'name "{name}"')
         end = s.index("kids 0",start)

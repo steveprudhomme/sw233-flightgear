@@ -85,3 +85,5 @@ Le zoom est un recadrage de l’enregistrement natif. Les angles des animations 
 [Banc de l’anémomètre](construction/07-essais.md#banc-anemometre) : 40, 60, 85 et 120 kt, sans modifier les performances du planeur.
 
 [Variomètre : banc à quatre valeurs et descente à CYJN](construction/07-essais.md#banc-variometre). Les mesures séparent taux de montée signé, indication et vitesse du planeur.
+
+[Altimètre : banc visuel et pression à altitude constante](construction/07-essais.md#banc-altimetre). Le modèle de vol nul isole le second essai de toute trajectoire.

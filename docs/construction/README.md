@@ -9,7 +9,7 @@
 | [1. Mesurer](01-mesures.md) | Choisir la bonne vue, lire une dimension, convertir, pointer deux pixels et garder la trace | Une fiche de mesure par cote, avec sa limite |
 | [2. Construire la coque et les pièces](02-maillage.md) | Écrire une recette Python qui relie des points ; produire **src/SW233/Models/sw233.ac** | Deux demi-ailes de 7,7724 m et une ficelle séparée du tube |
 | [3. Donner du poids et de la portance](03-vol.md) | Écrire les instructions qui produisent **src/SW233/sw233.xml** | Six forces ou moments ; aucune hélice |
-| [4. Brancher la maquette](04-configuration.md) | Écrire **src/SW233/sw233-set.xml** et **src/SW233/Models/sw233-model.xml** | Un siège avant, neuf animations et une conversion vérifiée au crayon |
+| [4. Brancher la maquette](04-configuration.md) | Écrire **src/SW233/sw233-set.xml** et **src/SW233/Models/sw233-model.xml** | Un siège avant, dix animations et une conversion vérifiée au crayon |
 | [5. Faire les listes](05-listes.md) | Écrire **src/SW233/Checklists/sw233.xml** | Quatre listes que tu peux ouvrir, sans commande de vol automatique |
 | [6. Peindre](06-peinture.md) | Écrire **tools/panel.py**, poser les vis et coller l’image sur la planche | Une copie peinte ; les aiguilles bougent encore |
 | [7. Essayer, filmer, partager](07-essais.md) | Assembler le paquet, charger CYJN, lire la télémétrie et refaire le film | Un vol que quelqu’un d’autre peut refaire |

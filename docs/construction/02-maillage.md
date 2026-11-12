@@ -272,6 +272,10 @@ def digit(y, z, num, scale):
 
 Une aiguille est un triangle indépendant. Place-la à x = 0,87 + 0,012 = 0,882, légèrement devant le fond, du côté du pilote. Si deux faces sont au même endroit, elles peuvent clignoter. Un tour de cadran d’altitude contient dix grands repères ; leur écart est donc 360 ÷ 10 = 36°. Les échelles de la maquette sont idéalisées ; il faudra des photos frontales pour reproduire la vraie typographie.
 
+**L’altimètre de C-FYLP.** Dans la photo de 690 × 517 pixels, découpe (63,207) → (173,321), bords droit et bas exclus, puis agrandis cinq fois. Le centre est proche de (283,290) dans cette copie de 550 × 570. La longue aiguille traverse le secteur 8–9 ; une silhouette courte et large pointe vers 0–1. Les reflets empêchent d’identifier sûrement une troisième aiguille. Notre modèle conserve deux aiguilles : c’est une limite de reproduction à noter.
+
+Dessine cinquante traits : un grand tous les cinq petits. Les dix nombres occupent des secteurs égaux de 36°, choix régulier cohérent avec la photo. La pointe longue mesure 75 mm depuis le centre dans notre maquette ; la courte 44 mm. Ces longueurs et le diamètre du bouton de 24 mm sont des choix de modèle, pas des mesures du constructeur. La grande aiguille se trouve à x = 0,882 ; la petite à 0,883, pour éviter que leurs faces se superposent. Le bouton de calage se situe 60 mm à gauche et 60 mm sous le centre du cadran.
+
 <!-- atelier-fichier: fabrique.py -->
 ```python
 animations = []
@@ -291,18 +295,26 @@ def needle(name, y, z, r, property, factor, offset=0):
 for kind, y, z, r in dials:
     circ = [(px + 0.004, *point(y, z, r, i * pi / 30)) for i in range(60)]
     poly(kind + "-fond", 3, *circ)
-    if kind == "alt":
-        vals = list(range(10))
-        angles = [i * 36 for i in vals]
-    else:
-        vals, angles = [], []  # Relief mobile ; les chiffres sont peints à la fiche 6.
+    vals, angles = [], []  # Les trois cadrans sont peints à la fiche 6.
     for v, deg in zip(vals, angles):
         a = radians(deg)
         mark("traits", px + 0.008, y, z, r * 0.94, a, r * 0.08, 0.001)
         digit(*point(y, z, r * 0.68, a), v, 0.004)
     if kind == "alt":
-        needle("alt-centaines", y, z, r * 0.87, "position/altitude-ft", 0.36)
-        needle("alt-milliers", y, z, r * 0.47, "position/altitude-ft", 0.036)
+        # Longue et fine : centaines ; courte et large : milliers.
+        poly("alt-centaines",6,*[(px+.012,y+dy,z+dz) for dy,dz in
+             [(-.0014,-.012),(.0014,-.012),(.0011,.067),(0,.075),(-.0011,.067)]])
+        poly("alt-milliers",6,*[(px+.013,y+dy,z+dz) for dy,dz in
+             [(-.003,-.010),(.003,-.010),(.004,.029),(0,.044),(-.004,.029)]])
+        poly("alt-milliers",5,*[(px+.0135,*point(y,z,.004,i*pi/12)) for i in range(24)])
+        cy, cz = y-.060, z-.060
+        a = [(px+.006,*point(cy,cz,.012,i*pi/12)) for i in range(24)]
+        b = [(px+.025,*point(cy,cz,.012,i*pi/12)) for i in range(24)]
+        bridge("alt-calage",3,a,b)
+        poly("alt-calage",2,*b)
+        poly("alt-calage",6,(px+.0255,cy-.001,cz+.003),
+             (px+.0255,cy+.001,cz+.003),(px+.0255,cy+.001,cz+.009),
+             (px+.0255,cy-.001,cz+.009))
     elif kind == "ias":
         # Aiguille ivoire, pointe longue ; le moyeu sombre tourne avec elle.
         poly("vitesse-mph", 6, *[(px+.012,y+dy,z+dz) for dy,dz in
@@ -487,4 +499,4 @@ for n, faces in parts.items():
 Get-Content src/SW233/Models/sw233.ac -TotalCount 16
 ```
 
-**Contrôle :** pour la forme de départ du livre, tu dois lire *AC3Db*, douze matériaux, *OBJECT world* puis *kids 40*. Cherche les deux noms *aerofrein-1* et *aerofrein1*. Si le fichier reste vide, vérifie que le dernier bloc a été enregistré. Si les sièges sont au-dessus du toit, vérifie surtout l’ordre (x,z,−y) ; ne déplace pas les sièges pour masquer une erreur de repère.
+**Contrôle :** pour la forme de départ du livre, tu dois lire *AC3Db*, douze matériaux, *OBJECT world* puis *kids 39*. Cherche les deux noms *aerofrein-1* et *aerofrein1*. Si le fichier reste vide, vérifie que le dernier bloc a été enregistré. Si les sièges sont au-dessus du toit, vérifie surtout l’ordre (x,z,−y) ; ne déplace pas les sièges pour masquer une erreur de repère.

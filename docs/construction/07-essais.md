@@ -189,3 +189,49 @@ Les nombres négatifs signifient que le planeur descend. Le calcul du variomètr
 | 105–110 s | 100 % | 60,27 kt | −716 | −693 |
 
 Les vitesses diffèrent de 0,58 kt. Le taux de descente augmente de 167 ft/min environ dans cette exécution. L’instrument et la trajectoire restent séparés d’environ 20 à 23 ft/min dans ces fenêtres ; ce seul essai ne permet pas d’en déterminer la cause ni de valider une précision d’instrument. [Télécharger les relevés du vol](https://github.com/steveprudhomme/sw233-flightgear/releases/download/variometre-07/vol.csv) et [les quatre entrées du banc](https://github.com/steveprudhomme/sw233-flightgear/releases/download/variometre-07/vario.csv).
+
+<a name="banc-altimetre"></a>
+
+## Action 9 — Lire deux aiguilles et changer le calage
+
+**1. Prédis les lectures.** À 950 ft, la grande aiguille arrive presque au zéro, la petite presque au 1. À 1 000 ft, seule la grande franchit le zéro : l’altitude ne vient pas de retomber à zéro ! À 2 500 ft, la grande pointe sur 5 et la petite entre 2 et 3. Notre prototype ne possède pas de troisième aiguille : sa lecture au-delà de 9 999 ft reste ambiguë.
+
+![Avant : ancien cadran à entrée équivalente à 950 ft.](https://github.com/steveprudhomme/sw233-flightgear/releases/download/altimetre-08/alt-avant-950.jpg)
+
+![Après : grande aiguille avant zéro et petite avant 1, à 950 ft.](https://github.com/steveprudhomme/sw233-flightgear/releases/download/altimetre-08/alt-950.jpg)
+
+![À 1 000 ft, seule la grande aiguille repasse au zéro.](https://github.com/steveprudhomme/sw233-flightgear/releases/download/altimetre-08/alt-1000.jpg)
+
+![À 2 500 ft, la grande pointe sur 5 et la petite entre 2 et 3.](https://github.com/steveprudhomme/sw233-flightgear/releases/download/altimetre-08/alt-2500.jpg)
+
+| Entrée indiquée | Angle de la grande, modulo 360° | Angle de la petite |
+|---:|---:|---:|
+| 0 ft | 0° | 0° |
+| 950 ft | 342° | 34,2° |
+| 1 000 ft | 0° | 36° |
+| 1 050 ft | 18° | 37,8° |
+| 2 500 ft | 180° | 90° |
+
+Grande = altitude × 0,36° ; petite = altitude × 0,036°. Les images sont prises dans FlightGear. Le témoin utilise une copie de l’ancien modèle où seule la propriété d’entrée des aiguilles est remplacée par celle du banc.
+
+**2. Refaire le contrôle.** Reconstruis ton paquet et lance SW233 à CYJN, à 4 000 ft, avec les options **--fdm=null** et **--httpd=18097**. Le modèle de vol nul maintient la position ; il sert au banc, pas au pilotage. Une fois la scène visible, lance depuis ton établi :
+
+```powershell
+.\.venv\Scripts\python.exe tools/altimeter_bench.py build/mon-altimetre --pressure
+```
+
+Le script suspend d’abord le calcul de l’instrument et impose les cinq altitudes indiquées. Il les relit avant et après chaque capture. Puis il remet l’altimètre en service pour le contrôle de pression. Il restaure le calage, l’état initial et la caméra à la fin. Ouvre les images, *altitudes.csv* et *pression.csv* dans le nouveau dossier. Retire *--fdm=null* pour piloter.
+
+**3. Change la pression, pas l’altitude.** Dans cette exécution, la position reste à **4 000,00 ft**, la pression statique reçue à **25,953017 inHg**. Ces résultats sont mesurés :
+
+| Calage | Altitude géométrique | Indication |
+|---:|---:|---:|
+| 28,92 inHg | 4 000,00 ft | 2 945,39 ft |
+| 29,92 inHg | 4 000,00 ft | 3 892,68 ft |
+| 30,92 inHg | 4 000,00 ft | 4 795,64 ft |
+
+![Calage 28,92 : lecture proche de 2 945 ft.](https://github.com/steveprudhomme/sw233-flightgear/releases/download/altimetre-08/pression-28.92.jpg)
+
+![Calage 30,92 : lecture proche de 4 796 ft, sans déplacement du planeur.](https://github.com/steveprudhomme/sw233-flightgear/releases/download/altimetre-08/pression-30.92.jpg)
+
+Augmenter le calage fait monter l’indication. Le calage standard ne donne pas nécessairement l’altitude géométrique : la pression de la simulation compte aussi. Relève *instrumentation/altimeter/setting-inhg* et *indicated-altitude-ft*. Ne conclus pas à une erreur parce que cette dernière diffère de *position/altitude-ft*. [Relevés du banc](https://github.com/steveprudhomme/sw233-flightgear/releases/download/altimetre-08/altitudes.csv) et [relevés de pression](https://github.com/steveprudhomme/sw233-flightgear/releases/download/altimetre-08/pression.csv), FlightGear 2024.1.7. Ce contrôle ne prouve pas la précision d’un altimètre réel.

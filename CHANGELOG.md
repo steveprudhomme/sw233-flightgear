@@ -4,6 +4,8 @@
 
 ### Changements
 
+- Altimètre : cadran peint, deux aiguilles différenciées reliées à l’altitude indiquée et bouton de calage. Cinq altitudes et trois pressions illustrées.
+
 - Variomètre : zéro à gauche, échelle C-FYLP en centaines de ft/min et aiguille reliée à l’instrument FlightGear. Banc illustré et vol comparatif avec aérofreins.
 
 - Anémomètre à table d’angles relevée sur C-FYLP ; marquages 1 040 lb du manuel, texture originale et lecture de la vitesse indiquée de FlightGear.

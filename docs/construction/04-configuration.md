@@ -73,6 +73,10 @@ Le chemin est relatif à ce fichier : sw233.ac est dans le même dossier. Les ac
 
 ## Centaines de pieds
 
+<a name="altimetre"></a>
+
+Les deux aiguilles lisent **instrumentation/altimeter/indicated-altitude-ft**. L’ancienne version lisait la position géométrique du planeur ; le calage de pression n’aurait donc pas modifié ses aiguilles. Le nouvel instrument dépend de la pression statique et du calage. La propriété et la syntaxe du bouton ont été vérifiées dans FlightGear 2024.1.7, notamment son fichier local *Aircraft/c172p/Models/Interior/Panel/Instruments/alt/alt.xml*.
+
 À 500 ft, 500 × 0,36 = 180° : un demi-tour de la grande aiguille. Son pivot est au centre du cadran gauche.
 
 <!-- atelier-fichier: src/SW233/Models/sw233-model.xml -->
@@ -80,7 +84,7 @@ Le chemin est relatif à ce fichier : sw233.ac est dans le même dossier. Les ac
   <animation>
     <type>rotate</type>
     <object-name>alt-centaines</object-name>
-    <property>position/altitude-ft</property>
+    <property>instrumentation/altimeter/indicated-altitude-ft</property>
     <factor>0.36</factor>
     <offset-deg>0</offset-deg>
     <center>
@@ -105,7 +109,7 @@ La petite aiguille fait le tour en 10 000 ft : 360 / 10 000 = 0,036 degré par p
   <animation>
     <type>rotate</type>
     <object-name>alt-milliers</object-name>
-    <property>position/altitude-ft</property>
+    <property>instrumentation/altimeter/indicated-altitude-ft</property>
     <factor>0.036</factor>
     <offset-deg>0</offset-deg>
     <center>
@@ -337,6 +341,37 @@ Lis **indicated-heading-deg** : c’est ce qu’indique le compas du simulateur.
     <factor>1</factor>
     <center><x-m>0.833</x-m><y-m>0</y-m><z-m>0.098</z-m></center>
     <axis><x>0</x><y>0</y><z>1</z></axis>
+  </animation>
+```
+
+## Calage de l’altimètre
+
+Ajoute ce dernier bloc avant la fermeture finale. Le bouton utilise *knob* et *setting-inhg*, avec un pas de 0,01 pouce de mercure. Les bornes 28–31 inHg et la rotation de −1600°/inHg sont des choix d’interface, pas des spécifications de C-FYLP. Le réglage exact reste lisible dans le navigateur de propriétés ; la fenêtre noire du cadran ne montre pas encore de valeur. L’infobulle est prévue dans le XML, mais les essais automatisés vérifient la propriété, pas le geste de souris.
+
+<!-- atelier-fichier: src/SW233/Models/sw233-model.xml -->
+```xml
+<animation>
+    <type>knob</type>
+    <object-name>alt-calage</object-name>
+    <property>instrumentation/altimeter/setting-inhg</property>
+    <factor>-1600</factor>
+    <center><x-m>0.888</x-m><y-m>-0.280</y-m><z-m>0.027</z-m></center>
+    <axis><x>1</x><y>0</y><z>0</z></axis>
+    <action>
+      <binding>
+        <command>property-adjust</command>
+        <property>instrumentation/altimeter/setting-inhg</property>
+        <factor>0.01</factor><min>28</min><max>31</max><wrap>false</wrap>
+      </binding>
+    </action>
+    <hovered>
+      <binding>
+        <command>set-tooltip</command>
+        <tooltip-id>sw233-alt-setting</tooltip-id>
+        <label>Calage : %5.2f inHg</label>
+        <property>instrumentation/altimeter/setting-inhg</property>
+      </binding>
+    </hovered>
   </animation>
 </PropertyList>
 ```
