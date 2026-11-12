@@ -200,3 +200,11 @@ Sous-étapes révélées par les essais, à préparer avant la prochaine modific
 4. Vérifier le transport du moment lorsqu'AERORP seul change : calculer la correction nécessaire du moment propre pour conserver le même moment au CG. Expliquer pourquoi déplacer AERORP sans transformer les coefficients modifie la physique, et pourquoi le quart de corde n'est pas automatiquement la bonne référence.
 5. Produire un schéma original des axes et une capture native du modèle dans FlightGear ; fournir au tutoriel les pointages dans les fichiers, conversions et preuves reproductibles. La capture illustre la forme ; elle ne certifie aucune dimension réelle.
 6. Consigner les données encore manquantes pour une calibration : pesée de l'exemplaire, origine des coefficients et référence de leur moment. Clore le diagnostic mathématique si vérifié, mais garder ouverte l'identification aéronautique non prouvée. Actualiser les MD et publier les résultats dans un commit distinct.
+
+
+**AUD-01a — diagnostic mathématique réalisé le 12 novembre 2026 :** [fiche 9, schéma, capture native et quatre expériences](docs/construction/09-reperes.md). Translation commune vérifiée ; déplacement isolé d’AERORP et transport de moment distingués. Projection de dessin ancrée au bord d’attaque explicitée. Le jeu historique est conservé comme hypothèse de simulation, pas comme pesée de C-FYLP.
+
+- [x] Identifier les conventions de coordonnées du projet et vérifier expérimentalement l’invariance de translation.
+- [x] Vérifier le transport longitudinal du moment au nouvel AERORP en vol symétrique ; publier les résultats et limites.
+- [ ] Avant une calibration réelle, obtenir la pesée de l’exemplaire choisi et identifier la référence des coefficients ; à défaut, construire explicitement un nouveau modèle de référence hypothétique, avec datum et convention complète documentés. AUD-01a reste ouvert sur cette identification aéronautique.
+- [ ] Pour AUD-01b, distinguer mise à la course publiée (±23°) et recalibrage aérodynamique : faire un essai avant/après à même chargement, sans présenter une commande normalisée moindre comme un gain démontré de fidélité.

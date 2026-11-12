@@ -14,6 +14,7 @@
 | [6. Peindre](06-peinture.md) | Écrire **tools/panel.py**, poser les vis et coller l’image sur la planche | Une copie peinte ; les aiguilles bougent encore |
 | [7. Essayer, filmer, partager](07-essais.md) | Assembler le paquet, charger CYJN, lire la télémétrie et refaire le film | Un vol que quelqu’un d’autre peut refaire |
 | [8. Examiner le centrage](08-centrage.md) | Calculer les moments, vérifier les masses dans FlightGear, expliquer la réserve de profondeur | Calcul manuel, captures et résultats, y compris les échecs du solveur |
+| [9. Comprendre les repères](09-reperes.md) | Séparer datum, dessin et référence des moments ; tester une translation | Un schéma, une capture native et quatre expériences comparables |
 
 **Ouvre ton établi.** Crée dans Documents un dossier *Mon-Schweizer* vide. Ouvre-le dans l’Explorateur ; dans sa barre d’adresse, écris `powershell` puis Entrée. Toutes les commandes de ce livre partent de là. Colle ces lignes une par une :
 

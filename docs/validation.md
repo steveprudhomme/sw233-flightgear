@@ -94,3 +94,7 @@ Le zoom est un recadrage de l’enregistrement natif. Les angles des animations 
 [Protocole illustré et résultats](construction/08-centrage.md), 12 novembre 2026. Sept cas autonomes JSBSim, dont trois sans équilibre trouvé, et trois chargements contrôlés dans FlightGear 2024.1.7. À 970 lb/50 kt, CG historique 88,651546 in, profondeur −0,955171 ; seulement 4,48 % de course disponible. Moment propre +1 168,4574 lb·ft compensant un transport de −1 168,4574 lb·ft. Les essais identifient la sensibilité au bras de levier, sans valider AERORP ni les coefficients.
 
 Le menu natif affiche masse/CG mais aucune ligne éditable d'occupant. Le banc modifie les propriétés JSBSim dans une session dédiée puis restaure les masses. Le FDM source reste inchangé : l'alignement au datum constructeur et la pesée d'exemplaire manquent. Le diagnostic est réalisé ; l'acceptation de l'enveloppe réelle reste ouverte.
+
+## AUD-01a : invariance et transport du moment
+
+[Fiche 9](construction/09-reperes.md), 12 novembre 2026 : les 11 positions structurales translatées de +10 in conservent exactement le résultat longitudinal mesuré. AERORP avancé seul de 1 in change la commande de −0,955170809 à −0,897666390 ; le transport du moment propre restaure la commande initiale, avec un écart de 0,000294 ft après 60 s. Essais autonomes à 970 lb/50 kt ; formule de transport expérimentale limitée au vol symétrique. La capture native utilise FDM null et ne valide pas un vol. Le datum historique et la pesée de C-FYLP restent non identifiés ; FDM distribué inchangé.

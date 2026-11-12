@@ -88,3 +88,5 @@ Les premiers fichiers ont été rédigés avec une assistance IA. Leur origine e
 leurs limites sont explicites ; une revue humaine aéronautique reste nécessaire.
 
 [Diagnostic du centrage et de la réserve de profondeur](docs/construction/08-centrage.md) : calculs indépendants, captures FlightGear et limites du modèle historique.
+
+[Repères et point de référence aérodynamique](docs/construction/09-reperes.md) : quatre expériences distinguent un changement de coordonnées d’une modification physique.

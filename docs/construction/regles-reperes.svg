@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="450" viewBox="0 0 960 450">
+<title>Trois règles différentes pour le même projet</title>
+<desc>Schéma pédagogique original. Alignement longitudinal de dessin sur le bord d'attaque, et traduction commune des stations FDM sans changement du bras de levier.</desc>
+<rect width="960" height="450" fill="#f6f8fa"/>
+<g font-family="sans-serif" fill="#18283b">
+<text x="30" y="35" font-size="25">Le zéro d'une règle n'est pas un point aérodynamique</text>
+<text x="30" y="70" font-size="16">Dessin : bord d'attaque à 1,990 m ; manuel : station 66,34 in</text>
+<g stroke="#226b9d" stroke-width="3"><path d="M60 140 H890 M60 134 V146 M151 125 V155 M657 125 V155"/></g>
+<text x="50" y="115" font-size="16">Nez dessiné</text>
+<text x="45" y="172" font-size="16">0 m</text>
+<text x="142" y="195" font-size="16">Datum projeté : 0,304964 m</text>
+<text x="630" y="115" font-size="16">Bord d'attaque</text>
+<text x="630" y="172" font-size="16">1,990 m</text>
+<text x="30" y="230" font-size="15">Projection de dessin uniquement : x = 0,304964 + station × 0,0254</text>
+<text x="30" y="265" font-size="18">FDM : déplacer TOUS les points laisse les distances inchangées</text>
+<g stroke="#87672c" stroke-width="3"><path d="M90 310 H850 M300 300 V320 M590 300 V320"/><path d="M90 375 H850 M380 365 V385 M670 365 V385"/></g>
+<text x="190" y="295" font-size="16">CG : 88,6515 in</text><text x="565" y="295" font-size="16">AERORP : 103,2 in</text>
+<text x="270" y="355" font-size="16">CG : 98,6515 in</text><text x="645" y="355" font-size="16">AERORP : 113,2 in</text>
+<text x="30" y="420" font-size="16">+10 in partout → même bras de 14,5485 in. Règles du bas schématiques.</text>
+</g></svg>

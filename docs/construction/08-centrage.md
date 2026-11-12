@@ -129,3 +129,6 @@ Ouvre les résultats publiés : [table CSV](https://github.com/steveprudhomme/sw
 **Ce qui reste ouvert :** pesée d'un exemplaire choisi, correspondance des repères, point de référence des coefficients de moment, réglage de profondeur à ±23° avec animations cohérentes, puis véritable exploration du domaine de centrage. Le menu de chargement nécessite aussi une liaison aux deux occupants. Ces suites figurent dans [AUD-01](../../ROADMAP.md#audits-externes).
 
 **Biais à surveiller :** ajuster AERORP ou un coefficient jusqu'à obtenir un chiffre agréable pourrait masquer un mauvais repère. Nous gardons donc le FDM intact et publions aussi les échecs du solveur. La prochaine correction devra partir des références géométriques et d'une convention de moment explicite.
+
+
+**Suite réalisée :** [fiche 9, repères et transport du moment](09-reperes.md). La translation commune conserve la dynamique ; déplacer seulement AERORP la modifie.

@@ -16,6 +16,8 @@
 
 ### Ajouts
 
+- AUD-01a : expériences de translation du repère et de transport du moment, deux tests de non-régression, fiche pédagogique avec schéma original et capture native. Identification aéronautique encore ouverte ; aucun changement du FDM distribué.
+
 - AUD-01 : banc de centrage et bilan des moments, trois contrôles natifs de chargement, tutoriel illustré et tests. Repères historiques non encore alignés au manuel ; aucun changement du FDM.
 
 - Lecture critique de deux audits externes et 17 tâches traçables dans ROADMAP, avec critères de réussite et dépendances. Propositions à discuter ; licence et architecture inchangées par cette analyse.
