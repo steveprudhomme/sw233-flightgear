@@ -1,210 +1,87 @@
-# Feuille de route
+# Feuille de route — Schweizer SGS 2-33
 
-Objectif : reconnaître en vue extérieure un Schweizer SGS 2-33A des Cadets et, en place avant, retrouver les instruments du même appareil. La variante, l’immatriculation et la date comptent : deux photos de 2-33 ne prouvent pas que leurs tableaux de bord sont identiques.
+Mise à jour : **12 novembre 2026**. Les horizons expriment un ordre de travail, pas des dates promises.
 
-| Étape | État | Comment saurons-nous qu’elle est terminée ? |
-| --- | --- | --- |
-| Voler à CYJN | Démontré | Capture native de FlightGear avec le terrain chargé, les deux cycles d’aérofreins et un virage en glissade vu de deux points de vue. |
-| Habiller le tableau avant | Deuxième passe réalisée | Le film montre le grain de la tôle, les cerclages, les vis et la bouche d’aération inspirés de la photo C-FYLP. Les trois cadrans restent animés. Les quatre plaquettes, la façade radio et la boule de largage complètent maintenant la place avant ; la radio et le largage ne sont pas opérationnels. |
-| Livrée actuelle des Cadets de l’aviation royale du Canada | À documenter, puis à peindre | Comparaison avec des vues datées des deux flancs, du dessus et du dessous **d’un même planeur identifié** ; immatriculation, motifs, inscriptions et orientation lisibles aux bons endroits. |
-| Cockpit photographique | Priorité suivante | Comparaison côte à côte dans le même cadrage : contours de la planche, typographie, unités, reflets du verre et profondeur des instruments. Aucun reflet ne doit cacher une aiguille, de face ou en vue oblique. |
-| Valider le comportement | À mesurer | Polaire à plusieurs vitesses et masses, effets des aérofreins, contrôle du signe de la ficelle en glissade gauche et droite ; publier les écarts aux références. |
-| Atelier pour débutants | Première édition | Un débutant sur une installation neuve arrive au film final et sait où retrouver son projet ; consigner les étapes où il a eu besoin d’aide. |
+## 1. Vision et périmètre
 
-## Lot livrée : de la photo au planeur
+Construire pour FlightGear un Schweizer SGS 2-33 aux couleurs des Cadets de l’aviation royale du Canada, avec un cockpit crédible et un atelier permettant de le reconstruire pas à pas. Chaque comportement revendiqué doit être relié à une référence ou à un essai reproductible.
 
-1. Choisir avec un contributeur un exemplaire en service et une date de référence. La [documentation officielle de l’ARC](https://www.canada.ca/fr/force-aerienne/programmes/securite-vols/enquete.html) aide à identifier les appareils ; elle ne fixe pas à elle seule une livrée actuelle.
-2. Dans l’inventaire, noter auteur, date, côté visible, provenance et permission pour chaque image. Demander des vues manquantes plutôt que reproduire un logo ou un motif par symétrie supposée.
-3. Déplier le fuselage, les ailes et la dérive sur un patron à plat. Garder séparés peinture de fond, bandes, immatriculation et marques. Préférer un dessin original éditable ; n’incorporer des emblèmes tiers que si les droits sont établis.
-4. Vérifier le sens des lettres sur les deux côtés, les raccords et la texture des panneaux d’aérofreins dans les deux positions. Photographier dans le simulateur sous deux éclairages, puis faire relire le résultat. La livrée jaune du film reste une livrée de développement.
+Le projet est un prototype de simulation, pas un appareil d’entraînement certifié. Il ne fournit pas de consignes de vol réel, ne copie pas de ressources tierces sans droits établis et ne promet pas de variantes supplémentaires avant validation du modèle de référence. Licence actuelle : **GPL-3.0-only**.
 
-## Lot cockpit : priorité au poste avant
+## 2. État actuel
 
-Prendre la disposition C-FYLP comme référence de travail, pas le poste différent de N2930H. Relever les diamètres et la position de l’œil avant de changer l’échelle. Reconstruire d’abord les cadrans et leurs unités, puis le compas, la radio et les plaquettes selon l’exemplaire choisi. Une image fixe d’aiguille ne doit jamais remplacer une mesure de FlightGear. Pour une texture tirée d’une photographie, obtenir une image frontale nette et une autorisation de diffusion compatible. Le poste arrière viendra après validation du poste avant.
+| Domaine | État vérifié | Limite principale |
+|---|---|---|
+| Vol et décor | Démonstrations natives à CYJN, aérofreins et glissade | Polaire et enveloppe réelle non validées |
+| Cockpit | Anémomètre, altimètre, variomètre et compas animés ; bancs publiés | Aspect encore schématique ; radio et largage décoratifs |
+| Masse et repères | Calculs comparés à FlightGear ; transport du moment testé | Pesée de C-FYLP et référence historique des coefficients inconnues |
+| Profondeur | Gain actuel ±0,30 rad ; gouverne visuelle à séparer | Lot AUD-01b en cours ci-dessous |
+| Documentation | Neuf fiches, sources, captures et reconstruction automatique | Relecture autonome par un débutant encore attendue |
+| Qualité | 13 tests réussis au début de ce lot | Ne constituent pas une certification du modèle |
 
-## Reconstruire depuis une page blanche, puis améliorer le cockpit
+**Lecture des statuts :** terminé = critère vérifié et preuve publiée ; en cours = réalisation autorisée ; à faire = proposé ; dépendance = donnée ou décision nécessaire.
 
-[Sept fiches publiées](docs/construction/README.md) ; reconstruction automatique en CI. Prochaine validation pédagogique : observer un premier lecteur refaire une mesure et assembler son avion sans assistance.
+## 3. Prochaine version — v0.2.0, commandes et installation
 
-1. Écrire une aide à la tâche pour un lecteur de 10 ans : préparer un dossier vide, mesurer les références, noter page, unité, calcul et incertitude ; séparer les choix de maquette des mesures publiées.
-2. Enseigner la fabrication complète du maillage AC3D, de la fiche FlightGear, des animations, des check-lists et de la peinture Python. Pour chaque opération : action, raison, résultat attendu et dépannage. Relier le modèle de vol, le décor, les essais, la vidéo et la publication à ces cinq fichiers.
-3. Vérifier la reconstruction indépendamment des fichiers finaux ; ensuite poursuivre le poste C-FYLP avec un détail identifiable sur la photo et contrôler le résultat dans le cockpit.
+Objectif : un petit incrément utilisable et vérifiable. Aucune date ferme. Chaque lot peut être publié séparément en préversion.
 
-## Ce que trois autres constructions nous apprennent
+| Priorité / lot | Statut | Critère de réussite | Responsable |
+|---|---|---|---|
+| P1 · **AUD-01b : profondeur ±23°** | En cours | FDM, animation et butées cohérents ; comparaison avant/après à même chargement ; tutoriel illustré | Mainteneur, revue recherchée |
+| P1 · **AUD-01c : occupants dans le menu** | À faire | Deux masses modifiables, CG recalculé, restauration et captures solo/biplace | À attribuer |
+| P2 · **AUD-02 : paquet et lanceur** | À faire | Installation propre sous Windows et Linux ; chemins, textures, miniature et métadonnées vérifiés | À attribuer |
+| P2 · **AUD-13 / AUD-14 : contrôles et publication** | À faire, après AUD-02 | ZIP construit sur tag, testé avant publication ; provenance et empreinte jointes | À attribuer |
 
-Notre atelier sait reproduire les fichiers. Cela répond à « deux personnes construisent-elles la même maquette ? ». Il reste deux questions : « le pilote voit-il ce qu’il verrait dans C-FYLP ? » et « à masse et vitesse connues, le modèle descend-il comme un 2-33 ? ». Voici les comparaisons qui motivent les prochains essais.
+**Lot actif :** [protocole AUD-01b en huit étapes](docs/planification/aud-01b-profondeur.md). Le protocole est commité avant le code. Un lot n’est clos que lorsque ses tests, captures pertinentes, limites et documents sont publiés.
 
-| Construction consultée | Observation | Décision pour le Schweizer |
-| --- | --- | --- |
-| [SGS233 historique de JSBSim](https://github.com/JSBSim-Team/jsbsim/blob/master/aircraft/sgs233/sgs233.xml), également étudié dans [l’inventaire FlightGear](docs/sources.md) | C’est le même type de planeur ; les auteurs signalent pourtant des estimations dans le modèle. | S’en servir comme témoin pour repérer un écart de comportement. Pour trancher, revenir à une donnée publiée du 2-33 avec sa variante, sa masse et ses unités. Un accord entre deux simulateurs n’est pas un essai en vol. |
-| [ASK 21, développement de MrChillStorm](https://github.com/MrChillStorm/ASK21) | L’auteur distingue les comportements appuyés par le manuel ou des essais de ceux encore estimés, notamment en forte glissade. La ficelle a sa propre animation. | Tester séparément le mouvement visible de notre ficelle et la réponse aérodynamique du planeur. Aucun coefficient ni angle limite de l’ASK 21 ne devient une donnée du Schweizer. |
-| [ASK 13, révision 4921 de FGAddon](https://sourceforge.net/p/flightgear/fgaddon/4921/) | Les sources éditables d’instruments sont conservées séparément, dont le fichier de travail de la radio. | Garder nos dessins et leur recette de génération modifiables. Isoler les éléments du tableau au fur et à mesure : déplacer la radio doit être possible sans repeindre l’altimètre ; vérifier ensuite le paquet reconstruit. |
+## 4. Moyen terme — après v0.2.0
 
-### Dans quel ordre améliorer la maquette ?
+Horizon indicatif : plusieurs cycles de développement ; les données disponibles déterminent l’ordre.
 
-- [ ] **1 · Fixer un point de comparaison avant de retoucher la peinture.** Reprendre la [capture actuelle du siège avant](https://github.com/steveprudhomme/sw233-flightgear/releases/download/cockpit-construction-01/SW233-cockpit-CFYLP.jpg). Noter position de l’œil, angle de vue et résolution ; relever sur la photo C-FYLP les centres, diamètres apparents et espaces entre cadrans. Si une largeur réelle manque, conserver les rapports et leur incertitude. Livrable : une feuille de mesures et un cadrage que deux contributeurs peuvent refaire.
-- [ ] **2 · Corriger la disposition, puis l’aspect.** Dégager la radio du cerclage de l’altimètre et placer le compas entre les plaquettes inférieures. Comparer deux vues identiques avant/après, puis une vue oblique pour contrôler la profondeur. Ensuite seulement travailler le verre, la typographie et la tôle. Réussite : cadrans sans chevauchement, aiguilles lisibles sous deux éclairages, compas marqué décoratif tant que son indication n’a pas été testée.
-- [ ] **3 · Vérifier la silhouette avant la livrée.** Comparer aile, hauban, roue et patin de face, de profil et du dessus. Consigner les différences avec le trois-vues ; une capture en perspective permet de détecter une forme étrange mais pas de certifier une cote. Corriger les écarts confirmés, puis reprendre le lot livrée ci-dessus avec un appareil daté et identifié.
-- [ ] **4 · Mesurer le vol indépendamment du rendu.** À CYJN, en air calme, fixer masse, centrage et configuration. Relever à plusieurs vitesses stabilisées la vitesse indiquée et le taux de chute, puis recommencer à une deuxième masse. Refaire un point aérofreins rentrés puis sortis à la même vitesse. Publier conditions, unités, résultats et écarts aux seuls points documentés pour le Schweizer ; garder les autres comme mesures du simulateur.
-- [ ] **5 · Distinguer une animation convaincante d’un système vérifié.** Filmer vol symétrique, glissade à gauche, puis à droite : noter commandes croisées, côté de l’aile basse, angle de vent relatif et sens de la ficelle. Vérifier séparément le levier et les deux panneaux d’aérofreins en butée. Pour la poignée de largage, attendre un essai avec câble attaché puis effectivement libéré avant de la déclarer fonctionnelle.
-- [ ] **6 · Faire refaire les essais.** Un second contributeur repart du paquet publié, retrouve les cadrages et les états des commandes. Un lecteur débutant suit le tutoriel sans indication orale ; consigner la première étape où il hésite et corriger sa légende avant de clore le lot.
+| Objectif | Suivi | Dépendance / critère de réussite |
+|---|---|---|
+| Référence physique et polaire | AUD-01a, AUD-03, AUD-09 | Identifier pesée et repères, puis comparer plusieurs vitesses et masses aux sources ; garder les échecs d’essai |
+| Cockpit plus photographique | VIS-01, AUD-11 | Mesures C-FYLP, cadrage fixe, textes lisibles, verre sous deux éclairages ; calage d’altimètre visible et bouton testé |
+| Silhouette puis livrée actuelle des Cadets | VIS-02 | Un appareil identifié et daté, vues des deux flancs/dessus/dessous, droits documentés ; lettrage sans miroir et aérofreins raccordés |
+| Contacts, frein, treuil et remorquage | AUD-06, AUD-05 | Contacts cohérents ; essais natifs d’attache, lancement et largage pour chaque mode |
+| Aide embarquée et check-lists | AUD-10 | Procédures sourcées ; uniquement fonctions réellement disponibles ; commandes repérables dans le cockpit |
+| Outillage plus simple à maintenir | AUD-07, AUD-08, AUD-12 | Extraire les répétitions utiles ; vérifier pause/reinit/restauration sans modifier les résultats des bancs |
+| Tutoriel éprouvé par un débutant | AUD-16 | Reconstruction et installation sans aide orale ; hésitations corrigées, illustrations légendées |
 
-## Illustrer les sept fiches avec des captures natives de FlightGear
+VIS-01 conserve la disposition C-FYLP et des aiguilles indépendantes des textures. VIS-02 commence par les formes et le dossier photographique, puis le dépliage et la peinture ; la livrée jaune actuelle reste une livrée de développement.
 
-But : à chaque point d’arrêt, l’enfant peut répondre à « où dois-je regarder, et qu’est-ce qui me dit que j’ai réussi ? ». La [capture C-FYLP](https://github.com/steveprudhomme/sw233-flightgear/releases/download/cockpit-construction-01/SW233-cockpit-CFYLP.jpg) et le [film à CYJN](https://steveprudhomme.github.io/sw233-flightgear/#film) sont des points de départ ; le parcours illustré reste à produire. Pour les premières fiches, montrer le résultat attendu après assemblage, sans demander un lancement avant que l’avion soit prêt.
+## 5. Long terme — ambitions à confirmer
 
-| Fiche de l’atelier | Capture à placer juste après l’action | Ce que le lecteur doit retrouver |
-| --- | --- | --- |
-| 1 · Mesurer | Vue extérieure du dessus, ailes entières, à côté du schéma de mesure | Pointer le changement de pente sur chaque aile ; prendre la cote sur le plan, pas sur la capture. |
-| 2 · Maillage | Profil au sol et détail du nez sur fond contrasté | Distinguer la roue du patin, le tube Pitot de la ficelle. |
-| 3 · Vol | Planeur stabilisé et valeurs du simulateur au même instant | Lire vitesse, unité et taux de chute ; retrouver la ligne correspondante du relevé d’essai. |
-| 4 · Configuration et animations | Poste avant centré ; deux captures du même cadran à deux valeurs connues | Identifier le bon siège et constater que l’aiguille change dans le sens attendu. |
-| 5 · Listes | Menu des listes ouvert puis une liste affichée | Retrouver le même titre et le premier item, sans rien actionner sur le planeur. |
-| 6 · Peinture | Réutiliser la capture existante, puis ajouter le même cadrage après correction et un gros plan natif | Repérer les quatre cartes, la radio, les aiguilles et le bouton de largage ; distinguer ce qui est peint de ce qui dépasse du tableau. |
-| 7 · Vol à CYJN | Terrain reconnaissable ; paires rentré/sorti depuis le siège et au-dessus des ailes ; glissade depuis le siège et de dehors | Suivre le mouvement des deux panneaux, puis associer ficelle et aile basse au même instant du vol. |
+| Objectif | Suivi | Condition préalable |
+|---|---|---|
+| Vol lent, décrochage et autorotation documentés | AUD-04 | Données et stabilité de base validées ; protocoles et limites explicites |
+| Poste arrière et autres variantes | VIS-03 | Poste avant validé et références propres à chaque variante |
+| Accueil anglophone | AUD-17 | Contributeur chargé de maintenir les traductions et exemples |
+| Éventuelle candidature au hangar officiel | AUD-15 | Décision du mainteneur, règles d’admission et droits examinés ; aucun changement automatique de licence |
 
-**Règle de publication.** Capturer dans FlightGear avec le terrain chargé et la lumière de côté ou de dos. Conserver l’original lisible parmi les pièces de la version ; versionner les légendes et, si utile, une annotation éditable. Indiquer version de FlightGear, révision de l’avion, vue, conditions et, pour un extrait du film, minutage. Donner un texte alternatif et une légende courte (« Regarde… Tu dois voir… ») ; ne pas couvrir le détail par une flèche. La fiche est prête quand le lecteur retrouve ce détail dans son propre simulateur et que l’image s’ouvre depuis le tutoriel publié.
+## 6. Travaux terminés et preuves
 
-### Séance radio et compas : contrôles avant publication
-
-1. Figer le cadrage témoin : version du paquet, résolution, siège, décalages de caméra, inclinaison et champ de vision. Garder le même scénario à CYJN pour les deux captures natives.
-2. Reporter les centres de la photo par rapport à la bouche d’air ; calculer aussi le jeu entre les bords des instruments. Conserver les hypothèses si la perspective ou la largeur inconnue empêche une mesure réelle.
-3. Modifier la peinture originale, garder les aiguilles indépendantes et représenter le compas comme décoratif. Comparer deux images au même cadrage : cerclage dégagé, fenêtre du compas visible, textes libres.
-4. Insérer les deux images dans la fiche de peinture avec une action que l’enfant peut refaire ; vérifier la reconstruction depuis le livre, puis actualiser README, historique et état de la feuille de route.
-
-**Séance réalisée :** [mesures, recette et captures natives avant/après](docs/construction/06-peinture.md#comparaison-cockpit). Le cadrage de comparaison est fixé, la radio dégagée et le compas décoratif en place. Restent la mesure réelle de la position de l’œil, le contrôle en vue oblique, le verre sous deux éclairages et une indication de cap vérifiée.
-
-### Séance réalisée : du compas peint au boîtier en relief
-
-- Avant de toucher au maillage, assembler la version témoin et la photographier de face et de biais ; déplacer aussi l’œil pour révéler le flanc.
-- Conserver le centre et la silhouette de façade. Distinguer ce que montre la photo de C-FYLP des épaisseurs choisies ; dessiner une coupe cotée, un cadre ouvert, une fenêtre en retrait et un trait fixe derrière la vitre. Éviter les surfaces superposées.
-- Reprendre les deux vues avec les mêmes réglages puis changer uniquement l’éclairage. Vérifier contour, retrait, lisibilité du trait et dégagement des cartes, sans brancher d’indication de cap.
-- Intégrer recette et captures légendées au livre, reconstruire le modèle à partir des fiches et actualiser les liens du projet.
-
-[Recette et six captures natives](docs/construction/06-peinture.md#compas-relief) : de biais on distingue le flanc, les cartes restent dégagées et le trait reste visible de jour et le soir. La profondeur demeure estimée. Prochain essai distinct : indication de cap sur plusieurs orientations connues, puis contrôle au passage du nord.
-
-Pour préparer la bande graduée mobile, voir [l’examen du compas FSX et les photos de cockpits identifiés](docs/references/cockpits-et-fsx.md). Le témoin FSX est une comparaison de fonctionnement, pas une source de cotes du Schweizer.
-
-### Séance indication magnétique
-
-1. Identifier la propriété réellement alimentée dans FlightGear ; distinguer l’orientation vraie, le cap magnétique et la lecture de l’instrument.
-2. Construire une rose graduée originale derrière le trait fixe. Contrôler le sens, le centrage et l’occultation des graduations hors fenêtre.
-3. Faire un essai visuel à entrée connue aux quatre points cardinaux et à 359°, 000°, 001° ; distinguer cet essai d’affichage de la validation en vol. Conserver des captures, la méthode et les limites dans le tutoriel.
-
-**Affichage réalisé et vérifié dans FlightGear 2024.1.7 :** [essais illustrés et méthode](docs/construction/04-configuration.md#rose-magnetique). La rose suit l’indication magnétique du simulateur. Restent des essais en virage et après stabilisation pour évaluer sa réponse dynamique.
-
-### Essai dynamique du compas à CYJN : protocole avant tournage
-
-- Départ en vol stabilisé vers 330° magnétiques, vent demandé nul, compas en service. Commander les gouvernes, jamais la valeur indiquée. Enregistrer ensemble temps, cap magnétique, indication, roulis et vitesse.
-- Virer vers 030° puis revenir vers 330° avec des inclinaisons cibles opposées de même amplitude. Garder un palier ailes à plat entre les virages. Repérer les passages de nord sur les mesures.
-- Calculer l’écart signé dans [−180°, 180°[. Pour chaque retour à plat (|roulis| ≤ 3°), chercher le premier intervalle continu de 3 s avec |écart| ≤ 2°. Donner les seuils, le maximum par virage et signaler un critère non atteint.
-- Publier film natif, courbes, trois images légendées et données de cette exécution. Séparer les observations du simulateur de toute affirmation sur l’appareil réel.
-
-**Essai réalisé :** [126 s de vol à CYJN, film et relevés](docs/construction/07-essais.md#compas-en-virage). Écart extrême de −43,6° à droite et +43,6° à gauche. Une deuxième inclinaison et des mesures indépendantes seraient nécessaires avant de généraliser.
-
-### Anémomètre C-FYLP : protocole avant modification
-
-1. Garder le cadran initial et une capture témoin à vitesse connue. Identifier sur la photo le pivot, l’axe vertical et les graduations lisibles ; relever les points en pixels, les angles et leur incertitude.
-2. Comparer les arcs visibles avec les limites explicitement documentées pour la variante et l’unité. Distinguer limite d’utilisation, marquage photographié et borne non vérifiée ; ne pas compléter un arc par supposition.
-3. Tester la conversion nœuds → mph indépendamment de la position des graduations. Si l’échelle photographiée est irrégulière, utiliser la même correspondance par intervalles pour la peinture et la rotation de l’aiguille.
-4. Essayer au moins trois vitesses réparties sur le cadran dans FlightGear ; comparer avant/après au même cadrage et à la même vitesse. Publier captures, table de mesures et procédure dans le tutoriel.
-
-**Séance réalisée :** [relevé des angles de C-FYLP](docs/construction/04-configuration.md#anemometre), marquages du manuel §2.3 pour 1 040 lb et [quatre entrées vérifiées dans FlightGear](docs/construction/07-essais.md#banc-anemometre). Restent les erreurs de pression et la comparaison à une photographie parfaitement frontale.
-
-### Variomètre C-FYLP : protocole avant travaux
-
-1. Identifier sur la photo la position du zéro, le sens UP/DOWN, les nombres et l’unité ; noter les angles approximatifs et ne pas inférer une compensation en énergie totale.
-2. Conserver un témoin de l’ancien cadran. Vérifier séparément signe et facteur 60 aux entrées −500, 0, +500 et +1 000 ft/min ; reprendre le même cadrage avant/après.
-3. À CYJN, sans vent, effectuer une descente avec les aérofreins rentrés puis sortis, sans imposer le taux de chute. Enregistrer vitesse indiquée, taux de montée signé, indication et position effective des panneaux. Comparer deux fenêtres de cinq secondes à vitesse moyenne comparable (écart ≤ 2 kt) ; signaler les transitoires et les limites du modèle.
-4. Publier mesures, film cockpit, captures natives, instructions de reconstruction et résultats dans le tutoriel, le README et l’historique.
-
-Le cadran utilise maintenant des centaines de ft/min et l’indication de vitesse verticale de FlightGear ; [banc et descente comparative](docs/construction/07-essais.md#banc-variometre). La compensation en énergie totale n’est pas simulée par ce travail.
-
-### Altimètre C-FYLP : protocole avant modification
-
-- Identifier les graduations, les silhouettes d’aiguilles et le réglage barométrique visibles sur la photo. Signaler les détails non identifiables ; ne pas inventer une troisième aiguille.
-- Brancher l’altitude indiquée de l’instrument FlightGear, puis vérifier son réglage de pression à altitude géométrique constante. Distinguer l’essai d’affichage de l’essai de pression.
-- Photographier avant/après au même cadrage et contrôler 0, 950, 1 000, 1 050 et 2 500 ft. Documenter les rapports de rotation et les lectures attendues.
-- Ajouter au tutoriel les mesures, le réglage de pression, les captures et les limites constatées ; actualiser les documents concernés.
-- Ensuite seulement, lire les deux audits externes, rapprocher leurs affirmations des sources actuelles et préparer des tâches traçables à discuter, sans engager automatiquement leurs recommandations.
-
-**Altimètre réalisé :** [cinq lectures et trois calages vérifiés](docs/construction/07-essais.md#banc-altimetre). Les deux aiguilles suivent l’altitude indiquée. Restent la confirmation du troisième indicateur, une fenêtre de calage lisible et la vérification interactive du bouton.
+| Résultat | Preuve |
+|---|---|
+| Démonstration à CYJN, glissade et aérofreins | [Validation et film](docs/validation.md) |
+| Cadrans et compas, lectures et bancs | [Tutoriel des essais](docs/construction/07-essais.md) |
+| Diagnostic de masse et réserve de profondeur | [Fiche 8](docs/construction/08-centrage.md) |
+| Translation des repères et transport du moment | [Fiche 9](docs/construction/09-reperes.md) — identification aéronautique AUD-01a encore ouverte |
 
 <a id="audits-externes"></a>
 
-## Audits externes du 11 novembre 2026 — propositions à discuter
+## 7. Tickets, décisions et détails techniques
 
-Les deux rapports ont été lus après la séance altimètre. Voir la [confrontation aux fichiers actuels, provenance et limites](docs/references/audits-2026-11-11.md). A désigne *Audit Projet SW233 FlightGear* ; B désigne *Audit Technique Projet FlightGear SW233*. Les priorités suivantes sont proposées, sans lancement automatique des travaux. Aucune modification de licence n'est décidée.
+- [Gestionnaire de tickets GitHub](https://github.com/steveprudhomme/sw233-flightgear/issues) : proposer un lot avec son identifiant (par exemple AUD-01b), sa preuve attendue et son responsable.
+- [Jalons GitHub](https://github.com/steveprudhomme/sw233-flightgear/milestones) : les horizons de ce document ne sont pas encore annoncés comme des jalons GitHub synchronisés.
+- [Backlog détaillé des 17 recommandations](docs/planification/backlog-audits.md) : critères et dépendances, sans duplication du statut courant.
+- [Analyse des audits et limites de leurs conclusions](docs/references/audits-2026-11-11.md).
+- [Archive des anciens protocoles](docs/planification/archive-roadmap-2026-11-12.md) : mémoire du travail, **pas une seconde feuille de route active**.
 
-### Données et comportement — priorité proposée haute
+Aucun numéro de ticket n’est inventé : les identifiants AUD/VIS sont documentaires. Les futurs tickets et PR reprendront ces identifiants et seront liés ici après création. Les choix importants feront l’objet d’un document de décision avant réalisation.
 
-- [ ] **AUD-01 · Masse, centrage et autorité en tangage** (A §1.3 ; B V&V). Retrouver variante, datum, unités, bras des occupants et enveloppe dans les références primaires ; rapprocher les deux masses existantes du dialogue de chargement. Expliquer la profondeur proche de la butée signalée dans la validation. **Terminé quand :** tableau sourcé, conversions et cas avant/arrière/solo/double reproductibles, écarts documentés ; aucune cote photographique présentée comme exacte.
-- [ ] **AUD-03 · Polaire et aérofreins** (A §1.3 ; B V&V), après AUD-01. Définir les points documentés et leurs incertitudes ; mesurer plusieurs descentes stabilisées à deux masses, sans ascendances, puis panneaux rentrés/partiels/sortis à vitesse comparable. **Terminé quand :** CSV, courbes, unités mph/kt, tolérances justifiées et captures natives permettent de distinguer résultats simulés et performances publiées.
-- [ ] **AUD-04 · Vol lent, décrochage et autorotation** (A §1.3 ; B synthèse), après AUD-01/03. Définir progressivement entrées, sorties et limites des essais pour plusieurs centrages ; ne pas conclure à une vrille réaliste depuis un simple modèle de portance. **Terminé quand :** chaque comportement revendiqué possède protocole, trace et comparaison documentée ; les comportements non validés restent explicitement indiqués.
-- [ ] **AUD-05 · Remorquage et treuillage** (A §1.3 ; B feuille de route), après AUD-01 et contrôle des contacts AUD-06. Vérifier les interfaces de la version FlightGear choisie, repères et coordonnées des crochets ; relier force externe, câble, poignée et commandes. Tester attache, tension, décollage et largage séparément pour chaque mode. **Terminé quand :** essais de signe/unités et deux séquences natives montrent un câble réellement libéré ; tutoriel et aide décrivent uniquement les commandes vérifiées.
-- [ ] **AUD-06 · Contacts et frein de roue** (A §1.3). Revoir les cinq contacts existants face à la géométrie ; examiner patin, roue, queue et saumons, puis la liaison frein/aérofreins. **Terminé quand :** repos au sol, roulage, freinage et contacts dissymétriques sont documentés sans pénétration anormale observée ; ne pas confondre test statique réussi et détection de collision complète.
-- [ ] **AUD-09 · Commandes et non-régression de traînée** (A §1.2). Contrôler signes, unités, butées et absence de volets fictifs ; ajouter un contrôle pertinent de traînée pour les deux signes de profondeur. Examiner une affectation optionnelle des spoilers sans modifier les réglages personnels du joystick. **Terminé quand :** commandes physiques, animations et FDM concordent ; le mécanisme négatif du ticket #357 ne peut être réintroduit sans échec de test.
+## 8. Comment participer et maintenir ce document ?
 
-### Installation, cockpit et pédagogie — priorité proposée moyenne
+Nous recherchons : des pilotes connaissant le 2-33 pour la revue des essais, des propriétaires disposant de fiches de pesée et mesures, des artistes 3D/texture, des testeurs Linux/Windows et des lecteurs débutants. Voir [CONTRIBUTING](CONTRIBUTING.md) et [MAINTAINERS](MAINTAINERS.md), puis proposer sa contribution dans un ticket.
 
-- [ ] **AUD-02 · Paquet et lanceur multiplateforme** (A §1.1/1.2/2.2/2.3 ; B documentation). Tester le paquet construit sur un système sensible à la casse, y compris inclusions et textures ; vérifier les métadonnées de dossier attendu, version minimale, auteurs, URL, tags et notes de maturité. Ajouter miniature et écran de chargement depuis des captures natives après vérification du format. **Terminé quand :** installation propre depuis un ZIP, détection unique et cockpit texturé ; aucun renommage de SW233 sans défaut démontré et migration documentée.
-- [ ] **AUD-10 · Aide embarquée et check-lists** (A §2.2). Comparer les listes déjà présentes aux procédures de la variante ; ajouter les phases manquantes, conditions automatiques seulement pour les états réellement mesurables, et repères visuels utiles. **Terminé quand :** débutant retrouve chaque commande dans des captures légendées ; les fonctions non implémentées ne sont pas annoncées opérationnelles. Dépend d'AUD-05 pour les lancements.
-- [ ] **AUD-11 · Instrumentation et équipement réel** (A §1.3 ; B V&V). Identifier le variomètre de C-FYLP avant de choisir vitesse verticale, énergie totale ou Netto ; compléter calage visible de l'altimètre et essai manuel du bouton. Vérifier radio/sons sur cet équipement au lieu de tout désactiver. **Terminé quand :** chaque fonction possède référence, propriété, unité, contrôle dynamique et paire d'images ; détail non identifiable marqué comme tel.
-- [ ] **AUD-16 · Relecture indépendante et tickets utiles** (A §2.2/2.3 ; B documentation/collaboration). Faire reconstruire puis installer par un lecteur débutant ; noter les hésitations. Compléter les tickets avec version, système, masse, centrage, météo, état des commandes et journal selon le problème. **Terminé quand :** première reproduction sans aide orale consignée et fiches corrigées avec captures natives ; conserver le français et les règles DCO existantes.
-
-### Outillage — priorité proposée moyenne, changements ciblés
-
-- [ ] **AUD-07 · Modularité utile** (A §1.1 ; B architecture). Choisir un vrai besoin d'extension puis isoler ses animations/systèmes ; comparer lisibilité et coût de chargement. Prévoir socle partagé et fichiers de variantes seulement si une seconde variante est décidée. **Terminé quand :** modification d'un composant localisée, reconstruction du livre inchangée fonctionnellement, rendu vérifié ; pas de fragmentation générale motivée seulement par SOLID.
-- [ ] **AUD-08 · Infrastructure commune des bancs** (B DRY), avec AUD-12. Extraire lecture HTTP, sauvegarde/restauration, capture et journalisation répétées ; conserver entrées et tolérances propres aux instruments. **Terminé quand :** les quatre bancs existants donnent les mêmes résultats et restaurent l'état même après une erreur ; choisir fonctions ou classe selon le besoin, pas imposer une classe abstraite.
-- [ ] **AUD-12 · Cycle de vie des scripts** (A §1.2). Distinguer scripts de développement et futurs systèmes embarqués ; éprouver pause, reprise, reinit, lancement répété, propriétés absentes et arrêt des timers/listeners. **Terminé quand :** aucune acquisition dupliquée ni boucle résiduelle observée ; temps simulé ou réel choisi et expliqué pour chaque usage.
-- [ ] **AUD-13 · Compléter la CI existante** (A §2.4 ; B CI). Évaluer fg-check-aircraft sur le paquet construit et figer la version retenue ; contrôler récursivement chemins/casse et dimensions des textures selon les contraintes effectivement vérifiées. Conserver analyse XML, Ruff, unittest et reconstruction existants. **Terminé quand :** des erreurs représentatives sont détectées sous Linux ; aucune règle supposée sur tabs ou taille maximale n'est présentée comme une limitation universelle du moteur.
-- [ ] **AUD-14 · Publication sur tag** (B CI/CD), après AUD-02/13. Construire le dossier avec package.py, produire le ZIP, inclure licence/provenance et manifeste de version, puis attacher les résultats contrôlés à une Release sur tag de version. **Terminé quand :** archive installée avec succès depuis une machine propre, empreinte publiée, échec des contrôles bloquant la publication et permissions du workflow limitées.
-
-### Décisions du mainteneur — sans changement immédiat
-
-- [ ] **AUD-15 · Diffusion et droits** (A §2.1 ; B licences). Choisir entre hangar indépendant et candidature FGAddon ; vérifier les règles actuelles et droits par fichier/ressource, y compris photos, sons, références FSX et contributions. Examiner les implications d'une éventuelle autre licence seulement après cette décision. **Terminé quand :** décision motivée et inventaire sourcé ; GPL-3.0-only reste en place tant qu'aucun changement explicite et juridiquement possible n'est approuvé.
-- [ ] **AUD-17 · Accueil anglophone** (B nommage). Évaluer une courte porte d'entrée anglaise et un alias éventuel de l'atelier ; conserver les chemins et le tutoriel français. **Terminé quand :** un lecteur anglophone peut installer et contribuer, sans duplication divergente ni rupture des commandes existantes.
-
-Pour chaque lot retenu : détailler ses sous-étapes et faire le commit de préparation **avant** la modification ; mettre à jour le tutoriel et les MD concernés, joindre des captures du simulateur aux changements visibles, et publier mesures/limites avec le commit de réalisation. L'ordre proposé à discuter est **AUD-01 → AUD-03 → AUD-05** ; AUD-02 peut constituer un premier lot indépendant pour faciliter les essais externes.
-
-
-### AUD-01 — protocole détaillé avant essais
-
-Séance autorisée le 11 novembre 2026. Ce lot établit le diagnostic avant toute retouche aérodynamique.
-
-1. Identifier dans les manuels fournis la variante, le datum, les bras et limites de chargement ; relever numéro de page PDF et numéro imprimé. Vérifier visuellement les schémas. Distinguer fiche de pesée d'exemple, donnée constructeur et estimation héritée.
-2. Calculer à la main les moments et le centrage du modèle actuel, puis les comparer à JSBSim pour les mêmes masses. Vérifier la position du point d'application aérodynamique et la contribution du bras de levier au moment de tangage.
-3. Construire un banc reproductible avec masses avant/arrière paramétrables ; fixer altitude, vitesse, vent nul, trim de compensation nul et panneaux rentrés. Conserver tous les résultats, y compris les équilibres impossibles, sans les masquer.
-4. Comparer solo et biplace ; à masse constante, déplacer la charge entre les deux sièges pour isoler l'effet du centrage. Explorer les bornes documentées seulement après avoir rapproché les repères ; les cas numériques hors enveloppe seront marqués comme tels.
-5. Décomposer le moment de tangage (aérodynamique et transport au CG) et relever marge à la butée, résidus, vitesse et altitude après 60 s. Faire une expérience de sensibilité séparée si nécessaire ; aucune valeur expérimentale ne devient un coefficient validé.
-6. Contrôler dans FlightGear les propriétés de masse/centrage et l'accès au chargement ; conserver des captures natives légendées. Un test autonome JSBSim ne sera pas présenté comme un vol natif FlightGear.
-7. Publier tableau sourcé, protocole, images et limites dans le tutoriel ; actualiser sources, validation, README, historique et état AUD-01. Corriger uniquement un défaut démontré ; si les données ne permettent pas de choisir un nouveau coefficient, documenter ce verrou et la tâche suivante.
-
-Réussite : calcul indépendant concordant avec le moteur, cause de la forte commande analysée par des mesures, et distinction explicite entre valeurs documentées et paramètres encore estimés. Ne pas clôturer la validation de l'enveloppe réelle faute de données d'exemplaire.
-
-
-**AUD-01 : diagnostic réalisé le 12 novembre 2026**, [méthode, sources, captures et résultats](docs/construction/08-centrage.md). Le calcul manuel concorde avec JSBSim et FlightGear. Le moment de transport explique la forte demande de profondeur ; trois cas n'ont pas convergé. Le FDM n'a pas été recalibré. La tâche globale reste ouverte tant que les repères et la pesée d'exemplaire ne sont pas établis.
-
-Sous-étapes révélées par les essais, à préparer avant la prochaine modification :
-
-- [ ] **AUD-01a · Réconcilier les repères et le moment de référence.** Écart entre sièges historique 42 in contre 30,9 in au manuel ; identifier le datum et le point de référence des coefficients avant toute translation d'AERORP. Choisir explicitement un jeu de pesée documenté ou une hypothèse déclarée, jamais présenter l'exemple n° 369 comme C-FYLP.
-- [ ] **AUD-01b · Revoir le débattement de profondeur.** Comparer ±0,30 rad du prototype aux ±23° du manuel pour 1 040 lb ; synchroniser commande, FDM, animation et tutoriel, refaire les essais à chargement constant. Ne pas augmenter artificiellement le coefficient pour masquer le problème.
-- [ ] **AUD-01c · Exposer les occupants dans le menu natif.** Le dialogue Fuel and Payload est actuellement vide côté charges ; relier explicitement les deux masses, contrôler modification et restauration en solo/biplace, puis illustrer l'utilisation. Les bornes de saisie ne devront pas être présentées comme une enveloppe de chargement approuvée sans données suffisantes.
-
-
-### AUD-01a — protocole avant rapprochement des repères (12 novembre 2026)
-
-1. Dresser trois repères distincts : stations constructeur, positions structurales JSBSim et coordonnées du maillage. Relever origine, axes, unités, VRP et transformations ; ne pas supposer que leurs zéros coïncident.
-2. Utiliser le bord d'attaque à l'emplanture comme ancrage documentaire pour une correspondance longitudinale **de dessin**, avec une incertitude explicitée. Comparer séparément l'écartement des sièges ; ne pas ajuster une échelle pour faire coïncider des données incompatibles.
-3. Vérifier expérimentalement l'invariance physique lorsqu'on translate ensemble toutes les positions structurales du FDM. Comparer CG, bras de levier et équilibre avant/après dans une copie temporaire ; conserver le FDM distribué.
-4. Vérifier le transport du moment lorsqu'AERORP seul change : calculer la correction nécessaire du moment propre pour conserver le même moment au CG. Expliquer pourquoi déplacer AERORP sans transformer les coefficients modifie la physique, et pourquoi le quart de corde n'est pas automatiquement la bonne référence.
-5. Produire un schéma original des axes et une capture native du modèle dans FlightGear ; fournir au tutoriel les pointages dans les fichiers, conversions et preuves reproductibles. La capture illustre la forme ; elle ne certifie aucune dimension réelle.
-6. Consigner les données encore manquantes pour une calibration : pesée de l'exemplaire, origine des coefficients et référence de leur moment. Clore le diagnostic mathématique si vérifié, mais garder ouverte l'identification aéronautique non prouvée. Actualiser les MD et publier les résultats dans un commit distinct.
-
-
-**AUD-01a — diagnostic mathématique réalisé le 12 novembre 2026 :** [fiche 9, schéma, capture native et quatre expériences](docs/construction/09-reperes.md). Translation commune vérifiée ; déplacement isolé d’AERORP et transport de moment distingués. Projection de dessin ancrée au bord d’attaque explicitée. Le jeu historique est conservé comme hypothèse de simulation, pas comme pesée de C-FYLP.
-
-- [x] Identifier les conventions de coordonnées du projet et vérifier expérimentalement l’invariance de translation.
-- [x] Vérifier le transport longitudinal du moment au nouvel AERORP en vol symétrique ; publier les résultats et limites.
-- [ ] Avant une calibration réelle, obtenir la pesée de l’exemplaire choisi et identifier la référence des coefficients ; à défaut, construire explicitement un nouveau modèle de référence hypothétique, avec datum et convention complète documentés. AUD-01a reste ouvert sur cette identification aéronautique.
-- [ ] Pour AUD-01b, distinguer mise à la course publiée (±23°) et recalibrage aérodynamique : faire un essai avant/après à même chargement, sans présenter une commande normalisée moindre comme un gain démontré de fidélité.
+À chaque lot : préparer et commiter les sous-étapes ; réaliser et tester ; documenter avec des images natives pour les changements visibles ; actualiser cette synthèse et CHANGELOG. Réexaminer les priorités à chaque publication et lorsqu’une nouvelle référence change les hypothèses. Une annonce suit les résultats, jamais l’inverse.
