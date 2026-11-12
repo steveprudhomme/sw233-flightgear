@@ -235,3 +235,15 @@ Le script suspend d’abord le calcul de l’instrument et impose les cinq altit
 ![Calage 30,92 : lecture proche de 4 796 ft, sans déplacement du planeur.](https://github.com/steveprudhomme/sw233-flightgear/releases/download/altimetre-08/pression-30.92.jpg)
 
 Augmenter le calage fait monter l’indication. Le calage standard ne donne pas nécessairement l’altitude géométrique : la pression de la simulation compte aussi. Relève *instrumentation/altimeter/setting-inhg* et *indicated-altitude-ft*. Ne conclus pas à une erreur parce que cette dernière diffère de *position/altitude-ft*. [Relevés du banc](https://github.com/steveprudhomme/sw233-flightgear/releases/download/altimetre-08/altitudes.csv) et [relevés de pression](https://github.com/steveprudhomme/sw233-flightgear/releases/download/altimetre-08/pression.csv), FlightGear 2024.1.7. Ce contrôle ne prouve pas la précision d’un altimètre réel.
+
+### Transformer un avis extérieur en une tâche vérifiable
+
+Un audit est une relecture : quelqu'un cherche ce qui pourrait être amélioré. Il faut vérifier ce que cette personne a pu voir avant de changer ton avion.
+
+1. Note le nom du rapport et la version étudiée. Dans notre séance, le premier auteur n'avait pas accès aux fichiers ; le second voyait surtout leurs noms dans une archive. Ils ne pouvaient donc pas vérifier tous les calculs.
+2. Prends une recommandation précise, par exemple « tester l'altimètre ». Ouvre les images ci-dessus : à 1 000 ft la grande aiguille doit être sur zéro et la petite sur 1. Tu possèdes déjà une preuve d'affichage, mais pas encore une preuve que le bouton se règle bien avec la souris.
+3. Écris ce qui manque sous forme d'action : « tourner le bouton dans les deux sens et noter le calage avant/après ». Ajoute le résultat attendu et le moyen de le montrer. Ne coche pas la tâche avant d'avoir fait cet essai.
+4. Compare les deux rapports pour ne pas inscrire deux fois le même travail. Garde la référence du paragraphe qui a donné l'idée. Si tu n'es pas sûr, écris « à vérifier » plutôt que « faux ».
+5. Range les tâches selon leurs besoins : vérifier le centrage avant de comparer les performances, par exemple. Enregistre la feuille de route avant de modifier le modèle. Après le travail, ajoute la capture réelle, les valeurs et ce qui reste incertain.
+
+Tu peux comparer ton classement à notre [lecture des audits](../references/audits-2026-11-11.md) et aux [17 tâches proposées](../../ROADMAP.md#audits-externes). Cette séance prépare une discussion : elle n'applique pas les recommandations à l'avion.

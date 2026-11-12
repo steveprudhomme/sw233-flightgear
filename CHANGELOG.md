@@ -16,6 +16,8 @@
 
 ### Ajouts
 
+- Lecture critique de deux audits externes et 17 tâches traçables dans ROADMAP, avec critères de réussite et dépendances. Propositions à discuter ; licence et architecture inchangées par cette analyse.
+
 - Vol comparatif du compas à CYJN : deux passages du nord, télémétrie, court film natif annoté et séance illustrée reproductible.
 
 - Compas : rose magnétique originale animée, quatre points cardinaux et passage du nord illustrés dans la fiche 4.

@@ -77,6 +77,8 @@ et la préparation du paquet. `build/` est généré et ignoré par Git.
 
 ## Communauté
 
+Les [deux audits externes et leur analyse](docs/references/audits-2026-11-11.md) alimentent les [prochaines tâches à discuter](ROADMAP.md#audits-externes).
+
 - [Issues](https://github.com/steveprudhomme/sw233-flightgear/issues) : bugs, données et idées.
 - [Pull requests](https://github.com/steveprudhomme/sw233-flightgear/pulls) : contributions techniques.
 - [Contribuer](CONTRIBUTING.md), [conduite](CODE_OF_CONDUCT.md),
