@@ -119,3 +119,11 @@ Pour préparer la bande graduée mobile, voir [l’examen du compas FSX et les p
 4. Publier mesures, film cockpit, captures natives, instructions de reconstruction et résultats dans le tutoriel, le README et l’historique.
 
 Le cadran utilise maintenant des centaines de ft/min et l’indication de vitesse verticale de FlightGear ; [banc et descente comparative](docs/construction/07-essais.md#banc-variometre). La compensation en énergie totale n’est pas simulée par ce travail.
+
+### Altimètre C-FYLP : protocole avant modification
+
+- Identifier les graduations, les silhouettes d’aiguilles et le réglage barométrique visibles sur la photo. Signaler les détails non identifiables ; ne pas inventer une troisième aiguille.
+- Brancher l’altitude indiquée de l’instrument FlightGear, puis vérifier son réglage de pression à altitude géométrique constante. Distinguer l’essai d’affichage de l’essai de pression.
+- Photographier avant/après au même cadrage et contrôler 0, 950, 1 000, 1 050 et 2 500 ft. Documenter les rapports de rotation et les lectures attendues.
+- Ajouter au tutoriel les mesures, le réglage de pression, les captures et les limites constatées ; actualiser les documents concernés.
+- Ensuite seulement, lire les deux audits externes, rapprocher leurs affirmations des sources actuelles et préparer des tâches traçables à discuter, sans engager automatiquement leurs recommandations.
