@@ -36,7 +36,7 @@ Objectif : un petit incrément utilisable et vérifiable. Aucune date ferme. Cha
 
 Lot actif : **AUD-01c**, [protocole en huit étapes](docs/planification/aud-01c-occupants.md), préparé avant réalisation.
 
-Preuves AUD-01c : [fiche 11](docs/construction/11-occupants.md). Le contrôle manuel des champs reste ouvert ; les scénarios par boutons et fonctions sont vérifiés.
+Preuves AUD-01c : [fiche 11](docs/construction/11-occupants.md). Le contrôle des champs est repris dans le [complément clavier](docs/planification/aud-01c-clavier.md) ; les scénarios par boutons et fonctions sont vérifiés.
 
 ## 4. Moyen terme — après v0.2.0
 
