@@ -12,3 +12,5 @@ Préparation du 13 novembre 2026, avant réalisation.
 8. Exécuter les tests pertinents et la reconstruction du tutoriel, commiter et publier les preuves. Linux, miniature du catalogue et automatisation des releases restent dans les lots suivants.
 
 Achèvement : lancement Windows depuis dossier déplacé avec espaces, ressources contrôlées, messages d’erreur testés, preuves natives et tutoriel disponibles. Python reste requis pour ce premier lanceur ; aucun exécutable autonome ni installeur système n’est promis.
+
+Résultat : réalisé sous Windows / FlightGear 2024.1.7 ; 19 tests, paquet déplacé, captures et relevés en [fiche 12](../construction/12-installation.md). Linux et catalogue restent AUD-02b.

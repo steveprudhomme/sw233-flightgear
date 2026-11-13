@@ -1,74 +1,79 @@
-# Installation et validation
+# Installer et lancer SW233
 
-## FlightGear
+## Préparer
 
-1. Installer FlightGear avec JSBSim et les scènes de la zone d'essai.
-2. Cloner le dépôt, installer Pillow avec `python -m pip install Pillow==12.0.0`, puis exécuter `python tools/package.py` à sa racine.
-3. Ajouter le chemin absolu de `build/Aircraft` aux dossiers d'aéronefs
-   supplémentaires du lanceur FlightGear.
-4. Sélectionner **Schweizer SGS 2-33 — Cadets de l’aviation royale du Canada (prototype)** (identifiant `sw233`).
-5. Initialiser en vol au-dessus de CYJN à 5 000 ft MSL et 60 kt.
-   Prévoir la marge terrain si une autre zone est choisie.
+Installer FlightGear et ses données, Python 3.11 ou plus récent, puis les scènes de CYJN (Saint-Jean-sur-Richelieu). Le paquet n’inclut ni FlightGear ni le décor. Windows et FlightGear 2024.1.7 ont été vérifiés ; l’essai natif Linux reste à faire.
 
-Le script copie les sources dans build/Aircraft/SW233 ; il crée la texture du tableau à partir de sa recette éditable et
-refuse d'écraser une destination existante. Pour un nouveau paquet, choisir un
-autre dossier avec `python tools/package.py --output build/essai-2` ; ajouter
-alors build/essai-2/Aircraft au lanceur.
+Ouvrir PowerShell **dans la racine du dépôt**, là où se trouvent README.md et tools. Dans l’Explorateur, ouvrir ce dossier, écrire `powershell` dans sa barre d’adresse et appuyer sur Entrée. Les chemins de l’exemple correspondent à l’installation de Steve : les adapter sur un autre ordinateur.
 
-Sur Windows, utiliser le chemin complet de fgfs.exe si nécessaire. En ligne de
-commande, le chemin de --fg-aircraft doit être absolu si l'on change de dossier.
-Le planeur ne décolle pas seul : le prototype utilise un démarrage en vol.
-Utiliser les commandes FlightGear de profondeur, ailerons, direction et spoilers.
-Le fichier principal ne modifie pas les affectations du joystick.
-
-## Environnement de développement
-
-Python 3.11 ou 3.13 est utilisé en CI ; Python 3.11+ est recommandé.
-
-```sh
-python -m venv .venv
-```
-
-Activer `.venv` avec `.venv\Scripts\Activate.ps1` sur PowerShell ou
-`source .venv/bin/activate` sur Linux/macOS, puis :
-
-```sh
-python -m pip install -r requirements-dev.txt
-python tools/check.py
-python -m ruff check .
-python -m unittest discover -s tests -v
-python tools/package.py
-```
-
-Les tests utilisent JSBSim autonome, version verrouillée dans les dépendances.
-La version embarquée dans FlightGear peut différer. Consulter docs/validation.md
-avant d'interpréter un test vert comme une validation de l'aéronef complet.
-
-## Essai manuel sur Windows
-
-Dans PowerShell, place-toi dans le dossier du projet (celui qui contient README.md et tools). Sur l’installation utilisée pour ce tutoriel, ce dossier est :
+## Fabriquer un paquet neuf
 
 ```powershell
-Set-Location "C:\Users\steve\Documents\Codex\2026-11-01\j-aimerais-que-tu-cr-un-3\outputs\sw233-flightgear"
-$essai = Join-Path (Get-Location) ("build\vol-manuel-" + (Get-Date -Format "yyyyMMdd-HHmmss"))
-python tools/package.py --output $essai
-& "C:\Program Files\FlightGear 2024.1\bin\fgfs.exe" `
-  "--fg-root=C:\Users\steve\FlightGear\Downloads\fgdata_2024_1" `
-  "--fg-aircraft=$essai\Aircraft" `
-  "--fg-scenery=C:\Users\steve\FlightGear\Downloads\TerraSync" `
-  --aircraft=sw233 --airport=CYJN --in-air `
-  --altitude=5000 --vc=60 --heading=010 `
-  --start-date-gmt=2026:06:21:16:45:00 `
-  --disable-real-weather-fetch --disable-terrasync `
-  --prop:/controls/flight/elevator=-0.6244
+python -m pip install Pillow==12.0.0
+python tools/package.py --output "build/SW233 pret a voler"
 ```
 
-Le dossier neuf protège les précédents essais. Cette commande lance un vol manuel, sans scénario qui actionne les commandes. Pour utiliser cette recette sur un autre ordinateur, adapte les chemins vers le projet, le programme, les données et TerraSync. Si Python ne trouve pas PIL, installe Pillow comme indiqué à l’étape 2.
+Le dossier contient Aircraft/SW233, les textures produites par la recette, la licence, un manifeste et les deux entrées du lanceur. Une destination déjà utilisée est refusée : choisir un nouveau nom pour chaque version. Après fabrication, **tout le dossier peut être déplacé** ; le lanceur doit rester à côté de Aircraft et manifest.json.
 
+## Vérifier les chemins sans démarrer
 
-## Occupants et centrage — 13 novembre 2026
+```powershell
+python "build/SW233 pret a voler/launch.py" `
+  --fgfs "C:/Program Files/FlightGear 2024.1/bin/fgfs.exe" `
+  --fg-root "C:/Users/steve/FlightGear/Downloads/fgdata_2024_1" `
+  --scenery "C:/Users/steve/FlightGear/Downloads/TerraSync" `
+  --check
+```
 
-Après installation du nouveau paquet, ouvrir **SW233 → Occupants et centrage**, avion arrêté au sol. Les boutons solo/biplace et les pas de 5 lb appliquent immédiatement les masses. Restaurer revient aux masses présentes à l’ouverture. Voir la [fiche 11](docs/construction/11-occupants.md).
+Le contrôle vérifie les empreintes du paquet, les ressources nécessaires, le programme, les fichiers defaults.xml/version de fgdata, les seuils de CYJN et la présence d’un terrain dans la zone. Il ne prouve pas que toute la scène est complète : vérifier le paysage au lancement. Il n’effectue aucun téléchargement et ne corrige pas automatiquement les fichiers.
 
+## Démarrer
 
-Actualisation clavier (13 novembre 2026) : saisie 200.125 validée par Steve avec les chiffres du haut, puis vérifiée dans JSBSim ; restauration des décimales corrigée. Utiliser un point décimal. Pavé numérique signalé inopérant avec Verr Num activé, suivi AUD-01d. [Preuve illustrée et limites](docs/construction/11-occupants.md#10-confirmer-la-saisie-et-préserver-les-décimales).
+Retirer **--check** de la commande précédente. Le départ se fait **au sol**, à CYJN, vent nul et date de démonstration fixe pour conserver un éclairage comparable. Aucune commande de vol automatique n’est activée. Le lanceur affiche le chemin exact du paquet et la commande passée à FlightGear.
+
+Pour vérifier le vol, ajouter **--mode air** : départ à 5 000 ft et 60 kt, sans trim imposé ni pilote automatique. Le planeur ne décolle pas seul depuis le sol.
+
+L’entrée Windows **start-sw233.cmd** accepte les mêmes arguments et requiert aussi Python dans PATH. Exemple depuis un autre répertoire après déplacement :
+
+```powershell
+& "C:/Mon dossier/SW233/start-sw233.cmd" `
+  --fgfs "C:/Program Files/FlightGear 2024.1/bin/fgfs.exe" `
+  --fg-root "C:/Mon dossier/fgdata" `
+  --scenery "C:/Mon dossier/TerraSync" --check
+```
+
+Ces trois derniers dossiers sont des exemples : les remplacer par les vrais chemins. Un double-clic sans arguments ne configure pas l’installation ; utiliser le terminal pour lire les erreurs. Le [tutoriel illustré, fiche 12](docs/construction/12-installation.md) explique chaque étape.
+
+## Contrôles dans FlightGear
+
+- Vérifier la présence de la piste et du terrain de CYJN, puis des textures du tableau.
+- Ouvrir **SW233 → Occupants et centrage**, avion arrêté au sol.
+- Essayer solo/biplace et Restaurer ; les chiffres du haut du clavier sont validés, avec un point décimal. Le pavé numérique reste suivi sous AUD-01d.
+- Vérifier les commandes FlightGear habituelles de profondeur, ailerons, direction et aérofreins. Le lanceur ne remplace pas les affectations du joystick.
+
+## Dépannage
+
+| Message ou symptôme | Action |
+|---|---|
+| Python/PIL introuvable | Vérifier Python, puis installer Pillow pour fabriquer le paquet. Le paquet déjà fabriqué ne nécessite pas Pillow pour démarrer. |
+| Destination déjà existante | Choisir un dossier de sortie neuf ; aucun écrasement automatique. |
+| Fichier absent ou modifié | Reconstruire depuis les sources ; ne pas modifier les empreintes pour masquer le problème. |
+| Programme introuvable | Donner le chemin complet de fgfs.exe, pas celui du raccourci. |
+| defaults.xml/version absent | Choisir la racine des données FlightGear, pas le répertoire Aircraft. |
+| Terrain CYJN absent | Installer la zone dans le dossier scenery indiqué, puis relancer --check. |
+| Océan malgré le contrôle | Vérifier le chemin de scène réellement chargé et compléter le terrain ; la présence d’une tuile ne certifie pas toute la zone. |
+| Ancienne version affichée | Relire « Paquet vérifié » et fermer l’ancienne session pour éviter la confusion. |
+
+## Développement et bancs
+
+```powershell
+python -m venv .venv
+.\.venv\Scripts\python.exe -m pip install -r requirements-dev.txt
+.\.venv\Scripts\python.exe -m unittest discover -s tests -v
+.\.venv\Scripts\python.exe -m ruff check .
+python tools/check_workbook.py build/livre-verifie
+```
+
+Sur Linux, utiliser `.venv/bin/python` ; cette instruction n’est pas une affirmation d’essai natif FlightGear Linux. JSBSim autonome est verrouillé dans requirements-dev.txt ; sa version peut différer du moteur embarqué. Voir [validation](docs/validation.md).
+
+Le serveur HTTP reste désactivé par défaut. Pour un banc local dédié, ajouter **--http-port 18099**, puis suivre la fiche 12. Les empreintes du manifeste détectent des changements ; elles ne constituent pas une signature d’authenticité. Le champ source_revision indique le commit de base lors de la fabrication ; un paquet préparé depuis des fichiers modifiés doit être identifié par ses empreintes, pas seulement par ce commit.

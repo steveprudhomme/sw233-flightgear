@@ -16,8 +16,8 @@ Le projet est un prototype de simulation, pas un appareil d’entraînement cert
 | Cockpit | Anémomètre, altimètre, variomètre et compas animés ; bancs publiés | Aspect encore schématique ; radio et largage décoratifs |
 | Masse et repères | Calculs comparés à FlightGear ; transport du moment testé | Pesée de C-FYLP et référence historique des coefficients inconnues |
 | Profondeur | ±23° et deux parties mobiles vérifiées | Charnière de maquette approximative |
-| Documentation | Onze fiches, sources, captures et reconstruction automatique | Relecture autonome par un débutant encore attendue |
-| Qualité | 16 tests réussis | Ne constituent pas une certification du modèle |
+| Documentation | Douze fiches, sources, captures et reconstruction automatique | Relecture autonome par un débutant encore attendue |
+| Qualité | 19 tests réussis | Ne constituent pas une certification du modèle |
 
 **Lecture des statuts :** terminé = critère vérifié et preuve publiée ; en cours = réalisation autorisée ; à faire = proposé ; dépendance = donnée ou décision nécessaire.
 
@@ -30,7 +30,7 @@ Objectif : un petit incrément utilisable et vérifiable. Aucune date ferme. Cha
 | P1 · **AUD-01b : profondeur ±23°** | Terminé | FDM, animation et butées cohérents ; comparaison avant/après à même chargement ; tutoriel illustré | Mainteneur, revue recherchée |
 | P1 · **AUD-01c : occupants dans le menu** | Terminé pour chiffres du haut | Saisie manuelle 200.125 confirmée ; masse effective et CG relevés ; restauration décimale corrigée | À attribuer |
 | P2 · **AUD-01d : pavé numérique** | À investiguer | Comparer champ standard et SW233, Verr Num activé, puis disposition et événements ; cause et correction à établir | À attribuer |
-| P2 · **AUD-02a : paquet et lanceur Windows** | En cours | Paquet autonome contrôlé, lancement depuis un chemin avec espaces, cockpit et menu vérifiés | Mainteneur |
+| P2 · **AUD-02a : paquet et lanceur Windows** | Terminé | Paquet autonome contrôlé, lancement depuis un chemin avec espaces, cockpit et menu vérifiés | Mainteneur |
 | P2 · **AUD-02b : portabilité et catalogue** | À faire | Essai natif Linux, miniature et métadonnées du catalogue vérifiées | À attribuer |
 | P2 · **AUD-13 / AUD-14 : contrôles et publication** | À faire, après AUD-02 | ZIP construit sur tag, testé avant publication ; provenance et empreinte jointes | À attribuer |
 
@@ -40,7 +40,9 @@ Lot réalisé : **AUD-01c**, [protocole en huit étapes](docs/planification/aud-
 
 Preuves AUD-01c : [fiche 11](docs/construction/11-occupants.md). Le [complément clavier](docs/planification/aud-01c-clavier.md) confirme la saisie par les chiffres du haut et corrige la restauration décimale. Le pavé numérique reste suivi séparément sous AUD-01d.
 
-Lot actif : [AUD-02a, protocole installation et lancement](docs/planification/aud-02a-installation.md). AUD-02b reste distinct : un contrôle Windows ne vaut pas un essai Linux.
+Dernier lot réalisé : [AUD-02a, protocole installation et lancement](docs/planification/aud-02a-installation.md). AUD-02b reste distinct : un contrôle Windows ne vaut pas un essai Linux.
+
+Preuves AUD-02a : [fiche 12 illustrée](docs/construction/12-installation.md), 19 tests et contrôle natif du paquet déplacé.
 
 ## 4. Moyen terme — après v0.2.0
 

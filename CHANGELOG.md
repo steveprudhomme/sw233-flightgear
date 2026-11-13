@@ -4,6 +4,8 @@
 
 ### Changements
 
+- Paquet transportable : lanceur Windows/Python, contrôle des ressources et empreintes, licence incluse, départ au sol à CYJN. 19 tests et fiche 12 illustrée ; validation Linux séparée.
+
 - Occupants : saisie par les chiffres du haut confirmée avec capture et télémétrie ; restauration corrigée pour conserver les décimales. Pavé numérique suivi séparément (AUD-01d).
 
 - Menu des occupants, réglages par pas de 5 lb, préréglages, CG effectif et restauration ; 16 tests, banc natif et fiche 11. Saisie par la rangée supérieure confirmée ensuite ; pavé numérique encore à investiguer.

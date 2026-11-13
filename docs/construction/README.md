@@ -20,6 +20,8 @@
 
 | [11. Régler les occupants](11-occupants.md) | Relier une fenêtre aux masses et lire le CG effectif | Calcul indépendant, captures solo/biplace et restauration |
 
+| [12. Installer et lancer](12-installation.md) | Fabriquer un paquet contrôlé, le déplacer et lancer la bonne copie | Chemins avec espaces, manifeste et captures natives |
+
 **Ouvre ton établi.** Crée dans Documents un dossier *Mon-Schweizer* vide. Ouvre-le dans l’Explorateur ; dans sa barre d’adresse, écris `powershell` puis Entrée. Toutes les commandes de ce livre partent de là. Colle ces lignes une par une :
 
 ```powershell

@@ -110,3 +110,8 @@ AUD-01c : six chargements indépendants, huit états natifs et quatre conditions
 
 
 Actualisation clavier (13 novembre 2026) : saisie 200.125 validée par Steve avec les chiffres du haut, puis vérifiée dans JSBSim ; restauration des décimales corrigée. Utiliser un point décimal. Pavé numérique signalé inopérant avec Verr Num activé, suivi AUD-01d. [Preuve illustrée et limites](construction/11-occupants.md#10-confirmer-la-saisie-et-préserver-les-décimales).
+
+
+## Installation déplacée — AUD-02a
+
+Paquet copié dans un dossier neuf avec espaces et lancé par son propre lanceur sous Windows / FlightGear 2024.1.7. Chemin effectif confirmé, cockpit et menu capturés ; trois états de profondeur/aérofreins vérifiés ; instruments connectés. Entrée CMD vérifiée depuis un autre répertoire. 19 tests réussis. Contrôles et limites dans la [fiche 12](construction/12-installation.md). Pas de validation native Linux ni de nouvel étalonnage du FDM.

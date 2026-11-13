@@ -102,3 +102,8 @@ Le menu **SW233 → Occupants et centrage** permet de régler les charges au sol
 
 
 Actualisation clavier (13 novembre 2026) : saisie 200.125 validée par Steve avec les chiffres du haut, puis vérifiée dans JSBSim ; restauration des décimales corrigée. Utiliser un point décimal. Pavé numérique signalé inopérant avec Verr Num activé, suivi AUD-01d. [Preuve illustrée et limites](docs/construction/11-occupants.md#10-confirmer-la-saisie-et-préserver-les-décimales).
+
+
+## Installation vérifiée sous Windows
+
+Le paquet inclut désormais un lanceur, la licence et un manifeste. Il peut être déplacé dans un dossier avec espaces ; le lancement commence au sol à CYJN. [Guide rapide](INSTALL.md) · [Tutoriel illustré](docs/construction/12-installation.md). Python est requis ; FlightGear et le décor sont installés séparément. Linux reste à valider.
