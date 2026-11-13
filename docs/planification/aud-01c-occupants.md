@@ -12,3 +12,5 @@ Préparé le 13 novembre 2026, avant réalisation. Statut : en cours.
 8. Actualiser README, INSTALL, validation, CHANGELOG et ROADMAP ; vérifier tests et reconstruction, commiter puis publier les preuves.
 
 Critères : deux masses indépendantes ; valeurs affichées issues de JSBSim ; total et CG conformes au calcul pondéré ; refus sans modification partielle ; restauration vérifiée ; captures lisibles et tutoriel reproductible. Aucune affirmation de centrage admissible réel.
+
+Résultat : fonctions et boutons réalisés ; six chargements calculés, huit états natifs, captures en [fiche 11](../construction/11-occupants.md). Les champs existent mais leur édition au clavier reste à confirmer manuellement ; le lot ne revendique pas cette validation. Les boutons par pas de 5 lb permettent un réglage indépendant.

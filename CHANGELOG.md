@@ -4,6 +4,8 @@
 
 ### Changements
 
+- Menu des occupants, réglages par pas de 5 lb, préréglages, CG effectif et restauration ; 16 tests, banc natif et fiche 11. Revue manuelle de la saisie clavier encore attendue.
+
 - ROADMAP réorganisé en vision, état, jalons et critères ; anciens protocoles archivés.
 - Profondeur portée à ±23° (manuel 1 040 lb), deux gouvernes animées selon la déflexion effective ; 15 tests et fiche 10 illustrée. Solveur d’équilibre rendu plus précis, sans changement de coefficients.
 

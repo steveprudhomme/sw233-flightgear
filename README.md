@@ -94,3 +94,8 @@ leurs limites sont explicites ; une revue humaine aéronautique reste nécessair
 ### Dernier contrôle des commandes
 
 La [fiche 10 du tutoriel](docs/construction/10-profondeur.md) détaille la profondeur à ±23°, sa construction et les captures dans FlightGear. Consulter la [feuille de route](ROADMAP.md) pour les prochains lots et leurs critères de réussite.
+
+
+## Occupants et centrage — 13 novembre 2026
+
+Le menu **SW233 → Occupants et centrage** permet de régler les charges au sol ; voir la [fiche 11 illustrée](docs/construction/11-occupants.md), y compris les limites de validation de la saisie.

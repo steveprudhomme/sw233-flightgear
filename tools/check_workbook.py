@@ -8,7 +8,8 @@ import sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-BLOCK = re.compile(r"<!-- atelier-fichier: ([^\n]+?) -->\n```(?:python|xml)\n(.*?)\n```", re.S)
+BLOCK = re.compile(
+    r"<!-- atelier-fichier: ([^\n]+?) -->\n```(?:python|xml|nasal)\n(.*?)\n```", re.S)
 
 
 def rebuild(destination):

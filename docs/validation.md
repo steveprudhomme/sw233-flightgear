@@ -102,3 +102,8 @@ Le menu natif affiche masse/CG mais aucune ligne éditable d'occupant. Le banc m
 ## Profondeur ±23° — AUD-01b
 
 Les valeurs de commande normalisée des essais antérieurs correspondent au gain historique de 0,30 rad. Le nouveau gain est 23° ; déflexion physique et pente à 970 lb / 50 kt sont conservées. Trois positions ont été capturées dans FlightGear au sol. Voir la [fiche 10](construction/10-profondeur.md) pour les données, images et limites.
+
+
+## Occupants et centrage — 13 novembre 2026
+
+AUD-01c : six chargements indépendants, huit états natifs et quatre conditions synthétiques du contrôle au sol. Captures FlightGear 2024.1.7 à CYJN ; boutons solo/biplace testés à la souris. Saisie clavier non confirmée par l’automatisation, revue humaine encore nécessaire. [Détails et images](construction/11-occupants.md).

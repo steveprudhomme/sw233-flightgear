@@ -50,12 +50,19 @@ Ce chemin part du dossier SW233, pas du dossier Models. La liste sera écrite à
 
 <!-- atelier-fichier: src/SW233/sw233-set.xml -->
 ```xml
+        <menubar><default><menu n="100">
+            <label>SW233</label><enabled type="bool">true</enabled>
+            <item><label>Occupants et centrage</label><binding>
+                <command>nasal</command><script>sw233_load.dialog.open();</script>
+            </binding></item>
+        </menu></default></menubar>
         <checklists include="Checklists/sw233.xml"/>
         <tags>
             <tag>glider</tag>
             <tag>unpowered</tag>
         </tags>
     </sim>
+    <nasal><sw233_load><file>Nasal/occupants.nas</file></sw233_load></nasal>
 </PropertyList>
 ```
 

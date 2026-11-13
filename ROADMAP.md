@@ -16,8 +16,8 @@ Le projet est un prototype de simulation, pas un appareil d’entraînement cert
 | Cockpit | Anémomètre, altimètre, variomètre et compas animés ; bancs publiés | Aspect encore schématique ; radio et largage décoratifs |
 | Masse et repères | Calculs comparés à FlightGear ; transport du moment testé | Pesée de C-FYLP et référence historique des coefficients inconnues |
 | Profondeur | ±23° et deux parties mobiles vérifiées | Charnière de maquette approximative |
-| Documentation | Dix fiches, sources, captures et reconstruction automatique | Relecture autonome par un débutant encore attendue |
-| Qualité | 15 tests réussis | Ne constituent pas une certification du modèle |
+| Documentation | Onze fiches, sources, captures et reconstruction automatique | Relecture autonome par un débutant encore attendue |
+| Qualité | 16 tests réussis | Ne constituent pas une certification du modèle |
 
 **Lecture des statuts :** terminé = critère vérifié et preuve publiée ; en cours = réalisation autorisée ; à faire = proposé ; dépendance = donnée ou décision nécessaire.
 
@@ -28,13 +28,15 @@ Objectif : un petit incrément utilisable et vérifiable. Aucune date ferme. Cha
 | Priorité / lot | Statut | Critère de réussite | Responsable |
 |---|---|---|---|
 | P1 · **AUD-01b : profondeur ±23°** | Terminé | FDM, animation et butées cohérents ; comparaison avant/après à même chargement ; tutoriel illustré | Mainteneur, revue recherchée |
-| P1 · **AUD-01c : occupants dans le menu** | En cours | Deux masses modifiables, CG recalculé, restauration et captures solo/biplace | À attribuer |
+| P1 · **AUD-01c : occupants dans le menu** | Réalisé, saisie clavier à vérifier | Masses et CG vérifiés ; boutons, restauration et captures publiés ; contrôle humain de la saisie clavier restant | À attribuer |
 | P2 · **AUD-02 : paquet et lanceur** | À faire | Installation propre sous Windows et Linux ; chemins, textures, miniature et métadonnées vérifiés | À attribuer |
 | P2 · **AUD-13 / AUD-14 : contrôles et publication** | À faire, après AUD-02 | ZIP construit sur tag, testé avant publication ; provenance et empreinte jointes | À attribuer |
 
 **Dernier lot réalisé :** [protocole AUD-01b en huit étapes](docs/planification/aud-01b-profondeur.md). Le protocole est commité avant le code. Un lot n’est clos que lorsque ses tests, captures pertinentes, limites et documents sont publiés.
 
 Lot actif : **AUD-01c**, [protocole en huit étapes](docs/planification/aud-01c-occupants.md), préparé avant réalisation.
+
+Preuves AUD-01c : [fiche 11](docs/construction/11-occupants.md). Le contrôle manuel des champs reste ouvert ; les scénarios par boutons et fonctions sont vérifiés.
 
 ## 4. Moyen terme — après v0.2.0
 

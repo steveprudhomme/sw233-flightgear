@@ -64,3 +64,8 @@ python tools/package.py --output $essai
 ```
 
 Le dossier neuf protège les précédents essais. Cette commande lance un vol manuel, sans scénario qui actionne les commandes. Pour utiliser cette recette sur un autre ordinateur, adapte les chemins vers le projet, le programme, les données et TerraSync. Si Python ne trouve pas PIL, installe Pillow comme indiqué à l’étape 2.
+
+
+## Occupants et centrage — 13 novembre 2026
+
+Après installation du nouveau paquet, ouvrir **SW233 → Occupants et centrage**, avion arrêté au sol. Les boutons solo/biplace et les pas de 5 lb appliquent immédiatement les masses. Restaurer revient aux masses présentes à l’ouverture. Voir la [fiche 11](docs/construction/11-occupants.md).

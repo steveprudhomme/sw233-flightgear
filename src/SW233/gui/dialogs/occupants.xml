@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- SPDX-License-Identifier: GPL-3.0-only -->
+<PropertyList>
+  <name>sw233-occupants</name><layout>vbox</layout>
+  <width>650</width><resizable>false</resizable><draggable>true</draggable>
+  <nasal><open>sw233_load.begin();</open></nasal>
+  <text><label>SW233 - Occupants et centrage</label></text>
+  <text><label>Prototype : bras historiques, aucune enveloppe reelle validee.</label></text>
+  <text><label>0 a 300 lb : bornes de saisie techniques, pas limites de vol.</label></text>
+  <group><layout>hbox</layout><text><label>Occupant avant (lb)</label></text><input><name>front</name><property>/sim/sw233/occupants/front</property><live>false</live><pref-width>100</pref-width></input></group>
+  <group><layout>hbox</layout><text><label>Occupant arriere (lb)</label></text><input><name>rear</name><property>/sim/sw233/occupants/rear</property><live>false</live><pref-width>100</pref-width></input></group>
+  <group><layout>hbox</layout>
+    <button><legend>Avant -5 lb</legend><binding><command>nasal</command><script>sw233_load.step(0,-5);</script></binding><binding><command>dialog-update</command></binding></button>
+    <button><legend>Avant +5 lb</legend><binding><command>nasal</command><script>sw233_load.step(0,5);</script></binding><binding><command>dialog-update</command></binding></button>
+    <button><legend>Arriere -5 lb</legend><binding><command>nasal</command><script>sw233_load.step(1,-5);</script></binding><binding><command>dialog-update</command></binding></button>
+    <button><legend>Arriere +5 lb</legend><binding><command>nasal</command><script>sw233_load.step(1,5);</script></binding><binding><command>dialog-update</command></binding></button>
+  </group>
+  <text><property>/fdm/jsbsim/inertia/weight-lbs</property><format>Masse effective : %.2f lb</format><live>true</live></text>
+  <text><property>/fdm/jsbsim/inertia/cg-x-in</property><format>CG X historique : %.4f in</format><live>true</live></text>
+  <text><property>/fdm/jsbsim/inertia/cg-z-in</property><format>CG Z historique : %.4f in</format><live>true</live></text>
+  <text><property>/sim/sw233/occupants/message</property><live>true</live></text>
+  <group><layout>hbox</layout>
+    <button><legend>Appliquer</legend><binding><command>dialog-apply</command></binding><binding><command>nasal</command><script>sw233_load.apply();</script></binding><binding><command>dialog-update</command></binding></button>
+    <button><legend>Solo 180/0</legend><binding><command>dialog-apply</command></binding><binding><command>nasal</command><script>sw233_load.preset(180,0);</script></binding><binding><command>dialog-update</command></binding></button>
+    <button><legend>Biplace 180/180</legend><binding><command>dialog-apply</command></binding><binding><command>nasal</command><script>sw233_load.preset(180,180);</script></binding><binding><command>dialog-update</command></binding></button>
+    <button><legend>Restaurer</legend><binding><command>dialog-apply</command></binding><binding><command>nasal</command><script>sw233_load.restore();</script></binding><binding><command>dialog-update</command></binding></button>
+  </group>
+  <button><legend>Fermer</legend><key>Esc</key><binding><command>dialog-close</command></binding></button>
+</PropertyList>

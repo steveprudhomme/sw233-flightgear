@@ -18,6 +18,8 @@
 
 | [10. Animer la profondeur](10-profondeur.md) | Lire les 23°, découper la gouverne et vérifier les butées dans FlightGear | Captures natives et équilibre avant/après |
 
+| [11. Régler les occupants](11-occupants.md) | Relier une fenêtre aux masses et lire le CG effectif | Calcul indépendant, captures solo/biplace et restauration |
+
 **Ouvre ton établi.** Crée dans Documents un dossier *Mon-Schweizer* vide. Ouvre-le dans l’Explorateur ; dans sa barre d’adresse, écris `powershell` puis Entrée. Toutes les commandes de ce livre partent de là. Colle ces lignes une par une :
 
 ```powershell
