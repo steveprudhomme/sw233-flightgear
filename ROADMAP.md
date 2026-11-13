@@ -31,7 +31,8 @@ Objectif : un petit incrément utilisable et vérifiable. Aucune date ferme. Cha
 | P1 · **AUD-01c : occupants dans le menu** | Terminé pour chiffres du haut | Saisie manuelle 200.125 confirmée ; masse effective et CG relevés ; restauration décimale corrigée | À attribuer |
 | P2 · **AUD-01d : pavé numérique** | À investiguer | Comparer champ standard et SW233, Verr Num activé, puis disposition et événements ; cause et correction à établir | À attribuer |
 | P2 · **AUD-02a : paquet et lanceur Windows** | Terminé | Paquet autonome contrôlé, lancement depuis un chemin avec espaces, cockpit et menu vérifiés | Mainteneur |
-| P2 · **AUD-02b : portabilité et catalogue** | À faire | Essai natif Linux, miniature et métadonnées du catalogue vérifiées | À attribuer |
+| P2 · **AUD-02b : présentation dans le sélecteur** | En cours | Métadonnées sourcées, miniature native, aperçu et fiche visibles dans le lanceur | Mainteneur |
+| P2 · **AUD-02c : validation Linux** | À faire | Installation et lancement natifs Linux, preuves distinctes de Windows | À attribuer |
 | P2 · **AUD-13 / AUD-14 : contrôles et publication** | À faire, après AUD-02 | ZIP construit sur tag, testé avant publication ; provenance et empreinte jointes | À attribuer |
 
 **Dernier lot réalisé :** [AUD-01c et complément clavier](docs/planification/aud-01c-clavier.md). Le protocole est commité avant le code. Un lot n’est clos que lorsque ses tests, captures pertinentes, limites et documents sont publiés.
@@ -43,6 +44,8 @@ Preuves AUD-01c : [fiche 11](docs/construction/11-occupants.md). Le [complément
 Dernier lot réalisé : [AUD-02a, protocole installation et lancement](docs/planification/aud-02a-installation.md). AUD-02b reste distinct : un contrôle Windows ne vaut pas un essai Linux.
 
 Preuves AUD-02a : [fiche 12 illustrée](docs/construction/12-installation.md), 19 tests et contrôle natif du paquet déplacé.
+
+Lot actif : [AUD-02b, protocole du sélecteur](docs/planification/aud-02b-selecteur.md).
 
 ## 4. Moyen terme — après v0.2.0
 
