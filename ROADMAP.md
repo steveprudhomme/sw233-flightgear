@@ -1,6 +1,6 @@
 # Feuille de route — Schweizer SGS 2-33
 
-Mise à jour : **12 novembre 2026**. Les horizons expriment un ordre de travail, pas des dates promises.
+Mise à jour : **13 novembre 2026**. Les horizons expriment un ordre de travail, pas des dates promises.
 
 ## 1. Vision et périmètre
 
@@ -28,13 +28,13 @@ Objectif : un petit incrément utilisable et vérifiable. Aucune date ferme. Cha
 | Priorité / lot | Statut | Critère de réussite | Responsable |
 |---|---|---|---|
 | P1 · **AUD-01b : profondeur ±23°** | Terminé | FDM, animation et butées cohérents ; comparaison avant/après à même chargement ; tutoriel illustré | Mainteneur, revue recherchée |
-| P1 · **AUD-01c : occupants dans le menu** | À faire | Deux masses modifiables, CG recalculé, restauration et captures solo/biplace | À attribuer |
+| P1 · **AUD-01c : occupants dans le menu** | En cours | Deux masses modifiables, CG recalculé, restauration et captures solo/biplace | À attribuer |
 | P2 · **AUD-02 : paquet et lanceur** | À faire | Installation propre sous Windows et Linux ; chemins, textures, miniature et métadonnées vérifiés | À attribuer |
 | P2 · **AUD-13 / AUD-14 : contrôles et publication** | À faire, après AUD-02 | ZIP construit sur tag, testé avant publication ; provenance et empreinte jointes | À attribuer |
 
 **Dernier lot réalisé :** [protocole AUD-01b en huit étapes](docs/planification/aud-01b-profondeur.md). Le protocole est commité avant le code. Un lot n’est clos que lorsque ses tests, captures pertinentes, limites et documents sont publiés.
 
-Prochain lot proposé : **AUD-01c**, commandes de masse des occupants. Ses sous-étapes seront précisées et commitées avant sa réalisation.
+Lot actif : **AUD-01c**, [protocole en huit étapes](docs/planification/aud-01c-occupants.md), préparé avant réalisation.
 
 ## 4. Moyen terme — après v0.2.0
 
