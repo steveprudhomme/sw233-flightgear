@@ -30,7 +30,8 @@ Objectif : un petit incrément utilisable et vérifiable. Aucune date ferme. Cha
 | P1 · **AUD-01b : profondeur ±23°** | Terminé | FDM, animation et butées cohérents ; comparaison avant/après à même chargement ; tutoriel illustré | Mainteneur, revue recherchée |
 | P1 · **AUD-01c : occupants dans le menu** | Terminé pour chiffres du haut | Saisie manuelle 200.125 confirmée ; masse effective et CG relevés ; restauration décimale corrigée | À attribuer |
 | P2 · **AUD-01d : pavé numérique** | À investiguer | Comparer champ standard et SW233, Verr Num activé, puis disposition et événements ; cause et correction à établir | À attribuer |
-| P2 · **AUD-02 : paquet et lanceur** | À faire | Installation propre sous Windows et Linux ; chemins, textures, miniature et métadonnées vérifiés | À attribuer |
+| P2 · **AUD-02a : paquet et lanceur Windows** | En cours | Paquet autonome contrôlé, lancement depuis un chemin avec espaces, cockpit et menu vérifiés | Mainteneur |
+| P2 · **AUD-02b : portabilité et catalogue** | À faire | Essai natif Linux, miniature et métadonnées du catalogue vérifiées | À attribuer |
 | P2 · **AUD-13 / AUD-14 : contrôles et publication** | À faire, après AUD-02 | ZIP construit sur tag, testé avant publication ; provenance et empreinte jointes | À attribuer |
 
 **Dernier lot réalisé :** [AUD-01c et complément clavier](docs/planification/aud-01c-clavier.md). Le protocole est commité avant le code. Un lot n’est clos que lorsque ses tests, captures pertinentes, limites et documents sont publiés.
@@ -38,6 +39,8 @@ Objectif : un petit incrément utilisable et vérifiable. Aucune date ferme. Cha
 Lot réalisé : **AUD-01c**, [protocole en huit étapes](docs/planification/aud-01c-occupants.md), préparé avant réalisation.
 
 Preuves AUD-01c : [fiche 11](docs/construction/11-occupants.md). Le [complément clavier](docs/planification/aud-01c-clavier.md) confirme la saisie par les chiffres du haut et corrige la restauration décimale. Le pavé numérique reste suivi séparément sous AUD-01d.
+
+Lot actif : [AUD-02a, protocole installation et lancement](docs/planification/aud-02a-installation.md). AUD-02b reste distinct : un contrôle Windows ne vaut pas un essai Linux.
 
 ## 4. Moyen terme — après v0.2.0
 
