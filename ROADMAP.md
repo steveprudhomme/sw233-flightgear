@@ -28,15 +28,16 @@ Objectif : un petit incrément utilisable et vérifiable. Aucune date ferme. Cha
 | Priorité / lot | Statut | Critère de réussite | Responsable |
 |---|---|---|---|
 | P1 · **AUD-01b : profondeur ±23°** | Terminé | FDM, animation et butées cohérents ; comparaison avant/après à même chargement ; tutoriel illustré | Mainteneur, revue recherchée |
-| P1 · **AUD-01c : occupants dans le menu** | Réalisé, saisie clavier à vérifier | Masses et CG vérifiés ; boutons, restauration et captures publiés ; contrôle humain de la saisie clavier restant | À attribuer |
+| P1 · **AUD-01c : occupants dans le menu** | Terminé pour chiffres du haut | Saisie manuelle 200.125 confirmée ; masse effective et CG relevés ; restauration décimale corrigée | À attribuer |
+| P2 · **AUD-01d : pavé numérique** | À investiguer | Comparer champ standard et SW233, Verr Num activé, puis disposition et événements ; cause et correction à établir | À attribuer |
 | P2 · **AUD-02 : paquet et lanceur** | À faire | Installation propre sous Windows et Linux ; chemins, textures, miniature et métadonnées vérifiés | À attribuer |
 | P2 · **AUD-13 / AUD-14 : contrôles et publication** | À faire, après AUD-02 | ZIP construit sur tag, testé avant publication ; provenance et empreinte jointes | À attribuer |
 
-**Dernier lot réalisé :** [protocole AUD-01b en huit étapes](docs/planification/aud-01b-profondeur.md). Le protocole est commité avant le code. Un lot n’est clos que lorsque ses tests, captures pertinentes, limites et documents sont publiés.
+**Dernier lot réalisé :** [AUD-01c et complément clavier](docs/planification/aud-01c-clavier.md). Le protocole est commité avant le code. Un lot n’est clos que lorsque ses tests, captures pertinentes, limites et documents sont publiés.
 
-Lot actif : **AUD-01c**, [protocole en huit étapes](docs/planification/aud-01c-occupants.md), préparé avant réalisation.
+Lot réalisé : **AUD-01c**, [protocole en huit étapes](docs/planification/aud-01c-occupants.md), préparé avant réalisation.
 
-Preuves AUD-01c : [fiche 11](docs/construction/11-occupants.md). Le contrôle des champs est repris dans le [complément clavier](docs/planification/aud-01c-clavier.md) ; les scénarios par boutons et fonctions sont vérifiés.
+Preuves AUD-01c : [fiche 11](docs/construction/11-occupants.md). Le [complément clavier](docs/planification/aud-01c-clavier.md) confirme la saisie par les chiffres du haut et corrige la restauration décimale. Le pavé numérique reste suivi séparément sous AUD-01d.
 
 ## 4. Moyen terme — après v0.2.0
 

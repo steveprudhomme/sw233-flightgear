@@ -6,8 +6,8 @@ var rear = "/fdm/jsbsim/inertia/pointmass-weight-lbs[1]";
 var saved = nil;
 var message = func(s) { setprop(base ~ "message", s); };
 var stage = func(a, b) {
-    setprop(base ~ "front", sprintf("%.2f", a));
-    setprop(base ~ "rear", sprintf("%.2f", b));
+    setprop(base ~ "front", sprintf("%.17g", a));
+    setprop(base ~ "rear", sprintf("%.17g", b));
 };
 var begin = func {
     saved = [getprop(front), getprop(rear)];

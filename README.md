@@ -99,3 +99,6 @@ La [fiche 10 du tutoriel](docs/construction/10-profondeur.md) détaille la profo
 ## Occupants et centrage — 13 novembre 2026
 
 Le menu **SW233 → Occupants et centrage** permet de régler les charges au sol ; voir la [fiche 11 illustrée](docs/construction/11-occupants.md), y compris les limites de validation de la saisie.
+
+
+Actualisation clavier (13 novembre 2026) : saisie 200.125 validée par Steve avec les chiffres du haut, puis vérifiée dans JSBSim ; restauration des décimales corrigée. Utiliser un point décimal. Pavé numérique signalé inopérant avec Verr Num activé, suivi AUD-01d. [Preuve illustrée et limites](docs/construction/11-occupants.md#10-confirmer-la-saisie-et-préserver-les-décimales).

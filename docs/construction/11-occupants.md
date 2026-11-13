@@ -44,8 +44,8 @@ var rear = "/fdm/jsbsim/inertia/pointmass-weight-lbs[1]";
 var saved = nil;
 var message = func(s) { setprop(base ~ "message", s); };
 var stage = func(a, b) {
-    setprop(base ~ "front", sprintf("%.2f", a));
-    setprop(base ~ "rear", sprintf("%.2f", b));
+    setprop(base ~ "front", sprintf("%.17g", a));
+    setprop(base ~ "rear", sprintf("%.17g", b));
 };
 var begin = func {
     saved = [getprop(front), getprop(rear)];
@@ -155,10 +155,53 @@ python -m tools.occupants_bench build/preuves-occupants --port 18097
 
 Le test indépendant vérifie six chargements, dont le retour au chargement initial. Le banc natif vérifie huit états : solo, biplace, avant +5, arrière −5, 220/140, valeur négative, texte et restauration. Les valeurs effectives doivent correspondre au calcul à 0,0002 près (lb ou pouces selon la colonne). Le fichier `native.json` conserve valeurs attendues et reçues. Le contrôle au sol est également appelé avec quatre conditions synthétiques ; ce test ne prétend pas démontrer une tentative en vol réel dans le simulateur.
 
-Les boutons solo et biplace ont aussi été actionnés à la souris. **Limite de vérification :** l’outil d’automatisation du clavier n’a pas permis de confirmer l’édition manuelle des champs. Les fonctions de validation sont testées, mais une relecture humaine de cette interaction reste à faire. Les boutons de pas offrent un autre chemin pour régler les occupants. Une validation n’est pas complète simplement parce que l’image semble correcte.
+Les boutons solo et biplace ont aussi été actionnés à la souris. **Actualisation du 13 novembre :** la saisie a été confirmée par Steve avec les chiffres du haut du clavier ; voir la séance complémentaire ci-dessous. Les touches automatisées restent sans effet dans cette session. Le pavé numérique ne saisit pas les chiffres, même avec Verr Num activé : ce problème reste distinct et ouvert. Les boutons de pas restent disponibles.
 
 ## 9. D’où viennent les choix ?
 
 Références techniques : fichiers `Nasal/gui.nas`, `Aircraft/c172p/gui/dialogs/c172p-menu.xml` et `gui/dialogs/location-in-air.xml` de FlightGear installé ; [guide officiel de création de fenêtres](https://wiki.flightgear.org/Howto:Editing_and_creating_GUI_dialogs_in_FlightGear). Les propriétés physiques sont celles déjà utilisées et vérifiées dans le banc de centrage du projet. Biais restant : les masses et bras du prototype sont historiques et peuvent différer du planeur réel. Nous affichons donc un CG calculé, sans indicateur vert « autorisé ».
 
-Point d’arrêt : compare les résultats à ton calcul papier, vérifie la restauration, ferme la fenêtre. Le lot garde une tâche de contrôle manuel de la saisie ; elle est visible dans ROADMAP, pas cachée dans les résultats.
+Point d’arrêt : compare les résultats à ton calcul papier, vérifie la restauration, ferme la fenêtre. La saisie avec la rangée supérieure est validée. Le défaut signalé du pavé numérique reste visible dans ROADMAP.
+
+## 10. Confirmer la saisie et préserver les décimales
+
+Le complément a été planifié et commité avant les essais (`b218883`). Nous avons d’abord cliqué dans le champ et envoyé des touches avec l’outil d’automatisation : le texte ne changeait pas. Même Échap ne produisait pas l’action attendue. Cela ne suffisait pas à conclure que le champ était défectueux.
+
+Steve a ensuite fait l’essai au clavier physique : **200.125**, avec les chiffres situés au-dessus des lettres, puis **Appliquer**. Il a confirmé que la valeur change et s’applique. La capture et la lecture du moteur physique confirment le résultat :
+
+| Propriété effective | Valeur |
+|---|---:|
+| Occupant avant | 200,125 lb |
+| Occupant arrière | 180 lb |
+| Total | 990,125 lb |
+| CG X historique | 87,723646 in |
+
+![Valeur décimale saisie par Steve, puis appliquée dans FlightGear](https://github.com/steveprudhomme/sw233-flightgear/releases/download/clavier-13/clavier-applique.jpg)
+
+L’écran affiche le total avec deux décimales, mais le moteur garde 990,125 lb. Un nombre affiché arrondi n’est pas nécessairement un nombre calculé arrondi. Pour refaire le calcul : `(610 × 103,2 + 200,125 × 43 + 180 × 85) / 990,125`. La saisie utilise le **point** décimal, comme le code ; ne remplace pas ce point par une virgule.
+
+### Le défaut trouvé dans Restaurer
+
+La fonction `stage` utilisait `sprintf("%.2f", valeur)` : le nombre était transformé en texte avec seulement deux décimales. À l’ouverture, cela arrondissait le brouillon. Restaurer repassait par ce même brouillon et pouvait donc modifier la masse d’origine.
+
+L’essai comparatif a exécuté les véritables fonctions Nasal sur des propriétés **isolées**, pour ne pas modifier la session utilisée par Steve :
+
+| Format testé | Masses avant l’essai | Après changement puis restauration |
+|---|---|---|
+| Ancien `%.2f` | 200,125 / 139,875 | 200,12 / 139,88 |
+| Nouveau `%.17g` | 200,125 / 139,875 | 200,125 / 139,875 |
+
+Le nouveau format garde jusqu’à 17 chiffres significatifs pour le passage nombre → texte. Il ne change pas l’arrondi visuel du total, qui reste un simple affichage. Les blocs complets de cette fiche sont corrigés : si tu avais construit l’ancienne version, remplace les deux formats dans `stage`, puis refabrique ton paquet. Aucune modification des masses par défaut, de leurs bras ou des coefficients du vol n’est nécessaire.
+
+```powershell
+# Session SW233 au sol, serveur local actif ; les propriétés de l’avion ne sont pas modifiées.
+python -m tools.occupants_precision --port 18097
+```
+
+Le script utilise les fonctions du fichier source, substitue des propriétés d’essai aux deux masses et supprime seulement la création de fenêtre. Il compare l’ancien format au nouveau et échoue si la régression n’est pas reproduite ou si les valeurs attendues ne sont pas restaurées. Il ne prétend pas simuler des frappes au clavier. Les relevés sont joints à la [publication de cette séance](https://github.com/steveprudhomme/sw233-flightgear/releases/tag/clavier-13).
+
+### Pavé numérique : observation et prochaine investigation
+
+Steve signale que les touches du pavé numérique ne remplissent pas le champ **avec Verr Num activé**. La rangée du haut fonctionne. Utilise donc cette rangée ou les boutons ±5 lb pour l’instant. La cause du défaut n’est pas établie : nous n’attribuons pas automatiquement le problème au modèle, à Windows ou à FlightGear.
+
+Le [manuel FlightGear 2024.1](https://flightgear.gitlab.io/getstart/release-2024.1/en/HTML/getstart-ench5.html) décrit aussi des commandes de vol associées au pavé numérique. Cela justifie de vérifier le traitement des événements et le focus, mais ne prouve pas la cause de notre problème de saisie. Le suivi AUD-01d prévoit de comparer un champ standard et notre fenêtre, puis les dispositions de clavier ; aucune affectation globale des commandes de vol n’est changée ici.

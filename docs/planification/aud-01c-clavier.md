@@ -9,3 +9,5 @@ Préparé le 13 novembre 2026 avant les nouveaux essais.
 5. Publier des captures natives et les relevés, expliquer la méthode et les limites dans la fiche 11, actualiser les Markdown et le statut ROADMAP.
 
 Achèvement : saisie réellement visible, action Appliquer vérifiée, refus observé, restauration vérifiée. Une écriture directe dans une propriété ne vaut pas une preuve de saisie au clavier.
+
+Résultats : saisie physique de 200.125 par Steve avec les chiffres du haut, capture et masse effective 200.125 confirmées. Défaut de restauration reproduit et corrigé (format de brouillon). Refus de texte/négatif couverts par le banc précédent, sans prétendre à une saisie physique de ces cas. Pavé numérique inopérant avec Verr Num activé : suivi AUD-01d distinct, cause non établie. Voir fiche 11, section 10.

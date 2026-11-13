@@ -69,3 +69,6 @@ Le dossier neuf protège les précédents essais. Cette commande lance un vol ma
 ## Occupants et centrage — 13 novembre 2026
 
 Après installation du nouveau paquet, ouvrir **SW233 → Occupants et centrage**, avion arrêté au sol. Les boutons solo/biplace et les pas de 5 lb appliquent immédiatement les masses. Restaurer revient aux masses présentes à l’ouverture. Voir la [fiche 11](docs/construction/11-occupants.md).
+
+
+Actualisation clavier (13 novembre 2026) : saisie 200.125 validée par Steve avec les chiffres du haut, puis vérifiée dans JSBSim ; restauration des décimales corrigée. Utiliser un point décimal. Pavé numérique signalé inopérant avec Verr Num activé, suivi AUD-01d. [Preuve illustrée et limites](docs/construction/11-occupants.md#10-confirmer-la-saisie-et-préserver-les-décimales).

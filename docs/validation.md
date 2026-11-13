@@ -106,4 +106,7 @@ Les valeurs de commande normalisée des essais antérieurs correspondent au gain
 
 ## Occupants et centrage — 13 novembre 2026
 
-AUD-01c : six chargements indépendants, huit états natifs et quatre conditions synthétiques du contrôle au sol. Captures FlightGear 2024.1.7 à CYJN ; boutons solo/biplace testés à la souris. Saisie clavier non confirmée par l’automatisation, revue humaine encore nécessaire. [Détails et images](construction/11-occupants.md).
+AUD-01c : six chargements indépendants, huit états natifs et quatre conditions synthétiques du contrôle au sol. Captures FlightGear 2024.1.7 à CYJN ; boutons solo/biplace testés à la souris. Saisie non confirmée par l’automatisation initiale, puis confirmée par Steve avec les chiffres du haut (voir actualisation ci-dessous). [Détails et images](construction/11-occupants.md).
+
+
+Actualisation clavier (13 novembre 2026) : saisie 200.125 validée par Steve avec les chiffres du haut, puis vérifiée dans JSBSim ; restauration des décimales corrigée. Utiliser un point décimal. Pavé numérique signalé inopérant avec Verr Num activé, suivi AUD-01d. [Preuve illustrée et limites](construction/11-occupants.md#10-confirmer-la-saisie-et-préserver-les-décimales).

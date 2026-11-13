@@ -4,7 +4,9 @@
 
 ### Changements
 
-- Menu des occupants, réglages par pas de 5 lb, préréglages, CG effectif et restauration ; 16 tests, banc natif et fiche 11. Revue manuelle de la saisie clavier encore attendue.
+- Occupants : saisie par les chiffres du haut confirmée avec capture et télémétrie ; restauration corrigée pour conserver les décimales. Pavé numérique suivi séparément (AUD-01d).
+
+- Menu des occupants, réglages par pas de 5 lb, préréglages, CG effectif et restauration ; 16 tests, banc natif et fiche 11. Saisie par la rangée supérieure confirmée ensuite ; pavé numérique encore à investiguer.
 
 - ROADMAP réorganisé en vision, état, jalons et critères ; anciens protocoles archivés.
 - Profondeur portée à ±23° (manuel 1 040 lb), deux gouvernes animées selon la déflexion effective ; 15 tests et fiche 10 illustrée. Solveur d’équilibre rendu plus précis, sans changement de coefficients.
