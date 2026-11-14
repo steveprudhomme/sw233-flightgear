@@ -1,6 +1,6 @@
 # 6 · Peindre sans figer les instruments
 
-![Le tableau peint dans l’enveloppe corrigée](https://github.com/steveprudhomme/sw233-flightgear/releases/download/enveloppe-16/apres-cockpit.jpg)
+![Le tableau peint dans l’enveloppe corrigée](https://github.com/steveprudhomme/sw233-flightgear/releases/download/panneaux-17/apres-cockpit.jpg)
 
 Rendu natif actualisé : les cadrans restent des textures originales avec des aiguilles séparées. Voir la [fiche 14](14-enveloppe.md) pour les parois et les cadres jaunes.
 

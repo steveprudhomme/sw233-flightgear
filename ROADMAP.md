@@ -16,8 +16,8 @@ Le projet est un prototype de simulation, pas un appareil d’entraînement cert
 | Cockpit | Anémomètre, altimètre, variomètre et compas animés ; bancs publiés | Aspect encore schématique ; radio et largage décoratifs |
 | Masse et repères | Calculs comparés à FlightGear ; transport du moment testé | Pesée de C-FYLP et référence historique des coefficients inconnues |
 | Profondeur | ±23° et deux parties mobiles vérifiées | Charnière de maquette approximative |
-| Documentation | Quatorze fiches et atlas des 43 objets, sources, captures et reconstruction automatique | Relecture autonome par un débutant encore attendue |
-| Qualité | 23 tests réussis | Ne constituent pas une certification du modèle |
+| Documentation | Quinze fiches et atlas des 49 objets, sources, captures et reconstruction automatique | Relecture autonome par un débutant encore attendue |
+| Qualité | 24 tests réussis | Ne constituent pas une certification du modèle |
 
 **Lecture des statuts :** terminé = critère vérifié et preuve publiée ; en cours = réalisation autorisée ; à faire = proposé ; dépendance = donnée ou décision nécessaire.
 
@@ -27,7 +27,7 @@ Objectif : un petit incrément utilisable et vérifiable. Aucune date ferme. Cha
 
 | Priorité / lot | Statut | Critère de réussite | Responsable |
 |---|---|---|---|
-| P1 · **VIS-01b : panneaux de verrière et contours de porte** | En cours | Contours comparés aux références, panneaux identifiables, raccords fermés et vue pilote préservée ; atlas et captures actualisés | Mainteneur |
+| P1 · **VIS-01b : panneaux de verrière et contours de porte** | Terminé | Contours comparés aux références, panneaux identifiables, raccords fermés et vue pilote préservée ; atlas et captures actualisés | Mainteneur |
 | P1 · **VIS-01a : enveloppe du cockpit et atlas des pièces** | Terminé | Flancs et raccords sans trous involontaires, comparaison des références et vues natives avant/après, atlas de chaque objet du maillage, tutoriel et aperçus actualisés | Mainteneur |
 | P1 · **AUD-01b : profondeur ±23°** | Terminé | FDM, animation et butées cohérents ; comparaison avant/après à même chargement ; tutoriel illustré | Mainteneur, revue recherchée |
 | P1 · **AUD-01c : occupants dans le menu** | Terminé pour chiffres du haut | Saisie manuelle 200.125 confirmée ; masse effective et CG relevés ; restauration décimale corrigée | À attribuer |
@@ -107,4 +107,6 @@ Lot réalisé : [VIS-01a — enveloppe du cockpit et atlas pédagogique](docs/pl
 
 Preuves VIS-01a : [fiche 14](docs/construction/14-enveloppe.md) et [atlas](docs/construction/atlas-pieces.md). Suite VIS-01 : obtenir des cotes fiables du vitrage, de la porte et des sections ; affiner les contours avant les matériaux photographiques.
 
-Lot actif : [VIS-01b — panneaux et contours](docs/planification/vis-01b-panneaux.md).
+Lot réalisé : [VIS-01b — panneaux et contours](docs/planification/vis-01b-panneaux.md).
+
+Preuves VIS-01b : [fiche 15](docs/construction/15-panneaux.md). Reste à obtenir des vues dimensionnées des deux flancs avant de figer les contours de porte et leurs équipements ; symétrie actuelle provisoire.

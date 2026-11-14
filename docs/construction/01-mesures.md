@@ -16,7 +16,7 @@ Recopie dans **notes/mesures.txt** : « objet ; document et page ou nom de photo
 | Photo du tableau portant **C-FYLP**, image 690 × 517 ; photo portant **N2930H** | Altitude à gauche sur C-FYLP, vitesse en mph à droite, variomètre encore plus à droite [V] | On choisit **C-FYLP** pour la disposition. On ne comble pas ses trous avec l’autre tableau. |
 | Plans *Short Kit*, croquis de visite et de lubrification | Forme des sections, emplacement relatif des haubans, aérofreins et roue [V] | Un plan de maquette photographié en biais ne fournit pas de cotes certifiées grandeur nature. |
 
-![Trois projections du modèle pour repérer longueur, largeur et hauteur](https://github.com/steveprudhomme/sw233-flightgear/releases/download/enveloppe-16/groupe-ensemble.png)
+![Trois projections du modèle pour repérer longueur, largeur et hauteur](https://github.com/steveprudhomme/sw233-flightgear/releases/download/panneaux-17/groupe-ensemble.png)
 
 Ce schéma montre notre modèle, pas le plan constructeur. Ses trois vues sont ajustées séparément à leurs cadres : utilise les nombres, pas une règle sur cette image, pour comparer leurs tailles.
 

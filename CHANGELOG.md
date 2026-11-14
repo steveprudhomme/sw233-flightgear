@@ -4,6 +4,8 @@
 
 ### Changements
 
+- VIS-01b : vitrage facetté, montant incliné, panneaux séparés, longerons et contours de porte fixes ; 24 tests, fiche 15 illustrée et atlas des 49 objets. Paquet panneaux-17 avec aperçu et description actualisés ; dimensions et symétrie provisoires.
+
 - VIS-01a : coque en U sans suppression arbitraire de faces, cadres jaunes et raccord arrière, captures natives comparées ; 23 tests. Fiche 14 et atlas des 43 objets ; premières fiches illustrées. Aperçu et description du paquet enveloppe-16 actualisés.
 
 - AUD-02b : métadonnées du prototype, miniature native 171 × 128 et aperçu extérieur optionnels dans le paquet ; contrôle réel du sélecteur FlightGear 2024.1.7, fiche 13 illustrée, 21 tests et reconstruction. Publication selecteur-15.

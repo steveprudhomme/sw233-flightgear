@@ -48,7 +48,7 @@ Ce projet n'est pas un outil d'instruction au vol réel.
 
 Le lecteur intégré est disponible dans la version web de ce README. Dans le dépôt, GitHub affiche le lien de lecture. Capture native de FlightGear 2024.1.4 : sortie puis rentrée des aérofreins depuis le cockpit (14–28 s), second cycle vu du dessus (29–43 s), puis glissade depuis le cockpit et de l’extérieur (46–73 s). Le médaillon est un agrandissement de la ficelle filmée ; β mesure l’angle latéral du vent relatif dans le modèle.
 
-**Pour construire depuis zéro :** [quatorze fiches de fabrication et leur cahier de mesures](docs/construction/README.md).
+**Pour construire depuis zéro :** [quinze fiches de fabrication et leur cahier de mesures](docs/construction/README.md).
 
 **Pour commencer :** [atelier pas à pas, dès 10 ans](docs/atelier.md) · [feuille de route du cockpit et de la livrée Cadets](ROADMAP.md) · [mesures et procédure](docs/validation.md#capture-flightgear-à-cyjn).
 
@@ -117,3 +117,9 @@ Le paquet [selecteur-15](https://github.com/steveprudhomme/sw233-flightgear/rele
 Les flancs jaunes rejoignent maintenant la verrière ; cadres et raccord arrière sont reconstruits. [Comparaison avant/après et méthode](docs/construction/14-enveloppe.md) · [43 pièces illustrées](docs/construction/atlas-pieces.md) · [Paquet enveloppe-16](https://github.com/steveprudhomme/sw233-flightgear/releases/tag/enveloppe-16). 23 tests réussis ; formes et matériaux encore schématiques.
 
 ![Cockpit dans FlightGear après correction](https://github.com/steveprudhomme/sw233-flightgear/releases/download/enveloppe-16/apres-cockpit.jpg)
+
+## Panneaux de verrière et contours fixes
+
+Le montant du pare-brise est incliné et les vitrages latéraux sont séparés. Des contours de porte fixes complètent le dessin, avec une symétrie encore provisoire. [Fiche 15 illustrée](docs/construction/15-panneaux.md) · [Atlas des 49 objets](docs/construction/atlas-pieces.md) · [Paquet panneaux-17](https://github.com/steveprudhomme/sw233-flightgear/releases/tag/panneaux-17). 24 tests réussis ; dimensions estimatives.
+
+![Vue pilote actualisée](https://github.com/steveprudhomme/sw233-flightgear/releases/download/panneaux-17/apres-cockpit.jpg)

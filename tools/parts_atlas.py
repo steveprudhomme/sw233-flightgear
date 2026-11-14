@@ -93,7 +93,9 @@ def atlas(mesh, output):
     groups = {
         'ensemble': list(objects),
         'coque': ['fuselage'],
-        'verriere': ['verriere', 'arceaux', 'bordures-cockpit', 'raccord-arriere'],
+        'verriere': ['verriere', 'pare-brise', 'vitrage-droit', 'vitrage-gauche',
+                     'arceaux', 'bordures-cockpit', 'raccord-arriere', 'longerons-verriere'],
+        'portes': ['fuselage', 'contour-porte-1', 'contour-porte1'],
         'ailes': ['aile-1', 'aile1', 'hauban-1', 'hauban1', 'aerofrein-1', 'aerofrein1'],
         'queue': ['derive', 'empennage-1', 'empennage1', 'profondeur-1', 'profondeur1'],
         'train': ['roue', 'roulette', 'patin'],

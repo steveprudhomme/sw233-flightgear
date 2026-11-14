@@ -26,7 +26,9 @@
 
 | [14. Fermer le cockpit](14-enveloppe.md) | Réparer les flancs et vérifier les raccords | Comparaisons natives, mesures et limites |
 
-[Atlas illustré de chaque pièce](atlas-pieces.md) : 43 objets, 129 projections.
+[Atlas illustré de chaque pièce](atlas-pieces.md) : 49 objets, 147 projections.
+
+| [15. Délimiter les panneaux](15-panneaux.md) | Incliner le pare-brise et identifier les vitrages et contours fixes | Captures comparées et atlas actualisé |
 
 **Ouvre ton établi.** Crée dans Documents un dossier *Mon-Schweizer* vide. Ouvre-le dans l’Explorateur ; dans sa barre d’adresse, écris `powershell` puis Entrée. Toutes les commandes de ce livre partent de là. Colle ces lignes une par une :
 

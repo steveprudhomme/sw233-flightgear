@@ -11,3 +11,7 @@ Plan du 14 novembre 2026, à commiter avant modification.
 7. Actualiser la description et les aperçus FlightGear ; tests, reconstruction, commit DCO et publication du paquet avec captures et atlas.
 
 Critères : amélioration explicable des contours sans trous ni obstruction ; toutes les nouvelles pièces illustrées ; aucun nombre présenté comme cote constructeur sans référence. La comparaison est visuelle, pas une validation dimensionnelle complète. Les références tierces restent locales ; seuls les dessins originaux et captures sont publiés.
+
+## Résultat
+
+Réalisé : panneaux séparés, montant incliné, longerons et contours fixes ; 24 tests et reconstruction réussis. Cinq vues natives, nouvel aperçu et atlas des 49 objets. [Fiche 15](../construction/15-panneaux.md) : mesures approximatives, différences au pointage, symétrie provisoire et limites explicités.

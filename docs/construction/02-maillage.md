@@ -72,7 +72,7 @@ def loft(n, m, stations):
 
 ## C · Construis une coque ouverte seulement vers le haut
 
-![Coque : flancs continus et ouverture supérieure](https://github.com/steveprudhomme/sw233-flightgear/releases/download/enveloppe-16/groupe-coque.png)
+![Coque : flancs continus et ouverture supérieure](https://github.com/steveprudhomme/sw233-flightgear/releases/download/panneaux-17/groupe-coque.png)
 
 Schéma du maillage, sans textures ; dimensions de maquette.
 
@@ -114,11 +114,11 @@ poly("fuselage", 0, *sections[-1])
 
 ## D · Raccorde les vitres et les cadres jaunes
 
-![Vitres, cadres jaunes et raccord arrière](https://github.com/steveprudhomme/sw233-flightgear/releases/download/enveloppe-16/groupe-verriere.png)
+![Vitres, cadres jaunes et raccord arrière](https://github.com/steveprudhomme/sw233-flightgear/releases/download/panneaux-17/groupe-verriere.png)
 
 Schéma du maillage, sans textures ; dimensions de maquette.
 
-Le bord inférieur de la verrière est celui de la coque, au même x, y et z. Les demi-anneaux de neuf points gardent une forme simple. Les montants et les lisses longitudinales sont jaunes, comme les contours visibles sur les références. Le raccord arrière sous l’aile est opaque ; le pare-brise devant le pilote reste transparent. Les épaisseurs de 18 et 16 mm sont des choix de lisibilité H. La porte et la verrière ne s’ouvrent pas encore.
+Le bord inférieur de la verrière est celui de la coque, au même x, y et z. Les sections à neuf points distinguent flancs vitrés et toit ; le montant du pare-brise est incliné. La [fiche 15](15-panneaux.md) explique les proportions et les limites. Les montants et les lisses longitudinales sont jaunes, comme les contours visibles sur les références. Le raccord arrière sous l’aile est opaque ; le pare-brise devant le pilote reste transparent. Les épaisseurs de 18 et 16 mm sont des choix de lisibilité H. La porte et la verrière ne s’ouvrent pas encore.
 
 <!-- atelier-fichier: fabrique.py -->
 ```python
@@ -130,28 +130,63 @@ stations = [
     (2.78, .39, .10, .47),
     (3.16, .34, .10, .14),
 ]
-rings = [
-    [(x, r*cos(i*pi/8), z+h*sin(i*pi/8)) for i in range(9)]
-    for x, r, z, h in stations
-]
+# Polygonal transverse section; the bottom points keep the proven hull seam.
+profile = [(1, 0), (.97, .25), (.82, .82), (.48, .97), (0, 1),
+           (-.48, .97), (-.82, .82), (-.97, .25), (-1, 0)]
+rings = []
+for k, (x, r, z, h) in enumerate(stations):
+    # Rear edge of the windscreen leans aft; 0.14 m is a model estimate.
+    lean = .14 if k == 2 else 0
+    rings.append([(x+lean*v, r*u, z+h*v) for u, v in profile])
 for k, (a, b) in enumerate(zip(rings, rings[1:])):
     for j in range(8):
         fairing = k >= 3 and 2 <= j <= 5
-        poly("raccord-arriere" if fairing else "verriere", 0 if fairing else 4,
-             a[j], a[j+1], b[j+1], b[j])
+        if fairing:
+            name = "raccord-arriere"
+        elif k < 2:
+            name = "pare-brise"
+        elif j < 2:
+            name = "vitrage-droit"
+        elif j >= 6:
+            name = "vitrage-gauche"
+        else:
+            name = "verriere"
+        # Triangles avoid nonplanar quads at the leaning windscreen boundary.
+        poly(name, 0 if fairing else 4, a[j], a[j+1], b[j+1])
+        poly(name, 0 if fairing else 4, a[j], b[j+1], b[j])
     for j in (0, 8):
         rod("bordures-cockpit", 0, a[j], b[j], .018)
-# Front and rear ends close against the nose and rear deck, not into the cabin.
-poly("verriere", 4, *reversed(rings[0]))
+poly("pare-brise", 4, *reversed(rings[0]))
 poly("raccord-arriere", 0, *rings[-1])
 for k in (0, 1, 2, 3, 5):
     for i in range(8):
         rod("arceaux", 0, rings[k][i], rings[k][i+1], .016)
+# Longitudinal roof edges make each side window legible.
+for a, b in zip(rings[2:], rings[3:]):
+    for j in (2, 6):
+        rod("longerons-verriere", 0, a[j], b[j], .010)
+# Fixed door outlines, mirrored as an explicitly provisional visual convention.
+for side in (-1, 1):
+    selected = [row for row in coque if 1.55 <= row[0] <= 2.78]
+    line = []
+    for x, r, z, h, rim, sill in selected:
+        # Middle of the first lower hull facet, plus a 2 mm drawing offset.
+        line.append((x, side*(r*(1+cos(pi/6))/2+.002), z-h*.25))
+    first, last = selected[0], selected[-1]
+    contour = [(first[0], side*(first[4]+.002), first[5])] + line
+    contour += [(last[0], side*(last[4]+.002), last[5])]
+    for a, b in zip(contour, contour[1:]):
+        rod("contour-porte"+str(side), 3, a, b, .0025)
+
 ```
+
+![Contours fixes de porte sur la coque](https://github.com/steveprudhomme/sw233-flightgear/releases/download/panneaux-17/groupe-portes.png)
+
+Contours de travail, sans animation ; voir la fiche 15 pour les hypothèses.
 
 ## E · Fabrique une aile, puis son reflet
 
-![Ailes, haubans et aérofreins séparés](https://github.com/steveprudhomme/sw233-flightgear/releases/download/enveloppe-16/groupe-ailes.png)
+![Ailes, haubans et aérofreins séparés](https://github.com/steveprudhomme/sw233-flightgear/releases/download/panneaux-17/groupe-ailes.png)
 
 Schéma du maillage, sans textures ; dimensions de maquette.
 
@@ -222,7 +257,7 @@ Le contour horizontal est découpé à **x=7,35 m** : partie avant fixe, partie 
 
 ## F · Termine la queue, le train et les commandes
 
-![Empennages et gouvernes](https://github.com/steveprudhomme/sw233-flightgear/releases/download/enveloppe-16/groupe-queue.png)
+![Empennages et gouvernes](https://github.com/steveprudhomme/sw233-flightgear/releases/download/panneaux-17/groupe-queue.png)
 
 Schéma du maillage, sans textures ; dimensions de maquette.
 
@@ -253,7 +288,7 @@ rod("poignee-frein", 7, (1.19, -0.34, -0.13), (1.43, -0.34, 0.01), 0.019)
 
 ## G · Découpe la planche et prépare les cadrans
 
-![Assemblage de la planche et des instruments](https://github.com/steveprudhomme/sw233-flightgear/releases/download/enveloppe-16/groupe-tableau.png)
+![Assemblage de la planche et des instruments](https://github.com/steveprudhomme/sw233-flightgear/releases/download/panneaux-17/groupe-tableau.png)
 
 Schéma du maillage, sans textures ; dimensions de maquette.
 
@@ -386,7 +421,7 @@ for kind, y, z, r in dials:
 
 ## I · Pose le Pitot et attache le fil
 
-![Tube Pitot, attache et fil indépendants](https://github.com/steveprudhomme/sw233-flightgear/releases/download/enveloppe-16/groupe-pitot.png)
+![Tube Pitot, attache et fil indépendants](https://github.com/steveprudhomme/sw233-flightgear/releases/download/panneaux-17/groupe-pitot.png)
 
 Schéma du maillage, sans textures ; dimensions de maquette.
 
@@ -562,10 +597,10 @@ Get-Content src/SW233/Models/sw233.ac -TotalCount 16
 
 ## K · Observer chaque pièce séparément
 
-L’[atlas complet](atlas-pieces.md) montre chacun des 43 objets nommés, avec trois vues et ses dimensions. Pour voir les roues et les commandes séparées :
+L’[atlas complet](atlas-pieces.md) montre chacun des 49 objets nommés, avec trois vues et ses dimensions. Pour voir les roues et les commandes séparées :
 
-![Train : roue, roulette et patin](https://github.com/steveprudhomme/sw233-flightgear/releases/download/enveloppe-16/groupe-train.png)
+![Train : roue, roulette et patin](https://github.com/steveprudhomme/sw233-flightgear/releases/download/panneaux-17/groupe-train.png)
 
-![Sièges, manche, levier et poignée de largage](https://github.com/steveprudhomme/sw233-flightgear/releases/download/enveloppe-16/groupe-commandes.png)
+![Sièges, manche, levier et poignée de largage](https://github.com/steveprudhomme/sw233-flightgear/releases/download/panneaux-17/groupe-commandes.png)
 
 Ces dessins proviennent du fichier AC réellement construit. Ils ne sont pas des captures du simulateur.
