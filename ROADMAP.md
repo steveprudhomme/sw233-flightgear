@@ -16,8 +16,8 @@ Le projet est un prototype de simulation, pas un appareil d’entraînement cert
 | Cockpit | Anémomètre, altimètre, variomètre et compas animés ; bancs publiés | Aspect encore schématique ; radio et largage décoratifs |
 | Masse et repères | Calculs comparés à FlightGear ; transport du moment testé | Pesée de C-FYLP et référence historique des coefficients inconnues |
 | Profondeur | ±23° et deux parties mobiles vérifiées | Charnière de maquette approximative |
-| Documentation | Douze fiches, sources, captures et reconstruction automatique | Relecture autonome par un débutant encore attendue |
-| Qualité | 19 tests réussis | Ne constituent pas une certification du modèle |
+| Documentation | Treize fiches, sources, captures et reconstruction automatique | Relecture autonome par un débutant encore attendue |
+| Qualité | 21 tests réussis | Ne constituent pas une certification du modèle |
 
 **Lecture des statuts :** terminé = critère vérifié et preuve publiée ; en cours = réalisation autorisée ; à faire = proposé ; dépendance = donnée ou décision nécessaire.
 
@@ -31,7 +31,7 @@ Objectif : un petit incrément utilisable et vérifiable. Aucune date ferme. Cha
 | P1 · **AUD-01c : occupants dans le menu** | Terminé pour chiffres du haut | Saisie manuelle 200.125 confirmée ; masse effective et CG relevés ; restauration décimale corrigée | À attribuer |
 | P2 · **AUD-01d : pavé numérique** | À investiguer | Comparer champ standard et SW233, Verr Num activé, puis disposition et événements ; cause et correction à établir | À attribuer |
 | P2 · **AUD-02a : paquet et lanceur Windows** | Terminé | Paquet autonome contrôlé, lancement depuis un chemin avec espaces, cockpit et menu vérifiés | Mainteneur |
-| P2 · **AUD-02b : présentation dans le sélecteur** | En cours | Métadonnées sourcées, miniature native, aperçu et fiche visibles dans le lanceur | Mainteneur |
+| P2 · **AUD-02b : présentation dans le sélecteur** | Terminé | Métadonnées sourcées, miniature native, aperçu et fiche visibles dans le lanceur | Mainteneur |
 | P2 · **AUD-02c : validation Linux** | À faire | Installation et lancement natifs Linux, preuves distinctes de Windows | À attribuer |
 | P2 · **AUD-13 / AUD-14 : contrôles et publication** | À faire, après AUD-02 | ZIP construit sur tag, testé avant publication ; provenance et empreinte jointes | À attribuer |
 
@@ -41,11 +41,11 @@ Lot réalisé : **AUD-01c**, [protocole en huit étapes](docs/planification/aud-
 
 Preuves AUD-01c : [fiche 11](docs/construction/11-occupants.md). Le [complément clavier](docs/planification/aud-01c-clavier.md) confirme la saisie par les chiffres du haut et corrige la restauration décimale. Le pavé numérique reste suivi séparément sous AUD-01d.
 
-Dernier lot réalisé : [AUD-02a, protocole installation et lancement](docs/planification/aud-02a-installation.md). AUD-02b reste distinct : un contrôle Windows ne vaut pas un essai Linux.
+Dernier lot réalisé : [AUD-02a, protocole installation et lancement](docs/planification/aud-02a-installation.md). AUD-02c reste distinct : un contrôle Windows ne vaut pas un essai Linux.
 
 Preuves AUD-02a : [fiche 12 illustrée](docs/construction/12-installation.md), 19 tests et contrôle natif du paquet déplacé.
 
-Lot actif : [AUD-02b, protocole du sélecteur](docs/planification/aud-02b-selecteur.md).
+Dernier lot réalisé : [AUD-02b, protocole du sélecteur](docs/planification/aud-02b-selecteur.md). Preuves : [fiche 13](docs/construction/13-selecteur.md), miniature et aperçu visibles dans FlightGear 2024.1.7, 21 tests et reconstruction. Prochain lot proposé : AUD-02c, à condition de disposer d’un environnement Linux natif.
 
 ## 4. Moyen terme — après v0.2.0
 

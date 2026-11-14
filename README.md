@@ -48,7 +48,7 @@ Ce projet n'est pas un outil d'instruction au vol réel.
 
 Le lecteur intégré est disponible dans la version web de ce README. Dans le dépôt, GitHub affiche le lien de lecture. Capture native de FlightGear 2024.1.4 : sortie puis rentrée des aérofreins depuis le cockpit (14–28 s), second cycle vu du dessus (29–43 s), puis glissade depuis le cockpit et de l’extérieur (46–73 s). Le médaillon est un agrandissement de la ficelle filmée ; β mesure l’angle latéral du vent relatif dans le modèle.
 
-**Pour construire depuis zéro :** [sept fiches de fabrication et leur cahier de mesures](docs/construction/README.md).
+**Pour construire depuis zéro :** [treize fiches de fabrication et leur cahier de mesures](docs/construction/README.md).
 
 **Pour commencer :** [atelier pas à pas, dès 10 ans](docs/atelier.md) · [feuille de route du cockpit et de la livrée Cadets](ROADMAP.md) · [mesures et procédure](docs/validation.md#capture-flightgear-à-cyjn).
 
@@ -107,3 +107,7 @@ Actualisation clavier (13 novembre 2026) : saisie 200.125 validée par Steve ave
 ## Installation vérifiée sous Windows
 
 Le paquet inclut désormais un lanceur, la licence et un manifeste. Il peut être déplacé dans un dossier avec espaces ; le lancement commence au sol à CYJN. [Guide rapide](INSTALL.md) · [Tutoriel illustré](docs/construction/12-installation.md). Python est requis ; FlightGear et le décor sont installés séparément. Linux reste à valider.
+
+## Présentation dans le lanceur
+
+Le paquet [selecteur-15](https://github.com/steveprudhomme/sw233-flightgear/releases/tag/selecteur-15) ajoute une miniature native et un aperçu extérieur. La fiche précise le statut expérimental, la GPL-3.0-only et la livrée finale encore à réaliser. [Tutoriel illustré : fabriquer et vérifier la fiche](docs/construction/13-selecteur.md). Contrôle sous FlightGear 2024.1.7 Windows ; 21 tests réussis, Linux non validé.

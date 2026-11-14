@@ -16,7 +16,10 @@ Commence par une seule racine PropertyList. Dans sim, la description est le titr
 <PropertyList>
     <sim>
         <description>Schweizer SGS 2-33 — Cadets de l’aviation royale du Canada (prototype)</description>
-        <author>SW233 contributors</author>
+        <author>Steve Prud'Homme et contributeurs SW233</author>
+        <long-description>Prototype libre du Schweizer SGS 2-33 pour FlightGear. Licence GPL-3.0-only. Cockpit, commandes et masses configurables ; modele de vol experimental. Projet aux couleurs des Cadets de l'aviation royale du Canada : livree finale encore a realiser. Teste sous Windows avec FlightGear 2024.1.7 ; Linux non valide.</long-description>
+        <aircraft-version>0.1.0-dev</aircraft-version>
+        <minimum-fg-version>2024.1.7</minimum-fg-version>
         <flight-model>jsb</flight-model>
         <aero>sw233</aero>
         <model>

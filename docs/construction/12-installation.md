@@ -1,6 +1,6 @@
 # 12. Emporter son planeur et le lancer sans se tromper de dossier
 
-Séance AUD-02a, 13 novembre 2026. Le plan a été commité avant le travail (`27a8fa6`). Nous validons Windows ici ; Linux, miniature et intégration au catalogue restent AUD-02b.
+Séance AUD-02a, 13 novembre 2026. Le plan a été commité avant le travail (`27a8fa6`). Nous validons Windows ici ; La présentation locale est traitée dans la fiche 13 (AUD-02b), Linux reste AUD-02c et le catalogue officiel AUD-15.
 
 ## 1. Distinguer l’atelier et la boîte à emporter
 
@@ -69,6 +69,10 @@ def validate_resources(root):
     for node in config.findall('nasal/*/file'):
         required(air, node.text)
     required(air, 'gui/dialogs/occupants.xml')
+    for preview in config.findall('sim/previews/preview/path'):
+        required(air, preview.text)
+    if config.find('sim/previews') is not None:
+        required(air, 'thumbnail.jpg')
     return air
 
 
@@ -160,7 +164,10 @@ import hashlib
 import json
 import shutil
 import subprocess
+import xml.etree.ElementTree as ET
 from pathlib import Path
+
+from PIL import Image, ImageOps
 
 if __package__:
     from .launch import validate_resources
@@ -172,15 +179,37 @@ else:
 ROOT = Path(__file__).resolve().parents[1]
 
 
-def package(output: Path) -> Path:
+def package(output: Path, preview: Path | None = None) -> Path:
     """Never overwrite a package or delete an existing user's directory."""
     destination = output / "Aircraft" / "SW233"
     extras = [output / name for name in
               ("launch.py", "start-sw233.cmd", "LICENSE.md", "LIRE-MOI.txt", "manifest.json")]
     if destination.exists() or any(path.exists() for path in extras):
         raise FileExistsError(f"Destination already exists: {destination}")
+    if preview is not None:
+        with Image.open(preview) as image:
+            if image.format != 'JPEG' or image.width < 1024 or image.height < 600:
+                raise ValueError('Apercu attendu : capture JPEG native, au moins 1024 x 600.')
+            image.verify()
     shutil.copytree(ROOT / "src" / "SW233", destination)
     finish_panel(destination / "Models")
+    if preview is not None:
+        previews = destination / 'Previews'
+        previews.mkdir()
+        shutil.copyfile(preview, previews / 'sw233-exterior.jpg')
+        with Image.open(preview) as image:
+            # Fit without distorting the aircraft; black padding preserves the native framing.
+            thumbnail = ImageOps.pad(image.convert('RGB'), (171, 128),
+                                     method=Image.Resampling.LANCZOS, color='black')
+            thumbnail.save(destination / 'thumbnail.jpg', quality=95)
+        config_path = destination / 'sw233-set.xml'
+        config = ET.parse(config_path)
+        node = ET.SubElement(ET.SubElement(config.find('sim'), 'previews'), 'preview')
+        ET.SubElement(node, 'type').text = 'exterior'
+        ET.SubElement(node, 'path').text = 'Previews/sw233-exterior.jpg'
+        ET.SubElement(node, 'splash', type='bool').text = 'true'
+        ET.indent(config, space='    ')
+        config.write(config_path, encoding='utf-8', xml_declaration=True)
     validate_resources(output)
     shutil.copyfile(ROOT / "tools/launch.py", output / "launch.py")
     shutil.copyfile(ROOT / "LICENSE.md", output / "LICENSE.md")
@@ -212,7 +241,9 @@ def package(output: Path) -> Path:
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--output", type=Path, default=ROOT / "build")
-    print(package(parser.parse_args().output).resolve())
+    parser.add_argument("--preview", type=Path, help="Capture JPEG native, sans telechargement")
+    args = parser.parse_args()
+    print(package(args.output, args.preview).resolve())
 ```
 
 ## 6. Déplacer le paquet et lancer

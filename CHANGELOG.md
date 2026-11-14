@@ -4,6 +4,8 @@
 
 ### Changements
 
+- AUD-02b : métadonnées du prototype, miniature native 171 × 128 et aperçu extérieur optionnels dans le paquet ; contrôle réel du sélecteur FlightGear 2024.1.7, fiche 13 illustrée, 21 tests et reconstruction. Publication selecteur-15.
+
 - Paquet transportable : lanceur Windows/Python, contrôle des ressources et empreintes, licence incluse, départ au sol à CYJN. 19 tests et fiche 12 illustrée ; validation Linux séparée.
 
 - Occupants : saisie par les chiffres du haut confirmée avec capture et télémétrie ; restauration corrigée pour conserver les décimales. Pavé numérique suivi séparément (AUD-01d).

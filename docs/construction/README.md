@@ -22,6 +22,8 @@
 
 | [12. Installer et lancer](12-installation.md) | Fabriquer un paquet contrôlé, le déplacer et lancer la bonne copie | Chemins avec espaces, manifeste et captures natives |
 
+| [13. Présenter le planeur](13-selecteur.md) | Préparer les métadonnées, la capture et la miniature | Fiche et aperçu vérifiés dans le lanceur |
+
 **Ouvre ton établi.** Crée dans Documents un dossier *Mon-Schweizer* vide. Ouvre-le dans l’Explorateur ; dans sa barre d’adresse, écris `powershell` puis Entrée. Toutes les commandes de ce livre partent de là. Colle ces lignes une par une :
 
 ```powershell

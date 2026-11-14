@@ -12,3 +12,7 @@ Préparé le 13 novembre 2026 avant modification.
 8. Exécuter les tests et la reconstruction, commiter puis publier les médias et le paquet. L’essai natif Linux est suivi séparément sous AUD-02c.
 
 Achèvement : captures réelles du modèle et de sa fiche, licence explicitée sans promesse de certification, métadonnées et ressources cohérentes, recette reproductible et limites documentées.
+
+## Résultat vérifié
+
+Les huit étapes sont réalisées. Voir la [fiche 13 illustrée](../construction/13-selecteur.md) : capture native, miniature 171 × 128, liste et détail du lanceur, 21 tests réussis et reconstruction du tutoriel. Publication : [selecteur-15](https://github.com/steveprudhomme/sw233-flightgear/releases/tag/selecteur-15). Aucun essai Linux ni admission au catalogue officiel revendiqués.

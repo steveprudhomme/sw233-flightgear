@@ -77,3 +77,13 @@ python tools/check_workbook.py build/livre-verifie
 Sur Linux, utiliser `.venv/bin/python` ; cette instruction n’est pas une affirmation d’essai natif FlightGear Linux. JSBSim autonome est verrouillé dans requirements-dev.txt ; sa version peut différer du moteur embarqué. Voir [validation](docs/validation.md).
 
 Le serveur HTTP reste désactivé par défaut. Pour un banc local dédié, ajouter **--http-port 18099**, puis suivre la fiche 12. Les empreintes du manifeste détectent des changements ; elles ne constituent pas une signature d’authenticité. Le champ source_revision indique le commit de base lors de la fabrication ; un paquet préparé depuis des fichiers modifiés doit être identifié par ses empreintes, pas seulement par ce commit.
+
+## Ajouter la miniature et l’aperçu
+
+Depuis la racine du dépôt, fabriquer un dossier neuf avec une capture JPEG native :
+
+```powershell
+python tools/package.py --output build/avec-apercu --preview notes/selecteur/exterior.jpg
+```
+
+Le fichier doit exister et mesurer au moins 1024 × 600 pixels. Le constructeur ne télécharge aucune image. Sans --preview, il produit un paquet utilisable sans références d’aperçus. La [fiche 13](docs/construction/13-selecteur.md) explique la capture, le téléchargement facultatif de la référence publiée et la vérification dans le lanceur. Le paquet avec images est disponible dans [selecteur-15](https://github.com/steveprudhomme/sw233-flightgear/releases/tag/selecteur-15). Le minimum déclaré est 2024.1.7, version testée ; aucune compatibilité antérieure n’est affirmée.
