@@ -1,5 +1,7 @@
 # 4 · Donner un nom à l’avion et faire tourner les bonnes pièces
 
+![Les liens entre les fichiers de l’appareil](liaisons-fichiers.svg)
+
 Tu vas écrire deux fichiers, et non un seul. La fiche **set** est l’étiquette sur la boîte : elle indique à FlightGear quel avion ouvrir. Le fichier **model** est le mode d’emploi des pièces mobiles. Une animation est une règle : « lis ce nombre, multiplie-le, tourne cette pièce autour de ce point ». Les balises XML doivent toujours se refermer en ordre inverse.
 
 **Fichier à écrire :** `src/SW233/sw233-set.xml`. Colle les blocs de ce fichier dans l’ordre, sans retirer les espaces du début des lignes.
@@ -17,7 +19,7 @@ Commence par une seule racine PropertyList. Dans sim, la description est le titr
     <sim>
         <description>Schweizer SGS 2-33 — Cadets de l’aviation royale du Canada (prototype)</description>
         <author>Steve Prud'Homme et contributeurs SW233</author>
-        <long-description>Prototype libre du Schweizer SGS 2-33 pour FlightGear. Licence GPL-3.0-only. Cockpit, commandes et masses configurables ; modele de vol experimental. Projet aux couleurs des Cadets de l'aviation royale du Canada : livree finale encore a realiser. Teste sous Windows avec FlightGear 2024.1.7 ; Linux non valide.</long-description>
+        <long-description>Prototype libre du Schweizer SGS 2-33 pour FlightGear. Licence GPL-3.0-only. Enveloppe du cockpit raccordee, cadres jaunes ; commandes et masses configurables ; modele de vol experimental. Projet aux couleurs des Cadets de l'aviation royale du Canada : livree finale encore a realiser. Teste sous Windows avec FlightGear 2024.1.7 ; Linux non valide.</long-description>
         <aircraft-version>0.1.0-dev</aircraft-version>
         <minimum-fg-version>2024.1.7</minimum-fg-version>
         <flight-model>jsb</flight-model>

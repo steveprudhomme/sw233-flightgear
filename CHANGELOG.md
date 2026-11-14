@@ -4,6 +4,8 @@
 
 ### Changements
 
+- VIS-01a : coque en U sans suppression arbitraire de faces, cadres jaunes et raccord arrière, captures natives comparées ; 23 tests. Fiche 14 et atlas des 43 objets ; premières fiches illustrées. Aperçu et description du paquet enveloppe-16 actualisés.
+
 - AUD-02b : métadonnées du prototype, miniature native 171 × 128 et aperçu extérieur optionnels dans le paquet ; contrôle réel du sélecteur FlightGear 2024.1.7, fiche 13 illustrée, 21 tests et reconstruction. Publication selecteur-15.
 
 - Paquet transportable : lanceur Windows/Python, contrôle des ressources et empreintes, licence incluse, départ au sol à CYJN. 19 tests et fiche 12 illustrée ; validation Linux séparée.

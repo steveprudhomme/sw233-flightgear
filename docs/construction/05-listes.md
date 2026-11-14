@@ -1,5 +1,9 @@
 # 5 · Fabriquer les cartes de vérification
 
+![Contenu des quatre listes de simulation](https://github.com/steveprudhomme/sw233-flightgear/releases/download/enveloppe-16/listes.png)
+
+Illustration du XML, pas une capture de la fenêtre FlightGear.
+
 Regarde les quatre petites cartes sur les photos du poste avant : elles correspondent à des moments différents. Leur présence [V] nous suggère quatre listes. Le manuel du programme de 2017, PDF p. 213, explique comment reprendre une vérification interrompue. Les textes ci-dessous sont **notre rédaction pour le simulateur**, pas la transcription d’une procédure officielle.
 
 **Fichier à écrire :** `src/SW233/Checklists/sw233.xml`. Colle les blocs de ce fichier dans l’ordre, sans retirer les espaces du début des lignes.

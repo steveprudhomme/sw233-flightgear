@@ -48,7 +48,7 @@ Ce projet n'est pas un outil d'instruction au vol réel.
 
 Le lecteur intégré est disponible dans la version web de ce README. Dans le dépôt, GitHub affiche le lien de lecture. Capture native de FlightGear 2024.1.4 : sortie puis rentrée des aérofreins depuis le cockpit (14–28 s), second cycle vu du dessus (29–43 s), puis glissade depuis le cockpit et de l’extérieur (46–73 s). Le médaillon est un agrandissement de la ficelle filmée ; β mesure l’angle latéral du vent relatif dans le modèle.
 
-**Pour construire depuis zéro :** [treize fiches de fabrication et leur cahier de mesures](docs/construction/README.md).
+**Pour construire depuis zéro :** [quatorze fiches de fabrication et leur cahier de mesures](docs/construction/README.md).
 
 **Pour commencer :** [atelier pas à pas, dès 10 ans](docs/atelier.md) · [feuille de route du cockpit et de la livrée Cadets](ROADMAP.md) · [mesures et procédure](docs/validation.md#capture-flightgear-à-cyjn).
 
@@ -111,3 +111,9 @@ Le paquet inclut désormais un lanceur, la licence et un manifeste. Il peut êtr
 ## Présentation dans le lanceur
 
 Le paquet [selecteur-15](https://github.com/steveprudhomme/sw233-flightgear/releases/tag/selecteur-15) ajoute une miniature native et un aperçu extérieur. La fiche précise le statut expérimental, la GPL-3.0-only et la livrée finale encore à réaliser. [Tutoriel illustré : fabriquer et vérifier la fiche](docs/construction/13-selecteur.md). Contrôle sous FlightGear 2024.1.7 Windows ; 21 tests réussis, Linux non validé.
+
+## Enveloppe du cockpit corrigée
+
+Les flancs jaunes rejoignent maintenant la verrière ; cadres et raccord arrière sont reconstruits. [Comparaison avant/après et méthode](docs/construction/14-enveloppe.md) · [43 pièces illustrées](docs/construction/atlas-pieces.md) · [Paquet enveloppe-16](https://github.com/steveprudhomme/sw233-flightgear/releases/tag/enveloppe-16). 23 tests réussis ; formes et matériaux encore schématiques.
+
+![Cockpit dans FlightGear après correction](https://github.com/steveprudhomme/sw233-flightgear/releases/download/enveloppe-16/apres-cockpit.jpg)

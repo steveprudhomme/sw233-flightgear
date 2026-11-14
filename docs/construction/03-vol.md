@@ -1,5 +1,7 @@
 # 3 · Faire voler les nombres avant de faire voler l’image
 
+![Le dessin et le calcul du vol ont des rôles différents](deux-modeles.svg)
+
 Un joli modèle en carton ne connaît pas son poids. JSBSim a besoin d’une autre fiche, **src/SW233/sw233.xml**. Le programme suivant l’écrit. Il ne lit pas le fichier AC3D et ne devine pas la portance d’après les pixels.
 
 **Fichier à écrire :** `dynamique.py`. Colle les blocs de ce fichier dans l’ordre, sans retirer les espaces du début des lignes.

@@ -16,6 +16,10 @@ Recopie dans **notes/mesures.txt** : « objet ; document et page ou nom de photo
 | Photo du tableau portant **C-FYLP**, image 690 × 517 ; photo portant **N2930H** | Altitude à gauche sur C-FYLP, vitesse en mph à droite, variomètre encore plus à droite [V] | On choisit **C-FYLP** pour la disposition. On ne comble pas ses trous avec l’autre tableau. |
 | Plans *Short Kit*, croquis de visite et de lubrification | Forme des sections, emplacement relatif des haubans, aérofreins et roue [V] | Un plan de maquette photographié en biais ne fournit pas de cotes certifiées grandeur nature. |
 
+![Trois projections du modèle pour repérer longueur, largeur et hauteur](https://github.com/steveprudhomme/sw233-flightgear/releases/download/enveloppe-16/groupe-ensemble.png)
+
+Ce schéma montre notre modèle, pas le plan constructeur. Ses trois vues sont ajustées séparément à leurs cadres : utilise les nombres, pas une règle sur cette image, pour comparer leurs tailles.
+
 ## Action 2 — Passer en mètres
 
 Un pied vaut **0,3048 m** ; un pouce vaut **0,0254 m**. Écris les unités à chaque ligne. Envergure = 51 × 0,3048 = **15,5448 m**. De l’axe à un bout : 15,5448 ÷ 2 = **7,7724 m**. Longueur = 25 × 0,3048 + 9 × 0,0254 = **7,8486 m**. Attention : 25 ft 9 in ne vaut pas 25,9 ft, car il y a **12** pouces dans un pied. Ces trois résultats sont C. Le bout du Pitot ajouté au nez dépasse le zéro de la coque : ne mesure pas la longueur de la silhouette en prenant ce tube pour le nez.

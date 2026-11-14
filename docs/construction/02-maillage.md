@@ -70,55 +70,90 @@ def loft(n, m, stations):
     poly(n, m, *rings[-1])
 ```
 
-## C · Donne du volume à la coque
+## C · Construis une coque ouverte seulement vers le haut
 
-Chaque ligne représente une tranche : (distance au nez, demi-largeur, hauteur du centre, demi-hauteur). Par exemple à 1,35 m la coque est large de 2 × 0,46 = 0,92 m ; son sommet atteint −0,27 + 0,34 = +0,07 m. Ces chiffres sont des stations de dessin H ; ils ne figurent pas dans un devis de masse. Douze points par tranche donnent une première coque légère à dessiner.
+![Coque : flancs continus et ouverture supérieure](https://github.com/steveprudhomme/sw233-flightgear/releases/download/enveloppe-16/groupe-coque.png)
+
+Schéma du maillage, sans textures ; dimensions de maquette.
+
+Le défaut précédent venait d’un tri trop large : des faces étaient supprimées selon leur hauteur moyenne. Les côtés devenaient des trous. Nous dessinons maintenant une section en U : bord gauche, ventre arrondi, bord droit. Le dessus reste ouvert entre x=0,50 et 3,16 m ; les flancs restent entiers. Ce sont des stations de maquette H, guidées par les contours du trois-vues, pas des cotes d’usine. Voir les pointages et les limites dans la [fiche 14](14-enveloppe.md).
+
+Chaque station donne x, la demi-largeur du ventre, la hauteur du centre, la demi-hauteur inférieure, la demi-largeur au bord de l’ouverture et la hauteur de ce bord. La verrière réutilisera exactement ses deux derniers nombres. Ainsi ses vitres touchent les flancs au lieu de flotter au-dessus.
 
 <!-- atelier-fichier: fabrique.py -->
 ```python
-loft(
-    "fuselage",
-    0,
-    [
-        (0, 0.024, -0.28, 0.025),
-        (0.22, 0.23, -0.27, 0.19),
-        (0.66, 0.4, -0.27, 0.31),
-        (1.35, 0.46, -0.27, 0.34),
-        (2.48, 0.47, -0.27, 0.36),
-        (3.25, 0.38, -0.20, 0.32),
-        (5, 0.21, -0.12, 0.22),
-        (7.61, 0.065, -0.03, 0.105),
-    ],
-)
+# U-shaped sections: opening rims are explicit; never erase side faces by centroid.
+coque = [
+    (0, .024, -.28, .025, .012, -.255),
+    (.22, .23, -.27, .19, .16, -.08),
+    (.50, .35, -.27, .28, .24, .05),
+    (.91, .425, -.27, .32, .397, .07),
+    (1.55, .465, -.27, .35, .43, .09),
+    (2.13, .47, -.27, .36, .44, .10),
+    (2.78, .43, -.24, .34, .39, .10),
+    (3.16, .39, -.21, .32, .34, .10),
+    (3.25, .38, -.20, .32, .33, .12),
+    (5, .21, -.12, .22, .18, .10),
+    (7.61, .065, -.03, .105, .05, .075),
+]
+sections = []
+for x, r, z, h, bord, seuil in coque:
+    section = [(x, -bord, seuil)]
+    section += [(x, r*cos(pi+i*pi/6), z+h*sin(pi+i*pi/6)) for i in range(7)]
+    section += [(x, bord, seuil)]
+    sections.append(section)
+for a, b in zip(sections, sections[1:]):
+    for i in range(len(a)-1):
+        poly("fuselage", 0, a[i], a[i+1], b[i+1], b[i])
+    # Only the nose and tail get a deck; the cabin remains hollow above the rims.
+    if b[0][0] <= .50 or a[0][0] >= 3.16:
+        poly("fuselage", 0, a[-1], a[0], b[0], b[-1])
+poly("fuselage", 0, *reversed(sections[0]))
+poly("fuselage", 0, *sections[-1])
 ```
 
-## D · Laisse voir le pilote à travers la verrière
+## D · Raccorde les vitres et les cadres jaunes
 
-Pose un demi-anneau au-dessus de chaque station, puis relie les demi-anneaux avec le matériau transparent. Trois stations reçoivent en plus des tubes opaques pour les montants. Si tu utilises la peinture jaune à la place du verre, la vue avant sera bouchée même si la forme est correcte.
+![Vitres, cadres jaunes et raccord arrière](https://github.com/steveprudhomme/sw233-flightgear/releases/download/enveloppe-16/groupe-verriere.png)
+
+Schéma du maillage, sans textures ; dimensions de maquette.
+
+Le bord inférieur de la verrière est celui de la coque, au même x, y et z. Les demi-anneaux de neuf points gardent une forme simple. Les montants et les lisses longitudinales sont jaunes, comme les contours visibles sur les références. Le raccord arrière sous l’aile est opaque ; le pare-brise devant le pilote reste transparent. Les épaisseurs de 18 et 16 mm sont des choix de lisibilité H. La porte et la verrière ne s’ouvrent pas encore.
 
 <!-- atelier-fichier: fabrique.py -->
 ```python
-# Upper half of canopy only, lower body leaves an open pilot sightline.
 stations = [
-    (0.50, 0.24, 0.05, 0.03),
-    (0.91, 0.397, 0.07, 0.28),
-    (1.55, 0.43, 0.09, 0.52),
-    (2.13, 0.44, 0.1, 0.60),
-    (2.78, 0.39, 0.1, 0.47),
-    (3.16, 0.34, 0.1, 0.14),
+    (.50, .24, .05, .03),
+    (.91, .397, .07, .28),
+    (1.55, .43, .09, .52),
+    (2.13, .44, .10, .60),
+    (2.78, .39, .10, .47),
+    (3.16, .34, .10, .14),
 ]
 rings = [
-    [(x, r * cos(i * pi / 8), z + h * sin(i * pi / 8)) for i in range(9)] for x, r, z, h in stations
+    [(x, r*cos(i*pi/8), z+h*sin(i*pi/8)) for i in range(9)]
+    for x, r, z, h in stations
 ]
-for a, b in zip(rings, rings[1:]):
+for k, (a, b) in enumerate(zip(rings, rings[1:])):
     for j in range(8):
-        poly("verriere", 4, a[j], a[j + 1], b[j + 1], b[j])
-for k in (1, 3, 5):
+        fairing = k >= 3 and 2 <= j <= 5
+        poly("raccord-arriere" if fairing else "verriere", 0 if fairing else 4,
+             a[j], a[j+1], b[j+1], b[j])
+    for j in (0, 8):
+        rod("bordures-cockpit", 0, a[j], b[j], .018)
+# Front and rear ends close against the nose and rear deck, not into the cabin.
+poly("verriere", 4, *reversed(rings[0]))
+poly("raccord-arriere", 0, *rings[-1])
+for k in (0, 1, 2, 3, 5):
     for i in range(8):
-        rod("arceaux", 2, rings[k][i], rings[k][i + 1], 0.013)
+        rod("arceaux", 0, rings[k][i], rings[k][i+1], .016)
 ```
 
 ## E · Fabrique une aile, puis son reflet
+
+![Ailes, haubans et aérofreins séparés](https://github.com/steveprudhomme/sw233-flightgear/releases/download/enveloppe-16/groupe-ailes.png)
+
+Schéma du maillage, sans textures ; dimensions de maquette.
 
 Pour chaque aile, les quatre lignes sont (distance à l’axe, position du bord avant, corde, hauteur). À la racine, le bord arrière est à 1,99 + 1,57 = 3,56 m du nez. Une petite liste de fractions dessine une section épaisse ; ce n’est pas un profil aérodynamique mesuré. Multiplier la distance latérale par −1 ou +1 fabrique les deux côtés sans inverser l’avant. Un hauban joint aile et fuselage. Pour chaque aérofrein, la charnière est à x = 2,41 ; le bord mobile est à 2,54. Ce rectangle doit rester une pièce séparée : si on le soude à l’aile, l’animation soulèvera toute l’aile.
 
@@ -187,6 +222,10 @@ Le contour horizontal est découpé à **x=7,35 m** : partie avant fixe, partie 
 
 ## F · Termine la queue, le train et les commandes
 
+![Empennages et gouvernes](https://github.com/steveprudhomme/sw233-flightgear/releases/download/enveloppe-16/groupe-queue.png)
+
+Schéma du maillage, sans textures ; dimensions de maquette.
+
 La dérive ferme la longueur de référence à 7,8486 m. Deux cercles reliés dessinent une roue ; notre grande roue a un rayon visuel choisi de 0,245 m. Le dessin de visite situe roue, patin, roulette et haubans ; il ne donne pas ces rayons. Les deux sièges sont en tandem : ne les place pas côte à côte. Le levier orange reste à gauche (y négatif).
 
 <!-- atelier-fichier: fabrique.py -->
@@ -213,6 +252,10 @@ rod("poignee-frein", 7, (1.19, -0.34, -0.13), (1.43, -0.34, 0.01), 0.019)
 ```
 
 ## G · Découpe la planche et prépare les cadrans
+
+![Assemblage de la planche et des instruments](https://github.com/steveprudhomme/sw233-flightgear/releases/download/enveloppe-16/groupe-tableau.png)
+
+Schéma du maillage, sans textures ; dimensions de maquette.
 
 La planche est à x = 0,87 ; son bord mesure 2 × 0,39 = 0,78 m. C’est le gabarit de travail de la fiche 1. Pour chaque cadran, note (nom, y, z, rayon). Les fonctions suivantes tracent un trait à une distance donnée du centre et fabriquent les chiffres avec sept segments, comme une petite horloge numérique. Les chiffres sont fixes. Les aiguilles doivent pouvoir tourner sans emporter les chiffres.
 
@@ -343,6 +386,10 @@ for kind, y, z, r in dials:
 
 ## I · Pose le Pitot et attache le fil
 
+![Tube Pitot, attache et fil indépendants](https://github.com/steveprudhomme/sw233-flightgear/releases/download/enveloppe-16/groupe-pitot.png)
+
+Schéma du maillage, sans textures ; dimensions de maquette.
+
 La tête est au nez d’après le manuel ; sa forme s’appuie sur la photo avant. Les coordonnées de la baguette et des cinq points du fil sont des hypothèses visuelles. Le premier point (−0,055 ; 0 ; 0,237) est le nœud. Recopie-le dans le cahier : c’est le centre de la rotation à la fiche 4. Le rayon du fil est volontairement assez épais pour rester visible à l’écran.
 
 <!-- atelier-fichier: fabrique.py -->
@@ -471,7 +518,7 @@ for deg, mot in enumerate(["N","3","6","E","12","15","S","21","24","W","30","33"
 
 ## J · Écris le fichier que lit le simulateur
 
-Le fichier commence par `AC3Db`, la palette, puis `OBJECT world` : la boîte qui contient toutes les pièces. Pour chaque pièce, `numvert` compte les coins et `numsurf` compte les faces ; `refs 4` annonce quatre numéros de coins pour un quadrilatère. Les numéros commencent à zéro. Un coin (x, y, z) de ton cahier devient **(x, z, −y)** dans notre AC3D : pour une extrémité à droite, la troisième colonne devient négative. La condition sur les faces du fuselage laisse une ouverture au-dessus de la place avant ; conserver les numéros de sommets évite de renuméroter toutes les autres faces. Les rehauts des graduations et du fil servent à leur lisibilité dans le rendu.
+Le fichier commence par `AC3Db`, la palette, puis `OBJECT world` : la boîte qui contient toutes les pièces. Pour chaque pièce, `numvert` compte les coins et `numsurf` compte les faces ; `refs 4` annonce quatre numéros de coins pour un quadrilatère. Les numéros commencent à zéro. Un coin (x, y, z) de ton cahier devient **(x, z, −y)** dans notre AC3D : pour une extrémité à droite, la troisième colonne devient négative. La section en U définit l’ouverture. L’exporteur écrit toutes les faces sans en supprimer selon leur position. Les rehauts des graduations et du fil servent à leur lisibilité dans le rendu.
 
 <!-- atelier-fichier: fabrique.py -->
 ```python
@@ -492,10 +539,7 @@ for n, faces in parts.items():
         for x, y, z in v:
             ids.append(len(verts))
             verts.append((x, z, -y))
-        if n != "fuselage" or not (
-            0.66 < sum(p[0] for p in v) / len(v) < 2.48 and sum(p[2] for p in v) / len(v) > -0.13
-        ):
-            inds.append((m, ids))
+        inds.append((m, ids))
     out += (
         ["OBJECT poly", f'name "{n}"', f"numvert {len(verts)}"]
         + [" ".join(f"{c:.5f}" for c in v) for v in verts]
@@ -514,4 +558,14 @@ for n, faces in parts.items():
 Get-Content src/SW233/Models/sw233.ac -TotalCount 16
 ```
 
-**Contrôle :** pour la forme de départ du livre, tu dois lire *AC3Db*, douze matériaux, *OBJECT world* puis *kids 41*. Cherche les deux noms *aerofrein-1* et *aerofrein1*. Si le fichier reste vide, vérifie que le dernier bloc a été enregistré. Si les sièges sont au-dessus du toit, vérifie surtout l’ordre (x,z,−y) ; ne déplace pas les sièges pour masquer une erreur de repère.
+**Contrôle :** pour la forme de départ du livre, tu dois lire *AC3Db*, douze matériaux, *OBJECT world* puis le nombre d’objets dans *kids* (voir l’inventaire de la fiche 14). Cherche les deux noms *aerofrein-1* et *aerofrein1*. Si le fichier reste vide, vérifie que le dernier bloc a été enregistré. Si les sièges sont au-dessus du toit, vérifie surtout l’ordre (x,z,−y) ; ne déplace pas les sièges pour masquer une erreur de repère.
+
+## K · Observer chaque pièce séparément
+
+L’[atlas complet](atlas-pieces.md) montre chacun des 43 objets nommés, avec trois vues et ses dimensions. Pour voir les roues et les commandes séparées :
+
+![Train : roue, roulette et patin](https://github.com/steveprudhomme/sw233-flightgear/releases/download/enveloppe-16/groupe-train.png)
+
+![Sièges, manche, levier et poignée de largage](https://github.com/steveprudhomme/sw233-flightgear/releases/download/enveloppe-16/groupe-commandes.png)
+
+Ces dessins proviennent du fichier AC réellement construit. Ils ne sont pas des captures du simulateur.

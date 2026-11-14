@@ -1,6 +1,6 @@
 # Feuille de route — Schweizer SGS 2-33
 
-Mise à jour : **13 novembre 2026**. Les horizons expriment un ordre de travail, pas des dates promises.
+Mise à jour : **14 novembre 2026**. Les horizons expriment un ordre de travail, pas des dates promises.
 
 ## 1. Vision et périmètre
 
@@ -16,8 +16,8 @@ Le projet est un prototype de simulation, pas un appareil d’entraînement cert
 | Cockpit | Anémomètre, altimètre, variomètre et compas animés ; bancs publiés | Aspect encore schématique ; radio et largage décoratifs |
 | Masse et repères | Calculs comparés à FlightGear ; transport du moment testé | Pesée de C-FYLP et référence historique des coefficients inconnues |
 | Profondeur | ±23° et deux parties mobiles vérifiées | Charnière de maquette approximative |
-| Documentation | Treize fiches, sources, captures et reconstruction automatique | Relecture autonome par un débutant encore attendue |
-| Qualité | 21 tests réussis | Ne constituent pas une certification du modèle |
+| Documentation | Quatorze fiches et atlas des 43 objets, sources, captures et reconstruction automatique | Relecture autonome par un débutant encore attendue |
+| Qualité | 23 tests réussis | Ne constituent pas une certification du modèle |
 
 **Lecture des statuts :** terminé = critère vérifié et preuve publiée ; en cours = réalisation autorisée ; à faire = proposé ; dépendance = donnée ou décision nécessaire.
 
@@ -27,7 +27,7 @@ Objectif : un petit incrément utilisable et vérifiable. Aucune date ferme. Cha
 
 | Priorité / lot | Statut | Critère de réussite | Responsable |
 |---|---|---|---|
-| P1 · **VIS-01a : enveloppe du cockpit et atlas des pièces** | En cours | Flancs et raccords sans trous involontaires, comparaison des références et vues natives avant/après, atlas de chaque objet du maillage, tutoriel et aperçus actualisés | Mainteneur |
+| P1 · **VIS-01a : enveloppe du cockpit et atlas des pièces** | Terminé | Flancs et raccords sans trous involontaires, comparaison des références et vues natives avant/après, atlas de chaque objet du maillage, tutoriel et aperçus actualisés | Mainteneur |
 | P1 · **AUD-01b : profondeur ±23°** | Terminé | FDM, animation et butées cohérents ; comparaison avant/après à même chargement ; tutoriel illustré | Mainteneur, revue recherchée |
 | P1 · **AUD-01c : occupants dans le menu** | Terminé pour chiffres du haut | Saisie manuelle 200.125 confirmée ; masse effective et CG relevés ; restauration décimale corrigée | À attribuer |
 | P2 · **AUD-01d : pavé numérique** | À investiguer | Comparer champ standard et SW233, Verr Num activé, puis disposition et événements ; cause et correction à établir | À attribuer |
@@ -102,4 +102,6 @@ Nous recherchons : des pilotes connaissant le 2-33 pour la revue des essais, des
 
 À chaque lot : préparer et commiter les sous-étapes ; réaliser et tester ; documenter avec des images natives pour les changements visibles ; actualiser cette synthèse et CHANGELOG. Réexaminer les priorités à chaque publication et lorsqu’une nouvelle référence change les hypothèses. Une annonce suit les résultats, jamais l’inverse.
 
-Lot actif : [VIS-01a — enveloppe du cockpit et atlas pédagogique](docs/planification/vis-01a-enveloppe.md). Priorité donnée à la correction géométrique demandée ; AUD-02c Linux reste à faire.
+Lot réalisé : [VIS-01a — enveloppe du cockpit et atlas pédagogique](docs/planification/vis-01a-enveloppe.md). Priorité donnée à la correction géométrique demandée ; AUD-02c Linux reste à faire.
+
+Preuves VIS-01a : [fiche 14](docs/construction/14-enveloppe.md) et [atlas](docs/construction/atlas-pieces.md). Suite VIS-01 : obtenir des cotes fiables du vitrage, de la porte et des sections ; affiner les contours avant les matériaux photographiques.

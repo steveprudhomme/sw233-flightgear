@@ -24,6 +24,10 @@
 
 | [13. Présenter le planeur](13-selecteur.md) | Préparer les métadonnées, la capture et la miniature | Fiche et aperçu vérifiés dans le lanceur |
 
+| [14. Fermer le cockpit](14-enveloppe.md) | Réparer les flancs et vérifier les raccords | Comparaisons natives, mesures et limites |
+
+[Atlas illustré de chaque pièce](atlas-pieces.md) : 43 objets, 129 projections.
+
 **Ouvre ton établi.** Crée dans Documents un dossier *Mon-Schweizer* vide. Ouvre-le dans l’Explorateur ; dans sa barre d’adresse, écris `powershell` puis Entrée. Toutes les commandes de ce livre partent de là. Colle ces lignes une par une :
 
 ```powershell

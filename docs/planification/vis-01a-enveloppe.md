@@ -27,3 +27,7 @@ Remplacer la découpe arbitraire du fuselage par une ouverture construite, racco
 ## Limites
 
 Pas de copie des textures FSX/MSFS ni de redistribution automatique des photos tierces. Pas de dimensions constructeur inventées, pas de validation aérodynamique par une capture statique. Le cockpit photographique et la livrée finale restent distincts. Les pièces très détaillées peuvent être regroupées dans une vue d’assemblage, mais chaque objet nommé doit garder sa fiche dans l’atlas.
+
+## Résultat — 14 novembre 2026
+
+Coque corrigée et observée dans FlightGear ; les cinq vues finales et l’aperçu sont capturés. Deux tests géométriques ajoutés, 23 tests réussis, reconstruction du tutoriel et style vérifiés. 43 objets illustrés dans un atlas, premières fiches enrichies, fiche 14 détaillée. Les mesures restent estimatives ; porte fixe et matériaux schématiques. Voir [preuves et limites](../construction/14-enveloppe.md).

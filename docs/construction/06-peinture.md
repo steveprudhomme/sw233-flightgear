@@ -1,5 +1,9 @@
 # 6 · Peindre sans figer les instruments
 
+![Le tableau peint dans l’enveloppe corrigée](https://github.com/steveprudhomme/sw233-flightgear/releases/download/enveloppe-16/apres-cockpit.jpg)
+
+Rendu natif actualisé : les cadrans restent des textures originales avec des aiguilles séparées. Voir la [fiche 14](14-enveloppe.md) pour les parois et les cadres jaunes.
+
 Une texture est comme une feuille autocollante. Nous allons la dessiner nous-mêmes, sans reprendre une photo protégée. Crée tools/panel.py. Les diamètres et positions sont ceux de la maquette, la disposition est inspirée de C-FYLP. Le module peint lors de l’assemblage : il ne modifie pas ton original.
 
 **Fichier à écrire :** `tools/panel.py`. Colle les blocs de ce fichier dans l’ordre, sans retirer les espaces du début des lignes.
