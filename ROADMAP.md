@@ -27,6 +27,7 @@ Objectif : un petit incrément utilisable et vérifiable. Aucune date ferme. Cha
 
 | Priorité / lot | Statut | Critère de réussite | Responsable |
 |---|---|---|---|
+| P1 · **VIS-01a : enveloppe du cockpit et atlas des pièces** | En cours | Flancs et raccords sans trous involontaires, comparaison des références et vues natives avant/après, atlas de chaque objet du maillage, tutoriel et aperçus actualisés | Mainteneur |
 | P1 · **AUD-01b : profondeur ±23°** | Terminé | FDM, animation et butées cohérents ; comparaison avant/après à même chargement ; tutoriel illustré | Mainteneur, revue recherchée |
 | P1 · **AUD-01c : occupants dans le menu** | Terminé pour chiffres du haut | Saisie manuelle 200.125 confirmée ; masse effective et CG relevés ; restauration décimale corrigée | À attribuer |
 | P2 · **AUD-01d : pavé numérique** | À investiguer | Comparer champ standard et SW233, Verr Num activé, puis disposition et événements ; cause et correction à établir | À attribuer |
@@ -100,3 +101,5 @@ Aucun numéro de ticket n’est inventé : les identifiants AUD/VIS sont documen
 Nous recherchons : des pilotes connaissant le 2-33 pour la revue des essais, des propriétaires disposant de fiches de pesée et mesures, des artistes 3D/texture, des testeurs Linux/Windows et des lecteurs débutants. Voir [CONTRIBUTING](CONTRIBUTING.md) et [MAINTAINERS](MAINTAINERS.md), puis proposer sa contribution dans un ticket.
 
 À chaque lot : préparer et commiter les sous-étapes ; réaliser et tester ; documenter avec des images natives pour les changements visibles ; actualiser cette synthèse et CHANGELOG. Réexaminer les priorités à chaque publication et lorsqu’une nouvelle référence change les hypothèses. Une annonce suit les résultats, jamais l’inverse.
+
+Lot actif : [VIS-01a — enveloppe du cockpit et atlas pédagogique](docs/planification/vis-01a-enveloppe.md). Priorité donnée à la correction géométrique demandée ; AUD-02c Linux reste à faire.
