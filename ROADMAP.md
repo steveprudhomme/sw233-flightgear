@@ -27,6 +27,7 @@ Objectif : un petit incrément utilisable et vérifiable. Aucune date ferme. Cha
 
 | Priorité / lot | Statut | Critère de réussite | Responsable |
 |---|---|---|---|
+| P1 · **VIS-01b : panneaux de verrière et contours de porte** | En cours | Contours comparés aux références, panneaux identifiables, raccords fermés et vue pilote préservée ; atlas et captures actualisés | Mainteneur |
 | P1 · **VIS-01a : enveloppe du cockpit et atlas des pièces** | Terminé | Flancs et raccords sans trous involontaires, comparaison des références et vues natives avant/après, atlas de chaque objet du maillage, tutoriel et aperçus actualisés | Mainteneur |
 | P1 · **AUD-01b : profondeur ±23°** | Terminé | FDM, animation et butées cohérents ; comparaison avant/après à même chargement ; tutoriel illustré | Mainteneur, revue recherchée |
 | P1 · **AUD-01c : occupants dans le menu** | Terminé pour chiffres du haut | Saisie manuelle 200.125 confirmée ; masse effective et CG relevés ; restauration décimale corrigée | À attribuer |
@@ -105,3 +106,5 @@ Nous recherchons : des pilotes connaissant le 2-33 pour la revue des essais, des
 Lot réalisé : [VIS-01a — enveloppe du cockpit et atlas pédagogique](docs/planification/vis-01a-enveloppe.md). Priorité donnée à la correction géométrique demandée ; AUD-02c Linux reste à faire.
 
 Preuves VIS-01a : [fiche 14](docs/construction/14-enveloppe.md) et [atlas](docs/construction/atlas-pieces.md). Suite VIS-01 : obtenir des cotes fiables du vitrage, de la porte et des sections ; affiner les contours avant les matériaux photographiques.
+
+Lot actif : [VIS-01b — panneaux et contours](docs/planification/vis-01b-panneaux.md).
