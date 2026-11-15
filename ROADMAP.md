@@ -27,6 +27,7 @@ Objectif : un petit incrément utilisable et vérifiable. Aucune date ferme. Cha
 
 | Priorité / lot | Statut | Critère de réussite | Responsable |
 |---|---|---|---|
+| P1 · **VIS-01c : contrôle des proportions** | En cours | Tableau de repères normalisés, incertitudes, comparaison illustrée et décision motivée pour chaque correction | Mainteneur |
 | P1 · **VIS-01b : panneaux de verrière et contours de porte** | Terminé | Contours comparés aux références, panneaux identifiables, raccords fermés et vue pilote préservée ; atlas et captures actualisés | Mainteneur |
 | P1 · **VIS-01a : enveloppe du cockpit et atlas des pièces** | Terminé | Flancs et raccords sans trous involontaires, comparaison des références et vues natives avant/après, atlas de chaque objet du maillage, tutoriel et aperçus actualisés | Mainteneur |
 | P1 · **AUD-01b : profondeur ±23°** | Terminé | FDM, animation et butées cohérents ; comparaison avant/après à même chargement ; tutoriel illustré | Mainteneur, revue recherchée |
@@ -110,3 +111,5 @@ Preuves VIS-01a : [fiche 14](docs/construction/14-enveloppe.md) et [atlas](docs/
 Lot réalisé : [VIS-01b — panneaux et contours](docs/planification/vis-01b-panneaux.md).
 
 Preuves VIS-01b : [fiche 15](docs/construction/15-panneaux.md). Reste à obtenir des vues dimensionnées des deux flancs avant de figer les contours de porte et leurs équipements ; symétrie actuelle provisoire.
+
+Lot actif : [VIS-01c — contrôle des proportions](docs/planification/vis-01c-proportions.md).
