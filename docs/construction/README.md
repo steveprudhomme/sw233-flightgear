@@ -30,6 +30,8 @@
 
 | [15. Délimiter les panneaux](15-panneaux.md) | Incliner le pare-brise et identifier les vitrages et contours fixes | Captures comparées et atlas actualisé |
 
+| [16. Comparer les proportions](16-proportions.md) | Mesurer des rapports et distinguer écart au dessin et erreur réelle | Figure, tableau de décisions et protocole de relevé |
+
 **Ouvre ton établi.** Crée dans Documents un dossier *Mon-Schweizer* vide. Ouvre-le dans l’Explorateur ; dans sa barre d’adresse, écris `powershell` puis Entrée. Toutes les commandes de ce livre partent de là. Colle ces lignes une par une :
 
 ```powershell

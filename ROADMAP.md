@@ -1,6 +1,6 @@
 # Feuille de route — Schweizer SGS 2-33
 
-Mise à jour : **14 novembre 2026**. Les horizons expriment un ordre de travail, pas des dates promises.
+Mise à jour : **15 novembre 2026**. Les horizons expriment un ordre de travail, pas des dates promises.
 
 ## 1. Vision et périmètre
 
@@ -16,7 +16,7 @@ Le projet est un prototype de simulation, pas un appareil d’entraînement cert
 | Cockpit | Anémomètre, altimètre, variomètre et compas animés ; bancs publiés | Aspect encore schématique ; radio et largage décoratifs |
 | Masse et repères | Calculs comparés à FlightGear ; transport du moment testé | Pesée de C-FYLP et référence historique des coefficients inconnues |
 | Profondeur | ±23° et deux parties mobiles vérifiées | Charnière de maquette approximative |
-| Documentation | Quinze fiches et atlas des 49 objets, sources, captures et reconstruction automatique | Relecture autonome par un débutant encore attendue |
+| Documentation | Seize fiches et atlas des 49 objets, sources, captures et reconstruction automatique | Relecture autonome par un débutant encore attendue |
 | Qualité | 24 tests réussis | Ne constituent pas une certification du modèle |
 
 **Lecture des statuts :** terminé = critère vérifié et preuve publiée ; en cours = réalisation autorisée ; à faire = proposé ; dépendance = donnée ou décision nécessaire.
@@ -27,7 +27,7 @@ Objectif : un petit incrément utilisable et vérifiable. Aucune date ferme. Cha
 
 | Priorité / lot | Statut | Critère de réussite | Responsable |
 |---|---|---|---|
-| P1 · **VIS-01c : contrôle des proportions** | En cours | Tableau de repères normalisés, incertitudes, comparaison illustrée et décision motivée pour chaque correction | Mainteneur |
+| P1 · **VIS-01c : contrôle des proportions** | Terminé — diagnostic | Tableau de repères normalisés, incertitudes, comparaison illustrée et décision motivée pour chaque correction | Mainteneur |
 | P1 · **VIS-01b : panneaux de verrière et contours de porte** | Terminé | Contours comparés aux références, panneaux identifiables, raccords fermés et vue pilote préservée ; atlas et captures actualisés | Mainteneur |
 | P1 · **VIS-01a : enveloppe du cockpit et atlas des pièces** | Terminé | Flancs et raccords sans trous involontaires, comparaison des références et vues natives avant/après, atlas de chaque objet du maillage, tutoriel et aperçus actualisés | Mainteneur |
 | P1 · **AUD-01b : profondeur ±23°** | Terminé | FDM, animation et butées cohérents ; comparaison avant/après à même chargement ; tutoriel illustré | Mainteneur, revue recherchée |
@@ -112,4 +112,8 @@ Lot réalisé : [VIS-01b — panneaux et contours](docs/planification/vis-01b-pa
 
 Preuves VIS-01b : [fiche 15](docs/construction/15-panneaux.md). Reste à obtenir des vues dimensionnées des deux flancs avant de figer les contours de porte et leurs équipements ; symétrie actuelle provisoire.
 
-Lot actif : [VIS-01c — contrôle des proportions](docs/planification/vis-01c-proportions.md).
+Lot réalisé : [VIS-01c — contrôle des proportions](docs/planification/vis-01c-proportions.md).
+
+VIS-01c : trois repères quantifiés ; écarts au dessin de 0,30 à 0,37 m, sans correction faute de référence dimensionnelle suffisante. [Fiche 16 et décisions](docs/construction/16-proportions.md).
+
+**VIS-01d — prochain dossier de mesures (dépendance)** : identifier un appareil et recueillir deux profils, les cotes des montants, les sections du cockpit et les limites de porte ; contrôler datum et droits des références. Critère : au moins deux dimensions indépendantes dans le même plan, correspondances vérifiées et incertitudes documentées avant déplacement des stations.

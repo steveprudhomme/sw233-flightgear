@@ -46,3 +46,9 @@ Sur la photo C-FYLP originale, pointe les centres (colonne, ligne) : altitude �
 Petit essai : (480 − 346) / 610 × 0,78 ≈ **0,171 m à droite** de l’axe de la bouche. Le cadran du modèle est à **+0,170 m**. Pour l’altimètre, (118 − 346) / 610 × 0,78 ≈ **−0,292 m** ; le modèle a **−0,220 m**. Voilà un écart utile à noter ! La photo est en perspective, le tableau a été simplifié, et la largeur réelle n’a pas été mesurée. N’utilise pas ce rapport pour deviner la profondeur derrière le tableau. Pour améliorer la fidélité, il nous faudrait une vue frontale, une dimension connue dans le même plan et, idéalement, un second point de vue.
 
 **Point d’arrêt :** dans ton cahier, entoure les dimensions publiées ; souligne les trois écarts comparés. Les rayons de vis, teintes, épaisseurs d’aile, sections du fuselage et angles du levier que tu verras ensuite sont **des choix H** sauf source explicitement donnée. Les valeurs du modèle historique de vol sont marquées séparément dans [le tableau des coefficients](../sources.md).
+
+## Aller plus loin : repères et incertitude
+
+La [fiche 16](16-proportions.md) compare trois repères du pare-brise au maillage, avec une marge de pointage explicite. Elle montre pourquoi un écart au dessin ne suffit pas à imposer une cote réelle.
+
+![Repères du pare-brise et marge de pointage](https://github.com/steveprudhomme/sw233-flightgear/releases/download/proportions-18/comparaison.png)

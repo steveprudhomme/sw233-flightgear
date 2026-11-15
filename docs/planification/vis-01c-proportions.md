@@ -11,3 +11,7 @@ Plan du 15 novembre 2026, à commiter avant analyse et modification.
 7. Ajouter une fiche de tutoriel avec étapes, calculs, images et limites ; actualiser les Markdown. Vérifier la recette de comparaison et la reconstruction ; commit DCO et publication.
 
 Critère d’achèvement : chaque écart possède une source, un calcul, une incertitude et une décision. Une décision de ne pas déformer le modèle est recevable si motivée et accompagnée d’un protocole de mesure permettant la suite.
+
+## Résultat
+
+Trois écarts longitudinaux sont quantifiés avec la marge de pointage. Les autres zones possèdent une décision motivée et une liste de références manquantes. Aucune correction dimensionnelle suffisamment justifiée ; géométrie et médias FlightGear conservés. [Fiche 16](../construction/16-proportions.md), recette tools/proportions.py et dossier de mesures VIS-01d.
