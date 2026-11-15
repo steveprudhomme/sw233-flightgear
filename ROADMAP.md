@@ -27,6 +27,7 @@ Objectif : un petit incrément utilisable et vérifiable. Aucune date ferme. Cha
 
 | Priorité / lot | Statut | Critère de réussite | Responsable |
 |---|---|---|---|
+| P1 · **VIS-01d : dossier de références dimensionnelles** | En cours | Sources examinées, données admissibles et manquantes tracées, fiche de relevé illustrée | Mainteneur |
 | P1 · **VIS-01c : contrôle des proportions** | Terminé — diagnostic | Tableau de repères normalisés, incertitudes, comparaison illustrée et décision motivée pour chaque correction | Mainteneur |
 | P1 · **VIS-01b : panneaux de verrière et contours de porte** | Terminé | Contours comparés aux références, panneaux identifiables, raccords fermés et vue pilote préservée ; atlas et captures actualisés | Mainteneur |
 | P1 · **VIS-01a : enveloppe du cockpit et atlas des pièces** | Terminé | Flancs et raccords sans trous involontaires, comparaison des références et vues natives avant/après, atlas de chaque objet du maillage, tutoriel et aperçus actualisés | Mainteneur |
@@ -117,3 +118,5 @@ Lot réalisé : [VIS-01c — contrôle des proportions](docs/planification/vis-0
 VIS-01c : trois repères quantifiés ; écarts au dessin de 0,30 à 0,37 m, sans correction faute de référence dimensionnelle suffisante. [Fiche 16 et décisions](docs/construction/16-proportions.md).
 
 **VIS-01d — prochain dossier de mesures (dépendance)** : identifier un appareil et recueillir deux profils, les cotes des montants, les sections du cockpit et les limites de porte ; contrôler datum et droits des références. Critère : au moins deux dimensions indépendantes dans le même plan, correspondances vérifiées et incertitudes documentées avant déplacement des stations.
+
+Lot actif : [VIS-01d — références dimensionnelles](docs/planification/vis-01d-references.md).
