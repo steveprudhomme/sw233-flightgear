@@ -604,3 +604,7 @@ L’[atlas complet](atlas-pieces.md) montre chacun des 49 objets nommés, avec t
 ![Sièges, manche, levier et poignée de largage](https://github.com/steveprudhomme/sw233-flightgear/releases/download/panneaux-17/groupe-commandes.png)
 
 Ces dessins proviennent du fichier AC réellement construit. Ils ne sont pas des captures du simulateur.
+
+## Comparer les pièces du cockpit avec un futur relevé
+
+La [fiche 18](18-releves.md#5-examiner-chaque-pièce) montre séparément coque, pare-brise, vitrages, cadres et contours de porte, avec trois vues et les limites de chaque objet. Ces cotes décrivent ce que ta recette construit, pas les dimensions attestées du planeur réel.

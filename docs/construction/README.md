@@ -34,6 +34,8 @@
 
 | [17. Vérifier les références](17-references.md) | Identifier la variante, séparer cote et station de masse, préparer un relevé | Registre sourcé, schéma original et formulaire |
 
+| [18. Préparer les relevés](18-releves.md) | Produire les vues et limites de dix pièces, préparer la comparaison avec un vrai appareil | Dossier reproductible ; mesures réelles encore attendues |
+
 **Ouvre ton établi.** Crée dans Documents un dossier *Mon-Schweizer* vide. Ouvre-le dans l’Explorateur ; dans sa barre d’adresse, écris `powershell` puis Entrée. Toutes les commandes de ce livre partent de là. Colle ces lignes une par une :
 
 ```powershell

@@ -40,3 +40,5 @@ Ont été examinés : les passages description/centrage de l'édition locale 202
 Biais possible : nous privilégions C-FYLP parce que sa photo a guidé le tableau. Cette préférence ne démontre ni que tous les Cadets emploient cette configuration, ni qu'elle représente la livrée actuelle. Les photos d'autres immatriculations et les plans de maquette restent des comparaisons, jamais des mesures de C-FYLP.
 
 Les fichiers tiers restent sous leurs droits propres. Les liens et relevés factuels ne les placent pas sous GPL. Aucun message n'a été envoyé à un propriétaire ou fournisseur.
+
+Suivi VIS-01e : [fiche C-FYLP préremplie](releve-cfylp.md) et [comparaison préparatoire illustrée](../construction/18-releves.md). Aucun accès physique disponible au 15 novembre 2026 ; les valeurs du modèle ne complètent pas les cotes réelles manquantes.
