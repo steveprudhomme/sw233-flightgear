@@ -28,7 +28,7 @@ Objectif : un petit incrément utilisable et vérifiable. Aucune date ferme. Cha
 | Priorité / lot | Statut | Critère de réussite | Responsable |
 |---|---|---|---|
 | P1 · **VIS-01d : dossier de références dimensionnelles** | Terminé — dossier documentaire | Sources examinées, données admissibles et manquantes tracées, fiche de relevé illustrée | Mainteneur |
-| P1 · **VIS-01e : relevés et configuration de référence** | Dépendance — mesures manquantes | Numéro de série/configuration, deux vues latérales, cotes indépendantes, sections et incertitudes ; revue avant correction 3D | Contributeur recherché |
+| P1 · **VIS-01e : relevés et configuration de référence** | En cours — préparation ; mesures physiques attendues | Numéro de série/configuration, deux vues latérales, cotes indépendantes, sections et incertitudes ; revue avant correction 3D | Contributeur recherché |
 | P1 · **VIS-01c : contrôle des proportions** | Terminé — diagnostic | Tableau de repères normalisés, incertitudes, comparaison illustrée et décision motivée pour chaque correction | Mainteneur |
 | P1 · **VIS-01b : panneaux de verrière et contours de porte** | Terminé | Contours comparés aux références, panneaux identifiables, raccords fermés et vue pilote préservée ; atlas et captures actualisés | Mainteneur |
 | P1 · **VIS-01a : enveloppe du cockpit et atlas des pièces** | Terminé | Flancs et raccords sans trous involontaires, comparaison des références et vues natives avant/après, atlas de chaque objet du maillage, tutoriel et aperçus actualisés | Mainteneur |
@@ -123,3 +123,5 @@ VIS-01c : trois repères quantifiés ; écarts au dessin de 0,30 à 0,37 m, sans
 Lot réalisé : [VIS-01d — références dimensionnelles](docs/planification/vis-01d-references.md).
 
 Preuves VIS-01d : [fiche 17 illustrée](docs/construction/17-references.md), [registre dimensionnel](docs/references/dimensions-cockpit.md) et [formulaire](docs/references/releve-cockpit.md). Aucune correction de forme ni mise à jour d’aperçu justifiée par les seules données trouvées.
+
+VIS-01e : [sous-étapes de collecte et comparaison](docs/planification/vis-01e-releves.md). Préremplir uniquement les informations attestées ; produire des vues cotées du modèle pour guider le relevé, sans les confondre avec des mesures réelles. Le lot reste ouvert tant que les relevés physiques manquent.
