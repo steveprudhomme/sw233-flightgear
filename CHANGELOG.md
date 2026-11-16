@@ -4,6 +4,8 @@
 
 ### Changements
 
+- VIS-01d : registre dimensionnel sourcé, identification historique C-FYLP/2-33A, distinction variantes et stations de masse ; fiche 17 illustrée, dessin original et formulaire de relevé. Géométrie et aperçu conservés ; mesures physiques suivies sous VIS-01e.
+
 - VIS-01c : diagnostic reproductible de trois repères du pare-brise, figure et fiche 16 ; tableau des décisions et protocole VIS-01d. Aucun changement du maillage, FDM ou aperçu FlightGear : les écarts au dessin ne sont pas des cotes constructeur validées.
 
 - VIS-01b : vitrage facetté, montant incliné, panneaux séparés, longerons et contours de porte fixes ; 24 tests, fiche 15 illustrée et atlas des 49 objets. Paquet panneaux-17 avec aperçu et description actualisés ; dimensions et symétrie provisoires.

@@ -32,6 +32,8 @@
 
 | [16. Comparer les proportions](16-proportions.md) | Mesurer des rapports et distinguer écart au dessin et erreur réelle | Figure, tableau de décisions et protocole de relevé |
 
+| [17. Vérifier les références](17-references.md) | Identifier la variante, séparer cote et station de masse, préparer un relevé | Registre sourcé, schéma original et formulaire |
+
 **Ouvre ton établi.** Crée dans Documents un dossier *Mon-Schweizer* vide. Ouvre-le dans l’Explorateur ; dans sa barre d’adresse, écris `powershell` puis Entrée. Toutes les commandes de ce livre partent de là. Colle ces lignes une par une :
 
 ```powershell

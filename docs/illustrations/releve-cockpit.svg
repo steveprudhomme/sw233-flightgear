@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="700" viewBox="0 0 1200 700">
+<rect width="1200" height="700" fill="#f6f8fb"/>
+<g font-family="sans-serif" fill="#152b42"><text x="40" y="48" font-size="28">Relever le cockpit : définir les points avant les nombres</text><text x="40" y="83" font-size="20">Schéma de repérage — pas un plan coté, proportions illustratives</text></g>
+<path d="M90 320 Q110 260 230 250 L370 155 L650 155 L850 270 L1080 300 L1050 350 L200 385 Q95 380 90 320Z" fill="#f0c637" stroke="#152b42" stroke-width="4"/>
+<path d="M230 250 L370 155 L650 155 L850 270 L435 280Z" fill="#cdeafa" stroke="#152b42" stroke-width="3"/>
+<path d="M370 155 L435 280" stroke="#66768a" stroke-width="2" stroke-dasharray="8 6"/>
+<g fill="#b3292d" font-size="24" font-family="sans-serif"><circle cx="90" cy="320" r="6"/><text x="62" y="308">N</text><circle cx="230" cy="250" r="6"/><text x="200" y="230">A</text><circle cx="435" cy="280" r="6"/><text x="447" y="305">B</text><circle cx="370" cy="155" r="6"/><text x="342" y="143">C</text><circle cx="850" cy="270" r="6"/><text x="865" y="258">D</text></g>
+<path d="M90 410 L1080 410 M90 400 L90 420 M1080 410 L1060 400 M1080 410 L1060 420" fill="none" stroke="#152b42" stroke-width="3"/>
+<g font-family="sans-serif" font-size="20" fill="#152b42"><text x="200" y="440">x : distance projetée depuis le nez, sans le Pitot</text><text x="40" y="510">À chaque point : x, hauteur z, unité, marge de lecture, photo.</text><text x="40" y="550">Le trait B–C sert au relevé ; il ne prouve pas un cadre réel.</text><text x="40" y="590">Relever les deux côtés. Ne pas supposer leur symétrie.</text><text x="40" y="630">Section S : indiquer sa position x avant de relever W.</text></g>
+<path d="M900 640 L900 560 Q960 470 1020 560 L1020 640" fill="#cdeafa" stroke="#152b42" stroke-width="3"/>
+<path d="M900 650 L1020 650 M900 642 L900 658 M1020 642 L1020 658" stroke="#b3292d" stroke-width="3"/>
+<text x="900" y="685" font-family="sans-serif" font-size="20">W extérieur</text></svg>

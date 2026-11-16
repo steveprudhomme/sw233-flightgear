@@ -96,3 +96,7 @@ La [fiche 9](construction/09-reperes.md) distingue les stations du manuel, le re
 ## Actualisation de la profondeur
 
 La limite historique 0,30 rad décrite plus haut est remplacée par ±23° nominaux : manuel FAA, PDF 21 / page 41, §8.3.4, configuration 1 040 lb. La charnière de dessin x = 7,35 m, z = 0,11 m est une hypothèse, sans mesure constructeur. Voir la [fiche 10](construction/10-profondeur.md).
+
+## Complément dimensionnel du 15 novembre 2026
+
+Le [registre VIS-01d](references/dimensions-cockpit.md) précise les éditions/pages, la preuve historique C-FYLP, la compatibilité de verrière et les limites d’application au maillage. Les valeurs de masse ne sont pas des positions de pièces 3D.

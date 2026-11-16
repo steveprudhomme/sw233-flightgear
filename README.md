@@ -48,7 +48,7 @@ Ce projet n'est pas un outil d'instruction au vol réel.
 
 Le lecteur intégré est disponible dans la version web de ce README. Dans le dépôt, GitHub affiche le lien de lecture. Capture native de FlightGear 2024.1.4 : sortie puis rentrée des aérofreins depuis le cockpit (14–28 s), second cycle vu du dessus (29–43 s), puis glissade depuis le cockpit et de l’extérieur (46–73 s). Le médaillon est un agrandissement de la ficelle filmée ; β mesure l’angle latéral du vent relatif dans le modèle.
 
-**Pour construire depuis zéro :** [seize fiches de fabrication et leur cahier de mesures](docs/construction/README.md).
+**Pour construire depuis zéro :** [dix-sept fiches de fabrication et leur cahier de mesures](docs/construction/README.md).
 
 **Pour commencer :** [atelier pas à pas, dès 10 ans](docs/atelier.md) · [feuille de route du cockpit et de la livrée Cadets](ROADMAP.md) · [mesures et procédure](docs/validation.md#capture-flightgear-à-cyjn).
 
@@ -127,3 +127,5 @@ Le montant du pare-brise est incliné et les vitrages latéraux sont séparés. 
 ## Contrôle des proportions
 
 La [fiche 16](docs/construction/16-proportions.md) quantifie trois écarts au trois-vues et distingue l’incertitude de pointage de celle du dessin. La géométrie reste panneaux-17 : les références actuelles ne suffisent pas à valider un déplacement de 30 à 37 cm. Le prochain dossier de mesures est suivi sous VIS-01d.
+
+[Références dimensionnelles du cockpit et formulaire illustré](docs/construction/17-references.md) : identification historique de C-FYLP, variantes, datum et cotes encore nécessaires avant correction du modèle.

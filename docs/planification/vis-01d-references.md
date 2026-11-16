@@ -11,3 +11,9 @@ Plan du 15 novembre 2026, à commiter avant recherche.
 7. Vérifier liens, calculs et cohérence documentaire, commiter puis publier le dossier et ses illustrations. Les références tierces gardent leur statut propre ; pas de redistribution automatique sous GPL.
 
 Achèvement du lot documentaire : registre vérifiable, résultat des recherches y compris négatifs, formulaire et diagramme de mesure, décision sur l’aptitude à corriger. La disponibilité de mesures physiques reste une dépendance extérieure distincte.
+
+## Résultat et vérifications
+
+Lot documentaire réalisé le 15 novembre 2026 : registre des sources, formulaire, dessin SVG original et fiche 17 avec captures natives antérieures explicitement légendées. Contrôle des sources `tools/check.py`, liens locaux de la nouvelle documentation, conversions et `git diff --check` réussis ; illustration PNG examinée visuellement. Aucun changement aux sources de l'aéronef ni aux outils : les essais de vol et les tests de dynamique n'ont pas été rejoués pour ce lot documentaire.
+
+Décision : ne pas corriger la géométrie avec les seules dimensions générales. VIS-01e suit les relevés physiques manquants. L'aperçu FlightGear reste celui de panneaux-17. La recherche documentaire est terminée ; l'identification de la configuration actuelle et les mesures de cockpit ne le sont pas.

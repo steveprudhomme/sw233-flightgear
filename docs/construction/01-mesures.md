@@ -4,7 +4,7 @@ Prends une règle, un crayon et une feuille. Écris quatre lettres en haut : **L
 
 ## Action 1 — Identifier le bon document
 
-Recopie dans **notes/mesures.txt** : « objet ; document et page ou nom de photo ; points lus ; calcul et unité ; résultat ; classe ; limite ; fichier qui s’en sert ». Pour reconnaître une édition du manuel, utilise le [registre des 16 références](../references/inventaire.md). Les pages ci-dessous sont les **pages du fichier PDF**, la première vaut 1. Une page PDF peut montrer deux pages de papier. Si tu n’as pas nos scans, pars du [manuel et des sources accessibles](../sources.md) et des relevés reproduits ici ; vérifie le titre de la section si les pages changent.
+Recopie dans **notes/mesures.txt** : « objet ; document et page ou nom de photo ; points lus ; calcul et unité ; résultat ; classe ; limite ; fichier qui s’en sert ». Pour reconnaître une édition du manuel, utilise le [registre des références](../references/inventaire.md). Les pages ci-dessous sont les **pages du fichier PDF**, la première vaut 1. Une page PDF peut montrer deux pages de papier. Si tu n’as pas nos scans, pars du [manuel et des sources accessibles](../sources.md) et des relevés reproduits ici ; vérifie le titre de la section si les pages changent.
 
 | Où poser le doigt | Quoi noter | À quoi cela sert, et à quoi cela ne sert pas |
 |---|---|---|
@@ -52,3 +52,7 @@ Petit essai : (480 − 346) / 610 × 0,78 ≈ **0,171 m à droite** de l’axe d
 La [fiche 16](16-proportions.md) compare trois repères du pare-brise au maillage, avec une marge de pointage explicite. Elle montre pourquoi un écart au dessin ne suffit pas à imposer une cote réelle.
 
 ![Repères du pare-brise et marge de pointage](https://github.com/steveprudhomme/sw233-flightgear/releases/download/proportions-18/comparaison.png)
+
+Pour les limites du vitrage et les sections, utilise le [schéma original et le formulaire de la fiche 17](17-references.md#5-donner-un-nom-à-chaque-point). Il explique les repères à relever, sans inventer leurs dimensions.
+
+![Repères du relevé : schéma de méthode, sans dimensions réelles](https://github.com/steveprudhomme/sw233-flightgear/releases/download/references-19/releve-cockpit.png)
