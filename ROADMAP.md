@@ -127,3 +127,7 @@ Preuves VIS-01d : [fiche 17 illustrée](docs/construction/17-references.md), [re
 VIS-01e : [sous-étapes de collecte et comparaison](docs/planification/vis-01e-releves.md). Préremplir uniquement les informations attestées ; produire des vues cotées du modèle pour guider le relevé, sans les confondre avec des mesures réelles. Le lot reste ouvert tant que les relevés physiques manquent.
 
 État VIS-01e : pas d’accès à un appareil réel, confirmé le 15 novembre 2026. [Fiche 18](docs/construction/18-releves.md) : dix pièces et trente projections, limites du modèle et [fiche C-FYLP préremplie](docs/references/releve-cfylp.md). Collecte non terminée ; aucune correction géométrique revendiquée. En parallèle, un prochain lot de détails de surface du tableau peut être proposé sous VIS-01, avec estimations déclarées, sans dépendre des dimensions extérieures.
+
+## Lot actif VIS-01f — finition du tableau
+
+Plan : [textures et comparaison native](docs/planification/vis-01f-tableau.md). Améliorer peinture, vis, bordures et plaques à partir de C-FYLP, avec dessins originaux et dimensions estimées explicites. Critère : comparaison native avant/après au même cadrage sous deux éclairages, instruments préservés, tutoriel illustré et paquet actualisé. Les relevés physiques VIS-01e restent attendus.
