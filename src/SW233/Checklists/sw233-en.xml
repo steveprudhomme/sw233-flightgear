@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Headwords: 2-33 AOIs 2017, PDF pp. 28/35. Values are simulation adaptations. -->
+<PropertyList>
+    <auto-tutorials type="bool">false</auto-tutorials>
+    <checklist n="0">
+        <title>SW233 - PRE TAKE-OFF (simulation)</title>
+        <item>
+            <name>Ballast</name>
+            <value>Scenario loading and balance reviewed</value>
+        </item>
+        <item>
+            <name>Controls</name>
+            <value>Movement and direction checked</value>
+        </item>
+        <item>
+            <name>Instruments</name>
+            <value>Units, altimeter setting and radio frequency reviewed</value>
+        </item>
+        <item>
+            <name>Spoilers</name>
+            <value>Travel checked; position reviewed</value>
+        </item>
+        <item>
+            <name>Trim</name>
+            <value>Position reviewed for the scenario</value>
+        </item>
+        <item>
+            <name>Release</name>
+            <value>Verbal rehearsal only; tow cable not simulated</value>
+        </item>
+        <item>
+            <name>Straps</name>
+            <value>Simulated visual review, both seats</value>
+        </item>
+        <item>
+            <name>Canopy/Door</name>
+            <value>Simulated visual review</value>
+        </item>
+    </checklist>
+    <checklist n="1">
+        <title>SW233 - PRE RELEASE (simulation)</title>
+        <item>
+            <name>Area</name>
+            <value>Release area identified in the scenario</value>
+        </item>
+        <item>
+            <name>Altitude</name>
+            <value>Scenario altitude reviewed</value>
+        </item>
+        <item>
+            <name>Attitude/Position</name>
+            <value>Attitude and position reviewed; tow not simulated</value>
+        </item>
+        <item>
+            <name>Traffic</name>
+            <value>Surrounding traffic reviewed</value>
+        </item>
+    </checklist>
+    <checklist n="2">
+        <title>SW233 - PRE-LANDING (simulation)</title>
+        <item>
+            <name>Spoilers</name>
+            <value>Availability and position checked</value>
+        </item>
+        <item>
+            <name>Wind</name>
+            <value>Scenario wind reviewed</value>
+        </item>
+        <item>
+            <name>Airspeed</name>
+            <value>Scenario approach speed reviewed in mph</value>
+        </item>
+        <item>
+            <name>Radio</name>
+            <value>Call rehearsed; audio operation not validated</value>
+        </item>
+        <item>
+            <name>Trim/Traffic</name>
+            <value>Trim position and surrounding traffic reviewed</value>
+        </item>
+        <item>
+            <name>Straps</name>
+            <value>Simulated visual review, both seats</value>
+        </item>
+        <item>
+            <name>Canopy</name>
+            <value>Simulated visual review</value>
+        </item>
+    </checklist>
+    <checklist n="3">
+        <title>SW233 - SAFETY CHECK (simulation)</title>
+        <item>
+            <name>Altitude</name>
+            <value>Scenario margins reviewed; spin behaviour not validated</value>
+        </item>
+        <item>
+            <name>Straps</name>
+            <value>Simulated visual review, both seats</value>
+        </item>
+        <item>
+            <name>Canopy</name>
+            <value>Simulated visual review</value>
+        </item>
+        <item>
+            <name>Objects</name>
+            <value>Loose items reviewed verbally</value>
+        </item>
+        <item>
+            <name>Traffic/Terrain</name>
+            <value>Traffic and terrain reviewed in the scenario</value>
+        </item>
+    </checklist>
+    <placards>
+        <card n="0">
+            <line>PRE TAKE-OFF</line>
+            <line>BALLAST</line>
+            <line>CONTROLS</line>
+            <line>INSTRUMENTS</line>
+            <line>SPOILERS</line>
+            <line>TRIM</line>
+            <line>RELEASE</line>
+            <line>STRAPS</line>
+            <line>CANOPY/DOOR</line>
+        </card>
+        <card n="1">
+            <line>PRE RELEASE</line>
+            <line>AREA</line>
+            <line>ALTITUDE</line>
+            <line>ATTITUDE/POSITION</line>
+            <line>TRAFFIC</line>
+        </card>
+        <card n="2">
+            <line>PRE-LANDING</line>
+            <line>SPOILERS</line>
+            <line>WIND</line>
+            <line>AIRSPEED</line>
+            <line>RADIO</line>
+            <line>TRIM/TRAFFIC</line>
+            <line>STRAPS</line>
+            <line>CANOPY</line>
+        </card>
+        <card n="3">
+            <line>SAFETY CHECK</line>
+            <line>ALTITUDE</line>
+            <line>STRAPS</line>
+            <line>CANOPY</line>
+            <line>OBJECTS</line>
+            <line>TRAFFIC/TERRAIN</line>
+        </card>
+    </placards>
+</PropertyList>

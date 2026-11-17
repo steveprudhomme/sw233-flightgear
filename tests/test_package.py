@@ -20,7 +20,7 @@ class PackageTests(unittest.TestCase):
             "alt-centaines", "alt-milliers", "vitesse-mph", "vario", "fil-de-laine",
             "aerofrein-1", "aerofrein1", "poignee-frein", "compas-rose", "alt-calage",
             "profondeur-1", "profondeur1", "alt-pression", "radio-frequence",
-            "radio-bouton-gauche", "radio-bouton-droit",
+            "radio-bouton-gauche", "radio-bouton-droit", "plaquettes-fr", "plaquettes-en",
         })
         texts = {node.findtext("name"): node for node in model.findall("text")}
         self.assertEqual(set(texts), {"alt-pression", "alt-unite", "radio-frequence"})
@@ -35,7 +35,7 @@ class PackageTests(unittest.TestCase):
                 if node.text not in texts:
                     self.assertIn(f'name "{node.text}"', mesh)
             kind = animation.findtext("type")
-            self.assertIn(kind, {"rotate", "knob", "material", "pick"})
+            self.assertIn(kind, {"rotate", "knob", "material", "pick", "select"})
             if kind in {"rotate", "knob"}:
                 self.assertTrue(animation.findtext("property"))
             elif kind == "pick":
@@ -44,6 +44,10 @@ class PackageTests(unittest.TestCase):
                 for action in actions:
                     self.assertEqual(action.findtext("binding/command"), "nasal")
                     self.assertTrue(action.findtext("binding/script"))
+            elif kind == "select":
+                self.assertEqual(animation.findtext("condition/equals/property"),
+                                 "sim/sw233/language")
+                self.assertIn(animation.findtext("condition/equals/value"), {"fr", "en"})
             else:
                 self.assertIsNotNone(animation.find("diffuse"))
         lists = ET.parse(aircraft / config.find("sim/checklists").attrib["include"])

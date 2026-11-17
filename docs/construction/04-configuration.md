@@ -60,14 +60,38 @@ Ce chemin part du dossier SW233, pas du dossier Models. La liste sera écrite à
             <item><label>Occupants et centrage</label><binding>
                 <command>nasal</command><script>sw233_load.dialog.open();</script>
             </binding></item>
+            <item><label>Français - plaquettes et listes</label><binding>
+                <command>nasal</command><script>sw233_language.choose("fr");</script>
+            </binding></item>
+            <item><label>English - placards and checklists</label><binding>
+                <command>nasal</command><script>sw233_language.choose("en");</script>
+            </binding></item>
+            <item><label>FR / EN (Ctrl+L)</label><binding>
+                <command>nasal</command><script>sw233_language.toggle();</script>
+            </binding></item>
+            <item><label>Checklists / Listes</label><binding>
+                <command>dialog-show</command><dialog-name>checklist</dialog-name>
+            </binding></item>
         </menu></default></menubar>
         <checklists include="Checklists/sw233.xml"/>
+        <sw233>
+            <language type="string">fr</language>
+            <translations>
+                <fr include="Checklists/sw233.xml"/>
+                <en include="Checklists/sw233-en.xml"/>
+            </translations>
+        </sw233>
         <tags>
             <tag>glider</tag>
             <tag>unpowered</tag>
         </tags>
     </sim>
-    <nasal><sw233_load><file>Nasal/occupants.nas</file></sw233_load><sw233_radio><file>Nasal/radio.nas</file></sw233_radio></nasal>
+    <nasal><sw233_load><file>Nasal/occupants.nas</file></sw233_load><sw233_radio><file>Nasal/radio.nas</file></sw233_radio><sw233_language><file>Nasal/language.nas</file></sw233_language></nasal>
+    <input><keyboard><key n="12">
+        <name>Ctrl-L</name><desc>SW233 : plaquettes et checklists FR / EN</desc>
+        <repeatable type="bool">false</repeatable>
+        <binding><command>nasal</command><script>sw233_language.toggle();</script></binding>
+    </key></keyboard></input>
 </PropertyList>
 ```
 
@@ -471,6 +495,14 @@ Ajoute ce dernier bloc avant la fermeture finale. Le bouton utilise *knob* et *s
       <tooltip-id>sw233-radio-droit</tooltip-id>
       <label>COM1 25 kHz : clic gauche + / clic milieu -</label>
     </binding></hovered>
+  </animation>
+  <animation>
+    <type>select</type><object-name>plaquettes-fr</object-name>
+    <condition><equals><property>sim/sw233/language</property><value>fr</value></equals></condition>
+  </animation>
+  <animation>
+    <type>select</type><object-name>plaquettes-en</object-name>
+    <condition><equals><property>sim/sw233/language</property><value>en</value></equals></condition>
   </animation>
 </PropertyList>
 ```

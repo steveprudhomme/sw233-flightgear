@@ -18,6 +18,7 @@ Crée une image de 1536 × 768 pixels. Le grain est une suite de petits gris ent
 
 import math
 import random
+import unicodedata
 import xml.etree.ElementTree as ET
 from pathlib import Path
 
@@ -32,6 +33,7 @@ def finish_panel(models: Path):
     noise = bytes(rng.randrange(25, 33) for _ in range(w*h))
     im = Image.frombytes("L", (w, h), noise).convert("RGB")
     pen = ImageDraw.Draw(im)
+
 ```
 
 ## B · Construis une règle et trois tampons
@@ -64,6 +66,7 @@ La règle xy convertit des mètres en pixels : droite = plus de colonnes, haut =
     def label(y, z, text, size):
         pen.text(xy(y, z), text, fill="#e0ded0", anchor="mm",
                  font=ImageFont.load_default(size=size))
+
 ```
 
 ## C · Aligne les trous sur les aiguilles
@@ -96,7 +99,7 @@ Sur l’image C-FYLP, pointe le milieu des cartes vers (282,176), (413,181), (28
 <!-- atelier-fichier: tools/panel.py -->
 ```python
     # Les cartes sont des rappels du simulateur, pas des consignes de vol réel.
-    def card(y, z, title, words):
+    def card(y, z):
         x, v = xy(y, z)
         width, height = 97, 140
         box = (x-width/2, v-height/2, x+width/2, v+height/2)
@@ -105,14 +108,56 @@ Sur l’image C-FYLP, pointe le milieu des cartes vers (282,176), (413,181), (28
                               radius=8, fill="#111416", outline="#565b59", width=2)
         pen.rounded_rectangle(box, radius=5, fill="#e3e1d5", outline="#b1b3a9", width=1)
         pen.line((x-41, v-39, x+41, v-39), fill="#4c4a44", width=1)
-        for i, line in enumerate([title, *words]):
-            pen.text((x-41, v-58+i*22), line, fill="#25272a",
-                     font=ImageFont.load_default(size=12 if i == 0 else 14))
-
-    card(-.079, .197, "PRE TAKE-OFF", ["BALLAST", "CONTROLS", "SPOILERS", "CANOPY"])
-    card(.078, .190, "PRE-LANDING", ["SPOILERS", "WIND", "AIRSPEED", "TRAFFIC"])
-    card(-.079, .077, "PRE RELEASE", ["AREA", "ALTITUDE", "POSITION", "TRAFFIC"])
-    card(.078, .070, "PRE STALL", ["ALTITUDE", "STRAPS", "CANOPY", "TRAFFIC"])
+    for y,z in [(-.079,.197),(-.079,.077),(.078,.190),(.078,.070)]:
+        card(y,z)
+    # Both atlases come from the same XML files as the native checklist data.
+    for language, filename in [("fr","sw233.xml"),("en","sw233-en.xml")]:
+        data = ET.parse(models.parent/"Checklists"/filename)
+        atlas = Image.new("RGB",(1024,1536),"#e3e1d5")
+        draw = ImageDraw.Draw(atlas)
+        for index, entry in enumerate(data.findall("placards/card")):
+            x,y = (index%2)*512,(index//2)*768
+            rows = entry.findall("line")
+            spacing = min(130, 510/max(1, len(rows)-1))
+            for row, node in enumerate(rows):
+                # Pillow's bundled font lacks these accented capitals. Keep UTF-8
+                # in the data and add the acute/grave strokes to their base glyphs.
+                letters = []
+                accents = []
+                for char in unicodedata.normalize("NFD",node.text):
+                    if unicodedata.combining(char):
+                        if char not in ("\u0301","\u0300") or not letters:
+                            raise ValueError("Unsupported placard accent: " + node.text)
+                        accents.append((len(letters)-1,char))
+                    else:
+                        letters.append(char)
+                text = "".join(letters)
+                size = 42 if row == 0 else min(62, int(spacing*.72))
+                while True:
+                    font = ImageFont.load_default(size=size)
+                    box = draw.textbbox((0,0),text,font=font)
+                    if box[2]-box[0] <= 480 or size <= 20:
+                        break
+                    size -= 1
+                left = x+256-draw.textlength(text,font=font)/2
+                top = y+65 if row == 0 else y+185+(row-1)*spacing
+                draw.text((left,top),text,anchor="lt",font=font,fill="#25272a")
+                # Highlight the mnemonic initial only, never the title.
+                if row > 0:
+                    draw.text((left,top),text[0],anchor="lt",font=font,fill="#a01820")
+                for position,accent in accents:
+                    center = left+draw.textlength(text[:position],font=font)
+                    center += draw.textlength(text[position],font=font)/2
+                    dx = size*.10
+                    a,b = (center-dx,top-size*.10),(center+dx,top-size*.24)
+                    if accent == "\u0300":
+                        a,b = (a[0],b[1]),(b[0],a[1])
+                    draw.line((a,b),fill="#a01820" if row > 0 and position == 0 else "#25272a",
+                              width=max(2,round(size*.05)))
+            draw.line((x+20,y+155,x+492,y+155),fill="#4c4a44",width=3)
+            draw.text((x+256,y+718),"SIMULATION",anchor="mt",
+                      font=ImageFont.load_default(size=26),fill="#4c4a44")
+        atlas.save(models/("placards-"+language+".png"))
     # The radio now has its own textured face and fixed 3D controls.
     label(-.131,.151,"RADIO",11)
     radio = Image.new("RGB",(512,512),"#292e2d")
@@ -292,6 +337,23 @@ Prépare un carré 512 × 512, centre (256,256). Cinquante divisions donnent 7,2
                 lines[i+j] = f"{idx} {u:.8f} {v}"
     lines.insert(1,'texture "compass.png"')
     s = s[:start]+"\n".join(lines)+"\n"+s[end:]
+    # One atlas quarter per placard; the XML selects only one language object.
+    for language in ("fr","en"):
+        start = s.index('name "plaquettes-'+language+'"')
+        end = s.index("kids 0",start)
+        lines = s[start:end].splitlines()
+        for i,line in enumerate(lines):
+            if line.startswith("mat "):
+                lines[i] = f"mat {material}"
+            elif line.startswith("refs "):
+                for j in range(1,5):
+                    idx = int(lines[i+j].split()[0])
+                    face,corner = divmod(idx,4)
+                    u = (face%2+(1 if corner in (1,2) else 0))/2
+                    v = 1-(face//2+(0 if corner in (2,3) else 1))/2
+                    lines[i+j] = f"{idx} {u} {v}"
+        lines.insert(1,'texture "placards-'+language+'.png"')
+        s = s[:start]+"\n".join(lines)+"\n"+s[end:]
     mesh.write_text(s)
 ```
 

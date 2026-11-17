@@ -1,5 +1,13 @@
 # Historique
 
+## En cours — plaquettes bilingues
+
+- Prototype de sélection FR/EN par menu et Ctrl+L (raccourci confirmé manuellement).
+- Initiales rouges sur les plaquettes ; rubriques anglaises complètes comparées aux IEA 2017.
+- Tutoriel et registre des sources complétés. Vocabulaire mnémotechnique français
+  et captures du dernier rendu encore à valider ; aucune nouvelle version publiée.
+
+
 ## Non publié — 0.1.0-dev
 
 ### Changements

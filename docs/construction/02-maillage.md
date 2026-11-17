@@ -689,6 +689,19 @@ for i in range(72):
          for a,h in [(gauche,-.011),(droite,-.011),(droite,.011),(gauche,.011)]])
 ```
 
+## I quinquies · Deux jeux de quatre plaquettes
+
+Ces deux objets occupent les mêmes places. Le fichier XML ne montrera qu’une langue à la fois. La fiche 5 explique le choix de langue et la fiche 6 prépare les images.
+
+<!-- atelier-fichier: fabrique.py -->
+```python
+# Order matches the four checklist indices: departure, release, landing, stall.
+for langue in ("fr", "en"):
+    for y,z in [(-.079,.197),(-.079,.077),(.078,.190),(.078,.070)]:
+        poly("plaquettes-"+langue,5,*[(px+.001,y+dy,z+dz) for dy,dz in
+             [(-.023,-.033),(.023,-.033),(.023,.033),(-.023,.033)]])
+```
+
 ## J · Écris le fichier que lit le simulateur
 
 Le fichier commence par `AC3Db`, la palette, puis `OBJECT world` : la boîte qui contient toutes les pièces. Pour chaque pièce, `numvert` compte les coins et `numsurf` compte les faces ; `refs 4` annonce quatre numéros de coins pour un quadrilatère. Les numéros commencent à zéro. Un coin (x, y, z) de ton cahier devient **(x, z, −y)** dans notre AC3D : pour une extrémité à droite, la troisième colonne devient négative. La section en U définit l’ouverture. L’exporteur écrit toutes les faces sans en supprimer selon leur position. Les rehauts des graduations et du fil servent à leur lisibilité dans le rendu.

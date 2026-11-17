@@ -26,6 +26,8 @@ def validate_resources(root):
     for texture in re.findall(r'^texture "([^"\n]+)"', mesh.read_text(), re.M):
         required(mesh.parent, texture)
     required(air, config.find('sim/checklists').attrib['include'])
+    for node in config.findall('sim/sw233/translations/*'):
+        required(air, node.attrib['include'])
     for node in config.findall('nasal/*/file'):
         required(air, node.text)
     required(air, 'gui/dialogs/occupants.xml')

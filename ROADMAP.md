@@ -240,3 +240,9 @@ Critères : plaquettes et checklists utilisent la même langue sans redémarrer 
 - [ ] Illustrer et expliquer dans le tutoriel la distinction entre source, traduction à confirmer et rappel de simulation ; synchroniser la recette.
 
 Critère complémentaire : mots, ordre et initiales correspondent à une source identifiée par langue. Le rouge est une aide visuelle du projet, pas une couleur attribuée sans preuve aux plaquettes réelles. La validation française reste ouverte jusqu'à réception d'une référence probante.
+
+
+Point d'étape VIS-01p : source anglaise contrôlée (IEA 2017, PDF 28/35),
+initiales rouges et mise en page à 4–8 rubriques réalisées ; reconstruction
+complète du tutoriel vérifiée. La formulation mnémotechnique française et
+les nouvelles captures natives restent à valider. Le lot n'est pas terminé.

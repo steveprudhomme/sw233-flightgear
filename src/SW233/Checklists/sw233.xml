@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Original simulation checklists. No automatic actions; tow is not implemented. -->
 <PropertyList>
+    <auto-tutorials type="bool">false</auto-tutorials>
     <checklist n="0">
         <title>SW233 · Avant départ (simulation)</title>
         <item><name>Chargement</name><value>Scénario et centrage vérifiés</value></item>
         <item><name>Commandes</name><value>Libres ; sens vérifié</value></item>
-        <item><name>Instruments</name><value>mph, ft et milliers de ft/min identifiés</value></item>
+        <item><name>Instruments</name><value>mph, ft et centaines de ft/min identifiés</value></item>
         <item><name>Aérofreins et trim</name><value>Course et position vérifiées</value></item>
         <item><name>Harnais, verrière et porte</name><value>Revue visuelle simulée</value></item>
     </checklist>
@@ -28,4 +29,11 @@
         <item><name>Harnais, verrière et objets</name><value>Revue visuelle simulée</value></item>
         <item><name>Domaine de vol</name><value>Vrille non validée ; pas de démonstration de vrille</value></item>
     </checklist>
+    <!-- Short cockpit reminders; full simulation lists are above. -->
+    <placards>
+        <card n="0"><line>AVANT DÉPART</line><line>LEST</line><line>COMMANDES</line><line>AÉROFREINS</line><line>VERRIÈRE</line></card>
+        <card n="1"><line>AVANT LARGAGE</line><line>ZONE</line><line>ALTITUDE</line><line>POSITION</line><line>TRAFIC</line></card>
+        <card n="2"><line>AVANT ATTERR.</line><line>AÉROFREINS</line><line>VENT</line><line>VITESSE</line><line>TRAFIC</line></card>
+        <card n="3"><line>AVANT DÉCROCH.</line><line>ALTITUDE</line><line>HARNAIS</line><line>VERRIÈRE</line><line>TRAFIC</line></card>
+    </placards>
 </PropertyList>

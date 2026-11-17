@@ -268,4 +268,12 @@
       <label>COM1 25 kHz : clic gauche + / clic milieu -</label>
     </binding></hovered>
   </animation>
+  <animation>
+    <type>select</type><object-name>plaquettes-fr</object-name>
+    <condition><equals><property>sim/sw233/language</property><value>fr</value></equals></condition>
+  </animation>
+  <animation>
+    <type>select</type><object-name>plaquettes-en</object-name>
+    <condition><equals><property>sim/sw233/language</property><value>en</value></equals></condition>
+  </animation>
 </PropertyList>

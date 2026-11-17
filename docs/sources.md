@@ -100,3 +100,26 @@ La limite historique 0,30 rad décrite plus haut est remplacée par ±23° nomin
 ## Complément dimensionnel du 15 novembre 2026
 
 Le [registre VIS-01d](references/dimensions-cockpit.md) précise les éditions/pages, la preuve historique C-FYLP, la compatibilité de verrière et les limites d’application au maillage. Les valeurs de masse ne sont pas des positions de pièces 3D.
+
+
+## Vérifications mnémotechniques — lot VIS-01p, 17 novembre 2026
+
+Source locale fournie : `403-manual-en-acgp-2-33-aois-2017.pdf`.
+L'en-tête interne est **A-CR-CCP-402/MB-001 SCHWEIZER 2-33 AOIs** :
+le nom de fichier « 403 » ne doit pas être confondu avec cet identifiant.
+Page PDF 28, page imprimée 3-8 : BCISTRSC. Page PDF 35, page imprimée
+4-3 : les initiales des rubriques donnent AAAT, ASCOT et SWARTSC.
+Les mots anglais et leur ordre sont repris ; les valeurs des checklists du
+projet restent des adaptations explicites à la simulation.
+
+Le manuel bilingue A-CR-CCP-242/PT-005 de 2017, pages PDF 213 et 217–219
+(pages imprimées 2-7-19 et 2-7-23 à 25), renvoie aux IEA du type d'appareil.
+Il ne donne pas les séries de mots françaises. La recherche dans le guide
+RE_GuideEtudePilotageFR n'a pas fourni ces séries. **La version française
+actuelle reste un brouillon, pas un moyen mnémotechnique Cadets validé.**
+La référence française est demandée à l'utilisateur ; aucune traduction
+inventée ne doit être annoncée comme vocabulaire enseigné.
+
+Le rouge des initiales est un choix pédagogique demandé par l'utilisateur,
+pas une caractéristique attestée des plaquettes réelles. Une source de 2017
+ne prouve pas à elle seule les procédures enseignées aujourd'hui.
