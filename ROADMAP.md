@@ -187,3 +187,16 @@ Suite radio à planifier : identifier les commandes sur une référence lisible,
 Plan préalable : examiner les références et exemples FlightGear ; identifier le modèle réel si les preuves le permettent, sinon annoncer une commande générique ; relier l'écran à la fréquence COM1 active ; définir et documenter pas, plage et actions des deux boutons ; préserver les canaux valides aux limites ; tester valeurs, changements externes et souris de face/biais ; documenter avec captures natives et recettes reproductibles ; actualiser MD, description, aperçu et paquet. Critère : affichage et propriété active concordants, boutons efficaces dans les deux sens et limites vérifiées. Aucune réception audio, émission réseau ou fidélité à une radio réelle ne sera revendiquée sans essai correspondant.
 
 VIS-01m terminé : COM1 active à trois décimales, commandes ±1 MHz / ±25 kHz, butées et refus hors grille ; treize cas natifs et huit clics vérifiés, fréquences restaurées. [Tutoriel illustré](docs/construction/06-peinture.md#n--régler-la-fréquence-com1). Identification réelle, alimentation, audio, mémoires et éventuel support 8,33 kHz restent à définir dans des lots séparés.
+
+## VIS-01n — finition du compas (en cours)
+
+Plan préalable :
+
+- [ ] Comparer le boîtier et la fenêtre aux photos C-FYLP ; séparer proportions photographiques et profondeurs estimées. Examiner les essais historiques avant de refaire un mécanisme déjà fonctionnel.
+- [ ] Conserver la rose animée et sa propriété de cap indiqué ; améliorer le contour, les fixations et le repère seulement si la comparaison le justifie.
+- [ ] Synchroniser la recette de construction ; illustrer chaque pièce modifiée et expliquer les dimensions et choix sans les présenter comme des cotes constructeur.
+- [ ] Comparer avant/après dans FlightGear de face et de biais ; contrôler N/E/S/W, les caps intermédiaires et le passage 359/0/1 degrés.
+- [ ] Vérifier le défilement en virage avec l’instrument actif ; distinguer ce contrôle des entrées imposées du banc.
+- [ ] Vérifier reconstruction et absence de modification des autres instruments ; actualiser tutoriel, MD, aperçu et publication GitHub.
+
+Critères de réussite : rose et repère lisibles dans les vues contrôlées, sens correct aux caps testés, aucune régression des autres instruments, preuves natives et hypothèses documentées. Les erreurs du compas réel ne seront pas déclarées validées par un simple contrôle visuel.
