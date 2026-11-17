@@ -539,6 +539,36 @@ for i in (0, 1, 3):  # Lower-left position is occupied by the adjustment knob.
          [(-.002,-.0004),(.002,-.0004),(.002,.0004),(-.002,.0004)]])
 ```
 
+## Bague du variomètre — VIS-01j
+
+Plan préalable `a0da1e0`. La photo C-FYLP montre le variomètre en bas à droite du tableau. Elle sert à reconnaître la disposition, pas à mesurer une profondeur. Nous conservons le centre de notre maquette (y = 0,295 m ; z = 0,022 m) et le cadran de rayon 63 mm. Les dimensions ci-dessous sont des choix de représentation, sans cote constructeur revendiquée.
+
+1. Dessine deux cercles de même centre : rayon intérieur 64 mm, extérieur 73 mm. Le premier laisse 1 mm de marge autour du cadran ; le second reprend l'encombrement de sa bordure peinte.
+2. Imagine une rondelle : son milieu reste vide pour voir les chiffres. Relie ses cercles par des bandes, sans créer de disque plein. Le côté part de 1 mm devant le tableau et rejoint une face à 8 mm. Le retour intérieur finit à 4 mm.
+3. Place quatre vis à 45°, 135°, 225° et 315°, sur un cercle de rayon 71 mm. Leur diamètre est 6 mm ; leur face est à 10 mm. Les fentes sont à 10,1 mm pour ne pas se superposer exactement aux têtes.
+4. Garde l'aiguille existante à 12 mm devant le tableau. La bague et les vis restent derrière elle. Ne change ni son centre ni la table des angles dans le XML.
+5. Retire les bordures et vis peintes de la fiche 6 : sinon les deux représentations se superposeraient. Garde le titre, les graduations et la texture du cadran.
+
+<!-- atelier-fichier: fabrique.py -->
+```python
+# Variometer hardware: model dimensions; estimated depth, no change to calibration.
+def cercle_vsi(x, r):
+    return [(x, .295+r*cos(i*pi/30), .022+r*sin(i*pi/30)) for i in range(60)]
+
+bridge("vsi-bague", 3, cercle_vsi(px+.001, .073), cercle_vsi(px+.008, .073))
+bridge("vsi-bague", 2, cercle_vsi(px+.008, .073), cercle_vsi(px+.008, .064))
+bridge("vsi-bague", 3, cercle_vsi(px+.008, .064), cercle_vsi(px+.004, .064))
+for i in range(4):
+    a = (i+.5)*pi/2
+    sy, sz = .295+.071*cos(a), .022+.071*sin(a)
+    back = [(px+.008, sy+.003*cos(j*pi/8), sz+.003*sin(j*pi/8)) for j in range(16)]
+    front = [(px+.010, y, z) for _, y, z in back]
+    bridge("vsi-vis", 2, back, front)
+    poly("vsi-vis", 2, *front)
+    poly("vsi-fentes", 5, *[(px+.0101,sy+y,sz+z) for y,z in
+         [(-.002,-.0004),(.002,-.0004),(.002,.0004),(-.002,.0004)]])
+```
+
 ## I ter · Construis une petite boîte ouverte pour le compas
 
 Prends une boîte d’allumettes vide : de face tu vois son ouverture ; en la décalant de côté, tu vois aussi sa paroi. C’est le même effet que nous cherchons sous la bouche d’air. La photo de C-FYLP donne une façade, pas une profondeur. Garde le centre choisi à la fiche 1 (y = 0 ; z = 0,098 m). Le dessin plat faisait 126 × 118 pixels dans la texture à 1 920 pixels/m : environ 66 × 61 mm. Garde cette taille pour la base. Les 25 mm d’épaisseur sont une estimation de maquette.
@@ -782,3 +812,21 @@ La vue oblique emploie x caméra −0,15 m, azimut −15°, inclinaison −18°,
 La profondeur et le choix de trois fixations restent estimés. Source visuelle : photo C-FYLP du fonds de références ; les diamètres reprennent la maquette existante. Le changement ne modifie ni les aiguilles ni les commandes XML. Reconstruction et contrôles de sources réussis ; nouvel aperçu cockpit inclus dans le paquet, sans nouvel essai du sélecteur.
 
 Complément : le [réglage à la souris](06-peinture.md#j--régler-laltimètre-à-la-souris) est maintenant vérifié de face et de biais. Le geste efficace est un glissement horizontal, pas la molette testée.
+
+## Variomètre — pièces et essais du relief
+
+Les trois images suivantes sont des projections du maillage, pas des photographies de l’instrument réel. La bague est un objet ; les quatre têtes de vis sont réunies dans un deuxième objet ; leurs quatre fentes forment le troisième. La recette ci-dessus les reconstruit dans cet ordre.
+
+La bague ouverte : observer le trou central et la faible épaisseur de profil.
+
+![vsi-bague](https://github.com/steveprudhomme/sw233-flightgear/releases/download/vario-bague-27/vsi-bague.png)
+
+Les quatre têtes de vis : les vues de côté montrent leur saillie de 2 mm au-dessus de la bague.
+
+![vsi-vis](https://github.com/steveprudhomme/sw233-flightgear/releases/download/vario-bague-27/vsi-vis.png)
+
+Les quatre fentes : ce sont des faces sombres, pas des trous traversants.
+
+![vsi-fentes](https://github.com/steveprudhomme/sw233-flightgear/releases/download/vario-bague-27/vsi-fentes.png)
+
+Poursuis avec les [captures natives, mesures et essais pas à pas](06-peinture.md#k--variomètre-en-relief--vérifier-et-comparer). Les pièces antérieures, le cadran et son animation sont conservés.

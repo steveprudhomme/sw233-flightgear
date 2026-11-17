@@ -143,3 +143,5 @@ La [fiche 16](docs/construction/16-proportions.md) quantifie trois écarts au tr
 [Altimètre en relief : pièces et essais illustrés](docs/construction/02-maillage.md#altimètre--pièces-et-vérification-du-relief). Le réglage par glissement horizontal est vérifié (voir la procédure ci-dessous).
 
 [Régler le calage à la souris : gestes vérifiés et captures](docs/construction/06-peinture.md#j--régler-laltimètre-à-la-souris). Vérification maintenant terminée ; utiliser le cliquer-glisser horizontal.
+
+[Variomètre en relief : construction et quatorze lectures natives](docs/construction/06-peinture.md#k--variomètre-en-relief--vérifier-et-comparer). Bague ouverte et quatre fixations ; dimensions estimées, cadran et étalonnage conservés. [Télécharger le paquet vario-bague-27](https://github.com/steveprudhomme/sw233-flightgear/releases/tag/vario-bague-27).

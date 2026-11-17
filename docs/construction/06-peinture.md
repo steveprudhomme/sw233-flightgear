@@ -74,17 +74,7 @@ Reprends les mêmes centres et rayons qu’à la fiche 2 : un cercle autour d’
 ```python
     for y, z, r, title in [(-.22,.087,.083,"ALT  /  FT"), (.17,.14,.075,"AIR SPEED  /  MPH"),
                             (.295,.022,.063,"VERTICAL SPEED")]:
-        if title == "VERTICAL SPEED":  # IAS and ALT hardware are now 3D.
-            for extra, color in [(.010,"#101214"),(.008,"#363b3d"),(.006,"#191d20")]:
-                disc(y,z,r+extra,color)
-            # Subtle bevel lighting, confined to the fixed rim outside the dial.
-            cx, cy = xy(y, z)
-            rr = (r+.007)*w/.8
-            pen.arc((cx-rr, cy-rr, cx+rr, cy+rr), 195, 300, fill="#626762", width=2)
-            pen.arc((cx-rr, cy-rr, cx+rr, cy+rr), 15, 120, fill="#0b0d0e", width=3)
-            for i in range(4):
-                a = (i+.5)*math.pi/2
-                screw(y+(r+.008)*math.cos(a), z+(r+.008)*math.sin(a))
+        # All three instrument rims and their fasteners are separate 3D objects.
         label(y,z-r-.018,title,17)
 ```
 
@@ -403,11 +393,11 @@ La grille peinte est retirée : la [recette et les quatre pièces 3D](02-maillag
 
 ## Bordure 3D de l'anémomètre
 
-La condition `title != "AIR SPEED  /  MPH"` réserve les anneaux et vis peints aux deux autres instruments. L'inscription sous le cadran est conservée. La [bague et ses fixations](02-maillage.md#anémomètre--pièces-et-essais-du-relief) remplacent le dessin ; aucune modification des arcs colorés, nombres ou aiguilles.
+À cette étape historique, la condition `title != "AIR SPEED  /  MPH"` réservait les anneaux et vis peints aux deux autres instruments. Depuis VIS-01j, les trois instruments ont des bordures 3D. L'inscription sous le cadran est conservée. La [bague et ses fixations](02-maillage.md#anémomètre--pièces-et-essais-du-relief) remplacent le dessin ; aucune modification des arcs colorés, nombres ou aiguilles.
 
 ## Bordure de l’altimètre en relief
 
-La boucle ne peint désormais les anneaux et fixations que pour VERTICAL SPEED. Altimètre et anémomètre utilisent leur géométrie ; inscriptions et cadrans restent inchangés. Voir les [pièces et essais](02-maillage.md#altimètre--pièces-et-vérification-du-relief).
+À l’étape VIS-01i, la boucle ne peignait plus les anneaux et fixations que pour VERTICAL SPEED. Depuis VIS-01j, ces derniers doublons peints sont retirés aussi. Altimètre et anémomètre utilisent leur géométrie ; inscriptions et cadrans restent inchangés. Voir les [pièces et essais](02-maillage.md#altimètre--pièces-et-vérification-du-relief).
 
 ## J · Régler l'altimètre à la souris
 
@@ -447,3 +437,90 @@ Cette variation indique que la commande est reçue. La pression statique du banc
 Vue rapprochée : inclinaison −25°, champ 24°, x caméra −0,22 m, y 0,5 m, z 1,7 m, azimut 0°. Pour le biais, x devient −0,30 m et azimut −5°. Les glissements testés parcouraient environ 63 pixels ; ce nombre décrit l'essai, pas une garantie de pas par pixel. Les coordonnées changent si la fenêtre ou la caméra change : viser la face visible du bouton.
 
 Les images proviennent de FlightGear ; les petits fichiers JSON joints à la publication consignent les valeurs après chaque geste. Le lot VIS-01i est clos pour la géométrie et cette interaction. Aucun code d'aéronef n'a changé : conserver le paquet alt-bague-25 et son aperçu. La fenêtre de pression non chiffrée reste une amélioration future ; toutes les positions possibles de caméra n'ont pas été testées.
+
+## K · Variomètre en relief — vérifier et comparer
+
+Le lot VIS-01j commence par le commit de plan `a0da1e0`. La photo C-FYLP fournie sert de référence de disposition ; le relief de 8 mm est estimé, et n'est pas mesuré sur cette photo. Voir les [choix de dimensions et la recette complète](02-maillage.md#bague-du-variomètre--vis-01j) et le [registre des références](../references/cockpits-et-fsx.md). Le résultat reste une représentation simplifiée, pas une reproduction photographique achevée.
+
+### 1. Comprendre ce qui change
+
+Avant, la bordure et les vis étaient dessinées sur une surface plate. Maintenant, elles possèdent des côtés. Les trois nouveaux objets sont `vsi-bague`, `vsi-vis` et `vsi-fentes`. Le centre du cadran et les 59 objets précédents ne changent pas. Une comparaison des faces du maillage l'a vérifié. Les textures `vsi.png`, `ias.png` et `alt.png` sont identiques à celles du paquet alt-bague-25 ; seule la peinture du tableau perd les doublons de la bordure et des vis.
+
+Imagine une rondelle posée sur une feuille : tu dois toujours pouvoir lire les nombres écrits dans son trou. C'est le principe de notre contrôle.
+
+### 2. Reconstruire puis lancer une session de contrôle
+
+Travaille depuis la racine du dépôt, là où se trouve README.md. Il faut Python avec Pillow, FlightGear et le terrain CYJN déjà installés, comme expliqué dans la [fiche d'installation](12-installation.md). Choisis des dossiers de sortie qui n'existent pas encore. Construis le paquet, puis ouvre une session séparée du vol habituel. Sous Windows, remplace les trois chemins d'installation par les tiens ; garde les guillemets.
+
+```powershell
+# Vérifier que les blocs du tutoriel reconstruisent les sources.
+python tools/check_workbook.py build/atelier-vario
+# Préparer un paquet neuf.
+python tools/package.py --output build/vario-relief
+# Session statique dédiée : aucune dynamique de vol n'est calculée ici.
+& "C:/Program Files/FlightGear 2024.1/bin/fgfs.exe" --fg-root="C:/Users/steve/FlightGear/Downloads/fgdata_2024_1" --fg-aircraft="$PWD/build/vario-relief/Aircraft" --fg-scenery="C:/Users/steve/FlightGear/Downloads/TerraSync" --aircraft=sw233 --airport=CYJN --in-air --altitude=5000 --heading=10 --fdm=null --httpd=18113 --read-only --ignore-autosave --enable-clock-freeze --start-date-gmt=2026:06:21:16:45:00 --geometry=1280x720 --disable-real-weather-fetch --disable-terrasync
+```
+
+Attends de voir le cockpit. Laisse la fenêtre ouverte, sans la minimiser. Lance les commandes suivantes dans un second terminal, également à la racine du dépôt. Le port doit être identique dans les deux commandes et dans FlightGear ; ne réutilise pas celui d'une autre session.
+
+```powershell
+# Sept indications de face, puis sept de biais.
+python tools/variometer_bench.py build/vario-face --port 18113
+python tools/variometer_bench.py build/vario-biais --port 18113 --oblique
+```
+
+### 3. Comprendre ce que fait le banc
+
+Le banc mémorise la caméra, la visibilité du menu, l'indication et l'état de fonctionnement de l'instrument. Il désactive temporairement le calcul de cet instrument avec `serviceable=0`, puis écrit une indication connue. Il lit la propriété avant et après la capture pour vérifier qu'elle n'a pas changé. Il rejette les images de moins de 1 024 × 600 pixels et restaure les valeurs mémorisées à la fin, même en cas d'erreur de capture.
+
+La caméra de face utilise x = 0,295 m, y = 0,5 m, z = 1,7 m, une inclinaison de −30° et un champ de 22°. De biais, x devient 0,375 m et l'azimut vaut +5°. Ces réglages sont un cadrage d'essai, pas une position d'œil mesurée sur un pilote.
+
+### 4. Lire les résultats
+
+Essais natifs FlightGear 2024.1.7, session FDM null à CYJN. Dans les deux séries, chaque valeur lue avant et après l'image correspond à l'entrée demandée. Le cadran exprime des centaines de pieds par minute : « 5 » signifie 500 ft/min. UP est la branche positive ; DOWN la branche négative.
+
+| Entrée imposée (ft/min) | Lecture à chercher | Face | Biais |
+|---:|---|---|---|
+| −2 000 | 20, côté DOWN | vérifiée | vérifiée |
+| −1 000 | 10, côté DOWN | vérifiée | vérifiée |
+| −500 | 5, côté DOWN | vérifiée | vérifiée |
+| 0 | zéro à gauche | vérifiée | vérifiée |
+| +500 | 5, côté UP | vérifiée | vérifiée |
+| +1 000 | 10, côté UP | vérifiée | vérifiée |
+| +2 000 | 20, côté UP | vérifiée | vérifiée |
+
+Ces essais contrôlent le passage de l'aiguille devant le nouveau relief. Ils ne prouvent ni le taux réel de montée, ni le retard pneumatique de l'instrument. Les essais de vol antérieurs sont décrits dans la [fiche 7](07-essais.md#banc-variometre) ; ils ne constituent pas un nouveau vol avec ce relief.
+
+### 5. Comparer les images
+
+Avant et après à indication nulle : même caméra et même cap. Observe le côté de la bague et les vis, sans confondre un changement d'ombre avec un changement de cadran.
+
+![Avant : bordure peinte](https://github.com/steveprudhomme/sw233-flightgear/releases/download/vario-bague-27/avant.jpg)
+
+![Après : bague et vis en relief](https://github.com/steveprudhomme/sw233-flightgear/releases/download/vario-bague-27/face-vario-0.jpg)
+
+![Face : entrée imposée -2000 ft/min](https://github.com/steveprudhomme/sw233-flightgear/releases/download/vario-bague-27/face-vario--2000.jpg)
+
+![Face : entrée imposée -1000 ft/min](https://github.com/steveprudhomme/sw233-flightgear/releases/download/vario-bague-27/face-vario--1000.jpg)
+
+![Face : entrée imposée -500 ft/min](https://github.com/steveprudhomme/sw233-flightgear/releases/download/vario-bague-27/face-vario--500.jpg)
+
+![Face : entrée imposée 500 ft/min](https://github.com/steveprudhomme/sw233-flightgear/releases/download/vario-bague-27/face-vario-500.jpg)
+
+![Face : entrée imposée 1000 ft/min](https://github.com/steveprudhomme/sw233-flightgear/releases/download/vario-bague-27/face-vario-1000.jpg)
+
+![Face : entrée imposée 2000 ft/min](https://github.com/steveprudhomme/sw233-flightgear/releases/download/vario-bague-27/face-vario-2000.jpg)
+
+Sept vues de biais, réunies en planche pour comparer la course. Les JPEG natifs individuels sont joints à la publication.
+
+![Série de biais](https://github.com/steveprudhomme/sw233-flightgear/releases/download/vario-bague-27/serie-biais.jpg)
+
+![Tableau complet dans FlightGear](https://github.com/steveprudhomme/sw233-flightgear/releases/download/vario-bague-27/cockpit.jpg)
+
+### 6. Vérifier ton propre travail
+
+Cherche une graduation cachée, une tête de vis qui passe devant l'aiguille ou une bordure peinte restée derrière la pièce. Si l'image est vide, restaure la fenêtre puis recommence dans un nouveau dossier. Compare les CSV avec les captures : une jolie image seule ne suffit pas à montrer la bonne valeur. Les fentes et vis de ce lot sont fixes, sans interaction.
+
+La reconstruction du tutoriel, le contrôle des sources, le contrôle de style et la vérification du manifeste du paquet ont réussi. La description FlightGear mentionne maintenant les trois bagues ; son aperçu est renouvelé. Les limites restent les dimensions estimées, les deux cadrages testés et l'absence de nouvelle validation dynamique.
+
+[Paquet et preuves de ce lot](https://github.com/steveprudhomme/sw233-flightgear/releases/tag/vario-bague-27) · [CSV et contrôles de non-régression](https://github.com/steveprudhomme/sw233-flightgear/releases/download/vario-bague-27/releves.zip).

@@ -247,3 +247,7 @@ Un audit est une relecture : quelqu'un cherche ce qui pourrait être amélioré.
 5. Range les tâches selon leurs besoins : vérifier le centrage avant de comparer les performances, par exemple. Enregistre la feuille de route avant de modifier le modèle. Après le travail, ajoute la capture réelle, les valeurs et ce qui reste incertain.
 
 Tu peux comparer ton classement à notre [lecture des audits](../references/audits-2026-11-11.md) et aux [17 tâches proposées](../../ROADMAP.md#audits-externes). Cette séance prépare une discussion : elle n'applique pas les recommandations à l'avion.
+
+## Complément : contrôler le relief du variomètre
+
+La [fiche 6, section K](06-peinture.md#k--variomètre-en-relief--vérifier-et-comparer) décrit les sept indications imposées, de face et de biais, réalisées après ajout de la bague. Le banc accepte désormais `--oblique` et refuse les captures vides. Ce contrôle visuel ne remplace pas les essais dynamiques décrits plus haut.

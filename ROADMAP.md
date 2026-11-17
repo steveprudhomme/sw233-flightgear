@@ -162,6 +162,8 @@ Protocole préalable : lancer le dernier paquet en session dédiée FDM null ; r
 
 VIS-01i clos : contrôle souris réussi de face et de biais par cliquer-glisser horizontal, dans les deux sens ; retour à 29,92 inHg. Molette testée sans effet. Preuves : fiche 6, section J, publication calage-26. Les mentions antérieures « clic à vérifier » décrivent désormais un état historique.
 
-## VIS-01j — relief du variomètre (en cours)
+## VIS-01j — relief du variomètre (terminé)
 
 Sous-étapes préalables : comparer la disposition existante à la photo C-FYLP ; conserver le centre, le cadran et son aiguille ; ajouter une bague ouverte et des fixations aux dimensions de maquette explicites ; retirer uniquement les doublons peints ; synchroniser les recettes du tutoriel et illustrer chaque nouvelle pièce ; contrôler dans FlightGear les indications négative, nulle et positive, de face et de biais ; distinguer essai d'affichage à entrées imposées et validation du vol ; vérifier reconstruction, actualiser l'aperçu, les MD et publier le paquet. Critère : graduations et aiguille lisibles dans les vues testées, aucune modification de l'étalonnage, preuves natives et hypothèses documentées.
+
+VIS-01j terminé : trois objets ajoutés, doublons peints retirés, sept indications natives contrôlées de face et de biais. Les 59 objets antérieurs et les trois textures de cadran restent identiques. [Tutoriel illustré, fiche 6 section K](docs/construction/06-peinture.md#k--variomètre-en-relief--vérifier-et-comparer), vues par pièce, aperçu et paquet vario-bague-27. Profondeurs estimées ; essais d’affichage, sans nouvelle validation du vol.

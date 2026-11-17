@@ -44,17 +44,7 @@ def finish_panel(models: Path):
 
     for y, z, r, title in [(-.22,.087,.083,"ALT  /  FT"), (.17,.14,.075,"AIR SPEED  /  MPH"),
                             (.295,.022,.063,"VERTICAL SPEED")]:
-        if title == "VERTICAL SPEED":  # IAS and ALT hardware are now 3D.
-            for extra, color in [(.010,"#101214"),(.008,"#363b3d"),(.006,"#191d20")]:
-                disc(y,z,r+extra,color)
-            # Subtle bevel lighting, confined to the fixed rim outside the dial.
-            cx, cy = xy(y, z)
-            rr = (r+.007)*w/.8
-            pen.arc((cx-rr, cy-rr, cx+rr, cy+rr), 195, 300, fill="#626762", width=2)
-            pen.arc((cx-rr, cy-rr, cx+rr, cy+rr), 15, 120, fill="#0b0d0e", width=3)
-            for i in range(4):
-                a = (i+.5)*math.pi/2
-                screw(y+(r+.008)*math.cos(a), z+(r+.008)*math.sin(a))
+        # All three instrument rims and their fasteners are separate 3D objects.
         label(y,z-r-.018,title,17)
     # The central vent is now separate 3D geometry; leave the paint beneath it plain.
     for y, z in [(-.30,.15),(-.36,.04),(.33,.11),(-.085,.24),(.082,.24)]:
