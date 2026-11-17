@@ -8,9 +8,8 @@ import time
 from pathlib import Path
 from urllib.request import urlopen
 
-from PIL import Image
-
 from flightgear import execute
+from PIL import Image
 
 
 def capture(folder, port):
