@@ -140,4 +140,6 @@ La [fiche 16](docs/construction/16-proportions.md) quantifie trois écarts au tr
 
 [Relief de l’anémomètre : pièces et lectures dans FlightGear](docs/construction/02-maillage.md#anémomètre--pièces-et-essais-du-relief).
 
-[Altimètre en relief : pièces et essais illustrés](docs/construction/02-maillage.md#altimètre--pièces-et-vérification-du-relief). Le clic sur le bouton reste à vérifier.
+[Altimètre en relief : pièces et essais illustrés](docs/construction/02-maillage.md#altimètre--pièces-et-vérification-du-relief). Le réglage par glissement horizontal est vérifié (voir la procédure ci-dessous).
+
+[Régler le calage à la souris : gestes vérifiés et captures](docs/construction/06-peinture.md#j--régler-laltimètre-à-la-souris). Vérification maintenant terminée ; utiliser le cliquer-glisser horizontal.

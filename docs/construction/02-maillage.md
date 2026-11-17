@@ -780,3 +780,5 @@ Dans ce banc null, la position vaut 5000 ft mais la pression statique reste 29,9
 La vue oblique emploie x caméra −0,15 m, azimut −15°, inclinaison −18°, champ 55° ; son bord inférieur coupe une partie du bouton. Les vues rapprochées montrent sa face dégagée et son repère tournant avec la pression. Le clic manuel n'a pas été rejoué : le lot reste ouvert pour cette vérification d'interaction. La fenêtre de pression demeure non chiffrée, comme avant.
 
 La profondeur et le choix de trois fixations restent estimés. Source visuelle : photo C-FYLP du fonds de références ; les diamètres reprennent la maquette existante. Le changement ne modifie ni les aiguilles ni les commandes XML. Reconstruction et contrôles de sources réussis ; nouvel aperçu cockpit inclus dans le paquet, sans nouvel essai du sélecteur.
+
+Complément : le [réglage à la souris](06-peinture.md#j--régler-laltimètre-à-la-souris) est maintenant vérifié de face et de biais. Le geste efficace est un glissement horizontal, pas la molette testée.

@@ -80,3 +80,5 @@ VIS-01g : aérateur central en quatre pièces 3D, retrait de la grille peinte, i
 VIS-01h : bordure et fixations 3D de l’anémomètre ; quatre captures de lecture et vue oblique, tutoriel illustré, aperçu actualisé.
 
 VIS-01i : bague et trois fixations 3D de l’altimètre, retrait du doublon peint, huit captures de banc, tutoriel et aperçu actualisés. Vérification manuelle du bouton encore ouverte.
+
+VIS-01i : interaction du bouton vérifiée dans FlightGear par glissement horizontal, deux sens et deux vues ; tutoriel illustré et relevés publiés. Aucun changement du modèle.

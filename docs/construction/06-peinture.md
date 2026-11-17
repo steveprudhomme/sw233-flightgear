@@ -408,3 +408,42 @@ La condition `title != "AIR SPEED  /  MPH"` réserve les anneaux et vis peints a
 ## Bordure de l’altimètre en relief
 
 La boucle ne peint désormais les anneaux et fixations que pour VERTICAL SPEED. Altimètre et anémomètre utilisent leur géométrie ; inscriptions et cadrans restent inchangés. Voir les [pièces et essais](02-maillage.md#altimètre--pièces-et-vérification-du-relief).
+
+## J · Régler l'altimètre à la souris
+
+Essai VIS-01i du 16 novembre 2026 ; plan préalable `aff6ff6`. Paquet alt-bague-25 inchangé, FlightGear 2024.1.7, CYJN, FDM null. Le calage a été lu par l'interface de propriétés, mais **aucune valeur de calage n'a été écrite par le banc pendant ces gestes** : les changements proviennent de glissements de souris injectés dans la fenêtre native.
+
+### Le geste à apprendre
+
+1. Repère le bouton rond en bas à gauche du cadran.
+2. Place le pointeur sur sa face, maintiens le bouton gauche et fais glisser horizontalement vers la droite, puis relâche : le calage augmente.
+3. Repars du bouton et glisse vers la gauche pour diminuer.
+4. Vérifie le repère du bouton et les aiguilles. Ne confonds pas la petite rotation avec une absence d'effet : le pas relevé dans cet essai est de 0,01 inHg.
+
+L'essai de molette vers le haut n'a produit aucun changement. Un clic simple sans déplacement n'a pas été validé comme geste de réglage. Il faut documenter le geste efficace, pas promettre toutes les interactions possibles.
+
+| Vue et geste | Calage avant → après (inHg) | Indication après (ft) |
+|---|---|---:|
+| Face, molette vers le haut | 29,92 → 29,92 | 0 |
+| Face, glissement à droite | 29,92 → 29,93 | 9,084933 |
+| Face, glissement à gauche | 29,93 → 29,92 | 0 |
+| Biais, glissement à droite | 29,92 → 29,93 | 9,084933 |
+| Biais, glissement à gauche | 29,93 → 29,92 | 0 |
+
+Cette variation indique que la commande est reçue. La pression statique du banc null reste 29,92 inHg ; ce résultat ne valide pas une précision en vol. Le calage initial est restauré par le dernier glissement.
+
+### Images de contrôle
+
+![Face : augmentation](https://github.com/steveprudhomme/sw233-flightgear/releases/download/calage-26/drag-plus.jpg)
+
+![Face : diminution](https://github.com/steveprudhomme/sw233-flightgear/releases/download/calage-26/drag-moins.jpg)
+
+![Biais : augmentation](https://github.com/steveprudhomme/sw233-flightgear/releases/download/calage-26/biais-plus.jpg)
+
+![Biais : retour au calage initial](https://github.com/steveprudhomme/sw233-flightgear/releases/download/calage-26/biais-moins.jpg)
+
+### Reproduire les cadrages et comprendre les limites
+
+Vue rapprochée : inclinaison −25°, champ 24°, x caméra −0,22 m, y 0,5 m, z 1,7 m, azimut 0°. Pour le biais, x devient −0,30 m et azimut −5°. Les glissements testés parcouraient environ 63 pixels ; ce nombre décrit l'essai, pas une garantie de pas par pixel. Les coordonnées changent si la fenêtre ou la caméra change : viser la face visible du bouton.
+
+Les images proviennent de FlightGear ; les petits fichiers JSON joints à la publication consignent les valeurs après chaque geste. Le lot VIS-01i est clos pour la géométrie et cette interaction. Aucun code d'aéronef n'a changé : conserver le paquet alt-bague-25 et son aperçu. La fenêtre de pression non chiffrée reste une amélioration future ; toutes les positions possibles de caméra n'ont pas été testées.

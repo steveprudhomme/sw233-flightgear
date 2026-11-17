@@ -159,3 +159,5 @@ VIS-01i : géométrie et lectures natives réalisées, cinq altitudes et trois c
 ## VIS-01i — contrôle souris du calage
 
 Protocole préalable : lancer le dernier paquet en session dédiée FDM null ; relever calage et indication ; cadrer le bouton de face ; essayer les deux sens par souris et relever les deltas ; répéter de biais ; conserver captures et valeurs, restaurer le calage ; documenter les gestes réellement efficaces et toute limite. Corriger uniquement si une cause est identifiée, puis refaire les essais et synchroniser le tutoriel avant publication.
+
+VIS-01i clos : contrôle souris réussi de face et de biais par cliquer-glisser horizontal, dans les deux sens ; retour à 29,92 inHg. Molette testée sans effet. Preuves : fiche 6, section J, publication calage-26. Les mentions antérieures « clic à vérifier » décrivent désormais un état historique.
