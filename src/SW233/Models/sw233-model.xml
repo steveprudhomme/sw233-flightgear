@@ -227,4 +227,45 @@
     <ambient><red>0.94</red><green>0.92</green><blue>0.86</blue></ambient>
     <emission><red>0.4</red><green>0.39</green><blue>0.36</blue></emission>
   </animation>
+  <!-- Generic COM1 active readout: three decimals preserve 25 kHz steps. -->
+  <text>
+    <name>radio-frequence</name><type>number-value</type>
+    <property>instrumentation/comm[0]/frequencies/selected-mhz</property>
+    <format>%.3f</format><font>Helvetica.txf</font>
+    <character-size>0.0065</character-size>
+    <axis-alignment>yz-plane</axis-alignment><alignment>center-center</alignment>
+    <offsets><x-m>0.877</x-m><y-m>-0.141</y-m><z-m>0.199</z-m></offsets>
+  </text>
+  <animation>
+    <type>material</type><object-name>radio-frequence</object-name>
+    <diffuse><red>0.94</red><green>0.92</green><blue>0.86</blue></diffuse>
+    <ambient><red>0.94</red><green>0.92</green><blue>0.86</blue></ambient>
+    <emission><red>0.4</red><green>0.39</green><blue>0.36</blue></emission>
+  </animation>
+  <animation>
+    <type>pick</type><object-name>radio-bouton-gauche</object-name>
+    <action><button>0</button><repeatable>false</repeatable>
+      <binding><command>nasal</command><script>sw233_radio.tune(40);</script></binding>
+    </action>
+    <action><button>1</button><repeatable>false</repeatable>
+      <binding><command>nasal</command><script>sw233_radio.tune(-40);</script></binding>
+    </action>
+    <hovered><binding><command>set-tooltip</command>
+      <tooltip-id>sw233-radio-gauche</tooltip-id>
+      <label>COM1 1 MHz : clic gauche + / clic milieu -</label>
+    </binding></hovered>
+  </animation>
+  <animation>
+    <type>pick</type><object-name>radio-bouton-droit</object-name>
+    <action><button>0</button><repeatable>false</repeatable>
+      <binding><command>nasal</command><script>sw233_radio.tune(1);</script></binding>
+    </action>
+    <action><button>1</button><repeatable>false</repeatable>
+      <binding><command>nasal</command><script>sw233_radio.tune(-1);</script></binding>
+    </action>
+    <hovered><binding><command>set-tooltip</command>
+      <tooltip-id>sw233-radio-droit</tooltip-id>
+      <label>COM1 25 kHz : clic gauche + / clic milieu -</label>
+    </binding></hovered>
+  </animation>
 </PropertyList>

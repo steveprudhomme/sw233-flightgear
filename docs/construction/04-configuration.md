@@ -19,7 +19,7 @@ Commence par une seule racine PropertyList. Dans sim, la description est le titr
     <sim>
         <description>Schweizer SGS 2-33 — Cadets de l’aviation royale du Canada (prototype)</description>
         <author>Steve Prud'Homme et contributeurs SW233</author>
-        <long-description>Prototype libre du Schweizer SGS 2-33 pour FlightGear. Licence GPL-3.0-only. Aerateur central et bagues anemometre, altimetre et variometre en relief 3D fixe. Facade radio en relief fixe, ecran sans frequence. Calage altimetre lisible en inHg. Tableau noir affine, vis et supports de cartes textures. Cockpit raccorde, vitrage facette et contours de porte fixes ; commandes et masses configurables ; modele de vol experimental. Projet aux couleurs des Cadets de l'aviation royale du Canada : livree finale encore a realiser. Teste sous Windows avec FlightGear 2024.1.7 ; Linux non valide.</long-description>
+        <long-description>Prototype libre du Schweizer SGS 2-33 pour FlightGear. Licence GPL-3.0-only. Aerateur central et bagues anemometre, altimetre et variometre en relief 3D fixe. Radio COM1 generique : affichage actif, reglages 1 MHz et 25 kHz ; audio non valide. Calage altimetre lisible en inHg. Tableau noir affine, vis et supports de cartes textures. Cockpit raccorde, vitrage facette et contours de porte fixes ; commandes et masses configurables ; modele de vol experimental. Projet aux couleurs des Cadets de l'aviation royale du Canada : livree finale encore a realiser. Teste sous Windows avec FlightGear 2024.1.7 ; Linux non valide.</long-description>
         <aircraft-version>0.1.0-dev</aircraft-version>
         <minimum-fg-version>2024.1.7</minimum-fg-version>
         <flight-model>jsb</flight-model>
@@ -67,7 +67,7 @@ Ce chemin part du dossier SW233, pas du dossier Models. La liste sera écrite à
             <tag>unpowered</tag>
         </tags>
     </sim>
-    <nasal><sw233_load><file>Nasal/occupants.nas</file></sw233_load></nasal>
+    <nasal><sw233_load><file>Nasal/occupants.nas</file></sw233_load><sw233_radio><file>Nasal/radio.nas</file></sw233_radio></nasal>
 </PropertyList>
 ```
 
@@ -431,6 +431,47 @@ Ajoute ce dernier bloc avant la fermeture finale. Le bouton utilise *knob* et *s
     <ambient><red>0.94</red><green>0.92</green><blue>0.86</blue></ambient>
     <emission><red>0.4</red><green>0.39</green><blue>0.36</blue></emission>
   </animation>
+  <!-- Generic COM1 active readout: three decimals preserve 25 kHz steps. -->
+  <text>
+    <name>radio-frequence</name><type>number-value</type>
+    <property>instrumentation/comm[0]/frequencies/selected-mhz</property>
+    <format>%.3f</format><font>Helvetica.txf</font>
+    <character-size>0.0065</character-size>
+    <axis-alignment>yz-plane</axis-alignment><alignment>center-center</alignment>
+    <offsets><x-m>0.877</x-m><y-m>-0.141</y-m><z-m>0.199</z-m></offsets>
+  </text>
+  <animation>
+    <type>material</type><object-name>radio-frequence</object-name>
+    <diffuse><red>0.94</red><green>0.92</green><blue>0.86</blue></diffuse>
+    <ambient><red>0.94</red><green>0.92</green><blue>0.86</blue></ambient>
+    <emission><red>0.4</red><green>0.39</green><blue>0.36</blue></emission>
+  </animation>
+  <animation>
+    <type>pick</type><object-name>radio-bouton-gauche</object-name>
+    <action><button>0</button><repeatable>false</repeatable>
+      <binding><command>nasal</command><script>sw233_radio.tune(40);</script></binding>
+    </action>
+    <action><button>1</button><repeatable>false</repeatable>
+      <binding><command>nasal</command><script>sw233_radio.tune(-40);</script></binding>
+    </action>
+    <hovered><binding><command>set-tooltip</command>
+      <tooltip-id>sw233-radio-gauche</tooltip-id>
+      <label>COM1 1 MHz : clic gauche + / clic milieu -</label>
+    </binding></hovered>
+  </animation>
+  <animation>
+    <type>pick</type><object-name>radio-bouton-droit</object-name>
+    <action><button>0</button><repeatable>false</repeatable>
+      <binding><command>nasal</command><script>sw233_radio.tune(1);</script></binding>
+    </action>
+    <action><button>1</button><repeatable>false</repeatable>
+      <binding><command>nasal</command><script>sw233_radio.tune(-1);</script></binding>
+    </action>
+    <hovered><binding><command>set-tooltip</command>
+      <tooltip-id>sw233-radio-droit</tooltip-id>
+      <label>COM1 25 kHz : clic gauche + / clic milieu -</label>
+    </binding></hovered>
+  </animation>
 </PropertyList>
 ```
 
@@ -456,3 +497,43 @@ Dans le bloc XML complet de cette fiche, repère les deux nœuds `text` : `alt-p
 L'animation de matériau donne une couleur claire aux deux textes. Sans elle, le premier essai produisait des lettres presque noires. L'émission choisie facilite la lecture ; elle ne représente pas un éclairage réel documenté. Aucun script Nasal ni minuteur n'est nécessaire. Les douze animations précédentes, notamment celles du bouton et des aiguilles, sont conservées.
 
 Les valeurs 28 à 31 inHg sont les limites de notre commande existante ; elles ne prouvent pas la plage de l'instrument réel. Voir la [fabrication et les essais illustrés](06-peinture.md#l--fenêtre-de-calage-de-laltimètre).
+
+## Commandes COM1 génériques — VIS-01m
+
+Le module ci-dessous calcule le canal en nombres entiers. Il ne modifie aucune fréquence au chargement et refuse une valeur externe hors grille 25 kHz plutôt que de la corriger silencieusement. Les deux boutons appellent la même fonction avec ±40 canaux (1 MHz) ou ±1 canal (25 kHz).
+
+<!-- atelier-fichier: src/SW233/Nasal/radio.nas -->
+```nasal
+# SPDX-License-Identifier: GPL-3.0-only
+# Generic simulation controls, not a replica of an identified radio.
+var frequency = "/instrumentation/comm[0]/frequencies/selected-mhz";
+var status = "/sim/sw233/radio/message";
+var tune = func(channels) {
+    var f = getprop(frequency);
+    if (f == nil or !(f >= 118 and f <= 136.975)) {
+        setprop(status, "Refus : frequence hors plage 118.000-136.975 MHz");
+        return 0;
+    }
+    var index = math.floor((f-118)*40 + .5);
+    if (abs(f-(118+index/40)) > .000001) {
+        setprop(status, "Refus : canal hors grille 25 kHz ; utiliser le dialogue radio FlightGear");
+        return 0;
+    }
+    var next = math.max(0, math.min(759, index+channels));
+    setprop(frequency, 118+next/40);
+    setprop(status, next == index ? "Butee COM1" : "COM1 active reglee");
+    return 1;
+};
+```
+
+### Comprendre les crans et le branchement COM1
+
+Imagine une règle de 760 crans, numérotés de 0 à 759. Le cran 0 représente 118.000 MHz ; chaque cran ajoute 0,025 MHz. La formule `118 + index/40` donne la fréquence. Quarante crans font 1 MHz. Le calcul travaille avec le numéro entier du cran pour éviter d'accumuler des erreurs de nombres décimaux.
+
+La fonction `tune` refuse une valeur absente, hors plage ou éloignée de la grille de plus de 0,000001 MHz. Elle borne le nouveau numéro entre 0 et 759, puis écrit uniquement COM1 active. En fin de bande, elle s'arrête au lieu de revenir au début. Le chargement du module ne modifie aucune fréquence.
+
+Le texte `radio-frequence` du XML complet lit la même propriété avec le format `%.3f`. Il se situe à x = 0,877 m, soit 0,6 mm devant la pièce d'écran, centré à y = −0,141 m et z = 0,199 m. La taille des caractères, 6,5 mm, est un choix de lisibilité, pas une mesure réelle.
+
+Les animations `pick` appellent `sw233_radio.tune` : bouton de souris 0 pour augmenter, bouton 1 pour diminuer. Les essais natifs ont confirmé ici clic gauche et clic milieu. Chaque bouton de façade a une infobulle indiquant son pas. Le chargement `<sw233_radio>` dans `sw233-set.xml` rend le module disponible. Les boutons ne tournent pas visuellement : le nombre affiché confirme l'action.
+
+Voir les [sources et limites](../references/radio-com.md) et les [essais illustrés](06-peinture.md#n--régler-la-fréquence-com1).

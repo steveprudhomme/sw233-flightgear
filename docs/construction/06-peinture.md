@@ -120,7 +120,7 @@ Sur l’image C-FYLP, pointe le milieu des cartes vers (282,176), (413,181), (28
     # Original artwork: blank display, only clearly readable COM inscription.
     rp.rounded_rectangle((112,128,400,214),radius=9,fill="#0e1313",
                          outline="#717971",width=3)
-    rp.text((256,268),"COM",anchor="mm",fill="#e0ded0",
+    rp.text((256,268),"COM1 MHz",anchor="mm",fill="#e0ded0",
             font=ImageFont.load_default(size=32))
     radio.save(models/"radio.png")
     # Le compas en relief est dans le maillage : ne pas le repeindre ici.
@@ -707,3 +707,112 @@ Le résultat reste stylisé : profondeurs, teintes et emplacement exact des peti
 ![Ensemble du cockpit](https://github.com/steveprudhomme/sw233-flightgear/releases/download/radio-relief-29/cockpit.jpg)
 
 [Paquet et images complètes](https://github.com/steveprudhomme/sw233-flightgear/releases/tag/radio-relief-29) · [Réglages et contrôles de non-régression](https://github.com/steveprudhomme/sw233-flightgear/releases/download/radio-relief-29/releves.zip).
+
+## N · Régler la fréquence COM1
+
+### 1. Définir ce qui est reproduit
+
+Le plan a été commité avant les travaux (`7508264`). Les références ne permettent pas d'identifier avec certitude toute la radio de C-FYLP. Nous réalisons donc une commande générique de simulation : affichage actif et réglages grossier/fin. Les [sources et limites](../references/radio-com.md) distinguent les exemples FlightGear des hypothèses sur la radio réelle.
+
+Le nombre visible doit être celui de COM1 active dans FlightGear. Un clic doit modifier cette même propriété, pas une copie réservée à l'affichage. La section M décrit l'ancien lot visuel avec écran vide ; ce lot le rend réglable.
+
+### 2. Assembler le fonctionnement
+
+1. Recopie le fichier `src/SW233/Nasal/radio.nas` fourni dans la fiche 4. Sa fonction `tune` reçoit un nombre de crans et calcule la nouvelle fréquence.
+2. Ajoute son chargement sous `<nasal>` dans `sw233-set.xml`. Le bloc complet de la fiche 4 est déjà synchronisé. Sans ce chargement, le clic ne trouverait pas `sw233_radio.tune`.
+3. Dans `sw233-model.xml`, ajoute le texte `radio-frequence`, lié à `instrumentation/comm[0]/frequencies/selected-mhz`. Utilise trois décimales pour distinguer 118.300 de 118.325. Le bloc complet est également dans la fiche 4.
+4. Relie les pièces par deux animations `pick`. Celle de gauche appelle ±40 crans, celle de droite ±1 cran. Un cran vaut 0,025 MHz. Les quatre actions sont dans le XML à recopier.
+5. Dans la recette de texture de cette fiche, le libellé devient COM1 MHz. Cette inscription est une aide de notre simulation, pas un marquage attesté de l'appareil réel.
+6. Reconstruis le paquet. Le maillage est inchangé : ses boutons deviennent manipulables grâce au XML et au module Nasal.
+
+### 3. Utiliser les boutons
+
+| Pièce de la radio | Clic gauche de la souris | Clic milieu de la souris |
+|---|---|---|
+| Petit bouton de gauche | +1 MHz | −1 MHz |
+| Gros bouton de droite | +25 kHz | −25 kHz |
+
+Le clic milieu est généralement l'appui sur la roulette, pas sa rotation. Le clic droit, le glissement et la rotation de molette ne sont pas les gestes de ce lot. Sans clic milieu disponible, utiliser le dialogue radio de FlightGear pour diminuer la fréquence. Les infobulles rappellent le pas et les gestes. Les boutons ne tournent pas encore ; l'affichage confirme la modification.
+
+La commande accepte 118.000 à 136.975 MHz sur grille 25 kHz. Une action trop grande s'arrête à la limite. Une valeur extérieure sur une autre grille reste visible, mais nos boutons la laissent intacte. Pour reprendre le réglage, choisir une valeur de la grille 25 kHz dans le dialogue radio de FlightGear. Le diagnostic de développement se trouve dans `/sim/sw233/radio/message`.
+
+### 4. Reproduire le banc
+
+Place-toi à la racine du dépôt, où se trouve README.md. Utilise des dossiers de sortie neufs. Les prérequis Python/Pillow, FlightGear et terrain CYJN sont décrits dans la fiche d'installation.
+
+```powershell
+# Vérifier la reconstruction et fabriquer un paquet.
+python tools/check_workbook.py build/atelier-com1
+python tools/package.py --output build/radio-com1
+# Adapter les chemins locaux ; garder une session de test FDM null.
+& "C:/Program Files/FlightGear 2024.1/bin/fgfs.exe" --fg-root="C:/Users/steve/FlightGear/Downloads/fgdata_2024_1" --fg-aircraft="$PWD/build/radio-com1/Aircraft" --fg-scenery="C:/Users/steve/FlightGear/Downloads/TerraSync" --aircraft=sw233 --airport=CYJN --in-air --altitude=5000 --heading=10 --fdm=null --httpd=18117 --read-only --ignore-autosave --enable-clock-freeze --start-date-gmt=2026:06:21:16:45:00 --geometry=1280x720 --disable-real-weather-fetch --disable-terrasync
+```
+
+Attends le chargement du cockpit et laisse la fenêtre visible. Dans un deuxième terminal à la racine du dépôt :
+
+```powershell
+# Ce banc impose des entrées, appelle la fonction Nasal et relève les résultats.
+python tools/radio_tuning_bench.py build/com1-essais --port 18117
+```
+
+Le banc vérifie la session SW233/FDM null, sauvegarde les fréquences et la caméra, puis exécute les cas ci-dessous. Il contrôle que COM1 en attente et COM2 active ne changent pas, puis restaure les valeurs mémorisées. `results.json` conserve les attentes et les lectures. Il n'y a pas de reconnaissance automatique des caractères : ouvre les images pour vérifier aussi ce qui est affiché.
+
+### 5. Lire les résultats natifs
+
+Les treize cas suivants ont réussi dans FlightGear 2024.1.7 ; leurs affichages ont été examinés.
+
+| Départ MHz | Action | Résultat MHz |
+|---:|---|---:|
+| 118.300 | +25 kHz | 118.325 |
+| 118.325 | −25 kHz | 118.300 |
+| 118.975 | +25 kHz | 119.000 |
+| 119.000 | −25 kHz | 118.975 |
+| 123.450 | +1 MHz | 124.450 |
+| 124.450 | −1 MHz | 123.450 |
+| 118.000 | −25 kHz | 118.000, butée |
+| 136.975 | +25 kHz | 136.975, butée |
+| 118.025 | −1 MHz | 118.000, limite atteinte |
+| 136.950 | +1 MHz | 136.975, limite atteinte |
+| 125.125 | Valeur externe, zéro cran | 125.125 |
+| 118.005 | +25 kHz demandé | Refus, valeur conservée |
+| 117.000 | +25 kHz demandé | Refus, valeur conservée |
+
+Les deux dernières valeurs sont imposées volontairement pour vérifier le refus. Elles ne prouvent pas la prise en charge d'une autre grille ou d'une fréquence hors plage. L'écran montre la propriété telle quelle, même en cas de refus.
+
+![Treize lectures — recadrages des captures natives](https://github.com/steveprudhomme/sw233-flightgear/releases/download/radio-com-30/lectures.jpg)
+
+![Affichage natif à 118.325 MHz](https://github.com/steveprudhomme/sw233-flightgear/releases/download/radio-com-30/fine-plus.jpg)
+
+### 6. Vérifier les vrais clics
+
+Appeler une fonction ne prouve pas que le clic atteint la bonne pièce. Huit clics ont donc été testés dans la fenêtre native, sans écrire la fréquence par le banc pendant ces gestes.
+
+Dans chacune des deux vues, partir de 118.300 : bouton droit → 118.325 → 118.300 ; bouton gauche → 119.300 → 118.300. Les quatre cycles ont réussi. Le dernier clic restaure la fréquence initiale. Les fichiers JSON joints sont des lectures après geste.
+
+Caméra de face : x = −0,141 m, y = 0,5 m, z = 1,7 m, inclinaison −18°, azimut 0°, champ 20°. De biais : x = −0,221 m, azimut −5°. Vise toujours la pièce visible ; les coordonnées de pixels changent avec la caméra.
+
+![Souris : face-fin-plus](https://github.com/steveprudhomme/sw233-flightgear/releases/download/radio-com-30/souris-face-fin-plus.jpg)
+
+![Souris : face-fin-moins](https://github.com/steveprudhomme/sw233-flightgear/releases/download/radio-com-30/souris-face-fin-moins.jpg)
+
+![Souris : face-gros-plus](https://github.com/steveprudhomme/sw233-flightgear/releases/download/radio-com-30/souris-face-gros-plus.jpg)
+
+![Souris : face-gros-moins](https://github.com/steveprudhomme/sw233-flightgear/releases/download/radio-com-30/souris-face-gros-moins.jpg)
+
+![Souris : biais-fin-plus](https://github.com/steveprudhomme/sw233-flightgear/releases/download/radio-com-30/souris-biais-fin-plus.jpg)
+
+![Souris : biais-fin-moins](https://github.com/steveprudhomme/sw233-flightgear/releases/download/radio-com-30/souris-biais-fin-moins.jpg)
+
+![Souris : biais-gros-plus](https://github.com/steveprudhomme/sw233-flightgear/releases/download/radio-com-30/souris-biais-gros-plus.jpg)
+
+![Souris : biais-gros-moins](https://github.com/steveprudhomme/sw233-flightgear/releases/download/radio-com-30/souris-biais-gros-moins.jpg)
+
+### 7. Reconnaître les limites
+
+COM1 active est réglable. La façade n'ajoute ni mémoire ni bouton d'échange avec la fréquence en attente. La grille 8,33 kHz, le volume, la mise sous tension, l'écoute ATIS, FGCom et les communications réseau restent non validés. La pastille rouge est décorative, pas un témoin d'émission. Le réglage est fonctionnel ; ce n'est pas encore une radio complète.
+
+La reconstruction du tutoriel, le contrôle des sources, le style Python et le manifeste du paquet sont vérifiés avant publication. Le maillage et les treize animations précédentes sont préservés. La commande générique facilite le prototype mais sa fidélité au modèle réel n'est pas démontrée ; ce compromis reste explicite.
+
+![Cockpit avec COM1](https://github.com/steveprudhomme/sw233-flightgear/releases/download/radio-com-30/cockpit.jpg)
+
+[Paquet et captures](https://github.com/steveprudhomme/sw233-flightgear/releases/tag/radio-com-30) · [Résultats et relevés](https://github.com/steveprudhomme/sw233-flightgear/releases/download/radio-com-30/releves.zip).

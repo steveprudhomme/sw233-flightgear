@@ -74,7 +74,7 @@ def finish_panel(models: Path):
     # Original artwork: blank display, only clearly readable COM inscription.
     rp.rounded_rectangle((112,128,400,214),radius=9,fill="#0e1313",
                          outline="#717971",width=3)
-    rp.text((256,268),"COM",anchor="mm",fill="#e0ded0",
+    rp.text((256,268),"COM1 MHz",anchor="mm",fill="#e0ded0",
             font=ImageFont.load_default(size=32))
     radio.save(models/"radio.png")
     # Le compas en relief est dans le maillage : ne pas le repeindre ici.

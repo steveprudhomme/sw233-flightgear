@@ -148,4 +148,6 @@ La [fiche 16](docs/construction/16-proportions.md) quantifie trois écarts au tr
 
 [Fenêtre de calage : lire la pression et régler le bouton](docs/construction/06-peinture.md#l--fenêtre-de-calage-de-laltimètre). Affichage fonctionnel simplifié en inHg, vérifié de face et de biais. [Paquet calage-fenetre-28](https://github.com/steveprudhomme/sw233-flightgear/releases/tag/calage-fenetre-28).
 
-[Radio en relief : pièces, texture et comparaisons natives](docs/construction/06-peinture.md#m--façade-de-radio-en-relief). Façade visuelle uniquement : boutons fixes et écran sans fréquence. [Paquet radio-relief-29](https://github.com/steveprudhomme/sw233-flightgear/releases/tag/radio-relief-29).
+[Radio en relief : pièces, texture et comparaisons natives](docs/construction/06-peinture.md#m--façade-de-radio-en-relief). Ce premier lot était visuel uniquement ; le réglage COM1 est ajouté dans radio-com-30 ci-dessous. [Paquet radio-relief-29](https://github.com/steveprudhomme/sw233-flightgear/releases/tag/radio-relief-29).
+
+[Radio COM1 réglable : gestes, limites et essais](docs/construction/06-peinture.md#n--régler-la-fréquence-com1). Petit bouton : 1 MHz ; gros bouton : 25 kHz. Clic gauche pour augmenter, clic milieu pour diminuer. Commande générique sur grille 25 kHz ; audio et réseau non validés. [Paquet radio-com-30](https://github.com/steveprudhomme/sw233-flightgear/releases/tag/radio-com-30).

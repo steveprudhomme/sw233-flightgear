@@ -182,6 +182,8 @@ VIS-01l terminé : huit pièces, texture originale et quatre vues natives compar
 
 Suite radio à planifier : identifier les commandes sur une référence lisible, définir les fonctions prises en charge dans FlightGear, relier affichage et boutons puis vérifier les fréquences et les limites. Critère futur : valeur affichée cohérente avec la propriété active, sans fonction ou marquage supposé.
 
-## VIS-01m — réglage radio COM fonctionnel (en cours)
+## VIS-01m — réglage radio COM fonctionnel (terminé)
 
 Plan préalable : examiner les références et exemples FlightGear ; identifier le modèle réel si les preuves le permettent, sinon annoncer une commande générique ; relier l'écran à la fréquence COM1 active ; définir et documenter pas, plage et actions des deux boutons ; préserver les canaux valides aux limites ; tester valeurs, changements externes et souris de face/biais ; documenter avec captures natives et recettes reproductibles ; actualiser MD, description, aperçu et paquet. Critère : affichage et propriété active concordants, boutons efficaces dans les deux sens et limites vérifiées. Aucune réception audio, émission réseau ou fidélité à une radio réelle ne sera revendiquée sans essai correspondant.
+
+VIS-01m terminé : COM1 active à trois décimales, commandes ±1 MHz / ±25 kHz, butées et refus hors grille ; treize cas natifs et huit clics vérifiés, fréquences restaurées. [Tutoriel illustré](docs/construction/06-peinture.md#n--régler-la-fréquence-com1). Identification réelle, alimentation, audio, mémoires et éventuel support 8,33 kHz restent à définir dans des lots séparés.

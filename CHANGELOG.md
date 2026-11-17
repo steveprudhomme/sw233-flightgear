@@ -4,6 +4,8 @@
 
 ### Changements
 
+- VIS-01m : affichage COM1 actif et commandes génériques 1 MHz / 25 kHz ; butées, refus hors grille, treize cas natifs et huit clics validés. Tutoriel illustré et paquet actualisés. Audio, réseau et grille 8,33 kHz non validés.
+
 - VIS-01l : radio en relief, huit pièces et texture originale ; dessin plat remplacé, boutons et écran fixes. Quatre vues natives comparées, tutoriel illustré par pièce, recettes et aperçu actualisés. Dimensions estimées ; fonctions radio non implémentées.
 
 - VIS-01k : fenêtre de calage lisible en inHg, liée au bouton ; seize affichages et quatre glissements vérifiés dans FlightGear. Tutoriel illustré et recettes synchronisés, description et aperçu actualisés. Affichage simplifié ; mécanisme réel non attesté.
