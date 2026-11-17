@@ -16,7 +16,7 @@ Prototype de simulation sous GPL-3.0-only, non certifié pour l’instruction r�
 | Checklists | FR/EN, accents, initiales rouges, souris et format 1024 × 600 | Ctrl+L physiquement confirmé ouvert ; essai fermé encore à préciser |
 | Extérieur | Livrée jaune/bleu C-FYLP provisoire, spoilers et ficelle animés | Formes et peinture à reprendre (VIS-05) ; identité/date des nouvelles photos à compléter |
 | Occupants | Deux personnages détaillés bleu/vert, noms, harnais et visibilité liée aux masses | Proportions artistiques ; insignes officiels et animations non validés |
-| Validation | Essais natifs Windows à CYJN, 62 tests depuis le lot43, reconstruction du tutoriel | Polaire réelle, Linux et relecture autonome du tutoriel non validés |
+| Validation | Essais natifs Windows à CYJN, 63 tests depuis la première préversion SemVer, reconstruction du tutoriel | Polaire réelle, Linux et relecture autonome du tutoriel non validés |
 
 Statuts : **en cours** = lot commencé ; **prévu** = travail accepté à réaliser ; **attend une référence** = détail non confirmé ; **terminé** = preuve publiée. Les anciens protocoles sont dans l’[archive du 17 novembre](docs/planification/archive-roadmap-2026-11-17.md), et ne constituent plus une deuxième liste active.
 
@@ -226,6 +226,15 @@ livré. Aucun critère n'est coché sur la seule base d'une génération de fich
 - VIS-01t : souris, correction 1024 × 600, tutoriel et paquet [checklists-usage-37](https://github.com/steveprudhomme/sw233-flightgear/releases/tag/checklists-usage-37) ; complément clavier indiqué plus haut.
 - Profondeur AUD-01b, occupants AUD-01c, paquet AUD-02a et sélecteur AUD-02b : [archive et preuves](docs/planification/archive-roadmap-2026-11-17.md).
 - Vol filmé à CYJN : [validation](docs/validation.md). Les essais d’affichage ne valident pas la physique du vol.
+
+## DOC-01 — Règles de rédaction accessibles
+
+Cette règle s'applique à toute nouvelle documentation et aux passages révisés.
+
+- [ ] **DOC-01a** Conserver le kit, vérifier ses liens et télécharger les 14 ressources ; relever leur version, leur statut et leur empreinte.
+- [ ] **DOC-01b** Écrire le guide de rédaction : WCAG 2.2 et 3.1.5, CAN-ASC-3.1:2025, repères scolaires du Québec et Simple French ; distinguer exigences et choix du projet.
+- [ ] **DOC-01c** Relier le guide aux consignes des contributeurs et des agents ; fournir une grille de relecture et un exemple de tâche.
+- [ ] **DOC-01d** Faire essayer un prochain tutoriel à un lecteur débutant ; noter les obstacles et les corrections. Ne pas déclarer une conformité globale sans audit.
 
 ## Suivi et contributions
 
