@@ -41,6 +41,15 @@ Responsable : mainteneur, avec revue visuelle utilisateur. Ordre : références 
 | [ ] **VIS-05k — cockpit et occupants** | Revoir volumes vus à travers la nouvelle verrière, sièges, tableau, posture, mains, formes du visage et plis des tenues ; compléter références intérieures | Captures avant/arrière/extérieures ; pas de traversées, noms lisibles ; personnages et badges artistiques identifiés |
 | [ ] **VIS-05l — validation et tutoriel** | Pour chaque pièce : image de référence locale, relevé expliqué dès 10 ans, recette exacte, planche de pièce et capture native avant/après ; vérifier LOD, animations, performances et paquet ; mettre à jour aperçu, vidéo, MD et GitHub | Tests et reconstruction réussis **et** revue de ressemblance avec l’utilisateur ; résultat visuel accepté explicitement avant clôture |
 
+### VIS-05a — séance de relevés avant toute reconstruction
+
+- [ ] **A41-01** Choisir EXT-02 comme profil oblique de travail, EXT-03 pour le bombé et DET-03/05 pour la séparation mobile ; garder identités et limites photographiques.
+- [ ] **A41-02** Enregistrer points et contours en pixels sur les originaux, incertitude de pointage et rapports sans unité ; produire une fiche reproductible nez/coque/verrière sans conversion arbitraire en mètres.
+- [ ] **A41-03** Extraire les limites des pièces du modèle actuel et identifier fixe/mobile/candidat à découper ; ne pas fixer la charnière sans preuve.
+- [ ] **A41-04** Capturer six vues générales et des gros plans natifs dans une séance FlightGear isolée ; enregistrer caméra, éclairage et version, comparer qualitativement aux références sans prétendre à une calibration photogrammétrique.
+- [ ] **A41-05** Écrire un atelier pour débutant avec images, calculs simples, écarts observés et données manquantes ; vérifier liens, rapports et intégrité des originaux.
+- [ ] **A41-06** Publier les relevés, captures et documentation ; actualiser MD et GitHub. Aucun changement de forme ni du FDM dans cette séance.
+
 ### Complément lot02 — détails et ouverture au sol
 
 [Analyse détaillée](docs/references/analyse-details-lot-02.md) · [Manifeste des onze fichiers](docs/references/details-lot-02.json). Six images nouvelles, quatre reprises du lot01 et une copie du presse-papiers, vérifiées par empreintes. Les originaux sont conservés localement. Ces sous-tâches précisent les étapes ci-dessus, sans les déclarer réalisées.
