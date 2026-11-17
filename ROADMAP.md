@@ -344,3 +344,5 @@ automatisé, qui n'avait pas permis de conclure.
 - [ ] Synchroniser les recettes, adapter le banc de vérification, tester la reconstruction ; mettre à jour les MD et publier sources, images et paquet sur GitHub.
 
 Critère : les textes français restent accentués dans les sources et sont lisibles dans les fenêtres testées, sans séquence de caractères déformés. Les limites de version et de police restent explicites ; aucun rendu non testé ne sera annoncé comme validé.
+
+Sous-étapes techniques VIS-01s : intégrer un texte Canvas UTF-8 dans le dialogue local nommé `checklist`, conserver les quatre boutons de mots-checks et les accès existants, puis vérifier que le remplacement reste limité à la session SW233.
