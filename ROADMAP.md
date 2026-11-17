@@ -229,3 +229,14 @@ VIS-01o terminé : bande lissée, rose réduite de 334 à 72 faces, 71 autres ob
 - [ ] Documenter pour un enfant de 10 ans : textes, textures, interrupteur de langue, essais et dépannage illustrés ; synchroniser les recettes et MD, vérifier le paquet puis publier sur GitHub.
 
 Critères : plaquettes et checklists utilisent la même langue sans redémarrer ; textes non tronqués en gros plan, touches de pilotage conservées, aucun changement du FDM. Le choix concerne SW233 uniquement, pas la langue générale de FlightGear. Les traductions et rappels de simulation ne sont pas des procédures réelles approuvées.
+
+### Complément VIS-01p — moyens mnémotechniques des Cadets
+
+- [ ] Relever les mots et leur ordre dans les IEA du 2-33, avec édition et pages ; le manuel général 242 renvoie aux IEA et ne fournit pas ces listes.
+- [ ] Confirmer séparément les mots français enseignés : ne pas présenter une traduction libre comme un acronyme officiel.
+- [ ] Restaurer tous les éléments des séquences attestées ; ne pas supprimer des mots pour les faire entrer sur une plaquette.
+- [ ] Dessiner en rouge sombre la première lettre de chaque élément mnémotechnique ; conserver les titres et le reste du texte en noir, ainsi que les accents.
+- [ ] Adapter la taille et l'espacement au nombre de lignes ; vérifier la lisibilité des deux langues dans les textures puis dans FlightGear.
+- [ ] Illustrer et expliquer dans le tutoriel la distinction entre source, traduction à confirmer et rappel de simulation ; synchroniser la recette.
+
+Critère complémentaire : mots, ordre et initiales correspondent à une source identifiée par langue. Le rouge est une aide visuelle du projet, pas une couleur attribuée sans preuve aux plaquettes réelles. La validation française reste ouverte jusqu'à réception d'une référence probante.
