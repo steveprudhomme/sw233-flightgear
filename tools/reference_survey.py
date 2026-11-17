@@ -92,7 +92,7 @@ def generate(output):
     <image href="{image}" width="2048" height="1364"/>{content}</svg>
     <table border="1"><tr><th>Point</th><th>Repère</th><th>u,v</th><th>Lecture</th></tr>
     {rows}</table>
-    <p>Photo locale inchangée ; auteurs et date non établis. 
+    <p>Photo locale inchangée ; auteurs et date non établis.
     Les chiffres ne sont pas des mètres.</p>"""
     (output / "index.html").write_text(page, encoding="utf-8")
     print(json.dumps(ratios, ensure_ascii=False))
