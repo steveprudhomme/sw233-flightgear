@@ -217,3 +217,15 @@ VIS-01n terminé : boîtier arrondi, joint et vis en relief ; 18 lectures native
 Critère : caractères plus nets sans inversion, décalage ni rupture au raccord ; lectures centrales préservées dans les vues testées. Aucune typographie constructeur ni fidélité photographique complète revendiquée.
 
 VIS-01o terminé : bande lissée, rose réduite de 334 à 72 faces, 71 autres objets et cinq textures conservés. Quarante-huit lectures statiques examinées, vues pilote sous deux éclairages ; 24 tests et reconstruction vérifiés. [Tutoriel pour débutant](docs/construction/06-peinture.md#p--des-lettres-plus-nettes-pour-le-compas), avec exercice en papier, calculs et captures. Typographie et luminosité estimées ; validation pédagogique autonome encore attendue.
+
+## VIS-01p — plaquettes et checklists FR / EN (en cours)
+
+- [ ] Comparer les inscriptions photographiées et les rappels actuels ; distinguer reproduction, traduction du projet et procédures adaptées à la simulation.
+- [ ] Créer des textes français et anglais correspondants ; vérifier les unités et conserver les limites explicites du prototype.
+- [ ] Créer deux jeux de plaquettes originaux sélectionnés par une propriété de langue unique, sans modifier les instruments.
+- [ ] Ajouter au menu SW233 le choix Français / English et l’accès aux checklists ; choisir un raccourci sans conflit dans la configuration installée.
+- [ ] Actualiser les checklists natives lors du changement, y compris si leur fenêtre est ouverte ; définir l’état initial et le comportement des coches.
+- [ ] Tester dans FlightGear les deux langues, le menu, le raccourci, les bascules répétées et les quatre checklists ; conserver captures et relevés.
+- [ ] Documenter pour un enfant de 10 ans : textes, textures, interrupteur de langue, essais et dépannage illustrés ; synchroniser les recettes et MD, vérifier le paquet puis publier sur GitHub.
+
+Critères : plaquettes et checklists utilisent la même langue sans redémarrer ; textes non tronqués en gros plan, touches de pilotage conservées, aucun changement du FDM. Le choix concerne SW233 uniquement, pas la langue générale de FlightGear. Les traductions et rappels de simulation ne sont pas des procédures réelles approuvées.
