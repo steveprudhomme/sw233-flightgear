@@ -7,7 +7,7 @@ import xml.etree.ElementTree as ET
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-TEXT_SUFFIXES = {".xml", ".ac", ".md", ".py", ".yml", ".toml", ".txt"}
+TEXT_SUFFIXES = {".xml", ".eff", ".ac", ".md", ".py", ".yml", ".toml", ".txt"}
 
 
 def git(*args):
@@ -26,7 +26,7 @@ def check_sources():
                 errors.append(f"Missing final newline: {relative}")
             if any(line.rstrip() != line for line in text.splitlines()):
                 errors.append(f"Trailing whitespace: {relative}")
-        if path.suffix == ".xml":
+        if path.suffix in {".xml", ".eff"}:
             ET.parse(path)
             if "TODO_" in path.read_text(encoding="utf-8"):
                 errors.append(f"Unresolved numeric placeholder: {relative}")

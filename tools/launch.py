@@ -17,14 +17,59 @@ def required(root, relative):
     return target
 
 
+def validate_model_resources(root, model):
+    """Follow aircraft-local model, texture and effect dependencies once each."""
+    air = (root / 'Aircraft/SW233').resolve()
+    visited = set()
+
+    def local(owner, reference):
+        reference = reference.strip().replace('\\', '/')
+        target = ((root / reference) if reference.startswith('Aircraft/')
+                  else (owner.parent / reference)).resolve()
+        if not target.is_relative_to(air) or not target.is_file():
+            raise ValueError(f'Fichier absent ou chemin invalide : {reference}')
+        return target
+
+    def visit(path):
+        path = path.resolve()
+        if path in visited:
+            return
+        visited.add(path)
+        if path.suffix.lower() == '.ac':
+            for texture in re.findall(r'^\s*texture "([^"\n]+)"',
+                                      path.read_text(encoding='utf-8'), re.M):
+                local(path, texture)
+            return
+        if path.suffix.lower() not in {'.xml', '.eff'}:
+            return
+        tree = ET.parse(path)
+        for node in tree.findall('./path') + tree.findall('.//model/path'):
+            if node.text and node.text.strip():
+                visit(local(path, node.text))
+        for node in tree.findall('.//inherits-from'):
+            reference = (node.text or '').strip().replace('\\', '/')
+            # FlightGear's built-in effects are resolved from fgdata at runtime.
+            if reference.startswith('Effects/') and '..' not in reference.split('/'):
+                continue
+            if not reference.endswith('.eff'):
+                reference += '.eff'
+            visit(local(path, reference))
+        for node in tree.findall('.//texture/image') + tree.findall('.//texture/images/*'):
+            if node.text and node.text.strip():
+                local(path, node.text)
+
+    model = model.resolve()
+    if not model.is_relative_to(air) or not model.is_file():
+        raise ValueError(f'Fichier absent ou chemin invalide : {model}')
+    visit(model)
+
+
 def validate_resources(root):
     air = root / 'Aircraft/SW233'
     config = ET.parse(required(air, 'sw233-set.xml'))
     required(air, config.findtext('sim/aero') + '.xml')
     model = required(root, config.findtext('sim/model/path'))
-    mesh = required(model.parent, ET.parse(model).findtext('path'))
-    for texture in re.findall(r'^texture "([^"\n]+)"', mesh.read_text(), re.M):
-        required(mesh.parent, texture)
+    validate_model_resources(root, model)
     required(air, config.find('sim/checklists').attrib['include'])
     for node in config.findall('sim/sw233/translations/*'):
         required(air, node.attrib['include'])
