@@ -293,3 +293,17 @@ objets et sept textures conservés. 25 tests et reconstruction réussis.
 Positions estimées ; rapprochement de la vue nécessaire pour lire les petits
 caractères. La vérification complète des fenêtres de checklists du lot VIS-01p
 et les urgences planifiées restent des travaux distincts.
+
+
+## VIS-01r — recette des checklists bilingues (en cours)
+
+- [ ] Relever la version FlightGear et les paramètres de la session de test ; vérifier les fichiers sources et le comportement du dialogue natif.
+- [ ] Contrôler les quatre listes FR/EN : titres, ordre, 8/4/7/5 rubriques, valeurs et absence de texte mélangé ou tronqué.
+- [ ] Ouvrir une liste autre que la première puis changer la langue : vérifier que la fenêtre reste ouverte et revient à la première liste, comme prévu par le script.
+- [ ] Tester les commandes du menu et la liaison Ctrl+L ; distinguer l'essai du script de l'essai clavier physique déjà confirmé par l'utilisateur.
+- [ ] Répéter les bascules fenêtre ouverte/fermée ; vérifier les langues invalides, l'état de sélection et la conservation des commandes de vol.
+- [ ] Corriger les défauts révélés, si nécessaire, puis refaire les cas concernés ; conserver captures natives et relevés reproductibles.
+- [ ] Ajouter au tutoriel pour débutant les étapes pour ouvrir, lire, changer de liste et de langue ; expliquer le retour à la première liste et les limites de simulation avec images.
+- [ ] Actualiser MD, tests et GitHub ; clore uniquement les vérifications étayées par les preuves.
+
+Critère : huit listes conformes aux sources du projet, changements cohérents sans liste vide ni doublon, fenêtre réouverte correctement, aucune commande de pilotage modifiée. Le clavier physique ne sera pas déclaré retesté si l'outil ne transmet pas l'événement.
