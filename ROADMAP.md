@@ -174,6 +174,10 @@ Plan préalable : examiner la photo C-FYLP et les exemples XML locaux FlightGear
 
 VIS-01k terminé : affichage direct en inHg à deux décimales ; huit valeurs sous deux vues, quatre glissements et retour à 29,92 vérifiés. [Tutoriel illustré](docs/construction/06-peinture.md#l--fenêtre-de-calage-de-laltimètre). Fenêtre horizontale simplifiée, dimensions estimées ; mécanisme et unité du véritable instrument C-FYLP à confirmer par une référence lisible.
 
-## VIS-01l — façade de radio en relief (en cours)
+## VIS-01l — façade de radio en relief (terminé)
 
 Plan préalable : comparer la photo C-FYLP à la façade peinte ; conserver le centre et l'encombrement de maquette pour dégager l'altimètre ; construire contour, façade, écran et boutons fixes avec profondeurs estimées ; créer une texture originale sans fréquence fictive ni inscription illisible ; retirer le dessin plat en double ; illustrer les pièces et synchroniser les recettes ; contrôler face/biais et voisinage dans FlightGear ; actualiser tutoriel, MD, aperçu et paquet. Critère : relief visible, séparation conservée avec l'altimètre et les cartes, reconstruction vérifiée. Les commandes et fréquences radio fonctionnelles feront l'objet d'un lot ultérieur.
+
+VIS-01l terminé : huit pièces, texture originale et quatre vues natives comparées ; 62 objets antérieurs préservés, dégagement de maquette d’environ 5 mm avec la bague d’altimètre. [Tutoriel illustré](docs/construction/06-peinture.md#m--façade-de-radio-en-relief), description et aperçu actualisés. Radio non fonctionnelle, dimensions estimées.
+
+Suite radio à planifier : identifier les commandes sur une référence lisible, définir les fonctions prises en charge dans FlightGear, relier affichage et boutons puis vérifier les fréquences et les limites. Critère futur : valeur affichée cohérente avec la propriété active, sans fonction ou marquage supposé.

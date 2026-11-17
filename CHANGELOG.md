@@ -4,6 +4,8 @@
 
 ### Changements
 
+- VIS-01l : radio en relief, huit pièces et texture originale ; dessin plat remplacé, boutons et écran fixes. Quatre vues natives comparées, tutoriel illustré par pièce, recettes et aperçu actualisés. Dimensions estimées ; fonctions radio non implémentées.
+
 - VIS-01k : fenêtre de calage lisible en inHg, liée au bouton ; seize affichages et quatre glissements vérifiés dans FlightGear. Tutoriel illustré et recettes synchronisés, description et aperçu actualisés. Affichage simplifié ; mécanisme réel non attesté.
 
 - VIS-01j : bague et quatre fixations du variomètre en relief, doublons peints retirés ; sept indications vérifiées de face et de biais dans FlightGear 2024.1.7. Recettes synchronisées, pièces et essais illustrés, description et aperçu actualisés. Profondeurs estimées ; validation visuelle statique uniquement.

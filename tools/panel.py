@@ -67,17 +67,16 @@ def finish_panel(models: Path):
     card(.078, .190, "PRE-LANDING", ["SPOILERS", "WIND", "AIRSPEED", "TRAFFIC"])
     card(-.079, .077, "PRE RELEASE", ["AREA", "ALTITUDE", "POSITION", "TRAFFIC"])
     card(.078, .070, "PRE STALL", ["ALTITUDE", "STRAPS", "CANOPY", "TRAFFIC"])
-    # Face radio et deux boutons. Aucun chiffre de fréquence fictif.
-    ry, rz = -.141, .189
-    for rr, tone in [(.031,"#171717"),(.029,"#686866"),(.027,"#323536")]:
-        disc(ry,rz,rr,tone)
-    x, v = xy(ry,rz)
-    pen.rounded_rectangle((x-29,v-18,x+29,v-3), radius=3, fill="#71766a")
-    label(ry,rz-.009,"COM",12)
-    for dy in (-.014,.014):
-        disc(ry+dy,rz-.018,.006,"#101214")
-        disc(ry+dy-.001,rz-.017,.004,"#414441")
-    label(ry+.010,rz-.038,"RADIO",11)
+    # The radio now has its own textured face and fixed 3D controls.
+    label(-.131,.151,"RADIO",11)
+    radio = Image.new("RGB",(512,512),"#292e2d")
+    rp = ImageDraw.Draw(radio)
+    # Original artwork: blank display, only clearly readable COM inscription.
+    rp.rounded_rectangle((112,128,400,214),radius=9,fill="#0e1313",
+                         outline="#717971",width=3)
+    rp.text((256,268),"COM",anchor="mm",fill="#e0ded0",
+            font=ImageFont.load_default(size=32))
+    radio.save(models/"radio.png")
     # Le compas en relief est dans le maillage : ne pas le repeindre ici.
     label(0,.014,"LARGAGE",14)
     # Read the needle's actual knot/degree table. Never maintain two scales.
@@ -160,6 +159,7 @@ def finish_panel(models: Path):
         ("tableau","panel.png",-.4,-.1,.8,.4),("ias-fond","ias.png",.095,.065,.15,.15),
         ("vsi-fond","vsi.png",.232,-.041,.126,.126),
         ("alt-fond","alt.png",-.303,.004,.166,.166),
+        ("radio-face","radio.png",-.172,.158,.062,.062),
     ]:
         start = s.index(f'name "{name}"')
         end = s.index("kids 0",start)

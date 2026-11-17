@@ -569,6 +569,51 @@ for i in range(4):
          [(-.002,-.0004),(.002,-.0004),(.002,.0004),(-.002,.0004)]])
 ```
 
+## Façade de radio — VIS-01l
+
+Plan préalable `5990da5`. La photo C-FYLP montre une façade ronde, un écran au-dessus du centre et deux boutons de tailles différentes. Nous conservons le centre de maquette y = −0,141 m, z = 0,189 m et le rayon extérieur 31 mm. La photo oblique n'autorise pas une mesure d'épaisseur : les 6 mm de saillie de la façade et les 13 mm des boutons sont estimés. Aucun mécanisme intérieur n'est reproduit.
+
+1. Trace un cercle de rayon 31 mm à 1 mm devant le tableau, puis le même cercle à 4 mm. Relie-les pour former le côté du boîtier.
+2. Relie ce dernier cercle à un cercle de rayon 29 mm, avancé à 6 mm : ce bord incliné forme le contour. Ferme seulement ce dernier cercle avec la façade destinée à recevoir la texture.
+3. Pose l'écran rectangulaire 0,4 mm devant la façade. Sa couleur gris-vert est un choix visuel. L'écran est vide : la radio n'est pas encore fonctionnelle.
+4. Construis un petit bouton à gauche et un plus gros en bas à droite. Alterne deux rayons pour donner un bord légèrement cranté. Ajoute les faces avant à 13 mm du tableau.
+5. Ajoute deux vis et leurs fentes en haut, puis une pastille rouge décorative au centre supérieur. Ne présente pas cette pastille fixe comme un voyant de fonctionnement.
+
+<!-- atelier-fichier: fabrique.py -->
+```python
+# Static radio facade. All depths are model estimates, not aircraft measurements.
+ry, rz = -.141, .189
+
+def cercle_radio(x, r):
+    return [(x, ry+r*cos(i*pi/30), rz+r*sin(i*pi/30)) for i in range(60)]
+
+bridge("radio-contour", 3, cercle_radio(px+.001,.031), cercle_radio(px+.004,.031))
+bridge("radio-contour", 2, cercle_radio(px+.004,.031), cercle_radio(px+.006,.029))
+poly("radio-face", 5, *cercle_radio(px+.006,.029))
+screen_material = len(mat)
+mat.append(("radio-ecran", (.33,.38,.30), 0))
+poly("radio-ecran", screen_material, *[(px+.0064,ry+y,rz+z) for y,z in
+     [(-.0165,.00575),(.0165,.00575),(.0165,.01425),(-.0165,.01425)]])
+for name, dy, dz, radius in [("radio-bouton-gauche",-.018,-.006,.0045),
+                            ("radio-bouton-droit",.016,-.016,.006)]:
+    back = [(px+.006,ry+dy+radius*(1 if i%2 else .91)*cos(i*pi/16),
+             rz+dz+radius*(1 if i%2 else .91)*sin(i*pi/16)) for i in range(32)]
+    front = [(px+.013,y,z) for _,y,z in back]
+    bridge(name,3,back,front)
+    poly(name,2,*front)
+for dy in (-.019,.019):
+    back = [(px+.006,ry+dy+.002*cos(i*pi/8),rz+.019+.002*sin(i*pi/8)) for i in range(16)]
+    front = [(px+.0075,y,z) for _,y,z in back]
+    bridge("radio-vis",2,back,front)
+    poly("radio-vis",2,*front)
+    poly("radio-fentes",5,*[(px+.0076,ry+dy+y,rz+.019+z) for y,z in
+         [(-.0014,-.0003),(.0014,-.0003),(.0014,.0003),(-.0014,.0003)]])
+red_back = [(px+.006,ry+.002*cos(i*pi/12),rz+.022+.002*sin(i*pi/12)) for i in range(24)]
+red_front = [(px+.008,y,z) for _,y,z in red_back]
+bridge("radio-pastille",10,red_back,red_front)
+poly("radio-pastille",10,*red_front)
+```
+
 ## I ter · Construis une petite boîte ouverte pour le compas
 
 Prends une boîte d’allumettes vide : de face tu vois son ouverture ; en la décalant de côté, tu vois aussi sa paroi. C’est le même effet que nous cherchons sous la bouche d’air. La photo de C-FYLP donne une façade, pas une profondeur. Garde le centre choisi à la fiche 1 (y = 0 ; z = 0,098 m). Le dessin plat faisait 126 × 118 pixels dans la texture à 1 920 pixels/m : environ 66 × 61 mm. Garde cette taille pour la base. Les 25 mm d’épaisseur sont une estimation de maquette.
@@ -830,3 +875,41 @@ Les quatre fentes : ce sont des faces sombres, pas des trous traversants.
 ![vsi-fentes](https://github.com/steveprudhomme/sw233-flightgear/releases/download/vario-bague-27/vsi-fentes.png)
 
 Poursuis avec les [captures natives, mesures et essais pas à pas](06-peinture.md#k--variomètre-en-relief--vérifier-et-comparer). Les pièces antérieures, le cadran et son animation sont conservés.
+
+## Radio — observer chaque pièce
+
+Ces projections sont calculées à partir du maillage : elles montrent les pièces, pas des mesures de la radio réelle. La recette VIS-01l ci-dessus les fabrique dans cet ordre. Chaque vue ajuste son échelle à la pièce ; ne compare pas les tailles apparentes de deux images différentes.
+
+Le côté et le bord incliné : le cercle ne bouche pas la façade.
+
+![radio-contour](https://github.com/steveprudhomme/sw233-flightgear/releases/download/radio-relief-29/radio-contour.png)
+
+La façade ronde reçoit la texture originale ; son écran est une autre pièce.
+
+![radio-face](https://github.com/steveprudhomme/sw233-flightgear/releases/download/radio-relief-29/radio-face.png)
+
+Un rectangle indépendant, légèrement avancé pour éviter le scintillement entre deux faces superposées.
+
+![radio-ecran](https://github.com/steveprudhomme/sw233-flightgear/releases/download/radio-relief-29/radio-ecran.png)
+
+Le petit bouton : 9 mm de diamètre extérieur, 7 mm de profondeur au-dessus de la façade.
+
+![radio-bouton-gauche](https://github.com/steveprudhomme/sw233-flightgear/releases/download/radio-relief-29/radio-bouton-gauche.png)
+
+Le gros bouton : 12 mm de diamètre extérieur ; les rayons alternés donnent les petits crans.
+
+![radio-bouton-droit](https://github.com/steveprudhomme/sw233-flightgear/releases/download/radio-relief-29/radio-bouton-droit.png)
+
+Deux têtes de vis au-dessus de l’écran. Leur diamètre de 4 mm est estimé.
+
+![radio-vis](https://github.com/steveprudhomme/sw233-flightgear/releases/download/radio-relief-29/radio-vis.png)
+
+Les traits sombres sont des faces posées 0,1 mm devant les vis.
+
+![radio-fentes](https://github.com/steveprudhomme/sw233-flightgear/releases/download/radio-relief-29/radio-fentes.png)
+
+Une pastille rouge fixe de 4 mm de diamètre. Elle ne signale aucun état électrique.
+
+![radio-pastille](https://github.com/steveprudhomme/sw233-flightgear/releases/download/radio-relief-29/radio-pastille.png)
+
+Pour voir ces pièces assemblées et comprendre leur peinture, poursuis avec la [fiche 6, section M](06-peinture.md#m--façade-de-radio-en-relief).

@@ -113,17 +113,16 @@ Sur l’image C-FYLP, pointe le milieu des cartes vers (282,176), (413,181), (28
     card(.078, .190, "PRE-LANDING", ["SPOILERS", "WIND", "AIRSPEED", "TRAFFIC"])
     card(-.079, .077, "PRE RELEASE", ["AREA", "ALTITUDE", "POSITION", "TRAFFIC"])
     card(.078, .070, "PRE STALL", ["ALTITUDE", "STRAPS", "CANOPY", "TRAFFIC"])
-    # Face radio et deux boutons. Aucun chiffre de fréquence fictif.
-    ry, rz = -.141, .189
-    for rr, tone in [(.031,"#171717"),(.029,"#686866"),(.027,"#323536")]:
-        disc(ry,rz,rr,tone)
-    x, v = xy(ry,rz)
-    pen.rounded_rectangle((x-29,v-18,x+29,v-3), radius=3, fill="#71766a")
-    label(ry,rz-.009,"COM",12)
-    for dy in (-.014,.014):
-        disc(ry+dy,rz-.018,.006,"#101214")
-        disc(ry+dy-.001,rz-.017,.004,"#414441")
-    label(ry+.010,rz-.038,"RADIO",11)
+    # The radio now has its own textured face and fixed 3D controls.
+    label(-.131,.151,"RADIO",11)
+    radio = Image.new("RGB",(512,512),"#292e2d")
+    rp = ImageDraw.Draw(radio)
+    # Original artwork: blank display, only clearly readable COM inscription.
+    rp.rounded_rectangle((112,128,400,214),radius=9,fill="#0e1313",
+                         outline="#717971",width=3)
+    rp.text((256,268),"COM",anchor="mm",fill="#e0ded0",
+            font=ImageFont.load_default(size=32))
+    radio.save(models/"radio.png")
     # Le compas en relief est dans le maillage : ne pas le repeindre ici.
     label(0,.014,"LARGAGE",14)
 ```
@@ -238,6 +237,7 @@ Prépare un carré 512 × 512, centre (256,256). Cinquante divisions donnent 7,2
         ("tableau","panel.png",-.4,-.1,.8,.4),("ias-fond","ias.png",.095,.065,.15,.15),
         ("vsi-fond","vsi.png",.232,-.041,.126,.126),
         ("alt-fond","alt.png",-.303,.004,.166,.166),
+        ("radio-face","radio.png",-.172,.158,.062,.062),
     ]:
         start = s.index(f'name "{name}"')
         end = s.index("kids 0",start)
@@ -606,3 +606,104 @@ Le maillage et les douze animations antérieures sont inchangés. La police est 
 ![Cockpit avec calage chiffré](https://github.com/steveprudhomme/sw233-flightgear/releases/download/calage-fenetre-28/cockpit.jpg)
 
 [Paquet et captures complètes](https://github.com/steveprudhomme/sw233-flightgear/releases/tag/calage-fenetre-28) · [CSV et relevés JSON](https://github.com/steveprudhomme/sw233-flightgear/releases/download/calage-fenetre-28/releves.zip).
+
+## M · Façade de radio en relief
+
+### 1. Regarder la référence et définir le périmètre
+
+Le plan préalable est le commit `5990da5`. La photo C-FYLP (fichier commençant par `5d81c6bf`, décrit dans le [registre des références](../references/cockpits-et-fsx.md)) guide la disposition : façade ronde à gauche de la carte avant décollage, écran en haut, boutons de tailles différentes. Le centre et le diamètre de notre modèle sont conservés. La photo ne donne pas une profondeur ni un diamètre constructeur fiable.
+
+Le but de ce lot est une façade en relief. Les boutons restent fixes, l'écran reste sans fréquence et la pastille rouge est décorative. Nous n'attribuons pas un modèle commercial précis à cette radio et nous n'inventons pas les inscriptions illisibles. Le texte COM reste le seul libellé sur sa face. La texture est un dessin original, pas une photo collée sur le modèle.
+
+### 2. Choisir les dimensions sans les présenter comme mesurées
+
+| Élément | Dimension de maquette | Pourquoi |
+|---|---|---|
+| Centre | y = −0,141 m, z = 0,189 m | Conserver la disposition déjà utilisée |
+| Rayon extérieur | 31 mm | Conserver l'encombrement de l'ancien dessin |
+| Rayon de face | 29 mm | Réserver une bande de 2 mm au contour incliné |
+| Avant de la façade | 6 mm devant le tableau | Faire apparaître le relief ; estimation |
+| Écran | 33 × 8,5 mm | Loger une ouverture au-dessus du centre ; estimation |
+| Boutons gauche/droit | diamètres 9 / 12 mm | Représenter leur différence de taille |
+| Face avant des boutons | 13 mm devant le tableau | Leur donner 7 mm de saillie au-dessus de la façade |
+
+Pour contrôler le voisinage, soustrais les centres de l'altimètre et de la radio : 79 mm horizontalement et 102 mm verticalement. Avec Pythagore, leur distance vaut environ 129,02 mm. Soustrais les rayons 93 et 31 mm : il reste environ **5,02 mm** entre les contours circulaires dans le plan du tableau. C'est une vérification géométrique de notre maquette, pas un écart mesuré sur C-FYLP. Les vues natives contrôlent ensuite les effets de perspective.
+
+La [fiche 2](02-maillage.md#façade-de-radio--vis-01l) fournit la recette complète des huit objets et les images de chaque pièce.
+
+### 3. Peindre la façade et poser la texture
+
+1. Dans la recette de cette fiche, repère l'ancien dessin radio entre les cartes et le compas. Retire ses disques et ses boutons peints. Garde l'inscription RADIO sous l'appareil ; sa position reste la même.
+2. Crée une image originale de 512 × 512 pixels, nommée `radio.png`. Elle représente un carré de 62 × 62 mm, donc un pixel vaut environ 0,1211 mm.
+3. Dessine un rectangle arrondi sombre entre (112, 128) et (400, 214), avec un fin contour. Il encadre la pièce d'écran ; il n'affiche aucune fréquence fictive.
+4. Inscris COM au point (256, 268), avec une taille de 32 pixels. Le point central simplifie l'alignement ; ce texte ne change pas avec le simulateur.
+5. Dans la liste qui associe les textures aux pièces, ajoute `radio-face`, `radio.png`, −0,172, 0,158, 0,062, 0,062. Les deux premières coordonnées situent le coin inférieur gauche dans le plan (y, z) ; les deux dernières donnent la largeur et la hauteur.
+6. Pour chaque sommet, le programme calcule u = (y + 0,172) / 0,062 et v = (z − 0,158) / 0,062. Ces nombres indiquent où prendre la couleur dans l'image. La texture est carrée mais la pièce est ronde : les coins de l'image ne sont pas utilisés.
+
+La recette complète plus haut et `tools/panel.py` sont identiques après reconstruction. Les boutons et les vis sont de vraies pièces indépendantes : on ne les repeint pas une deuxième fois sur cette texture.
+
+![Texture originale de façade ; les coins sont hors de la pièce ronde](https://github.com/steveprudhomme/sw233-flightgear/releases/download/radio-relief-29/texture-radio.png)
+
+### 4. Refaire les captures dans FlightGear
+
+Depuis la racine du dépôt, où se trouve README.md, choisis des dossiers de sortie neufs. Il faut Python avec Pillow, FlightGear et le terrain CYJN, comme expliqué dans la fiche d'installation.
+
+```powershell
+# Reconstruire les sources depuis les blocs du tutoriel.
+python tools/check_workbook.py build/atelier-radio
+# Préparer un paquet neuf.
+python tools/package.py --output build/radio-relief
+# Ouvrir une session dédiée à l'examen visuel ; adapter les chemins d'installation.
+& "C:/Program Files/FlightGear 2024.1/bin/fgfs.exe" --fg-root="C:/Users/steve/FlightGear/Downloads/fgdata_2024_1" --fg-aircraft="$PWD/build/radio-relief/Aircraft" --fg-scenery="C:/Users/steve/FlightGear/Downloads/TerraSync" --aircraft=sw233 --airport=CYJN --in-air --altitude=5000 --heading=10 --fdm=null --httpd=18116 --read-only --ignore-autosave --enable-clock-freeze --start-date-gmt=2026:06:21:16:45:00 --geometry=1280x720 --disable-real-weather-fetch --disable-terrasync
+```
+
+Attends que le cockpit soit chargé et laisse la fenêtre visible. Dans un deuxième terminal placé à la racine du dépôt, lance le banc :
+
+```powershell
+# Le port doit correspondre à celui de la session précédente.
+python tools/radio_bench.py build/radio-captures --port 18116
+```
+
+Le banc impose un cadrage rapproché et prend quatre vues : face et biais, aux caps 010° et 100°. L'heure est identique ; changer le cap change l'éclairage relatif au tableau. Le FDM null garde une scène statique, sans validation du vol. Le banc sauvegarde et restaure la caméra, le cap et le menu ; il refuse les images vides. Son `session.json` décrit les réglages et les valeurs restaurées.
+
+Caméra de face : x = −0,141 m, y = 0,5 m, z = 1,7 m, inclinaison −18°, azimut 0°, champ 20°. De biais : x = −0,221 m, azimut −5°. Ces cadrages ne représentent pas une position d'œil mesurée.
+
+### 5. Comparer avant et après
+
+Les captures suivantes viennent de FlightGear 2024.1.7. L'avant utilise le paquet calage-fenetre-28 ; l'après utilise la nouvelle façade. Les réglages de caméra et d'éclairage sont les mêmes pour chaque paire.
+
+Avant, de face : dessin plat et boutons peints.
+
+![Avant, de face : dessin plat et boutons peints.](https://github.com/steveprudhomme/sw233-flightgear/releases/download/radio-relief-29/avant-face-10.jpg)
+
+Après, de face : contour incliné, écran séparé et deux boutons en relief.
+
+![Après, de face : contour incliné, écran séparé et deux boutons en relief.](https://github.com/steveprudhomme/sw233-flightgear/releases/download/radio-relief-29/apres-face-10.jpg)
+
+Avant, de biais : les boutons suivent la surface plane.
+
+![Avant, de biais : les boutons suivent la surface plane.](https://github.com/steveprudhomme/sw233-flightgear/releases/download/radio-relief-29/avant-biais-10.jpg)
+
+Après, de biais : les boutons dépassent de la façade.
+
+![Après, de biais : les boutons dépassent de la façade.](https://github.com/steveprudhomme/sw233-flightgear/releases/download/radio-relief-29/apres-biais-10.jpg)
+
+Second cap : vérifier les contours dans un autre éclairage.
+
+![Second cap : vérifier les contours dans un autre éclairage.](https://github.com/steveprudhomme/sw233-flightgear/releases/download/radio-relief-29/apres-face-100.jpg)
+
+Second cap, de biais : le relief demeure distinct de la carte voisine.
+
+![Second cap, de biais : le relief demeure distinct de la carte voisine.](https://github.com/steveprudhomme/sw233-flightgear/releases/download/radio-relief-29/apres-biais-100.jpg)
+
+### 6. Vérifier et reconnaître les limites
+
+Dans les quatre vues contrôlées, le contour reste séparé de l'altimètre et de la carte ; les boutons ne masquent aucun instrument voisin. Le contrôle du maillage confirme que les 62 objets précédents sont inchangés. Les textures des trois cadrans et le fichier de leurs animations sont identiques à ceux du paquet précédent. Le modèle contient maintenant 70 objets de maillage.
+
+Le style Python, le contrôle des sources, la reconstruction depuis le tutoriel et le manifeste du paquet sont vérifiés. La description FlightGear indique explicitement que la radio est fixe et son écran sans fréquence ; l'aperçu est actualisé.
+
+Le résultat reste stylisé : profondeurs, teintes et emplacement exact des petites fixations sont estimés. Le choix de préserver l'encombrement actuel facilite l'intégration, mais ne garantit pas l'échelle réelle de l'instrument. Les fonctions de communication, les canaux et les actions des boutons restent un lot futur, à préparer avec une référence identifiable. La pastille rouge ne prouve pas que la radio est alimentée.
+
+![Ensemble du cockpit](https://github.com/steveprudhomme/sw233-flightgear/releases/download/radio-relief-29/cockpit.jpg)
+
+[Paquet et images complètes](https://github.com/steveprudhomme/sw233-flightgear/releases/tag/radio-relief-29) · [Réglages et contrôles de non-régression](https://github.com/steveprudhomme/sw233-flightgear/releases/download/radio-relief-29/releves.zip).
