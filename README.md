@@ -133,3 +133,5 @@ La [fiche 16](docs/construction/16-proportions.md) quantifie trois écarts au tr
 [Préparer les relevés du cockpit : dix pièces illustrées et dossier téléchargeable](docs/construction/18-releves.md). Les cotes sont celles du modèle ; les mesures réelles restent à recueillir.
 
 [Finition du tableau : textures et comparaison native avant/après](docs/construction/06-peinture.md#h--finition-du-tableau--vis-01f). Amélioration de surface ; cockpit encore schématique.
+
+[Tableau validé : quatre lectures et cockpit complet](docs/construction/06-peinture.md#i--validation-finale-du-tableau--16-novembre-2026). [Paquet avec aperçu actualisé](https://github.com/steveprudhomme/sw233-flightgear/releases/tag/tableau-22).

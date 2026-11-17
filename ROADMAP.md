@@ -135,3 +135,5 @@ Plan : [textures et comparaison native](docs/planification/vis-01f-tableau.md). 
 VIS-01f : textures réalisées et comparaison native sous deux orientations publiée dans la [fiche 6, section H](docs/construction/06-peinture.md#h--finition-du-tableau--vis-01f). Lot encore ouvert : refaire les captures du banc d’anémomètre et l’aperçu général lorsque FlightGear est disponible. Cadrans et animations inchangés, vérifiés octet par octet.
 
 Reprise VIS-01f du 16 novembre : banc avec rejet des images vides, quatre lectures natives, cockpit complet et aperçu du paquet. [Complément préalable](docs/planification/vis-01f-tableau.md).
+
+VIS-01f terminé : quatre lectures natives, cockpit complet et aperçu du paquet. Preuves : fiche 6, section I. Les anciens paragraphes de reprise décrivent les essais précédents ; les captures manquantes sont maintenant obtenues.

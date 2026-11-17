@@ -72,3 +72,5 @@
 - Poste avant avec trois cadrans idéalisés ; premier affichage vérifié dans FlightGear 2024.1.4.
 
 Aucune version stable ni release binaire n'a encore été publiée.
+
+VIS-01f : validation finale native à quatre indications, rejet des images vides, cockpit complet, aperçu et description actualisés.

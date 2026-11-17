@@ -2,10 +2,13 @@
 
 import argparse
 import csv
+import io
 import json
 import time
 from pathlib import Path
 from urllib.request import urlopen
+
+from PIL import Image
 
 from flightgear import execute
 
@@ -54,10 +57,14 @@ def capture(folder, port):
                 time.sleep(0.6)
                 before = value(node + "indicated-speed-kt")
                 name = f"ias-{kt}.jpg"
-                (folder / name).write_bytes(read("/screenshot?type=jpg"))
+                content = read("/screenshot?type=jpg")
+                with Image.open(io.BytesIO(content)) as image:
+                    if image.width < 1024 or image.height < 600:
+                        raise RuntimeError("Capture vide : restaurer la fenetre FlightGear")
+                (folder / name).write_bytes(content)
                 after = value(node + "indicated-speed-kt")
                 if before != kt or after != kt:
-                    raise RuntimeError("Entrée instable : capture non validée")
+                    raise RuntimeError("EntrÃ©e instable : capture non validÃ©e")
                 log.writerow([kt, before, after, round(kt * 1852 / 1609.344, 3), name])
     finally:
         put(node + "indicated-speed-kt", original)

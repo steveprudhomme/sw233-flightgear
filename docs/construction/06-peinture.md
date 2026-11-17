@@ -361,3 +361,43 @@ Pour reproduire, charger un paquet dans une session dédiée avec interface HTTP
 La peinture est moins granuleuse, les bordures plus sombres et les supports de cartes mieux séparés. Le tableau reste schématique : éclairage peint, radio décorative, plaques simplifiées, dimensions estimées. Il ne s'agit pas encore d'un cockpit photographique.
 
 Les textures des trois cadrans et le XML des animations sont identiques octet par octet avant/après. La reconstruction depuis le tutoriel passe. Le nouvel essai visuel de l'aiguille d'anémomètre a produit des images 1 × 1 après minimisation : elles sont rejetées. La reprise du 16 novembre a trouvé la session HTTP indisponible. Ce nouvel essai et l'actualisation de l'aperçu général restent à refaire ; aucune validation dynamique nouvelle n'est revendiquée.
+
+## I · Validation finale du tableau — 16 novembre 2026
+
+Plan préalable `ac91e15`. Une session neuve FlightGear 2024.1.7 charge le paquet à CYJN. On fige explicitement la simulation et son horloge avant de lancer le banc. Les anciennes images 1 × 1 sont rejetées ; le banc vérifie désormais au moins 1024 × 600 pixels avant d'enregistrer une capture comme résultat.
+
+### Refaire les quatre lectures
+
+Depuis la racine du dépôt, avec une session dédiée figée et son interface HTTP au port 18108 :
+
+```powershell
+python tools/airspeed_bench.py build/lecture-tableau --port 18108
+python -m tools.enclosure_bench build/vues-tableau --port 18108
+```
+
+Choisis des dossiers neufs. Le premier programme désactive temporairement le calcul de l'anémomètre, injecte l'indication, vérifie sa stabilité avant/après capture puis restaure l'indication et l'état de fonctionnement précédents. Le second photographie l'appareil et la vue pilote. Garde la fenêtre restaurée pendant les captures.
+
+| Entrée imposée (kt) | Lecture attendue (mph) |
+|---|---:|
+| 40 | 46,031 |
+| 60 | 69,047 |
+| 85 | 97,816 |
+| 120 | 138,094 |
+
+Ces valeurs vérifient seulement l'affichage et l'animation. Elles ne sont pas des vitesses recommandées ou un essai de l'enveloppe réelle. Conversion : kt × 1852 / 1609,344.
+
+![Lecture injectée 40 kt dans FlightGear](https://github.com/steveprudhomme/sw233-flightgear/releases/download/tableau-22/ias-40.jpg)
+
+![Lecture injectée 60 kt dans FlightGear](https://github.com/steveprudhomme/sw233-flightgear/releases/download/tableau-22/ias-60.jpg)
+
+![Lecture injectée 85 kt dans FlightGear](https://github.com/steveprudhomme/sw233-flightgear/releases/download/tableau-22/ias-85.jpg)
+
+![Lecture injectée 120 kt dans FlightGear](https://github.com/steveprudhomme/sw233-flightgear/releases/download/tableau-22/ias-120.jpg)
+
+### Cockpit complet et paquet
+
+![Cockpit complet, capture native](https://github.com/steveprudhomme/sw233-flightgear/releases/download/tableau-22/cockpit.jpg)
+
+Les quatre images ont été examinées : la position de l'aiguille correspond aux valeurs attendues. Le CSV conserve les entrées avant et après chaque capture. La vue complète montre les instruments sans la coupe du cadrage rapproché précédent. Cette image sert au nouvel aperçu du paquet ; la description mentionne les finitions du tableau. La présentation dans le sélecteur n'a pas fait l'objet d'un nouvel essai d'interface.
+
+VIS-01f est clos pour la finition et sa validation visuelle. Cela ne valide ni la polaire ni une fidélité photographique complète. Les ombres des vis restent peintes ; l'aérateur et les bordures pourront faire l'objet d'un prochain lot de relief 3D.
