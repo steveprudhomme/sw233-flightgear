@@ -28,7 +28,7 @@ Responsable : mainteneur, avec revue visuelle utilisateur. Ordre : références 
 
 | Étape | Sous-étapes et références | Critère de fin |
 |---|---|---|
-| [ ] **VIS-05a — vues de référence** | Classer photos/illustrations, séparer appareils/époques ; identifier les inscriptions ; relever contours et rapports de dimensions, noter perspective et inconnues ; préparer vues natives comparables au lot40 | Fiche de relevé traçable pour chaque pièce, six vues générales et gros plans avant ; aucune cote en mètres inventée |
+| [x] **VIS-05a — vues de référence** | Classer photos/illustrations, séparer appareils/époques ; identifier les inscriptions ; relever contours et rapports de dimensions, noter perspective et inconnues ; préparer vues natives comparables au lot40 | Fiche de relevé traçable pour chaque pièce, six vues générales et gros plans avant ; aucune cote en mètres inventée |
 | [ ] **VIS-05b — nez et coque** | Reconstruire les courbes avant, sections, flancs et ventre ; conserver les arêtes structurelles observées ; corriger raccords de porte et dessous (EXT-02/03/05) | Silhouettes avant/profil/oblique comparées ; courbes continues dans les zones rondes, arêtes conservées où attestées ; aucun trou ni superposition |
 | [ ] **VIS-05c — verrière et porte** | Bombé du pare-brise, sections latérales, raccord sous aile, cadres/joints, charnières/poignées et limites de porte (EXT-02/03/05) | Comparaison intérieur/extérieur ; coque et verrière raccordées ; pas d’occultation des instruments ou de traversée des personnages |
 | [ ] **VIS-05d — ailes et haubans** | Bord d’attaque, épaisseur visuelle documentée, emplanture, effilement, saumons, section des haubans et attaches (EXT-01/03/04/09/10) | Comparaisons dessus/dessous/face ; profils estimés signalés ; aucune prétention de recalibrage du FDM |
@@ -43,11 +43,11 @@ Responsable : mainteneur, avec revue visuelle utilisateur. Ordre : références 
 
 ### VIS-05a — séance de relevés avant toute reconstruction
 
-- [ ] **A41-01** Choisir EXT-02 comme profil oblique de travail, EXT-03 pour le bombé et DET-03/05 pour la séparation mobile ; garder identités et limites photographiques.
-- [ ] **A41-02** Enregistrer points et contours en pixels sur les originaux, incertitude de pointage et rapports sans unité ; produire une fiche reproductible nez/coque/verrière sans conversion arbitraire en mètres.
-- [ ] **A41-03** Extraire les limites des pièces du modèle actuel et identifier fixe/mobile/candidat à découper ; ne pas fixer la charnière sans preuve.
-- [ ] **A41-04** Capturer six vues générales et des gros plans natifs dans une séance FlightGear isolée ; enregistrer caméra, éclairage et version, comparer qualitativement aux références sans prétendre à une calibration photogrammétrique.
-- [ ] **A41-05** Écrire un atelier pour débutant avec images, calculs simples, écarts observés et données manquantes ; vérifier liens, rapports et intégrité des originaux.
+- [x] **A41-01** Choisir EXT-02 comme profil oblique de travail, EXT-03 pour le bombé et DET-03/05 pour la séparation mobile ; garder identités et limites photographiques.
+- [x] **A41-02** Enregistrer points et contours en pixels sur les originaux, incertitude de pointage et rapports sans unité ; produire une fiche reproductible nez/coque/verrière sans conversion arbitraire en mètres.
+- [x] **A41-03** Extraire les limites des pièces du modèle actuel et identifier fixe/mobile/candidat à découper ; ne pas fixer la charnière sans preuve.
+- [x] **A41-04** Capturer six vues générales et des gros plans natifs dans une séance FlightGear isolée ; enregistrer caméra, éclairage et version, comparer qualitativement aux références sans prétendre à une calibration photogrammétrique.
+- [x] **A41-05** Écrire un atelier pour débutant avec images, calculs simples, écarts observés et données manquantes ; vérifier liens, rapports et intégrité des originaux.
 - [ ] **A41-06** Publier les relevés, captures et documentation ; actualiser MD et GitHub. Aucun changement de forme ni du FDM dans cette séance.
 
 ### Complément lot02 — détails et ouverture au sol
@@ -67,7 +67,7 @@ Responsable : mainteneur, avec revue visuelle utilisateur. Ordre : références 
 - [ ] **VIS-05h.1 — marquages précis :** drapeau canadien sur la pièce correcte, emblème avant, chiffre de nez, éclair bleu et textes ; relevés par variante, contours éditables et aucune lettre en miroir (DET-03/04/05/08/10).
 - [ ] **VIS-05l.1 — preuve par détail :** fiche de chaque pièce avec ID photo, observation/estimation/inconnue, dimensions traçables, explication dès 10 ans, vue native avant/après et essai de la commande si interactive ; revue utilisateur avant clôture.
 
-**Prochain petit lot : VIS-05a, puis VIS-05b/c.** Les autres lignes restent planifiées. Les nouvelles images enrichissent L40-R mais n’établissent pas encore la livrée actuelle exacte de C-FYLP ; L40-R/R2 et les références d’insignes restent ouverts.
+**VIS-05a : relevé préparatoire réalisé** ([atelier23](docs/construction/23-releves-avant.md)) : sept points avec incertitude, onze objets inventoriés, neuf captures natives. Les cotes réelles et la cinématique de charnière restent à confirmer. **Prochain petit lot : VIS-05b/c.** Les autres lignes restent planifiées. Les nouvelles images enrichissent L40-R mais n’établissent pas encore la livrée actuelle exacte de C-FYLP ; L40-R/R2 et les références d’insignes restent ouverts.
 
 ## Lots techniques précédents : base fonctionnelle du réalisme
 

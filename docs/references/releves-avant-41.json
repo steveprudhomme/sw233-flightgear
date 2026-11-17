@@ -1,0 +1,88 @@
+{
+  "reference": "EXT-02",
+  "file": "841099659_18115421924518465_3488248020240132807_n.jpg",
+  "sha256": "676a5091e1eda083faea22227db300ed32790a32f7486b9b70cfdb94e1146267",
+  "pixels": [
+    2048,
+    1364
+  ],
+  "coordinate_system": "origin top left; u right, v down",
+  "method": "Pointage visuel manuel approximatif sur original ; incertitude de lecture, sans calibration caméra",
+  "points": {
+    "A": {
+      "label": "extrémité droite du nez, silhouette",
+      "uv": [
+        1565,
+        865
+      ],
+      "uncertainty_px": 12
+    },
+    "B": {
+      "label": "raccord avant du vitrage au capot",
+      "uv": [
+        1230,
+        700
+      ],
+      "uncertainty_px": 15
+    },
+    "C": {
+      "label": "sommet apparent du vitrage",
+      "uv": [
+        1015,
+        555
+      ],
+      "uncertainty_px": 15
+    },
+    "D": {
+      "label": "coin bas arrière apparent du cadre avant",
+      "uv": [
+        950,
+        785
+      ],
+      "uncertainty_px": 15
+    },
+    "E": {
+      "label": "coin haut arrière apparent du cadre avant",
+      "uv": [
+        945,
+        580
+      ],
+      "uncertainty_px": 15
+    },
+    "F": {
+      "label": "cassure basse avant, au-dessus du patin",
+      "uv": [
+        1370,
+        1015
+      ],
+      "uncertainty_px": 20
+    },
+    "G": {
+      "label": "bas apparent du ventre avant, hors patin",
+      "uv": [
+        1130,
+        1090
+      ],
+      "uncertainty_px": 20
+    }
+  },
+  "contours": {
+    "vitrage_guide": [
+      "D",
+      "E",
+      "C",
+      "B"
+    ],
+    "nez_guide": [
+      "B",
+      "A",
+      "F",
+      "G"
+    ]
+  },
+  "limits": [
+    "Les segments joignent des repères ; ils ne décrivent pas la courbe réelle entre eux.",
+    "Perspective et profondeur différentes ; rapports projetés seulement.",
+    "Aucune cote réelle ni profil constructeur déduit."
+  ]
+}

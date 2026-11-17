@@ -58,3 +58,5 @@ Pour créer un fichier indiqué sur une fiche, ouvre le Bloc-notes, colle le pre
 - [21. Deux occupants](21-equipage.md) : construire les corps et les tenues, afficher selon les masses, corriger les raccords.
 
 - [22. Vérifier dans FlightGear](22-verifications-visuelles.md) : préparer une séance isolée, contrôler les surfaces et filmer une présentation honnête.
+
+- [23. Relever les formes avant](23-releves-avant.md) : repères photographiques, incertitude, inventaire fixe/mobile et comparaison native avant reconstruction.

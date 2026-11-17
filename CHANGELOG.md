@@ -1,5 +1,12 @@
 # Historique
 
+## 2026-11-17 — VIS-05a, relevés avant reconstruction
+
+- Plan préalable 5e717b9 ; sept repères photographiques avec incertitudes et rapports projetés.
+- Inventaire de onze pièces, neuf vues natives FlightGear et atelier23 illustré.
+- Modèle et FDM inchangés ; cotes réelles, axe de verrière et fidélité visuelle restent ouverts.
+
+
 ## 2026-11-17 — détails de référence et ouverture au sol planifiée
 
 - Lot02 : onze fichiers préservés, doublons identifiés et analyse détaillée des pièces.
