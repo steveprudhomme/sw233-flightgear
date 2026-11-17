@@ -137,3 +137,7 @@ VIS-01f : textures réalisées et comparaison native sous deux orientations publ
 Reprise VIS-01f du 16 novembre : banc avec rejet des images vides, quatre lectures natives, cockpit complet et aperçu du paquet. [Complément préalable](docs/planification/vis-01f-tableau.md).
 
 VIS-01f terminé : quatre lectures natives, cockpit complet et aperçu du paquet. Preuves : fiche 6, section I. Les anciens paragraphes de reprise décrivent les essais précédents ; les captures manquantes sont maintenant obtenues.
+
+## VIS-01g — aérateur central en relief (en cours)
+
+Plan préalable : conserver le centre et le diamètre de maquette, construire bague/conduit/volet fixes avec profondeurs estimées ; retirer le dessin plat ; synchroniser les recettes ; produire les vues par pièce ; vérifier face/biais et deux orientations dans FlightGear ; actualiser tutoriel, aperçu et paquet. Critère : relief visible sans masquer les cadrans, reconstruction vérifiée. Aucune commande de ventilation fonctionnelle revendiquée.
