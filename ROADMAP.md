@@ -41,6 +41,8 @@ Responsable : mainteneur. Référence de disposition : photo C-FYLP ; valeurs op
 
 Autorisé le 17 novembre 2026. Réaliser des lots séparés et commiter leurs preuves.
 
+Répartition demandée : agent livrée (VIS-02a/b), agent équipage (VIS-04a/b), agent de revue indépendante ; intégration, effets VIS-01v/w, essais natifs et publication par le mainteneur de la session. Fichiers séparés, puis revue croisée avant intégration.
+
 - [ ] Examiner les effets FlightGear installés et réaliser une comparaison native avant/après ; garder un repli transparent si le rendu ne supporte pas l’effet choisi.
 - [ ] Ajouter des vitres d’instruments indépendantes, contrôler les interactions et documenter tout reflet approximatif.
 - [ ] Rechercher les photos de C-FYLP et les références officielles des tenues. Si la date ou un insigne manque, livrer une variante explicitement provisoire sans la présenter comme une reproduction actuelle certifiée.
