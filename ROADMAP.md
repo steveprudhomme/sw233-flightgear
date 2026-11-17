@@ -246,3 +246,14 @@ Point d'étape VIS-01p : source anglaise contrôlée (IEA 2017, PDF 28/35),
 initiales rouges et mise en page à 4–8 rubriques réalisées ; reconstruction
 complète du tutoriel vérifiée. La formulation mnémotechnique française et
 les nouvelles captures natives restent à valider. Le lot n'est pas terminé.
+
+
+### VIS-01p — clarification reçue le 17 novembre 2026
+
+- [ ] Conserver BCISTRSC, AAAT, SWARTSC et ASCOT dans les deux langues ; utiliser les traductions explicatives fournies par l'utilisateur sans les présenter comme une transcription des IEA françaises.
+- [ ] Préfixer chaque rubrique française par sa lettre anglaise (exemple : B — Lest) et colorer cette lettre en rouge ; conserver toutes les rubriques et leur ordre.
+- [ ] Synchroniser les listes, les textures et le tutoriel ; vérifier les correspondances FR/EN et le rendu des accents.
+- [ ] Ajouter un lot séparé pour GASP/VEST et GPAS/PTES : retrouver les pages du manuel bilingue 2018, vérifier les mots et leur ordre, définir les limites du remorquage simulé, puis documenter les urgences séparément des procédures normales.
+- [ ] Recenser séparément les inspections journalière, extérieure limitée, d'accrochage, après assemblage et de transport ; définir celles qui ont un sens dans le prototype avant toute implémentation.
+
+Critère : aucune initiale française artificielle ne remplace le mot-check anglais. Les références d'urgence citées sans lien/page restent des pistes à vérifier, pas des procédures déjà validées ou intégrées.
