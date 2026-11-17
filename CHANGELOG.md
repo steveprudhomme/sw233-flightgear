@@ -1,5 +1,12 @@
 # Historique
 
+## 2026-11-17 — cockpit-materiaux-38
+
+- ROADMAP harmonisé et anciens protocoles archivés ; reflets, livrée C-FYLP et deux occupants CEC St-Jean planifiés.
+- Matière de peinture distincte pour tableau et façade radio ; cadrans et géométrie conservés.
+- Comparaison native sous deux orientations, cadrage élargi à 65 degrés.
+- Tutoriel illustré et dossier de références ; personnages et reflets encore à réaliser.
+
 ## 2026-11-17 — checklists-usage-37
 
 - Sélection des quatre listes FR/EN et bascule vérifiées à la souris.

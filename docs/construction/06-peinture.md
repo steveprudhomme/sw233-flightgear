@@ -298,6 +298,10 @@ Prépare un carré 512 × 512, centre (256,256). Cinquante divisions donnent 7,2
     material = s[:s.index(tag)].count('MATERIAL ')
     s = s.replace(tag, 'MATERIAL "panel-finish" rgb 1 1 1 amb .6 .6 .6 emis .2 .2 .2 '
                   'spec .12 .12 .12 shi 12 trans 0\n'+tag, 1)
+    # Opaque paint has its own response; retain the established dial material.
+    paint_material = s[:s.index(tag)].count('MATERIAL ')
+    s = s.replace(tag, 'MATERIAL "cockpit-paint" rgb 1 1 1 amb .6 .6 .6 '
+                  'emis .14 .14 .14 spec .025 .025 .025 shi 6 trans 0\n'+tag, 1)
     for name,texture,ymin,zmin,span_y,span_z in [
         ("tableau","panel.png",-.4,-.1,.8,.4),("ias-fond","ias.png",.095,.065,.15,.15),
         ("vsi-fond","vsi.png",.232,-.041,.126,.126),
@@ -310,7 +314,8 @@ Prépare un carré 512 × 512, centre (256,256). Cinquante divisions donnent 7,2
         n = int(lines[1].split()[1])
         verts = [list(map(float, line.split())) for line in lines[2:2+n]]
         ri = next(i for i,v in enumerate(lines) if v.startswith("refs "))
-        lines[ri-1] = f"mat {material}"
+        selected_material = paint_material if name in {"tableau", "radio-face"} else material
+        lines[ri-1] = f"mat {selected_material}"
         for i in range(ri+1,len(lines)):
             idx = int(lines[i].split()[0])
             _,z,left = verts[idx]
@@ -1125,3 +1130,86 @@ Un beau gros plan ne suffit pas. Nous reculons la caméra pour revoir le tableau
 Les profondeurs, la police et la luminosité restent des choix de maquette. L’animation est conservée, mais ce lot ne refait pas les essais dynamiques en vol du lot précédent et ne certifie pas un compas réel. Le tutoriel est écrit pour un débutant ; il reste à le faire relire et reconstruire sans aide par un enfant pour vérifier que les explications suffisent.
 
 [Paquet et captures](https://github.com/steveprudhomme/sw233-flightgear/releases/tag/compas-texture-32) · [Relevés des contrôles](https://github.com/steveprudhomme/sw233-flightgear/releases/download/compas-texture-32/releves.zip).
+
+
+## Q — Donner une matière différente à la peinture du tableau
+
+### 1. Comprendre l’objectif
+
+Pose du papier noir près d’un verre : ils renvoient la lumière différemment.
+Notre peinture de tableau et nos fonds d’instruments partageaient pourtant
+le même réglage. Nous créons une « fiche de matière » pour la peinture.
+C’est une petite préparation au réalisme, pas encore un cockpit photographique.
+La photo C-FYLP aide à distinguer les surfaces, mais ne donne aucun chiffre
+exact de brillance : nos valeurs sont des choix artistiques.
+
+### 2. Retrouver la recette
+
+La forme reste dans `src/SW233/Models/sw233.ac`. `tools/panel.py` ajoute les
+textures et matières au paquet. Reprends les blocs complets de cette fiche :
+ils contiennent maintenant `paint_material` et `cockpit-paint`. Ne corrige
+pas seulement un paquet déjà construit : la prochaine construction l’écraserait.
+
+### 3. Lire les chiffres
+
+| Paramètre | Valeur retenue | Explication simple |
+|---|---|---|
+| rgb | 1, 1, 1 | La texture fournit la couleur |
+| amb | 0,6 par canal | Participation de la lumière ambiante |
+| emis | 0,14 au lieu de 0,20 | Éclaircissement constant moins fort |
+| spec | 0,025 au lieu de 0,12 | Éclat plus discret |
+| shi | 6 au lieu de 12 | Paramètre de l’éclat |
+| trans | 0 | Surface opaque |
+
+Ces nombres ne sont pas des pourcentages physiques de réflexion. Le programme
+ajoute une matière à la liste puis utilise son numéro pour **tableau** et
+**radio-face** seulement. Les fonds des cadrans gardent l’ancien numéro.
+Une première tentative trop sombre rendait les inscriptions faibles : nous
+avons choisi une réduction plus douce après observation dans FlightGear.
+
+### 4. Comparer les images
+
+Garde la même taille, la même langue et la même vue. Le banc
+`tools/panel_bench.py` utilise maintenant 65 degrés de champ de vision pour
+montrer le bas des instruments à 1024 × 600. À 55 degrés, le bas était coupé.
+Il capture les caps 10 et 100 degrés en pause, puis restaure ses réglages.
+Changer le cap change la direction de la lumière par rapport au tableau.
+
+![Avant, cap 10](https://github.com/steveprudhomme/sw233-flightgear/releases/download/cockpit-materiaux-38/avant-010.jpg)
+
+![Après, même cadrage](https://github.com/steveprudhomme/sw233-flightgear/releases/download/cockpit-materiaux-38/apres-010.jpg)
+
+La différence est discrète : observe la peinture entre les instruments et
+la façade de radio. Les aiguilles et les lettres ne sont pas redessinées.
+
+![Avant, cap 100](https://github.com/steveprudhomme/sw233-flightgear/releases/download/cockpit-materiaux-38/avant-100.jpg)
+
+![Après, cap 100](https://github.com/steveprudhomme/sw233-flightgear/releases/download/cockpit-materiaux-38/apres-100.jpg)
+
+### 5. Refaire l’essai
+
+1. Recopie les blocs de cette fiche dans l’ordre, puis reconstruis un paquet
+   avec la leçon d’installation.
+2. Ouvre le cockpit et vérifie aiguilles, cartes, calage et radio.
+3. Dans une session de développement SW233 en pause, lance depuis le dépôt
+   `python -m tools.panel_bench DOSSIER_NEUF --port PORT`.
+4. Compare les deux images ; si une inscription devient illisible, atténue
+   le réglage avant de chercher un effet plus spectaculaire.
+5. Vérifie la reconstruction avec `tools/check_workbook.py`.
+
+Le contrôle compare les 74 objets sans leurs indices de matière, les textures
+PNG et les fichiers XML/Nasal : géométrie, textures et comportements sont
+conservés. Les captures sont celles de FlightGear 2024.1.7. Elles ne valident
+ni une réflexion du paysage ni le comportement en vol.
+
+### 6. Préparer la suite
+
+Un éclat de lumière n’est pas forcément un reflet du paysage : le prochain
+atelier devra expliquer l’effet réellement obtenu sur la verrière et les vitres.
+La livrée choisie sera celle de **C-FYLP**. Les personnages prévus sont
+**Rodolphe Pagé**, cadet devant en bleu, et **Roméo Vachon**, officier derrière
+en vert, tous deux du **CEC St-Jean**. On vérifiera les écussons avant de les
+dessiner ; plis, poches, coutures et harnais auront leurs étapes illustrées.
+Voir le [dossier de références](../references/livree-et-equipage.md).
+Les personnages, les nouveaux reflets et la livrée ne sont pas encore présents
+dans ce premier paquet de matériaux.

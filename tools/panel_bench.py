@@ -21,7 +21,7 @@ def capture(output, port):
     settings = {"/sim/current-view/view-number": 0,
                 "/sim/current-view/heading-offset-deg": 0,
                 "/sim/current-view/pitch-offset-deg": -18,
-                "/sim/current-view/field-of-view": 55,
+                "/sim/current-view/field-of-view": 65,
                 "/sim/menubar/visibility": 0,
                 "/orientation/heading-deg": 10}
     saved = {p: get(p) for p in settings}

@@ -7,6 +7,17 @@ désignation constructeur. La livrée actuelle des Cadets est un objectif : le p
 Projet **libre et open source**, sous [licence GPL-3.0-only](LICENSE.md). Les anciennes
 ressources FlightGear/JSBSim ne sont pas redistribuées ni relicenciées ici. Les versions déjà diffusées sous MIT conservent leur [notice historique](LICENSES/MIT-historical.txt).
 
+## Réalisme du cockpit et suite du projet
+
+Premier réglage : peinture du tableau et façade radio séparées des matières
+des instruments, avec comparaison native sous deux orientations.
+[Tutoriel illustré](docs/construction/06-peinture.md#q--donner-une-matière-différente-à-la-peinture-du-tableau).
+
+Le [ROADMAP harmonisé](ROADMAP.md) prévoit les reflets, la livrée actuelle de
+**C-FYLP** et deux occupants du **CEC St-Jean** : Rodolphe Pagé devant en bleu,
+Roméo Vachon derrière en vert. Ces éléments sont planifiés, pas encore modélisés.
+[Paquet et comparaison](https://github.com/steveprudhomme/sw233-flightgear/releases/tag/cockpit-materiaux-38).
+
 ## Checklists français / anglais
 
 Ouvrir **SW233 → Checklists / Listes** ; choisir la langue dans le même menu.

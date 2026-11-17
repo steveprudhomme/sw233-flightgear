@@ -22,16 +22,18 @@ Statuts : **en cours** = lot commencé ; **prévu** = travail accepté à réali
 
 ## Prochain incrément : réalisme du cockpit
 
-### VIS-01u — matériaux du tableau (en cours)
+### VIS-01u — matériaux du tableau (terminé : premier réglage)
+
+Preuves : [tutoriel illustré, section Q](docs/construction/06-peinture.md#q--donner-une-matière-différente-à-la-peinture-du-tableau).
 
 Responsable : mainteneur. Référence de disposition : photo C-FYLP ; valeurs optiques artistiques.
 
-- [ ] Inventorier les matériaux et distinguer peinture, caoutchouc, métal, verre et surfaces d’instruments.
-- [ ] Capturer l’état initial dans FlightGear avec cadrage fixe et deux orientations d’éclairage.
-- [ ] Séparer la peinture mate des matériaux des cadrans ; réduire son aspect auto-éclairé sans changer les aiguilles, textes, géométrie ou commandes.
-- [ ] Comparer avant/après ; vérifier la lecture des instruments, cartes et radio.
-- [ ] Synchroniser la recette, expliquer les réglages au débutant avec images, vérifier reconstruction et paquet.
-- [ ] Publier les preuves et actualiser les MD et GitHub.
+- [x] Inventorier les matériaux et distinguer peinture, caoutchouc, métal, verre et surfaces d’instruments.
+- [x] Capturer l’état initial dans FlightGear avec cadrage fixe et deux orientations d’éclairage.
+- [x] Séparer la peinture mate des matériaux des cadrans ; réduire son aspect auto-éclairé sans changer les aiguilles, textes, géométrie ou commandes.
+- [x] Comparer avant/après ; vérifier la lecture des instruments, cartes et radio.
+- [x] Synchroniser la recette, expliquer les réglages au débutant avec images, vérifier reconstruction et paquet.
+- [x] Publier les preuves et actualiser les MD et GitHub.
 
 **Critère :** peinture visuellement distincte des instruments sous deux éclairages ; aucune variation des indications ou des sources aérodynamiques. Ce premier lot n’est pas une promesse de cockpit déjà photoréaliste.
 
@@ -58,7 +60,7 @@ Responsable : mainteneur. Référence de disposition : photo C-FYLP ; valeurs op
 
 ### VIS-02a — appareil et dossier photographique (attend une référence)
 
-- [ ] Confirmer l’appareil, son immatriculation et la période de livrée ; C-FYLP reste la référence du cockpit, sans supposer sa décoration extérieure actuelle.
+- [ ] Appareil choisi : **C-FYLP** (confirmé par le responsable). Confirmer la période et les photos de sa livrée extérieure actuelle.
 - [ ] Réunir des vues datées gauche/droite/dessus/dessous, dérive, ailes et marquages ; conserver provenance et droits.
 - [ ] Relever les limites jaune/bleu, symboles, typographie, immatriculation et inscriptions réellement lisibles.
 - [ ] Produire une fiche de référence distinguant dimensions mesurées, proportions photographiques et éléments encore inconnus.
@@ -81,7 +83,8 @@ Responsable : mainteneur. Référence de disposition : photo C-FYLP ; valeurs op
 - [ ] Poste avant : cadet en combinaison de vol bleue ; poste arrière : officier en combinaison verte, conformément au choix demandé.
 - [ ] Vérifier séparément coupe, poches, fermeture, col, coutures, chaussures et harnais.
 - [ ] Documenter les badges, ailes, écussons, grades et étiquettes nominatives pour chaque tenue ; ne pas transposer les règles d’une tenue de cérémonie à une combinaison.
-- [ ] Confirmer noms, escadron/unité et qualifications ; à défaut préparer des personnages fictifs et des zones d’insignes non attribués.
+- [x] Noms et unité choisis : **Rodolphe Pagé**, cadet devant en bleu ; **Roméo Vachon**, officier derrière en vert ; **CEC St-Jean** pour les deux.
+- [ ] Confirmer les grades, qualifications et écussons exacts ; les noms désignent ici des personnages de simulation, sans portrait réel attesté.
 - [ ] Créer une planche de références avec dates, provenance, droits et incertitudes.
 
 ### VIS-04b — modèles humains et intégration (prévu après VIS-04a)

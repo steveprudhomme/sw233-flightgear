@@ -218,6 +218,10 @@ def finish_panel(models: Path):
     material = s[:s.index(tag)].count('MATERIAL ')
     s = s.replace(tag, 'MATERIAL "panel-finish" rgb 1 1 1 amb .6 .6 .6 emis .2 .2 .2 '
                   'spec .12 .12 .12 shi 12 trans 0\n'+tag, 1)
+    # Opaque paint has its own response; retain the established dial material.
+    paint_material = s[:s.index(tag)].count('MATERIAL ')
+    s = s.replace(tag, 'MATERIAL "cockpit-paint" rgb 1 1 1 amb .6 .6 .6 '
+                  'emis .14 .14 .14 spec .025 .025 .025 shi 6 trans 0\n'+tag, 1)
     for name,texture,ymin,zmin,span_y,span_z in [
         ("tableau","panel.png",-.4,-.1,.8,.4),("ias-fond","ias.png",.095,.065,.15,.15),
         ("vsi-fond","vsi.png",.232,-.041,.126,.126),
@@ -230,7 +234,8 @@ def finish_panel(models: Path):
         n = int(lines[1].split()[1])
         verts = [list(map(float, line.split())) for line in lines[2:2+n]]
         ri = next(i for i,v in enumerate(lines) if v.startswith("refs "))
-        lines[ri-1] = f"mat {material}"
+        selected_material = paint_material if name in {"tableau", "radio-face"} else material
+        lines[ri-1] = f"mat {selected_material}"
         for i in range(ri+1,len(lines)):
             idx = int(lines[i].split()[0])
             _,z,left = verts[idx]
