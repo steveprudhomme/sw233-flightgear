@@ -72,7 +72,7 @@ def loft(n, m, stations):
 
 ## C · Construis une coque ouverte seulement vers le haut
 
-![Coque : flancs continus et ouverture supérieure](https://github.com/steveprudhomme/sw233-flightgear/releases/download/finitions-43/piece-fuselage.png)
+![Coque : flancs continus et ouverture supérieure](https://github.com/steveprudhomme/sw233-flightgear/releases/download/v0.1.0-alpha.1/piece-fuselage.png)
 
 Schéma du maillage, sans textures ; dimensions de maquette.
 
@@ -89,7 +89,7 @@ coque = build_enclosure(poly, rod)
 
 ## D · Raccorde les vitres et les cadres bleus
 
-![Vitres, cadres bleus et raccord arrière](https://github.com/steveprudhomme/sw233-flightgear/releases/download/finitions-43/groupe-verriere.png)
+![Vitres, cadres bleus et raccord arrière](https://github.com/steveprudhomme/sw233-flightgear/releases/download/v0.1.0-alpha.1/groupe-verriere.png)
 
 Schéma du maillage, sans textures ; dimensions de maquette.
 

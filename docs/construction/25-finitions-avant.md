@@ -25,9 +25,9 @@ Nous ne mesurons pas une longueur réelle avec la taille d'une personne sur la p
 L'appareil est vu en perspective : ce qui est plus proche paraît plus grand.
 La [fiche de comparaison](../references/finitions-43.md) distingue observation et estimation.
 
-![Ancien profil du lot42](https://github.com/steveprudhomme/sw233-flightgear/releases/download/finitions-43/avant-nez-profil.png)
+![Ancien profil du lot42](https://github.com/steveprudhomme/sw233-flightgear/releases/download/v0.1.0-alpha.1/avant-nez-profil.png)
 
-![Profil corrigé du lot43 dans FlightGear](https://github.com/steveprudhomme/sw233-flightgear/releases/download/finitions-43/apres-nez-profil.png)
+![Profil corrigé du lot43 dans FlightGear](https://github.com/steveprudhomme/sw233-flightgear/releases/download/v0.1.0-alpha.1/apres-nez-profil.png)
 
 ## 2. Comprendre les quatre tables de forme
 
@@ -66,7 +66,7 @@ sans laisser un trou et sans imposer un gros disque plat au bout du nez.
 Le départ du verre passe de x = 0,50 à **0,70 m**. Les points du capot et ceux du verre
 utilisent la même tranche de raccord. Le tableau reste à x = 0,87 m : il n'est pas déplacé.
 
-![Coque et nez seuls](https://github.com/steveprudhomme/sw233-flightgear/releases/download/finitions-43/piece-fuselage.png)
+![Coque et nez seuls](https://github.com/steveprudhomme/sw233-flightgear/releases/download/v0.1.0-alpha.1/piece-fuselage.png)
 
 ## 4. Rehausser les flancs sans arrondir tout le ventre
 
@@ -78,9 +78,9 @@ Cette modification change aussi le haut des contours de porte. Ils réutilisent 
 valeurs `HULL`, donc leurs points supérieurs suivent les nouveaux bords. Les portes
 restent fixes. Nous n'avons pas inventé un axe de charnière pour pouvoir les animer.
 
-![Contour gauche](https://github.com/steveprudhomme/sw233-flightgear/releases/download/finitions-43/piece-contour-porte-1.png)
+![Contour gauche](https://github.com/steveprudhomme/sw233-flightgear/releases/download/v0.1.0-alpha.1/piece-contour-porte-1.png)
 
-![Contour droit](https://github.com/steveprudhomme/sw233-flightgear/releases/download/finitions-43/piece-contour-porte1.png)
+![Contour droit](https://github.com/steveprudhomme/sw233-flightgear/releases/download/v0.1.0-alpha.1/piece-contour-porte1.png)
 
 ## 5. Éviter le toit en forme de tente
 
@@ -95,15 +95,15 @@ La peau supérieure continue jusqu'à la queue. Sa dernière tranche partage tou
 points avec le bouchon arrière : une couture avec 33 points ne doit pas rencontrer
 une autre couture qui n'en possède que deux.
 
-![Raccord opaque sous et derrière l'aile](https://github.com/steveprudhomme/sw233-flightgear/releases/download/finitions-43/piece-raccord-arriere.png)
+![Raccord opaque sous et derrière l'aile](https://github.com/steveprudhomme/sw233-flightgear/releases/download/v0.1.0-alpha.1/piece-raccord-arriere.png)
 
-![Pare-brise](https://github.com/steveprudhomme/sw233-flightgear/releases/download/finitions-43/piece-pare-brise.png)
+![Pare-brise](https://github.com/steveprudhomme/sw233-flightgear/releases/download/v0.1.0-alpha.1/piece-pare-brise.png)
 
-![Toit vitré](https://github.com/steveprudhomme/sw233-flightgear/releases/download/finitions-43/piece-verriere.png)
+![Toit vitré](https://github.com/steveprudhomme/sw233-flightgear/releases/download/v0.1.0-alpha.1/piece-verriere.png)
 
-![Vitrage droit](https://github.com/steveprudhomme/sw233-flightgear/releases/download/finitions-43/piece-vitrage-droit.png)
+![Vitrage droit](https://github.com/steveprudhomme/sw233-flightgear/releases/download/v0.1.0-alpha.1/piece-vitrage-droit.png)
 
-![Vitrage gauche](https://github.com/steveprudhomme/sw233-flightgear/releases/download/finitions-43/piece-vitrage-gauche.png)
+![Vitrage gauche](https://github.com/steveprudhomme/sw233-flightgear/releases/download/v0.1.0-alpha.1/piece-vitrage-gauche.png)
 
 ## 6. Construire cadres, joints et fixations
 
@@ -121,22 +121,22 @@ Une fixation a un rayon de **3,5 mm**, et une saillie de 7 mm. Une tête appara�
 les quatre points de chaque arceau. Ce rythme est un choix lisible ; le nombre de vis
 réelles n'a pas été relevé. Les vis utilisent la matière inox déjà présente.
 
-![Arceaux bleus](https://github.com/steveprudhomme/sw233-flightgear/releases/download/finitions-43/piece-arceaux.png)
+![Arceaux bleus](https://github.com/steveprudhomme/sw233-flightgear/releases/download/v0.1.0-alpha.1/piece-arceaux.png)
 
-![Bordures bleues](https://github.com/steveprudhomme/sw233-flightgear/releases/download/finitions-43/piece-bordures-cockpit.png)
+![Bordures bleues](https://github.com/steveprudhomme/sw233-flightgear/releases/download/v0.1.0-alpha.1/piece-bordures-cockpit.png)
 
-![Longerons](https://github.com/steveprudhomme/sw233-flightgear/releases/download/finitions-43/piece-longerons-verriere.png)
+![Longerons](https://github.com/steveprudhomme/sw233-flightgear/releases/download/v0.1.0-alpha.1/piece-longerons-verriere.png)
 
-![Joints sombres](https://github.com/steveprudhomme/sw233-flightgear/releases/download/finitions-43/piece-joints-verriere.png)
+![Joints sombres](https://github.com/steveprudhomme/sw233-flightgear/releases/download/v0.1.0-alpha.1/piece-joints-verriere.png)
 
-![Fixations métalliques](https://github.com/steveprudhomme/sw233-flightgear/releases/download/finitions-43/piece-fixations-cadres.png)
+![Fixations métalliques](https://github.com/steveprudhomme/sw233-flightgear/releases/download/v0.1.0-alpha.1/piece-fixations-cadres.png)
 
 Une petite poignée bordeaux représente le détail visible près du bord gauche. Trois
 segments relient quatre points, avec un rayon de 6 mm. Elle est **fixe et non cliquable**.
 Elle ne prétend pas reproduire le ressort, le verrou ou leur fonctionnement.
 Les charnières et leur course restent dans VIS-05c.1 à c.3.
 
-![Poignée de représentation](https://github.com/steveprudhomme/sw233-flightgear/releases/download/finitions-43/piece-poignee-verriere.png)
+![Poignée de représentation](https://github.com/steveprudhomme/sw233-flightgear/releases/download/v0.1.0-alpha.1/piece-poignee-verriere.png)
 
 ## 7. Raccorder le mât et la peinture au nouveau capot
 
@@ -147,13 +147,13 @@ Dans `sw233-model.xml`, le centre de rotation du fil monte aussi : z passe de
 balayer la ficelle autour d'un point resté plus bas ! La forme du mât reste à détailler
 séparément dans VIS-05g.1 ; ici nous corrigeons seulement son raccord au nez.
 
-![Embase](https://github.com/steveprudhomme/sw233-flightgear/releases/download/finitions-43/piece-embase-pitot.png)
+![Embase](https://github.com/steveprudhomme/sw233-flightgear/releases/download/v0.1.0-alpha.1/piece-embase-pitot.png)
 
-![Tube](https://github.com/steveprudhomme/sw233-flightgear/releases/download/finitions-43/piece-tube-pitot.png)
+![Tube](https://github.com/steveprudhomme/sw233-flightgear/releases/download/v0.1.0-alpha.1/piece-tube-pitot.png)
 
-![Attache du fil](https://github.com/steveprudhomme/sw233-flightgear/releases/download/finitions-43/piece-attache-laine.png)
+![Attache du fil](https://github.com/steveprudhomme/sw233-flightgear/releases/download/v0.1.0-alpha.1/piece-attache-laine.png)
 
-![Fil de laine](https://github.com/steveprudhomme/sw233-flightgear/releases/download/finitions-43/piece-fil-de-laine.png)
+![Fil de laine](https://github.com/steveprudhomme/sw233-flightgear/releases/download/v0.1.0-alpha.1/piece-fil-de-laine.png)
 
 Le haut du nez dépasse l'ancienne zone de texture. Dans `tools/livery.py`,
 `Y_RANGE` devient `(-0.63, 0.32)`. Cette marge couvre le nouveau sommet de 0,28 m.
@@ -184,16 +184,16 @@ Un dossier de vérification déjà existant doit recevoir un autre nom.
 
 ## 9. Comparer dans FlightGear et avec les photos
 
-Installe `sw233-finitions-43.zip` depuis la [version publiée](https://github.com/steveprudhomme/sw233-flightgear/releases/tag/finitions-43),
+Installe `sw233-0.1.0-alpha.1.zip` depuis la [version publiée](https://github.com/steveprudhomme/sw233-flightgear/releases/tag/v0.1.0-alpha.1),
 en suivant la [fiche12](12-installation.md). Regarde le profil, l'avant et les deux
 obliques. Passe en vue pilote : instruments et cartes doivent rester lisibles.
 La capture utilise le champ normal de **80°** pour voir aussi le mât et la ficelle.
 
-![Vue pilote](https://github.com/steveprudhomme/sw233-flightgear/releases/download/finitions-43/cockpit.png)
+![Vue pilote](https://github.com/steveprudhomme/sw233-flightgear/releases/download/v0.1.0-alpha.1/cockpit.png)
 
-![Cadres dans FlightGear](https://github.com/steveprudhomme/sw233-flightgear/releases/download/finitions-43/cadres.png)
+![Cadres dans FlightGear](https://github.com/steveprudhomme/sw233-flightgear/releases/download/v0.1.0-alpha.1/cadres.png)
 
-![Grille de contrôle de texture](https://github.com/steveprudhomme/sw233-flightgear/releases/download/finitions-43/grille.png)
+![Grille de contrôle de texture](https://github.com/steveprudhomme/sw233-flightgear/releases/download/v0.1.0-alpha.1/grille.png)
 
 Pour refaire les captures techniques, le mainteneur lance une séance **séparée** avec
 FDM nul, heure figée et interface HTTP locale. Les commandes du banc sont :
@@ -210,9 +210,9 @@ elles ne lancent pas FlightGear. Elles immobilisent l'appareil pour examiner la 
 puis restaurent les réglages de vue. Il ne faut pas les lancer pendant un vol personnel.
 Le rapport enregistre les paramètres ; un essai d'affichage ne prouve pas une qualité de vol.
 
-![Première orientation de lumière](https://github.com/steveprudhomme/sw233-flightgear/releases/download/finitions-43/lumiere-a.png)
+![Première orientation de lumière](https://github.com/steveprudhomme/sw233-flightgear/releases/download/v0.1.0-alpha.1/lumiere-a.png)
 
-![Orientation opposée de lumière](https://github.com/steveprudhomme/sw233-flightgear/releases/download/finitions-43/lumiere-b.png)
+![Orientation opposée de lumière](https://github.com/steveprudhomme/sw233-flightgear/releases/download/v0.1.0-alpha.1/lumiere-b.png)
 
 La deuxième orientation tourne le planeur de 180° et compense le décalage de caméra.
 On conserve l'heure. Il s'agit d'un contrôle sous deux directions relatives de lumière,

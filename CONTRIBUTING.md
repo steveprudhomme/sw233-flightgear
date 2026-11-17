@@ -42,3 +42,5 @@ git commit -s -m "fix: corriger le signe de la commande de direction"
 Ne signer que des contributions que l'on est autorisé à soumettre sous GPL-3.0-only.
 La CI vérifie le trailer de chaque commit proposé ; le mainteneur examine
 également la provenance. Éviter le squash qui effacerait les attestations.
+
+Version du projet : **0.1.0-alpha.1**. Consulter la [politique SemVer](VERSIONING.md).

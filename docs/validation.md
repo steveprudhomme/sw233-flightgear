@@ -255,5 +255,5 @@ le changement de cap comme prévu. Le banc final compense son azimut et remet le
 initial entre les vues ; seules les captures finales sont publiées.
 
 [Atelier25](construction/25-finitions-avant.md) ·
-[Livraison finitions-43](https://github.com/steveprudhomme/sw233-flightgear/releases/tag/finitions-43).
+[Livraison finitions-43](https://github.com/steveprudhomme/sw233-flightgear/releases/tag/v0.1.0-alpha.1).
 Les formes sont livrées pour revue ; charnières, verrouillage et ouverture restent non réalisés.

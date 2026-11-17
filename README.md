@@ -16,11 +16,11 @@ ressources FlightGear/JSBSim ne sont pas redistribuées ni relicenciées ici. Le
 Nez plus plein, capot bombé, flancs rehaussés et raccord arrière prolongé sous l'aile.
 Cadres bleus, joints, fixations et poignée fixe ajoutés ; mât et ficelle raccordés au
 nouveau capot. [Tutoriel25 illustré](docs/construction/25-finitions-avant.md) ·
-[Paquet et comparaisons](https://github.com/steveprudhomme/sw233-flightgear/releases/tag/finitions-43).
+[Paquet et comparaisons](https://github.com/steveprudhomme/sw233-flightgear/releases/tag/v0.1.0-alpha.1).
 62 tests passent ; la forme reste estimée, la verrière ne s'ouvre pas encore et la
 livrée C-FYLP reste provisoire. La revue de ressemblance reste ouverte.
 
-![Profil du lot43 dans FlightGear](https://github.com/steveprudhomme/sw233-flightgear/releases/download/finitions-43/apres-nez-profil.png)
+![Profil du lot43 dans FlightGear](https://github.com/steveprudhomme/sw233-flightgear/releases/download/v0.1.0-alpha.1/apres-nez-profil.png)
 
 ## Reconstruction des formes avant — lot42
 
@@ -252,3 +252,5 @@ La rose reçoit une bande originale de 4 096 × 256 pixels. Les lettres en petit
 ![Rose texturée dans FlightGear](https://github.com/steveprudhomme/sw233-flightgear/releases/download/compas-texture-32/10-face-090.jpg)
 
 [Tutoriel pas à pas : l’étiquette autour du tambour](docs/construction/06-peinture.md#p--des-lettres-plus-nettes-pour-le-compas) · [Paquet compas-texture-32](https://github.com/steveprudhomme/sw233-flightgear/releases/tag/compas-texture-32).
+
+Version du projet : **0.1.0-alpha.1**. Consulter la [politique SemVer](VERSIONING.md).

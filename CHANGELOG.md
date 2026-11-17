@@ -1,7 +1,8 @@
 # Historique
 
-## 2026-11-17 — finition VIS-05b/c, lot43
+## 0.1.0-alpha.1 — 2026-11-17 — finition VIS-05b/c, lot43
 
+- Adoption SemVer : VERSION, configuration FlightGear et manifeste concordants ; historique conserve.
 - Plan préalable `ece5146` ; nez plus plein, capot bombé, bords rehaussés et raccord arrière continu.
 - Cadres bleus, joints, fixations et poignée fixe ; translation commune du mât, du fil et de son pivot.
 - Galerie locale photo/modèle, atelier25, 80 planches de pièces, comparaisons natives et deux orientations de lumière.

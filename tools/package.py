@@ -15,20 +15,24 @@ if __package__:
     from .launch import validate_resources
     from .livery import finish_livery
     from .panel import finish_panel
+    from .versioning import project_version
 else:
     from crew import finish_crew
     from launch import validate_resources
     from livery import finish_livery
     from panel import finish_panel
+    from versioning import project_version
 
 ROOT = Path(__file__).resolve().parents[1]
 
 
 def package(output: Path, preview: Path | None = None) -> Path:
     """Never overwrite a package or delete an existing user's directory."""
+    version = project_version()
     destination = output / "Aircraft" / "SW233"
     extras = [output / name for name in
-              ("launch.py", "start-sw233.cmd", "LICENSE.md", "LIRE-MOI.txt", "manifest.json")]
+              ("launch.py", "start-sw233.cmd", "LICENSE.md", "LIRE-MOI.txt",
+               "VERSION", "manifest.json")]
     if destination.exists() or any(path.exists() for path in extras):
         raise FileExistsError(f"Destination already exists: {destination}")
     if preview is not None:
@@ -60,6 +64,7 @@ def package(output: Path, preview: Path | None = None) -> Path:
     validate_resources(output)
     shutil.copyfile(ROOT / "tools/launch.py", output / "launch.py")
     shutil.copyfile(ROOT / "LICENSE.md", output / "LICENSE.md")
+    (output / "VERSION").write_text(version + "\n", encoding="utf-8")
     (output / "start-sw233.cmd").write_text(
         '@echo off\npython "%~dp0launch.py" %*\nexit /b %errorlevel%\n', encoding='ascii')
     (output / "LIRE-MOI.txt").write_text(
@@ -78,7 +83,7 @@ def package(output: Path, preview: Path | None = None) -> Path:
     except (OSError, subprocess.CalledProcessError):
         revision = 'unknown'
     files = sorted([p for p in destination.rglob('*') if p.is_file()] + extras[:-1])
-    manifest = dict(format=1, source_revision=revision, files={
+    manifest = dict(format=1, project_version=version, source_revision=revision, files={
         p.relative_to(output).as_posix(): hashlib.sha256(p.read_bytes()).hexdigest()
         for p in files})
     (output / 'manifest.json').write_text(json.dumps(manifest, indent=2), encoding='utf-8')

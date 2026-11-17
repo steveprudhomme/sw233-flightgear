@@ -1,14 +1,24 @@
 """Verify packaging cannot overwrite an existing installation."""
 
+import json
 import shutil
 import unittest
 import xml.etree.ElementTree as ET
 from uuid import uuid4
 
 from tools.package import ROOT, package
+from tools.versioning import project_version, validate
 
 
 class PackageTests(unittest.TestCase):
+    def test_semver_rejects_ambiguous_versions(self):
+        for value in ("0.1.0-alpha.1", "1.2.3", "1.2.3+001", "1.2.3-0"):
+            self.assertEqual(validate(value), value)
+        for value in ("v1.2.3", "01.2.3", "1.2", "1.2.3-alpha.01", "1.2.3-"):
+            with self.assertRaises(ValueError):
+                validate(value)
+        self.assertEqual(project_version(), (ROOT / "VERSION").read_text().strip())
+
     def test_animated_panel_and_checklists_resolve(self):
         aircraft = ROOT / "src" / "SW233"
         config = ET.parse(aircraft / "sw233-set.xml")
@@ -69,6 +79,9 @@ class PackageTests(unittest.TestCase):
         output.mkdir()
         try:
             aircraft = package(output)
+            self.assertEqual((output / "VERSION").read_text().strip(), project_version())
+            manifest = json.loads((output / "manifest.json").read_text())
+            self.assertEqual(manifest["project_version"], project_version())
             config = ET.parse(aircraft / "sw233-set.xml").getroot()
             self.assertTrue((output / config.findtext("sim/model/path")).is_file())
             self.assertTrue((aircraft / (config.findtext("sim/aero") + ".xml")).is_file())
