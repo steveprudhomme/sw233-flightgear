@@ -43,12 +43,14 @@ Responsable : mainteneur, avec revue visuelle utilisateur. Ordre : références 
 
 ### VIS-05a — séance de relevés avant toute reconstruction
 
+Plan préalable `5e717b9`. [Preuves publiées : releves-41](https://github.com/steveprudhomme/sw233-flightgear/releases/tag/releves-41), 13 fichiers vérifiés par SHA-256.
+
 - [x] **A41-01** Choisir EXT-02 comme profil oblique de travail, EXT-03 pour le bombé et DET-03/05 pour la séparation mobile ; garder identités et limites photographiques.
 - [x] **A41-02** Enregistrer points et contours en pixels sur les originaux, incertitude de pointage et rapports sans unité ; produire une fiche reproductible nez/coque/verrière sans conversion arbitraire en mètres.
 - [x] **A41-03** Extraire les limites des pièces du modèle actuel et identifier fixe/mobile/candidat à découper ; ne pas fixer la charnière sans preuve.
 - [x] **A41-04** Capturer six vues générales et des gros plans natifs dans une séance FlightGear isolée ; enregistrer caméra, éclairage et version, comparer qualitativement aux références sans prétendre à une calibration photogrammétrique.
 - [x] **A41-05** Écrire un atelier pour débutant avec images, calculs simples, écarts observés et données manquantes ; vérifier liens, rapports et intégrité des originaux.
-- [ ] **A41-06** Publier les relevés, captures et documentation ; actualiser MD et GitHub. Aucun changement de forme ni du FDM dans cette séance.
+- [x] **A41-06** Publier les relevés, captures et documentation ; actualiser MD et GitHub. Aucun changement de forme ni du FDM dans cette séance.
 
 ### Complément lot02 — détails et ouverture au sol
 
