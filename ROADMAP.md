@@ -106,7 +106,7 @@ indépendante liée aux masses existantes, sans double comptage dans le FDM.
 ### Intégration et publication de l'incrément 40
 
 - [ ] **I40-01** Reconstruire depuis le tutoriel ; contrôler les dépendances, les UV, les niveaux de détail et les éléments mobiles avec des tests adaptés.
-- [ ] **I40-02** Vérifier le paquet final dans FlightGear ; actualiser description, aperçu, tutoriels, README, CHANGELOG et validation.
+- [ ] **I40-02** Corriger le centrage des vues extérieures sur un repère du modèle (sans déplacer le modèle ni le centre de gravité), puis vérifier le paquet final dans FlightGear ; actualiser description, aperçu, tutoriels, README, CHANGELOG et validation.
 - [ ] **I40-03** Publier commits, paquet, images, vidéo et atlas sur GitHub ; vérifier intégrité des fichiers et contrôles automatiques.
 
 Les références exactes manquantes restent ouvertes même si le lot technique est
