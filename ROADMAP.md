@@ -357,3 +357,14 @@ ou d'affirmation de compatibilité avec les versions non testées.
 
 - [ ] Complément de recette : essayer la nouvelle fenêtre sur un petit écran,
   une autre version de FlightGear et refaire Ctrl+L au clavier physique.
+
+## VIS-01t — checklists en utilisation réelle (en cours)
+
+- [ ] Ouvrir une session dédiée avec le paquet accents-36 et relever la version.
+- [ ] Utiliser la souris : ouvrir depuis le menu, sélectionner les quatre listes dans les deux langues, basculer FR / EN, fermer puis rouvrir.
+- [ ] Essayer Ctrl+L avec la fenêtre ouverte puis fermée ; distinguer l'envoi automatisé d'une confirmation au clavier physique.
+- [ ] Tester une fenêtre réduite ; contrôler les bords, boutons et dernières lignes. Corriger un débordement si nécessaire et refaire les essais concernés.
+- [ ] Capturer les résultats réels et écrire une aide à la tâche pour un enfant de 10 ans ; expliciter les limites et les résultats non confirmés.
+- [ ] Vérifier la reconstruction du tutoriel si des sources changent, mettre à jour les MD et publier les preuves sur GitHub.
+
+Critères : commandes accessibles à la souris, texte lisible dans les dimensions testées, état de langue cohérent après fermeture. Aucun essai automatique ne sera présenté comme une validation physique du clavier. Une autre version de FlightGear reste un chantier distinct si elle n'est pas installée.
