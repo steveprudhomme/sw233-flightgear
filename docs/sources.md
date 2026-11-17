@@ -136,3 +136,17 @@ pas comme procédures validées dans l'appareil. La précision sur le moment
 d'exécution de la vérification d'atterrissage n'est pas ajoutée sans contrôle
 de la référence correspondante. Les inspections journalière, extérieure,
 d'accrochage, après assemblage et de transport sont des sujets distincts.
+
+
+## Dialogue natif des checklists — recette VIS-01r
+
+Référence de comportement examinée : `gui/dialogs/checklist.xml` et
+`Nasal/gui.nas` de l'installation FlightGear 2024.1.7. Le dialogue construit
+ses tables depuis `/sim/checklists` et utilise une sélection de titre et de
+page. Les captures natives ont révélé le défaut d'affichage des accents ;
+les données UTF-8 étaient correctes dans l'arbre de propriétés.
+La [description du système PUI](https://wiki.flightgear.org/PUI) fournit le
+contexte du dialogue historique ; la compatibilité de notre correction avec
+2024.1.7 repose sur les essais locaux, pas sur une supposition concernant les
+versions suivantes. La copie ASCII est limitée à la famille 2024.1 et ne
+modifie pas les sources ni les textes des plaquettes.

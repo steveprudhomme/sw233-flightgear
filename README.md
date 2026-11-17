@@ -7,6 +7,20 @@ désignation constructeur. La livrée actuelle des Cadets est un objectif : le p
 Projet **libre et open source**, sous [licence GPL-3.0-only](LICENSE.md). Les anciennes
 ressources FlightGear/JSBSim ne sont pas redistribuées ni relicenciées ici. Les versions déjà diffusées sous MIT conservent leur [notice historique](LICENSES/MIT-historical.txt).
 
+## Checklists français / anglais
+
+Ouvrir **SW233 → Checklists / Listes** ; choisir la langue dans le même menu.
+La fenêtre ouverte revient à la première liste lors d'un changement de langue.
+[Tutoriel illustré](docs/construction/05-listes.md#j--ouvrir-et-vérifier-les-listes-bilingues-dans-flightgear).
+
+Sous FlightGear 2024.1, la fenêtre utilise temporairement une copie sans accents
+pour éviter les caractères déformés ; sources et plaquettes restent accentuées.
+Le menu et les scripts ont été contrôlés. Ctrl+L a été confirmé auparavant par
+l'utilisateur dans le cockpit ; son comportement avec la checklist ouverte
+reste à confirmer manuellement.
+
+[Paquet et preuves de recette](https://github.com/steveprudhomme/sw233-flightgear/releases/tag/checklists-recette-35).
+
 ## Cartes du cockpit dégagées
 
 Les cartes d'atterrissage et de sécurité ont été repositionnées pour dégager

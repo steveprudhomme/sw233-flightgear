@@ -4,7 +4,7 @@
 <PropertyList>
     <auto-tutorials type="bool">false</auto-tutorials>
     <checklist n="0">
-        <title>SW233 - Avant décollage - BCISTRSC (simulation)</title>
+        <title>BCISTRSC - Décollage</title>
         <item>
             <name>B - Lest, masse et centrage</name>
             <value>Scénario, masses et centrage vérifiés</value>
@@ -39,7 +39,7 @@
         </item>
     </checklist>
     <checklist n="1">
-        <title>SW233 - Avant largage - AAAT (simulation)</title>
+        <title>AAAT - Largage</title>
         <item>
             <name>A - Zone de largage</name>
             <value>Zone prévue repérée</value>
@@ -58,7 +58,7 @@
         </item>
     </checklist>
     <checklist n="2">
-        <title>SW233 - Avant atterrissage - SWARTSC (simulation)</title>
+        <title>SWARTSC - Atterrissage</title>
         <item>
             <name>S - Déporteurs</name>
             <value>Disponibilité et position vérifiées</value>
@@ -89,7 +89,7 @@
         </item>
     </checklist>
     <checklist n="3">
-        <title>SW233 - Sécurité avant manœuvres - ASCOT (simulation)</title>
+        <title>ASCOT - Sécurité</title>
         <item>
             <name>A - Altitude de sécurité</name>
             <value>Marges du scénario revues ; vrille non validée</value>

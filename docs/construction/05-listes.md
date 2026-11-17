@@ -20,7 +20,7 @@ Fais une boîte checklist n=0. Pour chaque ligne, name est ce que tu cherches ; 
 <PropertyList>
     <auto-tutorials type="bool">false</auto-tutorials>
     <checklist n="0">
-        <title>SW233 - Avant décollage - BCISTRSC (simulation)</title>
+        <title>BCISTRSC - Décollage</title>
         <item>
             <name>B - Lest, masse et centrage</name>
             <value>Scénario, masses et centrage vérifiés</value>
@@ -63,7 +63,7 @@ Ajoute une deuxième carte dans la même racine. Dans cette version, aucun câbl
 <!-- atelier-fichier: src/SW233/Checklists/sw233.xml -->
 ```xml
     <checklist n="1">
-        <title>SW233 - Avant largage - AAAT (simulation)</title>
+        <title>AAAT - Largage</title>
         <item>
             <name>A - Zone de largage</name>
             <value>Zone prévue repérée</value>
@@ -90,7 +90,7 @@ Sépare l’observation du vent et du trafic, la lecture de vitesse et la dispon
 <!-- atelier-fichier: src/SW233/Checklists/sw233.xml -->
 ```xml
     <checklist n="2">
-        <title>SW233 - Avant atterrissage - SWARTSC (simulation)</title>
+        <title>SWARTSC - Atterrissage</title>
         <item>
             <name>S - Déporteurs</name>
             <value>Disponibilité et position vérifiées</value>
@@ -129,7 +129,7 @@ Sépare l’observation du vent et du trafic, la lecture de vitesse et la dispon
 <!-- atelier-fichier: src/SW233/Checklists/sw233.xml -->
 ```xml
     <checklist n="3">
-        <title>SW233 - Sécurité avant manœuvres - ASCOT (simulation)</title>
+        <title>ASCOT - Sécurité</title>
         <item>
             <name>A - Altitude de sécurité</name>
             <value>Marges du scénario revues ; vrille non validée</value>
@@ -203,7 +203,7 @@ Sépare l’observation du vent et du trafic, la lecture de vitesse et la dispon
 <PropertyList>
     <auto-tutorials type="bool">false</auto-tutorials>
     <checklist n="0">
-        <title>SW233 - PRE TAKE-OFF (simulation)</title>
+        <title>BCISTRSC - Take-off</title>
         <item>
             <name>Ballast</name>
             <value>Scenario loading and balance reviewed</value>
@@ -238,7 +238,7 @@ Sépare l’observation du vent et du trafic, la lecture de vitesse et la dispon
         </item>
     </checklist>
     <checklist n="1">
-        <title>SW233 - PRE RELEASE (simulation)</title>
+        <title>AAAT - Release</title>
         <item>
             <name>Area</name>
             <value>Release area identified in the scenario</value>
@@ -257,7 +257,7 @@ Sépare l’observation du vent et du trafic, la lecture de vitesse et la dispon
         </item>
     </checklist>
     <checklist n="2">
-        <title>SW233 - PRE-LANDING (simulation)</title>
+        <title>SWARTSC - Landing</title>
         <item>
             <name>Spoilers</name>
             <value>Availability and position checked</value>
@@ -288,7 +288,7 @@ Sépare l’observation du vent et du trafic, la lecture de vitesse et la dispon
         </item>
     </checklist>
     <checklist n="3">
-        <title>SW233 - SAFETY CHECK (simulation)</title>
+        <title>ASCOT - Safety</title>
         <item>
             <name>Altitude</name>
             <value>Scenario margins reviewed; spin behaviour not validated</value>
@@ -359,6 +359,15 @@ Sépare l’observation du vent et du trafic, la lecture de vitesse et la dispon
 # Session-only language choice. No aircraft controls are written.
 var path = "/sim/sw233/language";
 var busy = 0;
+# Legacy 2024.1 dialog labels do not decode UTF-8 in this tested UI.
+# Normalize only the active checklist copy, never source translations or textures.
+var display_text = func(text) {
+    foreach (var pair; [["é","e"],["è","e"],["ê","e"],["É","E"],
+                         ["à","a"],["â","a"],["î","i"],["ô","o"],
+                         ["ç","c"],["œ","oe"],["’","'"]])
+        text = string.replace(text,pair[0],pair[1]);
+    return text;
+};
 var apply = func {
     if (busy) return;
     busy = 1;
@@ -369,6 +378,20 @@ var apply = func {
     var target = props.globals.getNode("/sim/checklists",1);
     target.removeChildren();
     props.copy(props.globals.getNode("/sim/sw233/translations/"~lang),target);
+    var version = getprop("/sim/version/flightgear");
+    var legacy = version != nil and find("2024.1.",version) == 0;
+    setprop("/sim/sw233/checklist-ascii",legacy);
+    if (legacy) {
+        foreach (var list; target.getChildren("checklist")) {
+            var title = list.getNode("title");
+            title.setValue(display_text(title.getValue()));
+            foreach (var item; list.getChildren("item")) {
+                foreach (var field; item.getChildren())
+                    if (field.getName() == "name" or field.getName() == "value")
+                        field.setValue(display_text(field.getValue()));
+            }
+        }
+    }
     # Titles change; select the first list and discard old checklist UI state.
     props.globals.getNode("/sim/gui/dialogs/checklist",1).removeChildren();
     setprop("/sim/sw233/language-label",lang == "fr" ? "Français" : "English");
@@ -612,3 +635,124 @@ change. Ce sont des essais d'affichage statique, pas une validation du vol.
 Les positions restent estimées. Les six vues examinées ne couvrent pas tous
 les mouvements de tête possibles en réalité virtuelle : une mesure du vrai
 cockpit et d'autres points de vue pourront encore améliorer la disposition.
+
+
+## J · Ouvrir et vérifier les listes bilingues dans FlightGear
+
+Une plaquette est la petite carte fixée au tableau. Une checklist est une
+fenêtre qui donne davantage d'explications. Elles utilisent la même langue,
+mais la fenêtre n'a pas la même façon de dessiner ses lettres.
+
+### Ouvrir la première liste
+
+1. Lance le paquet SW233 du lot `checklists-recette-35` avec le lanceur décrit
+   à la fiche 12. Pour apprendre à manipuler les fenêtres, reste au sol.
+2. Clique sur **SW233**, dans la barre du haut.
+3. Choisis **Français - plaquettes et listes**.
+4. Rouvre le menu **SW233**, puis choisis **Checklists / Listes**.
+5. Une fenêtre intitulée *Aircraft Checklists* apparaît. Si elle gêne ta vue,
+   attrape sa barre de titre avec la souris et déplace-la. Ne déplace pas
+   la fenêtre entière du simulateur par erreur.
+6. Dans le champ **Checklist**, choisis **BCISTRSC - Decollage**. Compte les
+   huit lignes. À gauche, tu lis ce qu'il faut examiner ; à droite, ce que
+   notre prototype permet de vérifier ou de répéter verbalement.
+
+![Première liste française, huit rubriques](https://github.com/steveprudhomme/sw233-flightgear/releases/download/checklists-recette-35/fr-liste-0.jpg)
+
+### Choisir les trois autres listes
+
+Clique sur la petite flèche à droite du champ **Checklist**. Choisis un titre,
+puis compare les lignes à la carte correspondante du cockpit.
+
+| Titre français affiché | Titre anglais | Nombre de rubriques |
+|---|---|---:|
+| BCISTRSC - Decollage | BCISTRSC - Take-off | 8 |
+| AAAT - Largage | AAAT - Release | 4 |
+| SWARTSC - Atterrissage | SWARTSC - Landing | 7 |
+| ASCOT - Securite | ASCOT - Safety | 5 |
+
+![Avant largage, quatre rubriques](https://github.com/steveprudhomme/sw233-flightgear/releases/download/checklists-recette-35/fr-liste-1.jpg)
+
+![Avant atterrissage, sept rubriques](https://github.com/steveprudhomme/sw233-flightgear/releases/download/checklists-recette-35/fr-liste-2.jpg)
+
+![Sécurité, cinq rubriques](https://github.com/steveprudhomme/sw233-flightgear/releases/download/checklists-recette-35/fr-liste-3.jpg)
+
+Les mots « câble non simulé » et « vrille non validée » sont importants :
+afficher une liste ne crée pas ces fonctions dans le planeur. Ces listes
+sont des rappels de simulation. Elles n'actionnent ni les gouvernes ni le
+largage. Le bouton natif *Toggle marker* n'est pas un certificat de réalisation
+de chaque vérification ; notre liste n'a pas de case à cocher par ligne.
+
+### Changer la langue avec la fenêtre ouverte
+
+1. Sélectionne **ASCOT - Securite**.
+2. Garde la fenêtre ouverte.
+3. Dans le menu **SW233**, choisis **English - placards and checklists**.
+4. La fenêtre est reconstruite en anglais et revient à **BCISTRSC - Take-off**.
+   Ce retour à la première liste est volontaire : les titres ont changé et
+   on ne conserve pas une sélection qui appartient à l'ancienne langue.
+5. Vérifie aussi une plaquette du tableau : elle doit être en anglais.
+6. Choisis de nouveau Français pour revenir à **BCISTRSC - Decollage**.
+
+![Liste ouverte après une bascule vers l'anglais](https://github.com/steveprudhomme/sw233-flightgear/releases/download/checklists-recette-35/bascule-ouverte-en.jpg)
+
+Si tu fermes la fenêtre avant de changer de langue, elle reste fermée. Quand
+tu la rouvres, elle affiche la première liste dans la nouvelle langue.
+Les mots natifs *Group*, *Checklist* et *Aircraft Checklists* appartiennent
+à FlightGear : le choix SW233 ne traduit pas toute l'interface du simulateur.
+
+### Pourquoi manque-t-il des accents dans cette fenêtre ?
+
+Lors de l'essai avec FlightGear **2024.1.7**, « Déporteurs » devenait
+« DÃ©porteurs » dans cette fenêtre. Le fichier contenait pourtant le bon mot.
+Le problème se trouvait dans l'affichage des lettres, pas dans la traduction.
+
+Pour cette famille 2024.1, le script prépare une **copie d'affichage sans
+accents** : « Déporteurs » devient « Deporteurs ». Le XML d'origine et les
+textures des plaquettes gardent leurs accents. C'est une solution de
+compatibilité temporaire, pas une correction typographique complète du
+moteur graphique. Les versions autres que 2024.1 ne reçoivent pas cette
+conversion ; leur rendu doit être vérifié séparément.
+
+Pour comprendre la recette, imagine un livre et une fiche photocopiée :
+on adapte la fiche à l'imprimante, sans effacer les accents du livre.
+`display_text` fait les remplacements dans la copie située sous
+`/sim/checklists`. Les originaux restent sous `/sim/sw233/translations`.
+Les titres sont raccourcis pour tenir dans le sélecteur natif.
+
+### Comprendre les essais automatiques
+
+`tools/checklist_bench.py` compare chaque titre, rubrique et explication
+chargés dans FlightGear aux XML du projet, en tenant compte de cette copie
+d'affichage. Il photographie les huit listes, effectue douze bascules fenêtre
+ouverte puis douze fenêtre fermée, et contrôle le retour à la première liste.
+Il vérifie aussi le retour au français pour une propriété de langue invalide
+et l'absence de changement des cinq commandes suivies : ailerons, profondeur,
+direction, compensateur de profondeur et aérofreins.
+
+Le script fonctionne uniquement dans une session de développement SW233
+avec `--fdm=null`. Depuis la racine du dépôt, la commande est
+`python -m tools.checklist_bench DOSSIER_NEUF --port PORT`. Les images et
+`checks.json` vont dans ce nouveau dossier. La langue et la liste initiales
+sont restaurées après l'essai, avec la page 0, puisque chacune de nos listes
+tient sur une seule page. Une erreur du banc lors de la première exécution
+avait oublié cette page au retour : le banc a été corrigé.
+
+Ces contrôles vérifient l'affichage et les scripts ; ils ne remplacent pas
+un essai du clavier physique ni une validation des procédures de vol réel.
+
+
+### Le raccourci et les limites de cette recette
+
+Ctrl+L utilise la même commande de bascule que le menu. L'utilisateur avait
+confirmé son fonctionnement dans le cockpit lors du premier lot bilingue.
+Pendant cette recette, deux envois automatisés avec la fenêtre ouverte n'ont
+pas changé la langue. Cela ne prouve pas à lui seul une panne du raccourci :
+le dialogue ou l'envoi automatisé peut intercepter le clavier. La vérification
+physique fenêtre ouverte/fermée est demandée séparément et reste en attente.
+En attendant, le menu fournit le changement de langue vérifié.
+
+Pour ton propre essai : ouvre la checklist, note sa langue, appuie sur Ctrl+L
+et note le résultat. Ferme la checklist avec sa croix, recommence, puis
+rouvre-la pour lire sa langue. Rapporte les deux résultats séparément.
+Ne déclare pas « tout fonctionne » si un de ces essais reste inconnu.

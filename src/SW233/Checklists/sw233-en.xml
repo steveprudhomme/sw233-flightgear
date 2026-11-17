@@ -3,7 +3,7 @@
 <PropertyList>
     <auto-tutorials type="bool">false</auto-tutorials>
     <checklist n="0">
-        <title>SW233 - PRE TAKE-OFF (simulation)</title>
+        <title>BCISTRSC - Take-off</title>
         <item>
             <name>Ballast</name>
             <value>Scenario loading and balance reviewed</value>
@@ -38,7 +38,7 @@
         </item>
     </checklist>
     <checklist n="1">
-        <title>SW233 - PRE RELEASE (simulation)</title>
+        <title>AAAT - Release</title>
         <item>
             <name>Area</name>
             <value>Release area identified in the scenario</value>
@@ -57,7 +57,7 @@
         </item>
     </checklist>
     <checklist n="2">
-        <title>SW233 - PRE-LANDING (simulation)</title>
+        <title>SWARTSC - Landing</title>
         <item>
             <name>Spoilers</name>
             <value>Availability and position checked</value>
@@ -88,7 +88,7 @@
         </item>
     </checklist>
     <checklist n="3">
-        <title>SW233 - SAFETY CHECK (simulation)</title>
+        <title>ASCOT - Safety</title>
         <item>
             <name>Altitude</name>
             <value>Scenario margins reviewed; spin behaviour not validated</value>

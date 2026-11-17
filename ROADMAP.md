@@ -17,7 +17,7 @@ Le projet est un prototype de simulation, pas un appareil d’entraînement cert
 | Masse et repères | Calculs comparés à FlightGear ; transport du moment testé | Pesée de C-FYLP et référence historique des coefficients inconnues |
 | Profondeur | ±23° et deux parties mobiles vérifiées | Charnière de maquette approximative |
 | Documentation | Dix-huit fiches enrichies ; atlas historique de 49 objets et compléments par pièce, sources, captures et reconstruction automatique | Relecture autonome par un débutant encore attendue |
-| Qualité | 25 tests réussis | Ne constituent pas une certification du modèle |
+| Qualité | 26 tests réussis | Ne constituent pas une certification du modèle |
 
 **Lecture des statuts :** terminé = critère vérifié et preuve publiée ; en cours = réalisation autorisée ; à faire = proposé ; dépendance = donnée ou décision nécessaire.
 
@@ -295,16 +295,16 @@ caractères. La vérification complète des fenêtres de checklists du lot VIS-0
 et les urgences planifiées restent des travaux distincts.
 
 
-## VIS-01r — recette des checklists bilingues (en cours)
+## VIS-01r — recette des checklists bilingues (recette réalisée ; clavier physique ouvert à confirmer)
 
-- [ ] Relever la version FlightGear et les paramètres de la session de test ; vérifier les fichiers sources et le comportement du dialogue natif.
-- [ ] Contrôler les quatre listes FR/EN : titres, ordre, 8/4/7/5 rubriques, valeurs et absence de texte mélangé ou tronqué.
-- [ ] Ouvrir une liste autre que la première puis changer la langue : vérifier que la fenêtre reste ouverte et revient à la première liste, comme prévu par le script.
+- [x] Relever la version FlightGear et les paramètres de la session de test ; vérifier les fichiers sources et le comportement du dialogue natif.
+- [x] Contrôler les quatre listes FR/EN : titres, ordre, 8/4/7/5 rubriques, valeurs et absence de texte mélangé ou tronqué.
+- [x] Ouvrir une liste autre que la première puis changer la langue : vérifier que la fenêtre reste ouverte et revient à la première liste, comme prévu par le script.
 - [ ] Tester les commandes du menu et la liaison Ctrl+L ; distinguer l'essai du script de l'essai clavier physique déjà confirmé par l'utilisateur.
-- [ ] Répéter les bascules fenêtre ouverte/fermée ; vérifier les langues invalides, l'état de sélection et la conservation des commandes de vol.
-- [ ] Corriger les défauts révélés, si nécessaire, puis refaire les cas concernés ; conserver captures natives et relevés reproductibles.
-- [ ] Ajouter au tutoriel pour débutant les étapes pour ouvrir, lire, changer de liste et de langue ; expliquer le retour à la première liste et les limites de simulation avec images.
-- [ ] Actualiser MD, tests et GitHub ; clore uniquement les vérifications étayées par les preuves.
+- [x] Répéter les bascules fenêtre ouverte/fermée ; vérifier les langues invalides, l'état de sélection et la conservation des commandes de vol.
+- [x] Corriger les défauts révélés, si nécessaire, puis refaire les cas concernés ; conserver captures natives et relevés reproductibles.
+- [x] Ajouter au tutoriel pour débutant les étapes pour ouvrir, lire, changer de liste et de langue ; expliquer le retour à la première liste et les limites de simulation avec images.
+- [x] Actualiser MD, tests et GitHub ; clore uniquement les vérifications étayées par les preuves.
 
 Critère : huit listes conformes aux sources du projet, changements cohérents sans liste vide ni doublon, fenêtre réouverte correctement, aucune commande de pilotage modifiée. Le clavier physique ne sera pas déclaré retesté si l'outil ne transmet pas l'événement.
 
@@ -316,3 +316,14 @@ son sélecteur. Prévoir une copie d'affichage ASCII limitée à la famille
 autour du mot-check, puis contrôler à nouveau les huit listes. Documenter
 cette adaptation de compatibilité et ne pas la présenter comme un rendu
 français typographiquement complet.
+
+
+Résultat VIS-01r : huit listes conformes aux XML du projet, 24 bascules
+programmées et retour à la première liste contrôlés ; menus Français et English testés à
+la souris avec la fenêtre ouverte. Correction de compatibilité ASCII pour
+le dialogue 2024.1 ; sources et plaquettes accentuées conservées. 26 tests et
+reconstruction réussis, preuves natives publiées dans checklists-recette-35.
+
+Restent explicitement ouverts : essai clavier physique avec la fenêtre
+ouverte/fermée (demande envoyée à l'utilisateur) et amélioration du rendu
+accentué complet du dialogue. Le lot ne revendique pas ces deux validations.

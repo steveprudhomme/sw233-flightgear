@@ -1,5 +1,14 @@
 # Historique
 
+## 2026-11-17 — recette des checklists bilingues
+
+- Titres raccourcis pour le sélecteur natif ; copie d'affichage sans accents
+  pour la famille FlightGear 2024.1, sources et plaquettes UTF-8 conservées.
+- Huit listes et 24 bascules de langue contrôlées dans FlightGear 2024.1.7.
+- Tutoriel illustré, banc reproductible et vérification de la conversion.
+- 26 tests et reconstruction réussis ; rendu accentué complet encore à améliorer.
+
+
 ## 2026-11-17 — cartes-degagees-34
 
 - Cartes droites remontée/abaissée et supports peints ajustés ; dimensions et mots-checks préservés.
