@@ -697,7 +697,7 @@ Ces deux objets occupent les mêmes places. Le fichier XML ne montrera qu’une 
 ```python
 # Order matches the four checklist indices: departure, release, landing, stall.
 for langue in ("fr", "en"):
-    for y,z in [(-.079,.197),(-.079,.077),(.078,.190),(.078,.070)]:
+    for y,z in [(-.079,.197),(-.079,.077),(.073,.229),(.073,.035)]:
         poly("plaquettes-"+langue,5,*[(px+.001,y+dy,z+dz) for dy,dz in
              [(-.023,-.033),(.023,-.033),(.023,.033),(-.023,.033)]])
 ```

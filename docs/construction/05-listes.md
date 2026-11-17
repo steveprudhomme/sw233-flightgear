@@ -488,3 +488,127 @@ réussir alors qu'une pièce en cache une autre : il faut les deux contrôles.
 La texture est complète ; le masquage apparaît dans la scène 3D. Cette
 comparaison permet de chercher le problème dans la géométrie et la vue,
 plutôt que de supprimer des mots de la liste.
+
+
+## I · Dégager les cartes cachées par l'anémomètre
+
+**But :** lire tous les mots des cartes de droite sans changer les listes.
+Imagine deux étiquettes collées trop près d'une grosse horloge : son bord
+cache une partie des phrases. Il faut déplacer les étiquettes, puis regarder
+si elles restent sur le panneau.
+
+### 1. Observer avant de toucher au modèle
+
+![Avant : les cartes passent derrière l'instrument](https://github.com/steveprudhomme/sw233-flightgear/releases/download/plaquettes-fr-33/fr-mots-checks.jpg)
+
+Sur cette capture native du lot précédent, la carte d'atterrissage est trop
+basse et celle de sécurité trop haute. La photo C-FYLP fournie au projet sert
+à reconnaître les quatre cartes autour de l'aérateur et du compas. Elle ne
+fournit pas leurs dimensions réelles : les déplacements ci-dessous corrigent
+notre maquette, sans prétendre mesurer le véritable cockpit.
+
+### 2. Lire les coordonnées comme un quadrillage
+
+Dans la recette `fabrique.py` de la fiche 2, **y** indique le côté du tableau
+et **z** la hauteur. L'unité est le mètre : 0,005 m représente 5 mm. La
+profondeur **x** des cartes reste à `px + 0.001`. Ne confonds pas ces axes
+avec ceux de la caméra ou du fichier AC3D : la fonction d'exportation fait
+la conversion expliquée dans la fiche 2.
+
+Chaque carte mesure 46 mm de large et 66 mm de haut. Pour trouver ses
+bords, pars du centre et ajoute ou retire la moitié : 23 mm et 33 mm.
+L'anémomètre est centré à y = 0,170 m et z = 0,140 m. Sa bague extérieure a
+un rayon de 85 mm. Ces nombres viennent du code de notre modèle.
+
+![Quadrillage simplifié avant et après](../illustrations/degagement-cartes.svg)
+
+Le dessin est une illustration géométrique, pas une capture FlightGear.
+Les rectangles rouges croisent le grand cercle. Les rectangles verts ont
+la même taille mais laissent un espace. Le petit cercle représente l'aérateur.
+
+### 3. Déplacer seulement ce qui gêne
+
+| Carte | Ancien centre (y ; z), m | Nouveau centre (y ; z), m | Déplacement |
+|---|---|---|---|
+| Atterrissage | (0,078 ; 0,190) | (0,073 ; 0,229) | 5 mm vers le centre, 39 mm vers le haut |
+| Sécurité | (0,078 ; 0,070) | (0,073 ; 0,035) | 5 mm vers le centre, 35 mm vers le bas |
+
+Dans la section « Deux jeux de quatre plaquettes » de la fiche 2, utilise
+ces nouveaux centres pour les deux langues. Les deux cartes de gauche
+restent aux mêmes endroits. Les demi-dimensions restent 0,023 et 0,033.
+Ne déplace pas l'aiguille ou sa rotation : nous corrigeons les cartes.
+
+**Exercice avec une règle :** dessine un rectangle de 46 × 66 mm. Son centre
+est à 23 mm des côtés et à 33 mm du haut et du bas. Déplace ce rectangle sur
+un dessin du panneau. Tu déplaces ainsi tous ses coins ensemble sans le
+rétrécir ni supprimer un mot.
+
+Pour contrôler la marge, cherche le point du rectangle le plus proche du
+centre de l'anémomètre. Calcule sa distance au centre, puis retire le rayon
+85 mm. Le rapport `geometry-check.json` publié avec les images donne les
+résultats : environ **7,8 mm** entre la carte haute et la bague, **18,2 mm**
+pour la carte basse. Avant correction, les résultats étaient négatifs :
+−13,9 mm et −6,7 mm, donc leurs emprises se recouvraient. C'est un contrôle
+de face ; les vues de biais doivent aussi être examinées.
+
+### 4. Déplacer aussi le support peint
+
+Dans `tools/panel.py`, la liste utilisée pour `card(y,z)` doit contenir les
+mêmes centres que le maillage. Sinon, le texte bougerait mais laisserait son
+ancien support derrière lui ! La fiche 6 contient la recette synchronisée.
+
+Les deux supports peints de droite sont resserrés autour des cartes : leur
+rectangle intérieur passe de 97 × 140 à **89 × 128 pixels** sur la texture du
+tableau. Ceux de gauche restent inchangés. Le code ajoute ensuite le contour
+sombre. Cette correction laisse une marge au sommet du tableau ; elle ne
+change pas les dimensions des faces 3D ni les textures des textes.
+
+**Ne modifie pas les mots-checks pour gagner de la place.** Les fichiers
+XML et les deux images de texte sont identiques à ceux du lot précédent.
+
+### 5. Vérifier dans FlightGear
+
+![Après, cartes françaises dégagées](https://github.com/steveprudhomme/sw233-flightgear/releases/download/cartes-degagees-34/fr-compare.jpg)
+
+Le gros plan reprend les paramètres de caméra de l'image avant : décalages
+0 / 0,5 / 1,7 m, inclinaison −23°, champ 32°. La fenêtre a changé de taille
+entre les sessions : compare les emprises, pas des distances en pixels entre
+les deux images. Le menu est masqué pendant les nouvelles captures pour ne
+pas cacher lui-même une carte.
+
+![Après, même disposition en anglais](https://github.com/steveprudhomme/sw233-flightgear/releases/download/cartes-degagees-34/en-compare.jpg)
+
+Choisis Français, puis English dans le menu SW233. Les mots changent, les
+cartes restent au même endroit. Lis jusqu'au dernier mot de chaque ligne.
+
+![Vue décalée : les deux cartes de droite restent dégagées](https://github.com/steveprudhomme/sw233-flightgear/releases/download/cartes-degagees-34/fr-biais.jpg)
+
+Décale la caméra de 13 cm vers la droite : l'anémomètre ne doit pas cacher
+les fins de ligne. Le même contrôle a été réalisé en anglais.
+
+![Vue pilote : disposition générale](https://github.com/steveprudhomme/sw233-flightgear/releases/download/cartes-degagees-34/fr-pilote.jpg)
+
+À un champ de 80°, les cartes sont petites : rapproche la vue pour lire le
+texte. « Dégagé » signifie qu'aucune pièce ne cache les mots ; cela ne promet
+pas qu'un petit texte se lise à toute résolution et à tout zoom.
+
+Pour reproduire les six captures automatiquement, lance une session SW233
+réservée au développement avec `--fdm=null` et un port HTTP local, puis
+utilise `python -m tools.placard_bench DOSSIER_NEUF --port PORT`. Le script
+refuse un modèle dynamique actif, enregistre les réglages, vérifie la taille
+des captures et restaure la caméra, la langue et le menu à la fin. Ne l'utilise
+pas pendant un vol que tu veux continuer à piloter. `capture.json` conserve
+la version, le chemin du paquet et les paramètres de chaque image.
+
+### 6. Faire les derniers contrôles
+
+La reconstruction complète du tutoriel doit donner le même maillage et la
+même peinture que les sources. Les 25 tests ont réussi. La comparaison avec
+le lot précédent confirme **72 objets inchangés** ; seuls les deux objets
+regroupant les plaquettes FR et EN changent. Les sept textures de cadrans,
+radio, compas et textes restent identiques ; seule la peinture du tableau
+change. Ce sont des essais d'affichage statique, pas une validation du vol.
+
+Les positions restent estimées. Les six vues examinées ne couvrent pas tous
+les mouvements de tête possibles en réalité virtuelle : une mesure du vrai
+cockpit et d'autres points de vue pourront encore améliorer la disposition.

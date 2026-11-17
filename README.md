@@ -7,6 +7,16 @@ désignation constructeur. La livrée actuelle des Cadets est un objectif : le p
 Projet **libre et open source**, sous [licence GPL-3.0-only](LICENSE.md). Les anciennes
 ressources FlightGear/JSBSim ne sont pas redistribuées ni relicenciées ici. Les versions déjà diffusées sous MIT conservent leur [notice historique](LICENSES/MIT-historical.txt).
 
+## Cartes du cockpit dégagées
+
+Les cartes d'atterrissage et de sécurité ont été repositionnées pour dégager
+l'anémomètre, en français et en anglais. [Tutoriel illustré avant/après](docs/construction/05-listes.md#i--dégager-les-cartes-cachées-par-lanémomètre).
+
+![Cartes françaises dans FlightGear](https://github.com/steveprudhomme/sw233-flightgear/releases/download/cartes-degagees-34/fr-compare.jpg)
+
+[Paquet et preuves du lot cartes-degagees-34](https://github.com/steveprudhomme/sw233-flightgear/releases/tag/cartes-degagees-34).
+Positions de maquette ; essais statiques sous trois vues, texte à lire en rapprochant la vue.
+
 ## État : prototype expérimental 0.1.0-dev
 
 - Configuration FlightGear et FDM JSBSim originaux.

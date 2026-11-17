@@ -101,14 +101,14 @@ Sur l’image C-FYLP, pointe le milieu des cartes vers (282,176), (413,181), (28
     # Les cartes sont des rappels du simulateur, pas des consignes de vol réel.
     def card(y, z):
         x, v = xy(y, z)
-        width, height = 97, 140
+        width, height = (89, 128) if y > 0 else (97, 140)
         box = (x-width/2, v-height/2, x+width/2, v+height/2)
         # Dark holder and warm-white card, inspired by the reference photograph.
         pen.rounded_rectangle((box[0]-4, box[1]-3, box[2]+4, box[3]+5),
                               radius=8, fill="#111416", outline="#565b59", width=2)
         pen.rounded_rectangle(box, radius=5, fill="#e3e1d5", outline="#b1b3a9", width=1)
         pen.line((x-41, v-39, x+41, v-39), fill="#4c4a44", width=1)
-    for y,z in [(-.079,.197),(-.079,.077),(.078,.190),(.078,.070)]:
+    for y,z in [(-.079,.197),(-.079,.077),(.073,.229),(.073,.035)]:
         card(y,z)
     # Both atlases come from the same XML files as the native checklist data.
     for language, filename in [("fr","sw233.xml"),("en","sw233-en.xml")]:

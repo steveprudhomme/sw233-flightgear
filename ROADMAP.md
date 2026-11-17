@@ -17,7 +17,7 @@ Le projet est un prototype de simulation, pas un appareil d’entraînement cert
 | Masse et repères | Calculs comparés à FlightGear ; transport du moment testé | Pesée de C-FYLP et référence historique des coefficients inconnues |
 | Profondeur | ±23° et deux parties mobiles vérifiées | Charnière de maquette approximative |
 | Documentation | Dix-huit fiches enrichies ; atlas historique de 49 objets et compléments par pièce, sources, captures et reconstruction automatique | Relecture autonome par un débutant encore attendue |
-| Qualité | 24 tests réussis | Ne constituent pas une certification du modèle |
+| Qualité | 25 tests réussis | Ne constituent pas une certification du modèle |
 
 **Lecture des statuts :** terminé = critère vérifié et preuve publiée ; en cours = réalisation autorisée ; à faire = proposé ; dépendance = donnée ou décision nécessaire.
 
@@ -264,7 +264,7 @@ BCISTRSC / AAAT / SWARTSC / ASCOT avec explications françaises attribuées au
 responsable du projet. 25 tests et reconstruction complète réussis.
 Deux captures natives statiques confirment le rendu des lettres rouges.
 
-- [ ] VIS-01p, lisibilité : corriger le masquage des cartes de droite par la
+- [x] VIS-01p, lisibilité (corrigé par VIS-01q) : corriger le masquage des cartes de droite par la
   bague de l'anémomètre ; comparer disposition et profondeurs aux références,
   puis contrôler toutes les lignes depuis la vue pilote. Les captures du
   17 novembre montrent le défaut ; ne pas déclarer la lisibilité complète.
@@ -273,14 +273,23 @@ Les urgences et inspections nouvellement recensées restent planifiées, sans
 ajout de procédure automatique ni de simulation du câble dans ce lot.
 
 
-## VIS-01q — dégager les cartes de droite (en cours)
+## VIS-01q — dégager les cartes de droite (terminé)
 
-- [ ] Mesurer les emprises dans la recette : cartes, bague d'anémomètre, aérateur, compas et bord du tableau ; comparer la disposition à la photo C-FYLP.
-- [ ] Distinguer recouvrement géométrique et effet de perspective ; conserver l'étalonnage et l'animation de l'anémomètre.
-- [ ] Choisir un déplacement limité des deux cartes et de leurs supports peints ; garder leurs dimensions et tous les mots-checks, puis vérifier les dégagements calculés.
-- [ ] Synchroniser les géométries française/anglaise, la peinture et les recettes du tutoriel.
-- [ ] Contrôler les deux langues dans FlightGear : vue pilote, gros plan identique avant/après et vue oblique ; publier les captures natives et les limites observées.
-- [ ] Expliquer les axes, le calcul des bords et le choix des positions dans un tutoriel pour débutant ; ajouter des illustrations avant/après.
-- [ ] Vérifier les objets préservés, les tests, la reconstruction et le paquet ; actualiser MD, état de la feuille de route et GitHub.
+- [x] Mesurer les emprises dans la recette : cartes, bague d'anémomètre, aérateur, compas et bord du tableau ; comparer la disposition à la photo C-FYLP.
+- [x] Distinguer recouvrement géométrique et effet de perspective ; conserver l'étalonnage et l'animation de l'anémomètre.
+- [x] Choisir un déplacement limité des deux cartes et de leurs supports peints ; garder leurs dimensions et tous les mots-checks, puis vérifier les dégagements calculés.
+- [x] Synchroniser les géométries française/anglaise, la peinture et les recettes du tutoriel.
+- [x] Contrôler les deux langues dans FlightGear : vue pilote, gros plan identique avant/après et vue oblique ; publier les captures natives et les limites observées.
+- [x] Expliquer les axes, le calcul des bords et le choix des positions dans un tutoriel pour débutant ; ajouter des illustrations avant/après.
+- [x] Vérifier les objets préservés, les tests, la reconstruction et le paquet ; actualiser MD, état de la feuille de route et GitHub.
 
 Critère : les huit cartes (quatre par langue) sont complètes dans les vues contrôlées, sans recouvrement avec les instruments voisins ni sortie du tableau. Les nouvelles positions sont des choix de maquette, pas des cotes mesurées sur un planeur réel.
+
+
+VIS-01q terminé : les cartes droites sont dégagées dans les six vues natives
+FR/EN contrôlées. Centres, supports et recettes synchronisés ; 72 autres
+objets et sept textures conservés. 25 tests et reconstruction réussis.
+[Explications et images](docs/construction/05-listes.md#i--dégager-les-cartes-cachées-par-lanémomètre).
+Positions estimées ; rapprochement de la vue nécessaire pour lire les petits
+caractères. La vérification complète des fenêtres de checklists du lot VIS-01p
+et les urgences planifiées restent des travaux distincts.

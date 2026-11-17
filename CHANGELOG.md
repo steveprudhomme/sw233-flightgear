@@ -1,12 +1,20 @@
 # Historique
 
+## 2026-11-17 — cartes-degagees-34
+
+- Cartes droites remontée/abaissée et supports peints ajustés ; dimensions et mots-checks préservés.
+- Six captures natives FR/EN, trois vues ; 72 objets et sept textures conservés.
+- Tutoriel pour débutant enrichi d'un schéma, des calculs et de comparaisons natives.
+- 25 tests et reconstruction vérifiés. Positions estimées, essais statiques uniquement.
+
+
 ## En cours — plaquettes bilingues
 
 - Prototype de sélection FR/EN par menu et Ctrl+L (raccourci confirmé manuellement).
 - Initiales rouges sur les plaquettes ; rubriques anglaises complètes comparées aux IEA 2017.
 - Tutoriel et registre des sources complétés. Explications françaises fournies par le responsable du projet, avec lettres
-  anglaises conservées. Captures natives effectuées ; masquage partiel des cartes
-  de droite encore à corriger. Lot bilingue toujours en cours.
+  anglaises conservées. Captures natives effectuées ; masquage des cartes
+  de droite corrigé par le lot cartes-degagees-34. Lot bilingue toujours en cours.
 
 
 ## Non publié — 0.1.0-dev
