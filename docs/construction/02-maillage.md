@@ -513,6 +513,32 @@ for i in range(4):
          [(-.002,-.0004),(.002,-.0004),(.002,.0004),(-.002,.0004)]])
 ```
 
+## Bague de l'altimètre — VIS-01i
+
+Plan préalable `e4bcc04`. Centre y = −0,22 m, z = 0,087 m ; cadran de rayon 83 mm conservé. La bague commence à 84 mm et se termine à 93 mm, avec une saillie estimée de 8 mm. Les aiguilles restent aux plans 12 et 13 mm. Ces nombres sont des dimensions de maquette, pas des mesures constructeur.
+
+Le bouton est situé 60 mm à gauche et 60 mm sous le centre. Son rayon vaut 12 mm ; sa face est à 25 mm devant le tableau. La bague passe derrière sa face. On omet la fixation à 225° pour ne pas placer une seconde tête de vis sur ce bouton. Les trois autres fixations sont des choix de représentation, à vérifier sur une référence plus précise.
+
+<!-- atelier-fichier: fabrique.py -->
+```python
+# Altimeter bezel, behind the existing adjustment knob and animated hands.
+def cercle_alt(x, r):
+    return [(x, -.22+r*cos(i*pi/30), .087+r*sin(i*pi/30)) for i in range(60)]
+
+bridge("alt-bague", 3, cercle_alt(px+.001, .093), cercle_alt(px+.008, .093))
+bridge("alt-bague", 2, cercle_alt(px+.008, .093), cercle_alt(px+.008, .084))
+bridge("alt-bague", 3, cercle_alt(px+.008, .084), cercle_alt(px+.004, .084))
+for i in (0, 1, 3):  # Lower-left position is occupied by the adjustment knob.
+    a = (i+.5)*pi/2
+    sy, sz = -.22+.091*cos(a), .087+.091*sin(a)
+    back = [(px+.008, sy+.003*cos(j*pi/8), sz+.003*sin(j*pi/8)) for j in range(16)]
+    front = [(px+.010, y, z) for _, y, z in back]
+    bridge("alt-vis", 2, back, front)
+    poly("alt-vis", 2, *front)
+    poly("alt-fentes", 5, *[(px+.0101,sy+y,sz+z) for y,z in
+         [(-.002,-.0004),(.002,-.0004),(.002,.0004),(-.002,.0004)]])
+```
+
 ## I ter · Construis une petite boîte ouverte pour le compas
 
 Prends une boîte d’allumettes vide : de face tu vois son ouverture ; en la décalant de côté, tu vois aussi sa paroi. C’est le même effet que nous cherchons sous la bouche d’air. La photo de C-FYLP donne une façade, pas une profondeur. Garde le centre choisi à la fiche 1 (y = 0 ; z = 0,098 m). Le dessin plat faisait 126 × 118 pixels dans la texture à 1 920 pixels/m : environ 66 × 61 mm. Garde cette taille pour la base. Les 25 mm d’épaisseur sont une estimation de maquette.
@@ -710,3 +736,47 @@ Les quatre lectures ont été examinées dans FlightGear 2024.1.7 ; cadran et ai
 ![Indication injectée 120 kt](https://github.com/steveprudhomme/sw233-flightgear/releases/download/bague-24/ias-120.jpg)
 
 ![Vue oblique](https://github.com/steveprudhomme/sw233-flightgear/releases/download/bague-24/biais.jpg)
+
+## Altimètre : pièces et vérification du relief
+
+VIS-01i, 16 novembre 2026. Trois objets supplémentaires : bague, têtes et fentes, soit 59 objets au total.
+
+![alt-bague, trois projections](https://github.com/steveprudhomme/sw233-flightgear/releases/download/alt-bague-25/alt-bague.png)
+
+![alt-vis, trois projections](https://github.com/steveprudhomme/sw233-flightgear/releases/download/alt-bague-25/alt-vis.png)
+
+![alt-fentes, trois projections](https://github.com/steveprudhomme/sw233-flightgear/releases/download/alt-bague-25/alt-fentes.png)
+
+### Refaire les essais
+
+Construire un paquet neuf et le charger dans FlightGear avec `--fdm=null --httpd=18111`. Ce banc est une scène de test sans dynamique de vol. Depuis le dépôt, exécuter :
+
+```powershell
+python tools/altimeter_bench.py build/altimetre-relief --port 18111 --pressure
+```
+
+Le dossier doit être neuf. Le programme contrôle cinq indications imposées (0, 950, 1000, 1050, 2500 ft), puis trois réglages de pression ; il restaure les valeurs précédentes. Les captures vides sont désormais rejetées. Observer les deux aiguilles, la bordure et le bouton, pas seulement la valeur numérique.
+
+Dans ce banc null, la position vaut 5000 ft mais la pression statique reste 29,92 inHg. Au calage 29,92, l'indication vaut donc 0 ft, pas 5000 ft : cette scène ne valide pas la cohérence atmosphère/altitude en vol. Les calages 28,92 et 30,92 donnent respectivement −947,296 et +902,956 ft. Ils démontrent une réponse au calage, pas une précision certifiée. Les CSV sont joints à la publication.
+
+![Banc natif : alt-0](https://github.com/steveprudhomme/sw233-flightgear/releases/download/alt-bague-25/alt-0.jpg)
+
+![Banc natif : alt-950](https://github.com/steveprudhomme/sw233-flightgear/releases/download/alt-bague-25/alt-950.jpg)
+
+![Banc natif : alt-1000](https://github.com/steveprudhomme/sw233-flightgear/releases/download/alt-bague-25/alt-1000.jpg)
+
+![Banc natif : alt-1050](https://github.com/steveprudhomme/sw233-flightgear/releases/download/alt-bague-25/alt-1050.jpg)
+
+![Banc natif : alt-2500](https://github.com/steveprudhomme/sw233-flightgear/releases/download/alt-bague-25/alt-2500.jpg)
+
+![Banc natif : pression-28.92](https://github.com/steveprudhomme/sw233-flightgear/releases/download/alt-bague-25/pression-28.92.jpg)
+
+![Banc natif : pression-29.92](https://github.com/steveprudhomme/sw233-flightgear/releases/download/alt-bague-25/pression-29.92.jpg)
+
+![Banc natif : pression-30.92](https://github.com/steveprudhomme/sw233-flightgear/releases/download/alt-bague-25/pression-30.92.jpg)
+
+![Vue oblique du tableau](https://github.com/steveprudhomme/sw233-flightgear/releases/download/alt-bague-25/biais.jpg)
+
+La vue oblique emploie x caméra −0,15 m, azimut −15°, inclinaison −18°, champ 55° ; son bord inférieur coupe une partie du bouton. Les vues rapprochées montrent sa face dégagée et son repère tournant avec la pression. Le clic manuel n'a pas été rejoué : le lot reste ouvert pour cette vérification d'interaction. La fenêtre de pression demeure non chiffrée, comme avant.
+
+La profondeur et le choix de trois fixations restent estimés. Source visuelle : photo C-FYLP du fonds de références ; les diamètres reprennent la maquette existante. Le changement ne modifie ni les aiguilles ni les commandes XML. Reconstruction et contrôles de sources réussis ; nouvel aperçu cockpit inclus dans le paquet, sans nouvel essai du sélecteur.

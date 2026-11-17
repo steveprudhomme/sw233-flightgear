@@ -139,3 +139,5 @@ La [fiche 16](docs/construction/16-proportions.md) quantifie trois écarts au tr
 [Aérateur central en relief : construction, quatre pièces et vues natives](docs/construction/02-maillage.md#aérateur--pièces-et-vérification-native).
 
 [Relief de l’anémomètre : pièces et lectures dans FlightGear](docs/construction/02-maillage.md#anémomètre--pièces-et-essais-du-relief).
+
+[Altimètre en relief : pièces et essais illustrés](docs/construction/02-maillage.md#altimètre--pièces-et-vérification-du-relief). Le clic sur le bouton reste à vérifier.

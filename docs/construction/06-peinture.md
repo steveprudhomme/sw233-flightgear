@@ -74,7 +74,7 @@ Reprends les mêmes centres et rayons qu’à la fiche 2 : un cercle autour d’
 ```python
     for y, z, r, title in [(-.22,.087,.083,"ALT  /  FT"), (.17,.14,.075,"AIR SPEED  /  MPH"),
                             (.295,.022,.063,"VERTICAL SPEED")]:
-        if title != "AIR SPEED  /  MPH":  # IAS bezel and screws are now 3D.
+        if title == "VERTICAL SPEED":  # IAS and ALT hardware are now 3D.
             for extra, color in [(.010,"#101214"),(.008,"#363b3d"),(.006,"#191d20")]:
                 disc(y,z,r+extra,color)
             # Subtle bevel lighting, confined to the fixed rim outside the dial.
@@ -404,3 +404,7 @@ La grille peinte est retirée : la [recette et les quatre pièces 3D](02-maillag
 ## Bordure 3D de l'anémomètre
 
 La condition `title != "AIR SPEED  /  MPH"` réserve les anneaux et vis peints aux deux autres instruments. L'inscription sous le cadran est conservée. La [bague et ses fixations](02-maillage.md#anémomètre--pièces-et-essais-du-relief) remplacent le dessin ; aucune modification des arcs colorés, nombres ou aiguilles.
+
+## Bordure de l’altimètre en relief
+
+La boucle ne peint désormais les anneaux et fixations que pour VERTICAL SPEED. Altimètre et anémomètre utilisent leur géométrie ; inscriptions et cadrans restent inchangés. Voir les [pièces et essais](02-maillage.md#altimètre--pièces-et-vérification-du-relief).

@@ -2,12 +2,14 @@
 
 import argparse
 import csv
+import io
 import json
 import time
 from pathlib import Path
 from urllib.request import urlopen
 
 from flightgear import execute
+from PIL import Image
 
 
 def capture(folder, port, pressure=False):
@@ -16,6 +18,13 @@ def capture(folder, port, pressure=False):
     def read(path):
         with urlopen(url + path, timeout=10) as response:
             return response.read()
+
+    def screenshot():
+        content = read("/screenshot?type=jpg")
+        with Image.open(io.BytesIO(content)) as image:
+            if image.width < 1024 or image.height < 600:
+                raise RuntimeError("Capture vide : restaurer FlightGear")
+        return content
 
     def value(prop):
         return json.loads(read("/json" + prop))["value"]
@@ -56,7 +65,7 @@ def capture(folder, port, pressure=False):
                 time.sleep(0.6)
                 before = value(node + "indicated-altitude-ft")
                 name = f"alt-{kt}.jpg"
-                (folder / name).write_bytes(read("/screenshot?type=jpg"))
+                (folder / name).write_bytes(screenshot())
                 after = value(node + "indicated-altitude-ft")
                 if before != kt or after != kt:
                     raise RuntimeError("Entrée instable : capture non validée")
@@ -84,7 +93,7 @@ def capture(folder, port, pressure=False):
                         if abs(altitude - height) > 0.01:
                             raise RuntimeError("Altitude non constante")
                         name = f"pression-{qnh:.2f}.jpg"
-                        (folder / name).write_bytes(read("/screenshot?type=jpg"))
+                        (folder / name).write_bytes(screenshot())
                         log.writerow(
                             [
                                 qnh,

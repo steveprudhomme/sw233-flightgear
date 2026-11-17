@@ -44,7 +44,7 @@ def finish_panel(models: Path):
 
     for y, z, r, title in [(-.22,.087,.083,"ALT  /  FT"), (.17,.14,.075,"AIR SPEED  /  MPH"),
                             (.295,.022,.063,"VERTICAL SPEED")]:
-        if title != "AIR SPEED  /  MPH":  # IAS bezel and screws are now 3D.
+        if title == "VERTICAL SPEED":  # IAS and ALT hardware are now 3D.
             for extra, color in [(.010,"#101214"),(.008,"#363b3d"),(.006,"#191d20")]:
                 disc(y,z,r+extra,color)
             # Subtle bevel lighting, confined to the fixed rim outside the dial.
