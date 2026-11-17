@@ -151,3 +151,13 @@ La [fiche 16](docs/construction/16-proportions.md) quantifie trois écarts au tr
 [Radio en relief : pièces, texture et comparaisons natives](docs/construction/06-peinture.md#m--façade-de-radio-en-relief). Ce premier lot était visuel uniquement ; le réglage COM1 est ajouté dans radio-com-30 ci-dessous. [Paquet radio-relief-29](https://github.com/steveprudhomme/sw233-flightgear/releases/tag/radio-relief-29).
 
 [Radio COM1 réglable : gestes, limites et essais](docs/construction/06-peinture.md#n--régler-la-fréquence-com1). Petit bouton : 1 MHz ; gros bouton : 25 kHz. Clic gauche pour augmenter, clic milieu pour diminuer. Commande générique sur grille 25 kHz ; audio et réseau non validés. [Paquet radio-com-30](https://github.com/steveprudhomme/sw233-flightgear/releases/tag/radio-com-30).
+
+### Compas : finition du boîtier
+
+Boîtier arrondi, joint périphérique et quatre vis en relief ; rose et repère fixe conservés. [Construction illustrée des huit pièces](docs/construction/02-maillage.md#o--comprendre-la-finition-du-compas-pièce-par-pièce) et [comparaison avant/après, banc et virages](docs/construction/06-peinture.md#o--finition-du-compas). Les dimensions restent estimées ; les essais du simulateur ne certifient pas un instrument réel.
+
+![Compas amélioré dans FlightGear](https://github.com/steveprudhomme/sw233-flightgear/releases/download/compas-finition-31/face-090.jpg)
+
+[Paquet compas-finition-31 et preuves](https://github.com/steveprudhomme/sw233-flightgear/releases/tag/compas-finition-31).
+
+[Voir le compas pendant les deux virages — extraits de 30 secondes](https://github.com/steveprudhomme/sw233-flightgear/releases/download/compas-finition-31/compas-en-virage.mp4).

@@ -19,11 +19,33 @@ class PackageTests(unittest.TestCase):
         self.assertEqual({a.findtext("object-name") for a in animations}, {
             "alt-centaines", "alt-milliers", "vitesse-mph", "vario", "fil-de-laine",
             "aerofrein-1", "aerofrein1", "poignee-frein", "compas-rose", "alt-calage",
-            "profondeur-1", "profondeur1",
+            "profondeur-1", "profondeur1", "alt-pression", "radio-frequence",
+            "radio-bouton-gauche", "radio-bouton-droit",
         })
+        texts = {node.findtext("name"): node for node in model.findall("text")}
+        self.assertEqual(set(texts), {"alt-pression", "alt-unite", "radio-frequence"})
+        for node in texts.values():
+            if node.findtext("type") == "number-value":
+                self.assertTrue(node.findtext("property"))
+                self.assertTrue(node.findtext("format"))
+            else:
+                self.assertTrue(node.findtext("text"))
         for animation in animations:
-            self.assertIn(f'name "{animation.findtext("object-name")}"', mesh)
-            self.assertIsNotNone(animation.findtext("property"))
+            for node in animation.findall("object-name"):
+                if node.text not in texts:
+                    self.assertIn(f'name "{node.text}"', mesh)
+            kind = animation.findtext("type")
+            self.assertIn(kind, {"rotate", "knob", "material", "pick"})
+            if kind in {"rotate", "knob"}:
+                self.assertTrue(animation.findtext("property"))
+            elif kind == "pick":
+                actions = animation.findall("action")
+                self.assertTrue(actions)
+                for action in actions:
+                    self.assertEqual(action.findtext("binding/command"), "nasal")
+                    self.assertTrue(action.findtext("binding/script"))
+            else:
+                self.assertIsNotNone(animation.find("diffuse"))
         lists = ET.parse(aircraft / config.find("sim/checklists").attrib["include"])
         self.assertEqual(len(lists.findall("checklist")), 4)
         for item in lists.findall("checklist/item"):

@@ -1,5 +1,7 @@
 # Atlas — toutes les pièces du maillage
 
+**Atlas historique.** Le modèle courant comporte 72 objets. Les huit pièces du compas actualisé sont illustrées dans la [fiche 2, section O](02-maillage.md#o--comprendre-la-finition-du-compas-pièce-par-pièce) ; les autres ajouts sont détaillés dans les sections précédentes de cette fiche.
+
 Version panneaux-17 : 49 objets, trois projections par objet. Ces schémas sont calculés depuis sw233.ac, sans textures ni animations. Les dimensions sont celles de la maquette ; elles ne constituent pas des mesures constructeur. Les vues sont ajustées séparément.
 
 [Télécharger l’atlas hors connexion](https://github.com/steveprudhomme/sw233-flightgear/releases/download/panneaux-17/atlas-pieces.zip), extraire puis ouvrir index.html. [Méthode et limites](15-panneaux.md).

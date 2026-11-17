@@ -24,8 +24,9 @@ class EnclosureTests(unittest.TestCase):
     def test_animation_parts_exist_and_cabin_has_no_deck(self):
         _, objects = read_mesh(ROOT/'src/SW233/Models/sw233.ac')
         config = ET.parse(ROOT/'src/SW233/Models/sw233-model.xml')
+        names = set(objects) | {node.findtext('name') for node in config.findall('text')}
         for node in config.findall('.//object-name'):
-            self.assertIn(node.text, objects)
+            self.assertIn(node.text, names)
         for _, polygon in objects['fuselage']:
             x = sum(p[0] for p in polygon)/len(polygon)
             if .50 < x < 3.16:

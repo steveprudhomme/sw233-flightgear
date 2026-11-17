@@ -4,6 +4,8 @@
 
 ### Changements
 
+- VIS-01n : compas à boîtier arrondi, joint et vis en relief ; rose conservée. Dix-huit lectures natives, deux virages filmés, huit pièces illustrées et reconstruction vérifiée. Enregistrement protégé contre horloge figée et images vides ; tests de résolution des objets actualisés. Dimensions estimées.
+
 - VIS-01m : affichage COM1 actif et commandes génériques 1 MHz / 25 kHz ; butées, refus hors grille, treize cas natifs et huit clics validés. Tutoriel illustré et paquet actualisés. Audio, réseau et grille 8,33 kHz non validés.
 
 - VIS-01l : radio en relief, huit pièces et texture originale ; dessin plat remplacé, boutons et écran fixes. Quatre vues natives comparées, tutoriel illustré par pièce, recettes et aperçu actualisés. Dimensions estimées ; fonctions radio non implémentées.

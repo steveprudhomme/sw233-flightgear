@@ -2,12 +2,14 @@
 
 import argparse
 import csv
+import io
 import json
 import time
 from pathlib import Path
 from urllib.request import urlopen
 
 from flightgear import execute
+from PIL import Image
 
 
 def record(folder, port):
@@ -23,6 +25,17 @@ def record(folder, port):
 
     if not value("/sim/initialized") or value("/sim/aircraft") != "sw233":
         raise RuntimeError("Charger SW233 avant la capture")
+    if value("/sim/flight-model") != "jsb" or value("/sim/freeze/clock"):
+        raise RuntimeError("Vol compas : utiliser JSBSim avec l'horloge active")
+
+    def screenshot():
+        data = read("/screenshot?type=jpg")
+        with Image.open(io.BytesIO(data)) as im:
+            if im.width < 1024 or im.height < 600:
+                raise RuntimeError("Capture vide : restaurer la fenetre FlightGear")
+        return data
+
+    screenshot()  # Reject an invisible window before starting the controller.
     execute(Path(__file__).with_name("compass-turn.nas").read_text(encoding="utf-8-sig"), port)
     time.sleep(0.25)
     fields = ["time", "phase", "mag", "ind", "roll", "kt", "wind"]
@@ -35,7 +48,7 @@ def record(folder, port):
             state = json.loads(read("/json/sim/sw233/turn?d=1"))
             vals = {v["name"]: v.get("value") for v in state["children"]}
             frame = f"{i:04d}.jpg"
-            (folder / frame).write_bytes(read("/screenshot?type=jpg"))
+            (folder / frame).write_bytes(screenshot())
             table.writerow([frame, *(vals[k] for k in fields)])
             stream.flush()
             if vals["done"]:

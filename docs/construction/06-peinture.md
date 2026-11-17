@@ -816,3 +816,104 @@ La reconstruction du tutoriel, le contrôle des sources, le style Python et le m
 ![Cockpit avec COM1](https://github.com/steveprudhomme/sw233-flightgear/releases/download/radio-com-30/cockpit.jpg)
 
 [Paquet et captures](https://github.com/steveprudhomme/sw233-flightgear/releases/tag/radio-com-30) · [Résultats et relevés](https://github.com/steveprudhomme/sw233-flightgear/releases/download/radio-com-30/releves.zip).
+
+## O · Finition du compas
+
+### 1. Comprendre le changement
+
+La [fiche 2, section O](02-maillage.md#o--comprendre-la-finition-du-compas-pièce-par-pièce) donne les observations, les calculs et les images des huit objets. Le compas était déjà animé : nous améliorons son boîtier, pas sa logique. Le noir du cadre est homogénéisé ; un filet plus clair reste autour de la fenêtre. Le joint et les vis sont de vraies faces 3D, sans nouvelle photo collée sur le tableau. Le rendu reste une interprétation simplifiée, pas une reproduction photographique certifiée.
+
+### 2. Comparer à cadrage identique
+
+Ces quatre captures natives FlightGear 2024.1.7 utilisent une indication imposée de 090°. La lettre E doit rester sous le repère. La comparaison garde position, champ de vision, cap de l’avion et heure simulée identiques.
+
+![Avant : cadre à coins coupés, vis plates](https://github.com/steveprudhomme/sw233-flightgear/releases/download/compas-finition-31/avant-face.jpg)
+
+![Après : coins arrondis, joint et vis en relief](https://github.com/steveprudhomme/sw233-flightgear/releases/download/compas-finition-31/face-090.jpg)
+
+![Avant de biais](https://github.com/steveprudhomme/sw233-flightgear/releases/download/compas-finition-31/avant-biais.jpg)
+
+![Après de biais : têtes et rebord visibles](https://github.com/steveprudhomme/sw233-flightgear/releases/download/compas-finition-31/biais-090.jpg)
+
+### 3. Refaire le banc de lecture
+
+Un banc impose un chiffre connu pour vérifier le dessin. Il ne prouve pas que le compas réel réagit correctement en vol. Dans une session dédiée, utilise le paquet construit avec `tools/package.py`, comme à la fiche 12. Pour cet exemple, le paquet est dans `build/compas`. Depuis la racine du dépôt, avec Python et les dépendances installés :
+
+```powershell
+# 1. Construire dans un dossier neuf. Adapter les trois chemins FlightGear.
+python tools/package.py --output build/compas
+& "C:/Program Files/FlightGear 2024.1/bin/fgfs.exe" `
+  "--fg-root=C:/Users/steve/FlightGear/Downloads/fgdata_2024_1" `
+  "--fg-aircraft=$PWD/build/compas/Aircraft" `
+  "--fg-scenery=C:/Users/steve/FlightGear/Downloads/TerraSync" `
+  --aircraft=sw233 --airport=CYJN --in-air --altitude=5000 --vc=60 `
+  --heading=010 --fdm=null --httpd=18119 --geometry=1280x720 `
+  --start-date-gmt=2026:06:21:16:45:00 --enable-clock-freeze `
+  --wind=0@0 --disable-real-weather-fetch --disable-terrasync `
+  --read-only --ignore-autosave
+# 2. Attendre que la scène soit visible. Dans un second terminal à la racine :
+python tools/compass_bench.py build/essais-compas --port 18119
+```
+
+Le dossier de résultats doit être neuf. Le script vérifie SW233 et le mode `null`, sauvegarde la caméra et les propriétés, puis désactive temporairement le calcul de l’instrument avec `serviceable = 0`. Il impose neuf indications, prend les images et relit chaque valeur avant et après. Enfin il restaure les réglages et l’état de service initial, même si une erreur survient pendant les essais. Avec un instrument réactivé, l’indication évolue à nouveau normalement.
+
+| Entrée | Ce qu’il faut regarder sous le repère |
+|---|---|
+| 000° | N |
+| 045° | À mi-chemin entre 3 (030°) et 6 (060°) |
+| 090° | E |
+| 135° | Entre 12 et 15 |
+| 180° | S |
+| 225° | Entre 21 et 24 |
+| 270° | W |
+| 359°, 000°, 001° | N se déplace légèrement, sans rupture de la rose |
+
+La vue de face utilise x = 0, y = 0,5, z = 1,7 m, inclinaison −26° et champ 17°. La vue de biais change x à −0,08 m et l’orientation horizontale à −5°. Ce sont des réglages de caméra du prototype, pas une mesure de la position de l’œil réel.
+
+![Neuf indications de face : recadrages des captures natives](https://github.com/steveprudhomme/sw233-flightgear/releases/download/compas-finition-31/lectures-face.jpg)
+
+![Les mêmes indications de biais](https://github.com/steveprudhomme/sw233-flightgear/releases/download/compas-finition-31/lectures-biais.jpg)
+
+Les 18 valeurs sont restées stables pendant leurs captures. Les lettres cardinales et les positions intermédiaires ont été examinées sur ces images. Le programme vérifie les valeurs ; il ne reconnaît pas automatiquement les lettres. Les chiffres voisins sont partiellement cachés par les côtés de la fenêtre, comme auparavant : la lecture se fait au repère central. Les caractères restent dessinés par petits polygones et peuvent paraître anguleux en gros plan.
+
+### 4. Vérifier le défilement pendant un vrai vol simulé
+
+Ferme la session statique de cet atelier. Pour le vol, utilise JSBSim, le moteur de dynamique du paquet FlightGear, et laisse l’horloge active. N’ajoute ni `--fdm=null` ni `--enable-clock-freeze`. Depuis la racine du dépôt :
+
+```powershell
+# Ouvrir le paquet déjà construit, en vol au-dessus de CYJN.
+python build/compas/launch.py `
+  --fgfs "C:/Program Files/FlightGear 2024.1/bin/fgfs.exe" `
+  --fg-root "C:/Users/steve/FlightGear/Downloads/fgdata_2024_1" `
+  --scenery "C:/Users/steve/FlightGear/Downloads/TerraSync" `
+  --mode air --http-port 18122
+# Attendre la scène, garder la fenêtre visible, puis enregistrer.
+python tools/record_compass.py build/vol-compas-visible --port 18122
+# Produire le graphe, les images annotées et un film de 30 secondes.
+# Matplotlib et FFmpeg sont nécessaires, comme à la fiche 7.
+python tools/compass_report.py build/vol-compas-visible build/rapport-compas-visible
+```
+
+Le scénario initialise une fois l’avion, puis agit sur les commandes pour faire un virage à droite et un à gauche. Il lit le cap magnétique et l’indication du compas ; il n’impose pas la valeur de la rose. Le film rassemble cinq extraits à vitesse normale : les sauts d’heure indiquent les coupes. Le petit encadré agrandit le compas de la même capture.
+
+**Deux pièges rencontrés et corrigés.** Une horloge figée empêchait le premier vol d’avancer. Ensuite une fenêtre non visible renvoyait des JPEG de 1 × 1 pixel : les valeurs étaient enregistrées, mais ces images ne montraient aucun avion. Ces essais n’ont pas servi de preuves visuelles. L’outil refuse maintenant une horloge figée et vérifie la taille de chaque capture, y compris avant le départ. Restaurer une fenêtre visible et refaire le vol dans un dossier neuf est indispensable. Ne jamais agrandir une image vide pour la présenter comme une capture valable.
+
+Le vol retenu contient **880 relevés sur 145,1 s**, avec 880 images natives de 1280 × 720 pixels. Le scénario passe le nord à droite puis à gauche. Au premier passage (47,4 s), le cap magnétique vaut environ 000,5° et le compas 314,0° : on lit entre 30 et 33, pas N. C’est cohérent avec l’indication enregistrée ; cela ne prouve pas que cet écart reproduit l’instrument réel. À la fin, les indications sont de nouveau proches de 330°.
+
+![Premier passage du nord, avec agrandissement du compas](https://github.com/steveprudhomme/sw233-flightgear/releases/download/compas-finition-31/vol-nord.jpg)
+
+![Retour ailes à plat](https://github.com/steveprudhomme/sw233-flightgear/releases/download/compas-finition-31/vol-retour.jpg)
+
+![Caps enregistrés pendant les deux virages](https://github.com/steveprudhomme/sw233-flightgear/releases/download/compas-finition-31/courbes.png)
+
+[Voir les 30 secondes d’extraits du vol](https://github.com/steveprudhomme/sw233-flightgear/releases/download/compas-finition-31/compas-en-virage.mp4) · [Télécharger les relevés](https://github.com/steveprudhomme/sw233-flightgear/releases/download/compas-finition-31/releves.zip). Les données du vol précèdent légèrement chaque capture (lecture puis requête d’image) : le bandeau n’est pas une mesure synchronisée à la trame près.
+
+### 5. Vérifier le projet et connaître les limites
+
+La reconstruction complète depuis les blocs du tutoriel est vérifiée. Les 24 tests passent après mise à jour de deux anciens contrôles : les textes créés par le XML ne sont pas dans le maillage, et une action de clic n’a pas nécessairement une propriété directe. Les tests vérifient désormais les noms du maillage **et** les textes déclarés, ainsi que les commandes des actions. Les animations de l’appareil restent inchangées.
+
+Le contrôle visuel confirme le dessin et son sens de défilement dans les vues essayées. Il ne certifie ni les dimensions, ni la compensation, ni les erreurs d’accélération et de virage du véritable instrument. La vue de biais sert à vérifier les dégagements ; la lecture précise se fait de face, au repère. Les caractères anguleux et le matériau de vitre simplifié restent des limites pour une future finition photographique. Voir les [sources et choix de conception](../references/compas-finition.md).
+
+![Vue d’ensemble avec le compas fini](https://github.com/steveprudhomme/sw233-flightgear/releases/download/compas-finition-31/cockpit.jpg)
+
+[Paquet et captures originales](https://github.com/steveprudhomme/sw233-flightgear/releases/tag/compas-finition-31).

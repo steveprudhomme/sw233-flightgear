@@ -1,6 +1,6 @@
 # Feuille de route — Schweizer SGS 2-33
 
-Mise à jour : **15 novembre 2026**. Les horizons expriment un ordre de travail, pas des dates promises.
+Mise à jour : **16 novembre 2026**. Les horizons expriment un ordre de travail, pas des dates promises.
 
 ## 1. Vision et périmètre
 
@@ -13,10 +13,10 @@ Le projet est un prototype de simulation, pas un appareil d’entraînement cert
 | Domaine | État vérifié | Limite principale |
 |---|---|---|
 | Vol et décor | Démonstrations natives à CYJN, aérofreins et glissade | Polaire et enveloppe réelle non validées |
-| Cockpit | Anémomètre, altimètre, variomètre et compas animés ; bancs publiés | Aspect encore schématique ; radio et largage décoratifs |
+| Cockpit | Anémomètre, altimètre, variomètre et compas animés ; bancs publiés | Aspect encore schématique ; COM1 réglable sans audio validé, largage décoratif |
 | Masse et repères | Calculs comparés à FlightGear ; transport du moment testé | Pesée de C-FYLP et référence historique des coefficients inconnues |
 | Profondeur | ±23° et deux parties mobiles vérifiées | Charnière de maquette approximative |
-| Documentation | Dix-huit fiches et atlas des 49 objets, sources, captures et reconstruction automatique | Relecture autonome par un débutant encore attendue |
+| Documentation | Dix-huit fiches enrichies ; atlas historique de 49 objets et compléments par pièce, sources, captures et reconstruction automatique | Relecture autonome par un débutant encore attendue |
 | Qualité | 24 tests réussis | Ne constituent pas une certification du modèle |
 
 **Lecture des statuts :** terminé = critère vérifié et preuve publiée ; en cours = réalisation autorisée ; à faire = proposé ; dépendance = donnée ou décision nécessaire.
@@ -188,17 +188,19 @@ Plan préalable : examiner les références et exemples FlightGear ; identifier 
 
 VIS-01m terminé : COM1 active à trois décimales, commandes ±1 MHz / ±25 kHz, butées et refus hors grille ; treize cas natifs et huit clics vérifiés, fréquences restaurées. [Tutoriel illustré](docs/construction/06-peinture.md#n--régler-la-fréquence-com1). Identification réelle, alimentation, audio, mémoires et éventuel support 8,33 kHz restent à définir dans des lots séparés.
 
-## VIS-01n — finition du compas (en cours)
+## VIS-01n — finition du compas (terminé)
 
 Plan préalable :
 
-- [ ] Comparer le boîtier et la fenêtre aux photos C-FYLP ; séparer proportions photographiques et profondeurs estimées. Examiner les essais historiques avant de refaire un mécanisme déjà fonctionnel.
-- [ ] Conserver la rose animée et sa propriété de cap indiqué ; améliorer le contour, les fixations et le repère seulement si la comparaison le justifie.
-- [ ] Synchroniser la recette de construction ; illustrer chaque pièce modifiée et expliquer les dimensions et choix sans les présenter comme des cotes constructeur.
-- [ ] Comparer avant/après dans FlightGear de face et de biais ; contrôler N/E/S/W, les caps intermédiaires et le passage 359/0/1 degrés.
-- [ ] Vérifier le défilement en virage avec l’instrument actif ; distinguer ce contrôle des entrées imposées du banc.
-- [ ] Vérifier reconstruction et absence de modification des autres instruments ; actualiser tutoriel, MD, aperçu et publication GitHub.
+- [x] Comparer le boîtier et la fenêtre aux photos C-FYLP ; séparer proportions photographiques et profondeurs estimées. Examiner les essais historiques avant de refaire un mécanisme déjà fonctionnel.
+- [x] Conserver la rose animée et sa propriété de cap indiqué ; améliorer le contour, les fixations et le repère seulement si la comparaison le justifie.
+- [x] Synchroniser la recette de construction ; illustrer chaque pièce modifiée et expliquer les dimensions et choix sans les présenter comme des cotes constructeur.
+- [x] Comparer avant/après dans FlightGear de face et de biais ; contrôler N/E/S/W, les caps intermédiaires et le passage 359/0/1 degrés.
+- [x] Vérifier le défilement en virage avec l’instrument actif ; distinguer ce contrôle des entrées imposées du banc.
+- [x] Vérifier reconstruction et absence de modification des autres instruments ; actualiser tutoriel, MD, aperçu et publication GitHub.
 
 Critères de réussite : rose et repère lisibles dans les vues contrôlées, sens correct aux caps testés, aucune régression des autres instruments, preuves natives et hypothèses documentées. Les erreurs du compas réel ne seront pas déclarées validées par un simple contrôle visuel.
 
 Complément VIS-01n identifié pendant les vérifications : actualiser les deux tests de résolution des objets. Ils supposent encore que tous les objets animés viennent du maillage et que toute animation porte une propriété ; les textes XML et actions radio des lots précédents rendent ces hypothèses obsolètes. Vérifier explicitement les textes, les objets du maillage et les actions, sans retirer les contrôles de résolution.
+
+VIS-01n terminé : boîtier arrondi, joint et vis en relief ; 18 lectures natives, 880 captures d’un vol de 145,1 s et deux passages du nord contrôlés. Rose et animations conservées, 66 objets inchangés, 24 tests réussis et reconstruction vérifiée. [Construction par pièce](docs/construction/02-maillage.md#o--comprendre-la-finition-du-compas-pièce-par-pièce), [essais illustrés](docs/construction/06-peinture.md#o--finition-du-compas). Dimensions estimées ; caractères et vitre encore simplifiés.

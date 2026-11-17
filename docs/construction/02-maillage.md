@@ -624,33 +624,51 @@ Coupe historique du boîtier vide : dans la version mobile, le tambour prend la 
 
 ![Coupe : le trait se trouve entre le fond et la vitre.](coupe-compas.svg)
 
-**Assemble.** Découpe mentalement les quatre coins d’un rectangle : il reste huit points. Fais cinq contours de cette forme. Relie leurs bords par bandes, comme pour les ailes. Ne bouche jamais le milieu du cadre ! Ferme seulement le fond, ajoute le trait, quatre têtes de vis et la vitre transparente. Ce compas est décoratif : il ne montre aucun cap.
+**Assemble.** Arrondis les quatre coins du rectangle avec six points par coin : 4 × 6 = 24 points par contour. Relie les contours par bandes, comme pour les ailes. Ne bouche jamais le milieu du cadre ! Ajoute le fond, le trait, quatre têtes de vis et la vitre transparente. La section suivante ajoute la rose mobile : le compas complet indique le cap. La finition VIS-01n remplace les anciens coins coupés par des arrondis, ajoute le joint et donne du relief aux vis ; voir la section O de la fiche 6.
 
 <!-- atelier-fichier: fabrique.py -->
 ```python
 # Compas C-FYLP, centré sous la bouche. Les profondeurs sont des hypothèses.
 def contour_compas(profondeur, demi_largeur, demi_hauteur, coin):
+    # Quatre quarts de cercle, six points chacun : contours compatibles.
     w, h, c = demi_largeur, demi_hauteur, coin
-    return [(px + profondeur, y, .098 + z) for y, z in
-            [(-w+c,-h),(w-c,-h),(w,-h+c),(w,h-c),
-             (w-c,h),(-w+c,h),(-w,h-c),(-w,-h+c)]]
+    points = []
+    for cy, cz, debut in [(w-c,h-c,0),(-w+c,h-c,90),
+                           (-w+c,-h+c,180),(w-c,-h+c,270)]:
+        for i in range(6):
+            angle = radians(debut + i*18)
+            points.append((px+profondeur, cy+c*cos(angle), .098+cz+c*sin(angle)))
+    return points
 
-base = contour_compas(.0005, .033, .031, .006)
-epaules = contour_compas(.021, .033, .031, .006)
-bord = contour_compas(.025, .031, .029, .005)
+# Encombrement conservé ; arrondis et profondeurs sont estimés.
+base = contour_compas(.001, .033, .031, .014)
+epaules = contour_compas(.021, .033, .031, .014)
+bord = contour_compas(.025, .031, .029, .012)
+levre = contour_compas(.025, .0255, .015, .004)
 ouverture = contour_compas(.025, .0245, .014, .003)
 fond = contour_compas(.001, .0245, .014, .003)
+bridge("compas-joint", 3, contour_compas(.0005,.034,.032,.015),
+       contour_compas(.001,.034,.032,.015))
+bridge("compas-joint", 3, contour_compas(.001,.034,.032,.015),base)
 bridge("compas-cadre", 3, base, epaules)
-bridge("compas-cadre", 2, epaules, bord)
-bridge("compas-cadre", 3, bord, ouverture)
-bridge("compas-cadre", 2, ouverture, fond)
+bridge("compas-cadre", 3, epaules, bord)
+bridge("compas-cadre", 3, bord, levre)
+bridge("compas-cadre", 2, levre, ouverture)
+bridge("compas-cadre", 3, ouverture, fond)
 poly("compas-fond", 5, *fond)
 poly("compas-repere", 6, *[(px+.014,y,.098+z) for y,z in
                            [(-.0009,.002),(.0009,.002),(.0009,.010),(-.0009,.010)]])
-for y in (-.024, .024):
-    for z in (-.022, .022):
-        poly("compas-vis", 9, *[(px+.0255, y+.0022*cos(i*pi/4),
-                                 .098+z+.0022*sin(i*pi/4)) for i in range(8)])
+for y in (-.022, .022):
+    for z in (-.021, .021):
+        def tete(profondeur, rayon):
+            return [(px+profondeur,y+rayon*cos(i*pi/8),
+                     .098+z+rayon*sin(i*pi/8)) for i in range(16)]
+        bridge("compas-vis", 9, tete(.025,.0024), tete(.026,.002))
+        poly("compas-vis", 9, *tete(.026,.002))
+        # Une fente sombre, légèrement devant la tête, sans clignotement.
+        poly("compas-fentes", 5, *[(px+.0261,y+dy,.098+z+dz) for dy,dz in
+                                 [(-.0015,-.0003),(.0015,-.0003),
+                                  (.0015,.0003),(-.0015,.0003)]])
 poly("compas-vitre", 4, *contour_compas(.020, .0245, .014, .003))
 ```
 
@@ -913,3 +931,67 @@ Une pastille rouge fixe de 4 mm de diamètre. Elle ne signale aucun état élect
 ![radio-pastille](https://github.com/steveprudhomme/sw233-flightgear/releases/download/radio-relief-29/radio-pastille.png)
 
 Pour voir ces pièces assemblées et comprendre leur peinture, poursuis avec la [fiche 6, section M](06-peinture.md#m--façade-de-radio-en-relief).
+
+## O · Comprendre la finition du compas, pièce par pièce
+
+Le plan VIS-01n a été enregistré dans le commit `262c780` avant toute modification. Reprends les blocs I ter et I quater ci-dessus : ils contiennent déjà la recette complète actuelle. Ne colle pas un deuxième compas à la fin du programme.
+
+### Observer avant de dessiner
+
+Sur la photo C-FYLP (fichier `5d81c6bf…`, répertorié dans les [références](../references/cockpits-et-fsx.md)), regarde sous l’aérateur : le compas présente des coins arrondis et quatre fixations autour de sa fenêtre. L’ancien boîtier avait de grands coins coupés droits et des vis plates. La photo est oblique : elle aide à choisir la silhouette, mais ne donne ni profondeur mesurée ni rayon exact. Nous conservons les dimensions de maquette déjà expliquées en I ter. Ce choix évite de confondre une amélioration visuelle avec une nouvelle mesure de l’avion réel.
+
+### Passer du rectangle aux arrondis
+
+Dessine un rectangle de 66 × 62 mm sur ton cahier. À chaque coin, remplace l’angle par un quart de cercle de rayon 14 mm. Un quart de tour fait 90° ; cinq petits intervalles de 18° donnent six points, extrémités comprises. Quatre coins donnent 24 points. Les segments droits relient les fins des arcs. La fonction `contour_compas` applique ce même ordre à tous les contours pour que `bridge` puisse relier le point numéro 0 au numéro 0, puis 1 à 1, etc.
+
+| Élément | Dimensions de maquette | Pourquoi ce choix ? |
+|---|---|---|
+| Base du boîtier | 66 × 62 mm ; coins R14 mm | Encombrement antérieur conservé, silhouette arrondie estimée |
+| Bord avant | 62 × 58 mm ; coins R12 mm ; à 25 mm du tableau | Le rétrécissement forme un biseau |
+| Joint | 68 × 64 mm ; de 0,5 à 1 mm devant le tableau | Dépasse de 1 mm autour de la base ; ne ferme pas la fenêtre |
+| Lèvre de fenêtre | 51 × 30 mm puis ouverture 49 × 28 mm | Un filet de 1 mm souligne le guichet |
+| Vis | centres y = ±22 mm, z = 98 ±21 mm | Restent à l’intérieur des coins arrondis |
+| Têtes | diamètre 4,8 mm à la base, 4 mm devant ; hauteur 1 mm | Le biseau donne un relief visible de biais |
+| Fentes | 3 × 0,6 mm ; 0,1 mm devant les têtes | Trait sombre séparé pour éviter deux surfaces confondues |
+
+Toutes ces profondeurs et tous ces rayons sont estimés. Le centre du compas reste y = 0, z = 0,098 m. La vitre reste à 20 mm et le repère à 14 mm devant le tableau. La rose et son axe ne changent pas.
+
+### Reconnaître les huit objets
+
+Les illustrations suivantes sont des projections du maillage, pas des photos du simulateur. Chaque vignette ajuste sa propre échelle ; lis les dimensions imprimées plutôt que de comparer les tailles des vignettes. Les captures de l’ensemble dans FlightGear sont dans la [fiche 6, section O](06-peinture.md#o--finition-du-compas).
+
+Le joint : une petite marche derrière le boîtier, nouvelle pièce.
+
+![compas-joint](https://github.com/steveprudhomme/sw233-flightgear/releases/download/compas-finition-31/compas-joint.png)
+
+Le cadre : parois, biseau et lèvre ouverte. Le centre reste vide.
+
+![compas-cadre](https://github.com/steveprudhomme/sw233-flightgear/releases/download/compas-finition-31/compas-cadre.png)
+
+Le fond : ferme le guichet derrière le tambour. Son contour suit les nouveaux arrondis.
+
+![compas-fond](https://github.com/steveprudhomme/sw233-flightgear/releases/download/compas-finition-31/compas-fond.png)
+
+Les vis : quatre petits cylindres biseautés à seize côtés, réunis dans un objet.
+
+![compas-vis](https://github.com/steveprudhomme/sw233-flightgear/releases/download/compas-finition-31/compas-vis.png)
+
+Les fentes : quatre rectangles sombres, nouvelle pièce séparée.
+
+![compas-fentes](https://github.com/steveprudhomme/sw233-flightgear/releases/download/compas-finition-31/compas-fentes.png)
+
+La vitre : contour arrondi compatible, même matériau transparent et même profondeur.
+
+![compas-vitre](https://github.com/steveprudhomme/sw233-flightgear/releases/download/compas-finition-31/compas-vitre.png)
+
+Le repère fixe : conservé sans modification ; il donne la direction de lecture.
+
+![compas-repere](https://github.com/steveprudhomme/sw233-flightgear/releases/download/compas-finition-31/compas-repere.png)
+
+La rose mobile : conservée sans modification, avec ses graduations et caractères originaux.
+
+![compas-rose](https://github.com/steveprudhomme/sw233-flightgear/releases/download/compas-finition-31/compas-rose.png)
+
+### Reconstruire et contrôler
+
+Exécute `fabrique.py` depuis la racine de ton atelier, puis reconstruis le paquet comme à la fiche 12. Le fichier AC3D contient désormais 72 objets au lieu de 70 : deux objets ajoutés, quatre contours ou assemblages modifiés, 66 objets conservés exactement dans le contrôle des faces et sommets. Parmi eux, la rose, le repère et les autres instruments restent identiques. Le fichier des animations est inchangé. Le programme `tools/check_workbook.py` reconstruit aussi l’avion depuis les blocs de ce tutoriel pour vérifier qu’ils produisent bien les sources publiées.
