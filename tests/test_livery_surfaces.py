@@ -123,8 +123,14 @@ class LiverySurfacesTests(unittest.TestCase):
     def test_every_original_face_and_vertex_is_covered_exactly(self):
         coverage = audit_coverage(self.models / "sw233.ac", self.surfaces)
         self.assertEqual(set(coverage), set(SURFACES))
-        self.assertEqual(sum(c["source_faces"] for c in coverage.values()), 138)
-        self.assertEqual(sum(c["replacement_faces"] for c in coverage.values()), 145)
+        self.assertEqual(
+            sum(c["source_faces"] for c in coverage.values()),
+            sum(len(read_object(self.models / "sw233.ac", n)) for n in SURFACES),
+        )
+        self.assertEqual(
+            sum(c["replacement_faces"] for c in coverage.values()),
+            sum(c["source_faces"] for c in coverage.values()) + 7,
+        )
         for source in SURFACES:
             original = read_object(self.models / "sw233.ac", source)
             selected = [s for s in self.surfaces if s["source"] == source]

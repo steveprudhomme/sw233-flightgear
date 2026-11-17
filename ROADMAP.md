@@ -54,11 +54,11 @@ Plan préalable `5e717b9`. [Preuves publiées : releves-41](https://github.com/s
 
 ### Lot42 — reconstruction VIS-05b/c
 
-- [ ] **BC42-01** Reconstruire la recette de base ; inventorier coutures coque/vitrage, matériaux, objets animés, UV et dégagements occupants. Conserver les valeurs estimées comme telles.
-- [ ] **BC42-02** Ajouter des sections longitudinales courbes au nez et à la coque avant ; affiner les sections transversales sans effacer les cassures réelles du ventre. Vérifier fermeture, symétrie et absence de faces dégénérées.
-- [ ] **BC42-03** Refaire le bombé du pare-brise, les sections de verrière et les cadres ; partager exactement les bords avec la coque. Maintenir le raccord sous aile et les instruments dégagés ; ouverture au sol distincte de ce lot de forme.
-- [ ] **BC42-04** Adapter les dépendances strictement nécessaires : peau UV, attaches éventuelles, tests de couverture et dégagements ; garder les gouvernes et le FDM inchangés. Vérifier la reconstruction exacte du tutoriel.
-- [ ] **BC42-05** Comparer mêmes caméras/éclairage au lot41 dans FlightGear, intérieur/extérieur et grille UV ; produire images avant/après et planches des pièces reprises, corriger les défauts observés.
+- [x] **BC42-01** Reconstruire la recette de base ; inventorier coutures coque/vitrage, matériaux, objets animés, UV et dégagements occupants. Conserver les valeurs estimées comme telles.
+- [x] **BC42-02** Ajouter des sections longitudinales courbes au nez et à la coque avant ; affiner les sections transversales sans effacer les cassures réelles du ventre. Vérifier fermeture, symétrie et absence de faces dégénérées.
+- [x] **BC42-03** Refaire le bombé du pare-brise, les sections de verrière et les cadres ; partager exactement les bords avec la coque. Maintenir le raccord sous aile et les instruments dégagés ; ouverture au sol distincte de ce lot de forme.
+- [x] **BC42-04** Adapter les dépendances strictement nécessaires : peau UV, attaches éventuelles, tests de couverture et dégagements ; garder les gouvernes et le FDM inchangés. Vérifier la reconstruction exacte du tutoriel.
+- [x] **BC42-05** Comparer mêmes caméras/éclairage au lot41 dans FlightGear, intérieur/extérieur et grille UV ; produire images avant/après et planches des pièces reprises, corriger les défauts observés.
 - [ ] **BC42-06** Documenter chaque choix de forme et hypothèse dès 10 ans, actualiser aperçu/description si pertinent, publier sources, paquet et preuves sur GitHub. La ressemblance finale reste soumise à revue utilisateur.
 
 ### Complément lot02 — détails et ouverture au sol
@@ -78,7 +78,7 @@ Plan préalable `5e717b9`. [Preuves publiées : releves-41](https://github.com/s
 - [ ] **VIS-05h.1 — marquages précis :** drapeau canadien sur la pièce correcte, emblème avant, chiffre de nez, éclair bleu et textes ; relevés par variante, contours éditables et aucune lettre en miroir (DET-03/04/05/08/10).
 - [ ] **VIS-05l.1 — preuve par détail :** fiche de chaque pièce avec ID photo, observation/estimation/inconnue, dimensions traçables, explication dès 10 ans, vue native avant/après et essai de la commande si interactive ; revue utilisateur avant clôture.
 
-**VIS-05a : relevé préparatoire réalisé** ([atelier23](docs/construction/23-releves-avant.md)) : sept points avec incertitude, onze objets inventoriés, neuf captures natives. Les cotes réelles et la cinématique de charnière restent à confirmer. **Prochain petit lot : VIS-05b/c.** Les autres lignes restent planifiées. Les nouvelles images enrichissent L40-R mais n’établissent pas encore la livrée actuelle exacte de C-FYLP ; L40-R/R2 et les références d’insignes restent ouverts.
+**VIS-05a : relevé préparatoire réalisé** ([atelier23](docs/construction/23-releves-avant.md)) : sept points avec incertitude, onze objets inventoriés, neuf captures natives. Les cotes réelles et la cinématique de charnière restent à confirmer. **Lot42 : première reconstruction VIS-05b/c réalisée**, [atelier24](docs/construction/24-formes-avant.md). Neuf objets repris, contrôle natif et recette vérifiée ; revue de ressemblance, quincaillerie et ouverture restent ouvertes. Les autres lignes restent planifiées. Les nouvelles images enrichissent L40-R mais n’établissent pas encore la livrée actuelle exacte de C-FYLP ; L40-R/R2 et les références d’insignes restent ouverts.
 
 ## Lots techniques précédents : base fonctionnelle du réalisme
 

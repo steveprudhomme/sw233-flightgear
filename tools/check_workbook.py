@@ -30,7 +30,9 @@ def rebuild(destination):
             name = src.relative_to(ROOT)
             if (destination / name).read_text(encoding="utf-8") != src.read_text(encoding="utf-8"):
                 raise ValueError(f"Reconstruction différente : {name}")
-    for recipe in ("tools/panel.py", "tools/crew.py", "tools/livery.py"):
+    for recipe in (
+        "tools/panel.py", "tools/crew.py", "tools/livery.py", "tools/airframe_geometry.py"
+    ):
         reconstructed = destination / recipe
         if not reconstructed.is_file():
             raise ValueError(f"Recette absente des blocs du tutoriel : {recipe}")

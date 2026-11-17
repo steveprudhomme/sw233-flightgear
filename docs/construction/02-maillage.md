@@ -72,112 +72,33 @@ def loft(n, m, stations):
 
 ## C · Construis une coque ouverte seulement vers le haut
 
-![Coque : flancs continus et ouverture supérieure](https://github.com/steveprudhomme/sw233-flightgear/releases/download/panneaux-17/groupe-coque.png)
+![Coque : flancs continus et ouverture supérieure](https://github.com/steveprudhomme/sw233-flightgear/releases/download/formes-42/piece-fuselage.png)
 
 Schéma du maillage, sans textures ; dimensions de maquette.
 
 Le défaut précédent venait d’un tri trop large : des faces étaient supprimées selon leur hauteur moyenne. Les côtés devenaient des trous. Nous dessinons maintenant une section en U : bord gauche, ventre arrondi, bord droit. Le dessus reste ouvert entre x=0,50 et 3,16 m ; les flancs restent entiers. Ce sont des stations de maquette H, guidées par les contours du trois-vues, pas des cotes d’usine. Voir les pointages et les limites dans la [fiche 14](14-enveloppe.md).
 
-Chaque station donne x, la demi-largeur du ventre, la hauteur du centre, la demi-hauteur inférieure, la demi-largeur au bord de l’ouverture et la hauteur de ce bord. La verrière réutilisera exactement ses deux derniers nombres. Ainsi ses vitres touchent les flancs au lieu de flotter au-dessus.
+La recette complète et les choix du lot42 sont dans la [fiche24](24-formes-avant.md). Chaque station donne x, la demi-largeur du ventre, la hauteur du centre, la demi-hauteur inférieure, la demi-largeur au bord de l’ouverture et la hauteur de ce bord. La verrière réutilisera exactement ses deux derniers nombres. Ainsi ses vitres touchent les flancs au lieu de flotter au-dessus.
 
 <!-- atelier-fichier: fabrique.py -->
 ```python
-# U-shaped sections: opening rims are explicit; never erase side faces by centroid.
-coque = [
-    (0, .024, -.28, .025, .012, -.255),
-    (.22, .23, -.27, .19, .16, -.08),
-    (.50, .35, -.27, .28, .24, .05),
-    (.91, .425, -.27, .32, .397, .07),
-    (1.55, .465, -.27, .35, .43, .09),
-    (2.13, .47, -.27, .36, .44, .10),
-    (2.78, .43, -.24, .34, .39, .10),
-    (3.16, .39, -.21, .32, .34, .10),
-    (3.25, .38, -.20, .32, .33, .12),
-    (5, .21, -.12, .22, .18, .10),
-    (7.61, .065, -.03, .105, .05, .075),
-]
-sections = []
-for x, r, z, h, bord, seuil in coque:
-    section = [(x, -bord, seuil)]
-    section += [(x, r*cos(pi+i*pi/6), z+h*sin(pi+i*pi/6)) for i in range(7)]
-    section += [(x, bord, seuil)]
-    sections.append(section)
-for a, b in zip(sections, sections[1:]):
-    for i in range(len(a)-1):
-        poly("fuselage", 0, a[i], a[i+1], b[i+1], b[i])
-    # Only the nose and tail get a deck; the cabin remains hollow above the rims.
-    if b[0][0] <= .50 or a[0][0] >= 3.16:
-        poly("fuselage", 0, a[-1], a[0], b[0], b[-1])
-poly("fuselage", 0, *reversed(sections[0]))
-poly("fuselage", 0, *sections[-1])
+from tools.airframe_geometry import build_enclosure
+
+coque = build_enclosure(poly, rod)
 ```
 
 ## D · Raccorde les vitres et les cadres jaunes
 
-![Vitres, cadres jaunes et raccord arrière](https://github.com/steveprudhomme/sw233-flightgear/releases/download/panneaux-17/groupe-verriere.png)
+![Vitres, cadres jaunes et raccord arrière](https://github.com/steveprudhomme/sw233-flightgear/releases/download/formes-42/groupe-verriere.png)
 
 Schéma du maillage, sans textures ; dimensions de maquette.
 
-Le bord inférieur de la verrière est celui de la coque, au même x, y et z. Les sections à neuf points distinguent flancs vitrés et toit ; le montant du pare-brise est incliné. La [fiche 15](15-panneaux.md) explique les proportions et les limites. Les montants et les lisses longitudinales sont jaunes, comme les contours visibles sur les références. Le raccord arrière sous l’aile est opaque ; le pare-brise devant le pilote reste transparent. Les épaisseurs de 18 et 16 mm sont des choix de lisibilité H. La porte et la verrière ne s’ouvrent pas encore.
+Le bord inférieur de la verrière est celui de la coque, au même x, y et z. Les sections courbes à 33 points distinguent flancs vitrés et toit ; le montant du pare-brise est incliné. La [fiche 15](15-panneaux.md) explique les proportions et les limites. Les montants restent jaunes pour cette étape de forme ; les cadres bleus des nouvelles références seront traités avec la livrée. Le raccord arrière sous l’aile est opaque ; le pare-brise devant le pilote reste transparent. Les épaisseurs de 18 et 16 mm sont des choix de lisibilité H. La porte et la verrière ne s’ouvrent pas encore.
 
 <!-- atelier-fichier: fabrique.py -->
 ```python
-stations = [
-    (.50, .24, .05, .03),
-    (.91, .397, .07, .28),
-    (1.55, .43, .09, .52),
-    (2.13, .44, .10, .60),
-    (2.78, .39, .10, .47),
-    (3.16, .34, .10, .14),
-]
-# Polygonal transverse section; the bottom points keep the proven hull seam.
-profile = [(1, 0), (.97, .25), (.82, .82), (.48, .97), (0, 1),
-           (-.48, .97), (-.82, .82), (-.97, .25), (-1, 0)]
-rings = []
-for k, (x, r, z, h) in enumerate(stations):
-    # Rear edge of the windscreen leans aft; 0.14 m is a model estimate.
-    lean = .14 if k == 2 else 0
-    rings.append([(x+lean*v, r*u, z+h*v) for u, v in profile])
-for k, (a, b) in enumerate(zip(rings, rings[1:])):
-    for j in range(8):
-        fairing = k >= 3 and 2 <= j <= 5
-        if fairing:
-            name = "raccord-arriere"
-        elif k < 2:
-            name = "pare-brise"
-        elif j < 2:
-            name = "vitrage-droit"
-        elif j >= 6:
-            name = "vitrage-gauche"
-        else:
-            name = "verriere"
-        # Triangles avoid nonplanar quads at the leaning windscreen boundary.
-        poly(name, 0 if fairing else 4, a[j], a[j+1], b[j+1])
-        poly(name, 0 if fairing else 4, a[j], b[j+1], b[j])
-    for j in (0, 8):
-        rod("bordures-cockpit", 0, a[j], b[j], .018)
-poly("pare-brise", 4, *reversed(rings[0]))
-poly("raccord-arriere", 0, *rings[-1])
-for k in (0, 1, 2, 3, 5):
-    for i in range(8):
-        rod("arceaux", 0, rings[k][i], rings[k][i+1], .016)
-# Longitudinal roof edges make each side window legible.
-for a, b in zip(rings[2:], rings[3:]):
-    for j in (2, 6):
-        rod("longerons-verriere", 0, a[j], b[j], .010)
-# Fixed door outlines, mirrored as an explicitly provisional visual convention.
-for side in (-1, 1):
-    selected = [row for row in coque if 1.55 <= row[0] <= 2.78]
-    line = []
-    for x, r, z, h, rim, sill in selected:
-        # Middle of the first lower hull facet, plus a 2 mm drawing offset.
-        line.append((x, side*(r*(1+cos(pi/6))/2+.002), z-h*.25))
-    first, last = selected[0], selected[-1]
-    contour = [(first[0], side*(first[4]+.002), first[5])] + line
-    contour += [(last[0], side*(last[4]+.002), last[5])]
-    for a, b in zip(contour, contour[1:]):
-        rod("contour-porte"+str(side), 3, a, b, .0025)
-
+# Coque, vitres et cadres sont construits ensemble par build_enclosure.
+# Leur recette complète est dans la fiche 24 ; les coutures partagent les mêmes points.
 ```
 
 ![Contours fixes de porte sur la coque](https://github.com/steveprudhomme/sw233-flightgear/releases/download/panneaux-17/groupe-portes.png)
@@ -739,16 +660,25 @@ out += ["OBJECT world", f"kids {len(parts)}"]
 for n, faces in parts.items():
     verts = []
     inds = []
+    welded = {}
+    smooth = n in {"fuselage", "pare-brise", "verriere", "vitrage-droit", "vitrage-gauche", "raccord-arriere"}
     for m, v in faces:
         ids = []
         for x, y, z in v:
-            ids.append(len(verts))
-            verts.append((x, z, -y))
+            point = (x, z, -y)
+            if smooth:
+                if point not in welded:
+                    welded[point] = len(verts)
+                    verts.append(point)
+                ids.append(welded[point])
+            else:
+                ids.append(len(verts))
+                verts.append(point)
         inds.append((m, ids))
     out += (
         ["OBJECT poly", f'name "{n}"', f"numvert {len(verts)}"]
         + [" ".join(f"{c:.5f}" for c in v) for v in verts]
-        + [f"numsurf {len(inds)}"]
+        + ["crease 15", f"numsurf {len(inds)}"]
     )
     for m, ids in inds:
         out += ["SURF 0x30", f"mat {m}", f"refs {len(ids)}"] + [f"{i} 0 0" for i in ids]

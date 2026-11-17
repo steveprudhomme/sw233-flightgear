@@ -48,3 +48,31 @@ class EnclosureTests(unittest.TestCase):
         self.assertAlmostEqual(max(p[0] for p in points), 1.69)
         self.assertIn('contour-porte-1', objects)
         self.assertIn('contour-porte1', objects)
+
+    def test_curved_shell_is_symmetric_and_finite(self):
+        import math
+        _, objects = read_mesh(ROOT/'src/SW233/Models/sw233.ac')
+        for names in [('fuselage',), ('pare-brise', 'verriere', 'raccord-arriere',
+                                      'vitrage-droit', 'vitrage-gauche')]:
+            points = {tuple(round(c, 5) for c in p)
+                      for name in names for _, face in objects[name] for p in face}
+            self.assertTrue(all(math.isfinite(c) for p in points for c in p))
+            # AC3D writes five decimals: opposite half-way rounding can differ by 0.00001 m.
+            sections = {}
+            for x, y, z in points:
+                sections.setdefault(x, []).append((y, z))
+            for values in sections.values():
+                for y, z in values:
+                    self.assertTrue(any(abs(y + other_y) <= 0.000011
+                                        and abs(z - other_z) <= 0.000011
+                                        for other_y, other_z in values))
+
+    def test_interpolation_does_not_overshoot_station_bounds(self):
+        from tools.airframe_geometry import CANOPY, HULL, interpolate
+        for rows in (HULL, CANOPY):
+            for left, right in zip(rows, rows[1:]):
+                for column in range(1, len(left)):
+                    for fraction in (.1, .25, .5, .75, .9):
+                        value = interpolate(rows, left[0]+fraction*(right[0]-left[0]), column)
+                        self.assertGreaterEqual(value, min(left[column], right[column])-1e-9)
+                        self.assertLessEqual(value, max(left[column], right[column])+1e-9)

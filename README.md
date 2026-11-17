@@ -11,6 +11,15 @@ ressources FlightGear/JSBSim ne sont pas redistribuées ni relicenciées ici. Le
 
 [Premier relevé du nez, de la coque et de la verrière, avec comparaisons FlightGear](docs/construction/23-releves-avant.md).
 
+## Reconstruction des formes avant — lot42
+
+Nez et coque avant à sections plus fines, pare-brise bombé, cadres raccordés et
+lissage des surfaces. [Atelier24, pas à pas avec chaque pièce illustrée](docs/construction/24-formes-avant.md).
+[Paquet et comparaisons FlightGear](https://github.com/steveprudhomme/sw233-flightgear/releases/tag/formes-42).
+Les formes restent estimées ; la livrée et l'ouverture de verrière restent à reprendre.
+
+![Nez et verrière après reconstruction](https://github.com/steveprudhomme/sw233-flightgear/releases/download/formes-42/apres-nez-oblique.png)
+
 ## Réalisme du cockpit et suite du projet
 
 Le prototype comprend maintenant une livrée jaune/bleu **C-FYLP**, deux occupants

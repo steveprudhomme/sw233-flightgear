@@ -1,5 +1,12 @@
 # Historique
 
+## 2026-11-17 — VIS-05b/c, première reconstruction des formes avant
+
+- Plan préalable `14db098` ; courbes de coque et de pare-brise estimées, bords communs, cadres repris.
+- Sommets partagés pour lisser la lumière ; couverture UV et coordonnées des pièces non reprises conservées.
+- Atelier24 avec recette complète, images par pièce et comparaisons natives FlightGear.
+- Ouverture, quincaillerie, livrée exacte et validation de ressemblance restent ouvertes.
+
 ## 2026-11-17 — VIS-05a, relevés avant reconstruction
 
 - Plan préalable 5e717b9 ; sept repères photographiques avec incertitudes et rapports projetés.

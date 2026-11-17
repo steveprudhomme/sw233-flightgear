@@ -195,3 +195,30 @@ Les étapes et leurs images sont expliquées dans l'[atelier 22](construction/22
 Les photos récentes complètes de C-FYLP, grades et insignes exacts restent attendus.
 Le coût GPU hors plafond, les autres plateformes et la fidélité aérodynamique ne
 sont pas certifiés par ces essais visuels.
+
+
+## Lot42 — formes avant VIS-05b/c
+
+Plan commité avant réalisation : `14db098`. Neuf objets de l'enveloppe et des cadres
+repris, positions des autres pièces conservées. Sections interpolées, triangulation
+du vitrage et sommets partagés pour le lissage. FDM inchangé.
+
+Comparaison native FlightGear 2024.1.7 : neuf vues identiques au lot41, plus grille UV
+rapprochée et vue pilote. Banc immobilisé avec FDM nul, CYJN, 1280 × 720,
+heure 2026-06-21 16:45 UTC et météo fixe. Instruments dégagés dans la vue pilote ;
+bords de l'enveloppe appariés par test. Ce contrôle ne valide ni vol ni ouverture.
+Les dégagements tête/toit échantillonnés sont de 0,0979 m devant et 0,1079 m derrière.
+Les photos n'apportent pas de cotes physiques nouvelles : la ressemblance reste ouverte.
+
+La première exportation montrait des bandes d'éclairage : le partage des sommets,
+avec seuil de lissage de 15°, réduit cet effet. L'arrondi de la pointe et les raccords
+restent perfectibles ; aucun résultat photoréaliste achevé n'est revendiqué.
+
+Contrôles : 61 tests, vérification des sources et reconstruction exacte du livre.
+Le journal de la séance contient les avertissements du mode lecture seule (TerraSync),
+l'absence de son et un message de thread encore actif à la fermeture ; les captures
+et leurs propriétés ont été enregistrées avant la fin de cette séance. Aucun chiffre
+GPU ni absence totale d'avertissements n'est revendiqué.
+
+[Recette et illustrations](construction/24-formes-avant.md) ·
+[Paquet, atlas et rapports](https://github.com/steveprudhomme/sw233-flightgear/releases/tag/formes-42).

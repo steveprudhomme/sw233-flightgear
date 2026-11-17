@@ -432,18 +432,18 @@ def model_text(surfaces):
         for surface in surfaces:
             polygons, chart = surface["polygons"], surface["chart"]
             name = mode + "-" + surface["name"]
-            vertices = [p for face in polygons for p in face]
+            vertices = list(dict.fromkeys(p for face in polygons for p in face))
+            indices = {p: i for i, p in enumerate(vertices)}
             texture = f"livery-{chart}.png" if mode == "livery" else f"livery-grid-{chart}.png"
             lines += [
                 "OBJECT poly",
                 f'name "{name}"',
                 f'texture "{texture}"',
-                "crease 40",
+                "crease 15",
                 f"numvert {len(vertices)}",
             ]
             lines += [" ".join(f"{v:.7f}" for v in surface["shifted"][p]) for p in vertices]
             lines.append(f"numsurf {len(polygons)}")
-            offset = 0
             for face in polygons:
                 flags = (
                     "0x30"
@@ -455,8 +455,7 @@ def model_text(surfaces):
                     u, v = chart_uv(p, chart)
                     if not (-1e-6 <= u <= 1.000001 and -1e-6 <= v <= 1.000001):
                         raise ValueError("Surface exceeds its UV chart: " + name)
-                    lines.append(f"{offset + j} {u:.8f} {v:.8f}")
-                offset += len(face)
+                    lines.append(f"{indices[p]} {u:.8f} {v:.8f}")
             lines.append("kids 0")
     return "\n".join(lines) + "\n"
 
