@@ -64,6 +64,18 @@ Plan préalable `5e717b9`. [Preuves publiées : releves-41](https://github.com/s
 **Livraison technique lot42 :** [formes-42](https://github.com/steveprudhomme/sw233-flightgear/releases/tag/formes-42), source `6e0822f`, 25 fichiers publiés et empreintes vérifiées. La revue de ressemblance et les détails restant dans VIS-05b/c ne sont pas clos par cette livraison.
 
 
+### Lot44 — ouvrir la verrière au sol
+
+Priorité confirmée avant VIS-05d. Préversion visée : `0.1.0-alpha.2`.
+
+- [ ] **C44-01** Comparer DET-01/03/05/09 et le manuel ; identifier la verrière avant mobile, les vitrages arrière fixes, le côté des charnières et le verrou. Consigner les dimensions et la course estimées.
+- [ ] **C44-02** Séparer vitrage, cadres, joints et fixations mobiles ; placer les charnières et la poignée du bon côté. Conserver le raccord sous aile et la porte arrière fixes.
+- [ ] **C44-03** Ajouter un état commun : fermé verrouillé, en mouvement, ouvert ; commande par poignée et menu FR/EN. Refuser l'ouverture en vol ou en déplacement. Permettre la fermeture, gérer pause et réinitialisation, sans effet aérodynamique inventé.
+- [ ] **C44-04** Afficher l'état réel dans les checklists FR/EN ; conserver les acronymes et distinguer la porte arrière fixe.
+- [ ] **C44-05** Tester refus, commande répétée, fermeture, pause, réinitialisation et changement de langue dans FlightGear ; capturer 0/25/50/75/100 % depuis le cockpit et l'extérieur, avec et sans occupants.
+- [ ] **C44-06** Examiner les dégagements avec le nez, les ailes, le tableau et les personnages ; vérifier les pièces mobiles et la recette complète du tutoriel.
+- [ ] **C44-07** Publier le tutoriel illustré selon le guide de rédaction, les limites, le paquet SemVer, les MD et les preuves sur GitHub. L'essai par un enfant et l'acceptation de ressemblance restent distincts.
+
 ### Lot43 — finition des formes VIS-05b/c
 
 Objectif : corriger les écarts visibles du lot42 avant de passer aux ailes. La clôture
@@ -83,7 +95,7 @@ l'ouverture animée reste dans VIS-05c.1 à c.3.
 cadres/joints/fixations et poignée de représentation ajoutés ([atelier25](docs/construction/25-finitions-avant.md)).
 Les cases globales VIS-05b/c restent ouvertes pour la revue de ressemblance et les
 charnières non confirmées ; elles ne signifient pas que le lot technique est à refaire.
-**Prochain lot de géométrie : VIS-05d, ailes et haubans.** L'ouverture reste VIS-05c.1 à c.3.
+**Prochain lot : ouverture de la verrière, VIS-05c.1 à c.3.** Les ailes et haubans viendront après ce lot.
 
 ### Complément lot02 — détails et ouverture au sol
 
