@@ -368,3 +368,5 @@ ou d'affirmation de compatibilité avec les versions non testées.
 - [ ] Vérifier la reconstruction du tutoriel si des sources changent, mettre à jour les MD et publier les preuves sur GitHub.
 
 Critères : commandes accessibles à la souris, texte lisible dans les dimensions testées, état de langue cohérent après fermeture. Aucun essai automatique ne sera présenté comme une validation physique du clavier. Une autre version de FlightGear reste un chantier distinct si elle n'est pas installée.
+
+Constat VIS-01t : à 1024 × 600, le haut du panneau dépasse la fenêtre. Correction prévue : position proche du bord inférieur gauche et hauteur Canvas réduite, sans toucher au texte ; vérifier ensuite boutons, croix et dernière ligne dans les deux langues.
