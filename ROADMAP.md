@@ -69,6 +69,7 @@ Plan préalable `5e717b9`. [Preuves publiées : releves-41](https://github.com/s
 Priorité confirmée avant VIS-05d. Préversion visée : `0.1.0-alpha.2`.
 
 - [ ] **C44-01** Comparer DET-01/03/05/09 et le manuel ; identifier la verrière avant mobile, les vitrages arrière fixes, le côté des charnières et le verrou. Consigner les dimensions et la course estimées.
+- [ ] **C44-02a** Appliquer la précision du 17 novembre : occupant arrière sous l’aile, vitrage fixe central entre les ailes. Retirer le recouvrement des ailes sur ce vitrage ; vérifier dessus et place arrière.
 - [ ] **C44-02** Séparer vitrage, cadres, joints et fixations mobiles ; placer les charnières et la poignée du bon côté. Conserver le raccord sous aile et la porte arrière fixes.
 - [ ] **C44-03** Ajouter un état commun : fermé verrouillé, en mouvement, ouvert ; commande par poignée et menu FR/EN. Refuser l'ouverture en vol ou en déplacement. Permettre la fermeture, gérer pause et réinitialisation, sans effet aérodynamique inventé.
 - [ ] **C44-04** Afficher l'état réel dans les checklists FR/EN ; conserver les acronymes et distinguer la porte arrière fixe.
