@@ -52,6 +52,15 @@ Plan préalable `5e717b9`. [Preuves publiées : releves-41](https://github.com/s
 - [x] **A41-05** Écrire un atelier pour débutant avec images, calculs simples, écarts observés et données manquantes ; vérifier liens, rapports et intégrité des originaux.
 - [x] **A41-06** Publier les relevés, captures et documentation ; actualiser MD et GitHub. Aucun changement de forme ni du FDM dans cette séance.
 
+### Lot42 — reconstruction VIS-05b/c
+
+- [ ] **BC42-01** Reconstruire la recette de base ; inventorier coutures coque/vitrage, matériaux, objets animés, UV et dégagements occupants. Conserver les valeurs estimées comme telles.
+- [ ] **BC42-02** Ajouter des sections longitudinales courbes au nez et à la coque avant ; affiner les sections transversales sans effacer les cassures réelles du ventre. Vérifier fermeture, symétrie et absence de faces dégénérées.
+- [ ] **BC42-03** Refaire le bombé du pare-brise, les sections de verrière et les cadres ; partager exactement les bords avec la coque. Maintenir le raccord sous aile et les instruments dégagés ; ouverture au sol distincte de ce lot de forme.
+- [ ] **BC42-04** Adapter les dépendances strictement nécessaires : peau UV, attaches éventuelles, tests de couverture et dégagements ; garder les gouvernes et le FDM inchangés. Vérifier la reconstruction exacte du tutoriel.
+- [ ] **BC42-05** Comparer mêmes caméras/éclairage au lot41 dans FlightGear, intérieur/extérieur et grille UV ; produire images avant/après et planches des pièces reprises, corriger les défauts observés.
+- [ ] **BC42-06** Documenter chaque choix de forme et hypothèse dès 10 ans, actualiser aperçu/description si pertinent, publier sources, paquet et preuves sur GitHub. La ressemblance finale reste soumise à revue utilisateur.
+
 ### Complément lot02 — détails et ouverture au sol
 
 [Analyse détaillée](docs/references/analyse-details-lot-02.md) · [Manifeste des onze fichiers](docs/references/details-lot-02.json). Six images nouvelles, quatre reprises du lot01 et une copie du presse-papiers, vérifiées par empreintes. Les originaux sont conservés localement. Ces sous-tâches précisent les étapes ci-dessus, sans les déclarer réalisées.
