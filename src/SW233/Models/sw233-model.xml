@@ -309,4 +309,23 @@
     <type>select</type><object-name>plaquettes-en</object-name>
     <condition><equals><property>sim/sw233/language</property><value>en</value></equals></condition>
   </animation>
+  <!-- Model estimates: front canopy only, left longitudinal hinge. -->
+  <animation>
+    <type>rotate</type>
+    <object-name>pare-brise</object-name><object-name>cadre-mobile</object-name>
+    <object-name>joint-mobile</object-name><object-name>vis-mobiles</object-name>
+    <object-name>poignee-verriere</object-name>
+    <property>/sim/sw233/canopy/position</property><factor>100</factor>
+    <center><x-m>0.70</x-m><y-m>-0.36</y-m><z-m>0.12</z-m></center>
+    <axis><x>0.85</x><y>-0.07</y><z>0</z></axis>
+  </animation>
+  <animation>
+    <type>pick</type><object-name>poignee-verriere</object-name>
+    <action><button>0</button><repeatable>false</repeatable>
+      <binding><command>nasal</command><script>sw233_canopy.toggle();</script></binding>
+    </action>
+    <hovered><binding><command>set-tooltip</command>
+      <tooltip-id>sw233-canopy</tooltip-id><label>Verrière / Canopy</label>
+    </binding></hovered>
+  </animation>
 </PropertyList>

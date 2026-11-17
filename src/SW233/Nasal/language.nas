@@ -33,7 +33,12 @@ var select_list = func(index) {
     fgcommand("dialog-close",props.Node.new({"dialog-name":"checklist"}));
     gui.showDialog("checklist");
 };
+var canopy_line = nil;
+setlistener("/sim/sw233/canopy/status", func {
+    if (canopy_line != nil) canopy_line.setText(getprop("/sim/sw233/canopy/status"));
+});
 var render_checklist = func(surface) {
+    canopy_line = nil;
     surface.set("view[0]",780).set("view[1]",500);
     surface.setColorBackground(0.96,0.96,0.93,1);
     var group = surface.createGroup();
@@ -56,9 +61,16 @@ var render_checklist = func(surface) {
         var name = item.getNode("name").getValue();
         text(name,18,66+row*51,19,"#151515");
         text(substr(name,0,1),18,66+row*51,19,"#b02020");
-        text(item.getNode("value").getValue(),36,87+row*51,17,"#333333");
+        var value = item.getNode("value").getValue();
+        if (name == "C - Verrière et porte" or name == "Canopy/Door"
+            or name == "C - Verrière" or name == "C - Verrière verrouillée" or name == "Canopy") {
+            var line = group.createChild("text").setFont("LiberationFonts/LiberationSans-Regular.ttf")
+                .setFontSize(17).set("fill","#333333").setTranslation(36,87+row*51);
+            line.setText(getprop("/sim/sw233/canopy/status"));
+            canopy_line = line;
+        } else text(value,36,87+row*51,17,"#333333");
         row += 1;
     }
-    text(getprop(path) == "fr" ? "Simulation uniquement — Français" : "Simulation only — English",
+    text(getprop(path) == "fr" ? "Simulation — Porte arrière fixe — Français" : "Simulation — Rear door fixed — English",
          18,488,15,"#444444");
 };

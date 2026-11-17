@@ -77,6 +77,7 @@ def validate_resources(root):
         required(air, node.text)
     required(air, 'gui/dialogs/occupants.xml')
     required(air, 'gui/dialogs/checklists.xml')
+    required(air, 'gui/dialogs/canopy.xml')
     for preview in config.findall('sim/previews/preview/path'):
         required(air, preview.text)
     if config.find('sim/previews') is not None:

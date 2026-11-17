@@ -1,0 +1,12 @@
+<PropertyList>
+  <name>sw233-canopy</name><layout>vbox</layout>
+  <text><label>SW233</label></text>
+  <canvas><name>canopy-status</name><pref-width>520</pref-width><pref-height>55</pref-height>
+    <nasal><load>sw233_canopy.render_status(canvas.get(cmdarg()));</load></nasal></canvas>
+  <button><legend>Ouvrir / Open</legend><binding><command>nasal</command>
+    <script>sw233_canopy.request(1);</script></binding></button>
+  <button><legend>Fermer et verrouiller / Close and lock</legend><binding><command>nasal</command>
+    <script>sw233_canopy.request(0);</script></binding></button>
+  <button><legend>Retour / Back</legend>
+    <binding><command>dialog-close</command></binding></button>
+</PropertyList>

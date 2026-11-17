@@ -65,6 +65,8 @@ Pour créer un fichier indiqué sur une fiche, ouvre le Bloc-notes, colle le pre
 
 - [25. Finir les formes et cadres](25-finitions-avant.md) : comparaison photo/modèle, capot, raccord arrière, joints, fixations et raccord du mât ; essais natifs et limites.
 
+- [26. Ouvrir la verrière](26-ouverture-verriere.md) : commande au sol, poignée, vitrage arrière fixe et preuves dans FlightGear.
+
 ## Règles des prochains ateliers
 
 Les nouveaux ateliers suivent le [guide de rédaction accessible](../guide-redaction.md).

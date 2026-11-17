@@ -274,7 +274,7 @@ def build_enclosure(poly, rod):
         cabin = xs[k] >= CABIN_START and xs[k + 1] <= CABIN_END
         a, b = upper[k], upper[k + 1]
         for j in range(DIVISIONS):
-            fairing = (cabin and xs[k] >= 2.13 and 8 <= j < 24) or (CABIN_END <= xs[k] < 5)
+            fairing = CABIN_END <= xs[k] < 5
             if fairing:
                 name = "raccord-arriere"
             elif front or not cabin:
@@ -295,23 +295,24 @@ def build_enclosure(poly, rod):
     poly("fuselage", 0, *(lower[-1] + upper[-1][1:-1]))
     cabin_ids = [i for i, x in enumerate(xs) if CABIN_START <= x <= CABIN_END]
 
-    def trim(name, a, b, radius):
+    def trim(name, a, b, radius, moving=False):
         # Rubber bead behind the blue metal frame; offsets are model estimates.
         def back(p):
             return (p[0] - 0.016, p[1], p[2])
-        rod("joints-verriere", 3, back(a), back(b), radius + 0.004)
-        rod(name, FRAME_MATERIAL, a, b, radius)
+        rod("joint-mobile" if moving else "joints-verriere",
+            3, back(a), back(b), radius + 0.004)
+        rod("cadre-mobile" if moving else name, FRAME_MATERIAL, a, b, radius)
 
     for k in cabin_ids[:-1]:
         for j in (0, DIVISIONS):
-            trim("bordures-cockpit", upper[k][j], upper[k + 1][j], 0.014)
+            trim("bordures-cockpit", upper[k][j], upper[k + 1][j], 0.014, xs[k] < 1.55)
     for x in (CABIN_START, 1.55, 2.13, CABIN_END):
         k = min(range(len(xs)), key=lambda i: abs(xs[i] - x))
         for a, b in zip(upper[k], upper[k][1:]):
-            trim("arceaux", a, b, 0.014)
+            trim("arceaux", a, b, 0.014, x <= 1.55)
         for p in upper[k][::4]:
             rod(
-                "fixations-cadres",
+                "vis-mobiles" if x <= 1.55 else "fixations-cadres",
                 9,
                 (p[0] + 0.012, p[1], p[2]),
                 (p[0] + 0.019, p[1], p[2]),
@@ -321,15 +322,20 @@ def build_enclosure(poly, rod):
         if xs[k] >= 1.55:
             for j in (8, 24):
                 rod("longerons-verriere", FRAME_MATERIAL, upper[k][j], upper[k + 1][j], 0.010)
-    # Visible latch representation only: it does not unlock or move the canopy.
+    # Right-hand latch; the moving group carries it with the front canopy.
     latch = [
-        (1.44, -0.445, 0.145),
-        (1.46, -0.472, 0.17),
-        (1.54, -0.472, 0.17),
-        (1.56, -0.445, 0.145),
+        (1.44, 0.445, 0.145),
+        (1.46, 0.472, 0.17),
+        (1.54, 0.472, 0.17),
+        (1.56, 0.445, 0.145),
     ]
     for a, b in zip(latch, latch[1:]):
         rod("poignee-verriere", 11, a, b, 0.006)
+    # Two estimated hinge barrels on the left rim, aligned with the animation axis.
+    for x in (0.83, 1.43):
+        y = -0.36 - (x - 0.70) * 0.07 / 0.85
+        rod("charnieres-fixes", 9, (x - 0.025, y, 0.12),
+            (x + 0.025, y - 0.05 * 0.07 / 0.85, 0.12), 0.012)
     for side in (-1, 1):
         selected = [row for row in HULL if 1.55 <= row[0] <= 2.78]
         line = [

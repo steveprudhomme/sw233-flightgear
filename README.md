@@ -11,13 +11,27 @@ ressources FlightGear/JSBSim ne sont pas redistribuées ni relicenciées ici. Le
 
 [Premier relevé du nez, de la coque et de la verrière, avec comparaisons FlightGear](docs/construction/23-releves-avant.md).
 
+## Ouverture de la verrière — 0.1.0-alpha.2
+
+La verrière avant s’ouvre au sol avec le menu **SW233 → Verrière / Canopy**
+ou la poignée rouge. La checklist affiche son état en français et en anglais.
+Le passager arrière reste sous l’aile. Le vitrage fixe est dégagé entre les ailes.
+
+[Tutoriel26 illustré](docs/construction/26-ouverture-verriere.md) ·
+[Paquet et preuves](https://github.com/steveprudhomme/sw233-flightgear/releases/tag/v0.1.0-alpha.2) ·
+[Bilan des essais et limites](docs/validation/verriere-lot44.md).
+
+66 tests passent. La course de 100 degrés reste estimée et la porte arrière reste fixe.
+La réinitialisation complète ferme FlightGear sur la machine d’essai, également avec alpha.1.
+Relancer le simulateur au lieu d’utiliser cette commande en attendant le diagnostic.
+
 ## Finition du nez et de la verrière — lot43
 
 Nez plus plein, capot bombé, flancs rehaussés et raccord arrière prolongé sous l'aile.
 Cadres bleus, joints, fixations et poignée fixe ajoutés ; mât et ficelle raccordés au
 nouveau capot. [Tutoriel25 illustré](docs/construction/25-finitions-avant.md) ·
 [Paquet et comparaisons](https://github.com/steveprudhomme/sw233-flightgear/releases/tag/v0.1.0-alpha.1).
-63 tests passent ; la forme reste estimée, la verrière ne s'ouvre pas encore et la
+Dans le lot43, 63 tests passaient ; la verrière était encore fixe et la
 livrée C-FYLP reste provisoire. La revue de ressemblance reste ouverte.
 
 ![Profil du lot43 dans FlightGear](https://github.com/steveprudhomme/sw233-flightgear/releases/download/v0.1.0-alpha.1/apres-nez-profil.png)

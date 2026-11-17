@@ -31,7 +31,7 @@ class PackageTests(unittest.TestCase):
             "aerofrein-1", "aerofrein1", "poignee-frein", "compas-rose", "alt-calage",
             "profondeur-1", "profondeur1", "alt-pression", "radio-frequence",
             "radio-bouton-gauche", "radio-bouton-droit", "plaquettes-fr", "plaquettes-en",
-            "fuselage",
+            "fuselage", "pare-brise", "poignee-verriere",
         })
         texts = {node.findtext("name"): node for node in model.findall("text")}
         self.assertEqual(set(texts), {"alt-pression", "alt-unite", "radio-frequence"})

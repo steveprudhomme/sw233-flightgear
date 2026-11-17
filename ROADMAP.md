@@ -16,7 +16,7 @@ Prototype de simulation sous GPL-3.0-only, non certifié pour l’instruction r�
 | Checklists | FR/EN, accents, initiales rouges, souris et format 1024 × 600 | Ctrl+L physiquement confirmé ouvert ; essai fermé encore à préciser |
 | Extérieur | Livrée jaune/bleu C-FYLP provisoire, spoilers et ficelle animés | Formes et peinture à reprendre (VIS-05) ; identité/date des nouvelles photos à compléter |
 | Occupants | Deux personnages détaillés bleu/vert, noms, harnais et visibilité liée aux masses | Proportions artistiques ; insignes officiels et animations non validés |
-| Validation | Essais natifs Windows à CYJN, 63 tests depuis la première préversion SemVer, reconstruction du tutoriel | Polaire réelle, Linux et relecture autonome du tutoriel non validés |
+| Validation | Essais natifs Windows à CYJN, 66 tests pour la préversion 0.1.0-alpha.2, reconstruction du tutoriel | Polaire réelle, Linux et relecture autonome du tutoriel non validés |
 
 Statuts : **en cours** = lot commencé ; **prévu** = travail accepté à réaliser ; **attend une référence** = détail non confirmé ; **terminé** = preuve publiée. Les anciens protocoles sont dans l’[archive du 17 novembre](docs/planification/archive-roadmap-2026-11-17.md), et ne constituent plus une deuxième liste active.
 
@@ -68,13 +68,13 @@ Plan préalable `5e717b9`. [Preuves publiées : releves-41](https://github.com/s
 
 Priorité confirmée avant VIS-05d. Préversion visée : `0.1.0-alpha.2`.
 
-- [ ] **C44-01** Comparer DET-01/03/05/09 et le manuel ; identifier la verrière avant mobile, les vitrages arrière fixes, le côté des charnières et le verrou. Consigner les dimensions et la course estimées.
-- [ ] **C44-02a** Appliquer la précision du 17 novembre : occupant arrière sous l’aile, vitrage fixe central entre les ailes. Retirer le recouvrement des ailes sur ce vitrage ; vérifier dessus et place arrière.
-- [ ] **C44-02** Séparer vitrage, cadres, joints et fixations mobiles ; placer les charnières et la poignée du bon côté. Conserver le raccord sous aile et la porte arrière fixes.
-- [ ] **C44-03** Ajouter un état commun : fermé verrouillé, en mouvement, ouvert ; commande par poignée et menu FR/EN. Refuser l'ouverture en vol ou en déplacement. Permettre la fermeture, gérer pause et réinitialisation, sans effet aérodynamique inventé.
-- [ ] **C44-04** Afficher l'état réel dans les checklists FR/EN ; conserver les acronymes et distinguer la porte arrière fixe.
+- [x] **C44-01** Comparer DET-01/03/05/09 et le manuel ; identifier la verrière avant mobile, les vitrages arrière fixes, le côté des charnières et le verrou. Consigner les dimensions et la course estimées.
+- [x] **C44-02a** Appliquer la précision du 17 novembre : occupant arrière sous l’aile, vitrage fixe central entre les ailes. Retirer le recouvrement des ailes sur ce vitrage ; vérifier dessus et place arrière.
+- [x] **C44-02** Séparer vitrage, cadres, joints et fixations mobiles ; placer les charnières et la poignée du bon côté. Conserver le raccord sous aile et la porte arrière fixes.
+- [x] **C44-03** Ajouter un état commun : fermé verrouillé, en mouvement, ouvert ; commande par poignée et menu FR/EN. Refuser l'ouverture en vol ou en déplacement. Permettre la fermeture, gérer pause et réinitialisation, sans effet aérodynamique inventé.
+- [x] **C44-04** Afficher l'état réel dans les checklists FR/EN ; conserver les acronymes et distinguer la porte arrière fixe.
 - [ ] **C44-05** Tester refus, commande répétée, fermeture, pause, réinitialisation et changement de langue dans FlightGear ; capturer 0/25/50/75/100 % depuis le cockpit et l'extérieur, avec et sans occupants.
-- [ ] **C44-06** Examiner les dégagements avec le nez, les ailes, le tableau et les personnages ; vérifier les pièces mobiles et la recette complète du tutoriel.
+- [x] **C44-06** Examiner les dégagements avec le nez, les ailes, le tableau et les personnages ; vérifier les pièces mobiles et la recette complète du tutoriel.
 - [ ] **C44-07** Publier le tutoriel illustré selon le guide de rédaction, les limites, le paquet SemVer, les MD et les preuves sur GitHub. L'essai par un enfant et l'acceptation de ressemblance restent distincts.
 
 ### Lot43 — finition des formes VIS-05b/c
@@ -96,14 +96,19 @@ l'ouverture animée reste dans VIS-05c.1 à c.3.
 cadres/joints/fixations et poignée de représentation ajoutés ([atelier25](docs/construction/25-finitions-avant.md)).
 Les cases globales VIS-05b/c restent ouvertes pour la revue de ressemblance et les
 charnières non confirmées ; elles ne signifient pas que le lot technique est à refaire.
-**Prochain lot : ouverture de la verrière, VIS-05c.1 à c.3.** Les ailes et haubans viendront après ce lot.
+**Lot44 : ouverture avant réalisée et vérifiée, avec réserves explicites.**
+Voir [le tutoriel26](docs/construction/26-ouverture-verriere.md) et [le bilan](docs/validation/verriere-lot44.md).
+Le vitrage arrière est fixe entre les ailes ; le passager arrière reste sous l’aile.
+La course réelle et l’acceptation de ressemblance restent attendues.
+La réinitialisation complète ferme FlightGear sur cette machine, y compris avec alpha.1.
+La reprise des ailes ne clôt pas ces réserves.
 
 ### Complément lot02 — détails et ouverture au sol
 
 [Analyse détaillée](docs/references/analyse-details-lot-02.md) · [Manifeste des onze fichiers](docs/references/details-lot-02.json). Six images nouvelles, quatre reprises du lot01 et une copie du presse-papiers, vérifiées par empreintes. Les originaux sont conservés localement. Ces sous-tâches précisent les étapes ci-dessus, sans les déclarer réalisées.
 
 - [ ] **VIS-05c.1 — mécanisme réel :** identifier ensembles fixe/mobile, côté et axe de charnière, poignée, verrou et butée ; comparer ouvert/fermé ; faire confirmer la course, sans angle arbitraire présenté comme mesuré.
-- [ ] **VIS-05c.2 — ouverture au sol :** commande de menu FR/EN et poignée cliquable reliées au même état ; animation progressive, fermeture/verrouillage, ouverture autorisée au sol immobilisé ; définir détection sol/vitesse, pause et réinitialisation. Raccourci après contrôle des conflits.
+- [x] **VIS-05c.2 — ouverture au sol :** commande de menu FR/EN et poignée cliquable reliées au même état ; animation progressive, fermeture/verrouillage, ouverture autorisée au sol immobilisé ; définir détection sol/vitesse, pause et réinitialisation. Menu et poignée livrés ; aucun nouveau raccourci. Réinitialisation complète limitée par FG-44-01.
 - [ ] **VIS-05c.3 — recette d'ouverture :** captures 0/25/50/75/100 %, intérieur/extérieur, occupants présents/absents ; absence de collision avec aile/nez/tableau ; refus en vol, commande répétée et cohérence de la checklist. Aucun largage de verrière ou effet aérodynamique inventé.
 - [ ] **VIS-05k.1 — panneau arrière gris :** panneau principal, relief supérieur, raccord sous aile, ouverture de sangle, vis, plaque et habillages latéraux ; comparer cockpit vide/occupé (DET-02/06).
 - [ ] **VIS-05k.2 — coussins bleus :** volumes séparés, épaisseur, coins adoucis et texture textile ; sièges toujours présents sans personnages ; mesures réelles ou estimations explicitement identifiées.
@@ -254,3 +259,15 @@ Cette règle s'applique à toute nouvelle documentation et aux passages révisé
 [Issues GitHub](https://github.com/steveprudhomme/sw233-flightgear/issues) · [Jalons](https://github.com/steveprudhomme/sw233-flightgear/milestones) · [Backlog des audits](docs/planification/backlog-audits.md) · [CONTRIBUTING](CONTRIBUTING.md).
 
 Les codes AUD/VIS sont des identifiants documentaires, pas des numéros de tickets. Responsables recherchés : références Cadets, artistes 3D, texture, testeurs Linux et lecteurs débutants. À chaque lot : plan et commit préalables, réalisation, preuves natives, tutoriel illustré, tests adaptés, MD et publication. Ne cocher que les résultats vérifiés ; ne pas ajouter une copie du journal de travail à la fin de cette synthèse.
+
+
+### Réserves de validation du lot44
+
+- [ ] **FG-44-01** Diagnostiquer la fermeture de FlightGear 2024.1.7 lors de la commande de réinitialisation complète. Reproduite aussi sur alpha.1 ; le signal de remise à zéro de la verrière fonctionne séparément.
+- [ ] **C44-08** Faire confirmer la course et les cotes des charnières sur l’appareil de référence. Les 100 degrés restent une estimation.
+- [ ] **C44-09** Faire accepter la ressemblance et essayer le tutoriel26 avec un lecteur débutant.
+
+C44-05 reste ouvert uniquement pour la réinitialisation complète. Les 30 captures,
+les 14 contrôles natifs et les états de checklist FR/EN sont réalisés.
+VIS-05c.1 et VIS-05c.3 restent ouverts pour leurs réserves ; cela ne signifie pas que
+l’ouverture avant reste à programmer. La porte arrière reste fixe et constitue un travail distinct.

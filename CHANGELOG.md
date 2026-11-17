@@ -1,6 +1,16 @@
 # Historique
 
-## Non publié — documentation
+## 0.1.0-alpha.2 — 2026-11-17 — ouverture de verrière, lot44
+
+- Plans préalables `775bf4d` et `8a3c081`.
+- Verrière avant mobile : cadres, joints, vis et poignée ; menu et poignée partagent la commande.
+- Ouverture progressive au sol immobilisé ; refus en vol ou en déplacement ; fermeture et pause.
+- Vitrage central fixe dégagé entre les ailes, au-dessus de la place arrière.
+- État de verrière dans les checklists FR/EN ; porte arrière fixe explicitement indiquée.
+- Tutoriel26, 30 captures, atlas de 84 objets, 14 contrôles natifs et 66 tests réussis.
+- Limites : course estimée ; réinitialisation complète de FlightGear défaillante aussi sur alpha.1 ; acceptation visuelle et essai lecteur attendus.
+
+### Documentation
 
 - Ajouter les règles de rédaction accessible aux consignes du projet.
 - Conserver les 14 ressources en local et publier leur inventaire.
