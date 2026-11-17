@@ -329,20 +329,31 @@ Ctrl+L change la langue avec la checklist ouverte et avec la checklist fermée.
 Cette preuve complète la recette ; elle ne provient pas de l'envoi clavier
 automatisé, qui n'avait pas permis de conclure.
 
-- [ ] Améliorer le rendu accentué complet du dialogue natif : sujet distinct
+- [x] Améliorer le rendu accentué complet du dialogue natif : sujet distinct
   du fonctionnement bilingue validé ; conserver les sources UTF-8 et comparer
   les solutions de rendu sans supprimer définitivement les accents.
 
 
-## VIS-01s — accents dans les checklists natives (en cours)
+## VIS-01s — accents dans les checklists natives (terminé)
 
-- [ ] Examiner le code du dialogue et le rendu de texte de FlightGear 2024.1 ; identifier où les octets UTF-8 sont interprétés incorrectement.
-- [ ] Choisir une correction limitée au projet qui conserve les accents et les sources UTF-8 ; éviter un changement global de police ou des fichiers de FlightGear.
-- [ ] Remplacer le contournement sans accents, puis vérifier titres, rubriques, explications, apostrophes et ligatures présentes dans les quatre listes françaises.
-- [ ] Contrôler les quatre listes anglaises et les bascules fenêtre ouverte/fermée ; conserver les mots-checks, le menu et Ctrl+L.
-- [ ] Capturer les résultats natifs et expliquer dans le tutoriel pour débutant la différence entre caractères, encodage et police.
-- [ ] Synchroniser les recettes, adapter le banc de vérification, tester la reconstruction ; mettre à jour les MD et publier sources, images et paquet sur GitHub.
+- [x] Examiner le code du dialogue et le rendu de texte de FlightGear 2024.1 ; identifier où les octets UTF-8 sont interprétés incorrectement.
+- [x] Choisir une correction limitée au projet qui conserve les accents et les sources UTF-8 ; éviter un changement global de police ou des fichiers de FlightGear.
+- [x] Remplacer le contournement sans accents, puis vérifier titres, rubriques, explications, apostrophes et ligatures présentes dans les quatre listes françaises.
+- [x] Contrôler les quatre listes anglaises et les bascules fenêtre ouverte/fermée ; conserver les mots-checks, le menu et Ctrl+L.
+- [x] Capturer les résultats natifs et expliquer dans le tutoriel pour débutant la différence entre caractères, encodage et police.
+- [x] Synchroniser les recettes, adapter le banc de vérification, tester la reconstruction ; mettre à jour les MD et publier sources, images et paquet sur GitHub.
 
 Critère : les textes français restent accentués dans les sources et sont lisibles dans les fenêtres testées, sans séquence de caractères déformés. Les limites de version et de police restent explicites ; aucun rendu non testé ne sera annoncé comme validé.
 
 Sous-étapes techniques VIS-01s : intégrer un texte Canvas UTF-8 dans le dialogue local nommé `checklist`, conserver les quatre boutons de mots-checks et les accès existants, puis vérifier que le remplacement reste limité à la session SW233.
+
+Résultat VIS-01s (17 novembre 2026) : rendu Canvas local, huit listes et
+24 bascules contrôlées sur FlightGear 2024.1.7, captures à 1280 × 720,
+25 tests réussis et reconstruction intégrale du tutoriel. Le test de
+conversion ASCII a été retiré puisque cette conversion n'existe plus.
+La validation physique de Ctrl+L du lot 35 reste historique ; les scripts
+et les fonctions de sélection sont vérifiés dans ce lot. Pas de mesure
+ou d'affirmation de compatibilité avec les versions non testées.
+
+- [ ] Complément de recette : essayer la nouvelle fenêtre sur un petit écran,
+  une autre version de FlightGear et refaire Ctrl+L au clavier physique.

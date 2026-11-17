@@ -4,7 +4,6 @@ import argparse
 import io
 import json
 import time
-import unicodedata
 import xml.etree.ElementTree as ET
 from pathlib import Path
 from urllib.error import HTTPError
@@ -14,14 +13,6 @@ from PIL import Image
 
 from tools.flightgear import execute
 from tools.package import ROOT
-
-
-def display_text(text, legacy):
-    if not legacy:
-        return text
-    text = text.replace("œ", "oe").replace("’", "'")
-    return "".join(c for c in unicodedata.normalize("NFD", text)
-                   if not unicodedata.combining(c))
 
 
 def capture(output, port):
@@ -43,7 +34,7 @@ def capture(output, port):
         execute(script, port)
 
     def setprop(path, value):
-        run(f"setprop({json.dumps(path)},{json.dumps(value)});")
+        run(f"setprop({json.dumps(path)},{json.dumps(value, ensure_ascii=False)});")
 
     def close():
         run('setprop("/sim/sw233/test/dialog-was-open",'
@@ -85,14 +76,15 @@ def capture(output, port):
         raise ValueError("Use a dedicated SW233 --fdm=null session")
     output.mkdir(parents=True, exist_ok=False)
     version = get("/sim/version/flightgear")
-    legacy = version.startswith("2024.1.")
+    legacy = bool(get("/sim/sw233/checklist-ascii"))
+    assert not legacy, "Accents must be preserved"
     sources = {}
     for language, filename in (("fr", "sw233.xml"), ("en", "sw233-en.xml")):
         lists = ET.parse(ROOT / "src/SW233/Checklists" / filename).findall("checklist")
         sources[language] = [
-            {"title": display_text(c.findtext("title"), legacy),
-             "items": [(display_text(i.findtext("name"), legacy),
-                        display_text(i.findtext("value"), legacy)) for i in c.findall("item")]}
+            {"title": c.findtext("title"),
+             "items": [(i.findtext("name"),
+                        i.findtext("value")) for i in c.findall("item")]}
             for c in lists]
     # The UI adaptation must not mutate the UTF-8 translation originals.
     for language, filename in (("fr", "sw233.xml"), ("en", "sw233-en.xml")):

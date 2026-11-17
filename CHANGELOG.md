@@ -1,5 +1,12 @@
 # Historique
 
+## 2026-11-17 — accents-36
+
+- Remplacement du contournement ASCII par un panneau Canvas UTF-8 local au SW233.
+- Accents et apostrophes conservés ; initiales rouges, quatre boutons et bascule FR/EN.
+- Huit listes et 24 bascules vérifiées dans FlightGear 2024.1.7 en session statique.
+- Tutoriel illustré et recette complète de la nouvelle fenêtre.
+
 ## 2026-11-17 — recette des checklists bilingues
 
 - Titres raccourcis pour le sélecteur natif ; copie d'affichage sans accents

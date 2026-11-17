@@ -359,15 +359,6 @@ Sépare l’observation du vent et du trafic, la lecture de vitesse et la dispon
 # Session-only language choice. No aircraft controls are written.
 var path = "/sim/sw233/language";
 var busy = 0;
-# Legacy 2024.1 dialog labels do not decode UTF-8 in this tested UI.
-# Normalize only the active checklist copy, never source translations or textures.
-var display_text = func(text) {
-    foreach (var pair; [["é","e"],["è","e"],["ê","e"],["É","E"],
-                         ["à","a"],["â","a"],["î","i"],["ô","o"],
-                         ["ç","c"],["œ","oe"],["’","'"]])
-        text = string.replace(text,pair[0],pair[1]);
-    return text;
-};
 var apply = func {
     if (busy) return;
     busy = 1;
@@ -378,20 +369,7 @@ var apply = func {
     var target = props.globals.getNode("/sim/checklists",1);
     target.removeChildren();
     props.copy(props.globals.getNode("/sim/sw233/translations/"~lang),target);
-    var version = getprop("/sim/version/flightgear");
-    var legacy = version != nil and find("2024.1.",version) == 0;
-    setprop("/sim/sw233/checklist-ascii",legacy);
-    if (legacy) {
-        foreach (var list; target.getChildren("checklist")) {
-            var title = list.getNode("title");
-            title.setValue(display_text(title.getValue()));
-            foreach (var item; list.getChildren("item")) {
-                foreach (var field; item.getChildren())
-                    if (field.getName() == "name" or field.getName() == "value")
-                        field.setValue(display_text(field.getValue()));
-            }
-        }
-    }
+    setprop("/sim/sw233/checklist-ascii",0);
     # Titles change; select the first list and discard old checklist UI state.
     props.globals.getNode("/sim/gui/dialogs/checklist",1).removeChildren();
     setprop("/sim/sw233/language-label",lang == "fr" ? "Français" : "English");
@@ -401,6 +379,46 @@ var apply = func {
 var choose = func(lang) { if (lang == "fr" or lang == "en") setprop(path,lang); };
 var toggle = func { choose(getprop(path) == "fr" ? "en" : "fr"); };
 setlistener(path,apply,1,0);
+
+# The aircraft owns this dialog; no installation files or font settings change.
+var checklist_dialog = gui.Dialog.new("/sim/sw233/checklist/dialog",
+    "Aircraft/SW233/gui/dialogs/checklists.xml");
+var select_list = func(index) {
+    var lists = props.globals.getNode("/sim/checklists").getChildren("checklist");
+    if (index < 0 or index >= size(lists)) return;
+    setprop("/sim/gui/dialogs/checklist/selected-checklist",lists[index].getNode("title").getValue());
+    fgcommand("dialog-close",props.Node.new({"dialog-name":"checklist"}));
+    gui.showDialog("checklist");
+};
+var render_checklist = func(surface) {
+    surface.set("view[0]",780).set("view[1]",500);
+    surface.setColorBackground(0.96,0.96,0.93,1);
+    var group = surface.createGroup();
+    var text = func(value,x,y,size,color) {
+        group.createChild("text").setText(value)
+            .setFont("LiberationFonts/LiberationSans-Regular.ttf")
+            .setFontSize(size).set("fill",color).setTranslation(x,y);
+    };
+    var lists = props.globals.getNode("/sim/checklists").getChildren("checklist");
+    var selected = getprop("/sim/gui/dialogs/checklist/selected-checklist");
+    var list = lists[0];
+    foreach (var candidate; lists)
+        if (candidate.getNode("title").getValue() == selected) list = candidate;
+    var title = list.getNode("title").getValue();
+    setprop("/sim/gui/dialogs/checklist/selected-checklist",title);
+    setprop("/sim/gui/dialogs/checklist/selected-page",0);
+    text(title,18,30,23,"#151515");
+    var row = 0;
+    foreach (var item; list.getChildren("item")) {
+        var name = item.getNode("name").getValue();
+        text(name,18,66+row*51,19,"#151515");
+        text(substr(name,0,1),18,66+row*51,19,"#b02020");
+        text(item.getNode("value").getValue(),36,87+row*51,17,"#333333");
+        row += 1;
+    }
+    text(getprop(path) == "fr" ? "Simulation uniquement — Français" : "Simulation only — English",
+         18,488,15,"#444444");
+};
 ```
 
 
@@ -701,30 +719,19 @@ tu la rouvres, elle affiche la première liste dans la nouvelle langue.
 Les mots natifs *Group*, *Checklist* et *Aircraft Checklists* appartiennent
 à FlightGear : le choix SW233 ne traduit pas toute l'interface du simulateur.
 
-### Pourquoi manque-t-il des accents dans cette fenêtre ?
+### Pourquoi les accents étaient-ils abîmés ?
 
-Lors de l'essai avec FlightGear **2024.1.7**, « Déporteurs » devenait
-« DÃ©porteurs » dans cette fenêtre. Le fichier contenait pourtant le bon mot.
-Le problème se trouvait dans l'affichage des lettres, pas dans la traduction.
-
-Pour cette famille 2024.1, le script prépare une **copie d'affichage sans
-accents** : « Déporteurs » devient « Deporteurs ». Le XML d'origine et les
-textures des plaquettes gardent leurs accents. C'est une solution de
-compatibilité temporaire, pas une correction typographique complète du
-moteur graphique. Les versions autres que 2024.1 ne reçoivent pas cette
-conversion ; leur rendu doit être vérifié séparément.
-
-Pour comprendre la recette, imagine un livre et une fiche photocopiée :
-on adapte la fiche à l'imprimante, sans effacer les accents du livre.
-`display_text` fait les remplacements dans la copie située sous
-`/sim/checklists`. Les originaux restent sous `/sim/sw233/translations`.
-Les titres sont raccourcis pour tenir dans le sélecteur natif.
+L'ancien dialogue affichait parfois « DÃ©porteurs » au lieu de « Déporteurs ».
+Le fichier était correct. L'ancien lecteur de lettres ne comprenait pas
+l'encodage UTF-8. Une première solution avait enlevé les accents uniquement
+à l'affichage. Le lot **accents-36** remplace cette solution par Canvas.
+Les images du lot 35 ci-dessus sont donc des preuves historiques ; les
+images de la section K montrent la nouvelle fenêtre.
 
 ### Comprendre les essais automatiques
 
 `tools/checklist_bench.py` compare chaque titre, rubrique et explication
-chargés dans FlightGear aux XML du projet, en tenant compte de cette copie
-d'affichage. Il photographie les huit listes, effectue douze bascules fenêtre
+chargés dans FlightGear aux XML du projet, caractère par caractère, accents inclus. Il photographie les huit listes, effectue douze bascules fenêtre
 ouverte puis douze fenêtre fermée, et contrôle le retour à la première liste.
 Il vérifie aussi le retour au français pour une propriété de langue invalide
 et l'absence de changement des cinq commandes suivies : ailerons, profondeur,
@@ -759,3 +766,126 @@ Pour ton propre essai : ouvre la checklist, note sa langue, appuie sur Ctrl+L
 et note le résultat. Ferme la checklist avec sa croix, recommence, puis
 rouvre-la pour lire sa langue. Rapporte les deux résultats séparément.
 Ne déclare pas « tout fonctionne » si un de ces essais reste inconnu.
+
+
+## K — Garder les accents avec une nouvelle feuille de texte
+
+### 1. Comprendre les trois ingrédients
+
+Imagine que tu écris « Déporteurs » sur une fiche. **Le caractère** est la
+lettre é. **L'encodage UTF-8** est la manière de ranger cette lettre dans
+l'ordinateur. **La police** donne sa forme à la lettre. Une jolie police
+ne suffit pas si le lecteur comprend mal le code de la lettre.
+
+Notre correction garde le texte original. Elle change le lecteur : Canvas
+dessine les phrases dans une fenêtre du simulateur. Nous utilisons la police
+Liberation Sans déjà livrée avec FlightGear. Tu n'as rien à installer en plus.
+
+### 2. Créer le cadre de la fenêtre
+
+Crée le dossier `src/SW233/gui/dialogs` s'il manque. Crée ensuite
+`checklists.xml`, enregistré en UTF-8, puis copie ce bloc entier.
+`vbox` empile les éléments de haut en bas. `hbox` les range côte à côte.
+Les quatre boutons sont les mots-checks appris. Le bouton FR / EN change
+la langue. La croix ferme la fenêtre. Le rectangle Canvas mesure 780 × 500
+unités de dessin. Ces nombres sont des choix de mise en page, pas des
+mesures du vrai planeur.
+
+<!-- atelier-fichier: src/SW233/gui/dialogs/checklists.xml -->
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- SPDX-License-Identifier: GPL-3.0-only -->
+<!-- Native shell with UTF-8 Canvas text, scoped to the SW233 session. -->
+<PropertyList>
+    <name>checklist</name><layout>vbox</layout><x>220</x><y>75</y>
+    <group><layout>hbox</layout>
+        <text><label>SW233 - Checklists / Listes</label></text>
+        <empty><stretch>true</stretch></empty>
+        <button><legend>X</legend><binding><command>dialog-close</command></binding></button>
+    </group>
+    <group><layout>hbox</layout>
+        <button><legend>BCISTRSC</legend><binding><command>nasal</command><script>sw233_language.select_list(0);</script></binding></button>
+        <button><legend>AAAT</legend><binding><command>nasal</command><script>sw233_language.select_list(1);</script></binding></button>
+        <button><legend>SWARTSC</legend><binding><command>nasal</command><script>sw233_language.select_list(2);</script></binding></button>
+        <button><legend>ASCOT</legend><binding><command>nasal</command><script>sw233_language.select_list(3);</script></binding></button>
+        <button><legend>FR / EN</legend><binding><command>nasal</command><script>sw233_language.toggle();</script></binding></button>
+    </group>
+    <canvas>
+        <name>checklist-text</name><pref-width>780</pref-width><pref-height>500</pref-height>
+        <nasal><load>sw233_language.render_checklist(canvas.get(cmdarg()));</load></nasal>
+    </canvas>
+</PropertyList>
+```
+
+### 3. Comprendre le script de la section précédente
+
+Recopie la version complète de `language.nas` donnée plus haut, pas seulement
+quelques lignes. `gui.Dialog.new` enregistre notre cadre sous le nom
+`checklist`. Ainsi l'accès habituel ouvre notre fenêtre pendant la session
+SW233. Aucun fichier de l'installation FlightGear n'est remplacé.
+
+`render_checklist` lit la liste choisie dans `/sim/checklists`. Il dessine
+le titre, puis chaque rubrique et son explication. Le premier mot commence
+à 18 unités du bord gauche. Les lignes commencent à 66 et 87 unités du
+haut. Chaque nouvel élément descend de 51 unités. Pour huit éléments,
+la dernière explication est à 87 + 7 × 51 = 444 : elle tient dans la feuille
+de 500 unités. Le pied de page est à 488.
+
+Le script dessine le nom entier en noir, puis sa première lettre en rouge
+au même endroit. Cela garde l'espacement naturel des lettres : un W est
+plus large qu'un I. Les premières lettres des mots-checks sont ici des lettres
+anglaises simples ; ce découpage ne doit pas être appliqué sans adaptation
+à une première lettre accentuée codée sur plusieurs octets.
+
+`select_list` choisit une des quatre listes et reconstruit la fenêtre.
+`apply` copie le français ou l'anglais sans effacer un seul accent. Si la
+fenêtre était ouverte, elle se rouvre à la première liste. Si elle était
+fermée, elle reste fermée. Aucun de ces boutons ne pilote l'avion.
+
+### 4. Regarder les vrais résultats
+
+Ces images proviennent de FlightGear **2024.1.7**, en essai statique de
+1280 × 720 pixels. Elles ne sont pas des maquettes dessinées pour le tutoriel.
+
+![Décollage : accents et initiales rouges](https://github.com/steveprudhomme/sw233-flightgear/releases/download/accents-36/fr-liste-0.jpg)
+
+Lis « Décollage », « vérifiés », « Déporteurs » et « Verrière ». Aucun de ces
+mots ne doit perdre son accent ni devenir une suite de lettres bizarres.
+
+![Atterrissage : apostrophe typographique et accents](https://github.com/steveprudhomme/sw233-flightgear/releases/download/accents-36/fr-liste-2.jpg)
+
+Lis aussi « Vitesse d’approche » et « vérifiées ». L'apostrophe courbe est
+conservée. Ne remplace pas automatiquement toutes les lettres spéciales par
+des lettres simples pour faire disparaître un problème d'affichage.
+
+![Version anglaise du même panneau](https://github.com/steveprudhomme/sw233-flightgear/releases/download/accents-36/en-liste-0.jpg)
+
+### 5. Refaire l'essai toi-même
+
+1. Reconstruis ton paquet avec la leçon d'installation ; un ancien paquet
+   ne contient pas automatiquement tes modifications.
+2. Lance le SW233 puis ouvre **SW233 → Checklists / Listes**.
+3. Clique successivement sur BCISTRSC, AAAT, SWARTSC et ASCOT.
+4. Lis chaque rubrique et son explication. Vérifie qu'aucun texte ne dépasse.
+5. Clique sur **FR / EN**, puis relis les quatre listes anglaises.
+6. Reviens au français. Ferme la fenêtre, change de langue par le menu,
+   puis rouvre-la : elle doit montrer la langue choisie.
+7. Essaie aussi Ctrl+L, fenêtre ouverte puis fermée. La confirmation physique
+   du lot précédent reste historique : le banc automatique ne simule pas
+   fidèlement toutes les touches de ton clavier.
+
+Pour le banc automatisé, garde la session de test `--fdm=null`, puis utilise
+la commande de la section J avec un nouveau dossier. Le banc vérifie les
+huit listes, 24 bascules, les langues invalides et le retour à l'état initial.
+Il envoie maintenant les caractères UTF-8 tels quels : le langage Nasal ne
+lit pas les échappements Unicode JSON comme le ferait un programme Python.
+
+### 6. Ce qui reste à vérifier
+
+La validation visuelle porte sur 2024.1.7 et cette taille de fenêtre. Sur un
+petit écran, une autre version ou avec de nouvelles phrases plus longues,
+refais les captures : il faudra peut-être adapter la taille ou ajouter un
+défilement. Ce panneau est prévu pour les quatre listes simples du SW233 ;
+il ne remplace pas les fonctions complexes des checklists d'autres avions.
+Les procédures françaises restent des explications du projet, pas une
+nouvelle transcription certifiée des instructions des Cadets.

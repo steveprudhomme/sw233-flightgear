@@ -31,6 +31,7 @@ def validate_resources(root):
     for node in config.findall('nasal/*/file'):
         required(air, node.text)
     required(air, 'gui/dialogs/occupants.xml')
+    required(air, 'gui/dialogs/checklists.xml')
     for preview in config.findall('sim/previews/preview/path'):
         required(air, preview.text)
     if config.find('sim/previews') is not None:

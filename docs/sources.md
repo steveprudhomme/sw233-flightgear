@@ -150,3 +150,17 @@ contexte du dialogue historique ; la compatibilité de notre correction avec
 2024.1.7 repose sur les essais locaux, pas sur une supposition concernant les
 versions suivantes. La copie ASCII est limitée à la famille 2024.1 et ne
 modifie pas les sources ni les textes des plaquettes.
+
+
+## Accents — VIS-01s
+
+Le contournement ASCII du lot précédent est remplacé par Canvas. Sources
+techniques consultées : [FGPUIDialog.cxx, branche release/2024.1](https://github.com/FlightGear/flightgear/blob/release/2024.1/src/GUI/FGPUIDialog.cxx)
+(transmission du label à PUI), puis `gui/dialogs/map-canvas.xml`, `Nasal/gui.nas`
+et `Nasal/canvas/tooltip.nas` de l'installation locale 2024.1.7 pour le widget
+Canvas, l'enregistrement du dialogue et la police Liberation Sans.
+La conclusion sur le rendu repose surtout sur les captures natives du lot
+[accents-36](https://github.com/steveprudhomme/sw233-flightgear/releases/tag/accents-36).
+Limite : essais d'une version et d'une résolution ; aucune généralisation
+aux autres interfaces. Le choix Canvas privilégie la compatibilité avec
+l'installation testée et ne prétend pas être l'unique solution possible.
