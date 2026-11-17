@@ -40,6 +40,7 @@ Responsable : mainteneur. Référence de disposition : photo C-FYLP ; valeurs op
 ### Incrément 40 — compléments techniques VIS-01v/w à VIS-04b
 
 Plan autorisé et commité avant l’implémentation (`91daadc`).
+Lot technique publié : **45 fichiers vérifiés par SHA-256**, contrôles GitHub Python 3.11/3.13 et site réussis.
 Preuves : [atelier 22](docs/construction/22-verifications-visuelles.md), [publication visuals-40](https://github.com/steveprudhomme/sw233-flightgear/releases/tag/visuals-40).
 Chaque ligne correspond à un résultat vérifiable. Les réalisations du lot 39 sont
 séparées des compléments ; les références absentes ne sont pas des travaux terminés.
@@ -108,7 +109,7 @@ indépendante liée aux masses existantes, sans double comptage dans le FDM.
 
 - [ ] **I40-01** Reconstruire depuis le tutoriel ; contrôler les dépendances, les UV, les niveaux de détail et les éléments mobiles avec des tests adaptés.
 - [x] **I40-02** Corriger le centrage des vues extérieures sur un repère du modèle (sans déplacer le modèle ni le centre de gravité), puis vérifier le paquet final dans FlightGear ; actualiser description, aperçu, tutoriels, README, CHANGELOG et validation.
-- [ ] **I40-03** Publier commits, paquet, images, vidéo et atlas sur GitHub ; vérifier intégrité des fichiers et contrôles automatiques.
+- [x] **I40-03** Publier commits, paquet, images, vidéo et atlas sur GitHub ; vérifier intégrité des fichiers et contrôles automatiques.
 
 **Mesure encore ouverte :** isoler le coût GPU hors du plafond proche de 60 Hz (V40-04). Les mains restent fixes ; aucun contact animé permanent avec les commandes n’est validé.
 
