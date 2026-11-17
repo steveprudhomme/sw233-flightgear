@@ -271,3 +271,16 @@ Deux captures natives statiques confirment le rendu des lettres rouges.
 
 Les urgences et inspections nouvellement recensées restent planifiées, sans
 ajout de procédure automatique ni de simulation du câble dans ce lot.
+
+
+## VIS-01q — dégager les cartes de droite (en cours)
+
+- [ ] Mesurer les emprises dans la recette : cartes, bague d'anémomètre, aérateur, compas et bord du tableau ; comparer la disposition à la photo C-FYLP.
+- [ ] Distinguer recouvrement géométrique et effet de perspective ; conserver l'étalonnage et l'animation de l'anémomètre.
+- [ ] Choisir un déplacement limité des deux cartes et de leurs supports peints ; garder leurs dimensions et tous les mots-checks, puis vérifier les dégagements calculés.
+- [ ] Synchroniser les géométries française/anglaise, la peinture et les recettes du tutoriel.
+- [ ] Contrôler les deux langues dans FlightGear : vue pilote, gros plan identique avant/après et vue oblique ; publier les captures natives et les limites observées.
+- [ ] Expliquer les axes, le calcul des bords et le choix des positions dans un tutoriel pour débutant ; ajouter des illustrations avant/après.
+- [ ] Vérifier les objets préservés, les tests, la reconstruction et le paquet ; actualiser MD, état de la feuille de route et GitHub.
+
+Critère : les huit cartes (quatre par langue) sont complètes dans les vues contrôlées, sans recouvrement avec les instruments voisins ni sortie du tableau. Les nouvelles positions sont des choix de maquette, pas des cotes mesurées sur un planeur réel.
