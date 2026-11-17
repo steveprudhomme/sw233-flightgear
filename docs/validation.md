@@ -222,3 +222,9 @@ GPU ni absence totale d'avertissements n'est revendiqué.
 
 [Recette et illustrations](construction/24-formes-avant.md) ·
 [Paquet, atlas et rapports](https://github.com/steveprudhomme/sw233-flightgear/releases/tag/formes-42).
+
+Publication `formes-42` : source `6e0822f`, 25 fichiers dont paquet, atlas et rapports ;
+empreintes SHA-256 retournées par GitHub comparées aux 25 fichiers locaux.
+Le paquet publié contient un aperçu natif au sol et sa description actualisée.
+Chargement JSBSim au sol confirmé à CYJN ; avertissements sans moteur, sans son et
+sauvegarde initiale impossible en mode lecture seule consignés dans le rapport.
