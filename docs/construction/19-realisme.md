@@ -88,7 +88,7 @@ condition ALS utilisée par l'effet `Effects/glass` de FlightGear 2024.1.7.
 Sans cette condition, le verre reste transparent mais le reflet peut être absent.
 Ne modifie pas le fichier global `Effects/glass.eff` de ton installation.
 
-## E. Comparer sans se tromper
+## E. Comparer sans se tromper — premières preuves du lot 39
 
 Un changement de caméra ou de soleil peut donner l'impression qu'un matériau
 s'est amélioré. Pour une comparaison utile, garde le même angle et la même lumière.
@@ -135,3 +135,127 @@ Notre biais est de préférer la lisibilité à un reflet spectaculaire. Les cap
 prouvent pas l'exactitude optique du vrai plexiglas ; les autres moteurs de rendu,
 le tri des transparences à tous les angles et les performances sur un autre ordinateur
 restent à contrôler.
+
+## G. Lot 40 : regarder le verre sous deux orientations
+
+Imagine une fenêtre que tu regardes depuis trois places. Pour comparer les reflets,
+tu changes une seule chose à la fois. Notre banc fait tourner le planeur vers le
+cap **010°**, puis vers le cap **190°**. Le soleil et l'heure ne changent pas : la
+lumière arrive donc de l'autre côté du planeur. Ces nombres sont les caps de l'avion,
+**pas une mesure de la direction du soleil**. Ne les appelle pas « soleil devant »
+et « soleil derrière » sans avoir mesuré cette direction.
+
+Voici les trois places utilisées à chaque cap. Les angles de caméra sont des
+réglages du simulateur, pas des dimensions du véritable planeur.
+
+| Place | Vue FlightGear | Direction de caméra | Inclinaison | Champ visible |
+|---|---:|---:|---:|---:|
+| Pilote | 0 | 0° | −18° | 65° |
+| Oblique | 0 | 70° | 0° | 75° |
+| Extérieur | 1 | 140° | 15° | 25° |
+
+À chaque place, le banc prend trois images : `sans` (forces 0/0), `fort` (1/1)
+et `regle` (0,25 pour la verrière, 0,12 pour les cadrans). Cela donne **18 images**.
+Le nom `h190-oblique-regle.jpg` signifie : cap 190°, vue oblique, réglage retenu.
+Le programme conserve les JPEG reçus de FlightGear sans retoucher leurs pixels.
+
+Dans une séance réservée aux essais, ouvre le paquet du lot 40 avec `--fdm=null`
+et une interface HTTP locale, comme pour les bancs précédents. Le numéro indiqué
+après `--port` doit être celui de cette séance. Depuis le dépôt, par exemple :
+
+```powershell
+python -m tools.glass_bench D:/SW233-work/visuals-40/glass-matrix --port 18144
+```
+
+Le dossier de sortie doit être nouveau. Ne lance pas deux bancs sur la même séance.
+Le programme refuse un autre avion et une séance JSBSim : il doit pouvoir changer
+le cap sans faire voler l'avion. Il remet ensuite chaque vue visitée, le cap, les
+forces de reflet, le menu et la pause à leurs valeurs enregistrées. Si une capture
+échoue, il tente quand même cette remise en place et écrit le résultat dans
+`checks.json`. Si `restored` vaut `false`, arrête les essais et lis
+`restoration_errors` avant de continuer.
+
+Les liens suivants désignent les fichiers de preuve du lot 40. Une comparaison
+doit toujours utiliser les trois images de **la même ligne**. Les captures et leur
+inspection doivent être terminées avant de déclarer V40-02 réussi.
+
+| Cap et place | Force nulle | Force forte | Réglage retenu |
+|---|---|---|---|
+| 010°, pilote | [sans](https://github.com/steveprudhomme/sw233-flightgear/releases/download/visuals-40/h010-pilote-sans.jpg) | [fort](https://github.com/steveprudhomme/sw233-flightgear/releases/download/visuals-40/h010-pilote-fort.jpg) | [réglé](https://github.com/steveprudhomme/sw233-flightgear/releases/download/visuals-40/h010-pilote-regle.jpg) |
+| 010°, oblique | [sans](https://github.com/steveprudhomme/sw233-flightgear/releases/download/visuals-40/h010-oblique-sans.jpg) | [fort](https://github.com/steveprudhomme/sw233-flightgear/releases/download/visuals-40/h010-oblique-fort.jpg) | [réglé](https://github.com/steveprudhomme/sw233-flightgear/releases/download/visuals-40/h010-oblique-regle.jpg) |
+| 010°, extérieur | [sans](https://github.com/steveprudhomme/sw233-flightgear/releases/download/visuals-40/h010-exterieur-sans.jpg) | [fort](https://github.com/steveprudhomme/sw233-flightgear/releases/download/visuals-40/h010-exterieur-fort.jpg) | [réglé](https://github.com/steveprudhomme/sw233-flightgear/releases/download/visuals-40/h010-exterieur-regle.jpg) |
+| 190°, pilote | [sans](https://github.com/steveprudhomme/sw233-flightgear/releases/download/visuals-40/h190-pilote-sans.jpg) | [fort](https://github.com/steveprudhomme/sw233-flightgear/releases/download/visuals-40/h190-pilote-fort.jpg) | [réglé](https://github.com/steveprudhomme/sw233-flightgear/releases/download/visuals-40/h190-pilote-regle.jpg) |
+| 190°, oblique | [sans](https://github.com/steveprudhomme/sw233-flightgear/releases/download/visuals-40/h190-oblique-sans.jpg) | [fort](https://github.com/steveprudhomme/sw233-flightgear/releases/download/visuals-40/h190-oblique-fort.jpg) | [réglé](https://github.com/steveprudhomme/sw233-flightgear/releases/download/visuals-40/h190-oblique-regle.jpg) |
+| 190°, extérieur | [sans](https://github.com/steveprudhomme/sw233-flightgear/releases/download/visuals-40/h190-exterieur-sans.jpg) | [fort](https://github.com/steveprudhomme/sw233-flightgear/releases/download/visuals-40/h190-exterieur-fort.jpg) | [réglé](https://github.com/steveprudhomme/sw233-flightgear/releases/download/visuals-40/h190-exterieur-regle.jpg) |
+
+Pour chaque ligne, cherche les aiguilles, les chiffres, la ficelle et le terrain
+là où le cadrage les montre. Un panneau devient-il opaque ou disparaît-il ?
+L'image fixe ne prouve pas l'absence de scintillement : regarde aussi le simulateur
+pendant une petite rotation, puis reviens au cadrage pour les comparaisons.
+Recommence les clics de calage et de radio séparément. Un changement de couleur
+mesuré sur les images ne prouve ni la beauté du reflet ni sa fidélité au vrai verre.
+
+## H. Compter les images sans annoncer une fausse victoire
+
+Une limite de 60 images par seconde ressemble à un robinet fermé à moitié : un
+ordinateur plus rapide ne peut pas dépasser cette limite. Deux résultats proches
+de 60 ne prouvent donc pas que le nouveau verre ne coûte rien.
+
+Pour une séance d'essai séparée, on peut transmettre cette option à **FlightGear** :
+
+```text
+--prop:/sim/rendering/vsync-enable=false
+```
+
+Ce nom de propriété est présent dans le programme FlightGear 2024.1 installé.
+Le banc enregistre sa valeur dans `checks.json`, mais ne la change pas. Utilise
+un dossier de préférences propre à la séance d'essai ; ne modifie pas les réglages
+globaux de l'utilisateur. Même avec cette option, le pilote de la carte graphique
+ou l'affichage peut imposer une autre limite. Il faut regarder les mesures avant
+de dire que la cadence est libérée.
+
+Le banc lit le compteur `/sim/frame-number`, attend une seconde, puis le relit.
+Il divise les nouvelles images par le temps réellement écoulé. Par exemple,
+120 nouvelles images en deux secondes donnent 60 images par seconde. La propriété
+`/sim/frame-rate`, parfois nulle en pause, est conservée dans le rapport mais ne
+sert pas au calcul.
+
+Par défaut, chaque groupe de trois forces est mesuré **trois fois**, soit 54
+mesures pour les six cadrages. L'ordre est inversé une fois sur deux pour ne pas
+toujours favoriser le premier réglage. On compare les forces d'une même répétition,
+puis on prend l'écart du milieu : la **médiane**. `--repeats 5 --interval 2`
+permet des essais plus longs. Les images ne sont prises que lors de la première
+répétition, après la mesure, pour ne pas inclure l'enregistrement JPEG dans le temps.
+
+Ce compteur mesure la cadence globale du simulateur, pas le temps de calcul du
+verre sur la carte graphique. La scène et l'ordinateur comptent aussi. Un plafond,
+une faible différence ou quelques mesures instables laissent la mesure du coût
+GPU ouverte. Publie ces limites avec les chiffres ; ne promets pas les mêmes
+résultats sur une autre machine.
+
+## I. Vérifier le repli sans ALS dans une autre séance
+
+Ferme la séance d'essai, puis lance une autre copie dédiée avec
+`--prop:/sim/rendering/shaders/skydome=false`. Le banc ne change pas cette propriété.
+Enregistre ses images dans un **autre dossier** pour conserver celles d'ALS.
+Dans ce mode, on attend surtout un verre transparent et des instruments lisibles,
+pas le même reflet de ciel. La valeur `skydome_shader` dans le rapport permet de
+distinguer les deux essais. L'absence de différence entre les forces 0 et 1 peut
+être normale dans ce repli ; elle ne suffit pas à prouver que les panneaux sont
+visibles. Il faut regarder les images et vérifier les commandes.
+
+
+### Résultat de la matrice du 17 novembre 2026
+
+Le banc a produit 18 captures et 54 mesures appariées, sous FlightGear 2024.1.7,
+avec les vitrages du paquet visuals-39 (géométrie et effets conservés dans le lot40).
+Les deux vues mémorisées et les propriétés ont été restaurées sans erreur.
+Les cadrans, la ficelle et le paysage restent visibles dans les vues inspectées.
+
+La désactivation de VSync a été demandée au lancement ; les valeurs mesurées restent
+entre 59,84 et 60,98 images/s, médiane 60,00. Cela reste compatible avec un plafond
+d'affichage. On ne peut donc pas annoncer un coût GPU isolé. Le paramètre de lancement
+n'est pas une preuve que le pilote graphique a désactivé toute synchronisation.
+La [documentation de profilage FlightGear](https://wiki.flightgear.org/Profiling_performance)
+signale aussi la dépendance aux réglages du pilote. Nous n'avons pas changé ces
+préférences globales. Le repli sans ALS est contrôlé séparément dans le paquet intégré.
