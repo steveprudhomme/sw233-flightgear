@@ -55,13 +55,7 @@ def finish_panel(models: Path):
             a = (i+.5)*math.pi/2
             screw(y+(r+.008)*math.cos(a), z+(r+.008)*math.sin(a))
         label(y,z-r-.018,title,17)
-    # Central vent and grille observed on the supplied C-FYLP cockpit photograph.
-    for r, color in [(.046,"#141414"),(.044,"#6e706b"),(.042,"#34373a"),
-                     (.037,"#505457"),(.034,"#141719")]:
-        disc(0,.197,r,color)
-    for j in range(-2,3):
-        pen.line([xy(-.026,.197+j*.009+.003),xy(.026,.197+j*.009-.003)],
-                 fill="#55585a", width=4)
+    # The central vent is now separate 3D geometry; leave the paint beneath it plain.
     for y, z in [(-.30,.15),(-.36,.04),(.33,.11),(-.085,.24),(.082,.24)]:
         screw(y,z)
     # Les cartes sont des rappels du simulateur, pas des consignes de vol réel.

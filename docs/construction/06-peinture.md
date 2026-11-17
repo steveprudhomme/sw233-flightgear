@@ -93,13 +93,7 @@ La photo C-FYLP montre une bouche ronde au-dessus du centre. Les disques et trai
 
 <!-- atelier-fichier: tools/panel.py -->
 ```python
-    # Central vent and grille observed on the supplied C-FYLP cockpit photograph.
-    for r, color in [(.046,"#141414"),(.044,"#6e706b"),(.042,"#34373a"),
-                     (.037,"#505457"),(.034,"#141719")]:
-        disc(0,.197,r,color)
-    for j in range(-2,3):
-        pen.line([xy(-.026,.197+j*.009+.003),xy(.026,.197+j*.009-.003)],
-                 fill="#55585a", width=4)
+    # The central vent is now separate 3D geometry; leave the paint beneath it plain.
     for y, z in [(-.30,.15),(-.36,.04),(.33,.11),(-.085,.24),(.082,.24)]:
         screw(y,z)
 ```
@@ -401,3 +395,7 @@ Ces valeurs vérifient seulement l'affichage et l'animation. Elles ne sont pas d
 Les quatre images ont été examinées : la position de l'aiguille correspond aux valeurs attendues. Le CSV conserve les entrées avant et après chaque capture. La vue complète montre les instruments sans la coupe du cadrage rapproché précédent. Cette image sert au nouvel aperçu du paquet ; la description mentionne les finitions du tableau. La présentation dans le sélecteur n'a pas fait l'objet d'un nouvel essai d'interface.
 
 VIS-01f est clos pour la finition et sa validation visuelle. Cela ne valide ni la polaire ni une fidélité photographique complète. Les ombres des vis restent peintes ; l'aérateur et les bordures pourront faire l'objet d'un prochain lot de relief 3D.
+
+## Aérateur en relief
+
+La grille peinte est retirée : la [recette et les quatre pièces 3D](02-maillage.md#aérateur--pièces-et-vérification-native) la remplacent. Le fond de peinture reste uni à cet emplacement.

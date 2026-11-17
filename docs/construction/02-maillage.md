@@ -463,6 +463,30 @@ loft("boule-largage", red, [
 ])
 ```
 
+## I bis bis · Construis un aérateur fixe en relief
+
+Le centre (y = 0 ; z = 0,197 m) et le rayon extérieur 0,046 m reprennent le dessin de notre tableau, inspiré de la photo C-FYLP. Ce ne sont pas des cotes constructeur. La saillie de 18 mm et le volet incliné sont des choix de sculpture. Le volet reste fixe ; il ne simule pas une ventilation.
+
+Fabrique des cercles de 48 points. Relie deux cercles pour la paroi extérieure, puis deux rayons pour la lèvre. Le fond reste devant la planche opaque : nous créons une cavité apparente sans percer le tableau. Une ellipse inclinée dans la cavité évoque le volet visible sur la photo, au lieu de la grille peinte précédente.
+
+<!-- atelier-fichier: fabrique.py -->
+```python
+# Original static vent; dimensions are model estimates, not surveyed aircraft data.
+def cercle_aerateur(x, rayon):
+    return [(x, rayon*cos(2*pi*i/48), .197+rayon*sin(2*pi*i/48))
+            for i in range(48)]
+
+bridge("aerateur-bague", 3, cercle_aerateur(px+.001, .046),
+       cercle_aerateur(px+.018, .046))
+bridge("aerateur-bague", 2, cercle_aerateur(px+.018, .046),
+       cercle_aerateur(px+.018, .037))
+bridge("aerateur-conduit", 3, cercle_aerateur(px+.018, .037),
+       cercle_aerateur(px+.002, .035))
+poly("aerateur-fond", 5, *cercle_aerateur(px+.002, .035))
+poly("aerateur-volet", 2, *[(px+.010+.005*sin(2*pi*i/48),
+     .034*cos(2*pi*i/48), .197+.012*sin(2*pi*i/48)) for i in range(48)])
+```
+
 ## I ter · Construis une petite boîte ouverte pour le compas
 
 Prends une boîte d’allumettes vide : de face tu vois son ouverture ; en la décalant de côté, tu vois aussi sa paroi. C’est le même effet que nous cherchons sous la bouche d’air. La photo de C-FYLP donne une façade, pas une profondeur. Garde le centre choisi à la fiche 1 (y = 0 ; z = 0,098 m). Le dessin plat faisait 126 × 118 pixels dans la texture à 1 920 pixels/m : environ 66 × 61 mm. Garde cette taille pour la base. Les 25 mm d’épaisseur sont une estimation de maquette.
@@ -608,3 +632,25 @@ Ces dessins proviennent du fichier AC réellement construit. Ils ne sont pas des
 ## Comparer les pièces du cockpit avec un futur relevé
 
 La [fiche 18](18-releves.md#5-examiner-chaque-pièce) montre séparément coque, pare-brise, vitrages, cadres et contours de porte, avec trois vues et les limites de chaque objet. Ces cotes décrivent ce que ta recette construit, pas les dimensions attestées du planeur réel.
+
+## Aérateur : pièces et vérification native
+
+Plan préalable `f0d34c4`. Quatre pièces ajoutées, modèle désormais composé de 53 objets. Les dimensions et la saillie restent estimées ; le volet est décoratif et fixe.
+
+![aerateur-bague, trois projections du maillage](https://github.com/steveprudhomme/sw233-flightgear/releases/download/aerateur-23/aerateur-bague.png)
+
+![aerateur-conduit, trois projections du maillage](https://github.com/steveprudhomme/sw233-flightgear/releases/download/aerateur-23/aerateur-conduit.png)
+
+![aerateur-fond, trois projections du maillage](https://github.com/steveprudhomme/sw233-flightgear/releases/download/aerateur-23/aerateur-fond.png)
+
+![aerateur-volet, trois projections du maillage](https://github.com/steveprudhomme/sw233-flightgear/releases/download/aerateur-23/aerateur-volet.png)
+
+Dans FlightGear 2024.1.7, à CYJN, simulation figée : le relief se détache du tableau et ne masque pas les instruments voisins. Les deux caps modifient la direction relative de la lumière, pas l'heure. Pour les reproduire, utiliser tools.panel_bench avec le port de la session dédiée. Vue oblique : décalage x caméra 0,15 m, azimut +15°, inclinaison −18°, champ 55°. La profondeur et les couleurs sont des choix de maquette, pas des mesures de C-FYLP.
+
+![Face, cap 010](https://github.com/steveprudhomme/sw233-flightgear/releases/download/aerateur-23/face-010.jpg)
+
+![Face, cap 100](https://github.com/steveprudhomme/sw233-flightgear/releases/download/aerateur-23/face-100.jpg)
+
+![Relief vu de biais](https://github.com/steveprudhomme/sw233-flightgear/releases/download/aerateur-23/biais.jpg)
+
+Le fond ne traverse pas la planche : il est placé 2 mm devant elle. La lèvre est à 18 mm. Cette différence de 16 mm donne la cavité apparente. Aucun cadran ou fichier d'animation n'a été modifié. Les contrôles des sources et la reconstruction du tutoriel réussissent. L'aperçu du paquet reprend la nouvelle vue complète du cockpit ; aucun nouvel essai du sélecteur n'est revendiqué.
