@@ -149,6 +149,26 @@ def finish_panel(models: Path):
     draw.rounded_rectangle((336,220,448,292),radius=4,fill="#111519",outline="#737975",width=2)
     alt.save(models/"alt.png")
     im.save(models/"panel.png")
+    # Original compass strip: north at the middle, south split at both ends.
+    # Draw at twice the final resolution, then filter the edges for smooth text.
+    scale = 2
+    width, height = 4096, 256
+    strip = Image.new("RGB", (width*scale,height*scale), "#111819")
+    ink = ImageDraw.Draw(strip)
+    ivory = "#eeeadd"
+    def row(h):
+        return (.011-h)/.022*height*scale
+    for deg in range(0,360,5):
+        x = ((.5-deg/360)%1)*width*scale
+        for shift in (-width*scale,0,width*scale):
+            ink.rectangle((x+shift-4*scale,row(.010 if deg%10==0 else .007),
+                           x+shift+4*scale,row(.004)), fill=ivory)
+    font = ImageFont.load_default(size=140*scale)
+    for deg, word in enumerate(["N","3","6","E","12","15","S","21","24","W","30","33"]):
+        x = ((.5-deg/12)%1)*width*scale
+        for shift in (-width*scale,0,width*scale):
+            ink.text((x+shift,row(.001)),word,font=font,anchor="mt",fill=ivory)
+    strip.resize((width,height),Image.Resampling.LANCZOS).save(models/"compass.png")
     mesh = models/"sw233.ac"
     s = mesh.read_text()
     tag = 'OBJECT world'
@@ -174,4 +194,24 @@ def finish_panel(models: Path):
             lines[i] = f"{idx} {(-left-ymin)/span_y:.6f} {(z-zmin)/span_z:.6f}"
         lines.insert(1,f'texture "{texture}"')
         s = s[:start]+"\n".join(lines)+"\n"+s[end:]
+    # Keep the other panel materials unchanged; this card needs a brighter base.
+    compass_material = s[:s.index(tag)].count('MATERIAL ')
+    s = s.replace(tag, 'MATERIAL "compass-finish" rgb 1 1 1 amb .6 .6 .6 '
+                  'emis .45 .45 .45 spec .05 .05 .05 shi 8 trans 0\n'+tag, 1)
+    # Each face has four private vertices, ordered bottom-left to top-left.
+    start = s.index('name "compas-rose"')
+    end = s.index("kids 0",start)
+    lines = s[start:end].splitlines()
+    for i,line in enumerate(lines):
+        if line.startswith("mat "):
+            lines[i] = f"mat {compass_material}"
+        elif line.startswith("refs "):
+            for j in range(1,5):
+                idx = int(lines[i+j].split()[0])
+                face,corner = divmod(idx,4)
+                u = (face+(1 if corner in (1,2) else 0))/72
+                v = 1 if corner in (2,3) else 0
+                lines[i+j] = f"{idx} {u:.8f} {v}"
+    lines.insert(1,'texture "compass.png"')
+    s = s[:start]+"\n".join(lines)+"\n"+s[end:]
     mesh.write_text(s)

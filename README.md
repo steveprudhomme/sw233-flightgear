@@ -161,3 +161,11 @@ Boîtier arrondi, joint périphérique et quatre vis en relief ; rose et repère
 [Paquet compas-finition-31 et preuves](https://github.com/steveprudhomme/sw233-flightgear/releases/tag/compas-finition-31).
 
 [Voir le compas pendant les deux virages — extraits de 30 secondes](https://github.com/steveprudhomme/sw233-flightgear/releases/download/compas-finition-31/compas-en-virage.mp4).
+
+### Compas : lettres et graduations lissées
+
+La rose reçoit une bande originale de 4 096 × 256 pixels. Les lettres en petits polygones sont remplacées ; le boîtier et l’animation sont conservés. Quarante-huit lectures statiques ont été contrôlées sous deux éclairages, avec vues pilote et gros plans. La police et la luminosité restent des choix de prototype.
+
+![Rose texturée dans FlightGear](https://github.com/steveprudhomme/sw233-flightgear/releases/download/compas-texture-32/10-face-090.jpg)
+
+[Tutoriel pas à pas : l’étiquette autour du tambour](docs/construction/06-peinture.md#p--des-lettres-plus-nettes-pour-le-compas) · [Paquet compas-texture-32](https://github.com/steveprudhomme/sw233-flightgear/releases/tag/compas-texture-32).

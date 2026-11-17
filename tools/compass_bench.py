@@ -10,7 +10,7 @@ from flightgear import execute
 from PIL import Image
 
 
-def capture(folder, port):
+def capture(folder, port, seams=False):
     base = f"http://127.0.0.1:{port}"
 
     def read(path):
@@ -43,7 +43,10 @@ def capture(folder, port):
         for view, x, h in [("face", 0, 0), ("biais", -.08, -5)]:
             put("/sim/current-view/x-offset-m", x)
             put("/sim/current-view/heading-offset-deg", h)
-            for deg in (0, 45, 90, 135, 180, 225, 270, 359, 1):
+            angles = (0, 45, 90, 135, 180, 225, 270, 359, 1)
+            if seams:
+                angles += (179, 181, 315)
+            for deg in angles:
                 put(heading, deg)
                 time.sleep(.6)
                 before = value(heading)
@@ -76,5 +79,6 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("folder", type=Path)
     parser.add_argument("--port", type=int, required=True)
+    parser.add_argument("--seams", action="store_true", help="Ajouter 179, 181 et 315 degres")
     args = parser.parse_args()
-    capture(args.folder, args.port)
+    capture(args.folder, args.port, args.seams)

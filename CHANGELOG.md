@@ -4,6 +4,8 @@
 
 ### Changements
 
+- VIS-01o : rose du compas texturée avec caractères lissés, matériau dédié et raccord au sud ; 48 lectures statiques sous deux éclairages. Tutoriel débutant illustré, vues pilote et recette synchronisée. Les 71 autres objets et cinq textures antérieures sont conservés.
+
 - VIS-01n : compas à boîtier arrondi, joint et vis en relief ; rose conservée. Dix-huit lectures natives, deux virages filmés, huit pièces illustrées et reconstruction vérifiée. Enregistrement protégé contre horloge figée et images vides ; tests de résolution des objets actualisés. Dimensions estimées.
 
 - VIS-01m : affichage COM1 actif et commandes génériques 1 MHz / 25 kHz ; butées, refus hors grille, treize cas natifs et huit clics validés. Tutoriel illustré et paquet actualisés. Audio, réseau et grille 8,33 kHz non validés.

@@ -7,3 +7,9 @@ La largeur et la hauteur de maquette sont conservées ; rayons, joint et relief 
 L’animation existante utilise `instrumentation/magnetic-compass/indicated-heading-deg`, pas le cap vrai. La rose, son axe et son facteur de rotation sont inchangés. Les propriétés du simulateur et les captures natives permettent de vérifier le comportement de ce modèle, pas celui d’un exemplaire réel.
 
 Biais à garder visible : les dimensions de maquette antérieures servent d’ancrage ; la priorité de ce lot est l’arrondi et la lisibilité. Cette démarche ne prouve pas les dimensions physiques, la texture exacte ni les erreurs d’un compas réel. Une photographie nette avec règle et identification de l’instrument reste nécessaire pour dépasser cette approximation.
+
+## Suite VIS-01o : bande graduée
+
+La conservation de la rose décrite ci-dessus concerne le lot VIS-01n. Dans VIS-01o, seule sa géométrie de peinture change : les caractères en petits polygones laissent place à une texture dessinée avec Pillow et sa police fournie. Les mêmes inscriptions, l’axe et la liaison au cap indiqué sont conservés. La police exacte du compas photographié n’est toujours pas identifiée.
+
+La composante d’émission du matériau de la rose vaut 0,45 par canal, choix de lisibilité après comparaison native ; elle ne modélise pas une lampe réelle. Les 48 contrôles sont des indications imposées dans FlightGear, pas une nouvelle validation dynamique. Voir la [recette et les preuves](../construction/06-peinture.md#p--des-lettres-plus-nettes-pour-le-compas).

@@ -676,48 +676,17 @@ poly("compas-vitre", 4, *contour_compas(.020, .0245, .014, .003))
 
 ## I quater · Enroule les caps sur un tambour
 
-Prends une bande de papier, écris N, E, S, W à intervalles égaux et ferme la boucle. Dans le compas on voit son bord, pas le dessus. Le trait court est devant les graduations et s’arrête au-dessus des lettres. On recule le fond à 1 mm de la planche pour dégager le tambour. Son rayon de 49 mm et la taille des caractères sont des choix de lisibilité. Un tour fait 360° : place un trait tous les 5°, une inscription tous les 30°. Le chiffre 3 désigne 030°. Les deux côtés du nord se rejoignent sans couture.
+Prends une bande de papier, écris N, E, S, W à intervalles égaux et ferme la boucle. Dans le compas on voit son bord, pas le dessus. Le trait court est devant les graduations et s’arrête au-dessus des lettres. On recule le fond à 1 mm de la planche pour dégager le tambour. Son rayon de 49 mm et la taille des caractères sont des choix de lisibilité. Un tour fait 360° : place un trait tous les 5°, une inscription tous les 30°. Le chiffre 3 désigne 030°. La bande peinte de la fiche 6 remplace les anciens petits polygones des lettres. Le raccord se trouve au sud ; N est au milieu de l’image et doit défiler sans saut au passage du nord.
 
 <!-- atelier-fichier: fabrique.py -->
 ```python
-# Une seule pièce mobile ; tout le reste du boîtier reste fixe.
+# Une bande cylindrique ; les lettres seront peintes à la fiche 6.
 axe = px - .037
 rayon = .049
-def carte(angle, t, hauteur, r):
-    a = radians(-angle) + t/rayon
-    return (axe+r*cos(a), r*sin(a), .098+hauteur)
-
-def case(angle, gauche, droite, bas, haut, matiere, r):
-    poly("compas-rose", matiere, *[carte(angle,t,h,r) for t,h in
-         [(gauche,bas),(droite,bas),(droite,haut),(gauche,haut)]])
-
-# Une facette par tranche de 5 degrés ; les marques sont devant le fond.
-for deg in range(0,360,5):
-    demi = rayon*radians(2.5)
-    case(deg,-demi,demi,-.011,.011,5,rayon)
-    case(deg,-.00048,.00048,.004,.010 if deg%10 == 0 else .007,6,rayon+.0003)
-
-# Chaque lettre ou chiffre est un petit pochoir de quelques colonnes.
-pochoirs = {
-    "N":"1001/1101/1011/1001/1001", "E":"111/100/110/100/111",
-    "S":"111/100/111/001/111", "W":"10001/10001/10101/10101/01010",
-    "1":"010/110/010/010/111", "2":"111/001/111/100/111",
-    "3":"111/001/111/001/111", "5":"111/100/111/001/111",
-    "6":"111/100/111/101/111", "0":"111/101/101/101/111",
-    "4":"101/101/111/001/001", "7":"111/001/010/010/010",
-}
-for deg, mot in enumerate(["N","3","6","E","12","15","S","21","24","W","30","33"]):
-    pas = .00175
-    lignes = [pochoirs[c].split("/") for c in mot]
-    largeur = sum(len(g[0])+1 for g in lignes)-1
-    origine = -largeur*pas/2
-    for g in lignes:
-        for j, ligne in enumerate(g):
-            for i, encre in enumerate(ligne):
-                if encre == "1":
-                    t, h = origine+i*pas, .001-j*pas
-                    case(deg*30,t,t+pas,h-pas,h,6,rayon+.00045)
-        origine += (len(g[0])+1)*pas
+for i in range(72):
+    gauche, droite = radians(-180+i*5), radians(-180+(i+1)*5)
+    poly("compas-rose", 5, *[(axe+rayon*cos(a),rayon*sin(a),.098+h)
+         for a,h in [(gauche,-.011),(droite,-.011),(droite,.011),(gauche,.011)]])
 ```
 
 ## J · Écris le fichier que lit le simulateur
@@ -995,3 +964,30 @@ La rose mobile : conservée sans modification, avec ses graduations et caractèr
 ### Reconstruire et contrôler
 
 Exécute `fabrique.py` depuis la racine de ton atelier, puis reconstruis le paquet comme à la fiche 12. Le fichier AC3D contient désormais 72 objets au lieu de 70 : deux objets ajoutés, quatre contours ou assemblages modifiés, 66 objets conservés exactement dans le contrôle des faces et sommets. Parmi eux, la rose, le repère et les autres instruments restent identiques. Le fichier des animations est inchangé. Le programme `tools/check_workbook.py` reconstruit aussi l’avion depuis les blocs de ce tutoriel pour vérifier qu’ils produisent bien les sources publiées.
+
+## P · Un tambour lisse pour recevoir les nouvelles lettres
+
+Imagine une boîte de conserve sans ses couvercles. Si tu colles une étiquette autour, le dessin tourne avec la boîte. C’est notre nouveau compas : la **rose** est le tambour ; la **texture** est l’étiquette. Le plan a été commité avant les travaux (`590ccd4`).
+
+### Ton petit exercice en papier
+
+1. Découpe une bande de papier. Écris N au milieu.
+2. Place E à un quart de sa longueur depuis la gauche, W aux trois quarts.
+3. Écris une moitié de S à chaque extrémité. Quand tu rejoins les deux bouts, tu retrouves S.
+4. Tiens un crayon immobile devant la bande : c’est le repère fixe. Fais tourner seulement la bande.
+
+Le dessin publié utilise les inscriptions déjà présentes dans le projet : N, 3, 6, E, 12, 15, S, 21, 24, W, 30 et 33. Le nombre 12 représente 120°. La police exacte de l’instrument photographié reste inconnue.
+
+### Construire le support
+
+Le bloc I quater ci-dessus est la recette à recopier dans `fabrique.py`. Il remplace les anciens caractères faits de petits carrés ; ne conserve pas les deux versions. Le rayon reste 49 mm et la hauteur 22 mm, deux dimensions de maquette déjà utilisées. Aucun nouveau relevé sur l’avion réel n’a été fait.
+
+Un tour vaut 360°. Nous divisons ce tour par 5° : **360 ÷ 5 = 72 faces**. Chaque face a quatre coins : en bas à gauche, en bas à droite, en haut à droite, en haut à gauche. Dans la boucle, `i` commence à 0 et s’arrête à 71. La première face va de −180° à −175°, la dernière de 175° à 180°. Leurs extrémités se touchent derrière le tambour.
+
+Le sinus et le cosinus placent les coins sur le cercle, comme un compas de géométrie. L’axe reste à x = 0,833 m et z = 0,098 m. La propriété et le sens de rotation dans le XML restent inchangés.
+
+![Le support à 72 faces, sans sa peinture](https://github.com/steveprudhomme/sw233-flightgear/releases/download/compas-texture-32/tambour.png)
+
+**Pourquoi le dessin paraît-il vide ici ?** C’est normal : cette image montre les pièces du fichier éditable. La peinture est ajoutée quand tu construis le paquet, à la fiche 6. Le fichier `src/SW233/Models/sw233.ac` ne doit pas contenir deux séries de lettres.
+
+Seule la pièce `compas-rose` change : elle passe de 334 faces à 72. Les 71 autres objets du planeur sont conservés. Le nombre total d’objets reste 72. Continue avec la [fiche 6, section P](06-peinture.md#p--des-lettres-plus-nettes-pour-le-compas).

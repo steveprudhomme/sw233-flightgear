@@ -205,13 +205,15 @@ Complément VIS-01n identifié pendant les vérifications : actualiser les deux 
 
 VIS-01n terminé : boîtier arrondi, joint et vis en relief ; 18 lectures natives, 880 captures d’un vol de 145,1 s et deux passages du nord contrôlés. Rose et animations conservées, 66 objets inchangés, 24 tests réussis et reconstruction vérifiée. [Construction par pièce](docs/construction/02-maillage.md#o--comprendre-la-finition-du-compas-pièce-par-pièce), [essais illustrés](docs/construction/06-peinture.md#o--finition-du-compas). Dimensions estimées ; caractères et vitre encore simplifiés.
 
-## VIS-01o — caractères et graduations du compas (en cours)
+## VIS-01o — caractères et graduations du compas (terminé)
 
-- [ ] Relire les références et conserver uniquement les inscriptions déjà justifiées ; distinguer dessin original et typographie exacte inconnue.
-- [ ] Remplacer les petits polygones des caractères par une bande originale anticrénelée ; expliquer pixels, échelle, raccord et coordonnées de texture avec une recette reproductible.
-- [ ] Conserver le boîtier, le repère et l’animation ; vérifier que seule la rose change et que les autres textures restent identiques.
-- [ ] Vérifier N/E/S/W, caps intermédiaires et 359/0/1 dans FlightGear ; comparer avant/après, vue pilote, gros plan et biais sous deux éclairages.
-- [ ] Illustrer la bande, la pièce et les essais dans un tutoriel accessible à 10 ans ; synchroniser les recettes et les MD.
-- [ ] Vérifier reconstruction, tests et paquet ; actualiser l’aperçu puis publier sources et captures sur GitHub.
+- [x] Relire les références et conserver uniquement les inscriptions déjà justifiées ; distinguer dessin original et typographie exacte inconnue.
+- [x] Remplacer les petits polygones des caractères par une bande originale anticrénelée ; expliquer pixels, échelle, raccord et coordonnées de texture avec une recette reproductible.
+- [x] Conserver le boîtier, le repère et l’animation ; vérifier que seule la rose change et que les autres textures restent identiques.
+- [x] Vérifier N/E/S/W, caps intermédiaires et 359/0/1 dans FlightGear ; comparer avant/après, vue pilote, gros plan et biais sous deux éclairages.
+- [x] Illustrer la bande, la pièce et les essais dans un tutoriel accessible à 10 ans ; synchroniser les recettes et les MD.
+- [x] Vérifier reconstruction, tests et paquet ; actualiser l’aperçu puis publier sources et captures sur GitHub.
 
 Critère : caractères plus nets sans inversion, décalage ni rupture au raccord ; lectures centrales préservées dans les vues testées. Aucune typographie constructeur ni fidélité photographique complète revendiquée.
+
+VIS-01o terminé : bande lissée, rose réduite de 334 à 72 faces, 71 autres objets et cinq textures conservés. Quarante-huit lectures statiques examinées, vues pilote sous deux éclairages ; 24 tests et reconstruction vérifiés. [Tutoriel pour débutant](docs/construction/06-peinture.md#p--des-lettres-plus-nettes-pour-le-compas), avec exercice en papier, calculs et captures. Typographie et luminosité estimées ; validation pédagogique autonome encore attendue.

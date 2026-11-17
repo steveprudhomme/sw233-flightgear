@@ -227,6 +227,26 @@ Prépare un carré 512 × 512, centre (256,256). Cinquante divisions donnent 7,2
     draw.rounded_rectangle((336,220,448,292),radius=4,fill="#111519",outline="#737975",width=2)
     alt.save(models/"alt.png")
     im.save(models/"panel.png")
+    # Original compass strip: north at the middle, south split at both ends.
+    # Draw at twice the final resolution, then filter the edges for smooth text.
+    scale = 2
+    width, height = 4096, 256
+    strip = Image.new("RGB", (width*scale,height*scale), "#111819")
+    ink = ImageDraw.Draw(strip)
+    ivory = "#eeeadd"
+    def row(h):
+        return (.011-h)/.022*height*scale
+    for deg in range(0,360,5):
+        x = ((.5-deg/360)%1)*width*scale
+        for shift in (-width*scale,0,width*scale):
+            ink.rectangle((x+shift-4*scale,row(.010 if deg%10==0 else .007),
+                           x+shift+4*scale,row(.004)), fill=ivory)
+    font = ImageFont.load_default(size=140*scale)
+    for deg, word in enumerate(["N","3","6","E","12","15","S","21","24","W","30","33"]):
+        x = ((.5-deg/12)%1)*width*scale
+        for shift in (-width*scale,0,width*scale):
+            ink.text((x+shift,row(.001)),word,font=font,anchor="mt",fill=ivory)
+    strip.resize((width,height),Image.Resampling.LANCZOS).save(models/"compass.png")
     mesh = models/"sw233.ac"
     s = mesh.read_text()
     tag = 'OBJECT world'
@@ -252,6 +272,26 @@ Prépare un carré 512 × 512, centre (256,256). Cinquante divisions donnent 7,2
             lines[i] = f"{idx} {(-left-ymin)/span_y:.6f} {(z-zmin)/span_z:.6f}"
         lines.insert(1,f'texture "{texture}"')
         s = s[:start]+"\n".join(lines)+"\n"+s[end:]
+    # Keep the other panel materials unchanged; this card needs a brighter base.
+    compass_material = s[:s.index(tag)].count('MATERIAL ')
+    s = s.replace(tag, 'MATERIAL "compass-finish" rgb 1 1 1 amb .6 .6 .6 '
+                  'emis .45 .45 .45 spec .05 .05 .05 shi 8 trans 0\n'+tag, 1)
+    # Each face has four private vertices, ordered bottom-left to top-left.
+    start = s.index('name "compas-rose"')
+    end = s.index("kids 0",start)
+    lines = s[start:end].splitlines()
+    for i,line in enumerate(lines):
+        if line.startswith("mat "):
+            lines[i] = f"mat {compass_material}"
+        elif line.startswith("refs "):
+            for j in range(1,5):
+                idx = int(lines[i+j].split()[0])
+                face,corner = divmod(idx,4)
+                u = (face+(1 if corner in (1,2) else 0))/72
+                v = 1 if corner in (2,3) else 0
+                lines[i+j] = f"{idx} {u:.8f} {v}"
+    lines.insert(1,'texture "compass.png"')
+    s = s[:start]+"\n".join(lines)+"\n"+s[end:]
     mesh.write_text(s)
 ```
 
@@ -917,3 +957,109 @@ Le contrôle visuel confirme le dessin et son sens de défilement dans les vues 
 ![Vue d’ensemble avec le compas fini](https://github.com/steveprudhomme/sw233-flightgear/releases/download/compas-finition-31/cockpit.jpg)
 
 [Paquet et captures originales](https://github.com/steveprudhomme/sw233-flightgear/releases/tag/compas-finition-31).
+
+## P · Des lettres plus nettes pour le compas
+
+### 1. Le but de cette étape
+
+Les lettres du compas étaient faites de petits carrés. En gros plan, leurs bords ressemblaient à un escalier. Nous allons dessiner une étiquette, puis l’enrouler sur le tambour de la [fiche 2, section P](02-maillage.md#p--un-tambour-lisse-pour-recevoir-les-nouvelles-lettres). Le cadre, les vis, la vitre et le repère ne changent pas.
+
+Ouvre la photo C-FYLP et les références du [dossier compas](../references/compas-finition.md). Elles servent à regarder les inscriptions claires sur fond sombre et leur disposition. Elles ne permettent pas d’identifier précisément la police de caractères. Nous utilisons donc celle fournie par Pillow, la bibliothèque de dessin déjà utilisée dans ce projet. Ce n’est pas une photographie découpée ni une police déclarée identique à celle du véritable instrument.
+
+### 2. Préparer la feuille autocollante
+
+Reprends les blocs `tools/panel.py` de cette fiche, dans leur ordre. Ils contiennent la recette complète mise à jour. Ne colle pas une deuxième copie du programme à la fin.
+
+Notre image finale mesure **4 096 × 256 pixels**. Un pixel est un petit point de couleur sur l’écran. La largeur correspond au tour complet du tambour, la hauteur à ses 22 mm. Pour comprendre la longueur du tour : 2 × 3,1416 × 49 ≈ **308 mm**. La texture offre donc environ 13,3 pixels par millimètre dans le sens du tour. Ces nombres servent au dessin du modèle ; ce ne sont pas des mesures du compas réel.
+
+Nous dessinons d’abord deux fois plus grand, à **8 192 × 512 pixels**, puis nous réduisons l’image avec le filtre `LANCZOS`. Imagine une grande lettre soigneusement dessinée, puis une photocopie plus petite : le contour paraît moins en escalier. Cela s’appelle le **lissage**.
+
+![La bande complète avant de l’enrouler](https://github.com/steveprudhomme/sw233-flightgear/releases/download/compas-texture-32/compass.png)
+
+Ouvre l’image seule pour voir les traits en grand. Le S est coupé aux deux bords : ce n’est pas une erreur. Ces bords vont se rejoindre.
+
+### 3. Placer les lettres et les traits
+
+| Repère | Place sur la largeur finale | Explication |
+|---|---|---|
+| E | 1 024 pixels | Un quart de 4 096 |
+| N | 2 048 pixels | Le milieu |
+| W | 3 072 pixels | Trois quarts |
+| S | 0 et 4 096 pixels | Les deux bouts de la même lettre |
+
+Il y a une inscription tous les 30° : **4 096 ÷ 12 ≈ 341,33 pixels** entre leurs centres. Il y a un trait tous les 5° : **4 096 ÷ 72 ≈ 56,89 pixels** entre les traits. Un trait sur deux est plus long. Les lettres sont centrées par `anchor="mt"` : cela signifie « milieu, en haut ».
+
+Dans l’image, les lignes se comptent du haut vers le bas. La fonction `row` traduit la hauteur du modèle en ligne de pixels. Exemple : la ligne du haut, à +11 mm, devient 0 ; celle du bas, à −11 mm, devient 256. Le haut des lettres est placé à +1 mm, soit environ la ligne 116. Les grands traits vont de +10 à +4 mm ; les petits de +7 à +4 mm.
+
+Pourquoi dessiner trois copies décalées ? Une copie reste sur la feuille, les deux autres débordent à gauche et à droite. Cela permet au S et au trait du sud de se retrouver correctement sur les deux bords. Les parties qui dépassent l’image sont simplement coupées.
+
+### 4. Coller la bonne partie sur chaque face
+
+Les lettres **u** et **v** servent d’adresses sur la feuille. `u` va de 0 à 1, de gauche à droite ; `v` va de 0 à 1, du bas vers le haut. Ce ne sont pas des mètres. Une face du tambour reçoit une tranche de 1/72 de la largeur de l’image.
+
+Exemple : la première face utilise u = 0 à 1/72 ; la deuxième, 1/72 à 2/72. La dernière se termine à 1. Le bas utilise v = 0, le haut v = 1. Chaque face possède quatre sommets indépendants : `divmod(idx, 4)` retrouve son numéro de face et le coin demandé. Le programme ajoute `texture "compass.png"` à l’objet du paquet et écrit ces adresses après chaque numéro de sommet.
+
+Les anciennes lettres en petits polygones sont retirées ; les conserver provoquerait une superposition. La peinture est créée dans le paquet, jamais ajoutée au fichier source de maillage. Les fichiers PNG générés restent hors du suivi Git ; leur recette est conservée et peut les refaire.
+
+### 5. Garder les lettres lisibles dans l’ombre
+
+Le premier essai avait des lettres trop sombres sous le deuxième éclairage. Nous avons ajouté un matériau réservé à la rose : `compass-finish`. Sa composante `emis .45 .45 .45` maintient une base de luminosité. C’est une aide de lisibilité du prototype, **pas la simulation d’un éclairage électrique réel**. Les autres matériaux du tableau ne changent pas.
+
+![Avant : caractères en petits polygones](https://github.com/steveprudhomme/sw233-flightgear/releases/download/compas-texture-32/avant-face.jpg)
+
+![Après : caractères lissés, même cadrage et indication E](https://github.com/steveprudhomme/sw233-flightgear/releases/download/compas-texture-32/10-face-090.jpg)
+
+![Essai intermédiaire trop sombre, avant correction du matériau](https://github.com/steveprudhomme/sw233-flightgear/releases/download/compas-texture-32/contraste-initial.jpg)
+
+![Après sous le deuxième éclairage](https://github.com/steveprudhomme/sw233-flightgear/releases/download/compas-texture-32/100-face-090.jpg)
+
+### 6. Refaire les essais sans confondre les deux caps
+
+Il y a ici deux nombres différents : **le cap de l’avion** choisit son orientation face au soleil ; **l’indication du compas** est le nombre imposé au banc pour vérifier le dessin. Le banc statique ne reproduit pas un vol.
+
+Construis un paquet neuf avec `tools/package.py`, puis lance la session `--fdm=null` décrite en section O. Choisis le port 18124 à la place de 18119. Garde la fenêtre visible. Depuis la racine du dépôt, lance :
+
+```powershell
+# Premier éclairage : garder --heading=010 au lancement.
+python tools/compass_bench.py build/compas-texture-10 --port 18124 --seams
+```
+
+Pour le deuxième éclairage, ferme cette session de test et relance-la avec `--heading=100`, toutes les autres options identiques. Puis lance :
+
+```powershell
+# Le dossier de résultats doit être neuf.
+python tools/compass_bench.py build/compas-texture-100 --port 18124 --seams
+```
+
+Chaque série vérifie douze indications de face et de biais : 000, 045, 090, 135, 180, 225, 270, 359, 001, 179, 181 et 315°. Le mode `--seams` ajoute les trois dernières valeurs au banc précédent. **12 indications × 2 vues × 2 éclairages = 48 captures.** Le script relit chaque valeur avant et après la photo et refuse les images vides. Il restaure ensuite les réglages sauvegardés.
+
+Regarde N/E/S/W au centre. À 045°, le trait doit être entre 3 et 6 ; à 315°, entre 30 et 33. Compare 359/000/001 : N se déplace un peu. Compare 179/180/181 : S se déplace sans se casser au raccord. Les chiffres coupés aux côtés du guichet ne sont pas le chiffre à lire : utilise le repère central.
+
+![Douze indications, cap avion 10°, vue face](https://github.com/steveprudhomme/sw233-flightgear/releases/download/compas-texture-32/lectures-10-face.jpg)
+
+![Douze indications, cap avion 10°, vue biais](https://github.com/steveprudhomme/sw233-flightgear/releases/download/compas-texture-32/lectures-10-biais.jpg)
+
+![Douze indications, cap avion 100°, vue face](https://github.com/steveprudhomme/sw233-flightgear/releases/download/compas-texture-32/lectures-100-face.jpg)
+
+![Douze indications, cap avion 100°, vue biais](https://github.com/steveprudhomme/sw233-flightgear/releases/download/compas-texture-32/lectures-100-biais.jpg)
+
+### 7. Regarder depuis la place du pilote
+
+Un beau gros plan ne suffit pas. Nous reculons la caméra pour revoir le tableau entier. Les deux images suivantes montrent le même compas réglé à E, sous les deux orientations de lumière. L’appareil reste au banc statique ; les autres cadrans ne décrivent pas ici un vol réel. La lettre est visible, mais le guichet demeure petit dans cette vue : l’amélioration ne remplace pas le besoin de rapprocher la vue pour lire précisément.
+
+![Vue pilote, cap avion 010°](https://github.com/steveprudhomme/sw233-flightgear/releases/download/compas-texture-32/cockpit-10.jpg)
+
+![Vue pilote, cap avion 100°](https://github.com/steveprudhomme/sw233-flightgear/releases/download/compas-texture-32/cockpit-100.jpg)
+
+### 8. Savoir quand ton travail est terminé
+
+- Les 48 valeurs restent stables pendant leur capture. Les quatre planches ont été examinées : les points cardinaux, les valeurs intermédiaires et les deux raccords sont lisibles au repère. Le script ne reconnaît pas les lettres à ta place : tu dois regarder les images.
+- Les 71 autres objets et les cinq textures antérieures sont identiques. Le XML d’animation n’a pas changé.
+- Les 24 tests du dépôt passent ; le contrôle de style et la reconstruction depuis les blocs du tutoriel passent aussi.
+- Le paquet contient `compass.png` et le maillage qui la référence ; sa vérification de ressources contrôle ce lien.
+
+**Ta petite vérification personnelle :** montre les planches à quelqu’un. Demande-lui de trouver E, S et la position entre 30 et 33. S’il doit deviner, rapproche la vue et vérifie le contraste avant de changer la taille de toutes les lettres.
+
+Les profondeurs, la police et la luminosité restent des choix de maquette. L’animation est conservée, mais ce lot ne refait pas les essais dynamiques en vol du lot précédent et ne certifie pas un compas réel. Le tutoriel est écrit pour un débutant ; il reste à le faire relire et reconstruire sans aide par un enfant pour vérifier que les explications suffisent.
+
+[Paquet et captures](https://github.com/steveprudhomme/sw233-flightgear/releases/tag/compas-texture-32) · [Relevés des contrôles](https://github.com/steveprudhomme/sw233-flightgear/releases/download/compas-texture-32/releves.zip).
