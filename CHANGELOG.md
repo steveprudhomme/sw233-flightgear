@@ -1,5 +1,12 @@
 # Historique
 
+## 2026-11-17 — checklists-usage-37
+
+- Sélection des quatre listes FR/EN et bascule vérifiées à la souris.
+- Correction du haut de panneau masqué à 1024 × 600 : position et hauteur ajustées.
+- Ctrl+L ouvert confirmé par l’utilisateur ; raccourci fermé encore non confirmé physiquement dans ce lot.
+- Tutoriel illustré avant/après et recette de reconstruction synchronisée.
+
 ## 2026-11-17 — accents-36
 
 - Remplacement du contournement ASCII par un panneau Canvas UTF-8 local au SW233.

@@ -787,8 +787,8 @@ Crée le dossier `src/SW233/gui/dialogs` s'il manque. Crée ensuite
 `checklists.xml`, enregistré en UTF-8, puis copie ce bloc entier.
 `vbox` empile les éléments de haut en bas. `hbox` les range côte à côte.
 Les quatre boutons sont les mots-checks appris. Le bouton FR / EN change
-la langue. La croix ferme la fenêtre. Le rectangle Canvas mesure 780 × 500
-unités de dessin. Ces nombres sont des choix de mise en page, pas des
+la langue. La croix ferme la fenêtre. Le rectangle Canvas affiche une surface de 780 × 470 pixels ; le dessin
+intérieur conserve son repère de 780 × 500 unités. Ces nombres sont des choix de mise en page, pas des
 mesures du vrai planeur.
 
 <!-- atelier-fichier: src/SW233/gui/dialogs/checklists.xml -->
@@ -797,7 +797,7 @@ mesures du vrai planeur.
 <!-- SPDX-License-Identifier: GPL-3.0-only -->
 <!-- Native shell with UTF-8 Canvas text, scoped to the SW233 session. -->
 <PropertyList>
-    <name>checklist</name><layout>vbox</layout><x>220</x><y>75</y>
+    <name>checklist</name><layout>vbox</layout><x>10</x><y>5</y>
     <group><layout>hbox</layout>
         <text><label>SW233 - Checklists / Listes</label></text>
         <empty><stretch>true</stretch></empty>
@@ -811,7 +811,7 @@ mesures du vrai planeur.
         <button><legend>FR / EN</legend><binding><command>nasal</command><script>sw233_language.toggle();</script></binding></button>
     </group>
     <canvas>
-        <name>checklist-text</name><pref-width>780</pref-width><pref-height>500</pref-height>
+        <name>checklist-text</name><pref-width>780</pref-width><pref-height>470</pref-height>
         <nasal><load>sw233_language.render_checklist(canvas.get(cmdarg()));</load></nasal>
     </canvas>
 </PropertyList>
@@ -889,3 +889,92 @@ défilement. Ce panneau est prévu pour les quatre listes simples du SW233 ;
 il ne remplace pas les fonctions complexes des checklists d'autres avions.
 Les procédures françaises restent des explications du projet, pas une
 nouvelle transcription certifiée des instructions des Cadets.
+
+
+## L — Essayer avec la souris, le clavier et une petite fenêtre
+
+### 1. Prépare ton tableau de résultats
+
+Un programme peut réussir les tests automatiques et rester difficile à utiliser.
+Imagine un livre dont les mots sont justes mais dont le bouton pour tourner
+la page est caché ! Cette leçon vérifie que tu peux vraiment ouvrir et lire
+les listes. Elle utilise FlightGear 2024.1.7, dans une session statique.
+Elle ne vérifie pas le pilotage ni les procédures d'un vrai planeur.
+
+Prends une feuille. Dessine trois colonnes : **Action**, **Ce que j'attends**,
+**Ce que je vois**. Écris « pas vérifié » si tu n'as pas fait une étape.
+Un résultat inconnu n'est ni une réussite ni un échec.
+
+### 2. Essaie les boutons à la souris
+
+1. Ouvre **SW233 → Checklists / Listes**.
+2. Clique sur AAAT : tu dois lire « Largage ».
+3. Clique sur SWARTSC : tu dois lire « Atterrissage ».
+4. Clique sur ASCOT : tu dois lire « Sécurité ».
+5. Clique sur BCISTRSC : tu reviens à « Décollage ».
+6. Clique sur FR / EN. La fenêtre revient à « Take-off » en anglais.
+7. Essaie aussi AAAT, SWARTSC, ASCOT puis BCISTRSC en anglais.
+8. Clique sur la petite croix **dans le panneau**, pas sur celle de Windows.
+9. Rouvre la liste avec le menu. La langue choisie doit être conservée.
+
+Les quatre sélections dans les deux langues et la bascule ont été observées
+à la souris pendant cette recette. Ces clics ont été envoyés par un outil
+qui manipule la vraie fenêtre ; ce ne sont pas des appels directs au script.
+
+![Bascule à la souris vers l’anglais](https://github.com/steveprudhomme/sw233-flightgear/releases/download/checklists-usage-37/souris-bascule-en.jpg)
+
+### 3. Sépare trois essais de clavier
+
+- **A :** fenêtre ouverte, appuie sur Ctrl+L. La langue doit changer.
+- **B :** ferme et rouvre sans appuyer sur Ctrl+L. La langue doit rester la même.
+- **C :** ferme, appuie sur Ctrl+L dans le cockpit, puis rouvre. La langue doit changer.
+
+Le 17 novembre 2026, le responsable du projet a confirmé **A** et a décrit
+le résultat attendu de **B**. Son retour ne précise pas s'il a appuyé sur
+Ctrl+L pendant la fermeture : **C reste à confirmer physiquement pour ce lot**.
+L'envoi automatique des touches n'a changé la langue ni dans le cas ouvert,
+ni dans le cas fermé. Cela ne permet pas de conclure que ton clavier ne marche
+pas, puisque l'essai physique A fonctionne. Garde les deux preuves séparées.
+
+### 4. Cherche les morceaux cachés dans une petite fenêtre
+
+La recette a ensuite lancé une session avec `--geometry=1024x600` au lieu de
+`--geometry=1280x720`. Ce sont la largeur et la hauteur de l'image de simulation,
+sans la barre de titre Windows. Pour refaire l'essai, adapte cet argument dans
+la commande directe de lancement de la leçon d'installation. Le lanceur du
+projet utilise encore 1280 × 720 par défaut.
+
+Avant la correction, le haut du panneau dépassait la fenêtre. On pouvait lire
+le texte mais les boutons et la croix étaient partiellement cachés.
+
+![Avant : le haut du panneau est coupé](https://github.com/steveprudhomme/sw233-flightgear/releases/download/checklists-usage-37/petite-fenetre-avant.jpg)
+
+### 5. Comprends la petite correction
+
+Dans `src/SW233/gui/dialogs/checklists.xml`, la recette complète de la section K
+contient maintenant `x=10`, `y=5` et `pref-height=470`. Avant, les valeurs
+étaient 220, 75 et 500. Dans ce dialogue PUI, la position verticale part du bas.
+En laissant moins de marge en bas et en diminuant la hauteur de 30 pixels,
+on fait rentrer le haut dans l'image. Le dessin conserve son repère interne
+780 × 500 : les mots et leur ordre ne changent pas. Ce choix est une adaptation
+d'interface, pas une mesure prise sur le vrai planeur.
+
+Enregistre le fichier en UTF-8 et reconstruis un nouveau paquet. Relance-le :
+un paquet déjà créé ne se met pas à jour tout seul.
+
+![Après : français entièrement visible à 1024 × 600](https://github.com/steveprudhomme/sw233-flightgear/releases/download/checklists-usage-37/petite-fenetre-apres-fr.jpg)
+
+Vérifie cinq choses : le titre, les quatre boutons, FR / EN, la croix et le
+pied de page « Simulation uniquement ». Lis aussi la dernière explication.
+Clique sur FR / EN et refais la même vérification en anglais.
+
+![Après : anglais entièrement visible](https://github.com/steveprudhomme/sw233-flightgear/releases/download/checklists-usage-37/petite-fenetre-apres-en.jpg)
+
+### 6. Note la portée du résultat
+
+Le panneau corrigé est lisible à 1024 × 600 dans la version testée. La bascule
+et la fermeture ont été refaites à la souris. Le banc a aussi été relancé
+pour les huit listes et 24 bascules dans ce format. Une taille encore plus
+petite, une autre version de FlightGear ou des phrases plus longues nécessitent
+un nouvel essai. Ne remplace jamais « testé dans cette fenêtre » par
+« fonctionne partout ».

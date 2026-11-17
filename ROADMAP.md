@@ -358,15 +358,25 @@ ou d'affirmation de compatibilité avec les versions non testées.
 - [ ] Complément de recette : essayer la nouvelle fenêtre sur un petit écran,
   une autre version de FlightGear et refaire Ctrl+L au clavier physique.
 
-## VIS-01t — checklists en utilisation réelle (en cours)
+## VIS-01t — checklists en utilisation réelle (recette réalisée ; complément clavier restant)
 
-- [ ] Ouvrir une session dédiée avec le paquet accents-36 et relever la version.
-- [ ] Utiliser la souris : ouvrir depuis le menu, sélectionner les quatre listes dans les deux langues, basculer FR / EN, fermer puis rouvrir.
-- [ ] Essayer Ctrl+L avec la fenêtre ouverte puis fermée ; distinguer l'envoi automatisé d'une confirmation au clavier physique.
-- [ ] Tester une fenêtre réduite ; contrôler les bords, boutons et dernières lignes. Corriger un débordement si nécessaire et refaire les essais concernés.
-- [ ] Capturer les résultats réels et écrire une aide à la tâche pour un enfant de 10 ans ; expliciter les limites et les résultats non confirmés.
-- [ ] Vérifier la reconstruction du tutoriel si des sources changent, mettre à jour les MD et publier les preuves sur GitHub.
+- [x] Ouvrir une session dédiée avec le paquet accents-36 et relever la version.
+- [x] Utiliser la souris : ouvrir depuis le menu, sélectionner les quatre listes dans les deux langues, basculer FR / EN, fermer puis rouvrir.
+- [x] Essayer Ctrl+L avec la fenêtre ouverte puis fermée ; distinguer l'envoi automatisé d'une confirmation au clavier physique.
+- [x] Tester une fenêtre réduite ; contrôler les bords, boutons et dernières lignes. Corriger un débordement si nécessaire et refaire les essais concernés.
+- [x] Capturer les résultats réels et écrire une aide à la tâche pour un enfant de 10 ans ; expliciter les limites et les résultats non confirmés.
+- [x] Vérifier la reconstruction du tutoriel si des sources changent, mettre à jour les MD et publier les preuves sur GitHub.
 
 Critères : commandes accessibles à la souris, texte lisible dans les dimensions testées, état de langue cohérent après fermeture. Aucun essai automatique ne sera présenté comme une validation physique du clavier. Une autre version de FlightGear reste un chantier distinct si elle n'est pas installée.
 
 Constat VIS-01t : à 1024 × 600, le haut du panneau dépasse la fenêtre. Correction prévue : position proche du bord inférieur gauche et hauteur Canvas réduite, sans toucher au texte ; vérifier ensuite boutons, croix et dernière ligne dans les deux langues.
+
+Résultat VIS-01t : menus et quatre boutons FR/EN vérifiés à la souris ;
+Ctrl+L fenêtre ouverte confirmé par l'utilisateur, langue conservée après
+fermeture/réouverture. Envoi automatique Ctrl+L non concluant. Haut masqué
+à 1024 × 600 corrigé par position (10,5) et hauteur Canvas 470 ; captures
+avant/après, bascule et fermeture accessibles.
+
+- [ ] Confirmer explicitement Ctrl+L au clavier physique pendant que la
+  checklist est fermée, puis vérifier la langue à sa réouverture.
+- [ ] Vérifier les dimensions inférieures à 1024 × 600 et une autre version.

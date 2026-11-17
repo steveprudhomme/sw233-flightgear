@@ -16,13 +16,15 @@ La fenêtre ouverte revient à la première liste lors d'un changement de langue
 Les accents sont conservés dans une fenêtre Canvas propre au SW233, vérifiée
 sur FlightGear **2024.1.7**. Quatre boutons choisissent le mot-check ; **FR / EN**
 change la langue. Les initiales sont rouges. Huit listes et 24 bascules ont
-été contrôlées. La confirmation physique de Ctrl+L du lot précédent reste
-historique ; cette nouvelle recette contrôle les scripts et le rendu.
+été contrôlées. Ctrl+L fenêtre ouverte et la conservation de langue après fermeture sont
+confirmés par l'utilisateur. Le raccourci pendant la fermeture reste à confirmer
+physiquement pour cette recette. Le panneau est corrigé pour **1024 × 600**.
+[Recette d’utilisation illustrée](docs/construction/05-listes.md#l--essayer-avec-la-souris-le-clavier-et-une-petite-fenêtre).
 
 [Tutoriel pas à pas avec captures](docs/construction/05-listes.md#k--garder-les-accents-avec-une-nouvelle-feuille-de-texte) ·
-[Paquet et preuves](https://github.com/steveprudhomme/sw233-flightgear/releases/tag/accents-36).
+[Paquet et preuves](https://github.com/steveprudhomme/sw233-flightgear/releases/tag/checklists-usage-37).
 
-![Checklists avec accents dans FlightGear](https://github.com/steveprudhomme/sw233-flightgear/releases/download/accents-36/fr-liste-0.jpg)
+![Checklists avec accents dans FlightGear](https://github.com/steveprudhomme/sw233-flightgear/releases/download/checklists-usage-37/petite-fenetre-apres-fr.jpg)
 
 ## Cartes du cockpit dégagées
 

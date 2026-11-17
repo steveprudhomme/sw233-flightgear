@@ -2,7 +2,7 @@
 <!-- SPDX-License-Identifier: GPL-3.0-only -->
 <!-- Native shell with UTF-8 Canvas text, scoped to the SW233 session. -->
 <PropertyList>
-    <name>checklist</name><layout>vbox</layout><x>220</x><y>75</y>
+    <name>checklist</name><layout>vbox</layout><x>10</x><y>5</y>
     <group><layout>hbox</layout>
         <text><label>SW233 - Checklists / Listes</label></text>
         <empty><stretch>true</stretch></empty>
@@ -16,7 +16,7 @@
         <button><legend>FR / EN</legend><binding><command>nasal</command><script>sw233_language.toggle();</script></binding></button>
     </group>
     <canvas>
-        <name>checklist-text</name><pref-width>780</pref-width><pref-height>500</pref-height>
+        <name>checklist-text</name><pref-width>780</pref-width><pref-height>470</pref-height>
         <nasal><load>sw233_language.render_checklist(canvas.get(cmdarg()));</load></nasal>
     </canvas>
 </PropertyList>
