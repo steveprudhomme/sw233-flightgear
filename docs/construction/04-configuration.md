@@ -19,7 +19,7 @@ Commence par une seule racine PropertyList. Dans sim, la description est le titr
     <sim>
         <description>Schweizer SGS 2-33 — Cadets de l’aviation royale du Canada (prototype)</description>
         <author>Steve Prud'Homme et contributeurs SW233</author>
-        <long-description>Prototype libre du Schweizer SGS 2-33 pour FlightGear. Licence GPL-3.0-only. Aerateur central et bagues anemometre, altimetre et variometre en relief 3D fixe. Tableau noir affine, vis et supports de cartes textures. Cockpit raccorde, vitrage facette et contours de porte fixes ; commandes et masses configurables ; modele de vol experimental. Projet aux couleurs des Cadets de l'aviation royale du Canada : livree finale encore a realiser. Teste sous Windows avec FlightGear 2024.1.7 ; Linux non valide.</long-description>
+        <long-description>Prototype libre du Schweizer SGS 2-33 pour FlightGear. Licence GPL-3.0-only. Aerateur central et bagues anemometre, altimetre et variometre en relief 3D fixe. Calage altimetre lisible en inHg. Tableau noir affine, vis et supports de cartes textures. Cockpit raccorde, vitrage facette et contours de porte fixes ; commandes et masses configurables ; modele de vol experimental. Projet aux couleurs des Cadets de l'aviation royale du Canada : livree finale encore a realiser. Teste sous Windows avec FlightGear 2024.1.7 ; Linux non valide.</long-description>
         <aircraft-version>0.1.0-dev</aircraft-version>
         <minimum-fg-version>2024.1.7</minimum-fg-version>
         <flight-model>jsb</flight-model>
@@ -401,6 +401,36 @@ Ajoute ce dernier bloc avant la fermeture finale. Le bouton utilise *knob* et *s
     <center><x-m>7.35</x-m><y-m>0</y-m><z-m>0.11</z-m></center>
     <axis><x>0</x><y>1</y><z>0</z></axis>
   </animation>
+  <!-- Functional pressure readout; layout estimated, not an identified instrument replica. -->
+  <text>
+    <name>alt-pression</name>
+    <type>number-value</type>
+    <property>instrumentation/altimeter/setting-inhg</property>
+    <format>%.2f</format>
+    <font>Helvetica.txf</font>
+    <character-size>0.007</character-size>
+    <axis-alignment>yz-plane</axis-alignment>
+    <alignment>center-center</alignment>
+    <offsets><x-m>0.876</x-m><y-m>-0.176</y-m><z-m>0.090</z-m></offsets>
+  </text>
+  <text>
+    <name>alt-unite</name>
+    <type>literal</type>
+    <text>inHg</text>
+    <font>Helvetica.txf</font>
+    <character-size>0.0035</character-size>
+    <axis-alignment>yz-plane</axis-alignment>
+    <alignment>center-center</alignment>
+    <offsets><x-m>0.876</x-m><y-m>-0.176</y-m><z-m>0.080</z-m></offsets>
+  </text>
+  <animation>
+    <type>material</type>
+    <object-name>alt-pression</object-name>
+    <object-name>alt-unite</object-name>
+    <diffuse><red>0.94</red><green>0.92</green><blue>0.86</blue></diffuse>
+    <ambient><red>0.94</red><green>0.92</green><blue>0.86</blue></ambient>
+    <emission><red>0.4</red><green>0.39</green><blue>0.36</blue></emission>
+  </animation>
 </PropertyList>
 ```
 
@@ -414,3 +444,15 @@ Les six vignettes sont des recadrages de FlightGear 2024.1.7 à CYJN. Pour les r
 
 
 **Profondeur :** les deux objets suivent la déflexion effective JSBSim, en radians. Le facteur 180/pi convertit en degrés ; autour de +y, une déflexion positive abaisse le bord de fuite. Charnière (7,35 ; 0 ; 0,11) choisie pour cette maquette. [Banc et limites](10-profondeur.md).
+
+## Fenêtre de calage — VIS-01k
+
+Plan préalable : commit `21e793e`. Le nouveau texte lit directement `instrumentation/altimeter/setting-inhg`, comme le bouton. Ne crée pas une copie de cette pression : les deux nombres pourraient se désynchroniser. Le type `number-value` lit un nombre ; `%.2f` l'affiche avec deux chiffres après le point. Ainsi, 30 devient 30.00.
+
+La syntaxe s'appuie sur la [documentation OSG Text de FlightGear](https://wiki.flightgear.org/OSG_Text) et les exemples installés `Aircraft/Instruments-3d/cdu/display-text-value.xml` et `Aircraft/Instruments-3d/kx165/kx165-1.xml`. Aucun modèle ni texture de ces instruments n'est copié.
+
+Dans le bloc XML complet de cette fiche, repère les deux nœuds `text` : `alt-pression` porte le nombre variable ; `alt-unite` porte l'inscription fixe inHg. Le plan `yz-plane` place les lettres sur le tableau. Les deux textes sont à x = 0,876 m, devant le cadran (0,874 m), mais derrière les aiguilles (0,882 et 0,883 m). La pression est centrée à y = −0,176 m, z = 0,090 m. L'unité est 10 mm plus bas. Les caractères mesurent respectivement 7 et 3,5 mm dans notre maquette : ce sont des choix de lisibilité, pas des cotes constructeur.
+
+L'animation de matériau donne une couleur claire aux deux textes. Sans elle, le premier essai produisait des lettres presque noires. L'émission choisie facilite la lecture ; elle ne représente pas un éclairage réel documenté. Aucun script Nasal ni minuteur n'est nécessaire. Les douze animations précédentes, notamment celles du bouton et des aiguilles, sont conservées.
+
+Les valeurs 28 à 31 inHg sont les limites de notre commande existante ; elles ne prouvent pas la plage de l'instrument réel. Voir la [fabrication et les essais illustrés](06-peinture.md#l--fenêtre-de-calage-de-laltimètre).

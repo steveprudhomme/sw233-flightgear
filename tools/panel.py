@@ -146,8 +146,8 @@ def finish_panel(models: Path):
                   font=ImageFont.load_default(size=39))
     draw.text((256,208),"ALT",anchor="mm",fill="#eeeadd",font=ImageFont.load_default(size=29))
     draw.text((256,304),"FEET",anchor="mm",fill="#eeeadd",font=ImageFont.load_default(size=19))
-    # Window reserved for a future readable pressure scale, no invented reading.
-    draw.rounded_rectangle((381,222,423,290),radius=4,fill="#111519",outline="#737975",width=2)
+    # Estimated window for the live XML pressure readout, behind the hands.
+    draw.rounded_rectangle((336,220,448,292),radius=4,fill="#111519",outline="#737975",width=2)
     alt.save(models/"alt.png")
     im.save(models/"panel.png")
     mesh = models/"sw233.ac"

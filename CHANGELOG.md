@@ -4,6 +4,8 @@
 
 ### Changements
 
+- VIS-01k : fenêtre de calage lisible en inHg, liée au bouton ; seize affichages et quatre glissements vérifiés dans FlightGear. Tutoriel illustré et recettes synchronisés, description et aperçu actualisés. Affichage simplifié ; mécanisme réel non attesté.
+
 - VIS-01j : bague et quatre fixations du variomètre en relief, doublons peints retirés ; sept indications vérifiées de face et de biais dans FlightGear 2024.1.7. Recettes synchronisées, pièces et essais illustrés, description et aperçu actualisés. Profondeurs estimées ; validation visuelle statique uniquement.
 
 - VIS-01f : peinture noire moins contrastée, têtes de vis, anneaux sombres et supports de cartes ; recette de la fiche 6 synchronisée et quatre captures natives comparées. Banc d’anémomètre et aperçu général encore à reprendre.

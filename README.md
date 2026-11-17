@@ -145,3 +145,5 @@ La [fiche 16](docs/construction/16-proportions.md) quantifie trois écarts au tr
 [Régler le calage à la souris : gestes vérifiés et captures](docs/construction/06-peinture.md#j--régler-laltimètre-à-la-souris). Vérification maintenant terminée ; utiliser le cliquer-glisser horizontal.
 
 [Variomètre en relief : construction et quatorze lectures natives](docs/construction/06-peinture.md#k--variomètre-en-relief--vérifier-et-comparer). Bague ouverte et quatre fixations ; dimensions estimées, cadran et étalonnage conservés. [Télécharger le paquet vario-bague-27](https://github.com/steveprudhomme/sw233-flightgear/releases/tag/vario-bague-27).
+
+[Fenêtre de calage : lire la pression et régler le bouton](docs/construction/06-peinture.md#l--fenêtre-de-calage-de-laltimètre). Affichage fonctionnel simplifié en inHg, vérifié de face et de biais. [Paquet calage-fenetre-28](https://github.com/steveprudhomme/sw233-flightgear/releases/tag/calage-fenetre-28).

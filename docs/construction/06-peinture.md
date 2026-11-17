@@ -224,8 +224,8 @@ Prépare un carré 512 × 512, centre (256,256). Cinquante divisions donnent 7,2
                   font=ImageFont.load_default(size=39))
     draw.text((256,208),"ALT",anchor="mm",fill="#eeeadd",font=ImageFont.load_default(size=29))
     draw.text((256,304),"FEET",anchor="mm",fill="#eeeadd",font=ImageFont.load_default(size=19))
-    # Window reserved for a future readable pressure scale, no invented reading.
-    draw.rounded_rectangle((381,222,423,290),radius=4,fill="#111519",outline="#737975",width=2)
+    # Estimated window for the live XML pressure readout, behind the hands.
+    draw.rounded_rectangle((336,220,448,292),radius=4,fill="#111519",outline="#737975",width=2)
     alt.save(models/"alt.png")
     im.save(models/"panel.png")
     mesh = models/"sw233.ac"
@@ -524,3 +524,85 @@ Cherche une graduation cachée, une tête de vis qui passe devant l'aiguille ou 
 La reconstruction du tutoriel, le contrôle des sources, le contrôle de style et la vérification du manifeste du paquet ont réussi. La description FlightGear mentionne maintenant les trois bagues ; son aperçu est renouvelé. Les limites restent les dimensions estimées, les deux cadrages testés et l'absence de nouvelle validation dynamique.
 
 [Paquet et preuves de ce lot](https://github.com/steveprudhomme/sw233-flightgear/releases/tag/vario-bague-27) · [CSV et contrôles de non-régression](https://github.com/steveprudhomme/sw233-flightgear/releases/download/vario-bague-27/releves.zip).
+
+## L · Fenêtre de calage de l'altimètre
+
+### 1. Examiner la référence sans deviner
+
+La photo C-FYLP fournie montre l'altimètre à gauche, mais ne permet pas de lire avec certitude l'unité de sa petite fenêtre ni d'identifier son mécanisme. Une zone floue n'est pas une mesure. Notre bouton utilise déjà les pouces de mercure, nommés inHg dans FlightGear. L'affichage reprend cette unité, explicitement inscrite sous le nombre.
+
+Il s'agit d'une fenêtre numérique horizontale simplifiée, pas d'une reproduction attestée d'un tambour de C-FYLP. Ce choix favorise la lisibilité ; sa fidélité photographique reste à améliorer avec une meilleure référence. Le plan a été commité avant les travaux (`21e793e`). Le [registre des photos](../references/cockpits-et-fsx.md) distingue les appareils réels des vues d'autres simulateurs.
+
+### 2. Calculer les dimensions du dessin
+
+Le cadran est une image de 512 × 512 pixels représentant 166 × 166 mm. Chaque pixel représente donc 166 ÷ 512 = 0,3242 mm dans le modèle.
+
+1. Dans la recette de cette fiche, trouve la fenêtre dessinée juste avant `alt.save`. L'ancienne allait de (381, 222) à (423, 290) : seulement 42 pixels de large.
+2. Le nouveau rectangle va de (336, 220) à (448, 292). Garde les coins arrondis, le fond sombre et la bordure grise. La ligne est déjà corrigée dans le bloc à recopier.
+3. Calcule sa largeur : 112 × 166 ÷ 512 = 36,31 mm. Sa hauteur : 72 × 166 ÷ 512 = 23,34 mm. Ce sont des dimensions choisies pour notre dessin, pas relevées sur l'appareil.
+4. Pour convertir un pixel horizontal u en position, utilise y = −0,303 + u × 0,166 ÷ 512. Verticalement, z = 0,170 − v × 0,166 ÷ 512 : on descend dans l'image quand v augmente.
+5. Le centre est proche de y = −0,176 m, z = 0,087 m. Place le nombre au-dessus et l'unité au-dessous, avec les coordonnées XML expliquées dans la [fiche 4](04-configuration.md#fenêtre-de-calage--vis-01k).
+6. Ne peins pas « 29.92 » dans la texture : le texte XML lit le véritable réglage et change quand on déplace le bouton.
+
+Les aiguilles restent devant la fenêtre et peuvent la recouvrir brièvement à certaines altitudes. Le texte n'est pas un élément flottant toujours visible au-dessus de l'instrument. Le maillage AC3D est inchangé.
+
+### 3. Reconstruire et préparer une session dédiée
+
+Travaille depuis la racine du dépôt, où se trouve README.md. Utilise des dossiers de sortie neufs. La section K ci-dessus donne la commande complète pour lancer FlightGear ; adapte le paquet et utilise le port 18115, avec `--fdm=null --httpd=18115`. Laisse la fenêtre visible. Le banc refuse une session qui ne correspond pas au SW233 avec FDM null.
+
+```powershell
+# Vérifier les blocs du tutoriel dans un dossier neuf.
+python tools/check_workbook.py build/atelier-calage
+# Construire le paquet à charger dans FlightGear.
+python tools/package.py --output build/calage-fenetre
+# Après chargement de ce paquet en session FDM null, port 18115 :
+python tools/pressure_window_bench.py build/calage-face --port 18115
+python tools/pressure_window_bench.py build/calage-biais --port 18115 --oblique
+```
+
+### 4. Vérifier huit valeurs sous deux angles
+
+Le banc impose 28.00, 28.92, 29.92, 29.99, 30.00, 30.01, 30.92 et 31.00 inHg. Il lit la propriété avant et après chaque capture, enregistre aussi l'altitude indiquée et refuse les images vides. Il restaure ensuite le calage, le fonctionnement de l'instrument, le menu et la caméra. Les fichiers `session.json` confirment cette restauration.
+
+Dans le CSV, `expected_text` est une attente, pas une reconnaissance automatique des chiffres. Il faut ouvrir les images pour comparer. Les seize affichages ont été examinés dans FlightGear 2024.1.7 : valeurs correctes, passage 29.99 → 30.00 → 30.01 correct et zéros finaux conservés.
+
+Caméra : inclinaison −25°, champ 24°, y = 0,5 m et z = 1,7 m. De face : x = −0,22 m et azimut 0°. De biais : x = −0,30 m et azimut −5°. Ce sont des cadrages d'essai, pas une position d'œil mesurée.
+
+Les deux planches suivantes réunissent des recadrages des captures natives. Les JPEG complets sont joints à la publication.
+
+![Contrôle face-lectures](https://github.com/steveprudhomme/sw233-flightgear/releases/download/calage-fenetre-28/face-lectures.jpg)
+
+![Contrôle biais-lectures](https://github.com/steveprudhomme/sw233-flightgear/releases/download/calage-fenetre-28/biais-lectures.jpg)
+
+![Contrôle face-pression-29.92](https://github.com/steveprudhomme/sw233-flightgear/releases/download/calage-fenetre-28/face-pression-29.92.jpg)
+
+### 5. Manipuler le bouton et regarder le nombre
+
+Place le pointeur sur le bouton rond en bas à gauche, maintiens le bouton gauche, glisse vers la droite et relâche. Repars de sa face, puis glisse vers la gauche. Recommence avec la vue de biais. Vise le bouton visible : ses coordonnées en pixels changent avec la caméra.
+
+| Vue | Geste | Propriété après le geste (inHg) | Fenêtre lue |
+|---|---|---:|---|
+| Face | Droite | 29,93 | 29.93 |
+| Face | Gauche | 29,92 | 29.92 |
+| Biais | Droite | 29,93 | 29.93 |
+| Biais | Gauche | 29,92 | 29.92 |
+
+Pendant ces quatre gestes, aucune pression n'a été écrite par l'interface de test. Les JSON joints sont des lectures après manipulation. Le dernier geste restaure le calage initial. La molette n'a pas été retestée dans ce lot ; son ancien essai est décrit en section J.
+
+![Essai souris : face-plus](https://github.com/steveprudhomme/sw233-flightgear/releases/download/calage-fenetre-28/souris-face-plus.jpg)
+
+![Essai souris : face-moins](https://github.com/steveprudhomme/sw233-flightgear/releases/download/calage-fenetre-28/souris-face-moins.jpg)
+
+![Essai souris : biais-plus](https://github.com/steveprudhomme/sw233-flightgear/releases/download/calage-fenetre-28/souris-biais-plus.jpg)
+
+![Essai souris : biais-moins](https://github.com/steveprudhomme/sw233-flightgear/releases/download/calage-fenetre-28/souris-biais-moins.jpg)
+
+### 6. Interpréter correctement les preuves
+
+Ces essais valident l'affichage et sa liaison au bouton. Le FDM null ne calcule pas un vol réel : ils ne prouvent pas la précision barométrique. Les extrêmes 28.00 et 31.00 sont vérifiés comme valeurs affichées ; aucun nouvel essai de butée à la souris n'est revendiqué. Les deux vues ne couvrent pas toutes les positions possibles de caméra.
+
+Le maillage et les douze animations antérieures sont inchangés. La police est fournie par FlightGear et n'est pas copiée dans le dépôt. Le contrôle des sources, le style Python, la reconstruction depuis le tutoriel et le manifeste du paquet sont vérifiés avant publication. La description et l'aperçu FlightGear sont actualisés.
+
+![Cockpit avec calage chiffré](https://github.com/steveprudhomme/sw233-flightgear/releases/download/calage-fenetre-28/cockpit.jpg)
+
+[Paquet et captures complètes](https://github.com/steveprudhomme/sw233-flightgear/releases/tag/calage-fenetre-28) · [CSV et relevés JSON](https://github.com/steveprudhomme/sw233-flightgear/releases/download/calage-fenetre-28/releves.zip).

@@ -168,6 +168,8 @@ Sous-étapes préalables : comparer la disposition existante à la photo C-FYLP 
 
 VIS-01j terminé : trois objets ajoutés, doublons peints retirés, sept indications natives contrôlées de face et de biais. Les 59 objets antérieurs et les trois textures de cadran restent identiques. [Tutoriel illustré, fiche 6 section K](docs/construction/06-peinture.md#k--variomètre-en-relief--vérifier-et-comparer), vues par pièce, aperçu et paquet vario-bague-27. Profondeurs estimées ; essais d’affichage, sans nouvelle validation du vol.
 
-## VIS-01k — fenêtre de calage de l’altimètre (en cours)
+## VIS-01k — fenêtre de calage de l’altimètre (terminé)
 
 Plan préalable : examiner la photo C-FYLP et les exemples XML locaux FlightGear ; distinguer l’unité attestée par la commande du modèle de l’unité illisible sur la photo ; créer un affichage lisible lié directement à setting-inhg, sans deuxième valeur de calage ; conserver bouton et aiguilles ; vérifier plusieurs valeurs, un passage de dizaine et les limites de la commande ; contrôler de face et de biais, puis les glissements dans les deux sens ; illustrer la construction et les essais ; synchroniser les recettes, actualiser MD, description et aperçu, vérifier et publier le paquet. Critère : valeur affichée à deux décimales cohérente avec le réglage, unité explicite, aucune prétention de reproduire un mécanisme non documenté. Les dimensions de fenêtre restent estimées.
+
+VIS-01k terminé : affichage direct en inHg à deux décimales ; huit valeurs sous deux vues, quatre glissements et retour à 29,92 vérifiés. [Tutoriel illustré](docs/construction/06-peinture.md#l--fenêtre-de-calage-de-laltimètre). Fenêtre horizontale simplifiée, dimensions estimées ; mécanisme et unité du véritable instrument C-FYLP à confirmer par une référence lisible.

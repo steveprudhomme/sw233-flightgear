@@ -197,4 +197,34 @@
     <center><x-m>7.35</x-m><y-m>0</y-m><z-m>0.11</z-m></center>
     <axis><x>0</x><y>1</y><z>0</z></axis>
   </animation>
+  <!-- Functional pressure readout; layout estimated, not an identified instrument replica. -->
+  <text>
+    <name>alt-pression</name>
+    <type>number-value</type>
+    <property>instrumentation/altimeter/setting-inhg</property>
+    <format>%.2f</format>
+    <font>Helvetica.txf</font>
+    <character-size>0.007</character-size>
+    <axis-alignment>yz-plane</axis-alignment>
+    <alignment>center-center</alignment>
+    <offsets><x-m>0.876</x-m><y-m>-0.176</y-m><z-m>0.090</z-m></offsets>
+  </text>
+  <text>
+    <name>alt-unite</name>
+    <type>literal</type>
+    <text>inHg</text>
+    <font>Helvetica.txf</font>
+    <character-size>0.0035</character-size>
+    <axis-alignment>yz-plane</axis-alignment>
+    <alignment>center-center</alignment>
+    <offsets><x-m>0.876</x-m><y-m>-0.176</y-m><z-m>0.080</z-m></offsets>
+  </text>
+  <animation>
+    <type>material</type>
+    <object-name>alt-pression</object-name>
+    <object-name>alt-unite</object-name>
+    <diffuse><red>0.94</red><green>0.92</green><blue>0.86</blue></diffuse>
+    <ambient><red>0.94</red><green>0.92</green><blue>0.86</blue></ambient>
+    <emission><red>0.4</red><green>0.39</green><blue>0.36</blue></emission>
+  </animation>
 </PropertyList>
