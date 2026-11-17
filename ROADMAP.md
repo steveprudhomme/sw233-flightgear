@@ -257,3 +257,17 @@ les nouvelles captures natives restent à valider. Le lot n'est pas terminé.
 - [ ] Recenser séparément les inspections journalière, extérieure limitée, d'accrochage, après assemblage et de transport ; définir celles qui ont un sens dans le prototype avant toute implémentation.
 
 Critère : aucune initiale française artificielle ne remplace le mot-check anglais. Les références d'urgence citées sans lien/page restent des pistes à vérifier, pas des procédures déjà validées ou intégrées.
+
+
+Résultat du complément français : les quatre listes et cartes emploient
+BCISTRSC / AAAT / SWARTSC / ASCOT avec explications françaises attribuées au
+responsable du projet. 25 tests et reconstruction complète réussis.
+Deux captures natives statiques confirment le rendu des lettres rouges.
+
+- [ ] VIS-01p, lisibilité : corriger le masquage des cartes de droite par la
+  bague de l'anémomètre ; comparer disposition et profondeurs aux références,
+  puis contrôler toutes les lignes depuis la vue pilote. Les captures du
+  17 novembre montrent le défaut ; ne pas déclarer la lisibilité complète.
+
+Les urgences et inspections nouvellement recensées restent planifiées, sans
+ajout de procédure automatique ni de simulation du câble dans ce lot.

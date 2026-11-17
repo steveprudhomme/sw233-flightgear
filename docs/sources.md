@@ -115,11 +115,24 @@ projet restent des adaptations explicites à la simulation.
 Le manuel bilingue A-CR-CCP-242/PT-005 de 2017, pages PDF 213 et 217–219
 (pages imprimées 2-7-19 et 2-7-23 à 25), renvoie aux IEA du type d'appareil.
 Il ne donne pas les séries de mots françaises. La recherche dans le guide
-RE_GuideEtudePilotageFR n'a pas fourni ces séries. **La version française
-actuelle reste un brouillon, pas un moyen mnémotechnique Cadets validé.**
-La référence française est demandée à l'utilisateur ; aucune traduction
-inventée ne doit être annoncée comme vocabulaire enseigné.
+RE_GuideEtudePilotageFR n'a pas fourni ces séries. Le 17 novembre 2026, le responsable du projet a fourni les explications
+françaises utilisées dans le prototype. Les lettres anglaises sont conservées
+devant ces explications : aucun acronyme français nouveau n’est créé.
+La version française des IEA n’a pas été consultée ; ces textes ne sont
+pas présentés comme sa transcription.
 
 Le rouge des initiales est un choix pédagogique demandé par l'utilisateur,
 pas une caractéristique attestée des plaquettes réelles. Une source de 2017
 ne prouve pas à elle seule les procédures enseignées aujourd'hui.
+
+
+### Complément fourni par le responsable du projet
+
+Le tableau reçu le 17 novembre 2026 distingue les quatre mots-checks normaux
+et deux séquences d'urgence : GASP/VEST (remorquage aérien), GPAS/PTES
+(lancement au sol). Il cite un manuel bilingue de 2018 sans URL ni pages.
+Les équivalences d'urgence sont conservées comme pistes dans le ROADMAP,
+pas comme procédures validées dans l'appareil. La précision sur le moment
+d'exécution de la vérification d'atterrissage n'est pas ajoutée sans contrôle
+de la référence correspondante. Les inspections journalière, extérieure,
+d'accrochage, après assemblage et de transport sont des sujets distincts.

@@ -1,39 +1,152 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Original simulation checklists. No automatic actions; tow is not implemented. -->
+<!-- English mnemonic letters; French explanations supplied by the project owner.
+     Not a transcription of French AOIs. Values are simulation adaptations. -->
 <PropertyList>
     <auto-tutorials type="bool">false</auto-tutorials>
     <checklist n="0">
-        <title>SW233 · Avant départ (simulation)</title>
-        <item><name>Chargement</name><value>Scénario et centrage vérifiés</value></item>
-        <item><name>Commandes</name><value>Libres ; sens vérifié</value></item>
-        <item><name>Instruments</name><value>mph, ft et centaines de ft/min identifiés</value></item>
-        <item><name>Aérofreins et trim</name><value>Course et position vérifiées</value></item>
-        <item><name>Harnais, verrière et porte</name><value>Revue visuelle simulée</value></item>
+        <title>SW233 - Avant décollage - BCISTRSC (simulation)</title>
+        <item>
+            <name>B - Lest, masse et centrage</name>
+            <value>Scénario, masses et centrage vérifiés</value>
+        </item>
+        <item>
+            <name>C - Commandes de vol</name>
+            <value>Course et sens vérifiés</value>
+        </item>
+        <item>
+            <name>I - Instruments et radio</name>
+            <value>Unités, calage altimétrique et fréquence relus</value>
+        </item>
+        <item>
+            <name>S - Déporteurs</name>
+            <value>Course et position vérifiées</value>
+        </item>
+        <item>
+            <name>T - Compensateur</name>
+            <value>Position revue pour le scénario</value>
+        </item>
+        <item>
+            <name>R - Mécanisme de largage</name>
+            <value>Répétition verbale ; câble non simulé</value>
+        </item>
+        <item>
+            <name>S - Sangles et harnais</name>
+            <value>Revue visuelle simulée des deux places</value>
+        </item>
+        <item>
+            <name>C - Verrière et porte</name>
+            <value>Revue visuelle simulée</value>
+        </item>
     </checklist>
     <checklist n="1">
-        <title>SW233 · Avant largage (répétition simulée)</title>
-        <item><name>Zone et trafic</name><value>Repérés</value></item>
-        <item><name>Altitude et position</name><value>Vérifiées dans le scénario</value></item>
-        <item><name>Largage</name><value>Revue verbale ; câble non simulé</value></item>
+        <title>SW233 - Avant largage - AAAT (simulation)</title>
+        <item>
+            <name>A - Zone de largage</name>
+            <value>Zone prévue repérée</value>
+        </item>
+        <item>
+            <name>A - Altitude prévue</name>
+            <value>Altitude du scénario revue</value>
+        </item>
+        <item>
+            <name>A - Assiette et position derrière le remorqueur</name>
+            <value>Assiette et position revues ; remorquage non simulé</value>
+        </item>
+        <item>
+            <name>T - Circulation aérienne</name>
+            <value>Trafic environnant repéré</value>
+        </item>
     </checklist>
     <checklist n="2">
-        <title>SW233 · Avant atterrissage (simulation)</title>
-        <item><name>Vent, trafic et piste</name><value>Identifiés</value></item>
-        <item><name>Vitesse</name><value>Lue en mph ; adaptée au scénario</value></item>
-        <item><name>Aérofreins et trim</name><value>Disponibilité vérifiée</value></item>
-        <item><name>Harnais et verrière</name><value>Revue visuelle simulée</value></item>
+        <title>SW233 - Avant atterrissage - SWARTSC (simulation)</title>
+        <item>
+            <name>S - Déporteurs</name>
+            <value>Disponibilité et position vérifiées</value>
+        </item>
+        <item>
+            <name>W - Vent</name>
+            <value>Vent du scénario revu</value>
+        </item>
+        <item>
+            <name>A - Vitesse d’approche</name>
+            <value>Vitesse adaptée au scénario, lue en mph</value>
+        </item>
+        <item>
+            <name>R - Communication radio</name>
+            <value>Appel répété verbalement ; fonctionnement audio non validé</value>
+        </item>
+        <item>
+            <name>T - Compensateur et trafic</name>
+            <value>Position du compensateur et trafic revus</value>
+        </item>
+        <item>
+            <name>S - Sangles et harnais</name>
+            <value>Revue visuelle simulée des deux places</value>
+        </item>
+        <item>
+            <name>C - Verrière</name>
+            <value>Revue visuelle simulée</value>
+        </item>
     </checklist>
     <checklist n="3">
-        <title>SW233 · Avant exercice de décrochage (simulation)</title>
-        <item><name>Altitude, terrain et trafic</name><value>Marges revues</value></item>
-        <item><name>Harnais, verrière et objets</name><value>Revue visuelle simulée</value></item>
-        <item><name>Domaine de vol</name><value>Vrille non validée ; pas de démonstration de vrille</value></item>
+        <title>SW233 - Sécurité avant manœuvres - ASCOT (simulation)</title>
+        <item>
+            <name>A - Altitude de sécurité</name>
+            <value>Marges du scénario revues ; vrille non validée</value>
+        </item>
+        <item>
+            <name>S - Harnais serrés</name>
+            <value>Revue visuelle simulée des deux places</value>
+        </item>
+        <item>
+            <name>C - Verrière verrouillée</name>
+            <value>Revue visuelle simulée</value>
+        </item>
+        <item>
+            <name>O - Objets libres</name>
+            <value>Revue verbale des objets non arrimés</value>
+        </item>
+        <item>
+            <name>T - Circulation aérienne et terrain</name>
+            <value>Trafic et terrain du scénario revus</value>
+        </item>
     </checklist>
-    <!-- Short cockpit reminders; full simulation lists are above. -->
     <placards>
-        <card n="0"><line>AVANT DÉPART</line><line>LEST</line><line>COMMANDES</line><line>AÉROFREINS</line><line>VERRIÈRE</line></card>
-        <card n="1"><line>AVANT LARGAGE</line><line>ZONE</line><line>ALTITUDE</line><line>POSITION</line><line>TRAFIC</line></card>
-        <card n="2"><line>AVANT ATTERR.</line><line>AÉROFREINS</line><line>VENT</line><line>VITESSE</line><line>TRAFIC</line></card>
-        <card n="3"><line>AVANT DÉCROCH.</line><line>ALTITUDE</line><line>HARNAIS</line><line>VERRIÈRE</line><line>TRAFIC</line></card>
+        <card n="0">
+            <line>AVANT DÉCOLLAGE</line>
+            <line>B - LEST</line>
+            <line>C - COMMANDES</line>
+            <line>I - INSTRUMENTS/RADIO</line>
+            <line>S - DÉPORTEURS</line>
+            <line>T - COMPENSATEUR</line>
+            <line>R - LARGAGE</line>
+            <line>S - SANGLES/HARNAIS</line>
+            <line>C - VERRIÈRE/PORTE</line>
+        </card>
+        <card n="1">
+            <line>AVANT LARGAGE</line>
+            <line>A - ZONE DE LARGAGE</line>
+            <line>A - ALTITUDE</line>
+            <line>A - ASSIETTE/POSITION</line>
+            <line>T - CIRCULATION</line>
+        </card>
+        <card n="2">
+            <line>AVANT ATTERR.</line>
+            <line>S - DÉPORTEURS</line>
+            <line>W - VENT</line>
+            <line>A - VITESSE</line>
+            <line>R - RADIO</line>
+            <line>T - COMPENSATEUR/TRAFIC</line>
+            <line>S - SANGLES/HARNAIS</line>
+            <line>C - VERRIÈRE</line>
+        </card>
+        <card n="3">
+            <line>SÉCURITÉ</line>
+            <line>A - ALTITUDE</line>
+            <line>S - HARNAIS</line>
+            <line>C - VERRIÈRE</line>
+            <line>O - OBJETS LIBRES</line>
+            <line>T - CIRCULATION/TERRAIN</line>
+        </card>
     </placards>
 </PropertyList>

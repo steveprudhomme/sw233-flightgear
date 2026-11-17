@@ -4,8 +4,9 @@
 
 - Prototype de sélection FR/EN par menu et Ctrl+L (raccourci confirmé manuellement).
 - Initiales rouges sur les plaquettes ; rubriques anglaises complètes comparées aux IEA 2017.
-- Tutoriel et registre des sources complétés. Vocabulaire mnémotechnique français
-  et captures du dernier rendu encore à valider ; aucune nouvelle version publiée.
+- Tutoriel et registre des sources complétés. Explications françaises fournies par le responsable du projet, avec lettres
+  anglaises conservées. Captures natives effectuées ; masquage partiel des cartes
+  de droite encore à corriger. Lot bilingue toujours en cours.
 
 
 ## Non publié — 0.1.0-dev

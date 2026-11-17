@@ -4,7 +4,7 @@
 
 Illustration du XML, pas une capture de la fenêtre FlightGear.
 
-Regarde les quatre petites cartes sur les photos du poste avant : elles correspondent à des moments différents. Leur présence [V] nous suggère quatre listes. Le manuel du programme de 2017, PDF p. 213, explique comment reprendre une vérification interrompue. Les textes français ci-dessous sont **un brouillon pour le simulateur**, pas les acronymes Cadets validés. Voir la section G pour la vérification des sources et les initiales rouges.
+Regarde les quatre petites cartes sur les photos du poste avant : elles correspondent à des moments différents. Leur présence [V] nous suggère quatre listes. Le manuel du programme de 2017, PDF p. 213, explique comment reprendre une vérification interrompue. Les textes français ci-dessous expliquent les mots-checks anglais, selon le tableau fourni par le responsable du projet. Ils ne sont pas une transcription des IEA françaises. Voir la section G pour la vérification des sources et les initiales rouges.
 
 **Fichier à écrire :** `src/SW233/Checklists/sw233.xml`. Colle les blocs de ce fichier dans l’ordre, sans retirer les espaces du début des lignes.
 
@@ -15,16 +15,44 @@ Fais une boîte checklist n=0. Pour chaque ligne, name est ce que tu cherches ; 
 <!-- atelier-fichier: src/SW233/Checklists/sw233.xml -->
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Original simulation checklists. No automatic actions; tow is not implemented. -->
+<!-- English mnemonic letters; French explanations supplied by the project owner.
+     Not a transcription of French AOIs. Values are simulation adaptations. -->
 <PropertyList>
     <auto-tutorials type="bool">false</auto-tutorials>
     <checklist n="0">
-        <title>SW233 · Avant départ (simulation)</title>
-        <item><name>Chargement</name><value>Scénario et centrage vérifiés</value></item>
-        <item><name>Commandes</name><value>Libres ; sens vérifié</value></item>
-        <item><name>Instruments</name><value>mph, ft et centaines de ft/min identifiés</value></item>
-        <item><name>Aérofreins et trim</name><value>Course et position vérifiées</value></item>
-        <item><name>Harnais, verrière et porte</name><value>Revue visuelle simulée</value></item>
+        <title>SW233 - Avant décollage - BCISTRSC (simulation)</title>
+        <item>
+            <name>B - Lest, masse et centrage</name>
+            <value>Scénario, masses et centrage vérifiés</value>
+        </item>
+        <item>
+            <name>C - Commandes de vol</name>
+            <value>Course et sens vérifiés</value>
+        </item>
+        <item>
+            <name>I - Instruments et radio</name>
+            <value>Unités, calage altimétrique et fréquence relus</value>
+        </item>
+        <item>
+            <name>S - Déporteurs</name>
+            <value>Course et position vérifiées</value>
+        </item>
+        <item>
+            <name>T - Compensateur</name>
+            <value>Position revue pour le scénario</value>
+        </item>
+        <item>
+            <name>R - Mécanisme de largage</name>
+            <value>Répétition verbale ; câble non simulé</value>
+        </item>
+        <item>
+            <name>S - Sangles et harnais</name>
+            <value>Revue visuelle simulée des deux places</value>
+        </item>
+        <item>
+            <name>C - Verrière et porte</name>
+            <value>Revue visuelle simulée</value>
+        </item>
     </checklist>
 ```
 
@@ -35,10 +63,23 @@ Ajoute une deuxième carte dans la même racine. Dans cette version, aucun câbl
 <!-- atelier-fichier: src/SW233/Checklists/sw233.xml -->
 ```xml
     <checklist n="1">
-        <title>SW233 · Avant largage (répétition simulée)</title>
-        <item><name>Zone et trafic</name><value>Repérés</value></item>
-        <item><name>Altitude et position</name><value>Vérifiées dans le scénario</value></item>
-        <item><name>Largage</name><value>Revue verbale ; câble non simulé</value></item>
+        <title>SW233 - Avant largage - AAAT (simulation)</title>
+        <item>
+            <name>A - Zone de largage</name>
+            <value>Zone prévue repérée</value>
+        </item>
+        <item>
+            <name>A - Altitude prévue</name>
+            <value>Altitude du scénario revue</value>
+        </item>
+        <item>
+            <name>A - Assiette et position derrière le remorqueur</name>
+            <value>Assiette et position revues ; remorquage non simulé</value>
+        </item>
+        <item>
+            <name>T - Circulation aérienne</name>
+            <value>Trafic environnant repéré</value>
+        </item>
     </checklist>
 ```
 
@@ -49,37 +90,109 @@ Sépare l’observation du vent et du trafic, la lecture de vitesse et la dispon
 <!-- atelier-fichier: src/SW233/Checklists/sw233.xml -->
 ```xml
     <checklist n="2">
-        <title>SW233 · Avant atterrissage (simulation)</title>
-        <item><name>Vent, trafic et piste</name><value>Identifiés</value></item>
-        <item><name>Vitesse</name><value>Lue en mph ; adaptée au scénario</value></item>
-        <item><name>Aérofreins et trim</name><value>Disponibilité vérifiée</value></item>
-        <item><name>Harnais et verrière</name><value>Revue visuelle simulée</value></item>
+        <title>SW233 - Avant atterrissage - SWARTSC (simulation)</title>
+        <item>
+            <name>S - Déporteurs</name>
+            <value>Disponibilité et position vérifiées</value>
+        </item>
+        <item>
+            <name>W - Vent</name>
+            <value>Vent du scénario revu</value>
+        </item>
+        <item>
+            <name>A - Vitesse d’approche</name>
+            <value>Vitesse adaptée au scénario, lue en mph</value>
+        </item>
+        <item>
+            <name>R - Communication radio</name>
+            <value>Appel répété verbalement ; fonctionnement audio non validé</value>
+        </item>
+        <item>
+            <name>T - Compensateur et trafic</name>
+            <value>Position du compensateur et trafic revus</value>
+        </item>
+        <item>
+            <name>S - Sangles et harnais</name>
+            <value>Revue visuelle simulée des deux places</value>
+        </item>
+        <item>
+            <name>C - Verrière</name>
+            <value>Revue visuelle simulée</value>
+        </item>
     </checklist>
 ```
 
 ## D · Avant un exercice
 
-Écris les limites du modèle : une case cochée ne valide pas une vrille. Termine les deux dernières boîtes, checklist puis PropertyList. Les numéros vont de 0 à 3 sans répétition.
+Écris les limites du modèle : une liste parcourue ne valide pas une vrille. Termine les deux dernières boîtes, checklist puis PropertyList. Les numéros vont de 0 à 3 sans répétition.
 
 <!-- atelier-fichier: src/SW233/Checklists/sw233.xml -->
 ```xml
     <checklist n="3">
-        <title>SW233 · Avant exercice de décrochage (simulation)</title>
-        <item><name>Altitude, terrain et trafic</name><value>Marges revues</value></item>
-        <item><name>Harnais, verrière et objets</name><value>Revue visuelle simulée</value></item>
-        <item><name>Domaine de vol</name><value>Vrille non validée ; pas de démonstration de vrille</value></item>
+        <title>SW233 - Sécurité avant manœuvres - ASCOT (simulation)</title>
+        <item>
+            <name>A - Altitude de sécurité</name>
+            <value>Marges du scénario revues ; vrille non validée</value>
+        </item>
+        <item>
+            <name>S - Harnais serrés</name>
+            <value>Revue visuelle simulée des deux places</value>
+        </item>
+        <item>
+            <name>C - Verrière verrouillée</name>
+            <value>Revue visuelle simulée</value>
+        </item>
+        <item>
+            <name>O - Objets libres</name>
+            <value>Revue verbale des objets non arrimés</value>
+        </item>
+        <item>
+            <name>T - Circulation aérienne et terrain</name>
+            <value>Trafic et terrain du scénario revus</value>
+        </item>
     </checklist>
-    <!-- Short cockpit reminders; full simulation lists are above. -->
     <placards>
-        <card n="0"><line>AVANT DÉPART</line><line>LEST</line><line>COMMANDES</line><line>AÉROFREINS</line><line>VERRIÈRE</line></card>
-        <card n="1"><line>AVANT LARGAGE</line><line>ZONE</line><line>ALTITUDE</line><line>POSITION</line><line>TRAFIC</line></card>
-        <card n="2"><line>AVANT ATTERR.</line><line>AÉROFREINS</line><line>VENT</line><line>VITESSE</line><line>TRAFIC</line></card>
-        <card n="3"><line>AVANT DÉCROCH.</line><line>ALTITUDE</line><line>HARNAIS</line><line>VERRIÈRE</line><line>TRAFIC</line></card>
+        <card n="0">
+            <line>AVANT DÉCOLLAGE</line>
+            <line>B - LEST</line>
+            <line>C - COMMANDES</line>
+            <line>I - INSTRUMENTS/RADIO</line>
+            <line>S - DÉPORTEURS</line>
+            <line>T - COMPENSATEUR</line>
+            <line>R - LARGAGE</line>
+            <line>S - SANGLES/HARNAIS</line>
+            <line>C - VERRIÈRE/PORTE</line>
+        </card>
+        <card n="1">
+            <line>AVANT LARGAGE</line>
+            <line>A - ZONE DE LARGAGE</line>
+            <line>A - ALTITUDE</line>
+            <line>A - ASSIETTE/POSITION</line>
+            <line>T - CIRCULATION</line>
+        </card>
+        <card n="2">
+            <line>AVANT ATTERR.</line>
+            <line>S - DÉPORTEURS</line>
+            <line>W - VENT</line>
+            <line>A - VITESSE</line>
+            <line>R - RADIO</line>
+            <line>T - COMPENSATEUR/TRAFIC</line>
+            <line>S - SANGLES/HARNAIS</line>
+            <line>C - VERRIÈRE</line>
+        </card>
+        <card n="3">
+            <line>SÉCURITÉ</line>
+            <line>A - ALTITUDE</line>
+            <line>S - HARNAIS</line>
+            <line>C - VERRIÈRE</line>
+            <line>O - OBJETS LIBRES</line>
+            <line>T - CIRCULATION/TERRAIN</line>
+        </card>
     </placards>
 </PropertyList>
 ```
 
-**Essai :** quand le paquet sera chargé, ouvre **Aide → Aircraft Checklists**. Tu dois trouver les quatre titres et respectivement **5, 3, 4 et 3 lignes**. Si le menu est vide, vérifie le C majuscule de *Checklists* et le chemin d’inclusion dans la fiche set. Si tu coches une ligne, aucune gouverne ne doit se déplacer.
+**Essai :** quand le paquet sera chargé, ouvre **Aide → Aircraft Checklists**. Tu dois trouver les quatre titres et respectivement **8, 4, 7 et 5 lignes**. Si le menu est vide, vérifie le C majuscule de *Checklists* et le chemin d’inclusion dans la fiche set. La lecture des listes ne commande aucune gouverne ; ces listes ne comportent pas de cases à cocher.
 
 ## Recette complète : sw233-en.xml
 
@@ -270,9 +383,9 @@ setlistener(path,apply,1,0);
 
 ## G · Les lettres rouges sont un aide-mémoire
 
-**État du travail : les mots anglais ont été comparés aux IEA de 2017 ; les
-mots français restent à confirmer.** N'apprends pas la liste française
-provisoire comme une liste officielle des Cadets.
+**État du travail : mots anglais comparés aux IEA de 2017 ; explications
+françaises fournies par le responsable du projet.** Les lettres anglaises
+sont conservées. La version française des IEA n’a pas été consultée.
 
 Imagine huit petites cases, dans un ordre précis. Chacune contient une chose
 à vérifier. Si tu retires une case pour gagner de la place, tu changes ce
@@ -282,8 +395,8 @@ anglaises avant le décollage, au lieu des quatre rappels abrégés précédents
 ![Principe des initiales rouges, illustration explicative](../illustrations/initiales-checklist.svg)
 
 Cette illustration explique la construction ; ce n'est pas une capture de
-FlightGear. Les nouvelles captures dans le simulateur restent à ajouter
-après validation du texte français.
+FlightGear. Les captures natives de la section H montrent le résultat et le défaut
+de masquage restant à corriger.
 
 1. Ouvre la source indiquée dans [le registre des sources](../sources.md#vérifications-mnémotechniques--lot-vis-01p-17-novembre-2026).
    Lis la page imprimée 3-8 (page 28 du PDF). Relève chaque rubrique sans
@@ -320,3 +433,58 @@ Le raccourci Ctrl+L a été confirmé manuellement par l'utilisateur lors de
 l'essai précédent. Cela ne valide pas encore le nouveau contenu des cartes.
 La fiche native est une liste de textes : ne suppose pas qu'elle possède
 une case à cocher pour chaque élément.
+
+
+## H · Pourquoi lit-on « S — Déporteurs » en français ?
+
+Le mot anglais **Spoilers** commence par S. Le mot français **Déporteurs**
+commence par D. Si nous colorions seulement le D, BCISTRSC deviendrait une
+autre série de lettres ! Nous gardons donc le S à gauche, en rouge, et
+écrivons son explication française à droite. Même principe pour W — Vent.
+
+Le tableau français a été fourni par le responsable du projet le
+17 novembre 2026. Nous conservons cette origine dans le registre des sources.
+Une explication traduite n'est pas la preuve qu'un nouveau mot-check français
+est officiellement enseigné. La petite carte emploie des intitulés courts ;
+la fenêtre de checklist donne les intitulés français complets.
+
+Pour refaire cette étape :
+
+1. Recopie les lettres anglaises, dans l'ordre : BCISTRSC, AAAT, SWARTSC, ASCOT.
+2. Associe chaque lettre à une explication française du tableau fourni.
+3. Dans chaque champ `name`, écris la lettre, un tiret, puis l'explication.
+4. Dans chaque ligne de plaquette, garde la même lettre et le même ordre.
+5. Compte les rubriques : 8, 4, 7, 5. Il doit y en avoir autant en français
+   qu'en anglais et autant dans la fenêtre que sur la carte correspondante.
+6. Reconstruis les textures. Vérifie que le S de « S - DÉPORTEURS » est rouge,
+   que le D reste noir, et que les accents ne disparaissent pas.
+
+Les urgences GASP/VEST et GPAS/PTES sont inscrites au ROADMAP dans un travail
+séparé. Il faut encore vérifier le manuel bilingue de 2018 et définir ce
+que le prototype peut simuler avant de créer leurs listes. Les inspections
+au sol sont également recensées séparément.
+
+
+### Voir le résultat dans FlightGear
+
+![Plaquettes françaises, capture native statique](https://github.com/steveprudhomme/sw233-flightgear/releases/download/plaquettes-fr-33/fr-mots-checks.jpg)
+
+Repère les lettres rouges à gauche de chaque ligne. Les cartes conservent
+les mêmes initiales que les listes anglaises. L'anémomètre cache encore une
+partie des mots sur la droite : cette image montre un défaut à corriger,
+pas une validation de lisibilité complète.
+
+![Vue décalée montrant le masquage par la bague](https://github.com/steveprudhomme/sw233-flightgear/releases/download/plaquettes-fr-33/fr-mots-checks-droite.jpg)
+
+Ces vues utilisent le mode statique de développement, sans dynamique de vol.
+Les aiguilles visibles ne constituent pas un essai de performances. Pour
+refaire l'observation, charge le paquet, sélectionne Français dans le menu
+SW233 et compare la vue pilote avec une vue rapprochée du tableau. Regarde
+si la dernière lettre de chaque ligne est visible. Un test de fichiers peut
+réussir alors qu'une pièce en cache une autre : il faut les deux contrôles.
+
+![Texture française complète, avant projection sur les cartes 3D](https://github.com/steveprudhomme/sw233-flightgear/releases/download/plaquettes-fr-33/placards-fr.png)
+
+La texture est complète ; le masquage apparaît dans la scène 3D. Cette
+comparaison permet de chercher le problème dans la géométrie et la vue,
+plutôt que de supprimer des mots de la liste.

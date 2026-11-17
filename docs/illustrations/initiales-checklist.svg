@@ -3,10 +3,10 @@
 <rect width="960" height="360" fill="#e3e1d5"/>
 <g font-family="sans-serif" fill="#25272a">
 <text x="40" y="65" font-size="30">Une rubrique = une initiale rouge</text>
-<text x="60" y="150" font-size="50"><tspan fill="#a01820">B</tspan>ALLAST</text>
-<text x="60" y="220" font-size="50"><tspan fill="#a01820">C</tspan>ONTROLS</text>
-<text x="480" y="145" font-size="23">B puis C : conserver l'ordre.</text>
+<text x="60" y="150" font-size="50"><tspan fill="#a01820">B</tspan> - LEST</text>
+<text x="60" y="220" font-size="50"><tspan fill="#a01820">S</tspan> - DÉPORTEURS</text>
+<text x="480" y="145" font-size="23">B pour Ballast, S pour Spoilers.</text>
 <text x="480" y="190" font-size="23">Le titre reste noir.</text>
 <text x="480" y="235" font-size="23">Ne supprimer aucune rubrique.</text>
-<text x="40" y="315" font-size="21">Schéma pédagogique original • les mots français restent à confirmer.</text>
+<text x="40" y="315" font-size="21">Schéma pédagogique original • lettres anglaises, explications françaises.</text>
 </g></svg>
