@@ -2,21 +2,28 @@
 
 Construire une reproduction documentée, testable et progressivement fidèle du
 planeur biplace Schweizer **SGS 2-33**. SW233 est le nom du projet, pas la
-désignation constructeur. La livrée actuelle des Cadets est un objectif : le prototype filmé porte encore sa livrée jaune de développement.
+désignation constructeur. La livrée actuelle des Cadets est un objectif : les anciennes vidéos montrent la livrée jaune de développement ; les nouvelles captures montrent la variante provisoire C-FYLP.
 
 Projet **libre et open source**, sous [licence GPL-3.0-only](LICENSE.md). Les anciennes
 ressources FlightGear/JSBSim ne sont pas redistribuées ni relicenciées ici. Les versions déjà diffusées sous MIT conservent leur [notice historique](LICENSES/MIT-historical.txt).
 
 ## Réalisme du cockpit et suite du projet
 
-Premier réglage : peinture du tableau et façade radio séparées des matières
-des instruments, avec comparaison native sous deux orientations.
-[Tutoriel illustré](docs/construction/06-peinture.md#q--donner-une-matière-différente-à-la-peinture-du-tableau).
+Le prototype comprend maintenant une livrée jaune/bleu **C-FYLP**, deux occupants
+originaux du **CEC St-Jean**, des vitres d'instruments et des reflets de ciel statique
+sous le rendu ALS de FlightGear. Rodolphe Pagé porte le bleu à l'avant et Roméo Vachon
+le vert à l'arrière. Le menu **SW233** permet de masquer l'équipage ou la livrée.
+Les masses restent gérées par le menu Occupants et centrage.
 
-Le [ROADMAP harmonisé](ROADMAP.md) prévoit les reflets, la livrée actuelle de
-**C-FYLP** et deux occupants du **CEC St-Jean** : Rodolphe Pagé devant en bleu,
-Roméo Vachon derrière en vert. Ces éléments sont planifiés, pas encore modélisés.
-[Paquet et comparaison](https://github.com/steveprudhomme/sw233-flightgear/releases/tag/cockpit-materiaux-38).
+**Limites :** livrée provisoire, références récentes de C-FYLP manquantes ; visages et
+proportions artistiques ; écussons de projet, aucun grade attribué. Les ailes fictives
+sont une option désactivée par défaut. Ce lot n'est pas une reproduction photoréaliste achevée.
+
+[Paquet, captures et atlas de 184 pièces](https://github.com/steveprudhomme/sw233-flightgear/releases/tag/visuals-39) ·
+[Tutoriel verre](docs/construction/19-realisme.md) · [Livrée](docs/construction/20-livree.md) ·
+[Équipage](docs/construction/21-equipage.md) · [Travaux restants](ROADMAP.md).
+
+![Prototype C-FYLP dans FlightGear](https://github.com/steveprudhomme/sw233-flightgear/releases/download/visuals-39/livery-left.jpg)
 
 ## Checklists français / anglais
 

@@ -49,3 +49,10 @@ Pour créer un fichier indiqué sur une fiche, ouvre le Bloc-notes, colle le pre
 **D’où vient cet ordre ?** Au début du projet, le dépôt et la licence ont précédé l’avion ; une silhouette et le calcul du vol ont précédé les instruments. Les tests ont d’abord produit un rejeu dessiné. Les manuels et les photos ont ensuite guidé la seconde forme, puis le Pitot et la ficelle. Le premier vol dans FlightGear a révélé un siège invisible et une coque qui cachait les commandes. C’est pourquoi tu fabriqueras directement la forme corrigée. Ensuite sont venus le décor de CYJN, les deux angles de caméra, le grain du tableau et le lecteur web. La GPL-3.0-only s’applique à la version que tu reconstruis ; les anciennes versions MIT conservent leur notice. Les [commits](https://github.com/steveprudhomme/sw233-flightgear/commits/main/) permettent de revoir les versions, mais tu n’as pas besoin de Git pour apprendre.
 
 **Ce que “depuis zéro” veut dire ici.** Tu écris les fichiers de l’aéronef avec les blocs du livre, sans les prendre dans un avion déjà construit. FlightGear, JSBSim et Python sont les outils installés. Pour rejouer exactement notre film, la dernière séance réemploie les outils de tournage du projet et explique chacun. Aucune étape ne demande une IA.
+
+
+## Nouveaux ateliers de réalisme
+
+- [19. Verre et reflets](19-realisme.md) : séparer le verre, comparer dans FlightGear et vérifier les commandes.
+- [20. Livrée provisoire C-FYLP](20-livree.md) : peindre une surface, lire les lettres des deux côtés, reconnaître les références manquantes.
+- [21. Deux occupants](21-equipage.md) : construire les corps et les tenues, afficher selon les masses, corriger les raccords.

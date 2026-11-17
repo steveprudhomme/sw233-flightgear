@@ -87,10 +87,20 @@ La photo C-FYLP montre une bouche ronde au-dessus du centre. Les disques et trai
 
 <!-- atelier-fichier: tools/panel.py -->
 ```python
+    # Original identification plaque below the altimeter: artistic placement,
+    # not a measured feature of the current C-FYLP cockpit. No new geometry.
+    x, v = xy(-.22, -.05)
+    half_width, half_height = .0575*w/.8, .012*h/.4
+    pen.rounded_rectangle((x-half_width, v-half_height, x+half_width, v+half_height),
+                          radius=3, fill="#101518", outline="#707772", width=2)
+    label(-.22, -.05, "C-FYLP", 27)
     # The central vent is now separate 3D geometry; leave the paint beneath it plain.
     for y, z in [(-.30,.15),(-.36,.04),(.33,.11),(-.085,.24),(.082,.24)]:
         screw(y,z)
 ```
+
+
+La petite plaque **C-FYLP** se place sous la légende de l'altimètre, au centre (y=-0,22 m ; z=-0,05 m). Son rectangle mesure 115 × 24 mm, soit environ 221 × 46 pixels. Le bas de la plaque reste 18 mm au-dessus du bord inférieur du tableau. La radio et les cartes occupent d'autres zones ; le largage est au centre, à distance de cette plaque. La position, la bordure et la police sont un choix artistique de notre maquette, pas un détail confirmé de l'appareil actuel. Cette inscription est peinte dans la texture : aucune nouvelle pièce 3D n'est nécessaire.
 
 ## D bis · Refaire les quatre plaquettes et la façade radio
 

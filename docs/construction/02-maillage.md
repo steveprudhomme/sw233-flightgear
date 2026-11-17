@@ -702,6 +702,25 @@ for langue in ("fr", "en"):
              [(-.023,-.033),(.023,-.033),(.023,.033),(-.023,.033)]])
 ```
 
+## I sexies · Vitres séparées des aiguilles
+
+Une vitre est un disque très mince devant le cadran. Son emplacement est une
+estimation du modèle. Nous gardons les aiguilles et leur animation inchangées.
+La matière laisse passer 96 % dans le paramètre AC3D ; ce n’est pas une mesure
+optique du vrai verre. La fiche 19 explique l’effet d’environnement.
+
+<!-- atelier-fichier: fabrique.py -->
+```python
+mat.append(("verre-cadrans", (.82,.90,.94), .96))
+for nom,y,z,r in [("ias",.17,.14,.067),("alt",-.22,.087,.075),("vsi",.295,.022,.055)]:
+    centre = (px+.019,y,z)
+    for i in range(64):
+        a,b = 2*pi*i/64,2*pi*(i+1)/64
+        poly(nom+"-vitre",len(mat)-1,centre,
+             (px+.019,y+r*cos(a),z+r*sin(a)),
+             (px+.019,y+r*cos(b),z+r*sin(b)))
+```
+
 ## J · Écris le fichier que lit le simulateur
 
 Le fichier commence par `AC3Db`, la palette, puis `OBJECT world` : la boîte qui contient toutes les pièces. Pour chaque pièce, `numvert` compte les coins et `numsurf` compte les faces ; `refs 4` annonce quatre numéros de coins pour un quadrilatère. Les numéros commencent à zéro. Un coin (x, y, z) de ton cahier devient **(x, z, −y)** dans notre AC3D : pour une extrémité à droite, la troisième colonne devient négative. La section en U définit l’ouverture. L’exporteur écrit toutes les faces sans en supprimer selon leur position. Les rehauts des graduations et du fil servent à leur lisibilité dans le rendu.

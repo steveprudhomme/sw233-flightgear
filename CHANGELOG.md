@@ -1,5 +1,15 @@
 # Historique
 
+
+## 2026-11-17 — visuals-39 : verre, livrée provisoire et équipage
+
+- Effets locaux de ciel statique sous ALS, vitres séparées pour trois instruments.
+- Fuselage C-FYLP jaune/bleu provisoire, sans prétendre reproduire la livrée actuelle.
+- Deux personnages originaux avec noms, tenues, coutures, poches et harnais ; visibilité liée aux masses existantes, tête et cou avant cachés en vue pilote.
+- Tutoriels 19–21 avec code complet, captures natives et atlas de 184 nouvelles pièces.
+- Validation récursive des sous-modèles, textures et effets ; tests de visibilité et de géométrie.
+- Limites conservées au ROADMAP : photos actuelles, insignes exacts, niveaux de détail et animation des personnages, mesure du coût graphique hors plafond d'affichage.
+
 ## 2026-11-17 — cockpit-materiaux-38
 
 - ROADMAP harmonisé et anciens protocoles archivés ; reflets, livrée C-FYLP et deux occupants CEC St-Jean planifiés.

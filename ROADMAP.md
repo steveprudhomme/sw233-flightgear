@@ -12,11 +12,11 @@ Prototype de simulation sous GPL-3.0-only, non certifié pour l’instruction r�
 
 | Domaine | Réalisé | Limite restante |
 |---|---|---|
-| Cockpit | Enveloppe, cadres, relief des instruments, calage, COM1 et compas | Matériaux simplifiés ; profondeurs estimées ; audio radio non validé |
+| Cockpit | Enveloppe, cadres, relief des instruments, calage, COM1 et compas | Reflets de ciel statique sous ALS ; profondeurs estimées ; audio radio non validé |
 | Checklists | FR/EN, accents, initiales rouges, souris et format 1024 × 600 | Ctrl+L physiquement confirmé ouvert ; essai fermé encore à préciser |
-| Extérieur | Prototype jaune, spoilers et ficelle animés | Livrée actuelle et immatriculation non reproduites |
-| Occupants | Masses et centrage réglables | Aucun équipage humain détaillé |
-| Validation | Essais natifs Windows à CYJN, 25 tests dans le lot accents, reconstruction du tutoriel | Polaire réelle, Linux et relecture autonome du tutoriel non validés |
+| Extérieur | Livrée jaune/bleu C-FYLP provisoire, spoilers et ficelle animés | Photos récentes et marquages complets attendus |
+| Occupants | Deux personnages détaillés bleu/vert, noms, harnais et visibilité liée aux masses | Proportions artistiques ; insignes officiels et animations non validés |
+| Validation | Essais natifs Windows à CYJN, 35 tests dans le lot visuel, reconstruction du tutoriel | Polaire réelle, Linux et relecture autonome du tutoriel non validés |
 
 Statuts : **en cours** = lot commencé ; **prévu** = travail accepté à réaliser ; **attend une référence** = détail non confirmé ; **terminé** = preuve publiée. Les anciens protocoles sont dans l’[archive du 17 novembre](docs/planification/archive-roadmap-2026-11-17.md), et ne constituent plus une deuxième liste active.
 
@@ -43,28 +43,34 @@ Autorisé le 17 novembre 2026. Réaliser des lots séparés et commiter leurs pr
 
 Répartition demandée : agent livrée (VIS-02a/b), agent équipage (VIS-04a/b), agent de revue indépendante ; intégration, effets VIS-01v/w, essais natifs et publication par le mainteneur de la session. Fichiers séparés, puis revue croisée avant intégration.
 
-- [ ] Examiner les effets FlightGear installés et réaliser une comparaison native avant/après ; garder un repli transparent si le rendu ne supporte pas l’effet choisi.
-- [ ] Ajouter des vitres d’instruments indépendantes, contrôler les interactions et documenter tout reflet approximatif.
-- [ ] Rechercher les photos de C-FYLP et les références officielles des tenues. Si la date ou un insigne manque, livrer une variante explicitement provisoire sans la présenter comme une reproduction actuelle certifiée.
-- [ ] Développer des sources éditables de textures et de géométrie ; préserver une reconstruction complète depuis le tutoriel et ne pas versionner les produits générés.
-- [ ] Réaliser les deux personnages avec tenues, poches, coutures, étiquettes et harnais ; ne pas attribuer de grade ou qualification non confirmé. Les ailes peuvent être préparées en variante à qualification explicite, pas attribuées silencieusement.
-- [ ] Prévoir des commandes de visibilité pour comparer les occupants et éviter de gêner la vue pilote ; conserver les masses dans le système existant.
+- [x] Examiner les effets FlightGear installés et réaliser une comparaison native avant/après ; garder un repli transparent si le rendu ne supporte pas l’effet choisi.
+- [x] Ajouter des vitres d’instruments indépendantes, contrôler les interactions et documenter tout reflet approximatif.
+- [x] Rechercher les photos de C-FYLP et les références officielles des tenues. Si la date ou un insigne manque, livrer une variante explicitement provisoire sans la présenter comme une reproduction actuelle certifiée.
+- [x] Développer des sources éditables de textures et de géométrie ; préserver une reconstruction complète depuis le tutoriel et ne pas versionner les produits générés.
+- [x] Réaliser les deux personnages avec tenues, poches, coutures, étiquettes et harnais ; ne pas attribuer de grade ou qualification non confirmé. Les ailes peuvent être préparées en variante à qualification explicite, pas attribuées silencieusement.
+- [x] Prévoir des commandes de visibilité pour comparer les occupants et éviter de gêner la vue pilote ; conserver les masses dans le système existant.
 - [ ] Capturer chaque lot dans le simulateur, produire un atlas des nouvelles pièces, contrôler paquet et recettes, actualiser README/CHANGELOG/ROADMAP et publier sur GitHub.
 
-### VIS-01v — reflets de la verrière (prévu)
+**Livraison visuelle 39 :** [preuves et paquet](https://github.com/steveprudhomme/sw233-flightgear/releases/tag/visuals-39),
+[tutoriels 19 à 21](docs/construction/19-realisme.md). Les cases non cochées ci-dessous
+restent des critères plus larges que le prototype : elles ne sont pas effacées par sa publication.
 
-- [ ] Relever les panneaux existants, leurs normales, transparence et ordre de rendu.
-- [ ] Examiner les effets disponibles dans la version FlightGear testée ; distinguer éclat spéculaire et véritable réflexion d’environnement.
-- [ ] Prototyper un effet réversible sur un panneau, puis régler intensité, teinte et dépendance à l’angle de vue.
-- [ ] Étendre aux panneaux validés ; garder ficelle, terrain et instruments visibles de l’intérieur et de l’extérieur.
+### VIS-01v — reflets de la verrière (prototype vérifié)
+
+- [x] Relever les panneaux existants, leurs normales, transparence et ordre de rendu.
+- [x] Examiner les effets disponibles dans la version FlightGear testée ; distinguer éclat spéculaire et véritable réflexion d’environnement.
+- [x] Prototyper un effet réversible sur un panneau, puis régler intensité, teinte et dépendance à l’angle de vue.
+- [x] Étendre aux panneaux validés ; garder ficelle, terrain et instruments visibles de l’intérieur et de l’extérieur.
 - [ ] Tester soleil devant/derrière, vue oblique, tri des transparences et coût d’affichage ; illustrer avant/après.
+
+**Vérifié :** comparaisons force 0/1/réglée, trois vues, contrôles natifs de calage et COM1. Image de ciel statique ; repli transparent. Mesures au plafond proche de 60 Hz : coût GPU isolé non établi. Plusieurs soleils et autres moteurs de rendu restent à tester.
 
 **Critère :** reflet observable sans opacifier la verrière, sans faces disparues ni affirmation de réflexion dynamique si l’effet n’en produit pas.
 
-### VIS-01w — vitres et reflets des cadrans (prévu)
+### VIS-01w — vitres et reflets des cadrans (prototype vérifié)
 
-- [ ] Identifier les instruments munis de verre dans les photos ; conserver un espace devant les aiguilles et textes.
-- [ ] Construire une vitre pilote sur un instrument avec matériau indépendant.
+- [x] Identifier les instruments munis de verre dans les photos ; conserver un espace devant les aiguilles et textes.
+- [x] Construire une vitre pilote sur un instrument avec matériau indépendant.
 - [ ] Tester face/biais et plusieurs éclairages ; régler les reflets pour conserver graduations et aiguilles lisibles.
 - [ ] Étendre aux instruments appropriés, vérifier calage et radio, puis produire un atlas et un tutoriel illustré.
 
@@ -79,7 +85,9 @@ Répartition demandée : agent livrée (VIS-02a/b), agent équipage (VIS-04a/b),
 - [ ] Relever les limites jaune/bleu, symboles, typographie, immatriculation et inscriptions réellement lisibles.
 - [ ] Produire une fiche de référence distinguant dimensions mesurées, proportions photographiques et éléments encore inconnus.
 
-### VIS-02b — dépliage et peinture de l’appareil (prévu après VIS-02a)
+### VIS-02b — peinture de l’appareil (variante provisoire intégrée)
+
+Livré : peinture du fuselage et immatriculation lisible sur les deux flancs. Bandes et placements artistiques, sans emblème inventé. [Recherche](docs/references/livree-recherche.md). Les critères ci-dessous concernent la reproduction définitive.
 
 - [ ] Vérifier silhouette, symétries et pièces mobiles ; préparer des coordonnées UV par pièce.
 - [ ] Appliquer une grille de contrôle pour repérer étirements et inversions.
@@ -92,24 +100,26 @@ Répartition demandée : agent livrée (VIS-02a/b), agent équipage (VIS-04a/b),
 
 ## Deux occupants détaillés
 
-### VIS-04a — références des tenues (prévu)
+### VIS-04a — références des tenues (partiel, références officielles manquantes)
 
-- [ ] Poste avant : cadet en combinaison de vol bleue ; poste arrière : officier en combinaison verte, conformément au choix demandé.
+- [x] Poste avant : cadet en combinaison de vol bleue ; poste arrière : officier en combinaison verte, conformément au choix demandé.
 - [ ] Vérifier séparément coupe, poches, fermeture, col, coutures, chaussures et harnais.
 - [ ] Documenter les badges, ailes, écussons, grades et étiquettes nominatives pour chaque tenue ; ne pas transposer les règles d’une tenue de cérémonie à une combinaison.
 - [x] Noms et unité choisis : **Rodolphe Pagé**, cadet devant en bleu ; **Roméo Vachon**, officier derrière en vert ; **CEC St-Jean** pour les deux.
 - [ ] Confirmer les grades, qualifications et écussons exacts ; les noms désignent ici des personnages de simulation, sans portrait réel attesté.
 - [ ] Créer une planche de références avec dates, provenance, droits et incertitudes.
 
-### VIS-04b — modèles humains et intégration (prévu après VIS-04a)
+### VIS-04b — modèles humains et intégration (prototype vérifié)
 
-- [ ] Construire deux personnages originaux en posture assise, avec proportions et détails adaptés aux deux places.
-- [ ] Modéliser les combinaisons : plis aux articulations, épaisseur, poches, coutures et fermeture ; textures de tissu sans bruit exagéré.
+- [x] Construire deux personnages originaux en posture assise, avec proportions et détails adaptés aux deux places.
+- [x] Modéliser les combinaisons : plis aux articulations, épaisseur, poches, coutures et fermeture ; textures de tissu sans bruit exagéré.
 - [ ] Créer badges, ailes et name tags séparés avec relief discret ; vérifier orientation et lisibilité sans inventer de décorations.
 - [ ] Ajuster harnais, mains, pieds, sièges et commandes ; éviter les traversées de verrière et de fuselage.
 - [ ] Prévoir visibilité et niveaux de détail ; masquer si nécessaire la tête du personnage dont on occupe le point de vue, sans supprimer le corps visible utile.
-- [ ] Relier la présence visuelle aux scénarios d’occupants sans compter deux fois leur masse dans le FDM.
+- [x] Relier la présence visuelle aux scénarios d’occupants sans compter deux fois leur masse dans le FDM.
 - [ ] Contrôler vues avant/arrière/extérieures, commandes mobiles et performances ; illustrer chaque pièce et mettre à jour les aperçus.
+
+**Vérifié :** deux silhouettes, avant seul, arrière seul et aucun ; masse visuelle sans écriture FDM ; tête et cou avant masqués. 178 objets, textures originales, corrections de raccords après captures. Les mains restent fixes, aucun niveau de détail adaptatif et les écussons officiels restent attendus.
 
 **Critère :** deux silhouettes crédibles, tenue bleue devant et verte derrière, détails sourcés, aucune obstruction de la vue pilote ou double comptage de masse. Les dimensions humaines resteront des choix de modèle, pas des mesures de pilotes réels.
 

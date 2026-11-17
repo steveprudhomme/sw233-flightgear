@@ -11,10 +11,14 @@ from pathlib import Path
 from PIL import Image, ImageOps
 
 if __package__:
+    from .crew import finish_crew
     from .launch import validate_resources
+    from .livery import finish_livery
     from .panel import finish_panel
 else:
+    from crew import finish_crew
     from launch import validate_resources
+    from livery import finish_livery
     from panel import finish_panel
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -34,6 +38,8 @@ def package(output: Path, preview: Path | None = None) -> Path:
             image.verify()
     shutil.copytree(ROOT / "src" / "SW233", destination)
     finish_panel(destination / "Models")
+    finish_livery(destination / "Models")
+    finish_crew(destination / "Models")
     if preview is not None:
         previews = destination / 'Previews'
         previews.mkdir()

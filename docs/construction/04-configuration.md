@@ -19,7 +19,7 @@ Commence par une seule racine PropertyList. Dans sim, la description est le titr
     <sim>
         <description>Schweizer SGS 2-33 — Cadets de l’aviation royale du Canada (prototype)</description>
         <author>Steve Prud'Homme et contributeurs SW233</author>
-        <long-description>Prototype libre du Schweizer SGS 2-33 pour FlightGear. Licence GPL-3.0-only. Aerateur central et bagues anemometre, altimetre et variometre en relief 3D fixe. Radio COM1 generique : affichage actif, reglages 1 MHz et 25 kHz ; audio non valide. Calage altimetre lisible en inHg. Compas anime avec boitier arrondi, joint et vis en relief ; rose texturee et caracteres lisses. Tableau noir affine, vis et supports de cartes textures. Plaquettes et listes FR/EN par menu ou Ctrl+L ; initiales mnemotechniques rouges, cartes de droite degagees. Cockpit raccorde, vitrage facette et contours de porte fixes ; commandes et masses configurables ; modele de vol experimental. Projet aux couleurs des Cadets de l'aviation royale du Canada : livree finale encore a realiser. Teste sous Windows avec FlightGear 2024.1.7 ; Linux non valide.</long-description>
+        <long-description>Prototype libre du Schweizer SGS 2-33 pour FlightGear. Licence GPL-3.0-only. Aerateur central et bagues anemometre, altimetre et variometre en relief 3D fixe. Radio COM1 generique : affichage actif, reglages 1 MHz et 25 kHz ; audio non valide. Calage altimetre lisible en inHg. Compas anime avec boitier arrondi, joint et vis en relief ; rose texturee et caracteres lisses. Tableau noir affine, vis et supports de cartes textures. Plaquettes et listes FR/EN par menu ou Ctrl+L ; initiales mnemotechniques rouges, cartes de droite degagees. Cockpit raccorde, vitrage facette et contours de porte fixes ; commandes et masses configurables ; modele de vol experimental. Projet aux couleurs des Cadets de l'aviation royale du Canada : livree jaune/bleu C-FYLP provisoire, non attestee actuelle. Deux personnages originaux bleu/vert, CEC St-Jean ; insignes generiques sans grade. Reflets de ciel statique sous ALS, transparence de repli. Teste sous Windows avec FlightGear 2024.1.7 ; Linux non valide.</long-description>
         <aircraft-version>0.1.0-dev</aircraft-version>
         <minimum-fg-version>2024.1.7</minimum-fg-version>
         <flight-model>jsb</flight-model>
@@ -72,9 +72,19 @@ Ce chemin part du dossier SW233, pas du dossier Models. La liste sera écrite à
             <item><label>Checklists / Listes</label><binding>
                 <command>dialog-show</command><dialog-name>checklist</dialog-name>
             </binding></item>
+            <item><label>Equipage visible / Crew</label><binding><command>property-toggle</command><property>/sim/sw233/visuals/crew</property></binding></item>
+            <item><label>Livree Cadets provisoire / Livery</label><binding><command>property-toggle</command><property>/sim/sw233/visuals/livery</property></binding></item>
+            <item><label>Ailes fictives / Fictional wings</label><binding><command>property-toggle</command><property>/sim/sw233/visuals/wings</property></binding></item>
         </menu></default></menubar>
         <checklists include="Checklists/sw233.xml"/>
         <sw233>
+            <visuals>
+                <canopy-reflection type="double">0.25</canopy-reflection>
+                <instrument-reflection type="double">0.12</instrument-reflection>
+                <crew type="bool">true</crew>
+                <livery type="bool">true</livery>
+                <wings type="bool">false</wings>
+            </visuals>
             <language type="string">fr</language>
             <translations>
                 <fr include="Checklists/sw233.xml"/>
@@ -105,6 +115,21 @@ Le chemin est relatif à ce fichier : sw233.ac est dans le même dossier. Les ac
 ```xml
 <PropertyList>
   <path>sw233.ac</path>
+  <model><path>livery.xml</path></model>
+  <model><path>crew.xml</path></model>
+  <effect>
+    <inherits-from>Aircraft/SW233/Effects/canopy-glass</inherits-from>
+    <object-name>pare-brise</object-name>
+    <object-name>verriere</object-name>
+    <object-name>vitrage-droit</object-name>
+    <object-name>vitrage-gauche</object-name>
+  </effect>
+  <effect>
+    <inherits-from>Aircraft/SW233/Effects/instrument-glass</inherits-from>
+    <object-name>ias-vitre</object-name>
+    <object-name>alt-vitre</object-name>
+    <object-name>vsi-vitre</object-name>
+  </effect>
 ```
 
 ## Centaines de pieds

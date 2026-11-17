@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- SPDX-License-Identifier: GPL-3.0-only -->
+<PropertyList>
+  <name>Aircraft/SW233/Effects/canopy-glass</name>
+  <inherits-from>Effects/glass</inherits-from>
+  <parameters>
+    <!-- Built-in fair-sky cubemap: a static environment, not the live scenery. -->
+    <use-reflection type="int">1</use-reflection>
+    <reflection-strength><use>/sim/sw233/visuals/canopy-reflection</use></reflection-strength>
+    <frost-level type="float">0</frost-level>
+    <fog-level type="float">0</fog-level>
+    <rnorm type="float">0</rnorm><gsnorm type="float">0</gsnorm>
+  </parameters>
+</PropertyList>

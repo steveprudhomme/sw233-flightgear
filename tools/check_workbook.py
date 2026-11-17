@@ -9,7 +9,8 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 BLOCK = re.compile(
-    r"<!-- atelier-fichier: ([^\n]+?) -->\n```(?:python|xml|nasal)\n(.*?)\n```", re.S)
+    r"<!-- atelier-fichier: ([^\n]+?) -->\n```(?:python|xml|nasal)\n(.*?)\n```", re.S
+)
 
 
 def rebuild(destination):
@@ -24,16 +25,19 @@ def rebuild(destination):
         target.write_text("\n".join(fragments) + "\n", encoding="utf-8")
     for recipe in ("fabrique.py", "dynamique.py"):
         subprocess.run([sys.executable, recipe], cwd=destination, check=True)
-    for src in sorted((ROOT/"src/SW233").rglob("*")):
+    for src in sorted((ROOT / "src/SW233").rglob("*")):
         if src.is_file():
             name = src.relative_to(ROOT)
-            if (destination/name).read_text(encoding="utf-8") != src.read_text(encoding="utf-8"):
+            if (destination / name).read_text(encoding="utf-8") != src.read_text(encoding="utf-8"):
                 raise ValueError(f"Reconstruction différente : {name}")
-    panel = Path("tools/panel.py")
-    if ast.dump(ast.parse((destination/panel).read_text(encoding="utf-8"))) != ast.dump(
-        ast.parse((ROOT/panel).read_text(encoding="utf-8-sig"))
-    ):
-        raise ValueError("La recette du tableau ne correspond pas à la leçon")
+    for recipe in ("tools/panel.py", "tools/crew.py", "tools/livery.py"):
+        reconstructed = destination / recipe
+        if not reconstructed.is_file():
+            raise ValueError(f"Recette absente des blocs du tutoriel : {recipe}")
+        lesson_ast = ast.parse(reconstructed.read_text(encoding="utf-8-sig"))
+        source_ast = ast.parse((ROOT / recipe).read_text(encoding="utf-8-sig"))
+        if ast.dump(lesson_ast) != ast.dump(source_ast):
+            raise ValueError(f"La recette ne correspond pas à la leçon : {recipe}")
     print(f"Reconstruction vérifiée : {destination}")
 
 

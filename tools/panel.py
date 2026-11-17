@@ -47,6 +47,13 @@ def finish_panel(models: Path):
                             (.295,.022,.063,"VERTICAL SPEED")]:
         # All three instrument rims and their fasteners are separate 3D objects.
         label(y,z-r-.018,title,17)
+    # Original identification plaque below the altimeter: artistic placement,
+    # not a measured feature of the current C-FYLP cockpit. No new geometry.
+    x, v = xy(-.22, -.05)
+    half_width, half_height = .0575*w/.8, .012*h/.4
+    pen.rounded_rectangle((x-half_width, v-half_height, x+half_width, v+half_height),
+                          radius=3, fill="#101518", outline="#707772", width=2)
+    label(-.22, -.05, "C-FYLP", 27)
     # The central vent is now separate 3D geometry; leave the paint beneath it plain.
     for y, z in [(-.30,.15),(-.36,.04),(.33,.11),(-.085,.24),(.082,.24)]:
         screw(y,z)

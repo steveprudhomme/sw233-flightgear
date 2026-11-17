@@ -1,5 +1,20 @@
 <PropertyList>
   <path>sw233.ac</path>
+  <model><path>livery.xml</path></model>
+  <model><path>crew.xml</path></model>
+  <effect>
+    <inherits-from>Aircraft/SW233/Effects/canopy-glass</inherits-from>
+    <object-name>pare-brise</object-name>
+    <object-name>verriere</object-name>
+    <object-name>vitrage-droit</object-name>
+    <object-name>vitrage-gauche</object-name>
+  </effect>
+  <effect>
+    <inherits-from>Aircraft/SW233/Effects/instrument-glass</inherits-from>
+    <object-name>ias-vitre</object-name>
+    <object-name>alt-vitre</object-name>
+    <object-name>vsi-vitre</object-name>
+  </effect>
   <animation>
     <type>rotate</type>
     <object-name>alt-centaines</object-name>
