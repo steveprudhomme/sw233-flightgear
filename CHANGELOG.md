@@ -1,5 +1,12 @@
 # Historique
 
+## 2026-11-17 — détails de référence et ouverture au sol planifiée
+
+- Lot02 : onze fichiers préservés, doublons identifiés et analyse détaillée des pièces.
+- Douze sous-tâches VIS-05 : ouverture de verrière, poste arrière, harnais, Pitot, largage arrière, patin, queue et marquages.
+- Dimensions inconnues et interprétations à confirmer explicites ; aucune modification du modèle dans ce lot documentaire.
+
+
 ## 2026-11-17 — reprise visuelle planifiée, lot de références01
 
 - Dix originaux conservés localement avec empreintes, galerie et analyse détaillée.

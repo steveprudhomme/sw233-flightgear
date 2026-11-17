@@ -72,3 +72,7 @@ Distinguer peinture brillante, vitrage, métal, caoutchouc et revêtement de sur
 ## Acceptation du prochain travail
 
 La priorité devient **formes avant et verrière**, après constitution des vues comparables. Pour chaque famille : référence identifiée, relevé explicite, modification de géométrie, capture native avant/après avec caméra et lumière identiques, retour visuel utilisateur, recette du tutoriel et contrôle des animations. Les tests techniques restent nécessaires mais la ligne « fidélité visuelle acceptée » reste ouverte tant que cette comparaison n'est pas satisfaisante. Aucun nouveau résultat visuel n'est revendiqué par ce dossier de planification.
+
+## Complément reçu
+
+Le [lot02](analyse-details-lot-02.md) détaille maintenant la verrière ouverte, le panneau arrière, les coussins, harnais, empennages et accessoires. L’ouverture au sol est une exigence fonctionnelle explicite, décomposée dans VIS-05c.1–c.3.

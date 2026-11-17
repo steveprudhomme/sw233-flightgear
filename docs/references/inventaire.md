@@ -29,3 +29,7 @@ Les 19 fichiers sources sont conservés dans originaux/ dans la copie locale du 
 ## Complément extérieur — lot01
 
 Dix originaux supplémentaires conservés sans modification dans `originaux/exterieur-lot-01/`, galerie locale `index.html`. [Analyse par image](analyse-exterieur-lot-01.md) et [empreintes / dimensions](exterieur-lot-01.json). Ce lot inclut une illustration artistique et un dessin trois-vues, distincts des photos.
+
+## Complément de détails — lot02
+
+Onze fichiers préservés dans `originaux/details-lot-02/` avec galerie locale ; six nouveaux contenus, quatre reprises exactes du lot01 et une copie exacte de DET-05. [Analyse détaillée](analyse-details-lot-02.md) · [Manifeste et doublons](details-lot-02.json).

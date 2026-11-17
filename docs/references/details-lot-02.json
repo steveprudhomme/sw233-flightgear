@@ -1,0 +1,167 @@
+[
+  {
+    "id": "DET-01",
+    "filename": "484471667_1050778250416636_5143996127940482682_n.jpg",
+    "sha256": "b1178bd21f40ff84740fe2da33366bb997eb940b19f7012935e564fb2c548fae",
+    "pixels": [
+      960,
+      720
+    ],
+    "duplicate_of": null,
+    "source": "Fourni par utilisateur",
+    "received": "2026-11-17",
+    "photo_date": "non établie",
+    "author": "non établi",
+    "rights": "non établis ; non relicencié GPL"
+  },
+  {
+    "id": "DET-02",
+    "filename": "484876854_1050777777083350_8796843938743434327_n.jpg",
+    "sha256": "87b18293f93b8a14ed560144c3686610f5fdb205488125e091fb4b9f9ad81724",
+    "pixels": [
+      960,
+      960
+    ],
+    "duplicate_of": null,
+    "source": "Fourni par utilisateur",
+    "received": "2026-11-17",
+    "photo_date": "non établie",
+    "author": "non établi",
+    "rights": "non établis ; non relicencié GPL"
+  },
+  {
+    "id": "DET-03",
+    "filename": "576493756_851877043862334_4759751965595203080_n.jpg",
+    "sha256": "f08d193100ea8f670cab63c85e9ced0c8ba32955340b05a6191209079ebe2765",
+    "pixels": [
+      2048,
+      1538
+    ],
+    "duplicate_of": null,
+    "source": "Fourni par utilisateur",
+    "received": "2026-11-17",
+    "photo_date": "non établie",
+    "author": "non établi",
+    "rights": "non établis ; non relicencié GPL"
+  },
+  {
+    "id": "DET-04",
+    "filename": "576657644_851876897195682_4390166373214080286_n.jpg",
+    "sha256": "e26c7c84386786bc980083f6cc5f6e3c191880e18ac6d7012845c4a27c822ea4",
+    "pixels": [
+      2048,
+      1365
+    ],
+    "duplicate_of": null,
+    "source": "Fourni par utilisateur",
+    "received": "2026-11-17",
+    "photo_date": "non établie",
+    "author": "non établi",
+    "rights": "non établis ; non relicencié GPL"
+  },
+  {
+    "id": "DET-05",
+    "filename": "576452934_851876773862361_2496302884690042036_n.jpg",
+    "sha256": "1d512053c970dfa621f13eaffa664a3e39c643df528b4a2911e171aaf16958e8",
+    "pixels": [
+      2048,
+      1537
+    ],
+    "duplicate_of": null,
+    "source": "Fourni par utilisateur",
+    "received": "2026-11-17",
+    "photo_date": "non établie",
+    "author": "non établi",
+    "rights": "non établis ; non relicencié GPL"
+  },
+  {
+    "id": "DET-06",
+    "filename": "853711557_1134930308890338_2861385139319618858_n.jpg",
+    "sha256": "ef18a5294250ef76f72334c0942642a4c0c438c35c4fbaeb46fb6dfc143f1c2a",
+    "pixels": [
+      1440,
+      1440
+    ],
+    "duplicate_of": null,
+    "source": "Fourni par utilisateur",
+    "received": "2026-11-17",
+    "photo_date": "non établie",
+    "author": "non établi",
+    "rights": "non établis ; non relicencié GPL"
+  },
+  {
+    "id": "DET-07",
+    "filename": "888063687_1561452889356235_6595528562991814277_n.jpg",
+    "sha256": "2fbda0f9ca70997fb25bf8ea4ce0529d9afc68ef35066263c40659ffe7327a1b",
+    "pixels": [
+      2016,
+      1134
+    ],
+    "duplicate_of": "EXT-01",
+    "source": "Fourni par utilisateur",
+    "received": "2026-11-17",
+    "photo_date": "non établie",
+    "author": "non établi",
+    "rights": "non établis ; non relicencié GPL"
+  },
+  {
+    "id": "DET-08",
+    "filename": "841099659_18115421924518465_3488248020240132807_n.jpg",
+    "sha256": "676a5091e1eda083faea22227db300ed32790a32f7486b9b70cfdb94e1146267",
+    "pixels": [
+      2048,
+      1364
+    ],
+    "duplicate_of": "EXT-02",
+    "source": "Fourni par utilisateur",
+    "received": "2026-11-17",
+    "photo_date": "non établie",
+    "author": "non établi",
+    "rights": "non établis ; non relicencié GPL"
+  },
+  {
+    "id": "DET-09",
+    "filename": "843324439_18115421933518465_1258995022678257876_n.jpg",
+    "sha256": "7483d17c5960e3222d869f799ab6a16266c9f91eda4d4bc5b0d9748d630856b6",
+    "pixels": [
+      2048,
+      1364
+    ],
+    "duplicate_of": "EXT-03",
+    "source": "Fourni par utilisateur",
+    "received": "2026-11-17",
+    "photo_date": "non établie",
+    "author": "non établi",
+    "rights": "non établis ; non relicencié GPL"
+  },
+  {
+    "id": "DET-10",
+    "filename": "796285661_122141951745348325_8930878974160415977_n.jpg",
+    "sha256": "20bb3b63a21b5ee285f8ee7804cfc8d1799bfe0af71653b8e3c126437074d44d",
+    "pixels": [
+      2048,
+      1365
+    ],
+    "duplicate_of": "EXT-04",
+    "source": "Fourni par utilisateur",
+    "received": "2026-11-17",
+    "photo_date": "non établie",
+    "author": "non établi",
+    "rights": "non établis ; non relicencié GPL"
+  },
+  {
+    "id": "DET-11",
+    "filename": "codex-clipboard-5225a290-00f7-4a49-8c48-b2d674882af2.jpg",
+    "sha256": "1d512053c970dfa621f13eaffa664a3e39c643df528b4a2911e171aaf16958e8",
+    "pixels": [
+      2048,
+      1537
+    ],
+    "duplicate_of": "DET-05",
+    "source": "Fourni par utilisateur",
+    "received": "2026-11-17",
+    "photo_date": "non établie",
+    "author": "non établi",
+    "rights": "non établis ; non relicencié GPL"
+  }
+]

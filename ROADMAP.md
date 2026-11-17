@@ -41,6 +41,23 @@ Responsable : mainteneur, avec revue visuelle utilisateur. Ordre : références 
 | [ ] **VIS-05k — cockpit et occupants** | Revoir volumes vus à travers la nouvelle verrière, sièges, tableau, posture, mains, formes du visage et plis des tenues ; compléter références intérieures | Captures avant/arrière/extérieures ; pas de traversées, noms lisibles ; personnages et badges artistiques identifiés |
 | [ ] **VIS-05l — validation et tutoriel** | Pour chaque pièce : image de référence locale, relevé expliqué dès 10 ans, recette exacte, planche de pièce et capture native avant/après ; vérifier LOD, animations, performances et paquet ; mettre à jour aperçu, vidéo, MD et GitHub | Tests et reconstruction réussis **et** revue de ressemblance avec l’utilisateur ; résultat visuel accepté explicitement avant clôture |
 
+### Complément lot02 — détails et ouverture au sol
+
+[Analyse détaillée](docs/references/analyse-details-lot-02.md) · [Manifeste des onze fichiers](docs/references/details-lot-02.json). Six images nouvelles, quatre reprises du lot01 et une copie du presse-papiers, vérifiées par empreintes. Les originaux sont conservés localement. Ces sous-tâches précisent les étapes ci-dessus, sans les déclarer réalisées.
+
+- [ ] **VIS-05c.1 — mécanisme réel :** identifier ensembles fixe/mobile, côté et axe de charnière, poignée, verrou et butée ; comparer ouvert/fermé ; faire confirmer la course, sans angle arbitraire présenté comme mesuré.
+- [ ] **VIS-05c.2 — ouverture au sol :** commande de menu FR/EN et poignée cliquable reliées au même état ; animation progressive, fermeture/verrouillage, ouverture autorisée au sol immobilisé ; définir détection sol/vitesse, pause et réinitialisation. Raccourci après contrôle des conflits.
+- [ ] **VIS-05c.3 — recette d'ouverture :** captures 0/25/50/75/100 %, intérieur/extérieur, occupants présents/absents ; absence de collision avec aile/nez/tableau ; refus en vol, commande répétée et cohérence de la checklist. Aucun largage de verrière ou effet aérodynamique inventé.
+- [ ] **VIS-05k.1 — panneau arrière gris :** panneau principal, relief supérieur, raccord sous aile, ouverture de sangle, vis, plaque et habillages latéraux ; comparer cockpit vide/occupé (DET-02/06).
+- [ ] **VIS-05k.2 — coussins bleus :** volumes séparés, épaisseur, coins adoucis et texture textile ; sièges toujours présents sans personnages ; mesures réelles ou estimations explicitement identifiées.
+- [ ] **VIS-05k.3 — harnais olive :** cheminement, largeur/épaisseur, boucles et retours, ancrages à confirmer ; états porté/reposant sur siège, pas de traversée du corps ; ne pas inventer de point d'ancrage caché (DET-01/02/05/06).
+- [ ] **VIS-05g.1 — mât/Pitot/ficelle :** embase, branches coudées, diamètre, espacement, extrémités et attaches ; confirmer fonctions par référence technique ; relevés en pixels puis échelle documentée, conserver animation et visibilité de ficelle.
+- [ ] **VIS-05g.2 — largage arrière :** identifier boule, support et course par schéma et gros plan concordants ; prévoir action commune avec largage avant ; ne pas attribuer cette fonction à l'objet rouge/blanc masqué de DET-06 sans confirmation.
+- [ ] **VIS-05g.3 — patin courbe :** profil remontant, semelle, largeur/épaisseur, supports et intervalle sous coque ; captures profil/dessous ; validation des contacts FDM séparée (DET-08).
+- [ ] **VIS-05f.1 — détail de queue :** partie fixe jaune, direction bleue, charnières, commandes, raccords et roulette ; confirmer couleur et surfaces de profondeur sur vues complémentaires (DET-04).
+- [ ] **VIS-05h.1 — marquages précis :** drapeau canadien sur la pièce correcte, emblème avant, chiffre de nez, éclair bleu et textes ; relevés par variante, contours éditables et aucune lettre en miroir (DET-03/04/05/08/10).
+- [ ] **VIS-05l.1 — preuve par détail :** fiche de chaque pièce avec ID photo, observation/estimation/inconnue, dimensions traçables, explication dès 10 ans, vue native avant/après et essai de la commande si interactive ; revue utilisateur avant clôture.
+
 **Prochain petit lot : VIS-05a, puis VIS-05b/c.** Les autres lignes restent planifiées. Les nouvelles images enrichissent L40-R mais n’établissent pas encore la livrée actuelle exacte de C-FYLP ; L40-R/R2 et les références d’insignes restent ouverts.
 
 ## Lots techniques précédents : base fonctionnelle du réalisme
