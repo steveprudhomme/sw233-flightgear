@@ -200,3 +200,5 @@ Plan préalable :
 - [ ] Vérifier reconstruction et absence de modification des autres instruments ; actualiser tutoriel, MD, aperçu et publication GitHub.
 
 Critères de réussite : rose et repère lisibles dans les vues contrôlées, sens correct aux caps testés, aucune régression des autres instruments, preuves natives et hypothèses documentées. Les erreurs du compas réel ne seront pas déclarées validées par un simple contrôle visuel.
+
+Complément VIS-01n identifié pendant les vérifications : actualiser les deux tests de résolution des objets. Ils supposent encore que tous les objets animés viennent du maillage et que toute animation porte une propriété ; les textes XML et actions radio des lots précédents rendent ces hypothèses obsolètes. Vérifier explicitement les textes, les objets du maillage et les actions, sans retirer les contrôles de résolution.
