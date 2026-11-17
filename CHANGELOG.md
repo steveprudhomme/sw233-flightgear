@@ -1,5 +1,12 @@
 # Historique
 
+## 2026-11-17 — reprise visuelle planifiée, lot de références01
+
+- Dix originaux conservés localement avec empreintes, galerie et analyse détaillée.
+- Priorité VIS-05a à l : géométrie, livrée, matériaux, anticrénelage et validation visuelle, distincte des tests techniques.
+- Modèle et FDM inchangés ; la fidélité visuelle du lot40 reste à améliorer.
+
+
 ## 2026-11-17 — visuals-40 : surfaces, équipage et vérifications
 
 - 23 surfaces peintes, grille UV par menu et animations des spoilers/profondeurs synchronisées.

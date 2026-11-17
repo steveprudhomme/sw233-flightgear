@@ -25,3 +25,7 @@ Les 19 fichiers sources sont conservés dans originaux/ dans la copie locale du 
 | aircadetpackage.zip | E24E35164C0BA2023C30813AC0E19C9887334BCC77543FC7B5B195178B7C20A5 |
 
 [Photos identifiées, liens vers les deux originaux du forum et examen du paquet FSX](cockpits-et-fsx.md).
+
+## Complément extérieur — lot01
+
+Dix originaux supplémentaires conservés sans modification dans `originaux/exterieur-lot-01/`, galerie locale `index.html`. [Analyse par image](analyse-exterieur-lot-01.md) et [empreintes / dimensions](exterieur-lot-01.json). Ce lot inclut une illustration artistique et un dessin trois-vues, distincts des photos.

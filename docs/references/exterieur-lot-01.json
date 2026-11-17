@@ -1,0 +1,142 @@
+[
+  {
+    "id": "EXT-01",
+    "filename": "888063687_1561452889356235_6595528562991814277_n.jpg",
+    "sha256": "2fbda0f9ca70997fb25bf8ea4ce0529d9afc68ef35066263c40659ffe7327a1b",
+    "pixels": [
+      2016,
+      1134
+    ],
+    "received": "2026-11-17",
+    "source": "Fourni par utilisateur",
+    "photo_date": "non établie",
+    "author": "non établi",
+    "rights": "non établis ; non relicencié GPL"
+  },
+  {
+    "id": "EXT-02",
+    "filename": "841099659_18115421924518465_3488248020240132807_n.jpg",
+    "sha256": "676a5091e1eda083faea22227db300ed32790a32f7486b9b70cfdb94e1146267",
+    "pixels": [
+      2048,
+      1364
+    ],
+    "received": "2026-11-17",
+    "source": "Fourni par utilisateur",
+    "photo_date": "non établie",
+    "author": "non établi",
+    "rights": "non établis ; non relicencié GPL"
+  },
+  {
+    "id": "EXT-03",
+    "filename": "843324439_18115421933518465_1258995022678257876_n.jpg",
+    "sha256": "7483d17c5960e3222d869f799ab6a16266c9f91eda4d4bc5b0d9748d630856b6",
+    "pixels": [
+      2048,
+      1364
+    ],
+    "received": "2026-11-17",
+    "source": "Fourni par utilisateur",
+    "photo_date": "non établie",
+    "author": "non établi",
+    "rights": "non établis ; non relicencié GPL"
+  },
+  {
+    "id": "EXT-04",
+    "filename": "796285661_122141951745348325_8930878974160415977_n.jpg",
+    "sha256": "20bb3b63a21b5ee285f8ee7804cfc8d1799bfe0af71653b8e3c126437074d44d",
+    "pixels": [
+      2048,
+      1365
+    ],
+    "received": "2026-11-17",
+    "source": "Fourni par utilisateur",
+    "photo_date": "non établie",
+    "author": "non établi",
+    "rights": "non établis ; non relicencié GPL"
+  },
+  {
+    "id": "EXT-05",
+    "filename": "Planeur.jpg",
+    "sha256": "2eac0f08a0e7912a0af92078612ad392eafc87b6e7fef55a34300f7f278aed13",
+    "pixels": [
+      640,
+      357
+    ],
+    "received": "2026-11-17",
+    "source": "Fourni par utilisateur",
+    "photo_date": "non établie",
+    "author": "non établi",
+    "rights": "non établis ; non relicencié GPL"
+  },
+  {
+    "id": "EXT-06",
+    "filename": "planneur-350x280.jpg",
+    "sha256": "c194110ad1befb89bb0e8b8273e6393fa2a7af2d1d3418900c63ed4f8717e742",
+    "pixels": [
+      350,
+      280
+    ],
+    "received": "2026-11-17",
+    "source": "Fourni par utilisateur",
+    "photo_date": "non établie",
+    "author": "non établi",
+    "rights": "non établis ; non relicencié GPL"
+  },
+  {
+    "id": "EXT-07",
+    "filename": "233-Glider-Print.jpg",
+    "sha256": "2e6fca8e66552b58264af3bcbeb02d345150bdb0156b15a98e4aabde70f5a010",
+    "pixels": [
+      985,
+      637
+    ],
+    "received": "2026-11-17",
+    "source": "Fourni par utilisateur",
+    "photo_date": "non établie",
+    "author": "non établi",
+    "rights": "non établis ; non relicencié GPL"
+  },
+  {
+    "id": "EXT-08",
+    "filename": "SGS233AwingsMuseum.jpg",
+    "sha256": "54104ee6a6def8806c2c70102f377ce751ecce065d6d3af3938d50aacd3237bf",
+    "pixels": [
+      800,
+      600
+    ],
+    "received": "2026-11-17",
+    "source": "Fourni par utilisateur",
+    "photo_date": "non établie",
+    "author": "non établi",
+    "rights": "non établis ; non relicencié GPL"
+  },
+  {
+    "id": "EXT-09",
+    "filename": "Royal_Canadian_Air_Cadets_Schweizer_233_A.jpg",
+    "sha256": "008ca15333506c9ea5a1473cdc5b43857090425e0c32228fbbdc24e54709c36d",
+    "pixels": [
+      599,
+      831
+    ],
+    "received": "2026-11-17",
+    "source": "Fourni par utilisateur",
+    "photo_date": "non établie",
+    "author": "non établi",
+    "rights": "non établis ; non relicencié GPL"
+  },
+  {
+    "id": "EXT-10",
+    "filename": "Schweizer_SGS_2-33A_two-seat_glider_colour_3-view_drawing.jpg",
+    "sha256": "fc822a9acf57af8b5a0069afff34eb774a1d2f70b5f4496bc9b5c26ecb83790d",
+    "pixels": [
+      2500,
+      1936
+    ],
+    "received": "2026-11-17",
+    "source": "Fourni par utilisateur",
+    "photo_date": "non établie",
+    "author": "non établi",
+    "rights": "non établis ; non relicencié GPL"
+  }
+]

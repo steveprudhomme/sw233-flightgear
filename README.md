@@ -7,6 +7,8 @@ désignation constructeur. La livrée actuelle des Cadets est un objectif : les 
 Projet **libre et open source**, sous [licence GPL-3.0-only](LICENSE.md). Les anciennes
 ressources FlightGear/JSBSim ne sont pas redistribuées ni relicenciées ici. Les versions déjà diffusées sous MIT conservent leur [notice historique](LICENSES/MIT-historical.txt).
 
+**Revue visuelle après le lot40 :** le rendu reste trop simplifié. La reprise des courbes, de la verrière, des ailes et de la livrée est prioritaire dans [VIS-05](ROADMAP.md#priorité-actuelle--vis-05--reprise-de-la-fidélité-visuelle). [Analyse des dix nouvelles références](docs/references/analyse-exterieur-lot-01.md).
+
 ## Réalisme du cockpit et suite du projet
 
 Le prototype comprend maintenant une livrée jaune/bleu **C-FYLP**, deux occupants

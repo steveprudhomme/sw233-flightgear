@@ -14,13 +14,36 @@ Prototype de simulation sous GPL-3.0-only, non certifié pour l’instruction r�
 |---|---|---|
 | Cockpit | Enveloppe, cadres, relief des instruments, calage, COM1 et compas | Reflets de ciel statique sous ALS ; profondeurs estimées ; audio radio non validé |
 | Checklists | FR/EN, accents, initiales rouges, souris et format 1024 × 600 | Ctrl+L physiquement confirmé ouvert ; essai fermé encore à préciser |
-| Extérieur | Livrée jaune/bleu C-FYLP provisoire, spoilers et ficelle animés | Photos récentes et marquages complets attendus |
+| Extérieur | Livrée jaune/bleu C-FYLP provisoire, spoilers et ficelle animés | Formes et peinture à reprendre (VIS-05) ; identité/date des nouvelles photos à compléter |
 | Occupants | Deux personnages détaillés bleu/vert, noms, harnais et visibilité liée aux masses | Proportions artistiques ; insignes officiels et animations non validés |
 | Validation | Essais natifs Windows à CYJN, 59 tests dans le lot visuel, reconstruction du tutoriel | Polaire réelle, Linux et relecture autonome du tutoriel non validés |
 
 Statuts : **en cours** = lot commencé ; **prévu** = travail accepté à réaliser ; **attend une référence** = détail non confirmé ; **terminé** = preuve publiée. Les anciens protocoles sont dans l’[archive du 17 novembre](docs/planification/archive-roadmap-2026-11-17.md), et ne constituent plus une deuxième liste active.
 
-## Prochain incrément : réalisme du cockpit
+## Priorité actuelle — VIS-05 : reprise de la fidélité visuelle
+
+**Statut : prévu, rendu du lot40 non accepté visuellement par l’utilisateur.** Le lot40 reste une livraison technique ; il ne clôt pas l’objectif de ressemblance. Les dix nouvelles références sont conservées localement et analysées dans le [dossier extérieur lot01](docs/references/analyse-exterieur-lot-01.md), avec [manifeste des originaux](docs/references/exterieur-lot-01.json).
+
+Responsable : mainteneur, avec revue visuelle utilisateur. Ordre : références et comparaison → nez/coque/verrière → ailes et queue → équipements → livrée/matériaux → intégration. Pas de date ferme. Chaque lot doit comporter un plan commité avant modification, un tutoriel illustré et des preuves FlightGear.
+
+| Étape | Sous-étapes et références | Critère de fin |
+|---|---|---|
+| [ ] **VIS-05a — vues de référence** | Classer photos/illustrations, séparer appareils/époques ; identifier les inscriptions ; relever contours et rapports de dimensions, noter perspective et inconnues ; préparer vues natives comparables au lot40 | Fiche de relevé traçable pour chaque pièce, six vues générales et gros plans avant ; aucune cote en mètres inventée |
+| [ ] **VIS-05b — nez et coque** | Reconstruire les courbes avant, sections, flancs et ventre ; conserver les arêtes structurelles observées ; corriger raccords de porte et dessous (EXT-02/03/05) | Silhouettes avant/profil/oblique comparées ; courbes continues dans les zones rondes, arêtes conservées où attestées ; aucun trou ni superposition |
+| [ ] **VIS-05c — verrière et porte** | Bombé du pare-brise, sections latérales, raccord sous aile, cadres/joints, charnières/poignées et limites de porte (EXT-02/03/05) | Comparaison intérieur/extérieur ; coque et verrière raccordées ; pas d’occultation des instruments ou de traversée des personnages |
+| [ ] **VIS-05d — ailes et haubans** | Bord d’attaque, épaisseur visuelle documentée, emplanture, effilement, saumons, section des haubans et attaches (EXT-01/03/04/09/10) | Comparaisons dessus/dessous/face ; profils estimés signalés ; aucune prétention de recalibrage du FDM |
+| [ ] **VIS-05e — gouvernes et spoilers** | Délimiter ailerons, profondeur, direction ; ajouter jeux/charnières ; revoir volumes et logements des spoilers avec références complémentaires | Débattements vérifiés dans FlightGear, vues cockpit et extérieures ; axes préservés, pas d’interpénétration ni peau désolidarisée |
+| [ ] **VIS-05f — empennages** | Revoir contours arrondis, épaisseur, raccords, attaches et parties mobiles (EXT-01/04/10, photos complémentaires à obtenir) | Silhouettes de queue comparées dans trois vues ; inconnues de dimensions conservées |
+| [ ] **VIS-05g — train et accessoires** | Pneu/jante, patin/supports, roulette arrière et roulettes d’ailes ; crochets, mât avant, Pitot et ficelle, poignées et fixations (EXT-02/03/04/05/09) | Inventaire pièce par pièce illustré, fonctions confirmées ; positions et dégagements comparés, aucune cote déduite sans échelle |
+| [ ] **VIS-05h — livrée par appareil** | Corriger tracé bleu/éclair, cadres, inscriptions bilingues, emblème, drapeau/numéro, bandes et lettres d’ailes ; établir variantes identifiées ; conserver C-FYLP provisoire tant que sa couverture manque | Carte de placement par surface avec source ; textes dans le bon sens ; aucune combinaison C-GCLX/MANITOBA/C-FYLP non attestée |
+| [ ] **VIS-05i — matériaux et détails** | Peinture, métal, revêtement, vitrage, caoutchouc ; reliefs de construction et usure mesurée ; reflets équilibrés, UV et densité de texture homogènes | Captures sous deux éclairages ; détails à l’échelle, instruments lisibles ; provenance des textures et compromis documentés |
+| [ ] **VIS-05j — lissage et anticrénelage** | Séparer silhouette, normales et marches de pixels ; vérifier réglages réellement disponibles dans FlightGear ; comparer rendu identique à résolution fixe, puis mouvement ; mesurer coût | Avant/après géométrie et anticrénelage séparés ; arêtes voulues préservées, pas de scintillement observé dans le parcours testé ; limites de cadence explicites |
+| [ ] **VIS-05k — cockpit et occupants** | Revoir volumes vus à travers la nouvelle verrière, sièges, tableau, posture, mains, formes du visage et plis des tenues ; compléter références intérieures | Captures avant/arrière/extérieures ; pas de traversées, noms lisibles ; personnages et badges artistiques identifiés |
+| [ ] **VIS-05l — validation et tutoriel** | Pour chaque pièce : image de référence locale, relevé expliqué dès 10 ans, recette exacte, planche de pièce et capture native avant/après ; vérifier LOD, animations, performances et paquet ; mettre à jour aperçu, vidéo, MD et GitHub | Tests et reconstruction réussis **et** revue de ressemblance avec l’utilisateur ; résultat visuel accepté explicitement avant clôture |
+
+**Prochain petit lot : VIS-05a, puis VIS-05b/c.** Les autres lignes restent planifiées. Les nouvelles images enrichissent L40-R mais n’établissent pas encore la livrée actuelle exacte de C-FYLP ; L40-R/R2 et les références d’insignes restent ouverts.
+
+## Lots techniques précédents : base fonctionnelle du réalisme
 
 ### VIS-01u — matériaux du tableau (terminé : premier réglage)
 
