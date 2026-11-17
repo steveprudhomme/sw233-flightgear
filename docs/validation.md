@@ -143,7 +143,7 @@ Paquet construit depuis le commit `9490ec4`, essayé sous FlightGear 2024.1.7 Wi
   complète du tutoriel identique, avec les trois recettes panel/livery/crew.
 
 Les comparaisons de rendu utilisent une séance dédiée `--fdm=null`; elles ne valident
-pas le vol. Les bancs restaurent les propriétés qu'ils modifient, vérification incluse
+pas le vol. Les bancs restaurent les propriétés enregistrées dans leurs rapports, vérification incluse
 aux rapports. Les journaux du lancement JSBSim en lecture seule signalent notamment
 l'absence de moteur et l'impossibilité d'enregistrer l'état FDM initial ; aucune
 validation nouvelle du moteur de vol n'est déduite de ce lot.
