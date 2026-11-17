@@ -748,9 +748,12 @@ Ctrl+L utilise la même commande de bascule que le menu. L'utilisateur avait
 confirmé son fonctionnement dans le cockpit lors du premier lot bilingue.
 Pendant cette recette, deux envois automatisés avec la fenêtre ouverte n'ont
 pas changé la langue. Cela ne prouve pas à lui seul une panne du raccourci :
-le dialogue ou l'envoi automatisé peut intercepter le clavier. La vérification
-physique fenêtre ouverte/fermée est demandée séparément et reste en attente.
-En attendant, le menu fournit le changement de langue vérifié.
+le dialogue ou l'envoi automatisé peut intercepter le clavier. Le
+**17 novembre 2026**, l'utilisateur a réalisé l'essai physique et confirmé :
+**la langue change dans les deux cas, fenêtre ouverte et fenêtre fermée**.
+Cette confirmation manuelle complète les captures et les essais du script.
+Aucune nouvelle capture n'est attribuée à cet essai : son résultat est le
+retour de l'utilisateur, pas une observation automatisée.
 
 Pour ton propre essai : ouvre la checklist, note sa langue, appuie sur Ctrl+L
 et note le résultat. Ferme la checklist avec sa croix, recommence, puis

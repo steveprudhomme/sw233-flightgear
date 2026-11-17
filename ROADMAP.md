@@ -295,12 +295,12 @@ caractères. La vérification complète des fenêtres de checklists du lot VIS-0
 et les urgences planifiées restent des travaux distincts.
 
 
-## VIS-01r — recette des checklists bilingues (recette réalisée ; clavier physique ouvert à confirmer)
+## VIS-01r — recette des checklists bilingues (terminé)
 
 - [x] Relever la version FlightGear et les paramètres de la session de test ; vérifier les fichiers sources et le comportement du dialogue natif.
 - [x] Contrôler les quatre listes FR/EN : titres, ordre, 8/4/7/5 rubriques, valeurs et absence de texte mélangé ou tronqué.
 - [x] Ouvrir une liste autre que la première puis changer la langue : vérifier que la fenêtre reste ouverte et revient à la première liste, comme prévu par le script.
-- [ ] Tester les commandes du menu et la liaison Ctrl+L ; distinguer l'essai du script de l'essai clavier physique déjà confirmé par l'utilisateur.
+- [x] Tester les commandes du menu et la liaison Ctrl+L ; distinguer l'essai du script de l'essai clavier physique déjà confirmé par l'utilisateur.
 - [x] Répéter les bascules fenêtre ouverte/fermée ; vérifier les langues invalides, l'état de sélection et la conservation des commandes de vol.
 - [x] Corriger les défauts révélés, si nécessaire, puis refaire les cas concernés ; conserver captures natives et relevés reproductibles.
 - [x] Ajouter au tutoriel pour débutant les étapes pour ouvrir, lire, changer de liste et de langue ; expliquer le retour à la première liste et les limites de simulation avec images.
@@ -324,6 +324,11 @@ la souris avec la fenêtre ouverte. Correction de compatibilité ASCII pour
 le dialogue 2024.1 ; sources et plaquettes accentuées conservées. 26 tests et
 reconstruction réussis, preuves natives publiées dans checklists-recette-35.
 
-Restent explicitement ouverts : essai clavier physique avec la fenêtre
-ouverte/fermée (demande envoyée à l'utilisateur) et amélioration du rendu
-accentué complet du dialogue. Le lot ne revendique pas ces deux validations.
+Validation manuelle reçue le 17 novembre 2026 : l'utilisateur confirme que
+Ctrl+L change la langue avec la checklist ouverte et avec la checklist fermée.
+Cette preuve complète la recette ; elle ne provient pas de l'envoi clavier
+automatisé, qui n'avait pas permis de conclure.
+
+- [ ] Améliorer le rendu accentué complet du dialogue natif : sujet distinct
+  du fonctionnement bilingue validé ; conserver les sources UTF-8 et comparer
+  les solutions de rendu sans supprimer définitivement les accents.

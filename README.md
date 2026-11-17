@@ -15,9 +15,9 @@ La fenêtre ouverte revient à la première liste lors d'un changement de langue
 
 Sous FlightGear 2024.1, la fenêtre utilise temporairement une copie sans accents
 pour éviter les caractères déformés ; sources et plaquettes restent accentuées.
-Le menu et les scripts ont été contrôlés. Ctrl+L a été confirmé auparavant par
-l'utilisateur dans le cockpit ; son comportement avec la checklist ouverte
-reste à confirmer manuellement.
+Le menu et les scripts ont été contrôlés. Le 17 novembre 2026, l'utilisateur
+a confirmé manuellement que **Ctrl+L change la langue avec la checklist
+ouverte comme avec la checklist fermée**.
 
 [Paquet et preuves de recette](https://github.com/steveprudhomme/sw233-flightgear/releases/tag/checklists-recette-35).
 

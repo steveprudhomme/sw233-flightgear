@@ -5,6 +5,8 @@
 - Titres raccourcis pour le sélecteur natif ; copie d'affichage sans accents
   pour la famille FlightGear 2024.1, sources et plaquettes UTF-8 conservées.
 - Huit listes et 24 bascules de langue contrôlées dans FlightGear 2024.1.7.
+- Ctrl+L confirmé manuellement par l’utilisateur avec la checklist ouverte
+  et fermée le 17 novembre 2026 ; recette VIS-01r terminée.
 - Tutoriel illustré, banc reproductible et vérification de la conversion.
 - 26 tests et reconstruction réussis ; rendu accentué complet encore à améliorer.
 
