@@ -1,3 +1,4 @@
 title: Schweizer SGS 2-33 aux couleurs Cadets de l’aviation royale du Canada
 markdown: kramdown
 exclude: [src, tools, tests, LICENSES, build]
+lang: fr

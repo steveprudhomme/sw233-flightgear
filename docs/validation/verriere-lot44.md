@@ -59,3 +59,13 @@ Les boutons et états supplémentaires ont été vérifiés dans une autre séan
 
 Les [références](../references/ouverture-verriere.md) distinguent observations et estimations.
 Le [tutoriel26](../construction/26-ouverture-verriere.md) explique les manipulations au débutant.
+
+## Publication et relecture
+
+Source publiée : `9888552`. Les 44 fichiers de la publication ont été comparés aux empreintes locales.
+Les contrôles GitHub Python 3.11 et 3.13 réussissent.
+La page du tutoriel répond et contient ses six images avec texte alternatif.
+Les liens locaux de ce nouvel atelier ont été vérifiés.
+Le réglage de langue du site passe à `fr` après détection de la valeur anglaise par défaut.
+Le zoom, le contraste de toute la page, le clavier et la compréhension par un enfant n’ont pas été audités dans ce lot.
+Ces limites empêchent toute déclaration de conformité globale aux WCAG.

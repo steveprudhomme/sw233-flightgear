@@ -75,7 +75,7 @@ Priorité confirmée avant VIS-05d. Préversion visée : `0.1.0-alpha.2`.
 - [x] **C44-04** Afficher l'état réel dans les checklists FR/EN ; conserver les acronymes et distinguer la porte arrière fixe.
 - [ ] **C44-05** Tester refus, commande répétée, fermeture, pause, réinitialisation et changement de langue dans FlightGear ; capturer 0/25/50/75/100 % depuis le cockpit et l'extérieur, avec et sans occupants.
 - [x] **C44-06** Examiner les dégagements avec le nez, les ailes, le tableau et les personnages ; vérifier les pièces mobiles et la recette complète du tutoriel.
-- [ ] **C44-07** Publier le tutoriel illustré selon le guide de rédaction, les limites, le paquet SemVer, les MD et les preuves sur GitHub. L'essai par un enfant et l'acceptation de ressemblance restent distincts.
+- [x] **C44-07** Publier le tutoriel illustré selon le guide de rédaction, les limites, le paquet SemVer, les MD et les preuves sur GitHub. L'essai par un enfant et l'acceptation de ressemblance restent distincts.
 
 ### Lot43 — finition des formes VIS-05b/c
 
@@ -271,3 +271,5 @@ C44-05 reste ouvert uniquement pour la réinitialisation complète. Les 30 captu
 les 14 contrôles natifs et les états de checklist FR/EN sont réalisés.
 VIS-05c.1 et VIS-05c.3 restent ouverts pour leurs réserves ; cela ne signifie pas que
 l’ouverture avant reste à programmer. La porte arrière reste fixe et constitue un travail distinct.
+
+**Publication lot44 :** [0.1.0-alpha.2](https://github.com/steveprudhomme/sw233-flightgear/releases/tag/v0.1.0-alpha.2), source `9888552`, 44 fichiers vérifiés par SHA-256. Contrôles Python 3.11/3.13 réussis ; tutoriel publié. Les réserves ci-dessus restent ouvertes.
