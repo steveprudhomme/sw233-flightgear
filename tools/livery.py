@@ -14,7 +14,7 @@ BLUE = "#183c72"
 OFFSET = 0.0  # Complete replacement skin: the main model hides the covered originals.
 SIZE = (4096, 512)
 X_RANGE = (0.0, 7.61)
-Y_RANGE = (-0.63, 0.12)  # AC3D vertical coordinate, not construction y.
+Y_RANGE = (-0.63, 0.32)  # AC3D vertical coordinate, not construction y.
 
 
 def read_object(path, name):

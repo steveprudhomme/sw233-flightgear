@@ -16,7 +16,7 @@ Prototype de simulation sous GPL-3.0-only, non certifié pour l’instruction r�
 | Checklists | FR/EN, accents, initiales rouges, souris et format 1024 × 600 | Ctrl+L physiquement confirmé ouvert ; essai fermé encore à préciser |
 | Extérieur | Livrée jaune/bleu C-FYLP provisoire, spoilers et ficelle animés | Formes et peinture à reprendre (VIS-05) ; identité/date des nouvelles photos à compléter |
 | Occupants | Deux personnages détaillés bleu/vert, noms, harnais et visibilité liée aux masses | Proportions artistiques ; insignes officiels et animations non validés |
-| Validation | Essais natifs Windows à CYJN, 61 tests depuis le lot42, reconstruction du tutoriel | Polaire réelle, Linux et relecture autonome du tutoriel non validés |
+| Validation | Essais natifs Windows à CYJN, 62 tests depuis le lot43, reconstruction du tutoriel | Polaire réelle, Linux et relecture autonome du tutoriel non validés |
 
 Statuts : **en cours** = lot commencé ; **prévu** = travail accepté à réaliser ; **attend une référence** = détail non confirmé ; **terminé** = preuve publiée. Les anciens protocoles sont dans l’[archive du 17 novembre](docs/planification/archive-roadmap-2026-11-17.md), et ne constituent plus une deuxième liste active.
 
@@ -70,12 +70,18 @@ Objectif : corriger les écarts visibles du lot42 avant de passer aux ailes. La 
 technique de ce lot ne vaut pas acceptation utilisateur de la ressemblance ;
 l'ouverture animée reste dans VIS-05c.1 à c.3.
 
-- [ ] **BC43-01** Revoir EXT-02/03/05 et DET-03/05 ; confronter nez, hauteur des flancs, cadre avant et raccord sous aile au lot42 ; consigner observations, estimations et inconnues.
-- [ ] **BC43-02** Corriger le volume du nez et son raccord aux flancs ; adoucir la pointe sans supprimer les cassures du ventre ; adapter les attaches avant uniquement si le nouveau capot l'exige.
-- [ ] **BC43-03** Corriger le raccord haut arrière et les vitrages latéraux ; détailler cadres, joints, contours et fixations visibles avec dimensions estimées explicites ; conserver tableau, occupants et enveloppe fermée.
-- [ ] **BC43-04** Comparer aux photos dans une galerie locale et dans FlightGear : profil, face, obliques, cockpit, deux orientations d'éclairage et grille UV ; examiner chaque pièce et corriger les écarts constatés.
-- [ ] **BC43-05** Vérifier coutures, surfaces, symétrie, UV, dégagements et animations affectées ; reconstruire exactement depuis le tutoriel ; conserver le FDM inchangé.
+- [x] **BC43-01** Revoir EXT-02/03/05 et DET-03/05 ; confronter nez, hauteur des flancs, cadre avant et raccord sous aile au lot42 ; consigner observations, estimations et inconnues.
+- [x] **BC43-02** Corriger le volume du nez et son raccord aux flancs ; adoucir la pointe sans supprimer les cassures du ventre ; adapter les attaches avant uniquement si le nouveau capot l'exige.
+- [x] **BC43-03** Corriger le raccord haut arrière et les vitrages latéraux ; détailler cadres, joints, contours et fixations visibles avec dimensions estimées explicites ; conserver tableau, occupants et enveloppe fermée.
+- [x] **BC43-04** Comparer aux photos dans une galerie locale et dans FlightGear : profil, face, obliques, cockpit, deux orientations d'éclairage et grille UV ; examiner chaque pièce et corriger les écarts constatés.
+- [x] **BC43-05** Vérifier coutures, surfaces, symétrie, UV, dégagements et animations affectées ; reconstruire exactement depuis le tutoriel ; conserver le FDM inchangé.
 - [ ] **BC43-06** Illustrer la démarche dès 10 ans avec les pièces et captures avant/après ; actualiser MD, aperçu, paquet et GitHub ; distinguer finition réalisée, mécanisme restant et revue utilisateur.
+
+**État après finition :** formes statiques du nez, des flancs et de la verrière reprises,
+cadres/joints/fixations et poignée de représentation ajoutés ([atelier25](docs/construction/25-finitions-avant.md)).
+Les cases globales VIS-05b/c restent ouvertes pour la revue de ressemblance et les
+charnières non confirmées ; elles ne signifient pas que le lot technique est à refaire.
+**Prochain lot de géométrie : VIS-05d, ailes et haubans.** L'ouverture reste VIS-05c.1 à c.3.
 
 ### Complément lot02 — détails et ouverture au sol
 

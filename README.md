@@ -11,6 +11,17 @@ ressources FlightGear/JSBSim ne sont pas redistribuées ni relicenciées ici. Le
 
 [Premier relevé du nez, de la coque et de la verrière, avec comparaisons FlightGear](docs/construction/23-releves-avant.md).
 
+## Finition du nez et de la verrière — lot43
+
+Nez plus plein, capot bombé, flancs rehaussés et raccord arrière prolongé sous l'aile.
+Cadres bleus, joints, fixations et poignée fixe ajoutés ; mât et ficelle raccordés au
+nouveau capot. [Tutoriel25 illustré](docs/construction/25-finitions-avant.md) ·
+[Paquet et comparaisons](https://github.com/steveprudhomme/sw233-flightgear/releases/tag/finitions-43).
+62 tests passent ; la forme reste estimée, la verrière ne s'ouvre pas encore et la
+livrée C-FYLP reste provisoire. La revue de ressemblance reste ouverte.
+
+![Profil du lot43 dans FlightGear](https://github.com/steveprudhomme/sw233-flightgear/releases/download/finitions-43/apres-nez-profil.png)
+
 ## Reconstruction des formes avant — lot42
 
 Nez et coque avant à sections plus fines, pare-brise bombé, cadres raccordés et

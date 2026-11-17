@@ -72,11 +72,11 @@ def loft(n, m, stations):
 
 ## C · Construis une coque ouverte seulement vers le haut
 
-![Coque : flancs continus et ouverture supérieure](https://github.com/steveprudhomme/sw233-flightgear/releases/download/formes-42/piece-fuselage.png)
+![Coque : flancs continus et ouverture supérieure](https://github.com/steveprudhomme/sw233-flightgear/releases/download/finitions-43/piece-fuselage.png)
 
 Schéma du maillage, sans textures ; dimensions de maquette.
 
-Le défaut précédent venait d’un tri trop large : des faces étaient supprimées selon leur hauteur moyenne. Les côtés devenaient des trous. Nous dessinons maintenant une section en U : bord gauche, ventre arrondi, bord droit. Le dessus reste ouvert entre x=0,50 et 3,16 m ; les flancs restent entiers. Ce sont des stations de maquette H, guidées par les contours du trois-vues, pas des cotes d’usine. Voir les pointages et les limites dans la [fiche 14](14-enveloppe.md).
+Le défaut précédent venait d’un tri trop large : des faces étaient supprimées selon leur hauteur moyenne. Les côtés devenaient des trous. Nous dessinons maintenant une section en U : bord gauche, ventre arrondi, bord droit. Le dessus reste ouvert entre x=0,70 et 3,16 m ; les flancs restent entiers. Ce sont des stations de maquette H, guidées par les contours du trois-vues, pas des cotes d’usine. Voir les pointages et les limites dans la [fiche 14](14-enveloppe.md).
 
 La recette complète et les choix du lot42 sont dans la [fiche24](24-formes-avant.md). Chaque station donne x, la demi-largeur du ventre, la hauteur du centre, la demi-hauteur inférieure, la demi-largeur au bord de l’ouverture et la hauteur de ce bord. La verrière réutilisera exactement ses deux derniers nombres. Ainsi ses vitres touchent les flancs au lieu de flotter au-dessus.
 
@@ -87,13 +87,13 @@ from tools.airframe_geometry import build_enclosure
 coque = build_enclosure(poly, rod)
 ```
 
-## D · Raccorde les vitres et les cadres jaunes
+## D · Raccorde les vitres et les cadres bleus
 
-![Vitres, cadres jaunes et raccord arrière](https://github.com/steveprudhomme/sw233-flightgear/releases/download/formes-42/groupe-verriere.png)
+![Vitres, cadres bleus et raccord arrière](https://github.com/steveprudhomme/sw233-flightgear/releases/download/finitions-43/groupe-verriere.png)
 
 Schéma du maillage, sans textures ; dimensions de maquette.
 
-Le bord inférieur de la verrière est celui de la coque, au même x, y et z. Les sections courbes à 33 points distinguent flancs vitrés et toit ; le montant du pare-brise est incliné. La [fiche 15](15-panneaux.md) explique les proportions et les limites. Les montants restent jaunes pour cette étape de forme ; les cadres bleus des nouvelles références seront traités avec la livrée. Le raccord arrière sous l’aile est opaque ; le pare-brise devant le pilote reste transparent. Les épaisseurs de 18 et 16 mm sont des choix de lisibilité H. La porte et la verrière ne s’ouvrent pas encore.
+Le bord inférieur de la verrière est celui de la coque, au même x, y et z. Les sections courbes à 33 points distinguent flancs vitrés et toit ; le montant du pare-brise est incliné. La [fiche 15](15-panneaux.md) explique les proportions et les limites. Le lot43 reprend les cadres bleus, joints noirs et fixations des références ; leur forme et leur placement restent estimés. Le raccord arrière sous l’aile est opaque ; le pare-brise devant le pilote reste transparent. Les rayons de cadre de 14 mm et de joint de 18 mm sont des choix de maquette H. La porte et la verrière ne s’ouvrent pas encore.
 
 <!-- atelier-fichier: fabrique.py -->
 ```python
@@ -346,22 +346,22 @@ for kind, y, z, r in dials:
 
 Schéma du maillage, sans textures ; dimensions de maquette.
 
-La tête est au nez d’après le manuel ; sa forme s’appuie sur la photo avant. Les coordonnées de la baguette et des cinq points du fil sont des hypothèses visuelles. Le premier point (−0,055 ; 0 ; 0,237) est le nœud. Recopie-le dans le cahier : c’est le centre de la rotation à la fiche 4. Le rayon du fil est volontairement assez épais pour rester visible à l’écran.
+La tête est au nez d’après le manuel ; sa forme s’appuie sur la photo avant. Les coordonnées de la baguette et des cinq points du fil sont des hypothèses visuelles. Le premier point (−0,055 ; 0 ; 0,537) est le nœud. Recopie-le dans le cahier : c’est le centre de la rotation à la fiche 4. Le rayon du fil est volontairement assez épais pour rester visible à l’écran. Au lot43, le capot remonte : le mât, son attache, le fil et son pivot XML montent ensemble de 0,30 m ; la forme détaillée du mât reste dans VIS-05g.1.
 
 <!-- atelier-fichier: fabrique.py -->
 ```python
 # Nose-mounted pressure head and a separate moving tuft. Dimensions are visual estimates.
 mat.extend([("inox", (0.62, 0.68, 0.69), 0), ("laine", (0.85, 0.085, 0.045), 0)])
-rod("embase-pitot", 2, (0.245, 0, -0.13), (0.218, 0, -0.058), 0.022)
-rod("tube-pitot", 9, (0.222, 0, -0.073), (-0.055, 0, 0.237), 0.011)
-rod("tube-pitot", 9, (-0.055, 0, 0.237), (-0.212, 0, 0.239), 0.011)
-rod("attache-laine", 2, (-0.060, 0, 0.233), (-0.048, 0, 0.244), 0.014)
+rod("embase-pitot", 2, (0.245, 0, 0.170), (0.218, 0, 0.242), 0.022)
+rod("tube-pitot", 9, (0.222, 0, 0.227), (-0.055, 0, 0.537), 0.011)
+rod("tube-pitot", 9, (-0.055, 0, 0.537), (-0.212, 0, 0.539), 0.011)
+rod("attache-laine", 2, (-0.060, 0, 0.533), (-0.048, 0, 0.544), 0.014)
 yarn = [
-    (-0.055, 0, 0.237),
-    (0.018, 0, 0.253),
-    (0.10, 0, 0.275),
-    (0.17, 0, 0.306),
-    (0.235, 0, 0.325),
+    (-0.055, 0, 0.537),
+    (0.018, 0, 0.553),
+    (0.10, 0, 0.575),
+    (0.17, 0, 0.606),
+    (0.235, 0, 0.625),
 ]
 for a, b in zip(yarn, yarn[1:]):
     rod("fil-de-laine", 10, a, b, 0.0048)
@@ -648,6 +648,7 @@ Le fichier commence par `AC3Db`, la palette, puis `OBJECT world` : la boîte qui
 
 <!-- atelier-fichier: fabrique.py -->
 ```python
+mat.append(("cadres-bleus", (.094, .235, .447), 0))
 out = ["AC3Db"]
 for n, c, t in mat:
     glow = {"ivoire": ".5 .48 .4", "orange": ".4 .12 .04", "laine": ".7 .04 .02"}.get(n, "0 0 0")

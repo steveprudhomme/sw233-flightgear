@@ -228,3 +228,32 @@ empreintes SHA-256 retournées par GitHub comparées aux 25 fichiers locaux.
 Le paquet publié contient un aperçu natif au sol et sa description actualisée.
 Chargement JSBSim au sol confirmé à CYJN ; avertissements sans moteur, sans son et
 sauvegarde initiale impossible en mode lecture seule consignés dans le rapport.
+
+
+## Lot43 — finition statique du nez, de la coque et de la verrière
+
+Plan préalable `ece5146`. Comparaison qualitative EXT-02/03, DET-03/05 ; galerie
+locale sans retouche des originaux. Les photos ne sont pas calibrées et les nouvelles
+dimensions sont des estimations. Quinze objets modifiés, trois ajoutés ; ailes,
+gouvernes, tableau et FDM conservés.
+
+FlightGear 2024.1.7 : neuf vues du banc de référence, cinq vues supplémentaires
+(grille, coque sans peinture, détail des cadres, deux orientations de lumière) et vue
+pilote au champ de 80°. Banc figé avec FDM nul, CYJN, 1280 × 720, heure fixe
+2026-06-21 16:45 UTC. La paire lumineuse utilise les caps 10°/190° et les décalages
+caméra 140°/320° pour conserver le côté examiné. Les rapports confirment la restauration
+des vues extérieures. Instruments et ficelle visibles dans le cadrage pilote retenu.
+
+62 tests passés ; couture d'enveloppe, symétrie, UV et pivot du fil vérifiés.
+Reconstruction exacte depuis le tutoriel. Dégagements tête/toit échantillonnés :
+0,1296 m devant, 0,1496 m derrière ; pieds/coque : 0,1032 m et 0,1365 m.
+Ce contrôle ne constitue pas une certification de collision ni un essai de vol.
+Avertissements du mode lecture seule et absence de son présents dans le journal.
+
+Les premiers essais de lumière ont révélé que la caméra extérieure ne suivait pas
+le changement de cap comme prévu. Le banc final compense son azimut et remet le cap
+initial entre les vues ; seules les captures finales sont publiées.
+
+[Atelier25](construction/25-finitions-avant.md) ·
+[Livraison finitions-43](https://github.com/steveprudhomme/sw233-flightgear/releases/tag/finitions-43).
+Les formes sont livrées pour revue ; charnières, verrouillage et ouverture restent non réalisés.

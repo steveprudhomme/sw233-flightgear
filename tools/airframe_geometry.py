@@ -6,31 +6,43 @@ from math import cos, pi, sin
 # x, lower half-width, lower centre, lower height, rim half-width, sill.
 # Model estimates. A smaller sampling interval is not increased measurement accuracy.
 HULL = [
-    (0, 0.024, -0.24, 0.025, 0.012, -0.215),
-    (0.04, 0.105, -0.25, 0.11, 0.075, -0.15),
-    (0.10, 0.165, -0.26, 0.15, 0.13, -0.105),
-    (0.22, 0.23, -0.27, 0.19, 0.16, -0.08),
-    (0.50, 0.35, -0.27, 0.28, 0.24, 0.05),
-    (0.91, 0.425, -0.27, 0.32, 0.397, 0.07),
-    (1.55, 0.465, -0.27, 0.35, 0.43, 0.09),
-    (2.13, 0.47, -0.27, 0.36, 0.44, 0.10),
-    (2.78, 0.43, -0.24, 0.34, 0.39, 0.10),
-    (3.16, 0.39, -0.21, 0.32, 0.34, 0.10),
+    (0, 0.008, -0.12, 0.008, 0.008, -0.12),
+    (0.04, 0.105, -0.15, 0.11, 0.08, -0.03),
+    (0.10, 0.165, -0.20, 0.15, 0.13, 0.035),
+    (0.22, 0.25, -0.22, 0.20, 0.20, 0.09),
+    (0.50, 0.35, -0.25, 0.28, 0.30, 0.12),
+    (0.70, 0.40, -0.26, 0.30, 0.36, 0.12),
+    (0.91, 0.425, -0.27, 0.32, 0.397, 0.12),
+    (1.55, 0.465, -0.27, 0.35, 0.43, 0.12),
+    (2.13, 0.47, -0.27, 0.36, 0.44, 0.13),
+    (2.78, 0.43, -0.24, 0.34, 0.39, 0.13),
+    (3.16, 0.39, -0.21, 0.32, 0.34, 0.13),
     (3.25, 0.38, -0.20, 0.32, 0.33, 0.12),
     (5, 0.21, -0.12, 0.22, 0.18, 0.10),
     (7.61, 0.065, -0.03, 0.105, 0.05, 0.075),
 ]
-# x, canopy height above rim, aft lean of crown.
-CANOPY = [
-    (0.50, 0.03, 0),
-    (0.65, 0.23, 0.02),
-    (0.91, 0.43, 0.05),
-    (1.25, 0.53, 0.10),
-    (1.55, 0.56, 0.14),
-    (2.13, 0.60, 0),
-    (2.78, 0.47, 0),
-    (3.16, 0.14, 0),
+# x, height above rim, aft lean of crown. Estimated silhouette, not surveyed dimensions.
+NOSE = [
+    (0, 0.008, 0),
+    (0.04, 0.04, 0),
+    (0.10, 0.07, 0),
+    (0.22, 0.13, 0),
+    (0.50, 0.16, 0),
+    (0.70, 0.14, 0),
 ]
+CANOPY = [
+    (0.70, 0.14, 0),
+    (0.91, 0.37, 0.05),
+    (1.25, 0.52, 0.10),
+    (1.55, 0.56, 0.14),
+    (2.13, 0.58, 0),
+    (2.78, 0.57, 0),
+    (3.16, 0.54, 0),
+]
+FAIRING = [(3.16, 0.54, 0), (3.56, 0.50, 0), (4.20, 0.25, 0), (5, 0, 0)]
+CABIN_START = 0.70
+CABIN_END = 3.16
+FRAME_MATERIAL = 14
 DIVISIONS = 32
 
 
@@ -55,10 +67,10 @@ def interpolate(rows, x, column):
 
 
 def build_enclosure(poly, rod):
-    knots = sorted({r[0] for r in HULL} | {r[0] for r in CANOPY})
+    knots = sorted({r[0] for rows in (HULL, NOSE, CANOPY, FAIRING) for r in rows})
     xs = []
     for a, b in zip(knots, knots[1:]):
-        count = max(1, round((b - a) / 0.065)) if a < 3.16 else 1
+        count = max(1, round((b - a) / 0.065)) if a < 5 else 1
         xs.extend(a + (b - a) * i / count for i in range(count))
     xs.append(knots[-1])
     lower, upper = [], []
@@ -85,10 +97,12 @@ def build_enclosure(poly, rod):
             )
         ring.append((x, rim, sill))
         lower.append(ring)
-        if x <= 0.5:
-            height, lean = 0.01 + 0.02 * x / 0.5, 0
-        elif x <= 3.16:
+        if x <= CABIN_START:
+            height, lean = interpolate(NOSE, x, 1), 0
+        elif x <= CABIN_END:
             height, lean = interpolate(CANOPY, x, 1), interpolate(CANOPY, x, 2)
+        elif x <= 5:
+            height, lean = interpolate(FAIRING, x, 1), 0
         else:
             height, lean = 0, 0
         upper.append(
@@ -104,47 +118,66 @@ def build_enclosure(poly, rod):
     for k, (a, b) in enumerate(zip(lower, lower[1:])):
         for j in range(len(a) - 1):
             poly("fuselage", 0, a[j], a[j + 1], b[j + 1], b[j])
-        front = xs[k + 1] <= 0.5
-        cabin = xs[k] >= 0.5 and xs[k + 1] <= 3.16
-        if front or cabin:
-            a, b = upper[k], upper[k + 1]
-            for j in range(DIVISIONS):
-                fairing = cabin and xs[k] >= 2.13 and 8 <= j < 24
-                if front:
-                    name = "fuselage"
-                elif fairing:
-                    name = "raccord-arriere"
-                elif xs[k] < 1.55:
-                    name = "pare-brise"
-                elif j < 8:
-                    name = "vitrage-droit"
-                elif j >= 24:
-                    name = "vitrage-gauche"
-                else:
-                    name = "verriere"
-                m = 0 if front or fairing else 4
-                poly(name, m, a[j], a[j + 1], b[j + 1])
-                poly(name, m, a[j], b[j + 1], b[j])
-        else:
-            poly("fuselage", 0, a[-1], a[0], b[0], b[-1])
-    # Nose cap uses exactly the subdivided upper boundary; tail stays faceted.
+        front = xs[k + 1] <= CABIN_START
+        cabin = xs[k] >= CABIN_START and xs[k + 1] <= CABIN_END
+        a, b = upper[k], upper[k + 1]
+        for j in range(DIVISIONS):
+            fairing = (cabin and xs[k] >= 2.13 and 8 <= j < 24) or (CABIN_END <= xs[k] < 5)
+            if fairing:
+                name = "raccord-arriere"
+            elif front or not cabin:
+                name = "fuselage"
+            elif xs[k] < 1.55:
+                name = "pare-brise"
+            elif j < 8:
+                name = "vitrage-droit"
+            elif j >= 24:
+                name = "vitrage-gauche"
+            else:
+                name = "verriere"
+            m = 0 if name in ("fuselage", "raccord-arriere") else 4
+            poly(name, m, a[j], a[j + 1], b[j + 1])
+            poly(name, m, a[j], b[j + 1], b[j])
+    # Upper and lower boundaries share every cap edge, including the flat tail deck.
     poly("fuselage", 0, *reversed(lower[0] + upper[0][1:-1]))
-    poly("fuselage", 0, *lower[-1])
-    rear = min(range(len(xs)), key=lambda i: abs(xs[i] - 3.16))
-    poly("raccord-arriere", 0, *upper[rear])
-    cabin_ids = [i for i, x in enumerate(xs) if 0.5 <= x <= 3.16]
+    poly("fuselage", 0, *(lower[-1] + upper[-1][1:-1]))
+    cabin_ids = [i for i, x in enumerate(xs) if CABIN_START <= x <= CABIN_END]
+
+    def trim(name, a, b, radius):
+        # Rubber bead behind the blue metal frame; offsets are model estimates.
+        def back(p):
+            return (p[0] - 0.016, p[1], p[2])
+        rod("joints-verriere", 3, back(a), back(b), radius + 0.004)
+        rod(name, FRAME_MATERIAL, a, b, radius)
+
     for k in cabin_ids[:-1]:
         for j in (0, DIVISIONS):
-            rod("bordures-cockpit", 0, upper[k][j], upper[k + 1][j], 0.018)
-    # No extra transverse bar halfway across the forward windscreen.
-    for x in (0.5, 1.55, 2.13, 3.16):
+            trim("bordures-cockpit", upper[k][j], upper[k + 1][j], 0.014)
+    for x in (CABIN_START, 1.55, 2.13, CABIN_END):
         k = min(range(len(xs)), key=lambda i: abs(xs[i] - x))
         for a, b in zip(upper[k], upper[k][1:]):
-            rod("arceaux", 0, a, b, 0.016)
+            trim("arceaux", a, b, 0.014)
+        for p in upper[k][::4]:
+            rod(
+                "fixations-cadres",
+                9,
+                (p[0] + 0.012, p[1], p[2]),
+                (p[0] + 0.019, p[1], p[2]),
+                0.0035,
+            )
     for k in cabin_ids[:-1]:
         if xs[k] >= 1.55:
             for j in (8, 24):
-                rod("longerons-verriere", 0, upper[k][j], upper[k + 1][j], 0.010)
+                rod("longerons-verriere", FRAME_MATERIAL, upper[k][j], upper[k + 1][j], 0.010)
+    # Visible latch representation only: it does not unlock or move the canopy.
+    latch = [
+        (1.44, -0.445, 0.145),
+        (1.46, -0.472, 0.17),
+        (1.54, -0.472, 0.17),
+        (1.56, -0.445, 0.145),
+    ]
+    for a, b in zip(latch, latch[1:]):
+        rod("poignee-verriere", 11, a, b, 0.006)
     for side in (-1, 1):
         selected = [row for row in HULL if 1.55 <= row[0] <= 2.78]
         line = [

@@ -23,3 +23,14 @@ class YarnTests(unittest.TestCase):
             self.assertTrue(fdm.run_ic())
             angle = math.radians(fdm[prop] * float(yarn.findtext("factor")))
             self.assertAlmostEqual(math.sin(angle), -math.sin(math.radians(beta)))
+
+    def test_tuft_pivot_remains_at_its_attachment(self):
+        from tools.parts_atlas import bounds, read_mesh
+        _, objects = read_mesh(ROOT / "src/SW233/Models/sw233.ac")
+        animations = ET.parse(ROOT / "src/SW233/Models/sw233-model.xml").findall("animation")
+        yarn = next(a for a in animations if a.findtext("object-name") == "fil-de-laine")
+        pivot = [float(yarn.findtext(f"center/{k}-m")) for k in "xyz"]
+        attachment = bounds(objects["attache-laine"])
+        for value, (low, high) in zip(pivot, attachment):
+            self.assertGreaterEqual(value, low)
+            self.assertLessEqual(value, high)

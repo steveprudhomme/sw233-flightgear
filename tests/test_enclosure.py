@@ -29,7 +29,7 @@ class EnclosureTests(unittest.TestCase):
             self.assertIn(node.text, names)
         for _, polygon in objects['fuselage']:
             x = sum(p[0] for p in polygon)/len(polygon)
-            if .50 < x < 3.16:
+            if .70 < x < 3.16:
                 high = [p for p in polygon if p[2] >= .05]
                 self.assertFalse(any(p[1] < -.2 for p in high) and
                                  any(p[1] > .2 for p in high))
