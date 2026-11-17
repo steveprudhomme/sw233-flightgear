@@ -115,3 +115,42 @@ Actualisation clavier (13 novembre 2026) : saisie 200.125 validée par Steve ave
 ## Installation déplacée — AUD-02a
 
 Paquet copié dans un dossier neuf avec espaces et lancé par son propre lanceur sous Windows / FlightGear 2024.1.7. Chemin effectif confirmé, cockpit et menu capturés ; trois états de profondeur/aérofreins vérifiés ; instruments connectés. Entrée CMD vérifiée depuis un autre répertoire. 19 tests réussis. Contrôles et limites dans la [fiche 12](construction/12-installation.md). Pas de validation native Linux ni de nouvel étalonnage du FDM.
+
+
+## Lot visuals-39 — 17 novembre 2026
+
+Paquet construit depuis le commit `9490ec4`, essayé sous FlightGear 2024.1.7 Windows.
+[Paquet, captures, atlas et rapports](https://github.com/steveprudhomme/sw233-flightgear/releases/tag/visuals-39).
+
+- Comparaison native des forces 0, 1 et réglées (0,25 verrière / 0,12 cadrans),
+  en trois vues. ALS actif, image de ciel statique, aucune réflexion du terrain réel.
+- Clics souris natifs : calage 29,92 → 29,93 inHg ; COM1 répond à son bouton fin
+  (valeur finale lue : 118,325 MHz). Réglages remis ensuite aux valeurs de test.
+- Six états visuels : aucun équipage, deux occupants, avant seul, arrière seul,
+  ailes fictives activées, livrée désactivée. Les quatre présences et la livrée ont
+  été vérifiées sur les images ; la petite aile de poitrine est trop loin pour
+  certifier sa lisibilité sur ces captures.
+- Mesure du compteur `/sim/frame-number` par temps monotone, huit intervalles
+  d'une seconde par état : médianes de 59,98 à 60,01 images/s. La propriété
+  `/sim/frame-rate` reste à zéro en pause et n'est pas utilisée comme mesure.
+  Le plafond proche de 60 Hz empêche de conclure à un coût nul des nouveaux objets.
+- Visage et manches raccordés après la première inspection ; cou avant caché
+  avec la tête en vue pilote. Les mains restent fixes, les silhouettes sont artistiques.
+- Paquet final ouvert avec **JSBSim**, au sol à CYJN : masses avant/arrière
+  180/180 lb, visibilité active, nouvelle plaque C-FYLP lisible. Le planeur repose
+  incliné au sol ; cet essai confirme le chargement, pas la validité des contacts.
+- 35 tests automatisés réussis, Ruff et contrôle des sources réussis ; reconstruction
+  complète du tutoriel identique, avec les trois recettes panel/livery/crew.
+
+Les comparaisons de rendu utilisent une séance dédiée `--fdm=null`; elles ne valident
+pas le vol. Les bancs restaurent les propriétés qu'ils modifient, vérification incluse
+aux rapports. Les journaux du lancement JSBSim en lecture seule signalent notamment
+l'absence de moteur et l'impossibilité d'enregistrer l'état FDM initial ; aucune
+validation nouvelle du moteur de vol n'est déduite de ce lot.
+
+![Paquet final au sol, plaque C-FYLP](https://github.com/steveprudhomme/sw233-flightgear/releases/download/visuals-39/release-cockpit.jpg)
+
+Les 184 planches de l'atlas sont des projections de géométrie, pas des photographies.
+Les JPEG de FlightGear sont des captures natives. Le dossier de références explique
+pourquoi la peinture et les insignes sont provisoires. Les limites restantes sont
+conservées au [ROADMAP](../ROADMAP.md).

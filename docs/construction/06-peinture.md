@@ -1223,3 +1223,10 @@ dessiner ; plis, poches, coutures et harnais auront leurs étapes illustrées.
 Voir le [dossier de références](../references/livree-et-equipage.md).
 Les personnages, les nouveaux reflets et la livrée ne sont pas encore présents
 dans ce premier paquet de matériaux.
+
+
+La plaque C-FYLP a ensuite été vérifiée dans le paquet final, avec JSBSim au sol.
+Son placement sous l'altimètre est un choix de notre modèle, pas un emplacement
+mesuré sur une nouvelle photographie de C-FYLP.
+
+![Plaque dans le paquet final](https://github.com/steveprudhomme/sw233-flightgear/releases/download/visuals-39/release-cockpit.jpg)

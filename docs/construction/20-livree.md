@@ -200,7 +200,7 @@ if __name__ == '__main__':
 ```
 ## 7. Observer la livrée dans FlightGear
 
-Les deux images ci-dessous sont destinées aux captures réelles du simulateur, prises à gauche puis à droite. Elles montrent la maquette avec sa **livrée provisoire**, et non une photographie de C-FYLP réel. Le jaune, le bleu et les bandes restent des choix de dessin tant que leur disposition exacte n'a pas été confirmée par des photographies datées.
+Les deux images ci-dessous sont des captures réelles du simulateur, prises à gauche puis à droite. Elles montrent la maquette avec sa **livrée provisoire**, et non une photographie de C-FYLP réel. Le jaune, le bleu et les bandes restent des choix de dessin tant que leur disposition exacte n'a pas été confirmée par des photographies datées.
 
 ![Vue gauche de la livrée provisoire dans FlightGear](https://github.com/steveprudhomme/sw233-flightgear/releases/download/visuals-39/livery-left.jpg)
 

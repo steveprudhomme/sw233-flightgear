@@ -49,7 +49,7 @@ Répartition demandée : agent livrée (VIS-02a/b), agent équipage (VIS-04a/b),
 - [x] Développer des sources éditables de textures et de géométrie ; préserver une reconstruction complète depuis le tutoriel et ne pas versionner les produits générés.
 - [x] Réaliser les deux personnages avec tenues, poches, coutures, étiquettes et harnais ; ne pas attribuer de grade ou qualification non confirmé. Les ailes peuvent être préparées en variante à qualification explicite, pas attribuées silencieusement.
 - [x] Prévoir des commandes de visibilité pour comparer les occupants et éviter de gêner la vue pilote ; conserver les masses dans le système existant.
-- [ ] Capturer chaque lot dans le simulateur, produire un atlas des nouvelles pièces, contrôler paquet et recettes, actualiser README/CHANGELOG/ROADMAP et publier sur GitHub.
+- [x] Capturer chaque lot dans le simulateur, produire un atlas des nouvelles pièces, contrôler paquet et recettes et actualiser les documents ; preuves du lot visuals-39 liées ci-dessous.
 
 **Livraison visuelle 39 :** [preuves et paquet](https://github.com/steveprudhomme/sw233-flightgear/releases/tag/visuals-39),
 [tutoriels 19 à 21](docs/construction/19-realisme.md). Les cases non cochées ci-dessous
