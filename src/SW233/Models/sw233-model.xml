@@ -15,6 +15,24 @@
     <object-name>alt-vitre</object-name>
     <object-name>vsi-vitre</object-name>
   </effect>
+  <!-- Only one complete skin is drawn: original, painted, or UV grid. -->
+  <animation>
+    <type>select</type>
+    <object-name>fuselage</object-name>
+    <object-name>aile-1</object-name>
+    <object-name>aile1</object-name>
+    <object-name>aerofrein-1</object-name>
+    <object-name>aerofrein1</object-name>
+    <object-name>empennage-1</object-name>
+    <object-name>empennage1</object-name>
+    <object-name>profondeur-1</object-name>
+    <object-name>profondeur1</object-name>
+    <object-name>derive</object-name>
+    <condition><and>
+      <not><property>/sim/sw233/visuals/livery</property></not>
+      <not><property>/sim/sw233/visuals/uv-grid</property></not>
+    </and></condition>
+  </animation>
   <animation>
     <type>rotate</type>
     <object-name>alt-centaines</object-name>

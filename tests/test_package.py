@@ -21,6 +21,7 @@ class PackageTests(unittest.TestCase):
             "aerofrein-1", "aerofrein1", "poignee-frein", "compas-rose", "alt-calage",
             "profondeur-1", "profondeur1", "alt-pression", "radio-frequence",
             "radio-bouton-gauche", "radio-bouton-droit", "plaquettes-fr", "plaquettes-en",
+            "fuselage",
         })
         texts = {node.findtext("name"): node for node in model.findall("text")}
         self.assertEqual(set(texts), {"alt-pression", "alt-unite", "radio-frequence"})
@@ -44,6 +45,12 @@ class PackageTests(unittest.TestCase):
                 for action in actions:
                     self.assertEqual(action.findtext("binding/command"), "nasal")
                     self.assertTrue(action.findtext("binding/script"))
+            elif kind == "select" and animation.findtext("object-name") == "fuselage":
+                self.assertEqual({p.text for p in animation.findall("condition/and/not/property")},
+                                 {"/sim/sw233/visuals/livery", "/sim/sw233/visuals/uv-grid"})
+                self.assertEqual({n.text for n in animation.findall("object-name")}, {
+                    "fuselage", "aile-1", "aile1", "aerofrein-1", "aerofrein1",
+                    "empennage-1", "empennage1", "profondeur-1", "profondeur1", "derive"})
             elif kind == "select":
                 self.assertEqual(animation.findtext("condition/equals/property"),
                                  "sim/sw233/language")

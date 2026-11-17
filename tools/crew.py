@@ -69,9 +69,13 @@ def _atlas(path):
                 )
         if key.startswith("name_"):
             label = "R. PAG\u00c9" if key == "name_front" else "R. VACHON"
-            draw.rectangle((8, 65, 247, 190), outline="#b8b7a2", width=3)
-            font = _label_font()
-            draw.text((128, 128), label, anchor="mm", font=font, fill="#e0dfc4")
+            # Paint at the physical tape aspect ratio, then fit the square atlas
+            # tile: avoids tiny, vertically squashed letters on the 82 x 25 mm tag.
+            tape = Image.new("RGB", (256, 80), color)
+            lettering = ImageDraw.Draw(tape)
+            lettering.rectangle((3, 3, 252, 76), outline="#b8b7a2", width=2)
+            lettering.text((128, 40), label, anchor="mm", font=_label_font(), fill="#e0dfc4")
+            tile = tape.resize((256, 256), Image.Resampling.LANCZOS)
         if key in ("project", "aircraft", "wings"):
             draw.rounded_rectangle((8, 10, 247, 245), radius=32, outline="#bebda3", width=4)
             font = ImageFont.load_default(size=25)
@@ -95,10 +99,39 @@ def _atlas(path):
 
 
 class CrewMesh:
-    def __init__(self):
+    def __init__(self, low_detail=False):
         self.parts = []
+        self.low_detail = low_detail
 
     def add(self, name, material, vertices, faces, uvs=None, category="body"):
+        if self.low_detail:
+            keep = (
+                "torso",
+                "pelvis",
+                "neck",
+                "head",
+                "hair",
+                "nose",
+                "ear",
+                "thigh",
+                "knee",
+                "calf",
+                "boot-top",
+                "boot",
+                "sole",
+                "shoulder",
+                "sleeve",
+                "hand",
+                "shoulder-harness",
+                "lap-harness",
+                "belt-buckle",
+                "optional-fictional-wings",
+            )
+            if (
+                not any(name.endswith("-" + suffix) for suffix in keep)
+                and "-shoulder-harness-" not in name
+            ):
+                return
         assert all(len(f) == 3 for f in faces)
         assert all(0 <= i < len(vertices) for f in faces for i in f)
         if uvs is None:
@@ -108,6 +141,7 @@ class CrewMesh:
 
     def loft(self, name, material, rings, category="body", segments=24):
         """Horizontal elliptical rings: (x, y, z, radius_x, radius_y)."""
+        segments = min(segments, 8) if self.low_detail else segments
         vs, uv, fs = [], [], []
         for row, (x, y, z, rx, ry) in enumerate(rings):
             for i in range(segments + 1):
@@ -132,7 +166,7 @@ class CrewMesh:
 
     def ellipsoid(self, name, material, center, radii, category="body", n=16):
         rings = []
-        for j in range(13):
+        for j in range(0, 13, 3) if self.low_detail else range(13):
             a = -math.pi / 2 + math.pi * (j + 0.015) / (12 + 0.03)
             rings.append(
                 (
@@ -166,7 +200,7 @@ class CrewMesh:
         vs = []
         uv = []
         fs = []
-        n = 16
+        n = 8 if self.low_detail else 16
         for row, t in enumerate((0, 0.07, 0.25, 0.55, 0.83, 0.96, 1)):
             radius = ((1 - t) * radius_a + t * radius_b) * (
                 0.72 + 0.28 * math.sin(math.pi * t) ** 0.4
@@ -199,7 +233,7 @@ class CrewMesh:
     def sleeve(self, name, material, sections):
         """One continuous bent sleeve, with shared rings through the elbow."""
         vertices, faces, uv = [], [], []
-        count = 24
+        count = 8 if self.low_detail else 24
         for row, (center, radius) in enumerate(sections):
             before = sections[max(0, row - 1)][0]
             after = sections[min(len(sections) - 1, row + 1)][0]
@@ -235,14 +269,15 @@ class CrewMesh:
                 faces.append((middle, a + 1, a) if row == 0 else (middle, a, a + 1))
         self.add(name, material, vertices, faces, uv)
 
-    def patch(self, name, material, corners, category="body"):
-        # Corners: bottom left, bottom right, top right, top left as viewed outside.
+    def patch(self, name, material, corners, category="body", flip_u=False):
+        # Corner order follows construction coordinates. Textured labels explicitly
+        # reverse U when increasing coordinate runs left in the exterior view.
         self.add(
             name,
             material,
             corners,
             [(0, 1, 2), (0, 2, 3)],
-            [(0, 0), (1, 0), (1, 1), (0, 1)],
+            [(1, 0), (0, 0), (0, 1), (1, 1)] if flip_u else [(0, 0), (1, 0), (1, 1), (0, 1)],
             category,
         )
 
@@ -264,7 +299,7 @@ class CrewMesh:
             ]
             lines += [f"{x:.6f} {z:.6f} {-y:.6f}" for x, y, z in vertices]
             lines.append(f"numsurf {len(faces)}")
-            tile = TILES[mat][0]
+            tile = TILES[mat][0] if mat != "atlas" else 0
             tx = tile % 4
             ty = tile // 4
             for face in faces:
@@ -272,11 +307,28 @@ class CrewMesh:
                 for vertex in face:
                     u, v = uv[vertex]
                     # Four-pixel gutter, AC uses bottom-left texture origin.
-                    u = (tx * 256 + 4 + u * 248) / 1024
-                    v = 1 - (ty * 256 + 252 - v * 248) / 1024
+                    if mat != "atlas":
+                        u = (tx * 256 + 4 + u * 248) / 1024
+                        v = 1 - (ty * 256 + 252 - v * 248) / 1024
                     lines.append(f"{vertex} {u:.7f} {v:.7f}")
             lines.append("kids 0")
         path.write_text("\n".join(lines) + "\n", encoding="utf-8")
+
+
+def _chest_front(y, z):
+    rings = (
+        (-0.10, 0.035, 0.103, 0.138),
+        (0.015, 0.045, 0.097, 0.137),
+        (0.12, 0.050, 0.105, 0.158),
+        (0.235, 0.045, 0.092, 0.174),
+        (0.285, 0.035, 0.070, 0.135),
+    )
+    for a, b in zip(rings, rings[1:]):
+        if a[0] <= z <= b[0]:
+            t = (z - a[0]) / (b[0] - a[0])
+            x, rx, ry = ((1 - t) * a[i] + t * b[i] for i in (1, 2, 3))
+            return x - rx * math.sqrt(max(0, 1 - (y / ry) ** 2)) - 0.0025
+    raise ValueError("Chest detail outside torso interpolation")
 
 
 def _person(mesh, prefix, seat, cloth, head_z):
@@ -297,8 +349,10 @@ def _person(mesh, prefix, seat, cloth, head_z):
             cat,
         )
 
-    def patch(label, mat, points, cat="body"):
-        mesh.patch(prefix + "-" + label, mat, [(seat + x, y, z) for x, y, z in points], cat)
+    def patch(label, mat, points, cat="body", flip_u=False):
+        mesh.patch(
+            prefix + "-" + label, mat, [(seat + x, y, z) for x, y, z in points], cat, flip_u=flip_u
+        )
 
     mesh.loft(
         prefix + "-torso",
@@ -478,16 +532,17 @@ def _person(mesh, prefix, seat, cloth, head_z):
             0.0015,
         )
         # Seat belt lap and shoulder webbing, broad strips over garment.
-        patch(
-            s + "-shoulder-harness",
-            "strap",
-            [
-                (-0.084, sign * 0.025, -0.068),
-                (-0.084, sign * 0.055, -0.068),
-                (-0.060, sign * 0.133, 0.265),
-                (-0.060, sign * 0.103, 0.265),
-            ],
-        )
+        strap_path = ((0.040, -0.068), (0.142, 0.182), (0.116, 0.272))
+        for index, (a, b) in enumerate(zip(strap_path, strap_path[1:])):
+            corners = []
+            for y, z in (
+                (a[0] - 0.015, a[1]),
+                (a[0] + 0.015, a[1]),
+                (b[0] + 0.015, b[1]),
+                (b[0] - 0.015, b[1]),
+            ):
+                corners.append((_chest_front(sign * y, z) - 0.002, sign * y, z))
+            patch(s + f"-shoulder-harness-{index}", "strap", corners)
         patch(
             s + "-lap-harness",
             "strap",
@@ -498,7 +553,12 @@ def _person(mesh, prefix, seat, cloth, head_z):
                 (-0.112, sign * 0.012, -0.090),
             ],
         )
-        e(s + "-harness-adjuster", "metal", (-0.079, sign * 0.085, 0.110), (0.008, 0.021, 0.023))
+        e(
+            s + "-harness-adjuster",
+            "metal",
+            (_chest_front(sign * 0.113, 0.110) - 0.008, sign * 0.113, 0.110),
+            (0.008, 0.020, 0.023),
+        )
         # Shoulder project labels are original and are not official insignia.
         outer = sign * 0.218
         patch(
@@ -510,6 +570,7 @@ def _person(mesh, prefix, seat, cloth, head_z):
                 (0.032, outer, 0.213),
                 (-0.025, outer, 0.213),
             ],
+            flip_u=sign > 0,
         )
         for j in range(4):
             limb(
@@ -545,11 +606,10 @@ def _person(mesh, prefix, seat, cloth, head_z):
         "nametape",
         "name_" + prefix,
         [
-            (-0.060, 0.057, 0.177),
-            (-0.060, 0.139, 0.177),
-            (-0.060, 0.139, 0.207),
-            (-0.060, 0.057, 0.207),
+            (_chest_front(y, z) - 0.001, y, z)
+            for y, z in ((0.027, 0.179), (0.109, 0.179), (0.109, 0.204), (0.027, 0.204))
         ],
+        flip_u=True,
     )
     patch(
         "optional-fictional-wings",
@@ -561,41 +621,133 @@ def _person(mesh, prefix, seat, cloth, head_z):
             (-0.061, -0.140, 0.215),
         ],
         "wings",
+        flip_u=True,
     )
 
 
+# Artistic crossover: detail at cockpit distances, simplified bodies outside 60 m.
+LOD_DISTANCE_M = 60.0
+
+
+def build_crew_mesh(low_detail=False):
+    mesh = CrewMesh(low_detail=low_detail)
+    # The previous 0.438 m head intersected the sloping windscreen by 0.19 mm.
+    _person(mesh, "front", 1.52, "blue", 0.418)
+    _person(mesh, "rear", 2.39, "green", 0.438)
+    return mesh
+
+
+def export_atlas_source(path: Path):
+    """Write individual fine parts for teaching diagrams, never loaded by FG."""
+    mesh = build_crew_mesh()
+    path = Path(path)
+    path.parent.mkdir(parents=True, exist_ok=True)
+    mesh.save(path)
+    return len(mesh.parts)
+
+
+def _bounds(vertices):
+    return [(min(v[i] for v in vertices), max(v[i] for v in vertices)) for i in range(3)]
+
+
+def _coalesce(mesh, detail, reference=None):
+    """One drawable per visibility category gives both LODs the same bound centre.
+
+    Original part names remain in the editable mesh. UVs are resolved before
+    merging so distinct cloth/skin/name tiles still use the same atlas material.
+    Coarse extrema are aligned to fine extrema (sub-mm changes) for identical
+    bounding boxes, hence the same eye-distance origin at the range boundary.
+    """
+    result = CrewMesh()
+    for person in ("front", "rear"):
+        for category in ("body", "head", "wings"):
+            vs, faces, uv = [], [], []
+            for name, material, points, triangles, coords, cat in mesh.parts:
+                if not name.startswith(person + "-") or cat != category:
+                    continue
+                offset = len(vs)
+                vs.extend(points)
+                faces.extend(tuple(offset + i for i in face) for face in triangles)
+                tile = TILES[material][0]
+                uv.extend(
+                    (
+                        (tile % 4 * 256 + 4 + u * 248) / 1024,
+                        1 - (tile // 4 * 256 + 252 - v * 248) / 1024,
+                    )
+                    for u, v in coords
+                )
+            label = "optional-fictional-wings" if category == "wings" else category
+            if reference is not None:
+                target = next(
+                    p[2] for p in reference.parts if p[0] == person + "-" + label + "-fine"
+                )
+                old, new = _bounds(vs), _bounds(target)
+                vs = [
+                    tuple(
+                        new[i][0]
+                        + (v[i] - old[i][0]) * (new[i][1] - new[i][0]) / (old[i][1] - old[i][0])
+                        if old[i][1] != old[i][0]
+                        else new[i][0]
+                        for i in range(3)
+                    )
+                    for v in vs
+                ]
+            result.add(person + "-" + label + "-" + detail, "atlas", vs, faces, uv, category)
+    return result
+
+
+def crew_lods():
+    fine = _coalesce(build_crew_mesh(), "fine")
+    coarse = _coalesce(build_crew_mesh(True), "coarse", fine)
+    return fine, coarse
+
+
+def _visibility(root, mesh, person, category):
+    animation = ET.SubElement(root, "animation")
+    ET.SubElement(animation, "type").text = "select"
+    for name, _, _, _, _, cat in mesh.parts:
+        if name.startswith(person + "-") and cat == category:
+            ET.SubElement(animation, "object-name").text = name
+    condition = ET.SubElement(ET.SubElement(animation, "condition"), "and")
+    ET.SubElement(condition, "property").text = "/sim/sw233/visuals/crew"
+    greater = ET.SubElement(condition, "greater-than")
+    suffix = "" if person == "front" else "[1]"
+    ET.SubElement(greater, "property").text = "/fdm/jsbsim/inertia/pointmass-weight-lbs" + suffix
+    ET.SubElement(greater, "value").text = "0"
+    if person == "front" and category == "head":
+        different = ET.SubElement(ET.SubElement(condition, "not"), "equals")
+        ET.SubElement(different, "property").text = "/sim/current-view/view-number"
+        ET.SubElement(different, "value").text = "0"
+    if category == "wings":
+        ET.SubElement(condition, "property").text = "/sim/sw233/visuals/wings"
+
+
 def finish_crew(models: Path):
-    """Write crew.ac, crew.xml, crew-atlas.png; return geometry verification data."""
+    """Write two real LODs in crew.ac, range/visibility XML and original atlas."""
     models = Path(models)
     models.mkdir(parents=True, exist_ok=True)
+    fine, coarse = crew_lods()
     mesh = CrewMesh()
-    _person(mesh, "front", 1.52, "blue", 0.438)
-    _person(mesh, "rear", 2.39, "green", 0.438)
+    mesh.parts = fine.parts + coarse.parts
     _atlas(models / "crew-atlas.png")
     mesh.save(models / "crew.ac")
     root = ET.Element("PropertyList")
     ET.SubElement(root, "path").text = "crew.ac"
     for person in ("front", "rear"):
-        suffix = "" if person == "front" else "[1]"
         for category in ("body", "head", "wings"):
-            animation = ET.SubElement(root, "animation")
-            ET.SubElement(animation, "type").text = "select"
-            for name, _, _, _, _, cat in mesh.parts:
-                if name.startswith(person + "-") and cat == category:
-                    ET.SubElement(animation, "object-name").text = name
-            condition = ET.SubElement(ET.SubElement(animation, "condition"), "and")
-            ET.SubElement(condition, "property").text = "/sim/sw233/visuals/crew"
-            greater = ET.SubElement(condition, "greater-than")
-            ET.SubElement(greater, "property").text = (
-                "/fdm/jsbsim/inertia/pointmass-weight-lbs" + suffix
-            )
-            ET.SubElement(greater, "value").text = "0"
-            if person == "front" and category == "head":
-                different = ET.SubElement(ET.SubElement(condition, "not"), "equals")
-                ET.SubElement(different, "property").text = "/sim/current-view/view-number"
-                ET.SubElement(different, "value").text = "0"
-            if category == "wings":
-                ET.SubElement(condition, "property").text = "/sim/sw233/visuals/wings"
+            _visibility(root, mesh, person, category)
+    # Each range wraps one merged object, so coarse and fine use equal bounding
+    # spheres, independent of the visibility state of other people or heads.
+    for name, _, _, _, _, _ in mesh.parts:
+        animation = ET.SubElement(root, "animation")
+        ET.SubElement(animation, "type").text = "range"
+        ET.SubElement(animation, "object-name").text = name
+        if name.endswith("-fine"):
+            ET.SubElement(animation, "min-m").text = "0"
+            ET.SubElement(animation, "max-m").text = str(LOD_DISTANCE_M)
+        else:
+            ET.SubElement(animation, "min-m").text = str(LOD_DISTANCE_M)
+            # No arbitrary far cut-off: FlightGear's default maximum is unbounded.
     ET.indent(root, space="  ")
     ET.ElementTree(root).write(models / "crew.xml", encoding="utf-8", xml_declaration=True)
     vertices = [v for p in mesh.parts for v in p[2]]
@@ -603,10 +755,10 @@ def finish_crew(models: Path):
         "objects": len(mesh.parts),
         "vertices": len(vertices),
         "triangles": sum(len(p[3]) for p in mesh.parts),
-        "construction_bounds": {
-            axis: [min(v[i] for v in vertices), max(v[i] for v in vertices)]
-            for i, axis in enumerate("xyz")
-        },
+        "fine_triangles": sum(len(p[3]) for p in fine.parts),
+        "coarse_triangles": sum(len(p[3]) for p in coarse.parts),
+        "lod_distance_m": LOD_DISTANCE_M,
+        "construction_bounds": dict(zip("xyz", _bounds(vertices))),
         "texture": [1024, 1024],
         "uv_checked": True,
     }
@@ -618,4 +770,8 @@ if __name__ == "__main__":
 
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("models", type=Path)
-    print(json.dumps(finish_crew(parser.parse_args().models), indent=2))
+    parser.add_argument("--parts-atlas", type=Path)
+    args = parser.parse_args()
+    if args.parts_atlas:
+        export_atlas_source(args.parts_atlas)
+    print(json.dumps(finish_crew(args.models), indent=2))

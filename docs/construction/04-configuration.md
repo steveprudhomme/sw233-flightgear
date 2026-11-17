@@ -19,7 +19,7 @@ Commence par une seule racine PropertyList. Dans sim, la description est le titr
     <sim>
         <description>Schweizer SGS 2-33 — Cadets de l’aviation royale du Canada (prototype)</description>
         <author>Steve Prud'Homme et contributeurs SW233</author>
-        <long-description>Prototype libre du Schweizer SGS 2-33 pour FlightGear. Licence GPL-3.0-only. Aerateur central et bagues anemometre, altimetre et variometre en relief 3D fixe. Radio COM1 generique : affichage actif, reglages 1 MHz et 25 kHz ; audio non valide. Calage altimetre lisible en inHg. Compas anime avec boitier arrondi, joint et vis en relief ; rose texturee et caracteres lisses. Tableau noir affine, vis et supports de cartes textures. Plaquettes et listes FR/EN par menu ou Ctrl+L ; initiales mnemotechniques rouges, cartes de droite degagees. Cockpit raccorde, vitrage facette et contours de porte fixes ; commandes et masses configurables ; modele de vol experimental. Projet aux couleurs des Cadets de l'aviation royale du Canada : livree jaune/bleu C-FYLP provisoire, non attestee actuelle. Deux personnages originaux bleu/vert, CEC St-Jean ; insignes generiques sans grade. Reflets de ciel statique sous ALS, transparence de repli. Teste sous Windows avec FlightGear 2024.1.7 ; Linux non valide.</long-description>
+        <long-description>Prototype libre du Schweizer SGS 2-33 pour FlightGear. Licence GPL-3.0-only. Aerateur central et bagues anemometre, altimetre et variometre en relief 3D fixe. Radio COM1 generique : affichage actif, reglages 1 MHz et 25 kHz ; audio non valide. Calage altimetre lisible en inHg. Compas anime avec boitier arrondi, joint et vis en relief ; rose texturee et caracteres lisses. Tableau noir affine, vis et supports de cartes textures. Plaquettes et listes FR/EN par menu ou Ctrl+L ; initiales mnemotechniques rouges, cartes de droite degagees. Cockpit raccorde, vitrage facette et contours de porte fixes ; commandes et masses configurables ; modele de vol experimental. Projet aux couleurs des Cadets de l'aviation royale du Canada : livree jaune/bleu C-FYLP provisoire, non attestee actuelle. Deux personnages originaux bleu/vert, CEC St-Jean ; insignes generiques sans grade. Niveau de detail allege a distance. Grille UV par menu pour verifier ailes, empennages et spoilers. Reflets de ciel statique sous ALS, transparence de repli. Teste sous Windows avec FlightGear 2024.1.7 ; Linux non valide.</long-description>
         <aircraft-version>0.1.0-dev</aircraft-version>
         <minimum-fg-version>2024.1.7</minimum-fg-version>
         <flight-model>jsb</flight-model>
@@ -55,6 +55,12 @@ Ce chemin part du dossier SW233, pas du dossier Models. La liste sera écrite à
 
 <!-- atelier-fichier: src/SW233/sw233-set.xml -->
 ```xml
+        <view n="1">
+            <config>
+                <!-- Presentation target, not an FDM centre-of-gravity change. -->
+                <target-z-offset-m type="double">3.0</target-z-offset-m>
+            </config>
+        </view>
         <menubar><default><menu n="100">
             <label>SW233</label><enabled type="bool">true</enabled>
             <item><label>Occupants et centrage</label><binding>
@@ -74,6 +80,7 @@ Ce chemin part du dossier SW233, pas du dossier Models. La liste sera écrite à
             </binding></item>
             <item><label>Equipage visible / Crew</label><binding><command>property-toggle</command><property>/sim/sw233/visuals/crew</property></binding></item>
             <item><label>Livree Cadets provisoire / Livery</label><binding><command>property-toggle</command><property>/sim/sw233/visuals/livery</property></binding></item>
+            <item><label>Grille UV / Texture grid</label><binding><command>property-toggle</command><property>/sim/sw233/visuals/uv-grid</property></binding></item>
             <item><label>Ailes fictives / Fictional wings</label><binding><command>property-toggle</command><property>/sim/sw233/visuals/wings</property></binding></item>
         </menu></default></menubar>
         <checklists include="Checklists/sw233.xml"/>
@@ -84,6 +91,7 @@ Ce chemin part du dossier SW233, pas du dossier Models. La liste sera écrite à
                 <crew type="bool">true</crew>
                 <livery type="bool">true</livery>
                 <wings type="bool">false</wings>
+                <uv-grid type="bool">false</uv-grid>
             </visuals>
             <language type="string">fr</language>
             <translations>
@@ -142,6 +150,24 @@ Les deux aiguilles lisent **instrumentation/altimeter/indicated-altitude-ft**. L
 
 <!-- atelier-fichier: src/SW233/Models/sw233-model.xml -->
 ```xml
+  <!-- Only one complete skin is drawn: original, painted, or UV grid. -->
+  <animation>
+    <type>select</type>
+    <object-name>fuselage</object-name>
+    <object-name>aile-1</object-name>
+    <object-name>aile1</object-name>
+    <object-name>aerofrein-1</object-name>
+    <object-name>aerofrein1</object-name>
+    <object-name>empennage-1</object-name>
+    <object-name>empennage1</object-name>
+    <object-name>profondeur-1</object-name>
+    <object-name>profondeur1</object-name>
+    <object-name>derive</object-name>
+    <condition><and>
+      <not><property>/sim/sw233/visuals/livery</property></not>
+      <not><property>/sim/sw233/visuals/uv-grid</property></not>
+    </and></condition>
+  </animation>
   <animation>
     <type>rotate</type>
     <object-name>alt-centaines</object-name>
@@ -594,3 +620,17 @@ Le texte `radio-frequence` du XML complet lit la même propriété avec le forma
 Les animations `pick` appellent `sw233_radio.tune` : bouton de souris 0 pour augmenter, bouton 1 pour diminuer. Les essais natifs ont confirmé ici clic gauche et clic milieu. Chaque bouton de façade a une infobulle indiquant son pas. Le chargement `<sw233_radio>` dans `sw233-set.xml` rend le module disponible. Les boutons ne tournent pas visuellement : le nombre affiché confirme l'action.
 
 Voir les [sources et limites](../references/radio-com.md) et les [essais illustrés](06-peinture.md#n--régler-la-fréquence-com1).
+
+
+## Cadrer la vue extérieure et choisir une seule peau
+
+La vue extérieure regardait l'origine au nez : le planeur pouvait sortir du cadre.
+Le réglage `target-z-offset-m = 3.0` lui fait regarder trois mètres derrière le nez.
+C'est un choix de cadrage, pas une mesure du centre de gravité. La méthode suit la
+[documentation des vues de FlightGear](https://wiki.flightgear.org/3D_Model_rotates_around_the_nose).
+
+La sélection des dix surfaces d'origine est aussi importante : elles sont cachées
+quand la peinture ou la grille est affichée. Deux peaux presque superposées donnaient
+un scintillement à distance. Choisir une seule peau supprime cette concurrence sans
+épaissir artificiellement l'aile. Les surfaces peintes mobiles gardent les mêmes axes,
+centres et facteurs de rotation que les pièces d'origine.
