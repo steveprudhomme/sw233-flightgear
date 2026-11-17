@@ -1,0 +1,161 @@
+{
+  "date": "2026-11-17",
+  "kit_sha256": "17eb4703b6ae77490525760412d0f3bf84deea3b532551814e64f2e4b926eee6",
+  "dossier_local": "docs/references/originaux/redaction-francais-2026-11-17",
+  "ressources": [
+    {
+      "dossier": "01_WCAG",
+      "fichier": "WCAG_2_2_FR.html",
+      "titre": "WCAG 2.2 - traduction française",
+      "url": "https://www.w3.org/Translations/WCAG22-fr-20260922/",
+      "format": "html",
+      "url_finale": "https://www.w3.org/Translations/WCAG22-fr-20260922/",
+      "statut": "telecharge",
+      "octets": 592136,
+      "sha256": "e46d40385a43ac772c3d6ca423b5d6a7ec26bb24458bb2890aa11e27d0a89742"
+    },
+    {
+      "dossier": "01_WCAG",
+      "fichier": "WCAG_3_1_5_Explications_EN.html",
+      "titre": "Critère 3.1.5 - explications",
+      "url": "https://www.w3.org/WAI/WCAG22/Understanding/reading-level.html",
+      "format": "html",
+      "url_finale": "https://www.w3.org/WAI/WCAG22/Understanding/reading-level.html",
+      "statut": "telecharge",
+      "octets": 52098,
+      "sha256": "b3499db8202b999b699066e3a678245cba730705d2547bd043b13004bec46838"
+    },
+    {
+      "dossier": "02_Canada",
+      "fichier": "CAN_ASC_3_1_2025.docx",
+      "titre": "Norme langage clair canadienne - Word",
+      "url": "https://accessibilite.canada.ca/sites/default/files/2025-10/norme-langageclair-3_1-2025-nnc.docx",
+      "format": "docx",
+      "url_finale": "https://accessibilite.canada.ca/sites/default/files/2025-10/norme-langageclair-3_1-2025-nnc.docx",
+      "statut": "telecharge",
+      "octets": 509791,
+      "sha256": "2f4df70709dbecb02cb1b9453f0c0cc64f377e5fb3ccedd1eb0a9c8ba1b235a0"
+    },
+    {
+      "dossier": "02_Canada",
+      "fichier": "CAN_ASC_3_1_2025.html",
+      "titre": "Norme langage clair canadienne - HTML",
+      "url": "https://accessibilite.canada.ca/normes-et-guides-techniques/base-de-donnees-des-normes-et-des-guides-techniques/can-asc-312025-langage-clair?mode=full-html",
+      "format": "html",
+      "url_finale": "https://accessibilite.canada.ca/normes-et-guides-techniques/base-de-donnees-des-normes-et-des-guides-techniques/can-asc-312025-langage-clair?mode=full-html",
+      "statut": "telecharge",
+      "octets": 381361,
+      "sha256": "4da6576042957a69a45d13e7f79a2316587646bb1882ac4321bee692e512211d"
+    },
+    {
+      "dossier": "03_Quebec/Primaire",
+      "fichier": "Programme_primaire.pdf",
+      "titre": "Programme primaire",
+      "url": "https://cdn-contenu.quebec.ca/cdn-contenu/education/pfeq/primaire/programmes/PFEQ-francais-langue-enseignement-primaire.pdf",
+      "format": "pdf",
+      "url_finale": "https://cdn-contenu.quebec.ca/cdn-contenu/education/pfeq/primaire/programmes/PFEQ-francais-langue-enseignement-primaire.pdf",
+      "statut": "telecharge",
+      "octets": 699541,
+      "sha256": "a002c55699cf9293ea2307c123b2eb914accebb2437b4ade7fa7ea2945097460"
+    },
+    {
+      "dossier": "03_Quebec/Primaire",
+      "fichier": "Progression_primaire.pdf",
+      "titre": "Progression primaire",
+      "url": "https://cdn-contenu.quebec.ca/cdn-contenu/education/pfeq/primaire/progressions-apprentissages/PFEQ-progression-apprentissages-francais-langue-enseignement-primaire.pdf",
+      "format": "pdf",
+      "url_finale": "https://cdn-contenu.quebec.ca/cdn-contenu/education/pfeq/primaire/progressions-apprentissages/PFEQ-progression-apprentissages-francais-langue-enseignement-primaire.pdf",
+      "statut": "telecharge",
+      "octets": 2748423,
+      "sha256": "0d813051bfe65187a9a601c2453af569435a8189b682396a47d02d4591898317"
+    },
+    {
+      "dossier": "03_Quebec/Primaire",
+      "fichier": "Evaluation_primaire.pdf",
+      "titre": "Cadre évaluation primaire",
+      "url": "https://cdn-contenu.quebec.ca/cdn-contenu/education/pfeq/cadres-evaluation/primaire/francais/PFEQ-cadre-evaluation-francais-langue-enseignement-primaire.pdf",
+      "format": "pdf",
+      "url_finale": "https://cdn-contenu.quebec.ca/cdn-contenu/education/pfeq/cadres-evaluation/primaire/francais/PFEQ-cadre-evaluation-francais-langue-enseignement-primaire.pdf",
+      "statut": "telecharge",
+      "octets": 301932,
+      "sha256": "ef4ecb1259c54fcaa2a2b1997c4f86c3d41edf31babedbef1bc0256ba10a5fc1"
+    },
+    {
+      "dossier": "03_Quebec/Primaire",
+      "fichier": "Programme_primaire_2027_2028.pdf",
+      "titre": "Programme actualisé 2027-2028 primaire",
+      "url": "https://cdn-contenu.quebec.ca/cdn-contenu/education/pfeq/primaire/programmes/PFEQ-Programme-francais-langue-enseignement-primaire.pdf",
+      "format": "pdf",
+      "url_finale": "https://cdn-contenu.quebec.ca/cdn-contenu/education/pfeq/primaire/programmes/PFEQ-Programme-francais-langue-enseignement-primaire.pdf",
+      "statut": "telecharge",
+      "octets": 5970760,
+      "sha256": "a5b9e115cbcd00278bb5022d11ea37e98fa91771167761ff2c3f01c3753bfe74"
+    },
+    {
+      "dossier": "03_Quebec/Secondaire",
+      "fichier": "Programme_secondaire_cycle1.pdf",
+      "titre": "Programme secondaire premier cycle",
+      "url": "https://cdn-contenu.quebec.ca/cdn-contenu/education/pfeq/secondaire/programmes/PFEQ-francais-langue-enseignement-premier-cycle-secondaire.pdf",
+      "format": "pdf",
+      "url_finale": "https://cdn-contenu.quebec.ca/cdn-contenu/education/pfeq/secondaire/programmes/PFEQ-francais-langue-enseignement-premier-cycle-secondaire.pdf",
+      "statut": "telecharge",
+      "octets": 1722262,
+      "sha256": "d10cab720187373860b8f32c7b4385df0ad0a52791cf21fdce2fce806b45af98"
+    },
+    {
+      "dossier": "03_Quebec/Secondaire",
+      "fichier": "Programme_secondaire_cycle2.pdf",
+      "titre": "Programme secondaire deuxième cycle",
+      "url": "https://cdn-contenu.quebec.ca/cdn-contenu/education/pfeq/secondaire/programmes/PFEQ-francais-langue-enseignement-deuxieme-cycle-secondaire.pdf",
+      "format": "pdf",
+      "url_finale": "https://cdn-contenu.quebec.ca/cdn-contenu/education/pfeq/secondaire/programmes/PFEQ-francais-langue-enseignement-deuxieme-cycle-secondaire.pdf",
+      "statut": "telecharge",
+      "octets": 4440944,
+      "sha256": "c8cabfb569201124f0ddedd98d81cb0916327b17490a4ce8f7954a0e98d1ca96"
+    },
+    {
+      "dossier": "03_Quebec/Secondaire",
+      "fichier": "Progression_secondaire.pdf",
+      "titre": "Progression secondaire",
+      "url": "https://cdn-contenu.quebec.ca/cdn-contenu/education/pfeq/secondaire/progressions-apprentissages/PFEQ-progression-apprentissages-francais-langue-enseignement-secondaire.pdf",
+      "format": "pdf",
+      "url_finale": "https://cdn-contenu.quebec.ca/cdn-contenu/education/pfeq/secondaire/progressions-apprentissages/PFEQ-progression-apprentissages-francais-langue-enseignement-secondaire.pdf",
+      "statut": "telecharge",
+      "octets": 1852451,
+      "sha256": "5691d0fbc8381bbc05e4ae8ee9a7ee0587924de2bb5b90aaf6bb32c11a0b2777"
+    },
+    {
+      "dossier": "03_Quebec/Secondaire",
+      "fichier": "Evaluation_secondaire.pdf",
+      "titre": "Cadre évaluation secondaire",
+      "url": "https://cdn-contenu.quebec.ca/cdn-contenu/education/pfeq/cadres-evaluation/secondaire/francais/PFEQ-cadre-evaluation-francais-langue-enseigement-secondaire.pdf",
+      "format": "pdf",
+      "url_finale": "https://cdn-contenu.quebec.ca/cdn-contenu/education/pfeq/cadres-evaluation/secondaire/francais/PFEQ-cadre-evaluation-francais-langue-enseigement-secondaire.pdf",
+      "statut": "telecharge",
+      "octets": 165173,
+      "sha256": "7d6303066faf32d2e3456d21bc8378817f20d652d4d89c3bad98c1e4367da043"
+    },
+    {
+      "dossier": "03_Quebec/Secondaire",
+      "fichier": "Programme_secondaire_2027_2028.pdf",
+      "titre": "Programme actualisé 2027-2028 secondaire",
+      "url": "https://cdn-contenu.quebec.ca/cdn-contenu/education/pfeq/secondaire/programmes/PFEQ-Programme-francais-langue-enseignement-secondaire.pdf",
+      "format": "pdf",
+      "url_finale": "https://cdn-contenu.quebec.ca/cdn-contenu/education/pfeq/secondaire/programmes/PFEQ-Programme-francais-langue-enseignement-secondaire.pdf",
+      "statut": "telecharge",
+      "octets": 6136461,
+      "sha256": "6c70769e700e21c79f6068bbf228d65c084de05e5f7b55abc51d33010388d582"
+    },
+    {
+      "dossier": "04_Francais_technique",
+      "fichier": "simple_french_GitHub.zip",
+      "titre": "Projet ouvert Simple French (non officiel)",
+      "url": "https://github.com/quantumsheep/simple-french/archive/refs/heads/main.zip",
+      "format": "zip",
+      "url_finale": "https://codeload.github.com/quantumsheep/simple-french/zip/refs/heads/main",
+      "statut": "telecharge",
+      "octets": 205875,
+      "sha256": "742b04ba16fa8adf7dae93c299706566d82c7abb6beeeebf4c0dc9fe4d7956b5"
+    }
+  ]
+}

@@ -64,3 +64,8 @@ Pour créer un fichier indiqué sur une fiche, ouvre le Bloc-notes, colle le pre
 - [24. Reconstruire les courbes avant](24-formes-avant.md) : nez, coque, vitrage, lissage et comparaisons natives, avec chaque pièce illustrée.
 
 - [25. Finir les formes et cadres](25-finitions-avant.md) : comparaison photo/modèle, capot, raccord arrière, joints, fixations et raccord du mât ; essais natifs et limites.
+
+## Règles des prochains ateliers
+
+Les nouveaux ateliers suivent le [guide de rédaction accessible](../guide-redaction.md).
+Chaque tâche présente son but, ses actions, ses images et son résultat attendu.

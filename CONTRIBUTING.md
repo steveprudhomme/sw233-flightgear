@@ -44,3 +44,8 @@ La CI vérifie le trailer de chaque commit proposé ; le mainteneur examine
 également la provenance. Éviter le squash qui effacerait les attestations.
 
 Version du projet : **0.1.0-alpha.1**. Consulter la [politique SemVer](VERSIONING.md).
+
+## Rédiger la documentation
+
+Appliquer le [guide de rédaction accessible](docs/guide-redaction.md) aux nouveaux documents et aux passages révisés.
+Utiliser sa grille de relecture. Consigner les contrôles réalisés et ceux qui restent à faire.

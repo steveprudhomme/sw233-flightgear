@@ -229,11 +229,11 @@ livré. Aucun critère n'est coché sur la seule base d'une génération de fich
 
 ## DOC-01 — Règles de rédaction accessibles
 
-Cette règle s'applique à toute nouvelle documentation et aux passages révisés.
+Cette règle s'applique à toute nouvelle documentation et aux passages révisés. Consulter le [guide de rédaction](docs/guide-redaction.md).
 
-- [ ] **DOC-01a** Conserver le kit, vérifier ses liens et télécharger les 14 ressources ; relever leur version, leur statut et leur empreinte.
-- [ ] **DOC-01b** Écrire le guide de rédaction : WCAG 2.2 et 3.1.5, CAN-ASC-3.1:2025, repères scolaires du Québec et Simple French ; distinguer exigences et choix du projet.
-- [ ] **DOC-01c** Relier le guide aux consignes des contributeurs et des agents ; fournir une grille de relecture et un exemple de tâche.
+- [x] **DOC-01a** Conserver le kit, vérifier ses liens et télécharger les 14 ressources ; relever leur version, leur statut et leur empreinte.
+- [x] **DOC-01b** Écrire le guide de rédaction : WCAG 2.2 et 3.1.5, CAN-ASC-3.1:2025, repères scolaires du Québec et Simple French ; distinguer exigences et choix du projet.
+- [x] **DOC-01c** Relier le guide aux consignes des contributeurs et des agents ; fournir une grille de relecture et un exemple de tâche.
 - [ ] **DOC-01d** Faire essayer un prochain tutoriel à un lecteur débutant ; noter les obstacles et les corrections. Ne pas déclarer une conformité globale sans audit.
 
 ## Suivi et contributions

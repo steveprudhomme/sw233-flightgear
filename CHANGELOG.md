@@ -1,5 +1,12 @@
 # Historique
 
+## Non publié — documentation
+
+- Ajouter les règles de rédaction accessible aux consignes du projet.
+- Conserver les 14 ressources en local et publier leur inventaire.
+- Ajouter une grille de relecture et une fiche de tâche illustrée.
+- Prévoir un essai avec un lecteur débutant ; aucune conformité globale déclarée.
+
 ## 0.1.0-alpha.1 — 2026-11-17 — finition VIS-05b/c, lot43
 
 - Adoption SemVer : VERSION, configuration FlightGear et manifeste concordants ; historique conserve.
