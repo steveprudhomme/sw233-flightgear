@@ -257,3 +257,12 @@ initial entre les vues ; seules les captures finales sont publiées.
 [Atelier25](construction/25-finitions-avant.md) ·
 [Livraison finitions-43](https://github.com/steveprudhomme/sw233-flightgear/releases/tag/v0.1.0-alpha.1).
 Les formes sont livrées pour revue ; charnières, verrouillage et ouverture restent non réalisés.
+
+### Publication SemVer 0.1.0-alpha.1
+
+Source du paquet : `965d9fc21313198de3ea96ead4b59f9dc125731f`.
+63 tests passent apres ajout du controle SemVer ; recette reconstruite exactement.
+VERSION et aircraft-version concordent avec project_version du manifeste.
+Les 36 fichiers de la preversion GitHub ont ete verifies par leur empreinte SHA-256.
+Apercu natif au sol dans FlightGear avec JSBSim ; les comparaisons de forme
+utilisent la session dediee sans dynamique. Aucune validation physique nouvelle.
