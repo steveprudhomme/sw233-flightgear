@@ -13,17 +13,29 @@ Le prototype comprend maintenant une livrée jaune/bleu **C-FYLP**, deux occupan
 originaux du **CEC St-Jean**, des vitres d'instruments et des reflets de ciel statique
 sous le rendu ALS de FlightGear. Rodolphe Pagé porte le bleu à l'avant et Roméo Vachon
 le vert à l'arrière. Le menu **SW233** permet de masquer l'équipage ou la livrée.
-Les masses restent gérées par le menu Occupants et centrage.
+Les masses restent gérées par le menu Occupants et centrage. La grille UV contrôle
+les ailes, empennages et spoilers ; les personnages utilisent un niveau allégé à distance.
 
 **Limites :** livrée provisoire, références récentes de C-FYLP manquantes ; visages et
 proportions artistiques ; écussons de projet, aucun grade attribué. Les ailes fictives
 sont une option désactivée par défaut. Ce lot n'est pas une reproduction photoréaliste achevée.
 
-[Paquet, captures et atlas de 184 pièces](https://github.com/steveprudhomme/sw233-flightgear/releases/tag/visuals-39) ·
+[Paquet, captures et atlas de 220 planches](https://github.com/steveprudhomme/sw233-flightgear/releases/tag/visuals-40) ·
 [Tutoriel verre](docs/construction/19-realisme.md) · [Livrée](docs/construction/20-livree.md) ·
 [Équipage](docs/construction/21-equipage.md) · [Travaux restants](ROADMAP.md).
 
-![Prototype C-FYLP dans FlightGear](https://github.com/steveprudhomme/sw233-flightgear/releases/download/visuals-39/livery-left.jpg)
+![Prototype C-FYLP dans FlightGear](https://github.com/steveprudhomme/sw233-flightgear/releases/download/visuals-40/livery-left.jpg)
+
+## Présentation visuelle du lot 40
+
+<video id="visuel40" controls playsinline preload="none" width="960" style="max-width:100%" poster="https://github.com/steveprudhomme/sw233-flightgear/releases/download/visuals-40/spoilers-open.jpg" src="https://github.com/steveprudhomme/sw233-flightgear/releases/download/visuals-40/presentation-visuelle-40.mp4"></video>
+
+[▶ Lire la présentation de 28 secondes](https://steveprudhomme.github.io/sw233-flightgear/#visuel40) · [MP4](https://github.com/steveprudhomme/sw233-flightgear/releases/download/visuals-40/presentation-visuelle-40.mp4) · [Refaire les contrôles, dès 10 ans](docs/construction/22-verifications-visuelles.md).
+
+Captures natives de FlightGear 2024.1.7 : spoilers vus de l'extérieur puis du cockpit,
+grille des surfaces, instruments et occupants. Présentation immobilisée, sans nouveau
+vol ni glissade. Le lecteur fonctionne dans la version web de ce README ; GitHub
+fournit le lien de lecture. 59 tests et reconstruction du tutoriel vérifiés.
 
 ## Checklists français / anglais
 

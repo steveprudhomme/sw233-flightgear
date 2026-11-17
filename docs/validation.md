@@ -154,3 +154,44 @@ Les 184 planches de l'atlas sont des projections de géométrie, pas des photogr
 Les JPEG de FlightGear sont des captures natives. Le dossier de références explique
 pourquoi la peinture et les insignes sont provisoires. Les limites restantes sont
 conservées au [ROADMAP](../ROADMAP.md).
+
+
+## Lot visuals-40 — 17 novembre 2026
+
+Sources du paquet : `2644c12`. [Paquet, vidéo, atlas et preuves](https://github.com/steveprudhomme/sw233-flightgear/releases/tag/visuals-40).
+Les étapes et leurs images sont expliquées dans l'[atelier 22](construction/22-verifications-visuelles.md).
+
+- Plan préalable `91daadc`, complément de centrage `e165262`, intégration `2644c12`.
+- Verre inchangé depuis le lot39, vérifié sur ce paquet par une matrice étendue :
+  deux caps (10/190°), trois vues, forces 0/1/réglées, 54 échantillons. Cadence
+  médiane 60,00 images/s ; plafond encore présent malgré la demande sans vsync.
+- Séance séparée sans ALS sur la peau corrigée : vitrage transparent, cockpit plus
+  sombre. Préférences utilisateur non enregistrées. Aucune promesse d'identité visuelle.
+- Dix états des surfaces : grille/peinture dessus/dessous, spoilers, profondeur
+  et distances 25/100 m. Les surfaces copiées suivent leurs charnières. Le scintillement
+  du ventre observé à 100 m a conduit à remplacer la peau plutôt qu'à la superposer.
+- Six états de visibilité sur le candidat final : aucun, deux, avant seul, arrière
+  seul, ailes fictives, livrée désactivée. Images des présences inspectées ; petite
+  aile trop éloignée pour certifier sa lisibilité dans ce banc. Médianes 59,88–60,02
+  images/s, trois intervalles par état. Aucun gain FPS attribué au LOD sur ces mesures.
+- Deux niveaux de détail : 45 904 / 5 276 triangles ; bornes appariées, seuil 60 m.
+  Les captures loin/proche et les tests ne montrent pas de duplication. Mains fixes,
+  dégagement au-dessous mesuré par rapport à la coque, faute de plancher distinct.
+- Noms corrigés en miroir après inspection, puis relus dans de nouveaux gros plans.
+- Paquet final lancé avec JSBSim à CYJN, chemin propre confirmé, masses 180/180 lb,
+  équipage actif, grille désactivée ; aperçu et description actualisés. Au sol le
+  planeur reste incliné : les contacts ne sont pas validés par ce lot.
+- Journaux : messages absence de moteur/son et sauvegarde FDM impossible en lecture
+  seule, ainsi que TerraSync désactivé par ce mode ; terrain déjà chargé. Ils ne sont
+  pas présentés comme une absence générale d'avertissements.
+- 59 tests réussis ; Ruff, contrôle des sources et reconstruction exacte du livre réussis.
+- Film natif de 224 images, 28 s à 8 images/s ; présentation statique sous FDM null,
+  sans validation nouvelle d'une glissade. Rapports de restauration sans erreur.
+- Atlas : 208 planches individuelles et 12 groupes de LOD. Sources éditables dans
+  Git ; sorties et images générées dans les pièces jointes de la publication.
+
+![Paquet 40 chargé avec JSBSim à CYJN](https://github.com/steveprudhomme/sw233-flightgear/releases/download/visuals-40/release-cockpit.jpg)
+
+Les photos récentes complètes de C-FYLP, grades et insignes exacts restent attendus.
+Le coût GPU hors plafond, les autres plateformes et la fidélité aérodynamique ne
+sont pas certifiés par ces essais visuels.

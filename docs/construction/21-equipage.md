@@ -124,7 +124,11 @@ Dessine un rectangle de **82 mm sur 25 mm** : c’est l’étendue de la bande n
 
 Les bretelles font **30 mm** de largeur dans leur projection latérale. Elles passent vers l’extérieur de la poitrine, puis rejoignent la boucle plus bas. Le nom reste à plus de **10 mm** de leur bord dans la zone de la bande; le test compare cette séparation. Les surfaces suivent les anneaux du torse, avec quelques millimètres d’écart pour éviter que deux faces se superposent exactement. La boucle ventrale mesure environ 54 × 52 mm de face. Ces largeurs de bretelles et de boucle sont **estimées**, pas relevées sur un harnais certifié.
 
+**Petit essai pour comprendre le miroir.** Écris ton prénom sur une feuille transparente, puis regarde-la depuis l’autre côté : les lettres se lisent à l’envers. C’était le même problème sur la poitrine du personnage. Nous avons échangé le bord gauche et le bord droit de l’image sur la petite surface. Nous n’avons pas changé les lettres elles-mêmes, ni retourné le corps.
+
 Les gros plans ont aussi révélé une lecture en miroir : lorsque tu regardes la poitrine de face, la droite de ton image correspond au côté gauche du personnage. La recette inverse donc la coordonnée horizontale **U** des bandes nominatives et des ailes de poitrine. Elle l’inverse aussi sur l’épaule droite, mais pas sur l’épaule gauche, que l’on observe depuis l’autre côté. Le test d’orientation vérifie les huit surfaces inscrites depuis leur côté extérieur, puis vérifie que la fusion du maillage garde ce sens de lecture.
+
+Les nouveaux gros plans natifs FlightGear du paquet corrigé confirment la lecture normale de **R. PAGÉ** et **R. VACHON**. Les **9 tests automatisés de l’équipage** passent aussi. La vérification de l’atlas a comparé ses **182 images de pièces et 12 images de groupes LOD** au dessin recalculé depuis la recette actuelle : les pixels sont identiques. C’est attendu, car cet atlas montre les formes sans appliquer les textures; inverser les coordonnées de lecture d’une inscription ne change pas la forme de sa surface.
 
 La [recherche de tenue](../references/equipage-conception.md) sépare cadet et officier. La hauteur de 25 mm possède un repère dans la description FAC du type B; la longueur de 82 mm, les initiales demandées et le dessin restent des choix de projet. Aucun grade ni droit au port d’ailes officielles n’est déduit des noms.
 

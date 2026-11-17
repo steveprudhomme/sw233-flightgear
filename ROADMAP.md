@@ -16,7 +16,7 @@ Prototype de simulation sous GPL-3.0-only, non certifié pour l’instruction r�
 | Checklists | FR/EN, accents, initiales rouges, souris et format 1024 × 600 | Ctrl+L physiquement confirmé ouvert ; essai fermé encore à préciser |
 | Extérieur | Livrée jaune/bleu C-FYLP provisoire, spoilers et ficelle animés | Photos récentes et marquages complets attendus |
 | Occupants | Deux personnages détaillés bleu/vert, noms, harnais et visibilité liée aux masses | Proportions artistiques ; insignes officiels et animations non validés |
-| Validation | Essais natifs Windows à CYJN, 35 tests dans le lot visuel, reconstruction du tutoriel | Polaire réelle, Linux et relecture autonome du tutoriel non validés |
+| Validation | Essais natifs Windows à CYJN, 59 tests dans le lot visuel, reconstruction du tutoriel | Polaire réelle, Linux et relecture autonome du tutoriel non validés |
 
 Statuts : **en cours** = lot commencé ; **prévu** = travail accepté à réaliser ; **attend une référence** = détail non confirmé ; **terminé** = preuve publiée. Les anciens protocoles sont dans l’[archive du 17 novembre](docs/planification/archive-roadmap-2026-11-17.md), et ne constituent plus une deuxième liste active.
 
@@ -37,9 +37,10 @@ Responsable : mainteneur. Référence de disposition : photo C-FYLP ; valeurs op
 
 **Critère :** peinture visuellement distincte des instruments sous deux éclairages ; aucune variation des indications ou des sources aérodynamiques. Ce premier lot n’est pas une promesse de cockpit déjà photoréaliste.
 
-### Incrément 40 — finalisation VIS-01v/w à VIS-04b
+### Incrément 40 — compléments techniques VIS-01v/w à VIS-04b
 
-Plan autorisé le 17 novembre 2026, à commiter avant l'implémentation.
+Plan autorisé et commité avant l’implémentation (`91daadc`).
+Preuves : [atelier 22](docs/construction/22-verifications-visuelles.md), [publication visuals-40](https://github.com/steveprudhomme/sw233-flightgear/releases/tag/visuals-40).
 Chaque ligne correspond à un résultat vérifiable. Les réalisations du lot 39 sont
 séparées des compléments ; les références absentes ne sont pas des travaux terminés.
 
@@ -53,11 +54,11 @@ intègre, vérifie dans FlightGear, complète les captures, contrôle les recett
 effets locaux de ciel statique sous ALS, réglages discrets, clics du calage et de COM1
 vérifiés, atlas et tutoriel. Aucune réflexion dynamique du terrain annoncée.
 
-- [ ] **V40-01** Étendre le banc : soleil relatif devant/derrière, vue pilote et oblique, vue extérieure, forces 0/1/réglées. Enregistrer les réglages et restaurer toutes les vues visitées.
-- [ ] **V40-02** Inspecter les captures : aiguilles, ficelle et terrain visibles ; aucun panneau disparu ni scintillement observé dans cette matrice. Consigner les angles testés.
-- [ ] **V40-03** Essayer le repli sans ALS dans une séance séparée ; ne pas modifier les préférences globales de l'utilisateur.
-- [ ] **V40-04** Tenter une mesure sans limitation de cadence, avec paramètres documentés. Si le pilote graphique impose encore un plafond, publier cette limite et laisser la mesure du coût GPU ouverte.
-- [ ] **V40-05** Documenter pour le débutant le protocole, les comparaisons illustrées et les limites ; mettre à jour les preuves du paquet.
+- [x] **V40-01** Étendre le banc : soleil relatif devant/derrière, vue pilote et oblique, vue extérieure, forces 0/1/réglées. Enregistrer les réglages et restaurer toutes les vues visitées.
+- [x] **V40-02** Inspecter les captures : aiguilles, ficelle et terrain visibles ; aucun panneau disparu ni scintillement observé dans cette matrice. Consigner les angles testés.
+- [x] **V40-03** Essayer le repli sans ALS dans une séance séparée ; ne pas modifier les préférences globales de l'utilisateur.
+- [x] **V40-04** Tenter une mesure sans limitation de cadence, avec paramètres documentés. Si le pilote graphique impose encore un plafond, publier cette limite et laisser la mesure du coût GPU ouverte.
+- [x] **V40-05** Documenter pour le débutant le protocole, les comparaisons illustrées et les limites ; mettre à jour les preuves du paquet.
 
 **Réussite :** la matrice d'angles et de lumière est illustrée, les commandes restent
 utilisables, les erreurs observées sont corrigées ; aucune promesse de performance
@@ -68,8 +69,8 @@ universelle à partir d'une machine.
 **Déjà livré :** choix C-FYLP confirmé, registre des recherches, distinction entre
 photos historiques et peinture actuelle non attestée.
 
-- [ ] **L40-01** Compléter la recherche de vues identifiées et datées : flancs, ailes, dérive, dessus/dessous. Vérifier directement les sources accessibles et consigner les droits.
-- [ ] **L40-02** Dresser la matrice « confirmé / estimé / inconnu » des couleurs, emplacements, inscriptions et dimensions. Séparer les références de la livrée de celles du cockpit.
+- [x] **L40-01** Compléter la recherche de vues identifiées et datées : flancs, ailes, dérive, dessus/dessous. Vérifier directement les sources accessibles et consigner les droits.
+- [x] **L40-02** Dresser la matrice « confirmé / estimé / inconnu » des couleurs, emplacements, inscriptions et dimensions. Séparer les références de la livrée de celles du cockpit.
 - [ ] **L40-R** Obtenir une couverture photographique récente suffisante pour certifier la livrée actuelle ; reste en attente si la recherche ne l'établit pas.
 
 ### VIS-02b — surfaces et peinture
@@ -77,10 +78,10 @@ photos historiques et peinture actuelle non attestée.
 **Déjà livré :** fuselage jaune/bleu provisoire, C-FYLP lisible des deux côtés,
 plaque du cockpit, affichage réversible et sources éditables originales.
 
-- [ ] **L40-03** Étendre les UV aux surfaces pertinentes (ailes, empennages et spoilers), avec grille de contrôle sélectionnable et vérification des symétries et inversions.
-- [ ] **L40-04** Intégrer une peinture originale cohérente, sans logo ou marquage non sourcé ; conserver distinctement peinture de développement et variante provisoire.
-- [ ] **L40-05** Vérifier les raccords et l'animation des spoilers rentrés/sortis, vues dessus/dessous et deux distances. Corriger toute séparation entre peau et pièce mobile.
-- [ ] **L40-06** Illustrer chaque famille de pièces dans le tutoriel, actualiser aperçu et démonstration vidéo.
+- [x] **L40-03** Étendre les UV aux surfaces pertinentes (ailes, empennages et spoilers), avec grille de contrôle sélectionnable et vérification des symétries et inversions.
+- [x] **L40-04** Intégrer une peinture originale cohérente, sans logo ou marquage non sourcé ; conserver distinctement peinture de développement et variante provisoire.
+- [x] **L40-05** Vérifier les raccords et l'animation des spoilers rentrés/sortis, vues dessus/dessous et deux distances. Corriger toute séparation entre peau et pièce mobile.
+- [x] **L40-06** Illustrer chaque famille de pièces dans le tutoriel, actualiser aperçu et démonstration vidéo.
 - [ ] **L40-R2** Reproduire les marquages exacts et leur placement à partir de L40-R, sans présenter les estimations comme des mesures.
 
 ### VIS-04a — références des tenues
@@ -88,7 +89,7 @@ plaque du cockpit, affichage réversible et sources éditables originales.
 **Déjà livré :** choix bleu devant / vert derrière, Rodolphe Pagé et Roméo Vachon,
 CEC St-Jean, référence officielle C5B, écussons de projet et ailes fictives désactivées.
 
-- [ ] **E40-01** Vérifier séparément les références de la tenue de cadet et de celle d'officier ; produire une fiche comparative coupe/poches/insignes/harnais avec provenance et incertitudes.
+- [x] **E40-01** Vérifier séparément les références de la tenue de cadet et de celle d'officier ; produire une fiche comparative coupe/poches/insignes/harnais avec provenance et incertitudes.
 - [ ] **E40-R** Confirmer les grades, qualifications et écussons exacts avant toute attribution ; aucune déduction à partir des seuls noms.
 
 ### VIS-04b — posture, lisibilité et performance des occupants
@@ -97,17 +98,19 @@ CEC St-Jean, référence officielle C5B, écussons de projet et ailes fictives d
 manches raccordés ; tête et cou avant masqués dans la vue pilote ; visibilité
 indépendante liée aux masses existantes, sans double comptage dans le FDM.
 
-- [ ] **E40-02** Contrôler les dégagements tête/verrière, pieds/plancher et mains/commandes à partir des coordonnées du modèle ; corriger les traversées constatées et expliquer les mesures.
-- [ ] **E40-03** Vérifier en gros plan les étiquettes et pièces de harnais ; adapter la posture et consigner les gestes non animés plutôt que promettre un contact permanent avec les commandes.
-- [ ] **E40-04** Construire un niveau de détail simplifié pour les vues éloignées, conserver les mêmes conditions de masse et de visibilité ; tester la transition sans duplication.
-- [ ] **E40-05** Vérifier intérieur/extérieur, occupants absents/présents, commandes aux butées et performances ; produire les captures et l'atlas des pièces modifiées.
-- [ ] **E40-06** Synchroniser la recette complète du tutoriel et ses explications simples ; conserver les inconnues réglementaires dans le registre de références.
+- [x] **E40-02** Contrôler les dégagements tête/verrière, pieds/plancher et mains/commandes à partir des coordonnées du modèle ; corriger les traversées constatées et expliquer les mesures.
+- [x] **E40-03** Vérifier en gros plan les étiquettes et pièces de harnais ; adapter la posture et consigner les gestes non animés plutôt que promettre un contact permanent avec les commandes.
+- [x] **E40-04** Construire un niveau de détail simplifié pour les vues éloignées, conserver les mêmes conditions de masse et de visibilité ; tester la transition sans duplication.
+- [x] **E40-05** Vérifier intérieur/extérieur, occupants absents/présents, commandes aux butées et performances ; produire les captures et l'atlas des pièces modifiées.
+- [x] **E40-06** Synchroniser la recette complète du tutoriel et ses explications simples ; conserver les inconnues réglementaires dans le registre de références.
 
 ### Intégration et publication de l'incrément 40
 
 - [ ] **I40-01** Reconstruire depuis le tutoriel ; contrôler les dépendances, les UV, les niveaux de détail et les éléments mobiles avec des tests adaptés.
-- [ ] **I40-02** Corriger le centrage des vues extérieures sur un repère du modèle (sans déplacer le modèle ni le centre de gravité), puis vérifier le paquet final dans FlightGear ; actualiser description, aperçu, tutoriels, README, CHANGELOG et validation.
+- [x] **I40-02** Corriger le centrage des vues extérieures sur un repère du modèle (sans déplacer le modèle ni le centre de gravité), puis vérifier le paquet final dans FlightGear ; actualiser description, aperçu, tutoriels, README, CHANGELOG et validation.
 - [ ] **I40-03** Publier commits, paquet, images, vidéo et atlas sur GitHub ; vérifier intégrité des fichiers et contrôles automatiques.
+
+**Mesure encore ouverte :** isoler le coût GPU hors du plafond proche de 60 Hz (V40-04). Les mains restent fixes ; aucun contact animé permanent avec les commandes n’est validé.
 
 Les références exactes manquantes restent ouvertes même si le lot technique est
 livré. Aucun critère n'est coché sur la seule base d'une génération de fichiers.

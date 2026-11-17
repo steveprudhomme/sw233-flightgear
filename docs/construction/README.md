@@ -56,3 +56,5 @@ Pour créer un fichier indiqué sur une fiche, ouvre le Bloc-notes, colle le pre
 - [19. Verre et reflets](19-realisme.md) : séparer le verre, comparer dans FlightGear et vérifier les commandes.
 - [20. Livrée provisoire C-FYLP](20-livree.md) : peindre une surface, lire les lettres des deux côtés, reconnaître les références manquantes.
 - [21. Deux occupants](21-equipage.md) : construire les corps et les tenues, afficher selon les masses, corriger les raccords.
+
+- [22. Vérifier dans FlightGear](22-verifications-visuelles.md) : préparer une séance isolée, contrôler les surfaces et filmer une présentation honnête.

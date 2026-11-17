@@ -1,5 +1,14 @@
 # Historique
 
+## 2026-11-17 — visuals-40 : surfaces, équipage et vérifications
+
+- 23 surfaces peintes, grille UV par menu et animations des spoilers/profondeurs synchronisées.
+- Une seule peau affichée : correction du scintillement observé à 100 m.
+- Deux niveaux de détail des occupants, dégagement sous verrière corrigé et noms lisibles sans miroir.
+- Banc du verre étendu, transparence sans ALS vérifiée, restauration des vues renforcée.
+- Tutoriels 19–22, 220 planches, vidéo native de 28 secondes et aperçu du paquet.
+- 59 tests, Ruff et reconstruction du livre réussis ; exactitude de livrée, insignes et coût GPU hors plafond toujours ouverts.
+
 
 ## 2026-11-17 — visuals-39 : verre, livrée provisoire et équipage
 
