@@ -75,6 +75,8 @@ l'ouverture animée reste dans VIS-05c.1 à c.3.
 - [x] **BC43-03** Corriger le raccord haut arrière et les vitrages latéraux ; détailler cadres, joints, contours et fixations visibles avec dimensions estimées explicites ; conserver tableau, occupants et enveloppe fermée.
 - [x] **BC43-04** Comparer aux photos dans une galerie locale et dans FlightGear : profil, face, obliques, cockpit, deux orientations d'éclairage et grille UV ; examiner chaque pièce et corriger les écarts constatés.
 - [x] **BC43-05** Vérifier coutures, surfaces, symétrie, UV, dégagements et animations affectées ; reconstruire exactement depuis le tutoriel ; conserver le FDM inchangé.
+- [ ] **BC43-07** Adopter SemVer : première préversion `0.1.0-alpha.1`, fichier VERSION unique, concordance avec FlightGear et le manifeste ; documenter la compatibilité et conserver les anciennes publications.
+- [ ] **BC43-08** Tester cette concordance, publier sous `v0.1.0-alpha.1` et vérifier les fichiers GitHub.
 - [ ] **BC43-06** Illustrer la démarche dès 10 ans avec les pièces et captures avant/après ; actualiser MD, aperçu, paquet et GitHub ; distinguer finition réalisée, mécanisme restant et revue utilisateur.
 
 **État après finition :** formes statiques du nez, des flancs et de la verrière reprises,
