@@ -247,3 +247,12 @@ La finition statique est livrée pour revue. La fermeture géométrique est test
 mais la ressemblance exacte attend toujours ton avis et de meilleures cotes.
 La verrière ne s'ouvre pas encore : charnières, verrou et animation restent à réaliser.
 La suite de la reconstruction extérieure est **VIS-05d : ailes et haubans**.
+
+## Le numero de notre boite
+
+Ce lot porte maintenant le numero **0.1.0-alpha.1**. Comme une etiquette sur
+une boite, ce numero permet de savoir exactement quel modele tu as installe.
+Le fichier VERSION, FlightGear et le manifeste du paquet doivent dire la meme
+chose. Alpha signifie que le modele est encore en cours de mise au point.
+Voir la [regle de versionnage](../../VERSIONING.md). Les images ci-dessus
+montrent le modele de cette premiere preversion ; le lot43 reste son repere de travail.

@@ -6,7 +6,7 @@
 - Plan préalable `ece5146` ; nez plus plein, capot bombé, bords rehaussés et raccord arrière continu.
 - Cadres bleus, joints, fixations et poignée fixe ; translation commune du mât, du fil et de son pivot.
 - Galerie locale photo/modèle, atelier25, 80 planches de pièces, comparaisons natives et deux orientations de lumière.
-- 62 tests, UV et reconstruction du livre vérifiés ; FDM inchangé. Charnières, ouverture et acceptation de ressemblance restent ouvertes.
+- 63 tests, UV et reconstruction du livre vérifiés ; FDM inchangé. Charnières, ouverture et acceptation de ressemblance restent ouvertes.
 
 ## 2026-11-17 — VIS-05b/c, première reconstruction des formes avant
 

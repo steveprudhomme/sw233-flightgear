@@ -17,7 +17,7 @@ Nez plus plein, capot bombé, flancs rehaussés et raccord arrière prolongé so
 Cadres bleus, joints, fixations et poignée fixe ajoutés ; mât et ficelle raccordés au
 nouveau capot. [Tutoriel25 illustré](docs/construction/25-finitions-avant.md) ·
 [Paquet et comparaisons](https://github.com/steveprudhomme/sw233-flightgear/releases/tag/v0.1.0-alpha.1).
-62 tests passent ; la forme reste estimée, la verrière ne s'ouvre pas encore et la
+63 tests passent ; la forme reste estimée, la verrière ne s'ouvre pas encore et la
 livrée C-FYLP reste provisoire. La revue de ressemblance reste ouverte.
 
 ![Profil du lot43 dans FlightGear](https://github.com/steveprudhomme/sw233-flightgear/releases/download/v0.1.0-alpha.1/apres-nez-profil.png)
