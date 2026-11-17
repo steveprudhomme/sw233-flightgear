@@ -307,3 +307,12 @@ et les urgences planifiées restent des travaux distincts.
 - [ ] Actualiser MD, tests et GitHub ; clore uniquement les vérifications étayées par les preuves.
 
 Critère : huit listes conformes aux sources du projet, changements cohérents sans liste vide ni doublon, fenêtre réouverte correctement, aucune commande de pilotage modifiée. Le clavier physique ne sera pas déclaré retesté si l'outil ne transmet pas l'événement.
+
+
+Complément de recette VIS-01r : l'essai natif révèle des accents UTF-8 mal
+rendus dans le dialogue de FlightGear 2024.1.7 et des titres trop longs pour
+son sélecteur. Prévoir une copie d'affichage ASCII limitée à la famille
+2024.1 (sources XML et plaquettes accentuées conservées), raccourcir les titres
+autour du mot-check, puis contrôler à nouveau les huit listes. Documenter
+cette adaptation de compatibilité et ne pas la présenter comme un rendu
+français typographiquement complet.
