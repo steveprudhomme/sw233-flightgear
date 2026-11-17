@@ -37,91 +37,80 @@ Responsable : mainteneur. Référence de disposition : photo C-FYLP ; valeurs op
 
 **Critère :** peinture visuellement distincte des instruments sous deux éclairages ; aucune variation des indications ou des sources aérodynamiques. Ce premier lot n’est pas une promesse de cockpit déjà photoréaliste.
 
-### Protocole de réalisation autonome VIS-01v à VIS-04b
+### Incrément 40 — finalisation VIS-01v/w à VIS-04b
 
-Autorisé le 17 novembre 2026. Réaliser des lots séparés et commiter leurs preuves.
+Plan autorisé le 17 novembre 2026, à commiter avant l'implémentation.
+Chaque ligne correspond à un résultat vérifiable. Les réalisations du lot 39 sont
+séparées des compléments ; les références absentes ne sont pas des travaux terminés.
 
-Répartition demandée : agent livrée (VIS-02a/b), agent équipage (VIS-04a/b), agent de revue indépendante ; intégration, effets VIS-01v/w, essais natifs et publication par le mainteneur de la session. Fichiers séparés, puis revue croisée avant intégration.
+Répartition : agent vitrages (banc et protocole), agent livrée (références, UV et
+surfaces), agent équipage (références, posture et niveaux de détail). Le mainteneur
+intègre, vérifie dans FlightGear, complète les captures, contrôle les recettes et publie.
 
-- [x] Examiner les effets FlightGear installés et réaliser une comparaison native avant/après ; garder un repli transparent si le rendu ne supporte pas l’effet choisi.
-- [x] Ajouter des vitres d’instruments indépendantes, contrôler les interactions et documenter tout reflet approximatif.
-- [x] Rechercher les photos de C-FYLP et les références officielles des tenues. Si la date ou un insigne manque, livrer une variante explicitement provisoire sans la présenter comme une reproduction actuelle certifiée.
-- [x] Développer des sources éditables de textures et de géométrie ; préserver une reconstruction complète depuis le tutoriel et ne pas versionner les produits générés.
-- [x] Réaliser les deux personnages avec tenues, poches, coutures, étiquettes et harnais ; ne pas attribuer de grade ou qualification non confirmé. Les ailes peuvent être préparées en variante à qualification explicite, pas attribuées silencieusement.
-- [x] Prévoir des commandes de visibilité pour comparer les occupants et éviter de gêner la vue pilote ; conserver les masses dans le système existant.
-- [x] Capturer chaque lot dans le simulateur, produire un atlas des nouvelles pièces, contrôler paquet et recettes et actualiser les documents ; preuves du lot visuals-39 liées ci-dessous.
+### VIS-01v/w — verre de la verrière et des instruments
 
-**Livraison visuelle 39 :** [preuves et paquet](https://github.com/steveprudhomme/sw233-flightgear/releases/tag/visuals-39),
-[tutoriels 19 à 21](docs/construction/19-realisme.md). Les cases non cochées ci-dessous
-restent des critères plus larges que le prototype : elles ne sont pas effacées par sa publication.
+**Déjà livré, lot 39 :** quatre panneaux transparents, trois vitres indépendantes,
+effets locaux de ciel statique sous ALS, réglages discrets, clics du calage et de COM1
+vérifiés, atlas et tutoriel. Aucune réflexion dynamique du terrain annoncée.
 
-### VIS-01v — reflets de la verrière (prototype vérifié)
+- [ ] **V40-01** Étendre le banc : soleil relatif devant/derrière, vue pilote et oblique, vue extérieure, forces 0/1/réglées. Enregistrer les réglages et restaurer toutes les vues visitées.
+- [ ] **V40-02** Inspecter les captures : aiguilles, ficelle et terrain visibles ; aucun panneau disparu ni scintillement observé dans cette matrice. Consigner les angles testés.
+- [ ] **V40-03** Essayer le repli sans ALS dans une séance séparée ; ne pas modifier les préférences globales de l'utilisateur.
+- [ ] **V40-04** Tenter une mesure sans limitation de cadence, avec paramètres documentés. Si le pilote graphique impose encore un plafond, publier cette limite et laisser la mesure du coût GPU ouverte.
+- [ ] **V40-05** Documenter pour le débutant le protocole, les comparaisons illustrées et les limites ; mettre à jour les preuves du paquet.
 
-- [x] Relever les panneaux existants, leurs normales, transparence et ordre de rendu.
-- [x] Examiner les effets disponibles dans la version FlightGear testée ; distinguer éclat spéculaire et véritable réflexion d’environnement.
-- [x] Prototyper un effet réversible sur un panneau, puis régler intensité, teinte et dépendance à l’angle de vue.
-- [x] Étendre aux panneaux validés ; garder ficelle, terrain et instruments visibles de l’intérieur et de l’extérieur.
-- [ ] Tester soleil devant/derrière, vue oblique, tri des transparences et coût d’affichage ; illustrer avant/après.
+**Réussite :** la matrice d'angles et de lumière est illustrée, les commandes restent
+utilisables, les erreurs observées sont corrigées ; aucune promesse de performance
+universelle à partir d'une machine.
 
-**Vérifié :** comparaisons force 0/1/réglée, trois vues, contrôles natifs de calage et COM1. Image de ciel statique ; repli transparent. Mesures au plafond proche de 60 Hz : coût GPU isolé non établi. Plusieurs soleils et autres moteurs de rendu restent à tester.
+### VIS-02a — références de l'appareil C-FYLP
 
-**Critère :** reflet observable sans opacifier la verrière, sans faces disparues ni affirmation de réflexion dynamique si l’effet n’en produit pas.
+**Déjà livré :** choix C-FYLP confirmé, registre des recherches, distinction entre
+photos historiques et peinture actuelle non attestée.
 
-### VIS-01w — vitres et reflets des cadrans (prototype vérifié)
+- [ ] **L40-01** Compléter la recherche de vues identifiées et datées : flancs, ailes, dérive, dessus/dessous. Vérifier directement les sources accessibles et consigner les droits.
+- [ ] **L40-02** Dresser la matrice « confirmé / estimé / inconnu » des couleurs, emplacements, inscriptions et dimensions. Séparer les références de la livrée de celles du cockpit.
+- [ ] **L40-R** Obtenir une couverture photographique récente suffisante pour certifier la livrée actuelle ; reste en attente si la recherche ne l'établit pas.
 
-- [x] Identifier les instruments munis de verre dans les photos ; conserver un espace devant les aiguilles et textes.
-- [x] Construire une vitre pilote sur un instrument avec matériau indépendant.
-- [ ] Tester face/biais et plusieurs éclairages ; régler les reflets pour conserver graduations et aiguilles lisibles.
-- [ ] Étendre aux instruments appropriés, vérifier calage et radio, puis produire un atlas et un tutoriel illustré.
+### VIS-02b — surfaces et peinture
 
-**Critère :** pas de scintillement, d’aiguille masquée ou de clic bloqué ; effet expliqué et mesuré en temps de rendu avant généralisation.
+**Déjà livré :** fuselage jaune/bleu provisoire, C-FYLP lisible des deux côtés,
+plaque du cockpit, affichage réversible et sources éditables originales.
 
-## Livrée actuelle des Cadets et immatriculation
+- [ ] **L40-03** Étendre les UV aux surfaces pertinentes (ailes, empennages et spoilers), avec grille de contrôle sélectionnable et vérification des symétries et inversions.
+- [ ] **L40-04** Intégrer une peinture originale cohérente, sans logo ou marquage non sourcé ; conserver distinctement peinture de développement et variante provisoire.
+- [ ] **L40-05** Vérifier les raccords et l'animation des spoilers rentrés/sortis, vues dessus/dessous et deux distances. Corriger toute séparation entre peau et pièce mobile.
+- [ ] **L40-06** Illustrer chaque famille de pièces dans le tutoriel, actualiser aperçu et démonstration vidéo.
+- [ ] **L40-R2** Reproduire les marquages exacts et leur placement à partir de L40-R, sans présenter les estimations comme des mesures.
 
-### VIS-02a — appareil et dossier photographique (attend une référence)
+### VIS-04a — références des tenues
 
-- [ ] Appareil choisi : **C-FYLP** (confirmé par le responsable). Confirmer la période et les photos de sa livrée extérieure actuelle.
-- [ ] Réunir des vues datées gauche/droite/dessus/dessous, dérive, ailes et marquages ; conserver provenance et droits.
-- [ ] Relever les limites jaune/bleu, symboles, typographie, immatriculation et inscriptions réellement lisibles.
-- [ ] Produire une fiche de référence distinguant dimensions mesurées, proportions photographiques et éléments encore inconnus.
+**Déjà livré :** choix bleu devant / vert derrière, Rodolphe Pagé et Roméo Vachon,
+CEC St-Jean, référence officielle C5B, écussons de projet et ailes fictives désactivées.
 
-### VIS-02b — peinture de l’appareil (variante provisoire intégrée)
+- [ ] **E40-01** Vérifier séparément les références de la tenue de cadet et de celle d'officier ; produire une fiche comparative coupe/poches/insignes/harnais avec provenance et incertitudes.
+- [ ] **E40-R** Confirmer les grades, qualifications et écussons exacts avant toute attribution ; aucune déduction à partir des seuls noms.
 
-Livré : peinture du fuselage et immatriculation lisible sur les deux flancs. Bandes et placements artistiques, sans emblème inventé. [Recherche](docs/references/livree-recherche.md). Les critères ci-dessous concernent la reproduction définitive.
+### VIS-04b — posture, lisibilité et performance des occupants
 
-- [ ] Vérifier silhouette, symétries et pièces mobiles ; préparer des coordonnées UV par pièce.
-- [ ] Appliquer une grille de contrôle pour repérer étirements et inversions.
-- [ ] Créer des textures originales éditables : couleurs, panneaux, raccords, logos documentés et usure modérée.
-- [ ] Ajouter l’immatriculation choisie à ses emplacements attestés, sans lettres en miroir ; cohérence entre extérieur et plaque du cockpit.
-- [ ] Vérifier ailes, fuselage, dérive et spoilers sortis/rentrés ; contrôler les coutures de texture et la lecture à plusieurs distances.
-- [ ] Conserver une livrée de développement distincte ; documenter le choix de livrée, actualiser aperçus FlightGear et vidéo.
+**Déjà livré :** deux corps détaillés, vêtements et harnais, noms, cou/visage et
+manches raccordés ; tête et cou avant masqués dans la vue pilote ; visibilité
+indépendante liée aux masses existantes, sans double comptage dans le FDM.
 
-**Critère :** comparaison avec un appareil identifié et daté ; aucune « livrée actuelle » fondée seulement sur une vieille peinture FSX.
+- [ ] **E40-02** Contrôler les dégagements tête/verrière, pieds/plancher et mains/commandes à partir des coordonnées du modèle ; corriger les traversées constatées et expliquer les mesures.
+- [ ] **E40-03** Vérifier en gros plan les étiquettes et pièces de harnais ; adapter la posture et consigner les gestes non animés plutôt que promettre un contact permanent avec les commandes.
+- [ ] **E40-04** Construire un niveau de détail simplifié pour les vues éloignées, conserver les mêmes conditions de masse et de visibilité ; tester la transition sans duplication.
+- [ ] **E40-05** Vérifier intérieur/extérieur, occupants absents/présents, commandes aux butées et performances ; produire les captures et l'atlas des pièces modifiées.
+- [ ] **E40-06** Synchroniser la recette complète du tutoriel et ses explications simples ; conserver les inconnues réglementaires dans le registre de références.
 
-## Deux occupants détaillés
+### Intégration et publication de l'incrément 40
 
-### VIS-04a — références des tenues (partiel, références officielles manquantes)
+- [ ] **I40-01** Reconstruire depuis le tutoriel ; contrôler les dépendances, les UV, les niveaux de détail et les éléments mobiles avec des tests adaptés.
+- [ ] **I40-02** Vérifier le paquet final dans FlightGear ; actualiser description, aperçu, tutoriels, README, CHANGELOG et validation.
+- [ ] **I40-03** Publier commits, paquet, images, vidéo et atlas sur GitHub ; vérifier intégrité des fichiers et contrôles automatiques.
 
-- [x] Poste avant : cadet en combinaison de vol bleue ; poste arrière : officier en combinaison verte, conformément au choix demandé.
-- [ ] Vérifier séparément coupe, poches, fermeture, col, coutures, chaussures et harnais.
-- [ ] Documenter les badges, ailes, écussons, grades et étiquettes nominatives pour chaque tenue ; ne pas transposer les règles d’une tenue de cérémonie à une combinaison.
-- [x] Noms et unité choisis : **Rodolphe Pagé**, cadet devant en bleu ; **Roméo Vachon**, officier derrière en vert ; **CEC St-Jean** pour les deux.
-- [ ] Confirmer les grades, qualifications et écussons exacts ; les noms désignent ici des personnages de simulation, sans portrait réel attesté.
-- [ ] Créer une planche de références avec dates, provenance, droits et incertitudes.
-
-### VIS-04b — modèles humains et intégration (prototype vérifié)
-
-- [x] Construire deux personnages originaux en posture assise, avec proportions et détails adaptés aux deux places.
-- [x] Modéliser les combinaisons : plis aux articulations, épaisseur, poches, coutures et fermeture ; textures de tissu sans bruit exagéré.
-- [ ] Créer badges, ailes et name tags séparés avec relief discret ; vérifier orientation et lisibilité sans inventer de décorations.
-- [ ] Ajuster harnais, mains, pieds, sièges et commandes ; éviter les traversées de verrière et de fuselage.
-- [ ] Prévoir visibilité et niveaux de détail ; masquer si nécessaire la tête du personnage dont on occupe le point de vue, sans supprimer le corps visible utile.
-- [x] Relier la présence visuelle aux scénarios d’occupants sans compter deux fois leur masse dans le FDM.
-- [ ] Contrôler vues avant/arrière/extérieures, commandes mobiles et performances ; illustrer chaque pièce et mettre à jour les aperçus.
-
-**Vérifié :** deux silhouettes, avant seul, arrière seul et aucun ; masse visuelle sans écriture FDM ; tête et cou avant masqués. 178 objets, textures originales, corrections de raccords après captures. Les mains restent fixes, aucun niveau de détail adaptatif et les écussons officiels restent attendus.
-
-**Critère :** deux silhouettes crédibles, tenue bleue devant et verte derrière, détails sourcés, aucune obstruction de la vue pilote ou double comptage de masse. Les dimensions humaines resteront des choix de modèle, pas des mesures de pilotes réels.
+Les références exactes manquantes restent ouvertes même si le lot technique est
+livré. Aucun critère n'est coché sur la seule base d'une génération de fichiers.
 
 ## Autres travaux ouverts
 
