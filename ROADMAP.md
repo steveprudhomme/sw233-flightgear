@@ -155,3 +155,7 @@ VIS-01h terminé : bague ouverte, quatre fixations et retrait du doublon peint ;
 Sous-étapes préalables : conserver les deux aiguilles et le bouton ; construire une bague ouverte, avec fixations hors du bouton en bas à gauche ; supprimer les doublons peints ; documenter les dimensions estimées et illustrer les pièces ; tester cinq altitudes et trois pressions sur session dédiée FDM null, contrôler face/biais et dégagement du bouton ; vérifier reconstruction et paquet, mettre à jour les MD et publier. Ne pas confondre variation de pression par le banc et clic manuel sur le bouton.
 
 VIS-01i : géométrie et lectures natives réalisées, cinq altitudes et trois calages illustrés. Reste à vérifier le clic manuel sur le bouton de calage ; le banc de pression ne vaut pas essai de souris. Profondeurs estimées, fenêtre de pression toujours non chiffrée.
+
+## VIS-01i — contrôle souris du calage
+
+Protocole préalable : lancer le dernier paquet en session dédiée FDM null ; relever calage et indication ; cadrer le bouton de face ; essayer les deux sens par souris et relever les deltas ; répéter de biais ; conserver captures et valeurs, restaurer le calage ; documenter les gestes réellement efficaces et toute limite. Corriger uniquement si une cause est identifiée, puis refaire les essais et synchroniser le tutoriel avant publication.
