@@ -37,6 +37,18 @@ Responsable : mainteneur. Référence de disposition : photo C-FYLP ; valeurs op
 
 **Critère :** peinture visuellement distincte des instruments sous deux éclairages ; aucune variation des indications ou des sources aérodynamiques. Ce premier lot n’est pas une promesse de cockpit déjà photoréaliste.
 
+### Protocole de réalisation autonome VIS-01v à VIS-04b
+
+Autorisé le 17 novembre 2026. Réaliser des lots séparés et commiter leurs preuves.
+
+- [ ] Examiner les effets FlightGear installés et réaliser une comparaison native avant/après ; garder un repli transparent si le rendu ne supporte pas l’effet choisi.
+- [ ] Ajouter des vitres d’instruments indépendantes, contrôler les interactions et documenter tout reflet approximatif.
+- [ ] Rechercher les photos de C-FYLP et les références officielles des tenues. Si la date ou un insigne manque, livrer une variante explicitement provisoire sans la présenter comme une reproduction actuelle certifiée.
+- [ ] Développer des sources éditables de textures et de géométrie ; préserver une reconstruction complète depuis le tutoriel et ne pas versionner les produits générés.
+- [ ] Réaliser les deux personnages avec tenues, poches, coutures, étiquettes et harnais ; ne pas attribuer de grade ou qualification non confirmé. Les ailes peuvent être préparées en variante à qualification explicite, pas attribuées silencieusement.
+- [ ] Prévoir des commandes de visibilité pour comparer les occupants et éviter de gêner la vue pilote ; conserver les masses dans le système existant.
+- [ ] Capturer chaque lot dans le simulateur, produire un atlas des nouvelles pièces, contrôler paquet et recettes, actualiser README/CHANGELOG/ROADMAP et publier sur GitHub.
+
 ### VIS-01v — reflets de la verrière (prévu)
 
 - [ ] Relever les panneaux existants, leurs normales, transparence et ordre de rendu.
