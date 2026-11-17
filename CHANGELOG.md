@@ -4,6 +4,8 @@
 
 ### Changements
 
+- VIS-01f : peinture noire moins contrastée, têtes de vis, anneaux sombres et supports de cartes ; recette de la fiche 6 synchronisée et quatre captures natives comparées. Banc d’anémomètre et aperçu général encore à reprendre.
+
 - VIS-01e (préparation seulement) : fiche C-FYLP, export reproductible des limites de dix pièces avec empreinte du maillage, trente projections et tutoriel 18. Aucun accès physique disponible ; collecte ouverte et géométrie inchangée.
 
 - VIS-01d : registre dimensionnel sourcé, identification historique C-FYLP/2-33A, distinction variantes et stations de masse ; fiche 17 illustrée, dessin original et formulaire de relevé. Géométrie et aperçu conservés ; mesures physiques suivies sous VIS-01e.

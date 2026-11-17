@@ -12,7 +12,8 @@ def finish_panel(models: Path):
     """Decorate the packaged mesh; its three animated instruments stay independent."""
     w, h = 1536, 768
     rng = random.Random(233)
-    noise = bytes(rng.randrange(35, 53) for _ in range(w*h))
+    # Fine, low-contrast paint grain; artistic values, not measured reflectance.
+    noise = bytes(rng.randrange(25, 33) for _ in range(w*h))
     im = Image.frombytes("L", (w, h), noise).convert("RGB")
     pen = ImageDraw.Draw(im)
 
@@ -25,9 +26,17 @@ def finish_panel(models: Path):
         pen.ellipse((x-r, v-r, x+r, v+r), fill=color)
 
     def screw(y, z):
-        disc(y, z, .0042, "#121414")
-        disc(y-.0005, z+.0006, .0032, "#8f9189")
-        pen.line([xy(y-.002, z-.001), xy(y+.002, z+.001)], fill="#252629", width=2)
+        # Painted shadow, washer and a slotted metal head (no added geometry).
+        disc(y+.0006, z-.0006, .0048, "#111315")
+        disc(y, z, .0043, "#35383a")
+        disc(y, z, .0033, "#898c87")
+        x, v = xy(y, z)
+        r = .0031*w/.8
+        pen.arc((x-r, v-r, x+r, v+r), 195, 300, fill="#d4d3c7", width=2)
+        pen.arc((x-r, v-r, x+r, v+r), 15, 120, fill="#4a4d4b", width=2)
+        pen.line([xy(y-.002, z-.001), xy(y+.002, z+.001)], fill="#26282a", width=3)
+        pen.line([xy(y-.0018, z-.0005), xy(y+.0017, z+.0012)],
+                 fill="#b8b9ae", width=1)
 
     def label(y, z, text, size):
         pen.text(xy(y, z), text, fill="#e0ded0", anchor="mm",
@@ -35,8 +44,13 @@ def finish_panel(models: Path):
 
     for y, z, r, title in [(-.22,.087,.083,"ALT  /  FT"), (.17,.14,.075,"AIR SPEED  /  MPH"),
                             (.295,.022,.063,"VERTICAL SPEED")]:
-        for extra, color in [(.009,"#141719"),(.007,"#777b78"),(.005,"#393c39")]:
+        for extra, color in [(.010,"#101214"),(.008,"#363b3d"),(.006,"#191d20")]:
             disc(y,z,r+extra,color)
+        # Subtle bevel lighting, confined to the fixed rim outside the dial.
+        cx, cy = xy(y, z)
+        rr = (r+.007)*w/.8
+        pen.arc((cx-rr, cy-rr, cx+rr, cy+rr), 195, 300, fill="#626762", width=2)
+        pen.arc((cx-rr, cy-rr, cx+rr, cy+rr), 15, 120, fill="#0b0d0e", width=3)
         for i in range(4):
             a = (i+.5)*math.pi/2
             screw(y+(r+.008)*math.cos(a), z+(r+.008)*math.sin(a))
@@ -55,8 +69,11 @@ def finish_panel(models: Path):
         x, v = xy(y, z)
         width, height = 97, 140
         box = (x-width/2, v-height/2, x+width/2, v+height/2)
-        pen.rounded_rectangle(box, radius=6, fill="#ddd7bf", outline="#908d83", width=3)
-        pen.line((x-41, v-39, x+41, v-39), fill="#4c4a44", width=2)
+        # Dark holder and warm-white card, inspired by the reference photograph.
+        pen.rounded_rectangle((box[0]-4, box[1]-3, box[2]+4, box[3]+5),
+                              radius=8, fill="#111416", outline="#565b59", width=2)
+        pen.rounded_rectangle(box, radius=5, fill="#e3e1d5", outline="#b1b3a9", width=1)
+        pen.line((x-41, v-39, x+41, v-39), fill="#4c4a44", width=1)
         for i, line in enumerate([title, *words]):
             pen.text((x-41, v-58+i*22), line, fill="#25272a",
                      font=ImageFont.load_default(size=12 if i == 0 else 14))

@@ -131,3 +131,5 @@ La [fiche 16](docs/construction/16-proportions.md) quantifie trois écarts au tr
 [Références dimensionnelles du cockpit et formulaire illustré](docs/construction/17-references.md) : identification historique de C-FYLP, variantes, datum et cotes encore nécessaires avant correction du modèle.
 
 [Préparer les relevés du cockpit : dix pièces illustrées et dossier téléchargeable](docs/construction/18-releves.md). Les cotes sont celles du modèle ; les mesures réelles restent à recueillir.
+
+[Finition du tableau : textures et comparaison native avant/après](docs/construction/06-peinture.md#h--finition-du-tableau--vis-01f). Amélioration de surface ; cockpit encore schématique.

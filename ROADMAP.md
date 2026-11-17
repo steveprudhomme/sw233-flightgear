@@ -131,3 +131,5 @@ VIS-01e : [sous-étapes de collecte et comparaison](docs/planification/vis-01e-r
 ## Lot actif VIS-01f — finition du tableau
 
 Plan : [textures et comparaison native](docs/planification/vis-01f-tableau.md). Améliorer peinture, vis, bordures et plaques à partir de C-FYLP, avec dessins originaux et dimensions estimées explicites. Critère : comparaison native avant/après au même cadrage sous deux éclairages, instruments préservés, tutoriel illustré et paquet actualisé. Les relevés physiques VIS-01e restent attendus.
+
+VIS-01f : textures réalisées et comparaison native sous deux orientations publiée dans la [fiche 6, section H](docs/construction/06-peinture.md#h--finition-du-tableau--vis-01f). Lot encore ouvert : refaire les captures du banc d’anémomètre et l’aperçu général lorsque FlightGear est disponible. Cadrans et animations inchangés, vérifiés octet par octet.
