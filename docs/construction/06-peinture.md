@@ -74,16 +74,17 @@ Reprends les mêmes centres et rayons qu’à la fiche 2 : un cercle autour d’
 ```python
     for y, z, r, title in [(-.22,.087,.083,"ALT  /  FT"), (.17,.14,.075,"AIR SPEED  /  MPH"),
                             (.295,.022,.063,"VERTICAL SPEED")]:
-        for extra, color in [(.010,"#101214"),(.008,"#363b3d"),(.006,"#191d20")]:
-            disc(y,z,r+extra,color)
-        # Subtle bevel lighting, confined to the fixed rim outside the dial.
-        cx, cy = xy(y, z)
-        rr = (r+.007)*w/.8
-        pen.arc((cx-rr, cy-rr, cx+rr, cy+rr), 195, 300, fill="#626762", width=2)
-        pen.arc((cx-rr, cy-rr, cx+rr, cy+rr), 15, 120, fill="#0b0d0e", width=3)
-        for i in range(4):
-            a = (i+.5)*math.pi/2
-            screw(y+(r+.008)*math.cos(a), z+(r+.008)*math.sin(a))
+        if title != "AIR SPEED  /  MPH":  # IAS bezel and screws are now 3D.
+            for extra, color in [(.010,"#101214"),(.008,"#363b3d"),(.006,"#191d20")]:
+                disc(y,z,r+extra,color)
+            # Subtle bevel lighting, confined to the fixed rim outside the dial.
+            cx, cy = xy(y, z)
+            rr = (r+.007)*w/.8
+            pen.arc((cx-rr, cy-rr, cx+rr, cy+rr), 195, 300, fill="#626762", width=2)
+            pen.arc((cx-rr, cy-rr, cx+rr, cy+rr), 15, 120, fill="#0b0d0e", width=3)
+            for i in range(4):
+                a = (i+.5)*math.pi/2
+                screw(y+(r+.008)*math.cos(a), z+(r+.008)*math.sin(a))
         label(y,z-r-.018,title,17)
 ```
 
@@ -399,3 +400,7 @@ VIS-01f est clos pour la finition et sa validation visuelle. Cela ne valide ni l
 ## Aérateur en relief
 
 La grille peinte est retirée : la [recette et les quatre pièces 3D](02-maillage.md#aérateur--pièces-et-vérification-native) la remplacent. Le fond de peinture reste uni à cet emplacement.
+
+## Bordure 3D de l'anémomètre
+
+La condition `title != "AIR SPEED  /  MPH"` réserve les anneaux et vis peints aux deux autres instruments. L'inscription sous le cadran est conservée. La [bague et ses fixations](02-maillage.md#anémomètre--pièces-et-essais-du-relief) remplacent le dessin ; aucune modification des arcs colorés, nombres ou aiguilles.

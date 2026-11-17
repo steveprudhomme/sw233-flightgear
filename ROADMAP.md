@@ -147,3 +147,5 @@ VIS-01g terminé le 16 novembre 2026 : quatre pièces, grille peinte retirée, r
 ## VIS-01h — relief de l'anémomètre (en cours)
 
 Sous-étapes préalables : conserver le cadran et l'aiguille ; ajouter une bague ouverte et quatre fixations, profondeurs estimées ; supprimer seulement leurs doublons peints ; synchroniser la recette ; contrôler le dégagement radial et les lectures dans FlightGear ; illustrer les pièces et vues face/biais ; vérifier reconstruction et paquet puis publier. Ne pas ajouter une vitre opaque ni modifier les graduations. Critère : quatre lectures lisibles et aucun masquage depuis les vues contrôlées.
+
+VIS-01h terminé : bague ouverte, quatre fixations et retrait du doublon peint ; quatre lectures natives et vue de biais vérifiées. Recettes, pièces illustrées et aperçu actualisés. Dimensions de profondeur estimées ; autres cadrans inchangés.

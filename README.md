@@ -137,3 +137,5 @@ La [fiche 16](docs/construction/16-proportions.md) quantifie trois écarts au tr
 [Tableau validé : quatre lectures et cockpit complet](docs/construction/06-peinture.md#i--validation-finale-du-tableau--16-novembre-2026). [Paquet avec aperçu actualisé](https://github.com/steveprudhomme/sw233-flightgear/releases/tag/tableau-22).
 
 [Aérateur central en relief : construction, quatre pièces et vues natives](docs/construction/02-maillage.md#aérateur--pièces-et-vérification-native).
+
+[Relief de l’anémomètre : pièces et lectures dans FlightGear](docs/construction/02-maillage.md#anémomètre--pièces-et-essais-du-relief).

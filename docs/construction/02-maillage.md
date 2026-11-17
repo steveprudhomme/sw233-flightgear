@@ -487,6 +487,32 @@ poly("aerateur-volet", 2, *[(px+.010+.005*sin(2*pi*i/48),
      .034*cos(2*pi*i/48), .197+.012*sin(2*pi*i/48)) for i in range(48)])
 ```
 
+## Bague de l'anémomètre — VIS-01h
+
+Plan préalable `421cd13`. Le centre (y = 0,17 ; z = 0,14 m) et le rayon de cadran 0,075 m restent inchangés. Le rayon intérieur de la bague vaut 0,076 m : il laisse 1 mm au-delà du cadran. Le rayon extérieur 0,085 m reprend l'encombrement peint. La profondeur de 8 mm est estimée, pas mesurée sur C-FYLP. La bague reste derrière le plan de l'aiguille, à 12 mm.
+
+Relie deux cercles extérieurs, puis le cercle extérieur au cercle intérieur. Ne ferme pas le centre : une face pleine masquerait le cadran. Place quatre vis à 45°, 135°, 225° et 315°, sur le rayon 83 mm ; chacune mesure 6 mm de diamètre. Leurs centres reprennent les fixations peintes de notre modèle. Les fentes sont des petites faces sombres, sans commande interactive.
+
+<!-- atelier-fichier: fabrique.py -->
+```python
+# Fixed bezel; estimated depth. Dial and animated needle remain unchanged.
+def cercle_ias(x, r):
+    return [(x, .17+r*cos(i*pi/30), .14+r*sin(i*pi/30)) for i in range(60)]
+
+bridge("ias-bague", 3, cercle_ias(px+.001, .085), cercle_ias(px+.008, .085))
+bridge("ias-bague", 2, cercle_ias(px+.008, .085), cercle_ias(px+.008, .076))
+bridge("ias-bague", 3, cercle_ias(px+.008, .076), cercle_ias(px+.004, .076))
+for i in range(4):
+    a = (i+.5)*pi/2
+    sy, sz = .17+.083*cos(a), .14+.083*sin(a)
+    back = [(px+.008, sy+.003*cos(j*pi/8), sz+.003*sin(j*pi/8)) for j in range(16)]
+    front = [(px+.010, y, z) for _, y, z in back]
+    bridge("ias-vis", 2, back, front)
+    poly("ias-vis", 2, *front)
+    poly("ias-fentes", 5, *[(px+.0101,sy+y,sz+z) for y,z in
+         [(-.002,-.0004),(.002,-.0004),(.002,.0004),(-.002,.0004)]])
+```
+
 ## I ter · Construis une petite boîte ouverte pour le compas
 
 Prends une boîte d’allumettes vide : de face tu vois son ouverture ; en la décalant de côté, tu vois aussi sa paroi. C’est le même effet que nous cherchons sous la bouche d’air. La photo de C-FYLP donne une façade, pas une profondeur. Garde le centre choisi à la fiche 1 (y = 0 ; z = 0,098 m). Le dessin plat faisait 126 × 118 pixels dans la texture à 1 920 pixels/m : environ 66 × 61 mm. Garde cette taille pour la base. Les 25 mm d’épaisseur sont une estimation de maquette.
@@ -654,3 +680,33 @@ Dans FlightGear 2024.1.7, à CYJN, simulation figée : le relief se détache du 
 ![Relief vu de biais](https://github.com/steveprudhomme/sw233-flightgear/releases/download/aerateur-23/biais.jpg)
 
 Le fond ne traverse pas la planche : il est placé 2 mm devant elle. La lèvre est à 18 mm. Cette différence de 16 mm donne la cavité apparente. Aucun cadran ou fichier d'animation n'a été modifié. Les contrôles des sources et la reconstruction du tutoriel réussissent. L'aperçu du paquet reprend la nouvelle vue complète du cockpit ; aucun nouvel essai du sélecteur n'est revendiqué.
+
+## Anémomètre : pièces et essais du relief
+
+VIS-01h, 16 novembre 2026. La bague est ouverte ; les quatre têtes et leurs fentes sont fixes. Le modèle compte maintenant 56 objets.
+
+![ias-bague : trois projections](https://github.com/steveprudhomme/sw233-flightgear/releases/download/bague-24/ias-bague.png)
+
+![ias-vis : trois projections](https://github.com/steveprudhomme/sw233-flightgear/releases/download/bague-24/ias-vis.png)
+
+![ias-fentes : trois projections](https://github.com/steveprudhomme/sw233-flightgear/releases/download/bague-24/ias-fentes.png)
+
+### Vérifier sans deviner
+
+1. Reconstruire un paquet neuf avec tools/package.py. Les graduations et le XML de l'animation ne changent pas.
+2. Charger ce paquet dans FlightGear, à CYJN, puis figer la simulation. Laisser la fenêtre restaurée.
+3. Depuis le dépôt, exécuter `python tools/airspeed_bench.py build/essai-bague --port 18110` (adapter le port à la session). Le banc impose quatre indications, conserve leurs valeurs avant/après capture et restaure l'instrument. Il ne simule pas un vol à ces vitesses.
+4. Comparer les lectures attendues : 40 kt = 46,031 mph ; 60 = 69,047 ; 85 = 97,816 ; 120 = 138,094. Vérifier que la bague ne masque ni les chiffres ni la pointe.
+5. Observer de biais : décalage x de caméra 0,15 m, azimut +15°, inclinaison −18°, champ 55°. Ces paramètres sont des paramètres de caméra, pas des mesures du poste réel.
+
+Les quatre lectures ont été examinées dans FlightGear 2024.1.7 ; cadran et aiguille sont dégagés dans ces vues. Les contrôles des sources, du style Python et la reconstruction du tutoriel réussissent. Cette vérification ne garantit pas tous les angles de caméra possibles. La profondeur et les fixations restent des estimations de maquette inspirées de la référence photographique.
+
+![Indication injectée 40 kt](https://github.com/steveprudhomme/sw233-flightgear/releases/download/bague-24/ias-40.jpg)
+
+![Indication injectée 60 kt](https://github.com/steveprudhomme/sw233-flightgear/releases/download/bague-24/ias-60.jpg)
+
+![Indication injectée 85 kt](https://github.com/steveprudhomme/sw233-flightgear/releases/download/bague-24/ias-85.jpg)
+
+![Indication injectée 120 kt](https://github.com/steveprudhomme/sw233-flightgear/releases/download/bague-24/ias-120.jpg)
+
+![Vue oblique](https://github.com/steveprudhomme/sw233-flightgear/releases/download/bague-24/biais.jpg)

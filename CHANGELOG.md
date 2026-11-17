@@ -76,3 +76,5 @@ Aucune version stable ni release binaire n'a encore été publiée.
 VIS-01f : validation finale native à quatre indications, rejet des images vides, cockpit complet, aperçu et description actualisés.
 
 VIS-01g : aérateur central en quatre pièces 3D, retrait de la grille peinte, illustrations de chaque pièce et captures natives ; aperçu actualisé. Dimensions de maquette estimées.
+
+VIS-01h : bordure et fixations 3D de l’anémomètre ; quatre captures de lecture et vue oblique, tutoriel illustré, aperçu actualisé.
