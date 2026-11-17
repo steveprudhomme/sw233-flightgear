@@ -143,3 +143,7 @@ VIS-01f terminé : quatre lectures natives, cockpit complet et aperçu du paquet
 Plan préalable : conserver le centre et le diamètre de maquette, construire bague/conduit/volet fixes avec profondeurs estimées ; retirer le dessin plat ; synchroniser les recettes ; produire les vues par pièce ; vérifier face/biais et deux orientations dans FlightGear ; actualiser tutoriel, aperçu et paquet. Critère : relief visible sans masquer les cadrans, reconstruction vérifiée. Aucune commande de ventilation fonctionnelle revendiquée.
 
 VIS-01g terminé le 16 novembre 2026 : quatre pièces, grille peinte retirée, recettes synchronisées, captures face/biais et deux caps, aperçu actualisé. Dimensions estimées et volet fixe. Preuves : fiche 2, section finale.
+
+## VIS-01h — relief de l'anémomètre (en cours)
+
+Sous-étapes préalables : conserver le cadran et l'aiguille ; ajouter une bague ouverte et quatre fixations, profondeurs estimées ; supprimer seulement leurs doublons peints ; synchroniser la recette ; contrôler le dégagement radial et les lectures dans FlightGear ; illustrer les pièces et vues face/biais ; vérifier reconstruction et paquet puis publier. Ne pas ajouter une vitre opaque ni modifier les graduations. Critère : quatre lectures lisibles et aucun masquage depuis les vues contrôlées.
