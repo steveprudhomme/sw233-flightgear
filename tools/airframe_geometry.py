@@ -1,7 +1,7 @@
 """VIS-05b/c estimated curved enclosure; no changes to aerodynamic geometry."""
 
 from bisect import bisect_right
-from math import cos, pi, sin
+from math import cos, exp, pi, sin
 
 # x, lower half-width, lower centre, lower height, rim half-width, sill.
 # Model estimates. A smaller sampling interval is not increased measurement accuracy.
@@ -44,6 +44,109 @@ CABIN_START = 0.70
 CABIN_END = 3.16
 FRAME_MATERIAL = 14
 DIVISIONS = 32
+ROOT_Y, ROOT_X, ROOT_CHORD, ROOT_Z = 0.44, 1.99, 1.57, 0.74
+WING_PROFILE = ((0, 0), (0.09, 0.054), (0.3, 0.072), (0.72, 0.040),
+                (1, 0.002), (0.68, -0.028), (0.19, -0.038))
+
+
+def wing_roof(x):
+    """Same piecewise-linear top contour as the current wing root, not an airfoil claim."""
+    f = max(0, min(1, (x - ROOT_X) / ROOT_CHORD))
+    for (a, za), (b, zb) in zip(WING_PROFILE[:4], WING_PROFILE[1:5]):
+        if f <= b:
+            return ROOT_Z + ROOT_CHORD * (za + (zb - za) * (f - a) / (b - a))
+    return ROOT_Z + ROOT_CHORD * 0.002
+
+
+def root_fit(x, ring, rim, sill):
+    """Blend the front fixed panes into a roof touching both wing-root upper edges."""
+    blend = min(1, max(0, (x - 1.55) / (ROOT_X - 1.55)),
+                max(0, (4.20 - x) / (4.20 - (ROOT_X + ROOT_CHORD))))
+    blend = blend * blend * (3 - 2 * blend)
+    result = []
+    for i, (px, y, z) in enumerate(ring):
+        if 8 <= i <= 24:
+            ny = ROOT_Y * cos(i * pi / DIVISIONS) / cos(pi / 4)
+            nz = wing_roof(x) + 0.018 * (1 - (ny / ROOT_Y) ** 2)
+        else:
+            t = min(i, DIVISIONS - i) / 8
+            ny = (rim * (1 - t) + ROOT_Y * t) * (1 if i < 8 else -1)
+            nz = sill * (1 - t) + wing_roof(x) * t
+        result.append((px * (1 - blend) + x * blend,
+                       y * (1 - blend) + ny * blend, z * (1 - blend) + nz * blend))
+    return result
+
+
+def rear_back_x(y, z):
+    # Recesses for the torso, shoulders and head; estimated from DET-02/06.
+    return (2.57 + 0.045 * exp(-(y / 0.22) ** 4 - ((z - 0.10) / 0.30) ** 4)
+            + 0.065 * exp(-(y / 0.13) ** 4 - ((z - 0.57) / 0.18) ** 4))
+
+
+def build_root_details(poly, rod):
+    stations = sorted({ROOT_X + ROOT_CHORD * i / 48 for i in range(49)}
+                      | {ROOT_X + ROOT_CHORD * f for f, _ in WING_PROFILE[:5]})
+    for side in (-1, 1):
+        # Grey root end cap, visible from inside the cabin, never a yellow open cut.
+        ring = [(ROOT_X + ROOT_CHORD * f, side * ROOT_Y, ROOT_Z + ROOT_CHORD * h)
+                for f, h in WING_PROFILE]
+        center = (ROOT_X + ROOT_CHORD * 0.40, side * ROOT_Y, ROOT_Z)
+        for a, b in zip(ring, ring[1:] + ring[:1]):
+            poly('habillage-racine' + str(side), 15, center,
+                 *( (b, a) if side < 0 else (a, b) ))
+        # A narrow blue cover follows the exact upper-root contour.
+        for a, b in zip(stations, stations[1:]):
+            def edge(x, y):
+                return (x, side * y, wing_roof(x) + 0.018 * (1 - (y / ROOT_Y) ** 2) + 0.001)
+            poly('jonction-bleue' + str(side), FRAME_MATERIAL,
+                 edge(a, ROOT_Y), edge(b, ROOT_Y), edge(b, ROOT_Y - 0.026),
+                 edge(a, ROOT_Y - 0.026))
+    ys = sorted({-0.33 + 0.66 * i / 32 for i in range(33)} | {-0.065, 0.065})
+    zs = sorted({-0.19 + 1.01 * i / 48 for i in range(49)} | {0.20, 0.265})
+    def point(y, z):
+        x = rear_back_x(y, z)
+        if z > 0.70:
+            roof = wing_roof(x) + 0.018 * (1 - (y / ROOT_Y) ** 2) - 0.004
+            z += (z - 0.70) / 0.12 * (roof - 0.82)
+        return (x, y, z)
+    for a, b in zip(ys, ys[1:]):
+        for c, d in zip(zs, zs[1:]):
+            if a >= -0.065 and b <= 0.065 and c >= 0.20 and d <= 0.265:
+                continue  # Actual opening for the belt; no invented grille.
+            p, q, r, t = point(a, c), point(b, c), point(b, d), point(a, d)
+            poly('dossier-arriere-moule', 15, p, r, q)
+            poly('dossier-arriere-moule', 15, p, t, r)
+    arc = [(0.065 * cos(i * pi / 32), 0.20 + 0.065 * sin(i * pi / 32))
+           for i in range(33)]
+    for (a, b), (c, d) in zip(arc, arc[1:]):
+        poly('dossier-arriere-moule', 15,
+             point(a, 0.265), point(c, 0.265), point(c, d), point(a, b))
+    # Dark recess, not a claimed reproduction of the hidden belt anchor.
+    poly('passage-sangle-demi-lune', 3,
+         *[(rear_back_x(y, z) + 0.008, y, z) for y, z in arc])
+    strap = [(2.61, 0.215), (2.58, 0.16), (2.53, 0.06), (2.48, -0.10)]
+    for (x, z), (nx, nz) in zip(strap, strap[1:]):
+        poly('sangle-dossier-arriere', 8,
+             (x, -0.023, z), (x, 0.023, z), (nx, 0.023, nz), (nx, -0.023, nz))
+    # Left root opening described by the maintainer. Function and size unconfirmed.
+    cx, cz, radius = 2.23, 0.755, 0.032
+    circle = [(cx + radius * cos(i * pi / 20), -ROOT_Y + 0.002,
+               cz + radius * sin(i * pi / 20)) for i in range(40)]
+    poly('ouverture-racine-gauche', 3, *circle)
+    for a, b in zip(circle, circle[1:] + circle[:1]):
+        rod('bord-ouverture-gauche', 15, a, b, 0.003)
+    for i in range(-3, 4):
+        v = i * 0.007
+        reach = (radius * radius - v * v) ** 0.5
+        rod('grille-racine-gauche', 2, (cx - reach, -ROOT_Y + 0.004, cz + v),
+            (cx + reach, -ROOT_Y + 0.004, cz + v), 0.001)
+        rod('grille-racine-gauche', 2, (cx + v, -ROOT_Y + 0.004, cz - reach),
+            (cx + v, -ROOT_Y + 0.004, cz + reach), 0.001)
+    for y in (-0.29, 0.29):
+        for z in (-0.14, 0.77):
+            x = rear_back_x(y, z)
+            rod('vis-dossier-arriere', 9, (x - 0.006, y, z), (x, y, z), 0.006)
+
 
 
 def interpolate(rows, x, column):
@@ -67,7 +170,8 @@ def interpolate(rows, x, column):
 
 
 def build_enclosure(poly, rod):
-    knots = sorted({r[0] for rows in (HULL, NOSE, CANOPY, FAIRING) for r in rows})
+    knots = sorted({r[0] for rows in (HULL, NOSE, CANOPY, FAIRING) for r in rows}
+                   | {ROOT_X + ROOT_CHORD * f for f, _ in WING_PROFILE[:5]})
     xs = []
     for a, b in zip(knots, knots[1:]):
         count = max(1, round((b - a) / 0.065)) if a < 5 else 1
@@ -115,6 +219,8 @@ def build_enclosure(poly, rod):
                 for i in range(DIVISIONS + 1)
             ]
         )
+        if x > 1.55:
+            upper[-1] = root_fit(x, upper[-1], rim, sill)
     for k, (a, b) in enumerate(zip(lower, lower[1:])):
         for j in range(len(a) - 1):
             poly("fuselage", 0, a[j], a[j + 1], b[j + 1], b[j])
@@ -195,4 +301,5 @@ def build_enclosure(poly, rod):
         contour += [(last[0], side * (last[4] + 0.002), last[5])]
         for a, b in zip(contour, contour[1:]):
             rod("contour-porte" + str(side), 3, a, b, 0.0025)
+    build_root_details(poly, rod)
     return HULL

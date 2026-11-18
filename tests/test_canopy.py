@@ -33,7 +33,7 @@ class CanopyTests(unittest.TestCase):
         for name in ("aile-1", "aile1"):
             points = [p for _, face in objects[name] for p in face]
             self.assertGreaterEqual(min(abs(p[1]) for p in points), 0.43999)
-        self.assertLess(max(abs(p[1]) for p in roof), 0.44)
+        self.assertLessEqual(max(abs(p[1]) for p in roof), 0.44001)
 
     def test_menu_and_handle_share_controller(self):
         model = ET.parse(ROOT / "src/SW233/Models/sw233-model.xml")

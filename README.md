@@ -268,3 +268,11 @@ La rose reçoit une bande originale de 4 096 × 256 pixels. Les lettres en petit
 [Tutoriel pas à pas : l’étiquette autour du tambour](docs/construction/06-peinture.md#p--des-lettres-plus-nettes-pour-le-compas) · [Paquet compas-texture-32](https://github.com/steveprudhomme/sw233-flightgear/releases/tag/compas-texture-32).
 
 Version du projet : **0.1.0-alpha.1**. Consulter la [politique SemVer](VERSIONING.md).
+
+## Raccords et dossier — 0.1.0-alpha.3
+
+Le vitrage central suit les bords des ailes. Les faces internes sont grises.
+Le dossier présente un relief, un passage noir en demi-lune et une sangle verte.
+Une grille représente l’ouverture signalée à gauche ; sa fonction reste à confirmer.
+
+[Tutoriel illustré](docs/construction/27-raccords-arriere.md) · [Bilan](docs/validation/raccords-lot45.md) · [Paquet](https://github.com/steveprudhomme/sw233-flightgear/releases/tag/v0.1.0-alpha.3).

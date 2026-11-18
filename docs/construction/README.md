@@ -67,6 +67,8 @@ Pour créer un fichier indiqué sur une fiche, ouvre le Bloc-notes, colle le pre
 
 - [26. Ouvrir la verrière](26-ouverture-verriere.md) : commande au sol, poignée, vitrage arrière fixe et preuves dans FlightGear.
 
+- [27. Observer les raccords et la place arrière](27-raccords-arriere.md) : vitrage ajusté, panneaux gris, dossier moulé et passage de sangle.
+
 ## Règles des prochains ateliers
 
 Les nouveaux ateliers suivent le [guide de rédaction accessible](../guide-redaction.md).

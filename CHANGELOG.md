@@ -1,5 +1,14 @@
 # Historique
 
+## 0.1.0-alpha.3 — 2026-11-17 — raccords et dossier, lot45
+
+- Plans préalables `ec0324d`, `0318fa7` et `4e7a3b5`.
+- Vitrage central ajusté au profil des ailes ; bandes bleues et faces internes grises.
+- Dossier arrière moulé, passage noir en demi-lune et sangle verte.
+- Ouverture grillagée à gauche seulement ; fonction et dimensions à confirmer.
+- Tutoriel27 illustré, atlas de 95 objets, 69 tests et 14 contrôles natifs réussis.
+- Géométrie estimée ; coussins, harnais complets et défaut FG-44-01 restent ouverts.
+
 ## 0.1.0-alpha.2 — 2026-11-17 — ouverture de verrière, lot44
 
 - Plans préalables `775bf4d` et `8a3c081`.

@@ -281,11 +281,11 @@ Demande du 17 novembre 2026 : vitrage contre les rebords d’aile, bande bleue �
 faces intérieures grises et dossier arrière moulé pour la silhouette humaine.
 Préversion prévue : `0.1.0-alpha.3`. Plan à commiter avant modification.
 
-- [ ] **R45-01** Reprendre DET-02/03/06/09 ; comparer le vitrage actuel aux racines d’aile et identifier les écarts. Distinguer formes observées et cotes estimées.
-- [ ] **R45-02** Partager le contour de raccord aile/vitrage ; supprimer le jour visible et poser deux bandes bleues continues.
-- [ ] **R45-03** Fermer les faces internes des racines d’aile avec un habillage gris visible depuis la place arrière.
-- [ ] **R45-04** Donner au dossier gris arrière un relief pour le torse, les épaules et la tête. Préserver le passage de sangle et vérifier les dégagements avec l’occupant.
-- [ ] **R45-05** Comparer avant/après dans FlightGear : dessus, trois-quarts, intérieur arrière ; occupants présents/absents et verrière ouverte/fermée. Vérifier les commandes existantes.
+- [x] **R45-01** Reprendre DET-02/03/06/09 ; comparer le vitrage actuel aux racines d’aile et identifier les écarts. Distinguer formes observées et cotes estimées.
+- [x] **R45-02** Partager le contour de raccord aile/vitrage ; supprimer le jour visible et poser deux bandes bleues continues.
+- [x] **R45-03** Fermer les faces internes des racines d’aile avec un habillage gris visible depuis la place arrière.
+- [x] **R45-04** Donner au dossier gris arrière un relief pour le torse, les épaules et la tête. Préserver le passage de sangle et vérifier les dégagements avec l’occupant.
+- [x] **R45-05** Comparer avant/après dans FlightGear : dessus, trois-quarts, intérieur arrière ; occupants présents/absents et verrière ouverte/fermée. Vérifier les commandes existantes.
 - [ ] **R45-06** Ajouter un tutoriel illustré selon le guide de rédaction ; synchroniser les recettes, tester, publier le paquet SemVer et actualiser les MD/GitHub.
 
 La fidélité des dimensions et l’acceptation visuelle restent à confirmer avec le mainteneur.
@@ -298,3 +298,5 @@ Ce lot ne clôt pas la reconstruction générale des ailes ni le détail complet
 avec un aspect de filtre ; fonction d’aération encore hypothétique. Ajouter une représentation visuelle à gauche,
 sans symétrie à droite ni simulation de circuit d’air. R45-04 comprend le passage noir en demi-lune
 et la sangle verte derrière le passager ; les ancrages cachés restent inconnus.
+
+**Bilan lot45 :** géométrie et essais réalisés ; [tutoriel27](docs/construction/27-raccords-arriere.md). R45-07 reste ouvert pour confirmer la fonction, la forme et les dimensions de l’ouverture gauche. Sa représentation visuelle est réalisée. Acceptation visuelle et relevés physiques toujours attendus.

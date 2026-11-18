@@ -82,7 +82,7 @@ La recette complète et les choix du lot42 sont dans la [fiche24](24-formes-avan
 
 <!-- atelier-fichier: fabrique.py -->
 ```python
-from tools.airframe_geometry import build_enclosure
+from tools.airframe_geometry import build_enclosure, WING_PROFILE
 
 coque = build_enclosure(poly, rod)
 ```
@@ -93,7 +93,7 @@ coque = build_enclosure(poly, rod)
 
 Schéma du maillage, sans textures ; dimensions de maquette.
 
-Le bord inférieur de la verrière est celui de la coque, au même x, y et z. Les sections courbes à 33 points distinguent flancs vitrés et toit ; le montant du pare-brise est incliné. La [fiche 15](15-panneaux.md) explique les proportions et les limites. Le lot43 reprend les cadres bleus, joints noirs et fixations des références ; leur forme et leur placement restent estimés. Le raccord arrière sous l’aile est opaque ; le pare-brise devant le pilote reste transparent. Les rayons de cadre de 14 mm et de joint de 18 mm sont des choix de maquette H. La porte et la verrière ne s’ouvrent pas encore.
+Le bord inférieur de la verrière est celui de la coque, au même x, y et z. Les sections courbes à 33 points distinguent flancs vitrés et toit ; le montant du pare-brise est incliné. La [fiche 15](15-panneaux.md) explique les proportions et les limites. Le lot43 reprend les cadres bleus, joints noirs et fixations des références ; leur forme et leur placement restent estimés. Le vitrage central est fixe entre les ailes. Le raccord situé derrière lui est opaque. Les rayons de cadre de 14 mm et de joint de 18 mm sont des choix de maquette H. La verrière avant s’ouvre depuis le lot44. La porte arrière reste fixe.
 
 <!-- atelier-fichier: fabrique.py -->
 ```python
@@ -127,15 +127,7 @@ for side in (-1, 1):
         rings.append(
             [
                 (le + ch * f, y * side, z + ch * h)
-                for f, h in [
-                    (0, 0),
-                    (0.09, 0.054),
-                    (0.3, 0.072),
-                    (0.72, 0.040),
-                    (1, 0.002),
-                    (0.68, -0.028),
-                    (0.19, -0.038),
-                ]
+                for f, h in WING_PROFILE
             ]
         )
     for a, b in zip(rings, rings[1:]):
@@ -649,6 +641,7 @@ Le fichier commence par `AC3Db`, la palette, puis `OBJECT world` : la boîte qui
 <!-- atelier-fichier: fabrique.py -->
 ```python
 mat.append(("cadres-bleus", (.094, .235, .447), 0))
+mat.append(("habillage-gris", (.45, .48, .50), 0))
 out = ["AC3Db"]
 for n, c, t in mat:
     glow = {"ivoire": ".5 .48 .4", "orange": ".4 .12 .04", "laine": ".7 .04 .02"}.get(n, "0 0 0")
@@ -662,7 +655,7 @@ for n, faces in parts.items():
     verts = []
     inds = []
     welded = {}
-    smooth = n in {"fuselage", "pare-brise", "verriere", "vitrage-droit", "vitrage-gauche", "raccord-arriere"}
+    smooth = n in {"fuselage", "pare-brise", "verriere", "vitrage-droit", "vitrage-gauche", "raccord-arriere", "dossier-arriere-moule"}
     for m, v in faces:
         ids = []
         for x, y, z in v:
