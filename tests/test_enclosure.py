@@ -76,3 +76,28 @@ class EnclosureTests(unittest.TestCase):
                         value = interpolate(rows, left[0]+fraction*(right[0]-left[0]), column)
                         self.assertGreaterEqual(value, min(left[column], right[column])-1e-9)
                         self.assertLessEqual(value, max(left[column], right[column])+1e-9)
+
+    def test_aft_crown_is_straight_in_exported_mesh(self):
+        _, objects = read_mesh(ROOT/'src/SW233/Models/sw233.ac')
+        sections = {}
+        for name in ('fuselage', 'raccord-arriere'):
+            for _, face in objects[name]:
+                for x, y, z in face:
+                    if x >= 3.514 - 1e-6:
+                        sections[x] = max(sections.get(x, float('-inf')), z)
+        self.assertGreater(len(sections), 10)
+        self.assertAlmostEqual(sections[3.514], .761048, places=5)
+        self.assertAlmostEqual(sections[7.61], .075, places=5)
+        for x, z in sections.items():
+            expected = .761048 + (.075 - .761048) * (x - 3.514) / (7.61 - 3.514)
+            self.assertLess(abs(z - expected), .00002)
+
+    def test_manual_overall_dimensions(self):
+        # Maintenance manual PDF 9, A2; metres, rounded AC3D vertices.
+        _, objects = read_mesh(ROOT/'src/SW233/Models/sw233.ac')
+        wings = [p for n in ('aile-1', 'aile1') for _, f in objects[n] for p in f]
+        tail = [p for n in ('empennage-1', 'empennage1', 'profondeur-1', 'profondeur1')
+                for _, f in objects[n] for p in f]
+        self.assertAlmostEqual(max(p[1] for p in wings)-min(p[1] for p in wings), 15.5448)
+        self.assertAlmostEqual(max(p[1] for p in tail)-min(p[1] for p in tail), 2.3622)
+        self.assertAlmostEqual(max(p[0] for p in wings)-min(p[0] for p in wings), 1.524)

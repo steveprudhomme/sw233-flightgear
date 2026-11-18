@@ -25,6 +25,12 @@ Le passager arrière reste sous l’aile. Le vitrage fixe est dégagé entre les
 La réinitialisation complète ferme FlightGear sur la machine d’essai, également avec alpha.1.
 Relancer le simulateur au lieu d’utiliser cette commande en attendant le diagnostic.
 
+## Dimensions et fuselage — alpha.4 en préparation
+
+Dos arrière rectiligne, corde maximale de 1,524 m et empennage horizontal de 2,3622 m, selon le manuel fourni.
+[Atelier29 illustré](docs/construction/29-dimensions-et-fuselage.md) · [Essais et limites](docs/validation/fuselage-lot48.md).
+72 tests et 14 contrôles natifs réussissent. La silhouette complète reste à faire accepter.
+
 ## Finition du nez et de la verrière — lot43
 
 Nez plus plein, capot bombé, flancs rehaussés et raccord arrière prolongé sous l'aile.

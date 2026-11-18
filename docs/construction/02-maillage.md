@@ -111,7 +111,17 @@ Contours de travail, sans animation ; voir la fiche 15 pour les hypothèses.
 
 Schéma du maillage, sans textures ; dimensions de maquette.
 
-Pour chaque aile, les quatre lignes sont (distance à l’axe, position du bord avant, corde, hauteur). À la racine, le bord arrière est à 1,99 + 1,57 = 3,56 m du nez. Une petite liste de fractions dessine une section épaisse ; ce n’est pas un profil aérodynamique mesuré. Multiplier la distance latérale par −1 ou +1 fabrique les deux côtés sans inverser l’avant. Un hauban joint aile et fuselage. Pour chaque aérofrein, la charnière est à x = 2,41 ; le bord mobile est à 2,54. Ce rectangle doit rester une pièce séparée : si on le soude à l’aile, l’animation soulèvera toute l’aile.
+Chaque ligne décrit une section d’aile : distance à l’axe, position du bord avant, corde et hauteur.
+À la racine, le bord arrière se trouve à 1,99 + 1,524 = 3,514 m du nez du modèle.
+La corde vient du manuel, page PDF 9 / A2. La position du bord avant reste estimée.
+La liste de fractions dessine une section épaisse. Elle ne reproduit pas un profil aérodynamique mesuré.
+
+Multiplier la distance latérale par −1 ou +1 pour construire les deux côtés.
+Relier l’aile au fuselage avec un hauban.
+Garder chaque aérofrein séparé pour pouvoir l’animer.
+Sa charnière est à x = 2,41 m ; son bord mobile est à x = 2,54 m.
+Ces positions restent des choix de maquette.
+L’[atelier 29](29-dimensions-et-fuselage.md) explique aussi la largeur corrigée de l’empennage.
 
 <!-- atelier-fichier: fabrique.py -->
 ```python
@@ -119,8 +129,8 @@ for side in (-1, 1):
     s = str(side)
     rings = []
     for y, le, ch, z in [
-        (0.44, 1.99, 1.57, 0.74),
-        (3.42, 1.99, 1.57, 0.80),
+        (0.44, 1.99, 1.524, 0.74),
+        (3.42, 1.99, 1.524, 0.80),
         (7.62, 2.19, 0.83, 0.93),
         (7.7724, 2.23, 0.76, 0.94),
     ]:
@@ -151,7 +161,7 @@ for side in (-1, 1):
         (7.79, 0, 0.1),
     ]
     # Charnière de maquette : x=7,35 m, z=0,11 m (non mesurée).
-    p = [(x, y, .11) for x, y, z in p]
+    p = [(x, y * (1.1811 / 1.93), .11) for x, y, z in p]
     def coupe(points, mobile):
         resultat = []
         for a, b in zip(points, points[1:] + points[:1]):

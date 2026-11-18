@@ -107,3 +107,6 @@ Deux nouveaux tests automatiques vérifient la translation commune et le déplac
 On garde pour l'instant le jeu de pesée du prototype (610 lb à vide, positions historiques) comme **hypothèse de simulation déclarée**. On n'adopte pas le formulaire d'exemple n° 369 comme une pesée de C-FYLP. Pour la prochaine calibration, il faudra choisir un exemplaire et sa fiche de masse, ou construire un modèle de référence explicitement hypothétique avec une convention complète de forces et moments.
 
 **Biais à éviter :** préférer le quart de corde parce qu'il semble familier, ou déplacer un point jusqu'à obtenir une commande confortable. Nous avons testé ces mécanismes sans les faire passer pour une correction validée.
+
+
+**Mise à jour dimensionnelle :** la corde estimée de 1,57 m décrite dans cet atelier historique est remplacée par 1,524 m. Le bord arrière calculé est maintenant à x = 3,514 m. Voir [l’atelier 29](29-dimensions-et-fuselage.md).

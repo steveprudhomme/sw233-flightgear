@@ -384,20 +384,30 @@ Les deux cercles désignent des détails dans le même panneau ; ils ne prouvent
 
 Plan préalable du 17 novembre 2026. Travail sur la branche de revue du lot46 ; alpha.4 reste en préparation.
 
-- [ ] **VIS-48a.1** Conserver un paquet avant modification et relever le sommet de chaque section du maillage entre la sortie d’aile et la queue.
+- [x] **VIS-48a.1** Conserver un paquet avant modification et relever le sommet de chaque section du maillage entre la sortie d’aile et la queue.
 - [ ] **VIS-48a.2** Utiliser les repères existants du modèle : sortie d’aile à x = 3,56 m et extrémité de coque à x = 7,61 m. Relier leurs hauteurs actuelles par une droite ; indiquer que ces cotes sont estimées, et non mesurées sur la photo.
-- [ ] **VIS-48b.1** Remplacer uniquement le contour supérieur arrière par cette pente constante ; conserver les raccords de bord, la symétrie et les sections transversales. Vérifier la jonction avec la dérive.
-- [ ] **VIS-48c.1** Comparer le bas de coque et les flancs avec le paquet précédent ; vérifier l’absence de changement involontaire et les textures de livrée dans le paquet final.
-- [ ] **VIS-48d.1** Ajouter un test sur les sommets exportés : rectitude, continuité au bord de fuite et extrémité arrière. Exécuter les tests de fermeture de coque, les tests de régression et la reconstruction du tutoriel.
-- [ ] **VIS-48d.2** Comparer avant/après dans FlightGear avec les mêmes vues de profil gauche/droit et trois-quarts ; contrôler aussi l’ouverture de verrière.
-- [ ] **VIS-48d.3** Ajouter un atelier illustré pour débutant, le bilan des contrôles et les limites ; actualiser le ROADMAP, le CHANGELOG et la proposition GitHub. Garder l’acceptation de la silhouette complète ouverte.
+- [x] **VIS-48b.1** Remplacer uniquement le contour supérieur arrière par cette pente constante ; conserver les raccords de bord, la symétrie et les sections transversales. Vérifier la jonction avec la dérive.
+- [x] **VIS-48c.1** Comparer le bas de coque et les flancs avec le paquet précédent ; vérifier l’absence de changement involontaire et les textures de livrée dans le paquet final.
+- [x] **VIS-48d.1** Ajouter un test sur les sommets exportés : rectitude, continuité au bord de fuite et extrémité arrière. Exécuter les tests de fermeture de coque, les tests de régression et la reconstruction du tutoriel.
+- [x] **VIS-48d.2** Comparer avant/après dans FlightGear avec les mêmes vues de profil gauche/droit et trois-quarts ; contrôler aussi l’ouverture de verrière.
+- [x] **VIS-48d.3** Ajouter un atelier illustré pour débutant, le bilan des contrôles et les limites ; actualiser le ROADMAP, le CHANGELOG et la proposition GitHub. Garder l’acceptation de la silhouette complète ouverte.
 
 **Complément VIS-48a / VIS-50c :** conserver la page « WEIGHT AND BALANCE CALCULATIONS SGS 2-33 or 2-33A », exemple de numéro de série369. Relever les stations du bord d’attaque à la racine (66,34 pouces), des centres de gravité pilote avant (43,80) et arrière (74,70), et les distances du train. Confirmer l’origine Sta.0 et la convention avant toute conversion en coordonnées du modèle. Ne pas appliquer les masses de cet exemple à C-FYLP. La page apporte une référence de masse et centrage, sans prouver que le tableau photographié dans le cockpit est celui-ci.
 
 
 #### Complément dimensionnel du manuel — VIS-48a.3 à a.6
 
-- [ ] **VIS-48a.3** Identifier les pages du manuel de pièces et entretien fourni, conserver son empreinte et relever uniquement les cotes lisibles.
-- [ ] **VIS-48a.4** Comparer les stations, la longueur et l’envergure aux références déjà utilisées. Séparer les dimensions de construction des bras de masse et centrage.
-- [ ] **VIS-48a.5** Documenter les conversions, l’origine des coordonnées et les écarts. Corriger seulement les dimensions dont la correspondance avec le modèle est établie.
-- [ ] **VIS-48a.6** Illustrer les repères dimensionnels et le résultat dans FlightGear. Conserver les hauteurs non cotées comme estimations et publier les preuves avec VIS-48.
+- [x] **VIS-48a.3** Identifier les pages du manuel de pièces et entretien fourni, conserver son empreinte et relever uniquement les cotes lisibles.
+- [x] **VIS-48a.4** Comparer les stations, la longueur et l’envergure aux références déjà utilisées. Séparer les dimensions de construction des bras de masse et centrage.
+- [x] **VIS-48a.5** Documenter les conversions, l’origine des coordonnées et les écarts. Corriger seulement les dimensions dont la correspondance avec le modèle est établie.
+- [x] **VIS-48a.6** Illustrer les repères dimensionnels et le résultat dans FlightGear. Conserver les hauteurs non cotées comme estimations et publier les preuves avec VIS-48.
+
+
+Bilan VIS-48 : [atelier 29](docs/construction/29-dimensions-et-fuselage.md) et [preuves](docs/validation/fuselage-lot48.md).
+Le manuel confirme la corde maximale de 1,524 m et l’envergure du stabilisateur de 2,3622 m ; ces cotes sont appliquées.
+Le repère de sortie d’aile est maintenant x = 3,514 m. Il remplace l’estimation antérieure de 3,56 m dans VIS-48a.2.
+Les sous-étapes techniques sont réalisées ; VIS-48a et l’acceptation visuelle globale restent ouverts.
+
+- [ ] **DIM-51a** Recaler Sta.0, le nez géométrique et les stations du train sans confondre repères de masse et surfaces.
+- [ ] **DIM-51b** Vérifier la hauteur totale de 2,8321 m avec une assiette documentée ; identifier les points extrêmes.
+- [ ] **DIM-51c** Rechercher les cotes de verrière et de structure dans les autres sections du manuel ; citer les pages utiles.

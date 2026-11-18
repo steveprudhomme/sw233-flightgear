@@ -71,6 +71,8 @@ Pour créer un fichier indiqué sur une fiche, ouvre le Bloc-notes, colle le pre
 
 - [28. Comparer la silhouette de la verrière](28-silhouette-verriere.md) : correction en cours, profil, ouverture et place arrière.
 
+- [29. Vérifier les dimensions et le dos du fuselage](29-dimensions-et-fuselage.md) : cotes du manuel, corrections et comparaison native.
+
 ## Règles des prochains ateliers
 
 Les nouveaux ateliers suivent le [guide de rédaction accessible](../guide-redaction.md).

@@ -1,11 +1,13 @@
 # Historique
 
-## En préparation — 0.1.0-alpha.4 — lot46
+## En préparation — 0.1.0-alpha.4 — lots46 et48
 
 - Limite mobile déplacée à la jonction de l’aile ; cadres intermédiaires retirés.
 - Montant incliné et bombé continu ; silhouette encore à confirmer.
 - Vitrage fixe raccourci, cloison, siège et personnage arrière rapprochés du repère du hauban.
 - Tutoriel28 avec vues natives ; publication suspendue en attendant la validation visuelle.
+- Dos arrière rectiligne ; corde et envergure du stabilisateur corrigées selon le manuel de maintenance.
+- Atelier29 illustré, 72 tests et 14 contrôles natifs réussis ; acceptation visuelle toujours ouverte.
 - Antenne blanche et deux roues d’aile ajoutées au ROADMAP pour EXT-47.
 
 

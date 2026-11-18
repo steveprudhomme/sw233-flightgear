@@ -39,12 +39,12 @@ CANOPY = [
     (2.78, 0.57, 0),
     (3.16, 0.54, 0),
 ]
-FAIRING = [(2.49, 0.57, 0), (3.56, 0.50, 0), (4.20, 0.25, 0), (5, 0, 0)]
+FAIRING = [(2.49, 0.57, 0), (3.514, 0.50, 0), (4.20, 0.25, 0), (5, 0, 0)]
 CABIN_START = 0.70
 CABIN_END = 2.49
 FRAME_MATERIAL = 14
 DIVISIONS = 32
-ROOT_Y, ROOT_X, ROOT_CHORD, ROOT_Z = 0.44, 1.99, 1.57, 0.74
+ROOT_Y, ROOT_X, ROOT_CHORD, ROOT_Z = 0.44, 1.99, 1.524, 0.74
 WING_PROFILE = ((0, 0), (0.09, 0.054), (0.3, 0.072), (0.72, 0.040),
                 (1, 0.002), (0.68, -0.028), (0.19, -0.038))
 
@@ -172,6 +172,7 @@ def interpolate(rows, x, column):
 def build_enclosure(poly, rod):
     knots = sorted({r[0] for rows in (HULL, NOSE, CANOPY, FAIRING) for r in rows}
                    | {ROOT_X + ROOT_CHORD * f for f, _ in WING_PROFILE[:5]})
+    knots = sorted({round(x, 8) for x in knots})
     xs = []
     for a, b in zip(knots, knots[1:]):
         count = max(1, round((b - a) / 0.065)) if a < 5 else 1
@@ -229,6 +230,18 @@ def build_enclosure(poly, rod):
             delta = crown - upper[-1][DIVISIONS // 2][2]
             upper[-1] = [(px, y, z + delta * sin(i * pi / DIVISIONS))
                          for i, (px, y, z) in enumerate(upper[-1])]
+        if x >= ROOT_X + ROOT_CHORD - 1e-8:
+            # Straight aft silhouette; retain the section shape and its sill edges.
+            start = ROOT_X + ROOT_CHORD
+            start_z = wing_roof(start) + 0.018
+            end_x, end_z = HULL[-1][0], HULL[-1][5]
+            crown = start_z + (end_z - start_z) * (x - start) / (end_x - start)
+            old_height = upper[-1][DIVISIONS // 2][2] - sill
+            upper[-1] = [
+                (px, y, sill + (crown - sill) *
+                 ((pz - sill) / old_height if old_height > 1e-8
+                  else sin(i * pi / DIVISIONS)))
+                for i, (px, y, pz) in enumerate(upper[-1])]
         # Inclined rear rim: the sill is forward of the roof junction.
         if CABIN_START < x < CABIN_END:
             span = ROOT_X - CABIN_START if x <= ROOT_X else CABIN_END - ROOT_X
