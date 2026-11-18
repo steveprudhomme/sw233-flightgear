@@ -14,6 +14,7 @@ Ils ne sont pas redistribués avec ce document.
 | poignee-accrochage-nez-annote.png | 5006f4dc06a30c013caf36b2305b995335f64dac99dc33f35552225a4829d639 |
 | fuselage-arriere-rectiligne-annote.png | 88992f08c936414f87c561651819215a3ccdcd2d63f40f831113387e372985f6 |
 | roue-aile-support-annote.png | 9383fbaf2055fdf2a3984c850490ea8cb0e01faa1df1355ff7f7f5b755e717a1 |
+| marchepied-cockpit.png | 5e331c027326382f9ea088da9bb9085cd7f6cb56cc6b5c4c52bad414338bf4c7 |
 
 ## Lecture des annotations
 
@@ -36,3 +37,7 @@ Le trait rouge de la nouvelle photo suit le contour supérieur depuis la sortie 
 ## Roue d’aile et support — EXT-47b
 
 La nouvelle vue annotée montre une petite roue noire et un support jaune incliné sous l’aile. Cette vue complète celle de l’antenne et des roues. Le pneu et le support doivent être des formes distinctes. Le moyeu, la fixation à l’aile, les dimensions et les parties masquées restent à relever. Le mainteneur demande cet équipement des deux côtés.
+
+## Marchepied sous le cockpit — EXT-47f
+
+La photo fournie montre un petit élément saillant sous le cockpit, à gauche du logo dans l’image. Le mainteneur l’identifie comme un marchepied. Sa surface apparaît sombre et son extrémité jaune. Les dimensions, la fixation exacte et une éventuelle pièce de l’autre côté restent à confirmer. La photo est conservée sous le nom `marchepied-cockpit.png`.

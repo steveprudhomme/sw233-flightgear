@@ -332,6 +332,8 @@ La station et l’angle de 100 degrés restent des estimations. La photo justifi
 - [ ] **EXT-47c** Illustrer chaque pièce dans le tutoriel et vérifier les deux côtés dans FlightGear avant publication.
 - [ ] **EXT-47d** Ajouter la petite poignée tubulaire à l’avant du nez, signalée par le mainteneur pour saisir l’appareil à la main. Relever sa position, sa longueur, son diamètre et sa fixation ; distinguer cette pièce du tube de Pitot.
 - [ ] **EXT-47e** Ajouter le dispositif d’accrochage du câble sous le nez, entouré sur la photo. Reproduire sa forme visible et son raccord avec l’anneau du câble. Confirmer le type de crochet et son usage en remorquage aérien ou au treuil avant de lui attribuer un fonctionnement ; relier toute animation future aux essais AUD-05/06.
+- [ ] **EXT-47f** Ajouter le petit marchepied sur le flanc du fuselage, sous le cockpit, à gauche du logo dans la photo `marchepied-cockpit.png`. Reproduire le court support saillant, sa surface sombre et son extrémité jaune visibles. Relever la position, les dimensions et la fixation ; confirmer le côté de l’appareil et la présence éventuelle d’un second marchepied avant toute duplication. Illustrer la pièce dans le tutoriel et comparer son placement dans FlightGear.
+
 
 Pour EXT-47d/e : illustrer chaque pièce dans le tutoriel, comparer les vues de profil et de dessous dans FlightGear, puis actualiser les MD et les preuves. Référence locale : `docs/references/originaux/details-lot-02/poignee-accrochage-nez-annote.png`.
 
