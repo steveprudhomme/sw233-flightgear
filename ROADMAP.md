@@ -273,3 +273,20 @@ VIS-05c.1 et VIS-05c.3 restent ouverts pour leurs réserves ; cela ne signifie p
 l’ouverture avant reste à programmer. La porte arrière reste fixe et constitue un travail distinct.
 
 **Publication lot44 :** [0.1.0-alpha.2](https://github.com/steveprudhomme/sw233-flightgear/releases/tag/v0.1.0-alpha.2), source `9888552`, 44 fichiers vérifiés par SHA-256. Contrôles Python 3.11/3.13 réussis ; tutoriel publié. Les réserves ci-dessus restent ouvertes.
+
+
+### Lot45 — raccord du vitrage central et dossier arrière
+
+Demande du 17 novembre 2026 : vitrage contre les rebords d’aile, bande bleue à la jonction,
+faces intérieures grises et dossier arrière moulé pour la silhouette humaine.
+Préversion prévue : `0.1.0-alpha.3`. Plan à commiter avant modification.
+
+- [ ] **R45-01** Reprendre DET-02/03/06/09 ; comparer le vitrage actuel aux racines d’aile et identifier les écarts. Distinguer formes observées et cotes estimées.
+- [ ] **R45-02** Partager le contour de raccord aile/vitrage ; supprimer le jour visible et poser deux bandes bleues continues.
+- [ ] **R45-03** Fermer les faces internes des racines d’aile avec un habillage gris visible depuis la place arrière.
+- [ ] **R45-04** Donner au dossier gris arrière un relief pour le torse, les épaules et la tête. Préserver le passage de sangle et vérifier les dégagements avec l’occupant.
+- [ ] **R45-05** Comparer avant/après dans FlightGear : dessus, trois-quarts, intérieur arrière ; occupants présents/absents et verrière ouverte/fermée. Vérifier les commandes existantes.
+- [ ] **R45-06** Ajouter un tutoriel illustré selon le guide de rédaction ; synchroniser les recettes, tester, publier le paquet SemVer et actualiser les MD/GitHub.
+
+La fidélité des dimensions et l’acceptation visuelle restent à confirmer avec le mainteneur.
+Ce lot ne clôt pas la reconstruction générale des ailes ni le détail complet des harnais.
