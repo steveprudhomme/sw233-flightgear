@@ -320,3 +320,5 @@ La station et l’angle de 100 degrés restent des estimations. La photo justifi
 **Précision photographique — lot46 :** aligner la cloison arrière sur le hauban entouré par le mainteneur, en vue de profil. Le « tiers de l’aile » était un repère approximatif.
 
 - [ ] **C46-06** Archiver l’image annotée ; rapprocher la cloison, la fin du vitrage arrière et le début de la coque jaune du repère du hauban. Déplacer ensemble le siège arrière, le personnage et la sangle pour préserver leur dégagement. Conserver le dossier moulé. Contrôler les profils avec et sans personnage ; ne pas modifier les masses physiques.
+
+- [ ] **C46-07** Reproduire le montant arrière incliné et le léger bombé de la verrière avant sa descente vers l’aile, selon la seconde annotation. Conserver le contact des bords du vitrage central avec les ailes. Documenter l’inclinaison et le bombé comme estimations photographiques, puis comparer le profil fermé et ouvert.
