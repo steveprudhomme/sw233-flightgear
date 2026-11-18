@@ -366,3 +366,16 @@ Le mainteneur précise une ouverture « à l’envers », interprétée ici comm
 
 Références locales : `docs/references/originaux/details-lot-02/porte-arriere-bord-annote.png` et `porte-arriere-oblique-annote.png`.
 Les dimensions, l’axe exact et la course restent à confirmer. Réaliser ce chantier après stabilisation des raccords du cockpit et du fuselage.
+
+### VIS-50 — ouvertures et tableau plastifié à la racine d’aile
+
+Ce gros plan complète R45-07 ; il ne confirme pas encore une fonction d’aération.
+Le mainteneur identifie la plaque comme un tableau de décrochage. Son texte est trop peu lisible pour être transcrit fidèlement.
+
+- [ ] **VIS-50a** Relever les deux zones entourées de chaque côté du tableau, leurs contours et leur position dans l’habillage intérieur de la racine d’aile. Confirmer s’il s’agit d’ouvertures, de trappes ou d’autres éléments, et leur fonction. Comparer avec la grille provisoire du lot45 avant de la corriger ; ne pas créer une seconde installation par simple duplication.
+- [ ] **VIS-50b** Ajouter le tableau plastifié signalé : support rectangulaire, bordure claire, épaisseur, fixations aux coins et emplacement observés. Respecter son orientation par rapport au panneau intérieur et à l’aile.
+- [ ] **VIS-50c** Obtenir une vue lisible ou une référence documentaire du tableau avant de reproduire le titre, les axes, les unités et les valeurs. Ne pas inventer de données de décrochage. Conserver le contenu non confirmé comme travail ouvert.
+- [ ] **VIS-50d** Prévoir une texture lisible et un reflet discret du revêtement plastifié. Vérifier le résultat depuis la place arrière dans FlightGear ; illustrer séparément les ouvertures et le tableau dans le tutoriel, puis actualiser les MD et les preuves.
+
+Référence locale conservée : `docs/references/originaux/details-lot-02/ouvertures-tableau-decrochage-annote.png`.
+Les deux cercles désignent des détails dans le même panneau ; ils ne prouvent pas la présence d’un équipement identique dans l’autre aile. R45-07 reste ouvert jusqu’à identification.

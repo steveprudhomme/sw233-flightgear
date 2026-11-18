@@ -17,6 +17,7 @@ Ils ne sont pas redistribués avec ce document.
 | marchepied-cockpit.png | 5e331c027326382f9ea088da9bb9085cd7f6cb56cc6b5c4c52bad414338bf4c7 |
 | porte-arriere-bord-annote.png | 021686f39faa54428c307e31c8c5cfc3f1d0efc7517e950a4cc72ad3b0c84d18 |
 | porte-arriere-oblique-annote.png | 2d2b756b2194b2c3612289b1ddf3e92846f55b11a20e306297ca99acbb416db9 |
+| ouvertures-tableau-decrochage-annote.png | f826395ed45363e94f8f51f1c724da10a5a4150097148ef0b581f547f2b58429 |
 
 ## Lecture des annotations
 
@@ -51,3 +52,11 @@ Le mainteneur indique une ouverture « à l’envers ». Le plan retient une ouv
 Les photos permettent de relever le contour, le vitrage, la bande bleue et les fixations visibles.
 Elles ne suffisent pas à mesurer l’axe des charnières ni la course complète.
 Le modèle actuel conserve cette porte fixe. Voir VIS-49 dans le ROADMAP.
+
+## Ouvertures et tableau plastifié — VIS-50 / R45-07
+
+Le gros plan montre une plaque rectangulaire bordée et fixée aux coins sur le panneau intérieur de la racine d’aile.
+Deux zones sombres sont entourées, de part et d’autre de cette plaque.
+Le mainteneur évoque une possible aération et identifie un tableau plastifié de décrochage.
+Ces identifications sont à vérifier. Le texte et les valeurs ne sont pas assez lisibles pour une transcription fiable.
+Cette référence doit servir à revoir la grille provisoire du lot45, sans présumer que toutes les zones entourées sont des grilles.
