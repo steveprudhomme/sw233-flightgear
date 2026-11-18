@@ -302,3 +302,17 @@ et la sangle verte derrière le passager ; les ancrages cachés restent inconnus
 **Bilan lot45 :** géométrie et essais réalisés ; [tutoriel27](docs/construction/27-raccords-arriere.md). R45-07 reste ouvert pour confirmer la fonction, la forme et les dimensions de l’ouverture gauche. Sa représentation visuelle est réalisée. Acceptation visuelle et relevés physiques toujours attendus.
 
 **Publication :** [0.1.0-alpha.3](https://github.com/steveprudhomme/sw233-flightgear/releases/tag/v0.1.0-alpha.3), source `16e17d6`. Les 51 fichiers publiés correspondent aux empreintes SHA-256 locales. Le paquet contient son aperçu natif et son manifeste vérifié.
+
+### Lot46 — corriger la limite de la verrière mobile
+
+Correction demandée sur la photo DET-03 : la partie mobile rejoint la racine d’aile.
+Le cadre transversal ajouté au milieu du vitrage ne correspond pas à cette référence.
+Préversion prévue : `0.1.0-alpha.4`. Plan préalable à la modification.
+
+- [ ] **C46-01** Déplacer la séparation fixe/mobile au bord avant de l’aile, à la station 1,99 m du modèle ; conserver le vitrage entre les ailes fixe.
+- [ ] **C46-02** Supprimer les arceaux intermédiaires aux stations 1,55 et 2,13 m ; conserver uniquement les cadres périphériques utiles.
+- [ ] **C46-03** Ajuster l’axe latéral et les charnières à la longueur corrigée ; vérifier les états fermé, intermédiaire et ouvert dans FlightGear.
+- [ ] **C46-04** Tester la limite du vitrage et l’absence de cadre central ; synchroniser les recettes et documenter avec des captures comparables.
+- [ ] **C46-05** Publier le paquet SemVer et les preuves ; vérifier GitHub et garder les cotes réelles à confirmer.
+
+La station et l’angle de 100 degrés restent des estimations. La photo justifie la découpe et l’absence d’arceau central, pas des mesures exactes.
