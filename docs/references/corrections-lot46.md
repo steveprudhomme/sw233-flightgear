@@ -57,6 +57,9 @@ Le modèle actuel conserve cette porte fixe. Voir VIS-49 dans le ROADMAP.
 
 Le gros plan montre une plaque rectangulaire bordée et fixée aux coins sur le panneau intérieur de la racine d’aile.
 Deux zones sombres sont entourées, de part et d’autre de cette plaque.
-Le mainteneur évoque une possible aération et identifie un tableau plastifié de décrochage.
+Le mainteneur évoque une possible aération et un tableau plastifié dont le type reste à identifier.
+Après une première hypothèse de décrochage, il demande de vérifier dans le manuel s’il s’agit plutôt de masse et centrage (poids et centrage).
 Ces identifications sont à vérifier. Le texte et les valeurs ne sont pas assez lisibles pour une transcription fiable.
 Cette référence doit servir à revoir la grille provisoire du lot45, sans présumer que toutes les zones entourées sont des grilles.
+
+**Identification documentaire à faire — VIS-50c :** comparer les tableaux du manuel et des instructions Cadets avec la plaque photographiée. Relever édition, page et figure ; ne pas retenir le mot « décrochage » comme identification acquise. Le nom du fichier photographique conserve l’hypothèse initiale pour préserver sa traçabilité.
