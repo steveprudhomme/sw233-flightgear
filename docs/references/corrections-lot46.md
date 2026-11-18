@@ -13,6 +13,7 @@ Ils ne sont pas redistribués avec ce document.
 | antenne-roues-ailes-annote.png | 00cfede6e060b8660cb13aa23cb8e78585e8c997ef5e635c8dba6b4d18c3b978 |
 | poignee-accrochage-nez-annote.png | 5006f4dc06a30c013caf36b2305b995335f64dac99dc33f35552225a4829d639 |
 | fuselage-arriere-rectiligne-annote.png | 88992f08c936414f87c561651819215a3ccdcd2d63f40f831113387e372985f6 |
+| roue-aile-support-annote.png | 9383fbaf2055fdf2a3984c850490ea8cb0e01faa1df1355ff7f7f5b755e717a1 |
 
 ## Lecture des annotations
 
@@ -31,3 +32,7 @@ La forme actuelle reste provisoire après le retour du mainteneur sur la silhoue
 ## Contour du fuselage arrière — VIS-48
 
 Le trait rouge de la nouvelle photo suit le contour supérieur depuis la sortie de l’aile vers le pied de la dérive. Ce contour apparaît droit et incliné. La bosse suivie d’un creux du modèle doit être corrigée. Cette observation ne détermine pas les sections transversales ni le contour inférieur. Les cotes restent à relever.
+
+## Roue d’aile et support — EXT-47b
+
+La nouvelle vue annotée montre une petite roue noire et un support jaune incliné sous l’aile. Cette vue complète celle de l’antenne et des roues. Le pneu et le support doivent être des formes distinctes. Le moyeu, la fixation à l’aile, les dimensions et les parties masquées restent à relever. Le mainteneur demande cet équipement des deux côtés.
