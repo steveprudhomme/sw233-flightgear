@@ -379,3 +379,15 @@ Le type du tableau reste à identifier : masse et centrage (poids et centrage), 
 
 Référence locale conservée : `docs/references/originaux/details-lot-02/ouvertures-tableau-decrochage-annote.png`.
 Les deux cercles désignent des détails dans le même panneau ; ils ne prouvent pas la présence d’un équipement identique dans l’autre aile. R45-07 reste ouvert jusqu’à identification.
+
+#### Exécution VIS-48 — contour supérieur rectiligne
+
+Plan préalable du 17 novembre 2026. Travail sur la branche de revue du lot46 ; alpha.4 reste en préparation.
+
+- [ ] **VIS-48a.1** Conserver un paquet avant modification et relever le sommet de chaque section du maillage entre la sortie d’aile et la queue.
+- [ ] **VIS-48a.2** Utiliser les repères existants du modèle : sortie d’aile à x = 3,56 m et extrémité de coque à x = 7,61 m. Relier leurs hauteurs actuelles par une droite ; indiquer que ces cotes sont estimées, et non mesurées sur la photo.
+- [ ] **VIS-48b.1** Remplacer uniquement le contour supérieur arrière par cette pente constante ; conserver les raccords de bord, la symétrie et les sections transversales. Vérifier la jonction avec la dérive.
+- [ ] **VIS-48c.1** Comparer le bas de coque et les flancs avec le paquet précédent ; vérifier l’absence de changement involontaire et les textures de livrée dans le paquet final.
+- [ ] **VIS-48d.1** Ajouter un test sur les sommets exportés : rectitude, continuité au bord de fuite et extrémité arrière. Exécuter les tests de fermeture de coque, les tests de régression et la reconstruction du tutoriel.
+- [ ] **VIS-48d.2** Comparer avant/après dans FlightGear avec les mêmes vues de profil gauche/droit et trois-quarts ; contrôler aussi l’ouverture de verrière.
+- [ ] **VIS-48d.3** Ajouter un atelier illustré pour débutant, le bilan des contrôles et les limites ; actualiser le ROADMAP, le CHANGELOG et la proposition GitHub. Garder l’acceptation de la silhouette complète ouverte.
