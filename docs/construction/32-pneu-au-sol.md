@@ -52,7 +52,9 @@ Ne pas déplacer toute la coque pour corriger la roue.
 ## Comprendre la limite
 
 Le programme déplace une roue rigide. Il ne reproduit pas l’écrasement du caoutchouc.
-Le calcul suppose un sol presque horizontal. Une pente forte peut demander une correction liée à la normale du terrain.
+Le calcul initial supposait un sol presque horizontal.
+DIM-53c mesure maintenant la surface sous la roue : voir l’[atelier 33](33-pneu-pentes.md).
+Le calcul initial reste disponible lorsque ces mesures manquent.
 Les roues de bout d’aile restent dans un autre lot.
 
 ## Refaire les contrôles
@@ -95,13 +97,56 @@ var offset = func(compression, pitch, roll, wow) {
     support += 0.075 * abs(ny);
     return math.max(0, compression * 0.3048 + (support - 0.245 * nz) / nz);
 };
-var update = func {
-    setprop(base ~ "main-offset-m", offset(
-        getprop("/fdm/jsbsim/gear/unit/compression-ft"),
-        getprop("/orientation/pitch-deg"), getprop("/orientation/roll-deg"),
-        getprop("/gear/gear/wow")));
+# Five rays parallel to model-up define a local plane under the main tyre.
+# aircraftToCart uses forward/right/down; mesh coordinates use aft/right/up.
+var ground_height = func(dx, dy) {
+    var o = aircraftToCart({x:-(2.559214+dx), y:dy, z:0.845});
+    var a = aircraftToCart({x:-(2.559214+dx), y:dy, z:-1.155});
+    var hit = get_cart_ground_intersection(a, {x:o.x-a.x, y:o.y-a.y, z:o.z-a.z});
+    if (hit == nil) return nil;
+    var p = geodtocart(hit.lat, hit.lon, hit.elevation);
+    var h = ((p[0]-o.x)*(a.x-o.x) + (p[1]-o.y)*(a.y-o.y)
+           + (p[2]-o.z)*(a.z-o.z)) / 2;
+    return h != h or abs(h) > 0.5 ? nil : h;
 };
-var loop = func { update(); settimer(loop, 0.02); };
+var plane = func(h, xp, xm, yp, ym) {
+    foreach (var v; [h,xp,xm,yp,ym]) {
+        if (v == nil or v != v or abs(v) > 0.5) return nil;
+    }
+    var sx = (xp-xm)/0.5;
+    var sy = (yp-ym)/0.5;
+    if (abs(sx) > 2 or abs(sy) > 2) return nil;
+    # Reject steps/edges instead of inventing a plane across discontinuities.
+    if (abs((xp+xm)/2-h) > 0.01 or abs((yp+ym)/2-h) > 0.01) return nil;
+    return [h,sx,sy];
+};
+var terrain_offset = func(p, wow) {
+    if (wow != 1 or p == nil) return 0;
+    var support = 0;
+    for (var i = 0; i < 20; i += 1) {
+        var a = i * math.pi / 10;
+        support = math.max(support, 0.245*(p[1]*math.cos(a)-math.sin(a)));
+    }
+    return math.max(0, p[0]+support+0.075*abs(p[2])-0.245);
+};
+var update = func {
+    var wow = getprop("/gear/gear/wow");
+    var p = nil;
+    if (wow == 1) p = plane(ground_height(0,0), ground_height(0.25,0),
+        ground_height(-0.25,0), ground_height(0,0.25), ground_height(0,-0.25));
+    var fallback = offset(getprop("/fdm/jsbsim/gear/unit/compression-ft"),
+        getprop("/orientation/pitch-deg"), getprop("/orientation/roll-deg"), wow);
+    setprop(base ~ "terrain-valid", p != nil);
+    setprop(base ~ "mode", wow != 1 ? "airborne" : p == nil ? "fallback-flat" : "terrain");
+    if (p != nil) {
+        setprop(base ~ "terrain-height-m", p[0]);
+        setprop(base ~ "terrain-slope-x", p[1]);
+        setprop(base ~ "terrain-slope-y", p[2]);
+    }
+    setprop(base ~ "main-offset-m", p == nil ? fallback : terrain_offset(p,wow));
+};
+var loop = func { update(); settimer(loop, 0.05); };
 setprop(base ~ "main-offset-m", 0);
-settimer(loop, 0.02);
+setprop(base ~ "terrain-valid", 0);
+settimer(loop, 0.05);
 ```

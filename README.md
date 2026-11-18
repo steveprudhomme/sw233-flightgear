@@ -293,3 +293,7 @@ Le [lot DIM-52](docs/construction/31-contacts-sol.md) raccorde les contacts phys
 La pose, le roulage et l’ouverture au sol sont vérifiés dans FlightGear.
 La hauteur constructeur reste à clarifier. Le résidu du pneu est corrigé dans le [lot DIM-53a](docs/construction/32-pneu-au-sol.md).
 [Consulter les résultats et leurs limites](docs/validation/contacts-lot52.md).
+
+Le [lot DIM-53c](docs/construction/33-pneu-pentes.md) adapte la roue principale au terrain incliné.
+Sept rampes natives couvrent les pentes de ±25° et les pentes combinées de ±20° par axe.
+Ces essais géométriques immobilisés complètent le roulage physique vérifié à CYJN.

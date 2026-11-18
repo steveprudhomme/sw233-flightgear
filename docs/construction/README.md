@@ -79,6 +79,8 @@ Pour créer un fichier indiqué sur une fiche, ouvre le Bloc-notes, colle le pre
 
 - [32. Garder le pneu au-dessus du sol](32-pneu-au-sol.md) : compression, inclinaison et gros plans natifs.
 
+- [33. Faire suivre la pente au pneu](33-pneu-pentes.md) : sondes du terrain, banc incliné et limites.
+
 ## Règles des prochains ateliers
 
 Les nouveaux ateliers suivent le [guide de rédaction accessible](../guide-redaction.md).

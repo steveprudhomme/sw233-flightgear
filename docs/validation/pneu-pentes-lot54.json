@@ -1,0 +1,974 @@
+{
+  "date": "2026-11-18",
+  "flightgear": "2024.1.7",
+  "plan_commit": "2b9307e",
+  "scope": "Static null-FDM ramps; physical rolling only at CYJN",
+  "ramps": [
+    {
+      "ramp": {
+        "index": 0,
+        "latitude": 45.29824484774862,
+        "longitude": -73.275838,
+        "elevation_m": 60,
+        "slope_x": 0.0,
+        "slope_y": 0.0,
+        "angle_x": 0,
+        "angle_y": 0
+      },
+      "properties": {
+        "terrain-valid": 1,
+        "terrain-height-m": 0.03,
+        "terrain-slope-x": -2.496842e-07,
+        "terrain-slope-y": 2.317386e-07,
+        "main-offset-m": 0.03,
+        "mode": "terrain"
+      },
+      "expected_m": 0.030000017381393736,
+      "error_m": -1.7381393737497808e-08
+    },
+    {
+      "ramp": {
+        "index": 1,
+        "latitude": 45.29824484774862,
+        "longitude": -73.27468669380282,
+        "elevation_m": 60,
+        "slope_x": 0.4663076581549986,
+        "slope_y": 0.0,
+        "angle_x": 25,
+        "angle_y": 0
+      },
+      "properties": {
+        "terrain-valid": 1,
+        "terrain-height-m": 0.03,
+        "terrain-slope-x": 0.466308,
+        "terrain-slope-y": 9.52157e-07,
+        "main-offset-m": 0.053313,
+        "mode": "terrain"
+      },
+      "expected_m": 0.05331238485977517,
+      "error_m": 6.151402248272264e-07
+    },
+    {
+      "ramp": {
+        "index": 2,
+        "latitude": 45.29824484774862,
+        "longitude": -73.27353538760565,
+        "elevation_m": 60,
+        "slope_x": -0.4663076581549986,
+        "slope_y": 0.0,
+        "angle_x": -25,
+        "angle_y": 0
+      },
+      "properties": {
+        "terrain-valid": 1,
+        "terrain-height-m": 0.03,
+        "terrain-slope-x": -0.466307,
+        "terrain-slope-y": -1e-06,
+        "main-offset-m": 0.053312,
+        "mode": "terrain"
+      },
+      "expected_m": 0.05331604319800008,
+      "error_m": -4.043198000083792e-06
+    },
+    {
+      "ramp": {
+        "index": 3,
+        "latitude": 45.29905469549725,
+        "longitude": -73.275838,
+        "elevation_m": 60,
+        "slope_x": 0.0,
+        "slope_y": 0.4663076581549986,
+        "angle_x": 0,
+        "angle_y": 25
+      },
+      "properties": {
+        "terrain-valid": 1,
+        "terrain-height-m": 0.03,
+        "terrain-slope-x": -1e-05,
+        "terrain-slope-y": 0.466309,
+        "main-offset-m": 0.064973,
+        "mode": "terrain"
+      },
+      "expected_m": 0.06497317504,
+      "error_m": -1.7503999999446407e-07
+    },
+    {
+      "ramp": {
+        "index": 4,
+        "latitude": 45.29905469549725,
+        "longitude": -73.27468667735903,
+        "elevation_m": 60,
+        "slope_x": 0.0,
+        "slope_y": -0.4663076581549986,
+        "angle_x": 0,
+        "angle_y": -25
+      },
+      "properties": {
+        "terrain-valid": 1,
+        "terrain-height-m": 0.03,
+        "terrain-slope-x": -2.7e-05,
+        "terrain-slope-y": -0.466307,
+        "main-offset-m": 0.064973,
+        "mode": "terrain"
+      },
+      "expected_m": 0.064973025108,
+      "error_m": -2.510799999855262e-08
+    },
+    {
+      "ramp": {
+        "index": 5,
+        "latitude": 45.29905469549725,
+        "longitude": -73.27353535471805,
+        "elevation_m": 60,
+        "slope_x": 0.36397023426620234,
+        "slope_y": 0.36397023426620234,
+        "angle_x": 20,
+        "angle_y": 20
+      },
+      "properties": {
+        "terrain-valid": 1,
+        "terrain-height-m": 0.03,
+        "terrain-slope-x": 0.363989,
+        "terrain-slope-y": 0.363972,
+        "main-offset-m": 0.072864,
+        "mode": "terrain"
+      },
+      "expected_m": 0.07286405123400015,
+      "error_m": -5.123400015349944e-08
+    },
+    {
+      "ramp": {
+        "index": 6,
+        "latitude": 45.29986454324587,
+        "longitude": -73.275838,
+        "elevation_m": 60,
+        "slope_x": -0.36397023426620234,
+        "slope_y": -0.36397023426620234,
+        "angle_x": -20,
+        "angle_y": -20
+      },
+      "properties": {
+        "terrain-valid": 1,
+        "terrain-height-m": 0.03,
+        "terrain-slope-x": -0.363963,
+        "terrain-slope-y": -0.363971,
+        "main-offset-m": 0.072862,
+        "mode": "terrain"
+      },
+      "expected_m": 0.07286491958200007,
+      "error_m": -2.9195820000771366e-06
+    }
+  ],
+  "math": {
+    "terrain_math": [
+      {
+        "expression": "sw233_gear.terrain_offset([0,0.0,0.0],1)",
+        "actual": 0,
+        "expected": 0
+      },
+      {
+        "expression": "sw233_gear.terrain_offset([0,0.4663076581549986,0.0],1)",
+        "actual": 0.023313,
+        "expected": 0.023312287568282505
+      },
+      {
+        "expression": "sw233_gear.terrain_offset([0,-0.4663076581549986,0.0],1)",
+        "actual": 0.023313,
+        "expected": 0.023316018029547643
+      },
+      {
+        "expression": "sw233_gear.terrain_offset([0,0.0,0.4663076581549986],1)",
+        "actual": 0.034973,
+        "expected": 0.03497307436162489
+      },
+      {
+        "expression": "sw233_gear.terrain_offset([0,0.0,-0.4663076581549986],1)",
+        "actual": 0.034973,
+        "expected": 0.03497307436162489
+      },
+      {
+        "expression": "sw233_gear.terrain_offset([0,0.36397023426620234,0.36397023426620234],1)",
+        "actual": 0.042862,
+        "expected": 0.042862498125322446
+      },
+      {
+        "expression": "sw233_gear.terrain_offset([0,-0.36397023426620234,-0.36397023426620234],1)",
+        "actual": 0.042862,
+        "expected": 0.0428654098871965
+      },
+      {
+        "expression": "sw233_gear.terrain_offset([0,0.36397023426620234,-0.36397023426620234],1)",
+        "actual": 0.042862,
+        "expected": 0.042862498125322446
+      },
+      {
+        "expression": "sw233_gear.terrain_offset([0,-0.36397023426620234,0.36397023426620234],1)",
+        "actual": 0.042862,
+        "expected": 0.0428654098871965
+      },
+      {
+        "expression": "sw233_gear.terrain_offset([0.03,0.0,0.0],1)",
+        "actual": 0.03,
+        "expected": 0.03
+      },
+      {
+        "expression": "sw233_gear.terrain_offset([0.03,0.4663076581549986,0.0],1)",
+        "actual": 0.053313,
+        "expected": 0.053312287568282504
+      },
+      {
+        "expression": "sw233_gear.terrain_offset([0.03,-0.4663076581549986,0.0],1)",
+        "actual": 0.053313,
+        "expected": 0.053316018029547635
+      },
+      {
+        "expression": "sw233_gear.terrain_offset([0.03,0.0,0.4663076581549986],1)",
+        "actual": 0.064973,
+        "expected": 0.06497307436162489
+      },
+      {
+        "expression": "sw233_gear.terrain_offset([0.03,0.0,-0.4663076581549986],1)",
+        "actual": 0.064973,
+        "expected": 0.06497307436162489
+      },
+      {
+        "expression": "sw233_gear.terrain_offset([0.03,0.36397023426620234,0.36397023426620234],1)",
+        "actual": 0.072862,
+        "expected": 0.07286249812532244
+      },
+      {
+        "expression": "sw233_gear.terrain_offset([0.03,-0.36397023426620234,-0.36397023426620234],1)",
+        "actual": 0.072862,
+        "expected": 0.07286540988719649
+      },
+      {
+        "expression": "sw233_gear.terrain_offset([0.03,0.36397023426620234,-0.36397023426620234],1)",
+        "actual": 0.072862,
+        "expected": 0.07286249812532244
+      },
+      {
+        "expression": "sw233_gear.terrain_offset([0.03,-0.36397023426620234,0.36397023426620234],1)",
+        "actual": 0.072862,
+        "expected": 0.07286540988719649
+      },
+      {
+        "expression": "sw233_gear.terrain_offset([0.1,0.0,0.0],1)",
+        "actual": 0.1,
+        "expected": 0.1
+      },
+      {
+        "expression": "sw233_gear.terrain_offset([0.1,0.4663076581549986,0.0],1)",
+        "actual": 0.123313,
+        "expected": 0.1233122875682825
+      },
+      {
+        "expression": "sw233_gear.terrain_offset([0.1,-0.4663076581549986,0.0],1)",
+        "actual": 0.123313,
+        "expected": 0.12331601802954764
+      },
+      {
+        "expression": "sw233_gear.terrain_offset([0.1,0.0,0.4663076581549986],1)",
+        "actual": 0.134973,
+        "expected": 0.1349730743616249
+      },
+      {
+        "expression": "sw233_gear.terrain_offset([0.1,0.0,-0.4663076581549986],1)",
+        "actual": 0.134973,
+        "expected": 0.1349730743616249
+      },
+      {
+        "expression": "sw233_gear.terrain_offset([0.1,0.36397023426620234,0.36397023426620234],1)",
+        "actual": 0.142862,
+        "expected": 0.14286249812532245
+      },
+      {
+        "expression": "sw233_gear.terrain_offset([0.1,-0.36397023426620234,-0.36397023426620234],1)",
+        "actual": 0.142862,
+        "expected": 0.1428654098871965
+      },
+      {
+        "expression": "sw233_gear.terrain_offset([0.1,0.36397023426620234,-0.36397023426620234],1)",
+        "actual": 0.142862,
+        "expected": 0.14286249812532245
+      },
+      {
+        "expression": "sw233_gear.terrain_offset([0.1,-0.36397023426620234,0.36397023426620234],1)",
+        "actual": 0.142862,
+        "expected": 0.1428654098871965
+      },
+      {
+        "expression": "sw233_gear.terrain_offset([.1,.4,.4],0)",
+        "actual": 0,
+        "expected": 0
+      },
+      {
+        "expression": "sw233_gear.terrain_offset(nil,1)",
+        "actual": 0,
+        "expected": 0
+      },
+      {
+        "expression": "sw233_gear.plane(0,nil,0,0,0)==nil",
+        "actual": 1,
+        "expected": 1
+      },
+      {
+        "expression": "sw233_gear.plane(0,.1,.1,0,0)==nil",
+        "actual": 1,
+        "expected": 1
+      },
+      {
+        "expression": "sw233_gear.plane(0,0,0,.1,.1)==nil",
+        "actual": 1,
+        "expected": 1
+      },
+      {
+        "expression": "sw233_gear.plane(0,.6,0,0,0)==nil",
+        "actual": 1,
+        "expected": 1
+      },
+      {
+        "expression": "sw233_gear.plane(0,.1,-.1,.1,-.1)!=nil",
+        "actual": 1,
+        "expected": 1
+      }
+    ],
+    "flat_compatibility": [
+      {
+        "arguments": [
+          0,
+          0,
+          0,
+          1
+        ],
+        "offset_m": 0,
+        "expected_m": 0.0,
+        "error_m": 0.0
+      },
+      {
+        "arguments": [
+          0,
+          -7,
+          -13,
+          1
+        ],
+        "offset_m": 0.017315,
+        "expected_m": 0.017315114334417233,
+        "error_m": -1.1433441723246451e-07
+      },
+      {
+        "arguments": [
+          0,
+          -7,
+          13,
+          1
+        ],
+        "offset_m": 0.017315,
+        "expected_m": 0.017315114334417233,
+        "error_m": -1.1433441723246451e-07
+      },
+      {
+        "arguments": [
+          0,
+          10,
+          -30,
+          1
+        ],
+        "offset_m": 0.046725,
+        "expected_m": 0.04672619410611984,
+        "error_m": -1.194106119838112e-06
+      },
+      {
+        "arguments": [
+          0,
+          10,
+          30,
+          1
+        ],
+        "offset_m": 0.046725,
+        "expected_m": 0.04672619410611984,
+        "error_m": -1.194106119838112e-06
+      },
+      {
+        "arguments": [
+          0.04,
+          0,
+          0,
+          1
+        ],
+        "offset_m": 0.012192,
+        "expected_m": 0.012192000000000001,
+        "error_m": -1.734723475976807e-18
+      },
+      {
+        "arguments": [
+          0.04,
+          -7,
+          -13,
+          1
+        ],
+        "offset_m": 0.029507,
+        "expected_m": 0.029507114334417234,
+        "error_m": -1.1433441723593396e-07
+      },
+      {
+        "arguments": [
+          0.04,
+          -7,
+          13,
+          1
+        ],
+        "offset_m": 0.029507,
+        "expected_m": 0.029507114334417234,
+        "error_m": -1.1433441723593396e-07
+      },
+      {
+        "arguments": [
+          0.04,
+          10,
+          -30,
+          1
+        ],
+        "offset_m": 0.058917,
+        "expected_m": 0.05891819410611984,
+        "error_m": -1.1941061198450509e-06
+      },
+      {
+        "arguments": [
+          0.04,
+          10,
+          30,
+          1
+        ],
+        "offset_m": 0.058917,
+        "expected_m": 0.05891819410611984,
+        "error_m": -1.1941061198450509e-06
+      },
+      {
+        "arguments": [
+          0.15,
+          0,
+          0,
+          1
+        ],
+        "offset_m": 0.04572,
+        "expected_m": 0.045720000000000004,
+        "error_m": -6.938893903907228e-18
+      },
+      {
+        "arguments": [
+          0.15,
+          -7,
+          -13,
+          1
+        ],
+        "offset_m": 0.063035,
+        "expected_m": 0.06303511433441723,
+        "error_m": -1.1433441723940341e-07
+      },
+      {
+        "arguments": [
+          0.15,
+          -7,
+          13,
+          1
+        ],
+        "offset_m": 0.063035,
+        "expected_m": 0.06303511433441723,
+        "error_m": -1.1433441723940341e-07
+      },
+      {
+        "arguments": [
+          0.15,
+          10,
+          -30,
+          1
+        ],
+        "offset_m": 0.092445,
+        "expected_m": 0.09244619410611984,
+        "error_m": -1.1941061198450509e-06
+      },
+      {
+        "arguments": [
+          0.15,
+          10,
+          30,
+          1
+        ],
+        "offset_m": 0.092445,
+        "expected_m": 0.09244619410611984,
+        "error_m": -1.1941061198450509e-06
+      },
+      {
+        "arguments": [
+          null,
+          0,
+          0,
+          1
+        ],
+        "offset_m": 0,
+        "expected_m": 0,
+        "error_m": 0
+      },
+      {
+        "arguments": [
+          0.04,
+          null,
+          0,
+          1
+        ],
+        "offset_m": 0,
+        "expected_m": 0,
+        "error_m": 0
+      },
+      {
+        "arguments": [
+          0.04,
+          0,
+          null,
+          1
+        ],
+        "offset_m": 0,
+        "expected_m": 0,
+        "error_m": 0
+      },
+      {
+        "arguments": [
+          0.04,
+          0,
+          0,
+          0
+        ],
+        "offset_m": 0,
+        "expected_m": 0,
+        "error_m": 0
+      },
+      {
+        "arguments": [
+          0.04,
+          0,
+          0,
+          null
+        ],
+        "offset_m": 0,
+        "expected_m": 0,
+        "error_m": 0
+      },
+      {
+        "arguments": [
+          -1,
+          0,
+          0,
+          1
+        ],
+        "offset_m": 0,
+        "expected_m": 0,
+        "error_m": 0
+      },
+      {
+        "arguments": [
+          1,
+          0,
+          0,
+          1
+        ],
+        "offset_m": 0,
+        "expected_m": 0,
+        "error_m": 0
+      },
+      {
+        "arguments": [
+          0.04,
+          0,
+          80,
+          1
+        ],
+        "offset_m": 0,
+        "expected_m": 0,
+        "error_m": 0
+      },
+      {
+        "arguments": [
+          0.04,
+          60,
+          0,
+          1
+        ],
+        "offset_m": 0,
+        "expected_m": 0,
+        "error_m": 0
+      }
+    ]
+  },
+  "fallback": {
+    "missing": {
+      "mode": "fallback-flat",
+      "terrain-valid": 0,
+      "main-offset-m": 0.012192
+    },
+    "airborne": {
+      "mode": "airborne",
+      "terrain-valid": 0,
+      "main-offset-m": 0,
+      "probe_count": 0
+    }
+  },
+  "dynamic": {
+    "version": "2024.1.7",
+    "canopy_checks": 14,
+    "samples": [
+      {
+        "/orientation/pitch-deg": -6.807966,
+        "/orientation/roll-deg": -12.838226,
+        "/velocities/groundspeed-kt": 1.2e-05,
+        "/gear/gear/wow": true,
+        "/sim/sw233/gear/main-offset-m": 0.043006,
+        "/sim/sw233/gear/terrain-height-m": 0.026338,
+        "/sim/sw233/gear/terrain-slope-x": -0.125808,
+        "/sim/sw233/gear/terrain-slope-y": -0.222241,
+        "/sim/sw233/gear/mode": "terrain"
+      },
+      {
+        "/orientation/pitch-deg": -6.807966,
+        "/orientation/roll-deg": -12.838226,
+        "/velocities/groundspeed-kt": 1.1e-05,
+        "/gear/gear/wow": true,
+        "/sim/sw233/gear/main-offset-m": 0.043006,
+        "/sim/sw233/gear/terrain-height-m": 0.026338,
+        "/sim/sw233/gear/terrain-slope-x": -0.125808,
+        "/sim/sw233/gear/terrain-slope-y": -0.222241,
+        "/sim/sw233/gear/mode": "terrain"
+      },
+      {
+        "/orientation/pitch-deg": -6.807966,
+        "/orientation/roll-deg": -12.838226,
+        "/velocities/groundspeed-kt": 1.1e-05,
+        "/gear/gear/wow": true,
+        "/sim/sw233/gear/main-offset-m": 0.043006,
+        "/sim/sw233/gear/terrain-height-m": 0.026338,
+        "/sim/sw233/gear/terrain-slope-x": -0.125808,
+        "/sim/sw233/gear/terrain-slope-y": -0.222241,
+        "/sim/sw233/gear/mode": "terrain"
+      },
+      {
+        "/orientation/pitch-deg": -6.807966,
+        "/orientation/roll-deg": -12.838226,
+        "/velocities/groundspeed-kt": 1.1e-05,
+        "/gear/gear/wow": true,
+        "/sim/sw233/gear/main-offset-m": 0.043006,
+        "/sim/sw233/gear/terrain-height-m": 0.026338,
+        "/sim/sw233/gear/terrain-slope-x": -0.125808,
+        "/sim/sw233/gear/terrain-slope-y": -0.222241,
+        "/sim/sw233/gear/mode": "terrain"
+      },
+      {
+        "/orientation/pitch-deg": -6.807966,
+        "/orientation/roll-deg": -12.838226,
+        "/velocities/groundspeed-kt": 1.2e-05,
+        "/gear/gear/wow": true,
+        "/sim/sw233/gear/main-offset-m": 0.043006,
+        "/sim/sw233/gear/terrain-height-m": 0.026338,
+        "/sim/sw233/gear/terrain-slope-x": -0.125808,
+        "/sim/sw233/gear/terrain-slope-y": -0.222241,
+        "/sim/sw233/gear/mode": "terrain"
+      },
+      {
+        "/orientation/pitch-deg": -6.822685,
+        "/orientation/roll-deg": -12.843959,
+        "/velocities/groundspeed-kt": 4.537713,
+        "/gear/gear/wow": true,
+        "/sim/sw233/gear/main-offset-m": 0.042503,
+        "/sim/sw233/gear/terrain-height-m": 0.025795,
+        "/sim/sw233/gear/terrain-slope-x": -0.12671,
+        "/sim/sw233/gear/terrain-slope-y": -0.222319,
+        "/sim/sw233/gear/mode": "terrain"
+      },
+      {
+        "/orientation/pitch-deg": -6.872067,
+        "/orientation/roll-deg": -12.847165,
+        "/velocities/groundspeed-kt": 1.908539,
+        "/gear/gear/wow": true,
+        "/sim/sw233/gear/main-offset-m": 0.042309,
+        "/sim/sw233/gear/terrain-height-m": 0.025621,
+        "/sim/sw233/gear/terrain-slope-x": -0.126811,
+        "/sim/sw233/gear/terrain-slope-y": -0.222293,
+        "/sim/sw233/gear/mode": "terrain"
+      },
+      {
+        "/orientation/pitch-deg": -6.864835,
+        "/orientation/roll-deg": -12.852569,
+        "/velocities/groundspeed-kt": 0.004778,
+        "/gear/gear/wow": true,
+        "/sim/sw233/gear/main-offset-m": 0.04291,
+        "/sim/sw233/gear/terrain-height-m": 0.026245,
+        "/sim/sw233/gear/terrain-slope-x": -0.125842,
+        "/sim/sw233/gear/terrain-slope-y": -0.222251,
+        "/sim/sw233/gear/mode": "terrain"
+      },
+      {
+        "/orientation/pitch-deg": -6.830872,
+        "/orientation/roll-deg": -12.851679,
+        "/velocities/groundspeed-kt": 2.2e-05,
+        "/gear/gear/wow": true,
+        "/sim/sw233/gear/main-offset-m": 0.042924,
+        "/sim/sw233/gear/terrain-height-m": 0.026255,
+        "/sim/sw233/gear/terrain-slope-x": -0.125811,
+        "/sim/sw233/gear/terrain-slope-y": -0.222262,
+        "/sim/sw233/gear/mode": "terrain"
+      },
+      {
+        "/orientation/pitch-deg": -6.830846,
+        "/orientation/roll-deg": -12.851682,
+        "/velocities/groundspeed-kt": 1.4e-05,
+        "/gear/gear/wow": true,
+        "/sim/sw233/gear/main-offset-m": 0.042924,
+        "/sim/sw233/gear/terrain-height-m": 0.026255,
+        "/sim/sw233/gear/terrain-slope-x": -0.125811,
+        "/sim/sw233/gear/terrain-slope-y": -0.222263,
+        "/sim/sw233/gear/mode": "terrain"
+      },
+      {
+        "/orientation/pitch-deg": -6.830846,
+        "/orientation/roll-deg": -12.851682,
+        "/velocities/groundspeed-kt": 1.4e-05,
+        "/gear/gear/wow": true,
+        "/sim/sw233/gear/main-offset-m": 0.042924,
+        "/sim/sw233/gear/terrain-height-m": 0.026255,
+        "/sim/sw233/gear/terrain-slope-x": -0.125811,
+        "/sim/sw233/gear/terrain-slope-y": -0.222262,
+        "/sim/sw233/gear/mode": "terrain"
+      },
+      {
+        "/orientation/pitch-deg": -6.830846,
+        "/orientation/roll-deg": -12.851682,
+        "/velocities/groundspeed-kt": 1.4e-05,
+        "/gear/gear/wow": true,
+        "/sim/sw233/gear/main-offset-m": 0.042924,
+        "/sim/sw233/gear/terrain-height-m": 0.026255,
+        "/sim/sw233/gear/terrain-slope-x": -0.125811,
+        "/sim/sw233/gear/terrain-slope-y": -0.222262,
+        "/sim/sw233/gear/mode": "terrain"
+      },
+      {
+        "/orientation/pitch-deg": -6.830846,
+        "/orientation/roll-deg": -12.851682,
+        "/velocities/groundspeed-kt": 1.4e-05,
+        "/gear/gear/wow": true,
+        "/sim/sw233/gear/main-offset-m": 0.042924,
+        "/sim/sw233/gear/terrain-height-m": 0.026255,
+        "/sim/sw233/gear/terrain-slope-x": -0.125811,
+        "/sim/sw233/gear/terrain-slope-y": -0.222262,
+        "/sim/sw233/gear/mode": "terrain"
+      },
+      {
+        "/orientation/pitch-deg": -6.830846,
+        "/orientation/roll-deg": -12.851682,
+        "/velocities/groundspeed-kt": 1.5e-05,
+        "/gear/gear/wow": true,
+        "/sim/sw233/gear/main-offset-m": 0.042924,
+        "/sim/sw233/gear/terrain-height-m": 0.026255,
+        "/sim/sw233/gear/terrain-slope-x": -0.125811,
+        "/sim/sw233/gear/terrain-slope-y": -0.222262,
+        "/sim/sw233/gear/mode": "terrain"
+      },
+      {
+        "/orientation/pitch-deg": -6.830846,
+        "/orientation/roll-deg": -12.851682,
+        "/velocities/groundspeed-kt": 1.4e-05,
+        "/gear/gear/wow": true,
+        "/sim/sw233/gear/main-offset-m": 0.042924,
+        "/sim/sw233/gear/terrain-height-m": 0.026255,
+        "/sim/sw233/gear/terrain-slope-x": -0.125811,
+        "/sim/sw233/gear/terrain-slope-y": -0.222262,
+        "/sim/sw233/gear/mode": "terrain"
+      },
+      {
+        "/orientation/pitch-deg": -6.830846,
+        "/orientation/roll-deg": -12.851682,
+        "/velocities/groundspeed-kt": 1.5e-05,
+        "/gear/gear/wow": true,
+        "/sim/sw233/gear/main-offset-m": 0.042924,
+        "/sim/sw233/gear/terrain-height-m": 0.026255,
+        "/sim/sw233/gear/terrain-slope-x": -0.125811,
+        "/sim/sw233/gear/terrain-slope-y": -0.222262,
+        "/sim/sw233/gear/mode": "terrain"
+      },
+      {
+        "/orientation/pitch-deg": -6.830846,
+        "/orientation/roll-deg": -12.851682,
+        "/velocities/groundspeed-kt": 1.4e-05,
+        "/gear/gear/wow": true,
+        "/sim/sw233/gear/main-offset-m": 0.042924,
+        "/sim/sw233/gear/terrain-height-m": 0.026255,
+        "/sim/sw233/gear/terrain-slope-x": -0.125811,
+        "/sim/sw233/gear/terrain-slope-y": -0.222262,
+        "/sim/sw233/gear/mode": "terrain"
+      },
+      {
+        "/orientation/pitch-deg": -6.830846,
+        "/orientation/roll-deg": -12.851682,
+        "/velocities/groundspeed-kt": 1.4e-05,
+        "/gear/gear/wow": true,
+        "/sim/sw233/gear/main-offset-m": 0.042924,
+        "/sim/sw233/gear/terrain-height-m": 0.026255,
+        "/sim/sw233/gear/terrain-slope-x": -0.125811,
+        "/sim/sw233/gear/terrain-slope-y": -0.222262,
+        "/sim/sw233/gear/mode": "terrain"
+      },
+      {
+        "/orientation/pitch-deg": -6.830846,
+        "/orientation/roll-deg": -12.851682,
+        "/velocities/groundspeed-kt": 1.4e-05,
+        "/gear/gear/wow": true,
+        "/sim/sw233/gear/main-offset-m": 0.042924,
+        "/sim/sw233/gear/terrain-height-m": 0.026255,
+        "/sim/sw233/gear/terrain-slope-x": -0.125811,
+        "/sim/sw233/gear/terrain-slope-y": -0.222262,
+        "/sim/sw233/gear/mode": "terrain"
+      },
+      {
+        "/orientation/pitch-deg": -6.830846,
+        "/orientation/roll-deg": -12.851682,
+        "/velocities/groundspeed-kt": 1.4e-05,
+        "/gear/gear/wow": true,
+        "/sim/sw233/gear/main-offset-m": 0.042924,
+        "/sim/sw233/gear/terrain-height-m": 0.026255,
+        "/sim/sw233/gear/terrain-slope-x": -0.125811,
+        "/sim/sw233/gear/terrain-slope-y": -0.222262,
+        "/sim/sw233/gear/mode": "terrain"
+      },
+      {
+        "/orientation/pitch-deg": -6.830846,
+        "/orientation/roll-deg": -12.851682,
+        "/velocities/groundspeed-kt": 1.5e-05,
+        "/gear/gear/wow": true,
+        "/sim/sw233/gear/main-offset-m": 0.042924,
+        "/sim/sw233/gear/terrain-height-m": 0.026255,
+        "/sim/sw233/gear/terrain-slope-x": -0.125811,
+        "/sim/sw233/gear/terrain-slope-y": -0.222262,
+        "/sim/sw233/gear/mode": "terrain"
+      },
+      {
+        "/orientation/pitch-deg": -6.830846,
+        "/orientation/roll-deg": -12.851682,
+        "/velocities/groundspeed-kt": 1.4e-05,
+        "/gear/gear/wow": true,
+        "/sim/sw233/gear/main-offset-m": 0.042924,
+        "/sim/sw233/gear/terrain-height-m": 0.026255,
+        "/sim/sw233/gear/terrain-slope-x": -0.125811,
+        "/sim/sw233/gear/terrain-slope-y": -0.222262,
+        "/sim/sw233/gear/mode": "terrain"
+      },
+      {
+        "/orientation/pitch-deg": -6.830846,
+        "/orientation/roll-deg": -12.851682,
+        "/velocities/groundspeed-kt": 1.5e-05,
+        "/gear/gear/wow": true,
+        "/sim/sw233/gear/main-offset-m": 0.042924,
+        "/sim/sw233/gear/terrain-height-m": 0.026255,
+        "/sim/sw233/gear/terrain-slope-x": -0.125811,
+        "/sim/sw233/gear/terrain-slope-y": -0.222262,
+        "/sim/sw233/gear/mode": "terrain"
+      },
+      {
+        "/orientation/pitch-deg": -6.830846,
+        "/orientation/roll-deg": -12.851682,
+        "/velocities/groundspeed-kt": 1.5e-05,
+        "/gear/gear/wow": true,
+        "/sim/sw233/gear/main-offset-m": 0.042924,
+        "/sim/sw233/gear/terrain-height-m": 0.026255,
+        "/sim/sw233/gear/terrain-slope-x": -0.125811,
+        "/sim/sw233/gear/terrain-slope-y": -0.222262,
+        "/sim/sw233/gear/mode": "terrain"
+      },
+      {
+        "/orientation/pitch-deg": -6.830846,
+        "/orientation/roll-deg": -12.851682,
+        "/velocities/groundspeed-kt": 1.5e-05,
+        "/gear/gear/wow": true,
+        "/sim/sw233/gear/main-offset-m": 0.042924,
+        "/sim/sw233/gear/terrain-height-m": 0.026255,
+        "/sim/sw233/gear/terrain-slope-x": -0.125811,
+        "/sim/sw233/gear/terrain-slope-y": -0.222263,
+        "/sim/sw233/gear/mode": "terrain"
+      },
+      {
+        "/orientation/pitch-deg": -6.830846,
+        "/orientation/roll-deg": -12.851682,
+        "/velocities/groundspeed-kt": 1.4e-05,
+        "/gear/gear/wow": true,
+        "/sim/sw233/gear/main-offset-m": 0.042924,
+        "/sim/sw233/gear/terrain-height-m": 0.026255,
+        "/sim/sw233/gear/terrain-slope-x": -0.125811,
+        "/sim/sw233/gear/terrain-slope-y": -0.222263,
+        "/sim/sw233/gear/mode": "terrain"
+      },
+      {
+        "/orientation/pitch-deg": -6.830846,
+        "/orientation/roll-deg": -12.851682,
+        "/velocities/groundspeed-kt": 1.5e-05,
+        "/gear/gear/wow": true,
+        "/sim/sw233/gear/main-offset-m": 0.042924,
+        "/sim/sw233/gear/terrain-height-m": 0.026255,
+        "/sim/sw233/gear/terrain-slope-x": -0.125811,
+        "/sim/sw233/gear/terrain-slope-y": -0.222262,
+        "/sim/sw233/gear/mode": "terrain"
+      },
+      {
+        "/orientation/pitch-deg": -6.830846,
+        "/orientation/roll-deg": -12.851682,
+        "/velocities/groundspeed-kt": 1.4e-05,
+        "/gear/gear/wow": true,
+        "/sim/sw233/gear/main-offset-m": 0.042924,
+        "/sim/sw233/gear/terrain-height-m": 0.026255,
+        "/sim/sw233/gear/terrain-slope-x": -0.125811,
+        "/sim/sw233/gear/terrain-slope-y": -0.222262,
+        "/sim/sw233/gear/mode": "terrain"
+      },
+      {
+        "/orientation/pitch-deg": -6.830846,
+        "/orientation/roll-deg": -12.851682,
+        "/velocities/groundspeed-kt": 1.4e-05,
+        "/gear/gear/wow": true,
+        "/sim/sw233/gear/main-offset-m": 0.042924,
+        "/sim/sw233/gear/terrain-height-m": 0.026255,
+        "/sim/sw233/gear/terrain-slope-x": -0.125811,
+        "/sim/sw233/gear/terrain-slope-y": -0.222262,
+        "/sim/sw233/gear/mode": "terrain"
+      },
+      {
+        "/orientation/pitch-deg": -6.830846,
+        "/orientation/roll-deg": -12.851682,
+        "/velocities/groundspeed-kt": 1.5e-05,
+        "/gear/gear/wow": true,
+        "/sim/sw233/gear/main-offset-m": 0.042924,
+        "/sim/sw233/gear/terrain-height-m": 0.026255,
+        "/sim/sw233/gear/terrain-slope-x": -0.125811,
+        "/sim/sw233/gear/terrain-slope-y": -0.222262,
+        "/sim/sw233/gear/mode": "terrain"
+      }
+    ]
+  },
+  "canopy_position": 1,
+  "camera": {
+    "view": 1,
+    "heading_offset_deg": 270,
+    "pitch_offset_deg": 0,
+    "field_of_view": 7,
+    "target_z_m": 2.559214,
+    "target_y_m": -0.6
+  },
+  "images": {
+    "canopy.jpg": "f733f7d7a10d4283a335cf2ae5de16162b825ca7a2fdfd4638c07088ec7737d0",
+    "flat.jpg": "a571bf726b3b04f32150d3c91c7b6d25aeab7a3f104847da0613f04f7c4c30f4",
+    "pente-1-apres.jpg": "79b7b31cb5a73f92e819ca1523d088cfd8b202af339bc8b65aa9e313673a4558",
+    "pente-1-avant.jpg": "28f55ea7bac1381892c31175e1d255099b0df0277710a7c7e5a22a2ce3fd3f30",
+    "pente-3-apres.jpg": "209943343af5a3e56c7b9c6a3feb06ce7ec8a86c0d4c941cdc010da977b7d3c4",
+    "pente-3-avant.jpg": "5c987606e7a70fabbee79c1a271dd8c21b93d504e115237c2707721b0713283d",
+    "pente-5-apres.jpg": "04cf88f4f4bfbd63383341a95b82c542eb425fbaab3cf99a41fca6c0188b15aa",
+    "pente-5-avant.jpg": "4dd9435e09fba9450dd53ae450caccf90a7476aedd160c172597cc79c770f410"
+  },
+  "source_hashes": {
+    "src\\SW233\\Nasal\\gear.nas": "4419302f54561fa67b84bf935925e4f82fff2fbeb2d1945a41f61df8d1fc79de",
+    "src\\SW233\\Models\\sw233.ac": "9680dd0ffd46e460c760d0c6c2d97c5ac07fd3930846de2dac0999e5abb1bb88"
+  }
+}

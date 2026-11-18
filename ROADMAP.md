@@ -471,13 +471,18 @@ La roue principale suit la compression et compense son bord inférieur lorsqu’
 Les quatre cas sur sol plat donnent un résidu inférieur à 0,01 mm après stabilisation.
 Le roulage natif et l’ouverture au sol sont vérifiés. Le modèle conserve la version de travail 0.1.0-alpha.4.
 
-- [ ] **DIM-53c** Étendre le raccord du pneu à la normale d’un terrain fortement incliné ; évaluer une déformation du caoutchouc si nécessaire.
+- [x] **DIM-53c** Étendre le raccord du pneu à la normale d’un terrain fortement incliné ; évaluer une déformation du caoutchouc si nécessaire.
 
 #### Exécution DIM-53c — pneu et terrain incliné
 
-- [ ] **DIM-53c.1** Identifier une mesure native de la pente au point de contact ; vérifier ses axes et les données absentes.
-- [ ] **DIM-53c.2** Adapter la suspension visuelle à la normale du terrain. Conserver un comportement défini sans terrain chargé ou sans contact.
-- [ ] **DIM-53c.3** Comparer le résultat à un calcul indépendant sur des pentes longitudinales, latérales et combinées, dans les deux sens.
-- [ ] **DIM-53c.4** Vérifier dans FlightGear avec un terrain incliné identifiable et des captures avant/après ; contrôler aussi le sol plat et la verrière.
-- [ ] **DIM-53c.5** Documenter les actions, les images, les sources et les limites selon le guide ; vérifier les tests et la reconstruction.
-- [ ] **DIM-53c.6** Enregistrer la correction et mettre à jour GitHub, en conservant la version de travail non publiée.
+- [x] **DIM-53c.1** Identifier une mesure native de la pente au point de contact ; vérifier ses axes et les données absentes.
+- [x] **DIM-53c.2** Adapter la suspension visuelle à la normale du terrain. Conserver un comportement défini sans terrain chargé ou sans contact.
+- [x] **DIM-53c.3** Comparer le résultat à un calcul indépendant sur des pentes longitudinales, latérales et combinées, dans les deux sens.
+- [x] **DIM-53c.4** Vérifier dans FlightGear avec un terrain incliné identifiable et des captures avant/après ; contrôler aussi le sol plat et la verrière.
+- [x] **DIM-53c.5** Documenter les actions, les images, les sources et les limites selon le guide ; vérifier les tests et la reconstruction.
+- [x] **DIM-53c.6** Enregistrer la correction et mettre à jour GitHub, en conservant la version de travail non publiée.
+
+Bilan DIM-53c : [atelier 33](docs/construction/33-pneu-pentes.md) et [preuves du lot54](docs/validation/pneu-pentes-lot54.md).
+Sept rampes natives sont vérifiées en pose imposée ; le roulage physique est vérifié à CYJN.
+La déformation du caoutchouc reste une amélioration possible, sans nécessité démontrée sur ces plans.
+Les surfaces irrégulières et le roulage dynamique sur forte pente restent à explorer.

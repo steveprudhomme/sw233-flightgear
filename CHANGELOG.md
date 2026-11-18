@@ -1,6 +1,6 @@
 # Historique
 
-## En préparation — 0.1.0-alpha.4 — lots46,48,51,52 et53
+## En préparation — 0.1.0-alpha.4 — lots46,48,51,52,53 et54
 
 - Limite mobile déplacée à la jonction de l’aile ; cadres intermédiaires retirés.
 - Montant incliné et bombé continu ; silhouette encore à confirmer.
@@ -16,6 +16,9 @@
 - DIM-53a : animation du pneu principal selon la compression et l’inclinaison ; forces du vol conservées.
 - 81 tests et reconstruction du tutoriel réussis pour DIM-53a.
 - Atelier32 illustré, 24 contrôles natifs du pneu et quatre mesures de dégagement sur sol plat.
+- DIM-53c : cinq sondes du terrain pour raccorder le pneu aux pentes ; secours explicite si la surface manque.
+- 86 tests locaux et reconstruction du tutoriel réussis pour DIM-53c.
+- Atelier33 illustré ; sept rampes natives, 34 contrôles du nouveau calcul et roulage à CYJN.
 - Antenne blanche et deux roues d’aile ajoutées au ROADMAP pour EXT-47.
 
 
