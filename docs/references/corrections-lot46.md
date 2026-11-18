@@ -11,7 +11,6 @@ Ils ne sont pas redistribués avec ce document.
 | verriere-bombe-annote.png | 71f431fe81342a8275991fae076d8bbd316107ee5da1faba4e1ed88f70012f43 |
 | vitrage-central-tiers-annote.png | cc5400fbe18fa4560a89cc456df3a178d8e35c38d11726cd70f0028c9e44e422 |
 | antenne-roues-ailes-annote.png | 00cfede6e060b8660cb13aa23cb8e78585e8c997ef5e635c8dba6b4d18c3b978 |
-
 | poignee-accrochage-nez-annote.png | 5006f4dc06a30c013caf36b2305b995335f64dac99dc33f35552225a4829d639 |
 
 ## Lecture des annotations
