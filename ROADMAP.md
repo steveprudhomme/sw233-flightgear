@@ -393,3 +393,11 @@ Plan préalable du 17 novembre 2026. Travail sur la branche de revue du lot46 ; 
 - [ ] **VIS-48d.3** Ajouter un atelier illustré pour débutant, le bilan des contrôles et les limites ; actualiser le ROADMAP, le CHANGELOG et la proposition GitHub. Garder l’acceptation de la silhouette complète ouverte.
 
 **Complément VIS-48a / VIS-50c :** conserver la page « WEIGHT AND BALANCE CALCULATIONS SGS 2-33 or 2-33A », exemple de numéro de série369. Relever les stations du bord d’attaque à la racine (66,34 pouces), des centres de gravité pilote avant (43,80) et arrière (74,70), et les distances du train. Confirmer l’origine Sta.0 et la convention avant toute conversion en coordonnées du modèle. Ne pas appliquer les masses de cet exemple à C-FYLP. La page apporte une référence de masse et centrage, sans prouver que le tableau photographié dans le cockpit est celui-ci.
+
+
+#### Complément dimensionnel du manuel — VIS-48a.3 à a.6
+
+- [ ] **VIS-48a.3** Identifier les pages du manuel de pièces et entretien fourni, conserver son empreinte et relever uniquement les cotes lisibles.
+- [ ] **VIS-48a.4** Comparer les stations, la longueur et l’envergure aux références déjà utilisées. Séparer les dimensions de construction des bras de masse et centrage.
+- [ ] **VIS-48a.5** Documenter les conversions, l’origine des coordonnées et les écarts. Corriger seulement les dimensions dont la correspondance avec le modèle est établie.
+- [ ] **VIS-48a.6** Illustrer les repères dimensionnels et le résultat dans FlightGear. Conserver les hauteurs non cotées comme estimations et publier les preuves avec VIS-48.
