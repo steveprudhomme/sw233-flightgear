@@ -292,3 +292,9 @@ La fidélité des dimensions et l’acceptation visuelle restent à confirmer av
 Ce lot ne clôt pas la reconstruction générale des ailes ni le détail complet des harnais.
 
 - [ ] **R45-07 — référence à confirmer** Identifier la possible grille d’aération signalée par le mainteneur. Distinguer plaque d’instructions et ouverture ; ne pas créer de conduit dans l’aile sans référence concordante.
+
+
+**Précision du mainteneur — R45-07 :** ouverture à la jonction de l’aile gauche seulement,
+avec un aspect de filtre ; fonction d’aération encore hypothétique. Ajouter une représentation visuelle à gauche,
+sans symétrie à droite ni simulation de circuit d’air. R45-04 comprend le passage noir en demi-lune
+et la sangle verte derrière le passager ; les ancrages cachés restent inconnus.
