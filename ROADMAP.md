@@ -340,3 +340,13 @@ Référence locale conservée : `docs/references/originaux/details-lot-02/antenn
 Les deux annotations du mainteneur identifient l’antenne blanche et une roue d’aile ; la présence des roues des deux côtés est précisée par le mainteneur.
 
 **État lot46 :** correction technique en cours de revue ; [tutoriel28](docs/construction/28-silhouette-verriere.md). La première silhouette a été rejetée ; une courbe continue remplace le bombé local. Ne pas cocher la validation visuelle ni publier alpha.4 tant que la forme reste contestée. EXT-47 est planifié, pas réalisé.
+
+### Correction prioritaire de silhouette — fuselage arrière
+
+- [ ] **VIS-48a** Relever le contour supérieur du fuselage en vue de profil, de la sortie de l’aile jusqu’au pied de la dérive, selon le trait rouge fourni. Choisir deux repères et une pente constante ; confirmer les cotes sur des vues complémentaires.
+- [ ] **VIS-48b** Remplacer la bosse et le creux actuels du raccord arrière par une ligne supérieure droite, inclinée vers la queue. Assurer la continuité avec la zone sous l’aile et le pied de la dérive. Préserver les sections transversales : une ligne droite en profil ne signifie pas un fuselage entièrement plat.
+- [ ] **VIS-48c** Contrôler le contour inférieur et les flancs sur les photos avant de modifier leurs formes. Vérifier aussi les bandes de livrée après la correction de géométrie.
+- [ ] **VIS-48d** Comparer avant/après dans FlightGear en profil et trois-quarts ; ajouter des contrôles de rectitude du contour, synchroniser les recettes et illustrer le tutoriel. Ne pas déclarer la silhouette validée sur les seuls tests techniques.
+
+Référence locale conservée : `docs/references/originaux/details-lot-02/fuselage-arriere-rectiligne-annote.png`.
+Cette correction de forme est prioritaire sur les petits accessoires EXT-47. Le trait annoté porte sur le contour supérieur visible, pas sur les dimensions exactes ni toutes les sections du fuselage.
