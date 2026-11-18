@@ -290,3 +290,5 @@ Préversion prévue : `0.1.0-alpha.3`. Plan à commiter avant modification.
 
 La fidélité des dimensions et l’acceptation visuelle restent à confirmer avec le mainteneur.
 Ce lot ne clôt pas la reconstruction générale des ailes ni le détail complet des harnais.
+
+- [ ] **R45-07 — référence à confirmer** Identifier la possible grille d’aération signalée par le mainteneur. Distinguer plaque d’instructions et ouverture ; ne pas créer de conduit dans l’aile sans référence concordante.
