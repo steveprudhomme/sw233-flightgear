@@ -55,3 +55,6 @@ Elles recoupent les références déjà recensées dans [le dossier dimensionnel
 Aucune nouvelle position de dossier ou de verrière n’en est déduite.
 La hauteur totale, les stations du train et les cotes détaillées de verrière restent à rapprocher d’un repère géométrique établi.
 Les pages consultées ne suffisent toujours pas à identifier le tableau plastifié du cockpit.
+
+
+Suite : [DIM-51 — distances du train, assiette et hauteur](dimensions-lot51.md). Les roues visuelles sont recalées sur les différences de stations de cet exemple ; l’origine absolue reste non confirmée.

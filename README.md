@@ -29,7 +29,8 @@ Relancer le simulateur au lieu d’utiliser cette commande en attendant le diagn
 
 Dos arrière rectiligne, corde maximale de 1,524 m et empennage horizontal de 2,3622 m, selon le manuel fourni.
 [Atelier29 illustré](docs/construction/29-dimensions-et-fuselage.md) · [Essais et limites](docs/validation/fuselage-lot48.md).
-72 tests et 14 contrôles natifs réussissent. La silhouette complète reste à faire accepter.
+75 tests et 14 contrôles natifs réussissent. Le [lot51](docs/construction/30-reperes-et-train.md) recale les roues visibles et documente la hauteur encore non résolue.
+La silhouette complète reste à faire accepter.
 
 ## Finition du nez et de la verrière — lot43
 

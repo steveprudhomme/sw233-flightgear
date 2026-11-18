@@ -1,0 +1,91 @@
+{
+  "avant": {
+    "dimensions": {
+      "manual_pdf_pages": [
+        9,
+        20,
+        149,
+        150,
+        222
+      ],
+      "scope": "A12 example serial 369; model wing leading edge retained",
+      "wing_le": 1.99,
+      "wheels": {
+        "main": {
+          "x": 2.25,
+          "distance_from_wing_le": 0.26,
+          "manual_distance": 0.5692139999999999,
+          "residual": -0.3092139999999999
+        },
+        "tail": {
+          "x": 7.51,
+          "distance_from_wing_le": 5.52,
+          "manual_distance": 5.553964,
+          "residual": -0.033964000000000105
+        }
+      },
+      "manual_wheel_spacing": 4.98475,
+      "visual_wheel_spacing": 5.26,
+      "fdm_contact_spacing": 4.131056,
+      "level_visual_height": 2.2649999999999997,
+      "attitude": {
+        "pitch": 0.740915,
+        "roll": -12.634288
+      },
+      "rotated_visual_height": 3.5086298879249176,
+      "manual_height": 2.8321,
+      "height_status": "Unresolved: attitude and measurement endpoints unspecified"
+    },
+    "flightgear": "2024.1.7",
+    "package": "D:/SW233-work/fuselage-48/dimensions-v3/Aircraft/SW233",
+    "images": {
+      "avant-profil.jpg": "121f55380892420a29f96fa776b7cd2e7682fe1f3d4cd6574d555fd1c3e5329a",
+      "avant-oblique.jpg": "f0cb5ec7c8ea9fd9eeee0ae143fc17ec4e8e8d0044b6ee0d86e28d6a43138a78"
+    }
+  },
+  "apres": {
+    "dimensions": {
+      "manual_pdf_pages": [
+        9,
+        20,
+        149,
+        150,
+        222
+      ],
+      "scope": "A12 example serial 369; model wing leading edge retained",
+      "wing_le": 1.99,
+      "wheels": {
+        "main": {
+          "x": 2.55921,
+          "distance_from_wing_le": 0.5692100000000002,
+          "manual_distance": 0.5692139999999999,
+          "residual": -3.9999999996709334e-06
+        },
+        "tail": {
+          "x": 7.54396,
+          "distance_from_wing_le": 5.55396,
+          "manual_distance": 5.553964,
+          "residual": -3.9999999996709334e-06
+        }
+      },
+      "manual_wheel_spacing": 4.98475,
+      "visual_wheel_spacing": 4.98475,
+      "fdm_contact_spacing": 4.131056,
+      "level_visual_height": 2.2649999999999997,
+      "attitude": {
+        "pitch": 0.740915,
+        "roll": -12.634286
+      },
+      "rotated_visual_height": 3.5126280433801953,
+      "manual_height": 2.8321,
+      "height_status": "Unresolved: attitude and measurement endpoints unspecified"
+    },
+    "flightgear": "2024.1.7",
+    "package": "D:/SW233-work/dimensions-51/candidat/Aircraft/SW233",
+    "images": {
+      "apres-profil.jpg": "0892afabb36373fee30c73a31bd1c99978276c1f95aa7f370897924f8adbb125",
+      "apres-oblique.jpg": "bc38fdec46df9f66af80be796348c6d58133e038ec8a55b1d6f0f14243fb8ec0"
+    },
+    "canopy_assertions": 14
+  }
+}

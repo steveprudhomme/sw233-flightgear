@@ -415,11 +415,21 @@ Les sous-étapes techniques sont réalisées ; VIS-48a et l’acceptation visuel
 
 #### Exécution DIM-51 — repères, train et hauteur
 
-- [ ] **DIM-51.1** Conserver le paquet VIS-48 comme référence ; inventorier les coordonnées du train, de l’aile et de la dérive.
-- [ ] **DIM-51.2** Lire les sections structure, train et verrière du manuel. Relever les pages et distinguer cotes, schémas et hypothèses.
-- [ ] **DIM-51.3** Calculer les distances du train depuis le bord d’attaque, indépendantes du choix de Sta.0. Comparer aux objets visuels et aux contacts de vol.
-- [ ] **DIM-51.4** Mesurer l’encombrement vertical du modèle et l’assiette native. Déterminer si la hauteur du manuel peut être appliquée sans déformer une pièce arbitrairement.
-- [ ] **DIM-51.5** Corriger uniquement les correspondances établies. Ajouter des contrôles adaptés ; garder explicites les cotes non résolues.
-- [ ] **DIM-51.6** Vérifier dans FlightGear avec des captures natives ; rédiger l’atelier illustré, synchroniser les MD et publier la branche sur GitHub.
+- [x] **DIM-51.1** Conserver le paquet VIS-48 comme référence ; inventorier les coordonnées du train, de l’aile et de la dérive.
+- [x] **DIM-51.2** Lire les sections structure, train et verrière du manuel. Relever les pages et distinguer cotes, schémas et hypothèses.
+- [x] **DIM-51.3** Calculer les distances du train depuis le bord d’attaque, indépendantes du choix de Sta.0. Comparer aux objets visuels et aux contacts de vol.
+- [x] **DIM-51.4** Mesurer l’encombrement vertical du modèle et l’assiette native. Déterminer si la hauteur du manuel peut être appliquée sans déformer une pièce arbitrairement.
+- [x] **DIM-51.5** Corriger uniquement les correspondances établies. Ajouter des contrôles adaptés ; garder explicites les cotes non résolues.
+- [x] **DIM-51.6** Vérifier dans FlightGear avec des captures natives ; rédiger l’atelier illustré, synchroniser les MD et publier la branche sur GitHub.
 
 La verrière conserve son statut de silhouette à faire accepter. Ce lot ne valide pas ses dimensions par déduction des bras des occupants.
+
+
+Bilan DIM-51 : [atelier 30](docs/construction/30-reperes-et-train.md) et [registre technique](docs/references/dimensions-lot51.md).
+Les six sous-étapes d’audit sont réalisées. DIM-51a/b restent ouverts pour le recalage absolu et la hauteur physique.
+DIM-51c a fourni les pages E12–E17 ; aucune cote extérieure exploitable de verrière n’y a été relevée.
+Les roues visibles suivent les différences de stations A12 ; seuls leurs deux objets ont changé.
+
+- [ ] **DIM-52a** Établir une transformation commune entre maillage, repères de centrage et modèle de vol. Documenter les contacts associés aux roues ou aux patins.
+- [ ] **DIM-52b** Recaler les contacts physiques et les hauteurs avec des essais de pose, roulage et stabilité ; éviter une correction par translation seule.
+- [ ] **DIM-52c** Confirmer les conditions de mesure de la hauteur totale avant de modifier la dérive, le train ou le fuselage.

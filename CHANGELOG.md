@@ -1,6 +1,6 @@
 # Historique
 
-## En préparation — 0.1.0-alpha.4 — lots46 et48
+## En préparation — 0.1.0-alpha.4 — lots46,48 et51
 
 - Limite mobile déplacée à la jonction de l’aile ; cadres intermédiaires retirés.
 - Montant incliné et bombé continu ; silhouette encore à confirmer.
@@ -8,6 +8,8 @@
 - Tutoriel28 avec vues natives ; publication suspendue en attendant la validation visuelle.
 - Dos arrière rectiligne ; corde et envergure du stabilisateur corrigées selon le manuel de maintenance.
 - Atelier29 illustré, 72 tests et 14 contrôles natifs réussis ; acceptation visuelle toujours ouverte.
+- Recalage visuel des roues selon les différences de stations A12 ; audit de hauteur et de contacts, atelier30 illustré.
+- 75 tests et 14 contrôles natifs réussis ; recalage physique suivi dans DIM-52.
 - Antenne blanche et deux roues d’aile ajoutées au ROADMAP pour EXT-47.
 
 

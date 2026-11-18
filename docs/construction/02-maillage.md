@@ -189,7 +189,8 @@ La dérive ferme la longueur de référence à 7,8486 m. Deux cercles reliés de
 <!-- atelier-fichier: fabrique.py -->
 ```python
 poly("derive", 0, (6.50, 0, 0.09), (7.1, 0, 1.42), (7.83, 0, 1.42), (7.8486, 0, 0.04))
-for name, x, z, r in [("roue", 2.25, -0.60, 0.245), ("roulette", 7.51, -0.27, 0.084)]:
+for name, x, z, r in [("roue", 1.99 + (88.75 - 66.34) * 0.0254, -0.60, 0.245),
+                        ("roulette", 1.99 + (285.0 - 66.34) * 0.0254, -0.27, 0.084)]:
     a = [(x + r * cos(i * pi / 10), -0.075, z + r * sin(i * pi / 10)) for i in range(20)]
     b = [(px, 0.075, pz) for px, _, pz in a]
     bridge(name, 3, a, b)
