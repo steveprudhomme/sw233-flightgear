@@ -330,6 +330,11 @@ La station et l’angle de 100 degrés restent des estimations. La photo justifi
 - [ ] **EXT-47a** Reproduire l’antenne radio blanche signalée sur la photo annotée : position, inclinaison, section et fixation à relever. Ne pas confondre cette pièce avec le tube de Pitot du nez.
 - [ ] **EXT-47b** Reproduire les deux petites roues d’aile, une à chaque extrémité, avec leurs supports. Comparer les vues des deux côtés ; dimensions et fixations à confirmer. Distinguer ces pièces de la roue principale et de la roulette arrière.
 - [ ] **EXT-47c** Illustrer chaque pièce dans le tutoriel et vérifier les deux côtés dans FlightGear avant publication.
+- [ ] **EXT-47d** Ajouter la petite poignée tubulaire à l’avant du nez, signalée par le mainteneur pour saisir l’appareil à la main. Relever sa position, sa longueur, son diamètre et sa fixation ; distinguer cette pièce du tube de Pitot.
+- [ ] **EXT-47e** Ajouter le dispositif d’accrochage du câble sous le nez, entouré sur la photo. Reproduire sa forme visible et son raccord avec l’anneau du câble. Confirmer le type de crochet et son usage en remorquage aérien ou au treuil avant de lui attribuer un fonctionnement ; relier toute animation future aux essais AUD-05/06.
+
+Pour EXT-47d/e : illustrer chaque pièce dans le tutoriel, comparer les vues de profil et de dessous dans FlightGear, puis actualiser les MD et les preuves. Référence locale : `docs/references/originaux/details-lot-02/poignee-accrochage-nez-annote.png`.
+
 
 Référence locale conservée : `docs/references/originaux/details-lot-02/antenne-roues-ailes-annote.png`.
 Les deux annotations du mainteneur identifient l’antenne blanche et une roue d’aile ; la présence des roues des deux côtés est précisée par le mainteneur.
