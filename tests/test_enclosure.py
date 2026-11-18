@@ -45,7 +45,7 @@ class EnclosureTests(unittest.TestCase):
                          a[0]*b[1]-a[1]*b[0]]
                 self.assertGreater(sum(c*c for c in cross), 1e-12)
         points = [p for _, v in objects['pare-brise'] for p in v]
-        self.assertAlmostEqual(max(p[0] for p in points), 1.69)
+        self.assertAlmostEqual(max(p[0] for p in points), 1.99)
         self.assertIn('contour-porte-1', objects)
         self.assertIn('contour-porte1', objects)
 

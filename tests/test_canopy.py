@@ -21,10 +21,22 @@ class CanopyTests(unittest.TestCase):
                                  "vis-mobiles", "poignee-verriere"})
         for name in names:
             points = [p for _, face in objects[name] for p in face]
-            self.assertLess(max(p[0] for p in points), 1.72)
+            self.assertLess(max(p[0] for p in points), 2.02)
         self.assertLess(float(animation.findtext("center/y-m")), 0)
         handle = [p for _, face in objects["poignee-verriere"] for p in face]
         self.assertGreater(min(p[1] for p in handle), 0.4)
+
+    def test_split_at_wing_without_middle_arch(self):
+        _, objects = read_mesh(ROOT / "src/SW233/Models/sw233.ac")
+        glass = [p for _, face in objects["pare-brise"] for p in face]
+        self.assertAlmostEqual(max(p[0] for p in glass), 1.99, places=5)
+        fixed = [p for name in ("verriere", "vitrage-gauche", "vitrage-droit")
+                 for _, face in objects[name] for p in face]
+        self.assertGreaterEqual(min(p[0] for p in fixed), 1.84 - 1e-5)
+        for name in ("cadre-mobile", "arceaux", "longerons-verriere"):
+            middle = [p for _, face in objects[name] for p in face
+                      if .9 < p[0] < 1.78 and p[2] > .25]
+            self.assertFalse(middle, name)
 
     def test_rear_glazing_is_between_wings(self):
         _, objects = read_mesh(ROOT / "src/SW233/Models/sw233.ac")

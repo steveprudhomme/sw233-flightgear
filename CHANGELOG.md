@@ -1,5 +1,14 @@
 # Historique
 
+## En préparation — 0.1.0-alpha.4 — lot46
+
+- Limite mobile déplacée à la jonction de l’aile ; cadres intermédiaires retirés.
+- Montant incliné et bombé continu ; silhouette encore à confirmer.
+- Vitrage fixe raccourci, cloison, siège et personnage arrière rapprochés du repère du hauban.
+- Tutoriel28 avec vues natives ; publication suspendue en attendant la validation visuelle.
+- Antenne blanche et deux roues d’aile ajoutées au ROADMAP pour EXT-47.
+
+
 ## 0.1.0-alpha.3 — 2026-11-17 — raccords et dossier, lot45
 
 - Plans préalables `ec0324d`, `0318fa7` et `4e7a3b5`.

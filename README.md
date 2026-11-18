@@ -276,3 +276,7 @@ Le dossier présente un relief, un passage noir en demi-lune et une sangle verte
 Une grille représente l’ouverture signalée à gauche ; sa fonction reste à confirmer.
 
 [Tutoriel illustré](docs/construction/27-raccords-arriere.md) · [Bilan](docs/validation/raccords-lot45.md) · [Paquet](https://github.com/steveprudhomme/sw233-flightgear/releases/tag/v0.1.0-alpha.3).
+
+## Correction de silhouette en préparation
+
+Le [lot46](docs/construction/28-silhouette-verriere.md) reprend la verrière et la place arrière selon les annotations du mainteneur. La silhouette reste en revue ; alpha.4 n’est pas publiée.

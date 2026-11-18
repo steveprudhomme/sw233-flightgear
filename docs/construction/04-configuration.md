@@ -20,7 +20,7 @@ Commence par une seule racine PropertyList. Dans sim, la description est le titr
         <description>Schweizer SGS 2-33 — Cadets de l’aviation royale du Canada (prototype)</description>
         <author>Steve Prud'Homme et contributeurs SW233</author>
         <long-description>Prototype libre du Schweizer SGS 2-33 pour FlightGear. Licence GPL-3.0-only. Aerateur central et bagues anemometre, altimetre et variometre en relief 3D fixe. Radio COM1 generique : affichage actif, reglages 1 MHz et 25 kHz ; audio non valide. Calage altimetre lisible en inHg. Compas anime avec boitier arrondi, joint et vis en relief ; rose texturee et caracteres lisses. Tableau noir affine, vis et supports de cartes textures. Plaquettes et listes FR/EN par menu ou Ctrl+L ; initiales mnemotechniques rouges, cartes de droite degagees. Nez plein a capot bombe, flancs rehausses, raccord opaque prolonge sous aile ; cadres bleus, joints et fixations en relief. Vitrage central ajuste aux ailes, raccords bleus, faces internes grises et dossier arriere moule avec passage de sangle ; grille gauche de fonction non confirmee. Formes estimees ; verriere avant ouvrante au sol par menu ou poignee ; porte arriere fixe ; commandes et masses configurables ; modele de vol experimental. Projet aux couleurs des Cadets de l'aviation royale du Canada : livree jaune/bleu C-FYLP provisoire, non attestee actuelle. Deux personnages originaux bleu/vert, CEC St-Jean ; insignes generiques sans grade. Niveau de detail allege a distance. Grille UV par menu pour verifier ailes, empennages et spoilers. Reflets de ciel statique sous ALS, transparence de repli. Teste sous Windows avec FlightGear 2024.1.7 ; Linux non valide.</long-description>
-        <aircraft-version>0.1.0-alpha.3</aircraft-version>
+        <aircraft-version>0.1.0-alpha.4</aircraft-version>
         <minimum-fg-version>2024.1.7</minimum-fg-version>
         <flight-model>jsb</flight-model>
         <aero>sw233</aero>
@@ -564,7 +564,7 @@ Ajoute ce dernier bloc avant la fermeture finale. Le bouton utilise *knob* et *s
     <object-name>poignee-verriere</object-name>
     <property>/sim/sw233/canopy/position</property><factor>100</factor>
     <center><x-m>0.70</x-m><y-m>-0.36</y-m><z-m>0.12</z-m></center>
-    <axis><x>0.85</x><y>-0.07</y><z>0</z></axis>
+    <axis><x>1.29</x><y>-0.08</y><z>0</z></axis>
   </animation>
   <animation>
     <type>pick</type><object-name>poignee-verriere</object-name>

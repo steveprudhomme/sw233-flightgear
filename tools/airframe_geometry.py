@@ -39,9 +39,9 @@ CANOPY = [
     (2.78, 0.57, 0),
     (3.16, 0.54, 0),
 ]
-FAIRING = [(3.16, 0.54, 0), (3.56, 0.50, 0), (4.20, 0.25, 0), (5, 0, 0)]
+FAIRING = [(2.49, 0.57, 0), (3.56, 0.50, 0), (4.20, 0.25, 0), (5, 0, 0)]
 CABIN_START = 0.70
-CABIN_END = 3.16
+CABIN_END = 2.49
 FRAME_MATERIAL = 14
 DIVISIONS = 32
 ROOT_Y, ROOT_X, ROOT_CHORD, ROOT_Z = 0.44, 1.99, 1.57, 0.74
@@ -79,7 +79,7 @@ def root_fit(x, ring, rim, sill):
 
 def rear_back_x(y, z):
     # Recesses for the torso, shoulders and head; estimated from DET-02/06.
-    return (2.57 + 0.045 * exp(-(y / 0.22) ** 4 - ((z - 0.10) / 0.30) ** 4)
+    return (2.42 + 0.045 * exp(-(y / 0.22) ** 4 - ((z - 0.10) / 0.30) ** 4)
             + 0.065 * exp(-(y / 0.13) ** 4 - ((z - 0.57) / 0.18) ** 4))
 
 
@@ -124,7 +124,7 @@ def build_root_details(poly, rod):
     # Dark recess, not a claimed reproduction of the hidden belt anchor.
     poly('passage-sangle-demi-lune', 3,
          *[(rear_back_x(y, z) + 0.008, y, z) for y, z in arc])
-    strap = [(2.61, 0.215), (2.58, 0.16), (2.53, 0.06), (2.48, -0.10)]
+    strap = [(2.46, 0.215), (2.43, 0.16), (2.38, 0.06), (2.33, -0.10)]
     for (x, z), (nx, nz) in zip(strap, strap[1:]):
         poly('sangle-dossier-arriere', 8,
              (x, -0.023, z), (x, 0.023, z), (nx, 0.023, nz), (nx, -0.023, nz))
@@ -221,6 +221,22 @@ def build_enclosure(poly, rod):
         )
         if x > 1.55:
             upper[-1] = root_fit(x, upper[-1], rim, sill)
+        if CABIN_START < x < ROOT_X:
+            # One continuous crown curve, with a gentle peak before the wing junction.
+            t = (x - CABIN_START) / (ROOT_X - CABIN_START)
+            end = wing_roof(ROOT_X) + 0.018
+            crown = 0.26 + (end - 0.26) * (2 * t - t * t) + 0.55 * t * t * (1 - t)
+            delta = crown - upper[-1][DIVISIONS // 2][2]
+            upper[-1] = [(px, y, z + delta * sin(i * pi / DIVISIONS))
+                         for i, (px, y, z) in enumerate(upper[-1])]
+        # Inclined rear rim: the sill is forward of the roof junction.
+        if CABIN_START < x < CABIN_END:
+            span = ROOT_X - CABIN_START if x <= ROOT_X else CABIN_END - ROOT_X
+            t = (x - CABIN_START) / span if x <= ROOT_X else (CABIN_END - x) / span
+            shift = 0.15 * (t * t * (3 - 2 * t))
+            lower[-1] = [(px - shift, y, z) for px, y, z in lower[-1]]
+            upper[-1] = [(px - shift * max(0, 1 - min(i, DIVISIONS - i) / 8), y, z)
+                         for i, (px, y, z) in enumerate(upper[-1])]
     for k, (a, b) in enumerate(zip(lower, lower[1:])):
         for j in range(len(a) - 1):
             poly("fuselage", 0, a[j], a[j + 1], b[j + 1], b[j])
@@ -233,7 +249,7 @@ def build_enclosure(poly, rod):
                 name = "raccord-arriere"
             elif front or not cabin:
                 name = "fuselage"
-            elif xs[k] < 1.55:
+            elif xs[k] < ROOT_X:
                 name = "pare-brise"
             elif j < 8:
                 name = "vitrage-droit"
@@ -259,21 +275,21 @@ def build_enclosure(poly, rod):
 
     for k in cabin_ids[:-1]:
         for j in (0, DIVISIONS):
-            trim("bordures-cockpit", upper[k][j], upper[k + 1][j], 0.014, xs[k] < 1.55)
-    for x in (CABIN_START, 1.55, 2.13, CABIN_END):
+            trim("bordures-cockpit", upper[k][j], upper[k + 1][j], 0.014, xs[k] < ROOT_X)
+    for x in (CABIN_START, ROOT_X, CABIN_END):
         k = min(range(len(xs)), key=lambda i: abs(xs[i] - x))
         for a, b in zip(upper[k], upper[k][1:]):
-            trim("arceaux", a, b, 0.014, x <= 1.55)
+            trim("arceaux", a, b, 0.014, x <= ROOT_X)
         for p in upper[k][::4]:
             rod(
-                "vis-mobiles" if x <= 1.55 else "fixations-cadres",
+                "vis-mobiles" if x <= ROOT_X else "fixations-cadres",
                 9,
                 (p[0] + 0.012, p[1], p[2]),
                 (p[0] + 0.019, p[1], p[2]),
                 0.0035,
             )
     for k in cabin_ids[:-1]:
-        if xs[k] >= 1.55:
+        if xs[k] >= ROOT_X:
             for j in (8, 24):
                 rod("longerons-verriere", FRAME_MATERIAL, upper[k][j], upper[k + 1][j], 0.010)
     # Right-hand latch; the moving group carries it with the front canopy.
@@ -286,12 +302,13 @@ def build_enclosure(poly, rod):
     for a, b in zip(latch, latch[1:]):
         rod("poignee-verriere", 11, a, b, 0.006)
     # Two estimated hinge barrels on the left rim, aligned with the animation axis.
-    for x in (0.83, 1.43):
-        y = -0.36 - (x - 0.70) * 0.07 / 0.85
+    for x in (0.83, 1.87):
+        y = -0.36 - (x - 0.70) * 0.08 / 1.29
         rod("charnieres-fixes", 9, (x - 0.025, y, 0.12),
-            (x + 0.025, y - 0.05 * 0.07 / 0.85, 0.12), 0.012)
+            (x + 0.025, y - 0.05 * 0.08 / 1.29, 0.12), 0.012)
     for side in (-1, 1):
-        selected = [row for row in HULL if 1.55 <= row[0] <= 2.78]
+        selected = [(x, *[interpolate(HULL, x, i) for i in range(1, 6)])
+                    for x in (ROOT_X - 0.15, 2.13, CABIN_END)]
         line = [
             (x, side * (r * (1 + cos(pi / 6)) / 2 + 0.002), z - h * 0.25)
             for x, r, z, h, rim, sill in selected

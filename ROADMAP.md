@@ -333,3 +333,5 @@ La station et l’angle de 100 degrés restent des estimations. La photo justifi
 
 Référence locale conservée : `docs/references/originaux/details-lot-02/antenne-roues-ailes-annote.png`.
 Les deux annotations du mainteneur identifient l’antenne blanche et une roue d’aile ; la présence des roues des deux côtés est précisée par le mainteneur.
+
+**État lot46 :** correction technique en cours de revue ; [tutoriel28](docs/construction/28-silhouette-verriere.md). La première silhouette a été rejetée ; une courbe continue remplace le bombé local. Ne pas cocher la validation visuelle ni publier alpha.4 tant que la forme reste contestée. EXT-47 est planifié, pas réalisé.

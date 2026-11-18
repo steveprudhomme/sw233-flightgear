@@ -76,7 +76,7 @@ def loft(n, m, stations):
 
 Schéma du maillage, sans textures ; dimensions de maquette.
 
-Le défaut précédent venait d’un tri trop large : des faces étaient supprimées selon leur hauteur moyenne. Les côtés devenaient des trous. Nous dessinons maintenant une section en U : bord gauche, ventre arrondi, bord droit. Le dessus reste ouvert entre x=0,70 et 3,16 m ; les flancs restent entiers. Ce sont des stations de maquette H, guidées par les contours du trois-vues, pas des cotes d’usine. Voir les pointages et les limites dans la [fiche 14](14-enveloppe.md).
+Le défaut précédent venait d’un tri trop large : des faces étaient supprimées selon leur hauteur moyenne. Les côtés devenaient des trous. Nous dessinons maintenant une section en U : bord gauche, ventre arrondi, bord droit. Le dessus reste ouvert entre x=0,70 et 2,49 m ; les flancs restent entiers. Ce sont des stations de maquette H, guidées par les contours du trois-vues, pas des cotes d’usine. Voir les pointages et les limites dans la [fiche 14](14-enveloppe.md).
 
 La recette complète et les choix du lot42 sont dans la [fiche24](24-formes-avant.md). Chaque station donne x, la demi-largeur du ventre, la hauteur du centre, la demi-hauteur inférieure, la demi-largeur au bord de l’ouverture et la hauteur de ce bord. La verrière réutilisera exactement ses deux derniers nombres. Ainsi ses vitres touchent les flancs au lieu de flotter au-dessus.
 
@@ -186,7 +186,7 @@ for name, x, z, r in [("roue", 2.25, -0.60, 0.245), ("roulette", 7.51, -0.27, 0.
     poly(name, 3, *a)
     poly(name, 3, *b)
 rod("patin", 2, (0.33, 0, -0.52), (1.91, 0, -0.69), 0.038)
-for x in (1.52, 2.39):
+for x in (1.52, 2.24):
     poly(
         "sieges",
         8,

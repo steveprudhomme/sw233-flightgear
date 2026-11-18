@@ -69,6 +69,8 @@ Pour créer un fichier indiqué sur une fiche, ouvre le Bloc-notes, colle le pre
 
 - [27. Observer les raccords et la place arrière](27-raccords-arriere.md) : vitrage ajusté, panneaux gris, dossier moulé et passage de sangle.
 
+- [28. Comparer la silhouette de la verrière](28-silhouette-verriere.md) : correction en cours, profil, ouverture et place arrière.
+
 ## Règles des prochains ateliers
 
 Les nouveaux ateliers suivent le [guide de rédaction accessible](../guide-redaction.md).
