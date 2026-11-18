@@ -44,3 +44,8 @@ La réinitialisation complète défaillante FG-44-01 reste ouverte. Elle n’a p
 L’essai du tutoriel avec un débutant et l’acceptation de la ressemblance restent attendus.
 
 Voir le [tutoriel27 avec images](../construction/27-raccords-arriere.md).
+
+## Publication
+
+Source `16e17d6`, préversion [0.1.0-alpha.3](https://github.com/steveprudhomme/sw233-flightgear/releases/tag/v0.1.0-alpha.3).
+Les empreintes des 51 fichiers publiés correspondent aux fichiers locaux. Le manifeste du paquet est vérifié.

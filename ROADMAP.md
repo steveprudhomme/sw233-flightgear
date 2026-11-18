@@ -286,7 +286,7 @@ Préversion prévue : `0.1.0-alpha.3`. Plan à commiter avant modification.
 - [x] **R45-03** Fermer les faces internes des racines d’aile avec un habillage gris visible depuis la place arrière.
 - [x] **R45-04** Donner au dossier gris arrière un relief pour le torse, les épaules et la tête. Préserver le passage de sangle et vérifier les dégagements avec l’occupant.
 - [x] **R45-05** Comparer avant/après dans FlightGear : dessus, trois-quarts, intérieur arrière ; occupants présents/absents et verrière ouverte/fermée. Vérifier les commandes existantes.
-- [ ] **R45-06** Ajouter un tutoriel illustré selon le guide de rédaction ; synchroniser les recettes, tester, publier le paquet SemVer et actualiser les MD/GitHub.
+- [x] **R45-06** Ajouter un tutoriel illustré selon le guide de rédaction ; synchroniser les recettes, tester, publier le paquet SemVer et actualiser les MD/GitHub.
 
 La fidélité des dimensions et l’acceptation visuelle restent à confirmer avec le mainteneur.
 Ce lot ne clôt pas la reconstruction générale des ailes ni le détail complet des harnais.
@@ -300,3 +300,5 @@ sans symétrie à droite ni simulation de circuit d’air. R45-04 comprend le pa
 et la sangle verte derrière le passager ; les ancrages cachés restent inconnus.
 
 **Bilan lot45 :** géométrie et essais réalisés ; [tutoriel27](docs/construction/27-raccords-arriere.md). R45-07 reste ouvert pour confirmer la fonction, la forme et les dimensions de l’ouverture gauche. Sa représentation visuelle est réalisée. Acceptation visuelle et relevés physiques toujours attendus.
+
+**Publication :** [0.1.0-alpha.3](https://github.com/steveprudhomme/sw233-flightgear/releases/tag/v0.1.0-alpha.3), source `16e17d6`. Les 51 fichiers publiés correspondent aux empreintes SHA-256 locales. Le paquet contient son aperçu natif et son manifeste vérifié.
