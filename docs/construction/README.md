@@ -75,6 +75,8 @@ Pour créer un fichier indiqué sur une fiche, ouvre le Bloc-notes, colle le pre
 
 - [30. Placer les roues avec les repères du manuel](30-reperes-et-train.md) : stations, distances, hauteur et limites de l’assiette.
 
+- [31. Faire toucher le dessin au sol](31-contacts-sol.md) : contacts, pose, roulage et limites de la suspension.
+
 ## Règles des prochains ateliers
 
 Les nouveaux ateliers suivent le [guide de rédaction accessible](../guide-redaction.md).

@@ -1,6 +1,6 @@
 # Historique
 
-## En préparation — 0.1.0-alpha.4 — lots46,48 et51
+## En préparation — 0.1.0-alpha.4 — lots46,48,51 et52
 
 - Limite mobile déplacée à la jonction de l’aile ; cadres intermédiaires retirés.
 - Montant incliné et bombé continu ; silhouette encore à confirmer.
@@ -10,6 +10,9 @@
 - Atelier29 illustré, 72 tests et 14 contrôles natifs réussis ; acceptation visuelle toujours ouverte.
 - Recalage visuel des roues selon les différences de stations A12 ; audit de hauteur et de contacts, atelier30 illustré.
 - 75 tests et 14 contrôles natifs réussis ; recalage physique suivi dans DIM-52.
+- Contacts physiques recalés sur le train et le patin ; appuis aux bouts d’aile. Atelier31 illustré et essai natif de roulage.
+- 78 tests, reconstruction du tutoriel et 14 contrôles natifs réussis pour DIM-52.
+- Résidu du pneu rigide mesuré ; hauteur constructeur et datum encore ouverts.
 - Antenne blanche et deux roues d’aile ajoutées au ROADMAP pour EXT-47.
 
 

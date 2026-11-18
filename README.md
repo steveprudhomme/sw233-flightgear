@@ -287,3 +287,9 @@ Une grille représente l’ouverture signalée à gauche ; sa fonction reste à 
 ## Correction de silhouette en préparation
 
 Le [lot46](docs/construction/28-silhouette-verriere.md) reprend la verrière et la place arrière selon les annotations du mainteneur. La silhouette reste en revue ; alpha.4 n’est pas publiée.
+
+
+Le [lot DIM-52](docs/construction/31-contacts-sol.md) raccorde les contacts physiques aux roues et au patin.
+La pose, le roulage et l’ouverture au sol sont vérifiés dans FlightGear.
+La hauteur constructeur et un résidu d’enfoncement du pneu restent à traiter.
+[Consulter les résultats et leurs limites](docs/validation/contacts-lot52.md).

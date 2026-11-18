@@ -430,17 +430,26 @@ Les six sous-étapes d’audit sont réalisées. DIM-51a/b restent ouverts pour 
 DIM-51c a fourni les pages E12–E17 ; aucune cote extérieure exploitable de verrière n’y a été relevée.
 Les roues visibles suivent les différences de stations A12 ; seuls leurs deux objets ont changé.
 
-- [ ] **DIM-52a** Établir une transformation commune entre maillage, repères de centrage et modèle de vol. Documenter les contacts associés aux roues ou aux patins.
-- [ ] **DIM-52b** Recaler les contacts physiques et les hauteurs avec des essais de pose, roulage et stabilité ; éviter une correction par translation seule.
+- [x] **DIM-52a** Établir une transformation commune entre maillage, repères de centrage et modèle de vol. Documenter les contacts associés aux roues ou aux patins.
+- [x] **DIM-52b** Recaler les contacts physiques et les hauteurs avec des essais de pose, roulage et stabilité ; éviter une correction par translation seule.
 - [ ] **DIM-52c** Confirmer les conditions de mesure de la hauteur totale avant de modifier la dérive, le train ou le fuselage.
 
 #### Exécution DIM-52 — contacts physiques et pose au sol
 
-- [ ] **DIM-52.1** Relever les axes, le repère visuel et les contacts actuels. Conserver une mesure avant correction.
-- [ ] **DIM-52.2** Établir la correspondance entre les points du maillage et les coordonnées du modèle de vol. Séparer ce raccord du datum constructeur encore incertain.
-- [ ] **DIM-52.3** Recaler les contacts des roues et du patin dans la recette reproductible. Conserver les réglages de suspension comme estimations documentées.
-- [ ] **DIM-52.4** Tester la pose, la stabilité et le roulage avec JSBSim, puis observer le résultat dans FlightGear. Vérifier aussi la commande de verrière au sol.
-- [ ] **DIM-52.5** Mesurer la hauteur dans une assiette connue. Garder DIM-52c ouvert si les conditions constructeur restent inconnues.
-- [ ] **DIM-52.6** Ajouter un atelier illustré et les preuves. Vérifier la reconstruction, mettre à jour les MD et pousser la branche de travail sur GitHub.
+- [x] **DIM-52.1** Relever les axes, le repère visuel et les contacts actuels. Conserver une mesure avant correction.
+- [x] **DIM-52.2** Établir la correspondance entre les points du maillage et les coordonnées du modèle de vol. Séparer ce raccord du datum constructeur encore incertain.
+- [x] **DIM-52.3** Recaler les contacts des roues et du patin dans la recette reproductible. Conserver les réglages de suspension comme estimations documentées.
+- [x] **DIM-52.4** Tester la pose, la stabilité et le roulage avec JSBSim, puis observer le résultat dans FlightGear. Vérifier aussi la commande de verrière au sol.
+- [x] **DIM-52.5** Mesurer la hauteur dans une assiette connue. Garder DIM-52c ouvert si les conditions constructeur restent inconnues.
+- [x] **DIM-52.6** Ajouter un atelier illustré et les preuves. Vérifier la reconstruction, mettre à jour les MD et pousser la branche de travail sur GitHub.
 
 Ce lot conserve la version de travail 0.1.0-alpha.4. La silhouette de verrière reste à faire accepter.
+
+
+Bilan DIM-52 : [atelier 31](docs/construction/31-contacts-sol.md) et [preuves](docs/validation/contacts-lot52.md).
+Les appuis suivent le maillage ; la pose et une impulsion de roulage sont vérifiées dans FlightGear.
+Le raccord de repères reste interne au projet. Le datum constructeur et la hauteur restent non résolus.
+DIM-52.5 clôt la mesure de ce lot ; DIM-52c reste ouvert pour les conditions constructeur.
+
+- [ ] **DIM-53a** Réduire le résidu du pneu rigide (environ 2,73 cm sur le banc) avec une représentation de la compression et de la largeur.
+- [ ] **DIM-53b** Reprendre les appuis latéraux après la construction des roues de bout d’aile EXT-47 ; vérifier leur roulage.
