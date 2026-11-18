@@ -324,3 +324,12 @@ La station et l’angle de 100 degrés restent des estimations. La photo justifi
 - [ ] **C46-07** Reproduire le montant arrière incliné et le léger bombé de la verrière avant sa descente vers l’aile, selon la seconde annotation. Conserver le contact des bords du vitrage central avec les ailes. Documenter l’inclinaison et le bombé comme estimations photographiques, puis comparer le profil fermé et ouvert.
 
 **Complément C46-06 :** l’annotation verte confirme que le vitrage central fixe se termine vers le premier tiers de l’aile, près du hauban. La partie mobile se termine au montant incliné avant cette zone.
+
+### Détails photographiques à réaliser après le lot46
+
+- [ ] **EXT-47a** Reproduire l’antenne radio blanche signalée sur la photo annotée : position, inclinaison, section et fixation à relever. Ne pas confondre cette pièce avec le tube de Pitot du nez.
+- [ ] **EXT-47b** Reproduire les deux petites roues d’aile, une à chaque extrémité, avec leurs supports. Comparer les vues des deux côtés ; dimensions et fixations à confirmer. Distinguer ces pièces de la roue principale et de la roulette arrière.
+- [ ] **EXT-47c** Illustrer chaque pièce dans le tutoriel et vérifier les deux côtés dans FlightGear avant publication.
+
+Référence locale conservée : `docs/references/originaux/details-lot-02/antenne-roues-ailes-annote.png`.
+Les deux annotations du mainteneur identifient l’antenne blanche et une roue d’aile ; la présence des roues des deux côtés est précisée par le mainteneur.
