@@ -1,5 +1,7 @@
 # DIM-52 — Vérification des appuis au sol
 
+**Suite du travail :** le [lot DIM-53a](../construction/32-pneu-au-sol.md) corrige le résidu du pneu décrit dans ce bilan DIM-52.
+
 Public : contributeurs et personnes qui vérifient le modèle.
 Date : 17 novembre 2026. Version de travail : 0.1.0-alpha.4, non publiée.
 Plan enregistré avant modification : `c7c3482`. Référence avant correction : `2064164`.

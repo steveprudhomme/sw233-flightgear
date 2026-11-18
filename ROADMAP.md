@@ -451,16 +451,24 @@ Les appuis suivent le maillage ; la pose et une impulsion de roulage sont vérif
 Le raccord de repères reste interne au projet. Le datum constructeur et la hauteur restent non résolus.
 DIM-52.5 clôt la mesure de ce lot ; DIM-52c reste ouvert pour les conditions constructeur.
 
-- [ ] **DIM-53a** Réduire le résidu du pneu rigide (environ 2,73 cm sur le banc) avec une représentation de la compression et de la largeur.
+- [x] **DIM-53a** Réduire le résidu du pneu rigide (environ 2,73 cm sur le banc) avec une représentation de la compression et de la largeur.
 - [ ] **DIM-53b** Reprendre les appuis latéraux après la construction des roues de bout d’aile EXT-47 ; vérifier leur roulage.
 
 #### Exécution DIM-53a — pneu principal au sol
 
-- [ ] **DIM-53a.1** Conserver les mesures DIM-52 et séparer la compression du ressort de l’effet de largeur du pneu incliné.
-- [ ] **DIM-53a.2** Ajouter une animation du pneu liée au contact réel et à l’assiette. Définir les limites et le retour au repos en vol.
-- [ ] **DIM-53a.3** Tester les deux inclinaisons, le roulage, l’absence de contact et les valeurs manquantes. Mesurer le dégagement après animation.
-- [ ] **DIM-53a.4** Comparer les gros plans avant/après dans FlightGear et vérifier la verrière au sol.
-- [ ] **DIM-53a.5** Rédiger l’atelier illustré selon le guide, reconstruire les fichiers et exécuter les contrôles.
-- [ ] **DIM-53a.6** Enregistrer le résultat et mettre à jour GitHub. Conserver les limites non résolues au ROADMAP.
+- [x] **DIM-53a.1** Conserver les mesures DIM-52 et séparer la compression du ressort de l’effet de largeur du pneu incliné.
+- [x] **DIM-53a.2** Ajouter une animation du pneu liée au contact réel et à l’assiette. Définir les limites et le retour au repos en vol.
+- [x] **DIM-53a.3** Tester les deux inclinaisons, le roulage, l’absence de contact et les valeurs manquantes. Mesurer le dégagement après animation.
+- [x] **DIM-53a.4** Comparer les gros plans avant/après dans FlightGear et vérifier la verrière au sol.
+- [x] **DIM-53a.5** Rédiger l’atelier illustré selon le guide, reconstruire les fichiers et exécuter les contrôles.
+- [x] **DIM-53a.6** Enregistrer le résultat et mettre à jour GitHub. Conserver les limites non résolues au ROADMAP.
 
 Ce lot concerne le pneu principal. Les roues d’aile et la hauteur constructeur restent dans leurs lots dédiés.
+
+
+Bilan DIM-53a : [atelier 32](docs/construction/32-pneu-au-sol.md) et [preuves](docs/validation/pneu-lot53.md).
+La roue principale suit la compression et compense son bord inférieur lorsqu’elle penche.
+Les quatre cas sur sol plat donnent un résidu inférieur à 0,01 mm après stabilisation.
+Le roulage natif et l’ouverture au sol sont vérifiés. Le modèle conserve la version de travail 0.1.0-alpha.4.
+
+- [ ] **DIM-53c** Étendre le raccord du pneu à la normale d’un terrain fortement incliné ; évaluer une déformation du caoutchouc si nécessaire.

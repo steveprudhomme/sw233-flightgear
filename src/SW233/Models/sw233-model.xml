@@ -1,5 +1,12 @@
 <PropertyList>
   <path>sw233.ac</path>
+  <animation>
+    <type>translate</type>
+    <object-name>roue</object-name>
+    <property>/sim/sw233/gear/main-offset-m</property>
+    <factor>1</factor>
+    <axis><x>0</x><y>0</y><z>1</z></axis>
+  </animation>
   <model><path>livery.xml</path></model>
   <model><path>crew.xml</path></model>
   <effect>

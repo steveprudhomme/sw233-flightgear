@@ -1,6 +1,6 @@
 # Historique
 
-## En préparation — 0.1.0-alpha.4 — lots46,48,51 et52
+## En préparation — 0.1.0-alpha.4 — lots46,48,51,52 et53
 
 - Limite mobile déplacée à la jonction de l’aile ; cadres intermédiaires retirés.
 - Montant incliné et bombé continu ; silhouette encore à confirmer.
@@ -13,6 +13,9 @@
 - Contacts physiques recalés sur le train et le patin ; appuis aux bouts d’aile. Atelier31 illustré et essai natif de roulage.
 - 78 tests, reconstruction du tutoriel et 14 contrôles natifs réussis pour DIM-52.
 - Résidu du pneu rigide mesuré ; hauteur constructeur et datum encore ouverts.
+- DIM-53a : animation du pneu principal selon la compression et l’inclinaison ; forces du vol conservées.
+- 81 tests et reconstruction du tutoriel réussis pour DIM-53a.
+- Atelier32 illustré, 24 contrôles natifs du pneu et quatre mesures de dégagement sur sol plat.
 - Antenne blanche et deux roues d’aile ajoutées au ROADMAP pour EXT-47.
 
 

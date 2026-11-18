@@ -105,7 +105,7 @@ Ce chemin part du dossier SW233, pas du dossier Models. La liste sera écrite à
             <tag>unpowered</tag>
         </tags>
     </sim>
-    <nasal><sw233_load><file>Nasal/occupants.nas</file></sw233_load><sw233_radio><file>Nasal/radio.nas</file></sw233_radio><sw233_language><file>Nasal/language.nas</file></sw233_language><sw233_canopy><file>Nasal/canopy.nas</file></sw233_canopy></nasal>
+    <nasal><sw233_load><file>Nasal/occupants.nas</file></sw233_load><sw233_radio><file>Nasal/radio.nas</file></sw233_radio><sw233_language><file>Nasal/language.nas</file></sw233_language><sw233_canopy><file>Nasal/canopy.nas</file></sw233_canopy><sw233_gear><file>Nasal/gear.nas</file></sw233_gear></nasal>
     <input><keyboard><key n="12">
         <name>Ctrl-L</name><desc>SW233 : plaquettes et checklists FR / EN</desc>
         <repeatable type="bool">false</repeatable>
@@ -124,6 +124,13 @@ Le chemin est relatif à ce fichier : sw233.ac est dans le même dossier. Les ac
 ```xml
 <PropertyList>
   <path>sw233.ac</path>
+  <animation>
+    <type>translate</type>
+    <object-name>roue</object-name>
+    <property>/sim/sw233/gear/main-offset-m</property>
+    <factor>1</factor>
+    <axis><x>0</x><y>0</y><z>1</z></axis>
+  </animation>
   <model><path>livery.xml</path></model>
   <model><path>crew.xml</path></model>
   <effect>

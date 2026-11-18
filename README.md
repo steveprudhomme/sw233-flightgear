@@ -291,5 +291,5 @@ Le [lot46](docs/construction/28-silhouette-verriere.md) reprend la verrière et 
 
 Le [lot DIM-52](docs/construction/31-contacts-sol.md) raccorde les contacts physiques aux roues et au patin.
 La pose, le roulage et l’ouverture au sol sont vérifiés dans FlightGear.
-La hauteur constructeur et un résidu d’enfoncement du pneu restent à traiter.
+La hauteur constructeur reste à clarifier. Le résidu du pneu est corrigé dans le [lot DIM-53a](docs/construction/32-pneu-au-sol.md).
 [Consulter les résultats et leurs limites](docs/validation/contacts-lot52.md).

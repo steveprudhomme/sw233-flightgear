@@ -1,5 +1,7 @@
 # 31 · Faire toucher le dessin au sol
 
+**Suite du travail :** le [lot DIM-53a](32-pneu-au-sol.md) corrige le résidu du pneu décrit dans ce bilan DIM-52.
+
 **Public :** débutant, avec l’aide d’un adulte pour lancer les commandes.
 
 **But :** voir pourquoi une roue dessinée peut flotter, puis vérifier sa pose.
