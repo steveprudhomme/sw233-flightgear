@@ -453,3 +453,14 @@ DIM-52.5 clôt la mesure de ce lot ; DIM-52c reste ouvert pour les conditions co
 
 - [ ] **DIM-53a** Réduire le résidu du pneu rigide (environ 2,73 cm sur le banc) avec une représentation de la compression et de la largeur.
 - [ ] **DIM-53b** Reprendre les appuis latéraux après la construction des roues de bout d’aile EXT-47 ; vérifier leur roulage.
+
+#### Exécution DIM-53a — pneu principal au sol
+
+- [ ] **DIM-53a.1** Conserver les mesures DIM-52 et séparer la compression du ressort de l’effet de largeur du pneu incliné.
+- [ ] **DIM-53a.2** Ajouter une animation du pneu liée au contact réel et à l’assiette. Définir les limites et le retour au repos en vol.
+- [ ] **DIM-53a.3** Tester les deux inclinaisons, le roulage, l’absence de contact et les valeurs manquantes. Mesurer le dégagement après animation.
+- [ ] **DIM-53a.4** Comparer les gros plans avant/après dans FlightGear et vérifier la verrière au sol.
+- [ ] **DIM-53a.5** Rédiger l’atelier illustré selon le guide, reconstruire les fichiers et exécuter les contrôles.
+- [ ] **DIM-53a.6** Enregistrer le résultat et mettre à jour GitHub. Conserver les limites non résolues au ROADMAP.
+
+Ce lot concerne le pneu principal. Les roues d’aile et la hauteur constructeur restent dans leurs lots dédiés.
