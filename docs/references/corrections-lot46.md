@@ -15,6 +15,8 @@ Ils ne sont pas redistribués avec ce document.
 | fuselage-arriere-rectiligne-annote.png | 88992f08c936414f87c561651819215a3ccdcd2d63f40f831113387e372985f6 |
 | roue-aile-support-annote.png | 9383fbaf2055fdf2a3984c850490ea8cb0e01faa1df1355ff7f7f5b755e717a1 |
 | marchepied-cockpit.png | 5e331c027326382f9ea088da9bb9085cd7f6cb56cc6b5c4c52bad414338bf4c7 |
+| porte-arriere-bord-annote.png | 021686f39faa54428c307e31c8c5cfc3f1d0efc7517e950a4cc72ad3b0c84d18 |
+| porte-arriere-oblique-annote.png | 2d2b756b2194b2c3612289b1ddf3e92846f55b11a20e306297ca99acbb416db9 |
 
 ## Lecture des annotations
 
@@ -41,3 +43,11 @@ La nouvelle vue annotée montre une petite roue noire et un support jaune inclin
 ## Marchepied sous le cockpit — EXT-47f
 
 La photo fournie montre un petit élément saillant sous le cockpit, à gauche du logo dans l’image. Le mainteneur l’identifie comme un marchepied. Sa surface apparaît sombre et son extrémité jaune. Les dimensions, la fixation exacte et une éventuelle pièce de l’autre côté restent à confirmer. La photo est conservée sous le nom `marchepied-cockpit.png`.
+
+## Porte arrière oblique — VIS-49
+
+Les deux nouvelles photos annotées montrent le contour de la porte arrière et sa partie basse effilée.
+Le mainteneur indique une ouverture « à l’envers ». Le plan retient une ouverture vers l’arrière à confirmer avec une vue ouverte.
+Les photos permettent de relever le contour, le vitrage, la bande bleue et les fixations visibles.
+Elles ne suffisent pas à mesurer l’axe des charnières ni la course complète.
+Le modèle actuel conserve cette porte fixe. Voir VIS-49 dans le ROADMAP.

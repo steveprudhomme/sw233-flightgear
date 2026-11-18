@@ -352,3 +352,17 @@ Les deux annotations du mainteneur identifient l’antenne blanche et une roue d
 
 Référence locale conservée : `docs/references/originaux/details-lot-02/fuselage-arriere-rectiligne-annote.png`.
 Cette correction de forme est prioritaire sur les petits accessoires EXT-47. Le trait annoté porte sur le contour supérieur visible, pas sur les dimensions exactes ni toutes les sections du fuselage.
+
+### VIS-49 — porte du passager arrière
+
+La porte arrière reste fixe dans le modèle actuel. Ce chantier est distinct de l’ouverture de la verrière avant.
+Le mainteneur précise une ouverture « à l’envers », interprétée ici comme une ouverture vers l’arrière, et un contour oblique.
+
+- [ ] **VIS-49a** Relever le contour oblique du panneau jaune et du vitrage arrière sur les deux photos annotées. Respecter la partie basse effilée et les raccords avec le seuil, l’aile et la cloison. Ne pas remplacer cette porte par un rectangle vertical.
+- [ ] **VIS-49b** Identifier le côté de l’appareil, les charnières, leur axe, le verrou et la course. Confirmer le mouvement vers l’arrière sur une vue de la porte ouverte ; les deux photos seules ne montrent pas toute sa trajectoire.
+- [ ] **VIS-49c** Séparer les pièces mobiles et fixes après confirmation du mécanisme : panneau, vitrage, cadres, joints et fixations. Préserver la continuité de la bande bleue lorsque la porte est fermée.
+- [ ] **VIS-49d** Ajouter une commande d’ouverture et de fermeture au sol, distincte de la verrière avant. Vérifier les collisions avec l’aile, le hauban, le siège, le passager et la verrière ; vérifier les états intermédiaires et le verrouillage.
+- [ ] **VIS-49e** Documenter chaque pièce et le mouvement dans le tutoriel avec images et texte simple. Comparer dans FlightGear, ajouter les tests adaptés et actualiser les MD et les états de checklist concernés avant publication.
+
+Références locales : `docs/references/originaux/details-lot-02/porte-arriere-bord-annote.png` et `porte-arriere-oblique-annote.png`.
+Les dimensions, l’axe exact et la course restent à confirmer. Réaliser ce chantier après stabilisation des raccords du cockpit et du fuselage.
