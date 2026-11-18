@@ -302,3 +302,187 @@ et la sangle verte derrière le passager ; les ancrages cachés restent inconnus
 **Bilan lot45 :** géométrie et essais réalisés ; [tutoriel27](docs/construction/27-raccords-arriere.md). R45-07 reste ouvert pour confirmer la fonction, la forme et les dimensions de l’ouverture gauche. Sa représentation visuelle est réalisée. Acceptation visuelle et relevés physiques toujours attendus.
 
 **Publication :** [0.1.0-alpha.3](https://github.com/steveprudhomme/sw233-flightgear/releases/tag/v0.1.0-alpha.3), source `16e17d6`. Les 51 fichiers publiés correspondent aux empreintes SHA-256 locales. Le paquet contient son aperçu natif et son manifeste vérifié.
+
+### Lot46 — corriger la limite de la verrière mobile
+
+Correction demandée sur la photo DET-03 : la partie mobile rejoint la racine d’aile.
+Le cadre transversal ajouté au milieu du vitrage ne correspond pas à cette référence.
+Préversion prévue : `0.1.0-alpha.4`. Plan préalable à la modification.
+
+- [ ] **C46-01** Déplacer la séparation fixe/mobile au bord avant de l’aile, à la station 1,99 m du modèle ; conserver le vitrage entre les ailes fixe.
+- [ ] **C46-02** Supprimer les arceaux intermédiaires aux stations 1,55 et 2,13 m ; conserver uniquement les cadres périphériques utiles.
+- [ ] **C46-03** Ajuster l’axe latéral et les charnières à la longueur corrigée ; vérifier les états fermé, intermédiaire et ouvert dans FlightGear.
+- [ ] **C46-04** Tester la limite du vitrage et l’absence de cadre central ; synchroniser les recettes et documenter avec des captures comparables.
+- [ ] **C46-05** Publier le paquet SemVer et les preuves ; vérifier GitHub et garder les cotes réelles à confirmer.
+
+La station et l’angle de 100 degrés restent des estimations. La photo justifie la découpe et l’absence d’arceau central, pas des mesures exactes.
+
+**Précision photographique — lot46 :** aligner la cloison arrière sur le hauban entouré par le mainteneur, en vue de profil. Le « tiers de l’aile » était un repère approximatif.
+
+- [ ] **C46-06** Archiver l’image annotée ; rapprocher la cloison, la fin du vitrage arrière et le début de la coque jaune du repère du hauban. Déplacer ensemble le siège arrière, le personnage et la sangle pour préserver leur dégagement. Conserver le dossier moulé. Contrôler les profils avec et sans personnage ; ne pas modifier les masses physiques.
+
+- [ ] **C46-07** Reproduire le montant arrière incliné et le léger bombé de la verrière avant sa descente vers l’aile, selon la seconde annotation. Conserver le contact des bords du vitrage central avec les ailes. Documenter l’inclinaison et le bombé comme estimations photographiques, puis comparer le profil fermé et ouvert.
+
+**Complément C46-06 :** l’annotation verte confirme que le vitrage central fixe se termine vers le premier tiers de l’aile, près du hauban. La partie mobile se termine au montant incliné avant cette zone.
+
+### Détails photographiques à réaliser après le lot46
+
+- [ ] **EXT-47a** Reproduire l’antenne radio blanche signalée sur la photo annotée : position, inclinaison, section et fixation à relever. Ne pas confondre cette pièce avec le tube de Pitot du nez.
+- [ ] **EXT-47b** Reproduire les deux petites roues d’aile, une à chaque extrémité, avec leurs supports. Comparer les vues des deux côtés ; dimensions et fixations à confirmer. Distinguer ces pièces de la roue principale et de la roulette arrière. La vue `roue-aile-support-annote.png` précise une petite roue noire portée par un support jaune incliné sous l’aile. Relever séparément le pneu, le moyeu, le support, son angle et sa fixation ; ne pas remplacer cet ensemble par un simple disque collé à l’aile. Les dimensions et les détails masqués restent à confirmer.
+- [ ] **EXT-47c** Illustrer chaque pièce dans le tutoriel et vérifier les deux côtés dans FlightGear avant publication.
+- [ ] **EXT-47d** Ajouter la petite poignée tubulaire à l’avant du nez, signalée par le mainteneur pour saisir l’appareil à la main. Relever sa position, sa longueur, son diamètre et sa fixation ; distinguer cette pièce du tube de Pitot.
+- [ ] **EXT-47e** Ajouter le dispositif d’accrochage du câble sous le nez, entouré sur la photo. Reproduire sa forme visible et son raccord avec l’anneau du câble. Confirmer le type de crochet et son usage en remorquage aérien ou au treuil avant de lui attribuer un fonctionnement ; relier toute animation future aux essais AUD-05/06.
+- [ ] **EXT-47f** Ajouter le petit marchepied sur le flanc du fuselage, sous le cockpit, à gauche du logo dans la photo `marchepied-cockpit.png`. Reproduire le court support saillant, sa surface sombre et son extrémité jaune visibles. Relever la position, les dimensions et la fixation ; confirmer le côté de l’appareil et la présence éventuelle d’un second marchepied avant toute duplication. Illustrer la pièce dans le tutoriel et comparer son placement dans FlightGear.
+
+
+Pour EXT-47d/e : illustrer chaque pièce dans le tutoriel, comparer les vues de profil et de dessous dans FlightGear, puis actualiser les MD et les preuves. Référence locale : `docs/references/originaux/details-lot-02/poignee-accrochage-nez-annote.png`.
+
+
+Référence locale conservée : `docs/references/originaux/details-lot-02/antenne-roues-ailes-annote.png`.
+Les deux annotations du mainteneur identifient l’antenne blanche et une roue d’aile ; la présence des roues des deux côtés est précisée par le mainteneur.
+
+**État lot46 :** correction technique en cours de revue ; [tutoriel28](docs/construction/28-silhouette-verriere.md). La première silhouette a été rejetée ; une courbe continue remplace le bombé local. Ne pas cocher la validation visuelle ni publier alpha.4 tant que la forme reste contestée. EXT-47 est planifié, pas réalisé.
+
+### Correction prioritaire de silhouette — fuselage arrière
+
+- [ ] **VIS-48a** Relever le contour supérieur du fuselage en vue de profil, de la sortie de l’aile jusqu’au pied de la dérive, selon le trait rouge fourni. Choisir deux repères et une pente constante ; confirmer les cotes sur des vues complémentaires.
+- [ ] **VIS-48b** Remplacer la bosse et le creux actuels du raccord arrière par une ligne supérieure droite, inclinée vers la queue. Assurer la continuité avec la zone sous l’aile et le pied de la dérive. Préserver les sections transversales : une ligne droite en profil ne signifie pas un fuselage entièrement plat.
+- [ ] **VIS-48c** Contrôler le contour inférieur et les flancs sur les photos avant de modifier leurs formes. Vérifier aussi les bandes de livrée après la correction de géométrie.
+- [ ] **VIS-48d** Comparer avant/après dans FlightGear en profil et trois-quarts ; ajouter des contrôles de rectitude du contour, synchroniser les recettes et illustrer le tutoriel. Ne pas déclarer la silhouette validée sur les seuls tests techniques.
+
+Référence locale conservée : `docs/references/originaux/details-lot-02/fuselage-arriere-rectiligne-annote.png`.
+Cette correction de forme est prioritaire sur les petits accessoires EXT-47. Le trait annoté porte sur le contour supérieur visible, pas sur les dimensions exactes ni toutes les sections du fuselage.
+
+### VIS-49 — porte du passager arrière
+
+La porte arrière reste fixe dans le modèle actuel. Ce chantier est distinct de l’ouverture de la verrière avant.
+Le mainteneur précise une ouverture « à l’envers », interprétée ici comme une ouverture vers l’arrière, et un contour oblique.
+
+- [ ] **VIS-49a** Relever le contour oblique du panneau jaune et du vitrage arrière sur les deux photos annotées. Respecter la partie basse effilée et les raccords avec le seuil, l’aile et la cloison. Ne pas remplacer cette porte par un rectangle vertical.
+- [ ] **VIS-49b** Identifier le côté de l’appareil, les charnières, leur axe, le verrou et la course. Confirmer le mouvement vers l’arrière sur une vue de la porte ouverte ; les deux photos seules ne montrent pas toute sa trajectoire.
+- [ ] **VIS-49c** Séparer les pièces mobiles et fixes après confirmation du mécanisme : panneau, vitrage, cadres, joints et fixations. Préserver la continuité de la bande bleue lorsque la porte est fermée.
+- [ ] **VIS-49d** Ajouter une commande d’ouverture et de fermeture au sol, distincte de la verrière avant. Vérifier les collisions avec l’aile, le hauban, le siège, le passager et la verrière ; vérifier les états intermédiaires et le verrouillage.
+- [ ] **VIS-49e** Documenter chaque pièce et le mouvement dans le tutoriel avec images et texte simple. Comparer dans FlightGear, ajouter les tests adaptés et actualiser les MD et les états de checklist concernés avant publication.
+
+Références locales : `docs/references/originaux/details-lot-02/porte-arriere-bord-annote.png` et `porte-arriere-oblique-annote.png`.
+Les dimensions, l’axe exact et la course restent à confirmer. Réaliser ce chantier après stabilisation des raccords du cockpit et du fuselage.
+
+### VIS-50 — ouvertures et tableau plastifié à la racine d’aile
+
+Ce gros plan complète R45-07 ; il ne confirme pas encore une fonction d’aération.
+Le type du tableau reste à identifier : masse et centrage (poids et centrage), décrochage ou autre tableau. Le mainteneur demande de vérifier le manuel avant de conclure. Son texte est trop peu lisible sur la photo pour être transcrit fidèlement.
+
+- [ ] **VIS-50a** Relever les deux zones entourées de chaque côté du tableau, leurs contours et leur position dans l’habillage intérieur de la racine d’aile. Confirmer s’il s’agit d’ouvertures, de trappes ou d’autres éléments, et leur fonction. Comparer avec la grille provisoire du lot45 avant de la corriger ; ne pas créer une seconde installation par simple duplication.
+- [ ] **VIS-50b** Ajouter le tableau plastifié signalé : support rectangulaire, bordure claire, épaisseur, fixations aux coins et emplacement observés. Respecter son orientation par rapport au panneau intérieur et à l’aile.
+- [ ] **VIS-50c** Revoir le manuel du SGS 2-33 et les instructions d’exploitation Cadets pour identifier le tableau présent à cet emplacement. Comparer les tableaux de masse et centrage, de chargement et de décrochage avec le titre, les axes, les unités et la disposition visibles. Consigner le document, son édition, la page et la figure retenues. Obtenir une vue plus lisible si le manuel ne permet pas de trancher. Confirmer le type du tableau avant de reproduire son contenu ; ne pas inventer les valeurs ni utiliser des données propres à un autre appareil sans vérification.
+- [ ] **VIS-50d** Prévoir une texture lisible et un reflet discret du revêtement plastifié. Vérifier le résultat depuis la place arrière dans FlightGear ; illustrer séparément les ouvertures et le tableau dans le tutoriel, puis actualiser les MD et les preuves.
+
+Référence locale conservée : `docs/references/originaux/details-lot-02/ouvertures-tableau-decrochage-annote.png`.
+Les deux cercles désignent des détails dans le même panneau ; ils ne prouvent pas la présence d’un équipement identique dans l’autre aile. R45-07 reste ouvert jusqu’à identification.
+
+#### Exécution VIS-48 — contour supérieur rectiligne
+
+Plan préalable du 17 novembre 2026. Travail sur la branche de revue du lot46 ; alpha.4 reste en préparation.
+
+- [x] **VIS-48a.1** Conserver un paquet avant modification et relever le sommet de chaque section du maillage entre la sortie d’aile et la queue.
+- [ ] **VIS-48a.2** Utiliser les repères existants du modèle : sortie d’aile à x = 3,56 m et extrémité de coque à x = 7,61 m. Relier leurs hauteurs actuelles par une droite ; indiquer que ces cotes sont estimées, et non mesurées sur la photo.
+- [x] **VIS-48b.1** Remplacer uniquement le contour supérieur arrière par cette pente constante ; conserver les raccords de bord, la symétrie et les sections transversales. Vérifier la jonction avec la dérive.
+- [x] **VIS-48c.1** Comparer le bas de coque et les flancs avec le paquet précédent ; vérifier l’absence de changement involontaire et les textures de livrée dans le paquet final.
+- [x] **VIS-48d.1** Ajouter un test sur les sommets exportés : rectitude, continuité au bord de fuite et extrémité arrière. Exécuter les tests de fermeture de coque, les tests de régression et la reconstruction du tutoriel.
+- [x] **VIS-48d.2** Comparer avant/après dans FlightGear avec les mêmes vues de profil gauche/droit et trois-quarts ; contrôler aussi l’ouverture de verrière.
+- [x] **VIS-48d.3** Ajouter un atelier illustré pour débutant, le bilan des contrôles et les limites ; actualiser le ROADMAP, le CHANGELOG et la proposition GitHub. Garder l’acceptation de la silhouette complète ouverte.
+
+**Complément VIS-48a / VIS-50c :** conserver la page « WEIGHT AND BALANCE CALCULATIONS SGS 2-33 or 2-33A », exemple de numéro de série369. Relever les stations du bord d’attaque à la racine (66,34 pouces), des centres de gravité pilote avant (43,80) et arrière (74,70), et les distances du train. Confirmer l’origine Sta.0 et la convention avant toute conversion en coordonnées du modèle. Ne pas appliquer les masses de cet exemple à C-FYLP. La page apporte une référence de masse et centrage, sans prouver que le tableau photographié dans le cockpit est celui-ci.
+
+
+#### Complément dimensionnel du manuel — VIS-48a.3 à a.6
+
+- [x] **VIS-48a.3** Identifier les pages du manuel de pièces et entretien fourni, conserver son empreinte et relever uniquement les cotes lisibles.
+- [x] **VIS-48a.4** Comparer les stations, la longueur et l’envergure aux références déjà utilisées. Séparer les dimensions de construction des bras de masse et centrage.
+- [x] **VIS-48a.5** Documenter les conversions, l’origine des coordonnées et les écarts. Corriger seulement les dimensions dont la correspondance avec le modèle est établie.
+- [x] **VIS-48a.6** Illustrer les repères dimensionnels et le résultat dans FlightGear. Conserver les hauteurs non cotées comme estimations et publier les preuves avec VIS-48.
+
+
+Bilan VIS-48 : [atelier 29](docs/construction/29-dimensions-et-fuselage.md) et [preuves](docs/validation/fuselage-lot48.md).
+Le manuel confirme la corde maximale de 1,524 m et l’envergure du stabilisateur de 2,3622 m ; ces cotes sont appliquées.
+Le repère de sortie d’aile est maintenant x = 3,514 m. Il remplace l’estimation antérieure de 3,56 m dans VIS-48a.2.
+Les sous-étapes techniques sont réalisées ; VIS-48a et l’acceptation visuelle globale restent ouverts.
+
+- [ ] **DIM-51a** Recaler Sta.0, le nez géométrique et les stations du train sans confondre repères de masse et surfaces.
+- [ ] **DIM-51b** Vérifier la hauteur totale de 2,8321 m avec une assiette documentée ; identifier les points extrêmes.
+- [ ] **DIM-51c** Rechercher les cotes de verrière et de structure dans les autres sections du manuel ; citer les pages utiles.
+
+
+#### Exécution DIM-51 — repères, train et hauteur
+
+- [x] **DIM-51.1** Conserver le paquet VIS-48 comme référence ; inventorier les coordonnées du train, de l’aile et de la dérive.
+- [x] **DIM-51.2** Lire les sections structure, train et verrière du manuel. Relever les pages et distinguer cotes, schémas et hypothèses.
+- [x] **DIM-51.3** Calculer les distances du train depuis le bord d’attaque, indépendantes du choix de Sta.0. Comparer aux objets visuels et aux contacts de vol.
+- [x] **DIM-51.4** Mesurer l’encombrement vertical du modèle et l’assiette native. Déterminer si la hauteur du manuel peut être appliquée sans déformer une pièce arbitrairement.
+- [x] **DIM-51.5** Corriger uniquement les correspondances établies. Ajouter des contrôles adaptés ; garder explicites les cotes non résolues.
+- [x] **DIM-51.6** Vérifier dans FlightGear avec des captures natives ; rédiger l’atelier illustré, synchroniser les MD et publier la branche sur GitHub.
+
+La verrière conserve son statut de silhouette à faire accepter. Ce lot ne valide pas ses dimensions par déduction des bras des occupants.
+
+
+Bilan DIM-51 : [atelier 30](docs/construction/30-reperes-et-train.md) et [registre technique](docs/references/dimensions-lot51.md).
+Les six sous-étapes d’audit sont réalisées. DIM-51a/b restent ouverts pour le recalage absolu et la hauteur physique.
+DIM-51c a fourni les pages E12–E17 ; aucune cote extérieure exploitable de verrière n’y a été relevée.
+Les roues visibles suivent les différences de stations A12 ; seuls leurs deux objets ont changé.
+
+- [x] **DIM-52a** Établir une transformation commune entre maillage, repères de centrage et modèle de vol. Documenter les contacts associés aux roues ou aux patins.
+- [x] **DIM-52b** Recaler les contacts physiques et les hauteurs avec des essais de pose, roulage et stabilité ; éviter une correction par translation seule.
+- [ ] **DIM-52c** Confirmer les conditions de mesure de la hauteur totale avant de modifier la dérive, le train ou le fuselage.
+
+#### Exécution DIM-52 — contacts physiques et pose au sol
+
+- [x] **DIM-52.1** Relever les axes, le repère visuel et les contacts actuels. Conserver une mesure avant correction.
+- [x] **DIM-52.2** Établir la correspondance entre les points du maillage et les coordonnées du modèle de vol. Séparer ce raccord du datum constructeur encore incertain.
+- [x] **DIM-52.3** Recaler les contacts des roues et du patin dans la recette reproductible. Conserver les réglages de suspension comme estimations documentées.
+- [x] **DIM-52.4** Tester la pose, la stabilité et le roulage avec JSBSim, puis observer le résultat dans FlightGear. Vérifier aussi la commande de verrière au sol.
+- [x] **DIM-52.5** Mesurer la hauteur dans une assiette connue. Garder DIM-52c ouvert si les conditions constructeur restent inconnues.
+- [x] **DIM-52.6** Ajouter un atelier illustré et les preuves. Vérifier la reconstruction, mettre à jour les MD et pousser la branche de travail sur GitHub.
+
+Ce lot conserve la version de travail 0.1.0-alpha.4. La silhouette de verrière reste à faire accepter.
+
+
+Bilan DIM-52 : [atelier 31](docs/construction/31-contacts-sol.md) et [preuves](docs/validation/contacts-lot52.md).
+Les appuis suivent le maillage ; la pose et une impulsion de roulage sont vérifiées dans FlightGear.
+Le raccord de repères reste interne au projet. Le datum constructeur et la hauteur restent non résolus.
+DIM-52.5 clôt la mesure de ce lot ; DIM-52c reste ouvert pour les conditions constructeur.
+
+- [x] **DIM-53a** Réduire le résidu du pneu rigide (environ 2,73 cm sur le banc) avec une représentation de la compression et de la largeur.
+- [ ] **DIM-53b** Reprendre les appuis latéraux après la construction des roues de bout d’aile EXT-47 ; vérifier leur roulage.
+
+#### Exécution DIM-53a — pneu principal au sol
+
+- [x] **DIM-53a.1** Conserver les mesures DIM-52 et séparer la compression du ressort de l’effet de largeur du pneu incliné.
+- [x] **DIM-53a.2** Ajouter une animation du pneu liée au contact réel et à l’assiette. Définir les limites et le retour au repos en vol.
+- [x] **DIM-53a.3** Tester les deux inclinaisons, le roulage, l’absence de contact et les valeurs manquantes. Mesurer le dégagement après animation.
+- [x] **DIM-53a.4** Comparer les gros plans avant/après dans FlightGear et vérifier la verrière au sol.
+- [x] **DIM-53a.5** Rédiger l’atelier illustré selon le guide, reconstruire les fichiers et exécuter les contrôles.
+- [x] **DIM-53a.6** Enregistrer le résultat et mettre à jour GitHub. Conserver les limites non résolues au ROADMAP.
+
+Ce lot concerne le pneu principal. Les roues d’aile et la hauteur constructeur restent dans leurs lots dédiés.
+
+
+Bilan DIM-53a : [atelier 32](docs/construction/32-pneu-au-sol.md) et [preuves](docs/validation/pneu-lot53.md).
+La roue principale suit la compression et compense son bord inférieur lorsqu’elle penche.
+Les quatre cas sur sol plat donnent un résidu inférieur à 0,01 mm après stabilisation.
+Le roulage natif et l’ouverture au sol sont vérifiés. Le modèle conserve la version de travail 0.1.0-alpha.4.
+
+- [x] **DIM-53c** Étendre le raccord du pneu à la normale d’un terrain fortement incliné ; évaluer une déformation du caoutchouc si nécessaire.
+
+#### Exécution DIM-53c — pneu et terrain incliné
+
+- [x] **DIM-53c.1** Identifier une mesure native de la pente au point de contact ; vérifier ses axes et les données absentes.
+- [x] **DIM-53c.2** Adapter la suspension visuelle à la normale du terrain. Conserver un comportement défini sans terrain chargé ou sans contact.
+- [x] **DIM-53c.3** Comparer le résultat à un calcul indépendant sur des pentes longitudinales, latérales et combinées, dans les deux sens.
+- [x] **DIM-53c.4** Vérifier dans FlightGear avec un terrain incliné identifiable et des captures avant/après ; contrôler aussi le sol plat et la verrière.
+- [x] **DIM-53c.5** Documenter les actions, les images, les sources et les limites selon le guide ; vérifier les tests et la reconstruction.
+- [x] **DIM-53c.6** Enregistrer la correction et mettre à jour GitHub, en conservant la version de travail non publiée.
+
+Bilan DIM-53c : [atelier 33](docs/construction/33-pneu-pentes.md) et [preuves du lot54](docs/validation/pneu-pentes-lot54.md).
+Sept rampes natives sont vérifiées en pose imposée ; le roulage physique est vérifié à CYJN.
+La déformation du caoutchouc reste une amélioration possible, sans nécessité démontrée sur ces plans.
+Les surfaces irrégulières et le roulage dynamique sur forte pente restent à explorer.

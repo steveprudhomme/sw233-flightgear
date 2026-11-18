@@ -43,7 +43,7 @@ class RootJunctionTests(unittest.TestCase):
     def test_recessed_backrest_and_belt_aperture(self):
         points = self.points('dossier-arriere-moule')
         self.assertGreater(max(p[0] for p in points) - min(p[0] for p in points), .06)
-        self.assertGreater(min(p[0] for p in points), 2.56)
+        self.assertGreater(min(p[0] for p in points), 2.41)
         opening = self.points('passage-sangle-demi-lune')
         self.assertAlmostEqual(min(p[2] for p in opening), .20)
         self.assertAlmostEqual(max(p[2] for p in opening), .265)

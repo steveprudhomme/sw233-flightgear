@@ -76,7 +76,7 @@ def loft(n, m, stations):
 
 Schéma du maillage, sans textures ; dimensions de maquette.
 
-Le défaut précédent venait d’un tri trop large : des faces étaient supprimées selon leur hauteur moyenne. Les côtés devenaient des trous. Nous dessinons maintenant une section en U : bord gauche, ventre arrondi, bord droit. Le dessus reste ouvert entre x=0,70 et 3,16 m ; les flancs restent entiers. Ce sont des stations de maquette H, guidées par les contours du trois-vues, pas des cotes d’usine. Voir les pointages et les limites dans la [fiche 14](14-enveloppe.md).
+Le défaut précédent venait d’un tri trop large : des faces étaient supprimées selon leur hauteur moyenne. Les côtés devenaient des trous. Nous dessinons maintenant une section en U : bord gauche, ventre arrondi, bord droit. Le dessus reste ouvert entre x=0,70 et 2,49 m ; les flancs restent entiers. Ce sont des stations de maquette H, guidées par les contours du trois-vues, pas des cotes d’usine. Voir les pointages et les limites dans la [fiche 14](14-enveloppe.md).
 
 La recette complète et les choix du lot42 sont dans la [fiche24](24-formes-avant.md). Chaque station donne x, la demi-largeur du ventre, la hauteur du centre, la demi-hauteur inférieure, la demi-largeur au bord de l’ouverture et la hauteur de ce bord. La verrière réutilisera exactement ses deux derniers nombres. Ainsi ses vitres touchent les flancs au lieu de flotter au-dessus.
 
@@ -111,7 +111,17 @@ Contours de travail, sans animation ; voir la fiche 15 pour les hypothèses.
 
 Schéma du maillage, sans textures ; dimensions de maquette.
 
-Pour chaque aile, les quatre lignes sont (distance à l’axe, position du bord avant, corde, hauteur). À la racine, le bord arrière est à 1,99 + 1,57 = 3,56 m du nez. Une petite liste de fractions dessine une section épaisse ; ce n’est pas un profil aérodynamique mesuré. Multiplier la distance latérale par −1 ou +1 fabrique les deux côtés sans inverser l’avant. Un hauban joint aile et fuselage. Pour chaque aérofrein, la charnière est à x = 2,41 ; le bord mobile est à 2,54. Ce rectangle doit rester une pièce séparée : si on le soude à l’aile, l’animation soulèvera toute l’aile.
+Chaque ligne décrit une section d’aile : distance à l’axe, position du bord avant, corde et hauteur.
+À la racine, le bord arrière se trouve à 1,99 + 1,524 = 3,514 m du nez du modèle.
+La corde vient du manuel, page PDF 9 / A2. La position du bord avant reste estimée.
+La liste de fractions dessine une section épaisse. Elle ne reproduit pas un profil aérodynamique mesuré.
+
+Multiplier la distance latérale par −1 ou +1 pour construire les deux côtés.
+Relier l’aile au fuselage avec un hauban.
+Garder chaque aérofrein séparé pour pouvoir l’animer.
+Sa charnière est à x = 2,41 m ; son bord mobile est à x = 2,54 m.
+Ces positions restent des choix de maquette.
+L’[atelier 29](29-dimensions-et-fuselage.md) explique aussi la largeur corrigée de l’empennage.
 
 <!-- atelier-fichier: fabrique.py -->
 ```python
@@ -119,8 +129,8 @@ for side in (-1, 1):
     s = str(side)
     rings = []
     for y, le, ch, z in [
-        (0.44, 1.99, 1.57, 0.74),
-        (3.42, 1.99, 1.57, 0.80),
+        (0.44, 1.99, 1.524, 0.74),
+        (3.42, 1.99, 1.524, 0.80),
         (7.62, 2.19, 0.83, 0.93),
         (7.7724, 2.23, 0.76, 0.94),
     ]:
@@ -151,7 +161,7 @@ for side in (-1, 1):
         (7.79, 0, 0.1),
     ]
     # Charnière de maquette : x=7,35 m, z=0,11 m (non mesurée).
-    p = [(x, y, .11) for x, y, z in p]
+    p = [(x, y * (1.1811 / 1.93), .11) for x, y, z in p]
     def coupe(points, mobile):
         resultat = []
         for a, b in zip(points, points[1:] + points[:1]):
@@ -179,14 +189,15 @@ La dérive ferme la longueur de référence à 7,8486 m. Deux cercles reliés de
 <!-- atelier-fichier: fabrique.py -->
 ```python
 poly("derive", 0, (6.50, 0, 0.09), (7.1, 0, 1.42), (7.83, 0, 1.42), (7.8486, 0, 0.04))
-for name, x, z, r in [("roue", 2.25, -0.60, 0.245), ("roulette", 7.51, -0.27, 0.084)]:
+for name, x, z, r in [("roue", 1.99 + (88.75 - 66.34) * 0.0254, -0.60, 0.245),
+                        ("roulette", 1.99 + (285.0 - 66.34) * 0.0254, -0.27, 0.084)]:
     a = [(x + r * cos(i * pi / 10), -0.075, z + r * sin(i * pi / 10)) for i in range(20)]
     b = [(px, 0.075, pz) for px, _, pz in a]
     bridge(name, 3, a, b)
     poly(name, 3, *a)
     poly(name, 3, *b)
 rod("patin", 2, (0.33, 0, -0.52), (1.91, 0, -0.69), 0.038)
-for x in (1.52, 2.39):
+for x in (1.52, 2.24):
     poly(
         "sieges",
         8,

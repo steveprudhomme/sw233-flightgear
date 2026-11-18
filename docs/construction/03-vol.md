@@ -67,18 +67,29 @@ for name,x in [('front-occupant',43),('rear-occupant',85)]:
 
 ## C · Dis où le sol peut toucher
 
-Un contact de roue a un ressort et un amortisseur : le premier repousse, le second freine les rebonds. Ces réglages sont provisoires. Les roues dessinées et les points de contact sont deux représentations distinctes à raccorder ; changer un rayon dans fabrique.py ne déplace pas automatiquement la physique. Laisse la propulsion vide.
+Un ressort représente la souplesse du contact. Un amortisseur réduit les rebonds.
+Les coordonnées suivent maintenant les roues, les deux extrémités du patin et les bouts d’aile du maillage.
+Ces coordonnées sont converties de mètres en pouces. Le repère visuel reste nul.
+Les raideurs sont des estimations de simulation, sans mesure constructeur.
+Le [relevé DIM-52](../references/contacts-lot52.md) explique les choix et le résidu du pneu rigide.
+Laisser la propulsion vide.
 
 <!-- atelier-fichier: dynamique.py -->
 ```python
 ground=sub(fdm,'ground_reactions')
-ground.append(E.Comment(' Prototype contacts. Main wheel combines the two historical main contacts; no wheel brake. '))
+ground.append(E.Comment(' DIM-52: mesh-frame contact points, VRP zero; estimated stiff suspension, no wheel brake. '))
+# Construction metres -> structural inches. These are unloaded contact points.
+# The manufacturer station datum is not assigned to the model nose.
+def contact_inches(x, y, z):
+    return tuple(round(v / 0.0254, 8) for v in (x, y, z))
+
 for name,kind,xyz,k,c,rolling in [
-    ('main-wheel','BOGEY',(108.36,0,-50),1400,280,.05),
-    ('nose-skid','STRUCTURE',(33.54,0,-48),1000,1000,.5),
-    ('tail','STRUCTURE',(271,0,-20),210,70,.5),
-    ('left-wing','STRUCTURE',(103.2,-240,6),210,70,.5),
-    ('right-wing','STRUCTURE',(103.2,240,6),210,70,.5)]:
+    ('main-wheel','BOGEY',contact_inches(2.559214,0,-.845),20000,2000,.05),
+    ('nose-skid','STRUCTURE',contact_inches(.32593,0,-.55778),10000,1500,.5),
+    ('tail','BOGEY',contact_inches(7.543964,0,-.354),3000,500,.05),
+    ('left-wing','STRUCTURE',contact_inches(2.3744,-7.7724,.91112),1000,250,.5),
+    ('right-wing','STRUCTURE',contact_inches(2.3744,7.7724,.91112),1000,250,.5),
+    ('skid-rear','STRUCTURE',contact_inches(1.90593,0,-.72778),10000,1500,.5)]:
     n=sub(ground,'contact',type=kind,name=name)
     loc(n,'CONTACT',xyz)
     for t,v in [('static_friction',.8),('dynamic_friction',.5),('rolling_friction',rolling)]: sub(n,t,v)

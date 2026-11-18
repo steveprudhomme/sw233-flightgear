@@ -801,7 +801,7 @@ def build_crew_mesh(low_detail=False):
     mesh = CrewMesh(low_detail=low_detail)
     # The previous 0.438 m head intersected the sloping windscreen by 0.19 mm.
     _person(mesh, "front", 1.52, "blue", 0.418)
-    _person(mesh, "rear", 2.39, "green", 0.438)
+    _person(mesh, "rear", 2.24, "green", 0.438)
     return mesh
 
 

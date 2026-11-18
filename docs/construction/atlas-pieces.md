@@ -1,5 +1,7 @@
 # Atlas — toutes les pièces du maillage
 
+> Atlas historique : les cotes d’aile, d’empennage et de dos arrière ont évolué dans [l’atelier 29](29-dimensions-et-fuselage.md).
+
 **Atlas historique.** Le modèle courant comporte 72 objets. Les huit pièces du compas actualisé sont illustrées dans la [fiche 2, section O](02-maillage.md#o--comprendre-la-finition-du-compas-pièce-par-pièce) ; la rose texturée est expliquée en [section P](02-maillage.md#p--un-tambour-lisse-pour-recevoir-les-nouvelles-lettres). Les autres ajouts sont détaillés dans les sections précédentes de cette fiche.
 
 Version panneaux-17 : 49 objets, trois projections par objet. Ces schémas sont calculés depuis sw233.ac, sans textures ni animations. Les dimensions sont celles de la maquette ; elles ne constituent pas des mesures constructeur. Les vues sont ajustées séparément.

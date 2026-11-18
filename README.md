@@ -25,6 +25,13 @@ Le passager arrière reste sous l’aile. Le vitrage fixe est dégagé entre les
 La réinitialisation complète ferme FlightGear sur la machine d’essai, également avec alpha.1.
 Relancer le simulateur au lieu d’utiliser cette commande en attendant le diagnostic.
 
+## Dimensions et fuselage — alpha.4 en préparation
+
+Dos arrière rectiligne, corde maximale de 1,524 m et empennage horizontal de 2,3622 m, selon le manuel fourni.
+[Atelier29 illustré](docs/construction/29-dimensions-et-fuselage.md) · [Essais et limites](docs/validation/fuselage-lot48.md).
+75 tests et 14 contrôles natifs réussissent. Le [lot51](docs/construction/30-reperes-et-train.md) recale les roues visibles et documente la hauteur encore non résolue.
+La silhouette complète reste à faire accepter.
+
 ## Finition du nez et de la verrière — lot43
 
 Nez plus plein, capot bombé, flancs rehaussés et raccord arrière prolongé sous l'aile.
@@ -276,3 +283,17 @@ Le dossier présente un relief, un passage noir en demi-lune et une sangle verte
 Une grille représente l’ouverture signalée à gauche ; sa fonction reste à confirmer.
 
 [Tutoriel illustré](docs/construction/27-raccords-arriere.md) · [Bilan](docs/validation/raccords-lot45.md) · [Paquet](https://github.com/steveprudhomme/sw233-flightgear/releases/tag/v0.1.0-alpha.3).
+
+## Correction de silhouette en préparation
+
+Le [lot46](docs/construction/28-silhouette-verriere.md) reprend la verrière et la place arrière selon les annotations du mainteneur. La silhouette reste en revue ; alpha.4 n’est pas publiée.
+
+
+Le [lot DIM-52](docs/construction/31-contacts-sol.md) raccorde les contacts physiques aux roues et au patin.
+La pose, le roulage et l’ouverture au sol sont vérifiés dans FlightGear.
+La hauteur constructeur reste à clarifier. Le résidu du pneu est corrigé dans le [lot DIM-53a](docs/construction/32-pneu-au-sol.md).
+[Consulter les résultats et leurs limites](docs/validation/contacts-lot52.md).
+
+Le [lot DIM-53c](docs/construction/33-pneu-pentes.md) adapte la roue principale au terrain incliné.
+Sept rampes natives couvrent les pentes de ±25° et les pentes combinées de ±20° par axe.
+Ces essais géométriques immobilisés complètent le roulage physique vérifié à CYJN.

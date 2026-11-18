@@ -31,7 +31,7 @@ class PackageTests(unittest.TestCase):
             "aerofrein-1", "aerofrein1", "poignee-frein", "compas-rose", "alt-calage",
             "profondeur-1", "profondeur1", "alt-pression", "radio-frequence",
             "radio-bouton-gauche", "radio-bouton-droit", "plaquettes-fr", "plaquettes-en",
-            "fuselage", "pare-brise", "poignee-verriere",
+            "fuselage", "pare-brise", "poignee-verriere", "roue",
         })
         texts = {node.findtext("name"): node for node in model.findall("text")}
         self.assertEqual(set(texts), {"alt-pression", "alt-unite", "radio-frequence"})
@@ -46,8 +46,8 @@ class PackageTests(unittest.TestCase):
                 if node.text not in texts:
                     self.assertIn(f'name "{node.text}"', mesh)
             kind = animation.findtext("type")
-            self.assertIn(kind, {"rotate", "knob", "material", "pick", "select"})
-            if kind in {"rotate", "knob"}:
+            self.assertIn(kind, {"rotate", "translate", "knob", "material", "pick", "select"})
+            if kind in {"rotate", "translate", "knob"}:
                 self.assertTrue(animation.findtext("property"))
             elif kind == "pick":
                 actions = animation.findall("action")

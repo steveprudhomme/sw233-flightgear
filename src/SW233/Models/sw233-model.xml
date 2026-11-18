@@ -1,5 +1,12 @@
 <PropertyList>
   <path>sw233.ac</path>
+  <animation>
+    <type>translate</type>
+    <object-name>roue</object-name>
+    <property>/sim/sw233/gear/main-offset-m</property>
+    <factor>1</factor>
+    <axis><x>0</x><y>0</y><z>1</z></axis>
+  </animation>
   <model><path>livery.xml</path></model>
   <model><path>crew.xml</path></model>
   <effect>
@@ -317,7 +324,7 @@
     <object-name>poignee-verriere</object-name>
     <property>/sim/sw233/canopy/position</property><factor>100</factor>
     <center><x-m>0.70</x-m><y-m>-0.36</y-m><z-m>0.12</z-m></center>
-    <axis><x>0.85</x><y>-0.07</y><z>0</z></axis>
+    <axis><x>1.29</x><y>-0.08</y><z>0</z></axis>
   </animation>
   <animation>
     <type>pick</type><object-name>poignee-verriere</object-name>

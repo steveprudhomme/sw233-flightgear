@@ -1,5 +1,27 @@
 # Historique
 
+## En préparation — 0.1.0-alpha.4 — lots46,48,51,52,53 et54
+
+- Limite mobile déplacée à la jonction de l’aile ; cadres intermédiaires retirés.
+- Montant incliné et bombé continu ; silhouette encore à confirmer.
+- Vitrage fixe raccourci, cloison, siège et personnage arrière rapprochés du repère du hauban.
+- Tutoriel28 avec vues natives ; publication suspendue en attendant la validation visuelle.
+- Dos arrière rectiligne ; corde et envergure du stabilisateur corrigées selon le manuel de maintenance.
+- Atelier29 illustré, 72 tests et 14 contrôles natifs réussis ; acceptation visuelle toujours ouverte.
+- Recalage visuel des roues selon les différences de stations A12 ; audit de hauteur et de contacts, atelier30 illustré.
+- 75 tests et 14 contrôles natifs réussis ; recalage physique suivi dans DIM-52.
+- Contacts physiques recalés sur le train et le patin ; appuis aux bouts d’aile. Atelier31 illustré et essai natif de roulage.
+- 78 tests, reconstruction du tutoriel et 14 contrôles natifs réussis pour DIM-52.
+- Résidu du pneu rigide mesuré ; hauteur constructeur et datum encore ouverts.
+- DIM-53a : animation du pneu principal selon la compression et l’inclinaison ; forces du vol conservées.
+- 81 tests et reconstruction du tutoriel réussis pour DIM-53a.
+- Atelier32 illustré, 24 contrôles natifs du pneu et quatre mesures de dégagement sur sol plat.
+- DIM-53c : cinq sondes du terrain pour raccorder le pneu aux pentes ; secours explicite si la surface manque.
+- 86 tests locaux et reconstruction du tutoriel réussis pour DIM-53c.
+- Atelier33 illustré ; sept rampes natives, 34 contrôles du nouveau calcul et roulage à CYJN.
+- Antenne blanche et deux roues d’aile ajoutées au ROADMAP pour EXT-47.
+
+
 ## 0.1.0-alpha.3 — 2026-11-17 — raccords et dossier, lot45
 
 - Plans préalables `ec0324d`, `0318fa7` et `4e7a3b5`.

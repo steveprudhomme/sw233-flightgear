@@ -1,0 +1,17 @@
+{
+  "date": "2026-11-17",
+  "flightgear": "2024.1.7",
+  "python_tests": 72,
+  "native_canopy_assertions": 14,
+  "images": {
+    "apres-dessus.jpg": "06fd377073d397d3a92082952c2c9fd3e6a335acbe4315b03cc8c52cfd2262e2",
+    "apres-oblique.jpg": "46a55075d396c0d794db3484e5d573395207137161d6c2a5c076b5cbee5e0e29",
+    "apres-ouverte.jpg": "54fa3c4858492ef42e8fbb6945cebb752285b5cea4effb5557bb45df66d6ac75",
+    "apres-profil-droit.jpg": "df7b5b61f5e53905cc15f4c4d8df8bdeadcf0786e0f3988a81298865c972f15f",
+    "apres-profil.jpg": "e8e628a9b5b4ec8dac9eecc5c44220bde2bc89f6552e9c462073fef8a66fb0b7",
+    "avant-dessus.jpg": "1204df3c228e12ffeaf906b5565fb3f71b1e34e613531f42b020fc8087ad8a62",
+    "avant-oblique.jpg": "506b3646d9994d79d541d35931ce733fc99650bc81da22517659b970cd48e913",
+    "avant-profil-droit.jpg": "be33cb10ce7247557110ab38f3fe2f50b6d506f370cb46404236c5b52f4ffe72",
+    "avant-profil.jpg": "5058a7df8671602488a9872577191141e4f973fe1231ae05a8f992c4326196fc"
+  }
+}

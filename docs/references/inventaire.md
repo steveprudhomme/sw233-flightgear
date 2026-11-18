@@ -33,3 +33,6 @@ Dix originaux supplémentaires conservés sans modification dans `originaux/exte
 ## Complément de détails — lot02
 
 Onze fichiers préservés dans `originaux/details-lot-02/` avec galerie locale ; six nouveaux contenus, quatre reprises exactes du lot01 et une copie exacte de DET-05. [Analyse détaillée](analyse-details-lot-02.md) · [Manifeste et doublons](details-lot-02.json).
+
+
+Manuel de pièces et entretien ajouté le 17 novembre 2026 : [identification, empreinte et relevés dimensionnels](manuel-stations-369.md#manuel-complet-et-dimensions-de-construction). Original conservé localement ; PDF non redistribué.

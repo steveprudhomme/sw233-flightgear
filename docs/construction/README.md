@@ -69,6 +69,18 @@ Pour créer un fichier indiqué sur une fiche, ouvre le Bloc-notes, colle le pre
 
 - [27. Observer les raccords et la place arrière](27-raccords-arriere.md) : vitrage ajusté, panneaux gris, dossier moulé et passage de sangle.
 
+- [28. Comparer la silhouette de la verrière](28-silhouette-verriere.md) : correction en cours, profil, ouverture et place arrière.
+
+- [29. Vérifier les dimensions et le dos du fuselage](29-dimensions-et-fuselage.md) : cotes du manuel, corrections et comparaison native.
+
+- [30. Placer les roues avec les repères du manuel](30-reperes-et-train.md) : stations, distances, hauteur et limites de l’assiette.
+
+- [31. Faire toucher le dessin au sol](31-contacts-sol.md) : contacts, pose, roulage et limites de la suspension.
+
+- [32. Garder le pneu au-dessus du sol](32-pneu-au-sol.md) : compression, inclinaison et gros plans natifs.
+
+- [33. Faire suivre la pente au pneu](33-pneu-pentes.md) : sondes du terrain, banc incliné et limites.
+
 ## Règles des prochains ateliers
 
 Les nouveaux ateliers suivent le [guide de rédaction accessible](../guide-redaction.md).
